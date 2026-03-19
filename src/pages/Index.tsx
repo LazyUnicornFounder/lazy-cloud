@@ -50,7 +50,7 @@ const Index = () => {
             animate={{ opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           >
-            Built with Lovable by someone who couldn't be bothered. A directory of companies making sure you never have to work again.
+            Built with Lovable by someone who couldn't be bothered.
           </motion.span>
         </motion.p>
         <motion.div
