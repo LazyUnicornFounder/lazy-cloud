@@ -76,7 +76,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-border py-8 text-center font-body text-xs text-muted-foreground tracking-wider">
-        Lazy CEO © 2026
+        Lazy Unicorn © 2026
       </footer>
 
       {/* Submit Modal */}
