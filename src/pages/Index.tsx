@@ -50,7 +50,7 @@ const Index = () => {
             animate={{ opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           >
-            Built with Lovable by someone who couldn't be bothered. A directory of companies making sure you never have to work again.
+            Built with Lovable by someone who couldn't be bothered.
           </motion.span>
         </motion.p>
         <motion.div
@@ -62,6 +62,14 @@ const Index = () => {
             Lazy Unicorn
           </h1>
         </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="font-body text-base md:text-lg text-muted-foreground mt-6 max-w-lg mx-auto leading-relaxed"
+        >
+          A directory of companies making sure you never have to work again.
+        </motion.p>
       </header>
 
       {/* Directory */}
