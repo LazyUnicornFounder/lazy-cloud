@@ -6,7 +6,14 @@ import { supabase } from "@/integrations/supabase/client";
 
 const submitSchema = z.object({
   name: z.string().trim().min(1, "Company name is required").max(100, "Name must be under 100 characters"),
-  url: z.string().trim().min(1, "URL is required").max(255, "URL must be under 255 characters").url("Please enter a valid URL"),
+  url: z.string().trim().min(1, "URL is required").max(255, "URL must be under 255 characters")
+    .transform((val) => {
+      if (!/^https?:\/\//i.test(val)) {
+        return `https://${val.replace(/^www\./i, "")}`;
+      }
+      return val;
+    })
+    .pipe(z.string().url("Please enter a valid URL")),
   tagline: z.string().trim().min(1, "Tagline is required").max(200, "Tagline must be under 200 characters"),
 });
 
