@@ -69,7 +69,7 @@ const Index = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="inline-block bg-background/40 backdrop-blur-xl rounded-2xl px-8 py-6 border border-foreground/10"
+          className="inline-block bg-background/60 backdrop-blur-2xl rounded-3xl px-10 py-8 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
         >
           <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.9] text-foreground">
             Never have
@@ -78,6 +78,9 @@ const Index = () => {
             <br />
             again.
           </h1>
+          <p className="font-body text-sm sm:text-base text-foreground/60 mt-4 max-w-md">
+            The definitive directory of AI companies replacing human labor.
+          </p>
         </motion.div>
 
         {/* Retro sticker */}
