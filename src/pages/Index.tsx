@@ -30,7 +30,7 @@ const Index = () => {
           className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-medium tracking-wide leading-[0.95]"
           style={{ fontVariant: "small-caps" }}
         >
-          Autonomous<br />Companies.
+          Self-Building<br />Companies.
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
@@ -38,8 +38,7 @@ const Index = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="font-body text-base md:text-lg text-muted-foreground mt-8 max-w-xl mx-auto leading-relaxed"
         >
-          A curated directory of companies building AI agents,
-          autonomous systems, and the infrastructure to power them.
+          A curated directory of the companies building AI that starts, runs, and scales businesses autonomously.
         </motion.p>
       </header>
 
