@@ -55,7 +55,7 @@ const Index = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="font-body text-base md:text-lg text-muted-foreground mt-6 max-w-lg mx-auto leading-relaxed"
         >
-          Built with @Lovable by someone who couldn't be bothered. A directory of every company making sure you never have to work again.
+          Built with Lovable by someone who couldn't be bothered. A directory of every company making sure you never have to work again.
         </motion.p>
       </header>
 
