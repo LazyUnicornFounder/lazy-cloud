@@ -30,7 +30,7 @@ const Index = () => {
           className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-medium tracking-wide leading-[0.95]"
           style={{ fontVariant: "small-caps" }}
         >
-          Self-Building<br />Companies.
+          Lazy CEO
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
