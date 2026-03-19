@@ -28,7 +28,7 @@ const SubmitForm = ({ open, onClose }: SubmitFormProps) => {
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = submitSchema.safeParse(form);
     if (!result.success) {
@@ -38,6 +38,17 @@ const SubmitForm = ({ open, onClose }: SubmitFormProps) => {
         if (!fieldErrors[key]) fieldErrors[key] = err.message;
       });
       setErrors(fieldErrors);
+      return;
+    }
+    setLoading(true);
+    const { error } = await supabase.from("submissions").insert({
+      name: result.data.name,
+      url: result.data.url,
+      tagline: result.data.tagline,
+    });
+    setLoading(false);
+    if (error) {
+      setErrors({ name: "Something went wrong. Please try again." });
       return;
     }
     setSubmitted(true);
