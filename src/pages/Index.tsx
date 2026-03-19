@@ -1,12 +1,24 @@
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import CompanyCard from "@/components/CompanyCard";
 import SubmitForm from "@/components/SubmitForm";
-import { companies } from "@/data/companies";
+import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
   const [submitOpen, setSubmitOpen] = useState(false);
 
+  const { data: companies = [] } = useQuery({
+    queryKey: ["approved-companies"],
+    queryFn: async () => {
+      const { data } = await supabase
+        .from("submissions")
+        .select("name, url, tagline")
+        .eq("status", "approved")
+        .order("created_at", { ascending: true });
+      return (data || []).map((c) => ({ name: c.name, url: c.url, description: c.tagline }));
+    },
+  });
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       {/* Ambient glow blobs */}
