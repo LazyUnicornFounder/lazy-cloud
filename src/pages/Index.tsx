@@ -66,7 +66,7 @@ const Index = () => {
           </h1>
           <div className="mt-6 max-w-md">
             <p className="font-body text-sm md:text-base text-foreground/80 leading-relaxed tracking-wide drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
-              A directory of companies making sure you never have to work again.
+              The robots are working so you don't have to.
             </p>
           </div>
         </motion.div>
