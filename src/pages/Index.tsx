@@ -36,6 +36,12 @@ const Index = () => {
         </span>
         <div className="flex items-center gap-4">
           <a
+            href="#mission"
+            className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-foreground transition-colors"
+          >
+            Mission
+          </a>
+          <a
             href="#directory"
             className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-foreground transition-colors"
           >
