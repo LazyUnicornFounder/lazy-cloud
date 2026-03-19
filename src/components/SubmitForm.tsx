@@ -123,7 +123,6 @@ const SubmitForm = ({ open, onClose }: SubmitFormProps) => {
                 >
                   {loading ? "Submitting…" : "Submit"}
                 </button>
-                </button>
               </form>
             )}
           </motion.div>
