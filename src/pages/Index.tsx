@@ -29,39 +29,38 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      {/* Nav — minimal, floating */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 md:px-12 py-6">
-        <span className="font-display text-sm font-semibold tracking-[0.2em] uppercase text-foreground/90">
+      {/* Nav — centered, frosted pill */}
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-6 bg-background/60 backdrop-blur-2xl border border-foreground/10 rounded-full px-8 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+        <span className="font-display text-sm font-semibold tracking-[0.15em] uppercase text-foreground">
           Lazy Unicorn
         </span>
-        <div className="flex items-center gap-4">
-          <a
-            href="#mission"
-            className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-foreground transition-colors"
-          >
-            Mission
-          </a>
-          <a
-            href="#directory"
-            className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-foreground transition-colors"
-          >
-            Directory
-          </a>
-          <a
-            href="https://x.com/SaadSahawneh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-foreground transition-colors"
-          >
-            Follow on 𝕏
-          </a>
-          <button
-            onClick={() => setSubmitOpen(true)}
-            className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/90 border border-foreground/20 px-5 py-2 hover:bg-foreground/10 transition-colors"
-          >
-            Submit
-          </button>
-        </div>
+        <span className="w-px h-4 bg-foreground/20" />
+        <a
+          href="#mission"
+          className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
+        >
+          Mission
+        </a>
+        <a
+          href="#directory"
+          className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
+        >
+          Directory
+        </a>
+        <a
+          href="https://x.com/SaadSahawneh"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
+        >
+          𝕏
+        </a>
+        <button
+          onClick={() => setSubmitOpen(true)}
+          className="font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-5 py-1.5 rounded-full font-semibold hover:opacity-90 transition-opacity"
+        >
+          Submit
+        </button>
       </nav>
 
       {/* Hero — full viewport, architectural feel */}
@@ -70,7 +69,7 @@ const Index = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="inline-block bg-background/40 backdrop-blur-xl rounded-2xl px-8 py-6 border border-foreground/10"
+          className="inline-block bg-background/60 backdrop-blur-2xl rounded-3xl px-10 py-8 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
         >
           <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.9] text-foreground">
             Never have
@@ -79,6 +78,9 @@ const Index = () => {
             <br />
             again.
           </h1>
+          <p className="font-body text-sm sm:text-base text-foreground/60 mt-4 max-w-md">
+            The definitive directory of AI companies replacing human labor.
+          </p>
         </motion.div>
 
         {/* Retro sticker */}
@@ -138,7 +140,7 @@ const Index = () => {
 
       {/* Mission */}
       <section id="mission" className="relative z-10 px-8 md:px-12 py-32 scroll-mt-20">
-        <div className="max-w-2xl bg-background/40 backdrop-blur-xl rounded-2xl px-8 py-10 border border-foreground/10">
+        <div className="max-w-2xl bg-background/60 backdrop-blur-2xl rounded-3xl px-8 py-10 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -161,7 +163,7 @@ const Index = () => {
 
       {/* Directory */}
       <main id="directory" className="relative z-10 px-8 md:px-12 pb-32 scroll-mt-20">
-        <div className="max-w-2xl bg-background/40 backdrop-blur-xl rounded-2xl px-8 py-10 border border-foreground/10">
+        <div className="max-w-2xl bg-background/60 backdrop-blur-2xl rounded-3xl px-8 py-10 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
