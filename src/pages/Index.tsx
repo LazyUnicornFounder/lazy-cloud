@@ -9,6 +9,23 @@ import { companies as staticCompanies } from "@/data/companies";
 const Index = () => {
   const [submitOpen, setSubmitOpen] = useState(false);
 
+  const { data: dbCompanies } = useQuery({
+    queryKey: ["approved-companies"],
+    queryFn: async () => {
+      const { data } = await supabase
+        .from("submissions")
+        .select("name, url, tagline")
+        .eq("status", "approved")
+        .order("created_at", { ascending: true });
+      return data || [];
+    },
+  });
+
+  // Merge static companies with approved DB submissions
+  const companies = [
+    ...staticCompanies,
+    ...(dbCompanies?.map((c) => ({ name: c.name, url: c.url, description: c.tagline })) || []),
+  ];
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       {/* Ambient glow blobs */}
