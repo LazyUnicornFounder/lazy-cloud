@@ -137,6 +137,29 @@ const Index = () => {
         </motion.div>
       </header>
 
+      {/* Mission */}
+      <section id="mission" className="relative z-10 px-8 md:px-12 py-32 scroll-mt-20">
+        <div className="max-w-2xl">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="font-body text-[11px] tracking-[0.2em] uppercase text-foreground/60 mb-8"
+          >
+            Mission
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[0.95] text-foreground"
+          >
+            To never have to work again.
+          </motion.h2>
+        </div>
+      </section>
+
       {/* Directory */}
       <main id="directory" className="relative z-10 px-8 md:px-12 pb-32 scroll-mt-20">
         <div className="max-w-2xl">
