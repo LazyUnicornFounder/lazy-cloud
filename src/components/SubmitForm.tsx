@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
 import { X } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const submitSchema = z.object({
   name: z.string().trim().min(1, "Company name is required").max(100, "Name must be under 100 characters"),
@@ -20,13 +21,14 @@ const SubmitForm = ({ open, onClose }: SubmitFormProps) => {
   const [form, setForm] = useState<FormData>({ name: "", url: "", tagline: "" });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (field: keyof FormData, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = submitSchema.safeParse(form);
     if (!result.success) {
@@ -36,6 +38,17 @@ const SubmitForm = ({ open, onClose }: SubmitFormProps) => {
         if (!fieldErrors[key]) fieldErrors[key] = err.message;
       });
       setErrors(fieldErrors);
+      return;
+    }
+    setLoading(true);
+    const { error } = await supabase.from("submissions").insert({
+      name: result.data.name,
+      url: result.data.url,
+      tagline: result.data.tagline,
+    });
+    setLoading(false);
+    if (error) {
+      setErrors({ name: "Something went wrong. Please try again." });
       return;
     }
     setSubmitted(true);
@@ -105,9 +118,10 @@ const SubmitForm = ({ open, onClose }: SubmitFormProps) => {
                 ))}
                 <button
                   type="submit"
-                  className="w-full bg-gradient-primary text-primary-foreground font-body font-medium text-sm py-2.5 rounded-lg hover:opacity-90 transition-opacity mt-2"
+                  disabled={loading}
+                  className="w-full bg-gradient-primary text-primary-foreground font-body font-medium text-sm py-2.5 rounded-lg hover:opacity-90 transition-opacity mt-2 disabled:opacity-50"
                 >
-                  Submit
+                  {loading ? "Submitting…" : "Submit"}
                 </button>
               </form>
             )}
