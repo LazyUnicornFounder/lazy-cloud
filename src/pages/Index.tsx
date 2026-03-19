@@ -80,6 +80,40 @@ const Index = () => {
         </motion.p>
       </header>
 
+      {/* Autonomous Capitalism Banner */}
+      <motion.section
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.9 }}
+        className="relative z-10 max-w-2xl mx-auto px-6 mb-12"
+      >
+        <div className="relative rounded-2xl border border-primary/20 bg-card/60 backdrop-blur-sm p-8 text-center overflow-hidden glow-primary">
+          {/* Background sparkle dots */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-3 left-6 w-2 h-2 rounded-full bg-primary/40 animate-pulse" />
+            <div className="absolute top-8 right-10 w-1.5 h-1.5 rounded-full bg-accent/50 animate-pulse" style={{ animationDelay: '0.5s' }} />
+            <div className="absolute bottom-4 left-1/4 w-1 h-1 rounded-full bg-primary/30 animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute bottom-6 right-1/3 w-2 h-2 rounded-full bg-accent/30 animate-pulse" style={{ animationDelay: '1.5s' }} />
+          </div>
+
+          {/* Funny graphic */}
+          <motion.div
+            animate={{ rotate: [0, -5, 5, -3, 0], y: [0, -4, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="text-6xl mb-4"
+          >
+            🦄💰
+          </motion.div>
+
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-gradient-hero leading-tight">
+            Autonomous Capitalism is here
+          </h2>
+          <p className="font-body text-xs text-muted-foreground/50 mt-3 tracking-widest uppercase">
+            The robots are working so you don't have to
+          </p>
+        </div>
+      </motion.section>
+
       {/* Directory */}
       <main className="relative z-10 max-w-3xl mx-auto px-4 pb-24">
         <div className="space-y-3">
