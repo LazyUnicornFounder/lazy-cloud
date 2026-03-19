@@ -28,7 +28,7 @@ const Index = () => {
       {/* Nav */}
       <nav className="relative z-10 flex items-center justify-between px-6 md:px-10 py-5">
         <span className="font-display text-lg font-bold tracking-tight text-gradient-primary">
-          Lazy CEO
+          Lazy Unicorn
         </span>
         <button
           onClick={() => setSubmitOpen(true)}
