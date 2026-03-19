@@ -72,13 +72,11 @@ const Index = () => {
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.9] text-foreground drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
-            The robots
+            Never have
             <br />
-            are working
+            to work
             <br />
-            so you
-            <br />
-            don't have to.
+            again.
           </h1>
         </motion.div>
 
