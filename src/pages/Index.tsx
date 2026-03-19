@@ -26,7 +26,7 @@ const Index = () => {
       {/* Full-bleed background */}
       <div className="fixed inset-0 z-0">
         <img src={unicornBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/40" />
+        <div className="absolute inset-0 bg-background/50 backdrop-blur-[2px]" />
       </div>
 
       {/* Nav — minimal, floating */}
