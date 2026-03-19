@@ -1,15 +1,8 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import CompanyCard from "@/components/CompanyCard";
 import { companies } from "@/data/companies";
 
-const categories = ["All", ...Array.from(new Set(companies.map((c) => c.category)))];
-
 const Index = () => {
-  const [active, setActive] = useState("All");
-
-  const filtered = active === "All" ? companies : companies.filter((c) => c.category === active);
-
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       {/* Ambient glow blobs */}
@@ -55,46 +48,21 @@ const Index = () => {
         >
           A curated directory of the companies building AI that starts, runs, and scales businesses autonomously.
         </motion.p>
-
-        {/* Filter pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex items-center justify-center gap-2 mt-10 flex-wrap"
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className={`font-body text-xs font-medium px-4 py-2 rounded-full border transition-all duration-200 ${
-                active === cat
-                  ? "border-primary/50 text-primary bg-primary/10 glow-primary"
-                  : "border-border text-muted-foreground hover:text-foreground hover:border-foreground/20 hover:bg-secondary/50"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </motion.div>
       </header>
 
       {/* Directory */}
       <main className="relative z-10 max-w-3xl mx-auto px-4 pb-24">
         <div className="space-y-3">
-          {filtered.map((company, i) => (
+          {companies.map((company, i) => (
             <CompanyCard
               key={company.name}
               name={company.name}
-              category={company.category}
+              url={company.url}
               description={company.description}
               index={i}
             />
           ))}
         </div>
-        {filtered.length === 0 && (
-          <p className="font-body text-muted-foreground text-center py-16">No companies in this category yet.</p>
-        )}
       </main>
 
       {/* Footer */}
