@@ -78,9 +78,6 @@ const Index = () => {
             <br />
             again.
           </h1>
-          <p className="font-body text-sm sm:text-base text-foreground/60 mt-4 max-w-md">
-            The definitive directory of AI companies replacing human labor.
-          </p>
         </motion.div>
 
         {/* Retro sticker */}
