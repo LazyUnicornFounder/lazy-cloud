@@ -70,6 +70,14 @@ const Index = () => {
         >
           A directory of companies making sure you never have to work again.
         </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+          className="font-body text-xs md:text-sm text-muted-foreground/60 mt-3 italic tracking-wide"
+        >
+          Our mission is to accelerate the future of autonomous capitalism.
+        </motion.p>
       </header>
 
       {/* Directory */}
