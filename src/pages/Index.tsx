@@ -120,7 +120,7 @@ const Index = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="font-body text-[11px] tracking-[0.2em] uppercase text-foreground/40 mb-8"
+            className="font-body text-[11px] tracking-[0.2em] uppercase text-foreground/60 mb-8"
           >
             Directory
           </motion.p>
