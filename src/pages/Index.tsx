@@ -11,57 +11,77 @@ const Index = () => {
   const filtered = active === "All" ? companies : companies.filter((c) => c.category === active);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      {/* Ambient glow blobs */}
+      <div className="pointer-events-none absolute top-[-200px] left-[-100px] w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px]" />
+      <div className="pointer-events-none absolute top-[200px] right-[-150px] w-[500px] h-[500px] rounded-full bg-accent/5 blur-[120px]" />
+
       {/* Nav */}
-      <nav className="flex items-center justify-center gap-6 md:gap-8 py-6 px-4 border-b border-border font-body text-sm text-muted-foreground flex-wrap">
-        {["Directory", "About", "Submit", "Newsletter"].map((item) => (
-          <a key={item} href="#" className="hover:text-foreground transition-colors tracking-wide">
-            {item}
+      <nav className="relative z-10 flex items-center justify-between px-6 md:px-10 py-5">
+        <span className="font-display text-lg font-bold tracking-tight text-gradient-primary">
+          Lazy CEO
+        </span>
+        <div className="flex items-center gap-6 font-body text-sm text-muted-foreground">
+          {["Directory", "About", "Submit"].map((item) => (
+            <a key={item} href="#" className="hover:text-foreground transition-colors">
+              {item}
+            </a>
+          ))}
+          <a
+            href="#"
+            className="bg-gradient-primary text-primary-foreground font-medium px-4 py-1.5 rounded-full text-xs tracking-wide hover:opacity-90 transition-opacity"
+          >
+            Newsletter
           </a>
-        ))}
+        </div>
       </nav>
 
       {/* Hero */}
-      <header className="text-center px-6 pt-20 pb-16 md:pt-32 md:pb-24">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-medium tracking-wide leading-[0.95]"
-          style={{ fontVariant: "small-caps" }}
+      <header className="relative z-10 text-center px-6 pt-16 pb-12 md:pt-28 md:pb-20">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7 }}
         >
-          Lazy CEO
-        </motion.h1>
+          <h1 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight leading-[0.95] text-gradient-hero">
+            Lazy CEO
+          </h1>
+        </motion.div>
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-body text-base md:text-lg text-muted-foreground mt-8 max-w-xl mx-auto leading-relaxed"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="font-body text-base md:text-lg text-muted-foreground mt-6 max-w-lg mx-auto leading-relaxed"
         >
           A curated directory of the companies building AI that starts, runs, and scales businesses autonomously.
         </motion.p>
+
+        {/* Filter pills */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="flex items-center justify-center gap-2 mt-10 flex-wrap"
+        >
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActive(cat)}
+              className={`font-body text-xs font-medium px-4 py-2 rounded-full border transition-all duration-200 ${
+                active === cat
+                  ? "border-primary/50 text-primary bg-primary/10 glow-primary"
+                  : "border-border text-muted-foreground hover:text-foreground hover:border-foreground/20 hover:bg-secondary/50"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </motion.div>
       </header>
 
-      {/* Filter */}
-      <div className="flex items-center justify-center gap-3 px-4 pb-8 flex-wrap">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActive(cat)}
-            className={`font-body text-xs uppercase tracking-[0.15em] px-3 py-1.5 rounded-full border transition-all duration-200 ${
-              active === cat
-                ? "border-accent text-accent bg-accent/10"
-                : "border-border text-muted-foreground hover:text-foreground hover:border-foreground/30"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
       {/* Directory */}
-      <main className="max-w-3xl mx-auto px-4 pb-24">
-        <div className="border-t border-border">
+      <main className="relative z-10 max-w-3xl mx-auto px-4 pb-24">
+        <div className="space-y-3">
           {filtered.map((company, i) => (
             <CompanyCard
               key={company.name}
@@ -78,7 +98,7 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border py-8 text-center font-body text-xs text-muted-foreground tracking-wider uppercase">
+      <footer className="relative z-10 border-t border-border py-8 text-center font-body text-xs text-muted-foreground tracking-wider">
         Lazy CEO © 2026
       </footer>
     </div>
