@@ -18,25 +18,12 @@ const Index = () => {
         <span className="font-display text-lg font-bold tracking-tight text-gradient-primary">
           Lazy CEO
         </span>
-        <div className="flex items-center gap-6 font-body text-sm text-muted-foreground">
-          {["Directory", "About"].map((item) => (
-            <a key={item} href="#" className="hover:text-foreground transition-colors">
-              {item}
-            </a>
-          ))}
-          <button
-            onClick={() => setSubmitOpen(true)}
-            className="hover:text-foreground transition-colors"
-          >
-            Submit
-          </button>
-          <a
-            href="#"
-            className="bg-gradient-primary text-primary-foreground font-medium px-4 py-1.5 rounded-full text-xs tracking-wide hover:opacity-90 transition-opacity"
-          >
-            Newsletter
-          </a>
-        </div>
+        <button
+          onClick={() => setSubmitOpen(true)}
+          className="bg-gradient-primary text-primary-foreground font-body font-medium px-4 py-1.5 rounded-full text-xs tracking-wide hover:opacity-90 transition-opacity"
+        >
+          Submit
+        </button>
       </nav>
 
       {/* Hero */}
