@@ -160,7 +160,7 @@ const Index = () => {
 
       {/* Directory */}
       <main id="directory" className="relative z-10 px-8 md:px-12 pb-32 scroll-mt-20">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl bg-background/40 backdrop-blur-xl rounded-2xl px-8 py-10 border border-foreground/10">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
