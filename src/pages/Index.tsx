@@ -65,16 +65,15 @@ const Index = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <h1 className="font-display text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-tight leading-[0.9] text-foreground drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
-            Lazy
+          <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.9] text-foreground drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+            The robots
             <br />
-            Unicorn
+            are working
+            <br />
+            so you
+            <br />
+            don't have to.
           </h1>
-          <div className="mt-6 max-w-md">
-            <p className="font-body text-sm md:text-base text-foreground/80 leading-relaxed tracking-wide drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
-              The robots are working so you don't have to.
-            </p>
-          </div>
         </motion.div>
 
         {/* Retro sticker */}
