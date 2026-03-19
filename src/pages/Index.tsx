@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import CompanyCard from "@/components/CompanyCard";
+import SubmitForm from "@/components/SubmitForm";
 import { companies } from "@/data/companies";
 
 const Index = () => {
+  const [submitOpen, setSubmitOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       {/* Ambient glow blobs */}
@@ -15,11 +19,17 @@ const Index = () => {
           Lazy CEO
         </span>
         <div className="flex items-center gap-6 font-body text-sm text-muted-foreground">
-          {["Directory", "About", "Submit"].map((item) => (
+          {["Directory", "About"].map((item) => (
             <a key={item} href="#" className="hover:text-foreground transition-colors">
               {item}
             </a>
           ))}
+          <button
+            onClick={() => setSubmitOpen(true)}
+            className="hover:text-foreground transition-colors"
+          >
+            Submit
+          </button>
           <a
             href="#"
             className="bg-gradient-primary text-primary-foreground font-medium px-4 py-1.5 rounded-full text-xs tracking-wide hover:opacity-90 transition-opacity"
@@ -69,6 +79,9 @@ const Index = () => {
       <footer className="relative z-10 border-t border-border py-8 text-center font-body text-xs text-muted-foreground tracking-wider">
         Lazy CEO © 2026
       </footer>
+
+      {/* Submit Modal */}
+      <SubmitForm open={submitOpen} onClose={() => setSubmitOpen(false)} />
     </div>
   );
 };
