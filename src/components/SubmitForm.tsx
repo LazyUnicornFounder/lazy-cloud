@@ -21,6 +21,7 @@ const SubmitForm = ({ open, onClose }: SubmitFormProps) => {
   const [form, setForm] = useState<FormData>({ name: "", url: "", tagline: "" });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (field: keyof FormData, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
