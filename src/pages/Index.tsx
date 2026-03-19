@@ -116,6 +116,14 @@ const Index = () => {
 
       {/* Directory */}
       <main className="relative z-10 max-w-3xl mx-auto px-4 pb-24">
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.1 }}
+          className="font-display text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-center mb-8 text-gradient-primary"
+        >
+          Discover companies accelerating the future of autonomous capitalism.
+        </motion.h2>
         <div className="space-y-3">
           {companies.map((company, i) => (
             <CompanyCard
