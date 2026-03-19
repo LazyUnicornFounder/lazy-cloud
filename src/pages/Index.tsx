@@ -20,137 +20,131 @@ const Index = () => {
       return (data || []).map((c) => ({ name: c.name, url: c.url, description: c.tagline }));
     },
   });
+
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-      {/* Hero background image */}
-      <div className="absolute inset-0 z-0">
-        <img src={unicornBg} alt="" className="w-full h-full object-cover opacity-15" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+    <div className="min-h-screen text-foreground relative">
+      {/* Full-bleed background */}
+      <div className="fixed inset-0 z-0">
+        <img src={unicornBg} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-background/40" />
       </div>
 
-      {/* Ambient glow blobs */}
-      <div className="pointer-events-none absolute top-[-200px] left-[-100px] w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px]" />
-      <div className="pointer-events-none absolute top-[200px] right-[-150px] w-[500px] h-[500px] rounded-full bg-accent/5 blur-[120px]" />
-
-      {/* Nav */}
-      <nav className="relative z-10 flex items-center justify-between px-6 md:px-10 py-5">
-        <span className="font-display text-lg font-bold tracking-tight text-gradient-primary">
+      {/* Nav — minimal, floating */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 md:px-12 py-6">
+        <span className="font-display text-sm font-semibold tracking-[0.2em] uppercase text-foreground/90">
           Lazy Unicorn
         </span>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <a
             href="https://x.com/SaadSahawneh"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-body font-medium px-4 py-1.5 rounded-full text-xs tracking-wide border border-border text-foreground hover:bg-secondary transition-colors"
+            className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-foreground transition-colors"
           >
             Follow on 𝕏
           </a>
           <button
             onClick={() => setSubmitOpen(true)}
-            className="bg-gradient-primary text-primary-foreground font-body font-medium px-4 py-1.5 rounded-full text-xs tracking-wide hover:opacity-90 transition-opacity"
+            className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/90 border border-foreground/20 px-5 py-2 hover:bg-foreground/10 transition-colors"
           >
             Submit
           </button>
         </div>
       </nav>
 
-      {/* Hero */}
-      <header className="relative z-10 text-center px-6 pt-16 pb-12 md:pt-28 md:pb-20">
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="font-body text-sm md:text-base font-medium tracking-wide text-accent mb-4"
-        >
-          <motion.span
-            animate={{ opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          >
-            Built with Lovable by someone who couldn't be bothered.
-          </motion.span>
-        </motion.p>
+      {/* Hero — full viewport, architectural feel */}
+      <header className="relative z-10 min-h-screen flex flex-col justify-end px-8 md:px-12 pb-16">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-        >
-          <h1 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight leading-[0.95] text-gradient-hero">
-            Lazy Unicorn
-          </h1>
-        </motion.div>
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="font-body text-base md:text-lg text-muted-foreground mt-6 max-w-2xl mx-auto leading-relaxed whitespace-nowrap"
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          A directory of companies making sure you never have to work again.
-        </motion.p>
-      </header>
-      {/* Autonomous Capitalism Banner */}
-      <motion.section
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, delay: 0.9 }}
-        className="relative z-10 max-w-2xl mx-auto px-6 mb-12"
-      >
-        <div className="relative rounded-2xl border border-primary/20 bg-card/60 backdrop-blur-sm p-8 text-center overflow-hidden glow-primary">
-          {/* Background sparkle dots */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-3 left-6 w-2 h-2 rounded-full bg-primary/40 animate-pulse" />
-            <div className="absolute top-8 right-10 w-1.5 h-1.5 rounded-full bg-accent/50 animate-pulse" style={{ animationDelay: '0.5s' }} />
-            <div className="absolute bottom-4 left-1/4 w-1 h-1 rounded-full bg-primary/30 animate-pulse" style={{ animationDelay: '1s' }} />
-            <div className="absolute bottom-6 right-1/3 w-2 h-2 rounded-full bg-accent/30 animate-pulse" style={{ animationDelay: '1.5s' }} />
+          <h1 className="font-display text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-tight leading-[0.9] text-foreground">
+            Lazy
+            <br />
+            Unicorn
+          </h1>
+          <div className="mt-6 max-w-md">
+            <p className="font-body text-sm md:text-base text-foreground/60 leading-relaxed tracking-wide">
+              A directory of companies making sure you never have to work again.
+            </p>
           </div>
+        </motion.div>
 
-          {/* Funny graphic */}
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-8 right-8 md:right-12"
+        >
           <motion.div
-            animate={{ rotate: [0, -5, 5, -3, 0], y: [0, -4, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="text-6xl mb-4"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/40 rotate-90 origin-center"
           >
-            🦄💰
+            Scroll
           </motion.div>
+        </motion.div>
+      </header>
 
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-gradient-hero leading-tight">
-            Autonomous Capitalism is here
+      {/* Banner section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 px-8 md:px-12 py-24"
+      >
+        <div className="max-w-2xl">
+          <p className="font-body text-[11px] tracking-[0.2em] uppercase text-foreground/40 mb-4">
+            The future is idle
+          </p>
+          <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[0.95] text-foreground">
+            Autonomous
+            <br />
+            Capitalism
+            <br />
+            <span className="text-foreground/30">is here.</span>
           </h2>
-          <p className="font-body text-xs text-muted-foreground/50 mt-3 tracking-widest uppercase">
-            The robots are working so you don't have to
+          <p className="font-body text-sm text-foreground/40 mt-6 max-w-sm leading-relaxed">
+            The robots are working so you don't have to.
           </p>
         </div>
       </motion.section>
 
       {/* Directory */}
-      <main className="relative z-10 max-w-3xl mx-auto px-4 pb-24">
-        <motion.h2
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.1 }}
-          className="font-display text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-center mb-8 text-gradient-primary"
-        >
-          Discover companies accelerating the future of autonomous capitalism.
-        </motion.h2>
-        <div className="space-y-3">
-          {companies.map((company, i) => (
-            <CompanyCard
-              key={company.name}
-              name={company.name}
-              url={company.url}
-              description={company.description}
-              index={i}
-            />
-          ))}
+      <main className="relative z-10 px-8 md:px-12 pb-32">
+        <div className="max-w-2xl">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="font-body text-[11px] tracking-[0.2em] uppercase text-foreground/40 mb-8"
+          >
+            Directory
+          </motion.p>
+          <div className="space-y-px">
+            {companies.map((company, i) => (
+              <CompanyCard
+                key={company.name}
+                name={company.name}
+                url={company.url}
+                description={company.description}
+                index={i}
+              />
+            ))}
+          </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-border py-8 text-center font-body text-xs text-muted-foreground tracking-wider">
-        Lazy Unicorn © 2026
+      <footer className="relative z-10 px-8 md:px-12 py-8 border-t border-foreground/10">
+        <span className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/30">
+          Lazy Unicorn © 2026
+        </span>
       </footer>
 
-      {/* Submit Modal */}
       <SubmitForm open={submitOpen} onClose={() => setSubmitOpen(false)} />
     </div>
   );
