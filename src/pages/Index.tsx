@@ -30,12 +30,22 @@ const Index = () => {
         <span className="font-display text-lg font-bold tracking-tight text-gradient-primary">
           Lazy Unicorn
         </span>
-        <button
-          onClick={() => setSubmitOpen(true)}
-          className="bg-gradient-primary text-primary-foreground font-body font-medium px-4 py-1.5 rounded-full text-xs tracking-wide hover:opacity-90 transition-opacity"
-        >
-          Submit
-        </button>
+        <div className="flex items-center gap-3">
+          <a
+            href="https://x.com/SaadSahawneh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body font-medium px-4 py-1.5 rounded-full text-xs tracking-wide border border-border text-foreground hover:bg-secondary transition-colors"
+          >
+            Follow on 𝕏
+          </a>
+          <button
+            onClick={() => setSubmitOpen(true)}
+            className="bg-gradient-primary text-primary-foreground font-body font-medium px-4 py-1.5 rounded-full text-xs tracking-wide hover:opacity-90 transition-opacity"
+          >
+            Submit
+          </button>
+        </div>
       </nav>
 
       {/* Hero */}
