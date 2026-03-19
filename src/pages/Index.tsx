@@ -65,7 +65,7 @@ const Index = () => {
             Unicorn
           </h1>
           <div className="mt-6 max-w-md">
-            <p className="font-body text-sm md:text-base text-foreground/60 leading-relaxed tracking-wide">
+            <p className="font-body text-sm md:text-base text-foreground/80 leading-relaxed tracking-wide drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
               A directory of companies making sure you never have to work again.
             </p>
           </div>
