@@ -261,6 +261,9 @@ const Index = () => {
             <p className="font-body text-base text-foreground/50 leading-relaxed">
               The directory itself is a living experiment in autonomous capitalism with a goal of becoming an autonomous business.
             </p>
+            <p className="font-body text-base italic text-primary/70 leading-relaxed mt-2">
+              "Anyone interested in funding a self-building directory of startups that build self-building tools for solo entrepreneurs to build self-building startups?"
+            </p>
           </motion.div>
         </div>
       </section>
