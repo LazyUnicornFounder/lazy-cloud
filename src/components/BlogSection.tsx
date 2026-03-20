@@ -226,7 +226,7 @@ export const blogPosts: BlogPost[] = [
 const BlogSection = () => {
   return (
     <section id="blog" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-24">
-      <div className="max-w-3xl">
+      <div className="max-w-5xl">
         {/* Page header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
