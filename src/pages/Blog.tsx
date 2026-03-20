@@ -76,14 +76,24 @@ const Blog = () => {
             Submit
           </a>
         </div>
-        <a
-          href="https://x.com/SaadSahawneh"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-1.5 font-body text-[9px] tracking-[0.2em] uppercase text-foreground/50 hover:text-primary transition-colors bg-background/60 backdrop-blur-2xl border border-foreground/10 rounded-full px-4 py-1 shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
-        >
-          Follow on 𝕏
-        </a>
+        <div className="mt-1.5 flex items-center gap-2">
+          <a
+            href="https://x.com/SaadSahawneh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-[9px] tracking-[0.2em] uppercase text-foreground/50 hover:text-primary transition-colors bg-background/60 backdrop-blur-2xl border border-foreground/10 rounded-full px-4 py-1 shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
+          >
+            Follow on 𝕏
+          </a>
+          <a
+            href="https://www.linkedin.com/in/saadsahawneh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-[9px] tracking-[0.2em] uppercase text-foreground/50 hover:text-primary transition-colors bg-background/60 backdrop-blur-2xl border border-foreground/10 rounded-full px-4 py-1 shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
+          >
+            Follow on LinkedIn
+          </a>
+        </div>
       </nav>
 
       {/* Content */}
