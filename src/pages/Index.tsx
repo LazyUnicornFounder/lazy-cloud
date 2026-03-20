@@ -94,41 +94,29 @@ const Index = () => {
           </p>
         </motion.div>
 
-        {/* Retro sticker */}
+        {/* Floating badge */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.6, rotate: -20 }}
-          animate={{ opacity: 1, scale: 1, rotate: -6 }}
-          transition={{ duration: 0.8, delay: 0.6, type: "spring", stiffness: 120 }}
-          className="absolute top-[18%] right-8 md:right-16 lg:right-24"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          className="absolute top-[20%] right-8 md:right-16 lg:right-24"
         >
-          <div className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64">
-            {/* Sticker body — starburst shape via SVG */}
-            <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
-              <path
-                d="M100 0 L118 38 L158 18 L144 58 L188 58 L158 82 L188 112 L148 106 L154 148 L118 124 L100 164 L82 124 L46 148 L52 106 L12 112 L42 82 L12 58 L56 58 L42 18 L82 38 Z"
-                fill="hsl(40, 95%, 55%)"
-                stroke="hsl(25, 90%, 45%)"
-                strokeWidth="2"
-              />
-              <circle cx="100" cy="88" r="58" fill="hsl(0, 85%, 55%)" />
-              <circle cx="100" cy="88" r="52" fill="none" stroke="hsl(40, 95%, 55%)" strokeWidth="2" strokeDasharray="4 3" />
-            </svg>
-            {/* Text overlay */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center -mt-2">
-              <span className="font-display text-[10px] sm:text-xs font-bold tracking-[0.15em] uppercase text-background/60 mb-0.5">
-                ★ alert ★
-              </span>
-              <span className="font-display text-base sm:text-lg md:text-xl font-extrabold leading-[1.1] text-center text-background px-6">
-                Autonomous
-                <br />
-                capitalism
-                <br />
-                is here.
-              </span>
-              <span className="font-body text-[8px] sm:text-[9px] tracking-[0.2em] uppercase text-background/50 mt-1">
-                est. 2026
-              </span>
-            </div>
+          <div className="bg-background/60 backdrop-blur-2xl border border-foreground/10 rounded-2xl px-6 py-5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] max-w-[200px]">
+            <motion.div
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="w-2 h-2 rounded-full bg-primary mb-3"
+            />
+            <p className="font-display text-sm font-extrabold tracking-[0.1em] uppercase text-foreground leading-tight">
+              Autonomous
+              <br />
+              capitalism
+              <br />
+              is here.
+            </p>
+            <span className="font-body text-[8px] tracking-[0.2em] uppercase text-foreground/30 mt-2 block">
+              est. 2026
+            </span>
           </div>
         </motion.div>
 
@@ -197,6 +185,8 @@ const Index = () => {
         </div>
       </main>
 
+      <SubmitSection />
+
       {/* Blog CTA */}
       <section className="relative z-10 px-8 md:px-12 pb-16">
         <motion.div
@@ -220,8 +210,6 @@ const Index = () => {
           </Link>
         </motion.div>
       </section>
-
-      <SubmitSection />
 
       {/* Footer */}
       <footer className="relative z-10 px-8 md:px-12 py-8 border-t border-foreground/10">
