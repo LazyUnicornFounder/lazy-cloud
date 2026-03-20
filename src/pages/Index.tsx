@@ -287,7 +287,7 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-
+      <PitchDeck />
 
 
       {/* Mission */}
