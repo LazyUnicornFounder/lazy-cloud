@@ -4,6 +4,7 @@ import unicornBg from "@/assets/unicorn-beach.png";
 import { blogPosts } from "@/components/BlogSection";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
+import BlogTicker from "@/components/BlogTicker";
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -68,6 +69,9 @@ const BlogPost = () => {
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <BlogTicker />
+      </div>
       <Navbar activePage="blog" />
 
       {/* Article */}
