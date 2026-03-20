@@ -34,7 +34,7 @@ export const blogPosts: BlogPost[] = [
 
       "Lazy Unicorn isn't just describing autonomous companies. It's attempting to become one. The content is increasingly AI-assisted. The operations are being handed to agents where possible. The distribution is being automated. Every week, the goal is for the directory to require less of my time — not because I'm scaling a team, but because I'm scaling the autonomy.",
 
-      "The directory is a proof of concept for its own thesis. If Lazy Unicorn can become a genuinely autonomous business, it validates everything it writes about. If it can't, we'll write honestly about why not. Either way, it's the most interesting experiment in the space.",
+      "The directory is a proof of concept for its own thesis. If Lazy Unicorn can become a genuinely autonomous business, it validates everything it writes about. If it can't, I'll write honestly about why not. Either way, it's the most interesting experiment in the space.",
 
       "The Three Bets We're Making",
 
