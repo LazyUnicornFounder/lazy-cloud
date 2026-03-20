@@ -74,7 +74,7 @@ export const blogPosts: BlogPost[] = [
 
       "This is early. The autonomous company category is real, growing fast, and underserved — but it's still early. The directory has traction and a clear thesis, but it hasn't yet proven the autonomous business model at scale. That's what this round is for: building the foundation and proving the concept before the category becomes obvious and the competition arrives.",
 
-      "The risk is timing. Too early and the market isn't ready. Too late and someone else owns the space. Our bet is that we're sitting at exactly the right moment — early enough to establish authority, late enough that the tools are real and the audience exists.",
+      "The risk is timing. Too early and the market isn't ready. Too late and someone else owns the space. My bet is that I'm sitting at exactly the right moment — early enough to establish authority, late enough that the tools are real and the audience exists.",
 
       "Polsia is running 800 companies right now. Naïve is deploying AI agents for founders across the world. The audience for Lazy Unicorn is already out there, already using these tools, already looking for a trusted curator. We just need to be the one they find first.",
 
