@@ -133,7 +133,7 @@ const Index = () => {
           transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           className="mb-[-0.5rem] ml-2 md:ml-4"
         >
-          <svg viewBox="0 0 500 80" className="w-[300px] sm:w-[420px] md:w-[540px] h-auto overflow-visible drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+          <svg viewBox="0 0 500 35" className="w-[300px] sm:w-[420px] md:w-[540px] h-auto overflow-visible drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
             <defs>
               <pattern id="woodGrain" patternUnits="userSpaceOnUse" width="200" height="200">
                 <rect width="200" height="200" fill="hsl(28, 50%, 25%)" />
@@ -145,26 +145,18 @@ const Index = () => {
             </defs>
 
             {/* Horizontal plank */}
-            <rect x="0" y="15" width="500" height="14" rx="3" fill="url(#woodGrain)" />
-            <rect x="0" y="15" width="500" height="14" rx="3" fill="hsl(28, 55%, 30%)" opacity="0.5" />
-            <line x1="0" y1="15" x2="500" y2="15" stroke="hsl(35, 60%, 45%)" strokeWidth="0.5" opacity="0.3" />
-            <line x1="0" y1="29" x2="500" y2="29" stroke="hsl(20, 40%, 12%)" strokeWidth="0.5" opacity="0.5" />
-
-            {/* Left post */}
-            <rect x="10" y="10" width="10" height="70" rx="2" fill="url(#woodGrain)" />
-            <rect x="10" y="10" width="10" height="70" rx="2" fill="hsl(28, 55%, 28%)" opacity="0.5" />
-
-            {/* Right post */}
-            <rect x="480" y="10" width="10" height="70" rx="2" fill="url(#woodGrain)" />
-            <rect x="480" y="10" width="10" height="70" rx="2" fill="hsl(28, 55%, 28%)" opacity="0.5" />
+            <rect x="0" y="5" width="500" height="14" rx="3" fill="url(#woodGrain)" />
+            <rect x="0" y="5" width="500" height="14" rx="3" fill="hsl(28, 55%, 30%)" opacity="0.5" />
+            <line x1="0" y1="5" x2="500" y2="5" stroke="hsl(35, 60%, 45%)" strokeWidth="0.5" opacity="0.3" />
+            <line x1="0" y1="19" x2="500" y2="19" stroke="hsl(20, 40%, 12%)" strokeWidth="0.5" opacity="0.5" />
 
             {/* Main text */}
-            <text x="250" y="26" fill="hsl(40, 90%, 65%)" fontSize="13" fontWeight="800" letterSpacing="0.18em" textAnchor="middle" style={{ fontFamily: "'Syne', system-ui, sans-serif" }}>
+            <text x="250" y="16" fill="hsl(40, 90%, 65%)" fontSize="13" fontWeight="800" letterSpacing="0.18em" textAnchor="middle" style={{ fontFamily: "'Syne', system-ui, sans-serif" }}>
               AUTONOMOUS CAPITALISM FOR THE REST OF US
             </text>
 
             {/* Sub text */}
-            <text x="250" y="58" fill="hsl(40, 70%, 50% / 0.6)" fontSize="8" letterSpacing="0.25em" textAnchor="middle" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
+            <text x="250" y="30" fill="hsl(40, 70%, 50% / 0.6)" fontSize="7" letterSpacing="0.25em" textAnchor="middle" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
               ★  EST. 2026  ★
             </text>
           </svg>
