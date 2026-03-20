@@ -126,64 +126,46 @@ const Index = () => {
 
       {/* Hero — full viewport, architectural feel */}
       <header className="relative z-10 min-h-screen flex flex-col justify-center items-start px-8 md:px-12 pb-16">
-        {/* Arc entrance sign */}
+        {/* Entrance sign */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           className="mb-[-1.5rem] ml-2 md:ml-4"
         >
-          <svg viewBox="0 0 440 150" className="w-[300px] sm:w-[400px] md:w-[500px] h-auto overflow-visible drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+          <svg viewBox="0 0 500 80" className="w-[300px] sm:w-[420px] md:w-[540px] h-auto overflow-visible drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
             <defs>
-              <path id="archPath" d="M 20,140 Q 220,-20 420,140" fill="none" />
-              <path id="archInner" d="M 40,135 Q 220,0 400,135" fill="none" />
-              {/* Wood grain pattern */}
               <pattern id="woodGrain" patternUnits="userSpaceOnUse" width="200" height="200">
                 <rect width="200" height="200" fill="hsl(28, 50%, 25%)" />
                 <line x1="0" y1="15" x2="200" y2="18" stroke="hsl(28, 40%, 20%)" strokeWidth="1.5" opacity="0.6" />
                 <line x1="0" y1="35" x2="200" y2="32" stroke="hsl(28, 45%, 22%)" strokeWidth="1" opacity="0.4" />
                 <line x1="0" y1="55" x2="200" y2="58" stroke="hsl(28, 40%, 20%)" strokeWidth="2" opacity="0.3" />
                 <line x1="0" y1="80" x2="200" y2="77" stroke="hsl(28, 35%, 18%)" strokeWidth="1" opacity="0.5" />
-                <line x1="0" y1="100" x2="200" y2="103" stroke="hsl(28, 40%, 22%)" strokeWidth="1.5" opacity="0.35" />
-                <line x1="0" y1="125" x2="200" y2="122" stroke="hsl(28, 45%, 20%)" strokeWidth="1" opacity="0.45" />
-                <line x1="0" y1="150" x2="200" y2="153" stroke="hsl(28, 40%, 19%)" strokeWidth="2" opacity="0.3" />
-                <line x1="0" y1="175" x2="200" y2="172" stroke="hsl(28, 35%, 21%)" strokeWidth="1" opacity="0.4" />
               </pattern>
-              {/* Wood plank for the arch */}
-              <filter id="woodRough">
-                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
-              </filter>
             </defs>
 
-            {/* Thick wooden arch beam */}
-            <path d="M 15,145 Q 220,-25 425,145" fill="none" stroke="url(#woodGrain)" strokeWidth="14" strokeLinecap="round" />
-            <path d="M 15,145 Q 220,-25 425,145" fill="none" stroke="hsl(28, 55%, 30%)" strokeWidth="14" strokeLinecap="round" opacity="0.5" />
-            {/* Outer edge highlight */}
-            <path d="M 18,140 Q 220,-20 422,140" fill="none" stroke="hsl(35, 60%, 45%)" strokeWidth="1" opacity="0.3" />
-            {/* Inner edge shadow */}
-            <path d="M 18,150 Q 220,-15 422,150" fill="none" stroke="hsl(20, 40%, 12%)" strokeWidth="1" opacity="0.5" />
+            {/* Horizontal plank */}
+            <rect x="0" y="15" width="500" height="14" rx="3" fill="url(#woodGrain)" />
+            <rect x="0" y="15" width="500" height="14" rx="3" fill="hsl(28, 55%, 30%)" opacity="0.5" />
+            <line x1="0" y1="15" x2="500" y2="15" stroke="hsl(35, 60%, 45%)" strokeWidth="0.5" opacity="0.3" />
+            <line x1="0" y1="29" x2="500" y2="29" stroke="hsl(20, 40%, 12%)" strokeWidth="0.5" opacity="0.5" />
 
             {/* Left post */}
-            <rect x="8" y="120" width="12" height="30" rx="2" fill="url(#woodGrain)" />
-            <rect x="8" y="120" width="12" height="30" rx="2" fill="hsl(28, 55%, 28%)" opacity="0.5" />
-            <line x1="10" y1="120" x2="10" y2="150" stroke="hsl(35, 60%, 40%)" strokeWidth="0.5" opacity="0.3" />
+            <rect x="10" y="10" width="10" height="70" rx="2" fill="url(#woodGrain)" />
+            <rect x="10" y="10" width="10" height="70" rx="2" fill="hsl(28, 55%, 28%)" opacity="0.5" />
 
             {/* Right post */}
-            <rect x="420" y="120" width="12" height="30" rx="2" fill="url(#woodGrain)" />
-            <rect x="420" y="120" width="12" height="30" rx="2" fill="hsl(28, 55%, 28%)" opacity="0.5" />
-            <line x1="430" y1="120" x2="430" y2="150" stroke="hsl(35, 60%, 40%)" strokeWidth="0.5" opacity="0.3" />
+            <rect x="480" y="10" width="10" height="70" rx="2" fill="url(#woodGrain)" />
+            <rect x="480" y="10" width="10" height="70" rx="2" fill="hsl(28, 55%, 28%)" opacity="0.5" />
 
-            {/* Text on arch */}
-            <text fill="hsl(40, 90%, 65%)" fontSize="16" fontWeight="800" letterSpacing="0.18em" textAnchor="middle" style={{ fontFamily: "'Syne', system-ui, sans-serif" }}>
-              <textPath href="#archPath" startOffset="50%">
-                AUTONOMOUS CAPITALISM IS HERE
-              </textPath>
+            {/* Main text */}
+            <text x="250" y="26" fill="hsl(40, 90%, 65%)" fontSize="13" fontWeight="800" letterSpacing="0.18em" textAnchor="middle" style={{ fontFamily: "'Syne', system-ui, sans-serif" }}>
+              AUTONOMOUS CAPITALISM FOR THE REST OF US
             </text>
-            <text fill="hsl(40, 70%, 50% / 0.6)" fontSize="8" letterSpacing="0.25em" textAnchor="middle" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
-              <textPath href="#archInner" startOffset="50%">
-                ★  EST. 2026  ★
-              </textPath>
+
+            {/* Sub text */}
+            <text x="250" y="58" fill="hsl(40, 70%, 50% / 0.6)" fontSize="8" letterSpacing="0.25em" textAnchor="middle" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
+              ★  EST. 2026  ★
             </text>
           </svg>
         </motion.div>
