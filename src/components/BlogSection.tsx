@@ -226,7 +226,7 @@ export const blogPosts: BlogPost[] = [
 const BlogSection = () => {
   return (
     <section id="blog" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-24">
-      <div className="max-w-3xl">
+      <div className="max-w-5xl">
         {/* Page header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -243,7 +243,7 @@ const BlogSection = () => {
         </motion.div>
 
         {/* Post grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogPosts.map((post, i) => (
             <motion.div
               key={post.slug}
@@ -256,7 +256,7 @@ const BlogSection = () => {
                 className="group block bg-background/60 backdrop-blur-2xl rounded-3xl border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden hover:border-primary/30 transition-all duration-300"
               >
                 {/* Thumbnail */}
-                <div className="relative h-48 md:h-64 overflow-hidden">
+                <div className="relative h-44 overflow-hidden">
                   <img
                     src={post.thumbnail}
                     alt={post.title}
