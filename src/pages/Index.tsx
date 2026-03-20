@@ -191,6 +191,8 @@ const Index = () => {
         </div>
       </main>
 
+      <BlogSection />
+
       <SubmitSection />
 
       {/* Footer */}
