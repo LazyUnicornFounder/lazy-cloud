@@ -87,10 +87,10 @@ const BlogPost = () => {
             Blog
           </Link>
           <a
-            href="/#mission"
-            className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
+            href="/blog/lazy-unicorn-raising-angel-round"
+            className="font-body text-[11px] tracking-[0.15em] uppercase text-orange-400 hover:text-orange-300 font-semibold transition-colors"
           >
-            Mission
+            We're raising!
           </a>
           <a
             href="/#submit"

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import unicornBg from "@/assets/unicorn-beach.png";
 import CompanyCard from "@/components/CompanyCard";
 import SubmitSection from "@/components/SubmitSection";
-import PitchDeck from "@/components/PitchDeck";
+
 import SEO from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import BlogTicker from "@/components/BlogTicker";
@@ -97,12 +97,12 @@ const Index = () => {
              className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
             >
               About
-            </a>
+             </a>
            <a
-             href="#pitch"
-             className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
+             href="/blog/lazy-unicorn-raising-angel-round"
+             className="font-body text-[11px] tracking-[0.15em] uppercase text-orange-400 hover:text-orange-300 font-semibold transition-colors"
            >
-             Pitch Deck
+             We're raising!
            </a>
           <a
             href="#submit"
@@ -207,8 +207,6 @@ const Index = () => {
 
       <SubmitSection />
 
-      {/* Pitch Deck */}
-      <PitchDeck />
 
       {/* Blog CTA */}
       <section className="relative z-10 px-8 md:px-12 pb-16">
