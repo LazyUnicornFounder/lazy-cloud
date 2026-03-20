@@ -77,7 +77,7 @@ const Index = () => {
             again.
           </h1>
           <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-md leading-relaxed">
-            A directory of companies accelerating the future of autonomous capitalism.
+            A directory of AI companies that let you start, run, and scale businesses while you sleep.
           </p>
         </motion.div>
 
