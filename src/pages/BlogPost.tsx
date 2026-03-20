@@ -147,10 +147,9 @@ const BlogPost = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: j * 0.04 }}
-                  className="font-body text-base text-foreground/60 leading-relaxed"
-                >
-                  {paragraph}
-                </motion.p>
+                  className="font-body text-base text-foreground/60 leading-relaxed [&_a]:text-primary [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity"
+                  dangerouslySetInnerHTML={{ __html: paragraph }}
+                />
               ))}
             </div>
           </motion.div>
