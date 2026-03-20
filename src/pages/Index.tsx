@@ -199,7 +199,7 @@ const Index = () => {
 
 
       {/* Directory */}
-      <main id="directory" className="relative z-10 px-8 md:px-12 pb-32 scroll-mt-20">
+      <main id="directory" className="relative z-10 px-8 md:px-12 pt-16 pb-32 scroll-mt-20">
         <div className="max-w-2xl bg-background/60 backdrop-blur-2xl rounded-3xl px-8 py-10 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
           <motion.p
             initial={{ opacity: 0 }}
