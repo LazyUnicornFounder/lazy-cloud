@@ -84,7 +84,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
               )
             )}
           </div>
-          <div className="mt-1.5 flex items-center gap-2">
+          <div className="mb-1.5 flex items-center gap-2">
             <a
               href="https://x.com/SaadSahawneh"
               target="_blank"
