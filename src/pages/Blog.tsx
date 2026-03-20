@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import unicornBg from "@/assets/unicorn-beach.png";
 import BlogSection from "@/components/BlogSection";
+import SEO from "@/components/SEO";
 
 const Blog = () => {
   return (
