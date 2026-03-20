@@ -128,38 +128,19 @@ const Index = () => {
       <header className="relative z-10 min-h-screen flex flex-col justify-center items-start px-8 md:px-12 pb-16">
         {/* Entrance sign */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-          className="mb-[-0.5rem] ml-2 md:ml-4"
+          className="mb-[-1px] ml-2 md:ml-4 relative z-10"
         >
-          <svg viewBox="0 0 500 35" className="w-[300px] sm:w-[420px] md:w-[540px] h-auto overflow-visible drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
-            <defs>
-              <pattern id="woodGrain" patternUnits="userSpaceOnUse" width="200" height="200">
-                <rect width="200" height="200" fill="hsl(28, 50%, 25%)" />
-                <line x1="0" y1="15" x2="200" y2="18" stroke="hsl(28, 40%, 20%)" strokeWidth="1.5" opacity="0.6" />
-                <line x1="0" y1="35" x2="200" y2="32" stroke="hsl(28, 45%, 22%)" strokeWidth="1" opacity="0.4" />
-                <line x1="0" y1="55" x2="200" y2="58" stroke="hsl(28, 40%, 20%)" strokeWidth="2" opacity="0.3" />
-                <line x1="0" y1="80" x2="200" y2="77" stroke="hsl(28, 35%, 18%)" strokeWidth="1" opacity="0.5" />
-              </pattern>
-            </defs>
-
-            {/* Horizontal plank */}
-            <rect x="0" y="5" width="500" height="14" rx="3" fill="url(#woodGrain)" />
-            <rect x="0" y="5" width="500" height="14" rx="3" fill="hsl(28, 55%, 30%)" opacity="0.5" />
-            <line x1="0" y1="5" x2="500" y2="5" stroke="hsl(35, 60%, 45%)" strokeWidth="0.5" opacity="0.3" />
-            <line x1="0" y1="19" x2="500" y2="19" stroke="hsl(20, 40%, 12%)" strokeWidth="0.5" opacity="0.5" />
-
-            {/* Main text */}
-            <text x="250" y="16" fill="hsl(40, 90%, 65%)" fontSize="13" fontWeight="800" letterSpacing="0.18em" textAnchor="middle" style={{ fontFamily: "'Syne', system-ui, sans-serif" }}>
-              AUTONOMOUS CAPITALISM FOR THE REST OF US
-            </text>
-
-            {/* Sub text */}
-            <text x="250" y="30" fill="hsl(40, 70%, 50% / 0.6)" fontSize="7" letterSpacing="0.25em" textAnchor="middle" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
+          <div className="bg-background/60 backdrop-blur-2xl border border-foreground/10 border-b-0 rounded-t-2xl px-6 py-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] inline-block">
+            <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
+              Autonomous capitalism for the rest of us
+            </p>
+            <p className="font-body text-[7px] sm:text-[8px] tracking-[0.25em] uppercase text-foreground/40 text-center mt-0.5">
               ★  EST. 2026  ★
-            </text>
-          </svg>
+            </p>
+          </div>
         </motion.div>
 
         <motion.div
