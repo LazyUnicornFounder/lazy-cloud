@@ -6,4 +6,5 @@ export interface BlogPost {
   thumbnail: string;
   excerpt: string;
   content: string[];
+  ogImage?: string;
 }
