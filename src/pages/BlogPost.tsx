@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import unicornBg from "@/assets/unicorn-beach.png";
 import { blogPosts } from "@/components/BlogSection";
+import SEO from "@/components/SEO";
 
 const BlogPost = () => {
   const { slug } = useParams();
