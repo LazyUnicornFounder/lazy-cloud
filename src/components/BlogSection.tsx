@@ -253,7 +253,7 @@ const BlogSection = () => {
             >
               <Link
                 to={`/blog/${post.slug}`}
-                className="group block bg-background/60 backdrop-blur-2xl rounded-3xl border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden hover:border-primary/30 transition-all duration-300"
+                className="group flex flex-col h-full bg-background/60 backdrop-blur-2xl rounded-3xl border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden hover:border-primary/30 transition-all duration-300"
               >
                 {/* Thumbnail */}
                 <div className="relative h-44 overflow-hidden">
