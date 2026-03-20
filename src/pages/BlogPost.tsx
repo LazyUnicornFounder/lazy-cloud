@@ -27,12 +27,15 @@ const BlogPost = () => {
     );
   }
 
+  const ogImageUrl = `https://www.lazyunicorn.ai/og/${post.slug}.png`;
+
   return (
     <div className="min-h-screen text-foreground relative">
       <SEO
         title={post.title}
         description={post.excerpt}
         url={`/blog/${post.slug}`}
+        image={ogImageUrl}
         type="article"
         publishedTime="2026-03-01T00:00:00Z"
         modifiedTime="2026-03-20T00:00:00Z"
@@ -48,7 +51,7 @@ const BlogPost = () => {
         "@type": "Article",
         "headline": post.title,
         "description": post.excerpt,
-        "image": "https://www.lazyunicorn.ai/og-image.png",
+        "image": ogImageUrl,
         "datePublished": "2026-03-01",
         "dateModified": "2026-03-20",
         "author": { "@type": "Organization", "name": "Lazy Unicorn", "url": "https://www.lazyunicorn.ai" },
