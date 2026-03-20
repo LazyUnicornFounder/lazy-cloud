@@ -71,10 +71,13 @@ const SubmitSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-[1] text-foreground mb-8"
+          className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-[1] text-foreground mb-4"
         >
           Know a company that belongs here?
         </motion.h2>
+        <p className="font-body text-sm text-foreground/50 leading-relaxed mb-8">
+          List your AI company that lets founders start, run, and scale their business while they sleep.
+        </p>
 
         {submitted ? (
           <motion.div
