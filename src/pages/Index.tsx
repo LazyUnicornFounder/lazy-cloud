@@ -126,37 +126,39 @@ const Index = () => {
 
       {/* Hero — full viewport, architectural feel */}
       <header className="relative z-10 min-h-screen flex flex-col justify-center items-start px-8 md:px-12 pb-16">
-        {/* Entrance sign */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-          className="mb-[-1px] ml-2 md:ml-4 relative z-10"
-        >
-          <div className="bg-background/60 backdrop-blur-2xl border border-foreground/10 border-b-0 rounded-t-2xl px-6 py-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] inline-block">
-            <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
-              Autonomous capitalism for the rest of us
-            </p>
-            <p className="font-body text-[7px] sm:text-[8px] tracking-[0.25em] uppercase text-foreground/40 text-center mt-0.5">
-              ★  EST. 2026  ★
-            </p>
-          </div>
-        </motion.div>
-
+        {/* Entrance sign + Hero box wrapper */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="inline-block bg-background/60 backdrop-blur-2xl rounded-3xl px-10 py-8 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+          className="flex flex-col items-center"
         >
-           <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.9] text-foreground">
-            Never work
-            <br />
-            again.
-          </h1>
-          <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-md leading-relaxed">
-            A directory of AI companies that let you start, run, and scale businesses while you sleep.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="mb-[-1px] relative z-10"
+          >
+            <div className="bg-background/60 backdrop-blur-2xl border border-foreground/10 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
+              <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
+                Autonomous capitalism for the rest of us
+              </p>
+              <p className="font-body text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-foreground/60 text-center mt-1">
+                ★  EST. 2026  ★
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="bg-background/60 backdrop-blur-2xl rounded-3xl px-10 py-8 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+            <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.9] text-foreground">
+              Never work
+              <br />
+              again.
+            </h1>
+            <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-md leading-relaxed">
+              A directory of AI companies that let you start, run, and scale businesses while you sleep.
+            </p>
+          </div>
         </motion.div>
 
         {/* Blog Ticker */}
