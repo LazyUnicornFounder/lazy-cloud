@@ -162,9 +162,6 @@ const slides = [
               The directory itself is a living experiment in autonomous capitalism with a goal of becoming an autonomous business.
             </p>
           </div>
-          <p className="font-body text-sm italic text-primary/60 leading-relaxed mt-4">
-            "Anyone interested in funding a self-building directory of startups that build self-building tools for solo entrepreneurs to build self-building startups?"
-          </p>
         </div>
       </div>
     ),
