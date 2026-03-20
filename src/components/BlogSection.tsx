@@ -36,7 +36,7 @@ export const blogPosts: BlogPost[] = [
 
       "The directory is a proof of concept for its own thesis. If Lazy Unicorn can become a genuinely autonomous business, it validates everything it writes about. If it can't, I'll write honestly about why not. Either way, it's the most interesting experiment in the space.",
 
-      "The Three Bets We're Making",
+      "The Three Bets I'm Making",
 
       "Bet 01: Autonomous companies are the dominant startup model within 5 years. The cost of operating a company has collapsed. The tools are here, cheap, and improving weekly. Every founder who discovers this model will want a resource that helps them navigate it. Lazy Unicorn is that resource.",
 
