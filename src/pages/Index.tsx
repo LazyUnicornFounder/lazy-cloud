@@ -131,7 +131,7 @@ const Index = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-          className="mb-[-1.5rem] ml-2 md:ml-4"
+          className="mb-[-0.5rem] ml-2 md:ml-4"
         >
           <svg viewBox="0 0 500 80" className="w-[300px] sm:w-[420px] md:w-[540px] h-auto overflow-visible drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
             <defs>
