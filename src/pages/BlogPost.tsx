@@ -35,6 +35,13 @@ const BlogPost = () => {
         url={`/blog/${post.slug}`}
         type="article"
         publishedTime="2026-03-01T00:00:00Z"
+        modifiedTime="2026-03-20T00:00:00Z"
+        keywords={`${post.title}, autonomous companies, AI agents, autonomous capitalism, Lazy Unicorn`}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Blog", url: "/blog" },
+          { name: post.title, url: `/blog/${post.slug}` },
+        ]}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
@@ -43,10 +50,13 @@ const BlogPost = () => {
         "description": post.excerpt,
         "image": "https://lazyunicorn.com/og-image.png",
         "datePublished": "2026-03-01",
-        "dateModified": "2026-03-01",
+        "dateModified": "2026-03-20",
         "author": { "@type": "Organization", "name": "Lazy Unicorn", "url": "https://lazyunicorn.com" },
         "publisher": { "@type": "Organization", "name": "Lazy Unicorn", "url": "https://lazyunicorn.com", "logo": { "@type": "ImageObject", "url": "https://lazyunicorn.com/og-image.png" } },
-        "mainEntityOfPage": { "@type": "WebPage", "@id": `https://lazyunicorn.com/blog/${post.slug}` }
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `https://lazyunicorn.com/blog/${post.slug}` },
+        "wordCount": post.content.join(" ").split(/\s+/).length,
+        "articleSection": "Technology",
+        "inLanguage": "en-US"
       })}} />
       {/* Background */}
       <div className="fixed inset-0 z-0">
