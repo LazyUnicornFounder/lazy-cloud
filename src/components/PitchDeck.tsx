@@ -198,7 +198,7 @@ const slides = [
   },
   {
     id: "ask",
-    label: "07",
+    label: "08",
     content: (
       <div className="flex flex-col items-center justify-center h-full text-center px-8">
         <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary/70 mb-6">
