@@ -253,7 +253,7 @@ const BlogSection = () => {
             >
               <Link
                 to={`/blog/${post.slug}`}
-                className="group block bg-background/60 backdrop-blur-2xl rounded-3xl border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden hover:border-primary/30 transition-all duration-300"
+                className="group flex flex-col h-full bg-background/60 backdrop-blur-2xl rounded-3xl border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden hover:border-primary/30 transition-all duration-300"
               >
                 {/* Thumbnail */}
                 <div className="relative h-44 overflow-hidden">
@@ -266,7 +266,7 @@ const BlogSection = () => {
                 </div>
 
                 {/* Info */}
-                <div className="px-8 py-6">
+                <div className="px-8 py-6 flex flex-col flex-1">
                   <div className="flex items-center gap-3 mb-3">
                     <span className="font-body text-[10px] tracking-[0.2em] uppercase text-primary font-semibold">
                       {post.date}
@@ -276,13 +276,13 @@ const BlogSection = () => {
                       {post.readTime}
                     </span>
                   </div>
-                  <h2 className="font-display text-xl md:text-2xl font-extrabold text-foreground group-hover:text-primary transition-colors leading-tight mb-2">
+                  <h2 className="font-display text-xl font-extrabold text-foreground group-hover:text-primary transition-colors leading-tight mb-2 line-clamp-3">
                     {post.title}
                   </h2>
                   <p className="font-body text-sm text-foreground/50 leading-relaxed line-clamp-2">
                     {post.excerpt}
                   </p>
-                  <span className="inline-block mt-4 font-body text-[10px] tracking-[0.2em] uppercase text-primary font-semibold group-hover:translate-x-1 transition-transform">
+                  <span className="inline-block mt-auto pt-4 font-body text-[10px] tracking-[0.2em] uppercase text-primary font-semibold group-hover:translate-x-1 transition-transform">
                     Read article →
                   </span>
                 </div>
