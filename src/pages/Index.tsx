@@ -163,8 +163,14 @@ const Index = () => {
               again.
             </h1>
             <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-md leading-relaxed">
-              A directory of autonomous company builders that let you start, run and scale your startup, while agents handle everything.
+              Discover autonomous company builders to start, run and scale your startup.
             </p>
+            <a
+              href="#directory"
+              className="inline-block mt-6 font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
+            >
+              Directory
+            </a>
           </div>
         </motion.div>
 
