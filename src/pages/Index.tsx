@@ -23,7 +23,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen text-foreground relative">
-      <SEO url="/" />
+      <SEO
+        url="/"
+        breadcrumbs={[{ name: "Home", url: "/" }]}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -31,13 +34,33 @@ const Index = () => {
         "url": "https://lazyunicorn.com",
         "description": "The definitive directory of AI-powered autonomous companies that let you start, run, and scale businesses while you sleep.",
         "image": "https://lazyunicorn.com/og-image.png",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://lazyunicorn.com/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
         "publisher": {
           "@type": "Organization",
           "name": "Lazy Unicorn",
           "url": "https://lazyunicorn.com",
-          "logo": "https://lazyunicorn.com/og-image.png"
+          "logo": { "@type": "ImageObject", "url": "https://lazyunicorn.com/og-image.png" },
+          "sameAs": ["https://x.com/SaadSahawneh"]
         }
       })}} />
+      {companies.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "Autonomous Company Directory",
+          "description": "AI-powered autonomous companies directory",
+          "itemListElement": companies.map((c, i) => ({
+            "@type": "ListItem",
+            "position": i + 1,
+            "name": c.name,
+            "url": c.url,
+          })),
+        })}} />
+      )}
       {/* Full-bleed background */}
       <div className="fixed inset-0 z-0">
         <img src={unicornBg} alt="" className="w-full h-full object-cover" />
