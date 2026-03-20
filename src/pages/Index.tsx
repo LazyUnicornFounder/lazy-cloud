@@ -100,6 +100,12 @@ const Index = () => {
               About
              </a>
            <a
+             href="#pitch"
+             className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
+            >
+              Pitch Deck
+             </a>
+           <a
              href="/blog/lazy-unicorn-raising-angel-round"
              className="font-body text-[11px] tracking-[0.15em] uppercase text-orange-400 hover:text-orange-300 font-semibold transition-colors"
            >
