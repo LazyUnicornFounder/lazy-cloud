@@ -1,16 +1,40 @@
 import { motion } from "framer-motion";
 import unicornBg from "@/assets/unicorn-beach.png";
-import BlogSection from "@/components/BlogSection";
+import BlogSection, { blogPosts } from "@/components/BlogSection";
 import SEO from "@/components/SEO";
 
 const Blog = () => {
+  const collectionJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Lazy Unicorn Blog",
+    "description": "Essays on autonomous companies, AI agents, and the future of work.",
+    "url": "https://lazyunicorn.com/blog",
+    "publisher": { "@type": "Organization", "name": "Lazy Unicorn", "url": "https://lazyunicorn.com" },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": blogPosts.map((post, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "url": `https://lazyunicorn.com/blog/${post.slug}`,
+        "name": post.title,
+      })),
+    },
+  };
+
   return (
     <div className="min-h-screen text-foreground relative">
       <SEO
         title="Blog"
         description="Essays on autonomous companies, AI agents, and the future of work. Accelerate the future of autonomous capitalism."
         url="/blog"
+        keywords="autonomous companies blog, AI agents essays, autonomous capitalism, startup insights, AI business articles"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Blog", url: "/blog" },
+        ]}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }} />
       {/* Full-bleed background */}
       <div className="fixed inset-0 z-0">
         <img src={unicornBg} alt="" className="w-full h-full object-cover" />
