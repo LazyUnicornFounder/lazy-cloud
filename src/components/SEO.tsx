@@ -12,8 +12,8 @@ interface SEOProps {
 const SITE_NAME = "Lazy Unicorn";
 const DEFAULT_TITLE = "Lazy Unicorn — Never Have To Work Again";
 const DEFAULT_DESCRIPTION = "The definitive directory of AI companies that let you start, run, and scale businesses while you sleep.";
-const DEFAULT_IMAGE = "https://lazyunicorn.com/og-image.png";
-const BASE_URL = "https://lazyunicorn.com";
+const DEFAULT_IMAGE = "https://auto-directory-showcase.lovable.app/og-image.png";
+const BASE_URL = "https://auto-directory-showcase.lovable.app";
 
 const SEO = ({
   title,
