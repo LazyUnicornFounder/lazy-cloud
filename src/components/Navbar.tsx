@@ -39,7 +39,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
     : undefined;
 
   return (
-    <nav className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center w-[calc(100%-2rem)] sm:w-auto max-w-[95vw]">
+    <nav className="fixed top-12 sm:top-14 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center w-[calc(100%-2rem)] sm:w-auto max-w-[95vw]">
       {/* Desktop nav */}
       {!isMobile ? (
         <>
