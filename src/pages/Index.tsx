@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import unicornBg from "@/assets/unicorn-beach.png";
 import CompanyCard from "@/components/CompanyCard";
 import SubmitSection from "@/components/SubmitSection";
-import PitchDeck from "@/components/PitchDeck";
+
 import SEO from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import BlogTicker from "@/components/BlogTicker";
