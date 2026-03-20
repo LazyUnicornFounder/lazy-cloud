@@ -18,7 +18,7 @@ export const blogPosts: BlogPost[] = [
 
       "Lazy Unicorn is raising an angel round. Here's the full story — what I'm building, why now, and why I think this is one of the most interesting bets in the current AI landscape.",
 
-      "Our Mission: Make it possible for anyone to become a lazy unicorn — a founder who owns a thriving company without burning out building it.",
+      "My Mission: Make it possible for anyone to become a lazy unicorn — a founder who owns a thriving company without burning out building it.",
 
       "I've been fascinated with self-building startups for a while now — companies that design, ship, and scale themselves with AI agents doing the heavy lifting. Not \"AI-assisted\" companies where a human still does most of the work. Genuinely autonomous companies where the system decides what to do, does it, measures the result, and improves.",
 
