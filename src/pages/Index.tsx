@@ -125,7 +125,7 @@ const Index = () => {
       </nav>
 
       {/* Hero — full viewport, architectural feel */}
-      <header className="relative z-10 min-h-screen flex flex-col justify-end items-start px-8 md:px-12 pb-16">
+      <header className="relative z-10 min-h-screen flex flex-col justify-center items-start px-8 md:px-12 pb-16">
         {/* Arc entrance sign */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
