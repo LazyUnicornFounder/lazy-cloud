@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import unicornBg from "@/assets/unicorn-beach.png";
 import CompanyCard from "@/components/CompanyCard";
+import BlogSection from "@/components/BlogSection";
 import SubmitSection from "@/components/SubmitSection";
 import { supabase } from "@/integrations/supabase/client";
 
