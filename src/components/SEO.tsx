@@ -21,7 +21,7 @@ interface SEOProps {
 
 const SITE_NAME = "Lazy Unicorn";
 const DEFAULT_TITLE = "Lazy Unicorn — Never Have To Work Again";
-const DEFAULT_DESCRIPTION = "The definitive directory of AI-powered autonomous companies that let you start, run, and scale businesses while you sleep.";
+const DEFAULT_DESCRIPTION = "A directory of AI companies that let you start, run, and scale businesses while you sleep.";
 const DEFAULT_IMAGE = "https://www.lazyunicorn.ai/og-image.png";
 const BASE_URL = "https://www.lazyunicorn.ai";
 const DEFAULT_KEYWORDS = "autonomous companies, AI business, passive income, autonomous capitalism, AI agents, self-running business, Lazy Unicorn, startup directory";
