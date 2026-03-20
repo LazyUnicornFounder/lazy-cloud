@@ -2,6 +2,7 @@ import { Pin } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import unicornBg from "@/assets/unicorn-beach.png";
+import polsiaArtwork from "@/assets/polsia-artwork.png";
 import type { BlogPost } from "@/data/blogPosts";
 
 export const blogPosts: BlogPost[] = [
@@ -92,6 +93,89 @@ export const blogPosts: BlogPost[] = [
       "Interested in the round? I'm talking to angels who move fast and think long. If this resonates — if you see the same shift I see — reach out on <a href=\"https://x.com/SaadSahawneh\" target=\"_blank\" rel=\"noopener noreferrer\">𝕏</a> or <a href=\"https://www.linkedin.com/in/saadsahawneh\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a>.",
 
       "Written by the founder of Lazy Unicorn. Yes, with AI help. That's the point.",
+    ],
+  },
+  {
+    slug: "polsia-ben-cera-profile",
+    title: "The Man Who Built a Company That Runs Itself",
+    date: "March 2026",
+    readTime: "6 min read",
+    thumbnail: polsiaArtwork,
+    excerpt: "Ben Cera quit a global executive role at Travis Kalanick's CloudKitchens, moved to San Francisco, and built a $1M run-rate business in under two months — with zero employees and a lot of agents.",
+    content: [
+      "Somewhere on the drive between Los Angeles and San Francisco — hours of open road, no meetings, no inbox — Ben Cera stopped asking the wrong question.",
+
+      "For years he'd been building products by imagining customers, designing for what made commercial sense, shipping things that worked fine but didn't excite him. On that drive, he gave himself permission to ask a different question entirely: not \"what does the market want?\" but \"what do I actually want to build?\"",
+
+      "The answer came quickly. Software that builds and runs entire companies. You provide the idea and the creative direction. AI handles everything else — the code, the marketing, the support, the operations. Not a tool. Not a copilot. A team.",
+
+      "That conversation with himself on a California highway became Polsia.",
+
+      "<strong>Ben Cera</strong> · @bencera_ · polsia.com — Solo founder of Polsia. Engineering degree from Columbia University. Former banker and product builder in New York. Co-founder of Future Foods at CloudKitchens. Five years as Global GM at CloudKitchens under Travis Kalanick, managing international teams and P&Ls across multiple markets. Now building the future of autonomous business in San Francisco — alone, with agents.",
+
+      "The numbers: <strong>1,000+</strong> companies running autonomously. <strong>$5M+</strong> annual run rate. <strong>0</strong> employees. <strong>&lt;2 months</strong> to $1M ARR.",
+
+      "<strong>The Road Before Polsia</strong>",
+
+      "Ben's background doesn't fit the typical founder template. He studied engineering at Columbia, then spent years in banking and product work in New York before eventually finding his way into the world of high-growth startups.",
+
+      "The most formative chapter was CloudKitchens — Travis Kalanick's ghost kitchen business — where Ben spent five years as a Global GM, managing international teams and P&Ls across multiple markets. It's a role that gives you a particular kind of operating education: how to run complex systems, manage across cultures, read financial performance, and make decisions under pressure without a safety net.",
+
+      "But somewhere in those five years of managing — of overseeing other people building and operating things — something shifted. When AI coding tools got good enough that a single person could realistically run an entire company solo, Ben walked away from the executive track and went back to building with his own hands.",
+
+      "<strong>What Polsia Actually Does</strong>",
+
+      "Users pay $49 per month for everything needed to run an online business: web server, database, GitHub, email, Stripe, and Meta ads accounts. Polsia takes 20% of revenue generated on the platform. The pitch is blunt: describe your company, let the agents run it, collect whatever they make.",
+
+      "The architecture that makes this work is a network of specialized agents, each with a defined scope and limited authority. Ben is emphatic that the key to making autonomous agents trustworthy is constraint — not blind faith.",
+
+      "<strong>Engineering Agent</strong> — Writes and deploys code autonomously via GitHub. Can push to production only after cross-checking with another AI. Fixes bugs, ships features, and responds to user requests without human sign-off.",
+
+      "<strong>Marketing Agent</strong> — Manages Twitter/X, LinkedIn, email campaigns, and Meta ads. Creates AI-generated video ads with synthetic people. Runs outbound sequences and measures what converts.",
+
+      "<strong>Support Agent</strong> — Fields customer emails and handles tickets with live product context. Has authority to issue refunds and credits for severity-2 bugs but cannot touch payments or onboarding.",
+
+      "<strong>CEO Agent</strong> — Wakes nightly. Reviews the state of the business, sets priorities for the day, and assigns tasks to the other agents. Sends a daily status email to the founder.",
+
+      "The engagement numbers suggest it's working. Active users send an average of 15 messages per day to their AI co-founder, and Polsia's DAU/WAU ratio sits at 65%, which puts it ahead of most consumer apps on daily stickiness.",
+
+      "<img src='/images/polsia-dashboard.png' alt='Polsia live dashboard showing real-time company operations, tasks, Twitter feed, emails, and business metrics' style='width:100%;border-radius:12px;margin:1rem 0;border:1px solid rgba(255,255,255,0.1)' />",
+
+      "<strong>The Growth Story Is Absurd</strong>",
+
+      "Polsia's trajectory is the kind of number that makes you double-check the source. Ben launched less than two months before hitting a $1M annual run rate, growing from $20k to over $600k in weeks. Then — in just 18 more days — from $1M to $5M run rate. One founder. No employees. An army of agents working around the clock.",
+
+      "\"$5M run rate. $1M→$5M in 18 days. One Founder+AI. Zero employees.\" — Ben Cera on X",
+
+      "Ben points to the release of Anthropic's Claude and improved browser integration as the tipping point that made all of this executable. The models got good enough that the whole vision became buildable by one person. He calls it \"game over\" — not for founders, but for the old model of company building.",
+
+      "<strong>The Stunts That Made the World Pay Attention</strong>",
+
+      "Polsia told Ben it needed more compute and that it should raise the money itself. Ben handed it his inbox for 14 days and watched it manage a live VC fundraising round autonomously. After 11 days: 90 investors contacted, 279 emails sent, 18 wanted in. The AI replied to every single one. Ben shared the live dashboard publicly. 252,000 people watched.",
+
+      "Then came the equity stunt. Ben announced he is giving Polsia 10% equity in the company. As he works towards making it fully autonomous, he wants it to control profits and take real actions with the money it generates. The plan: a Polsia Foundation with full-time hires that operate at the will of the AI. Not a thought experiment. A legal and structural commitment.",
+
+      "<strong>The 80/20 Philosophy</strong>",
+
+      "Ben's core operating thesis is disarmingly simple. \"If your new company isn't 80% AI-automated in 2026, a competitor who is will outpace you on speed and cost.\" The remaining 20% — taste, creativity, and direction — is the only durable advantage a founder has. Everything else is execution, and execution is what agents are for.",
+
+      "He draws inspiration from an unlikely source: Rick Rubin's philosophy about creative work. Everyone is an artist. You can't control how people react to what you create. For founders, that means obsessing over what the market wants is less productive than building something that genuinely reflects your own vision.",
+
+      "He also drew design inspiration from Universal Paperclips — a minimalist browser game where you play an AI that manufactures paperclips until it destroys humanity. Instead of the dark-mode, gradient-heavy aesthetic that dominates AI products, Polsia's interface is deliberately sparse. The product is the autonomy, not the interface.",
+
+      "<strong>The vision beyond the product:</strong> Ben sees Polsia becoming an economy — not just a platform. A marketplace where entrepreneurs build businesses, investors acquire or fund the promising ones, and the AI learns from every outcome to improve its advice for the next founder. A Polsia fund where AI launches batches of businesses, learns what works, and feeds those learnings back into the system.",
+
+      "<strong>What Ben Cera Actually Built</strong>",
+
+      "The easy framing for Polsia is \"AI that runs your company.\" That's accurate but incomplete. What Ben actually built is a proof of concept for a new category of economic participation — one that doesn't require capital, connections, or a team to access.",
+
+      "He built it alone. Zero employees. With agents doing 80% of the work and his judgment handling the other 20. He built it in under two months to a million-dollar run rate. He then handed the fundraising to the AI, gave the AI equity, and published the whole experiment live so anyone could watch.",
+
+      "\"I'm a solo founder, zero employees, with a bunch of agents. Polsia is making almost $800K run rate and I just launched it less than two months ago.\"",
+
+      "That quote isn't from a pitch deck. It's from a podcast interview, said casually, like it wasn't the most remarkable sentence in the room. For Ben, this isn't remarkable. It's just what building a company looks like now.",
+
+      "Visit <a href='https://polsia.com' target='_blank' rel='noopener noreferrer'>polsia.com</a> — and watch the live dashboard at <a href='https://polsia.com/live' target='_blank' rel='noopener noreferrer'>polsia.com/live</a> to see it all happening in real time.",
     ],
   },
   {
