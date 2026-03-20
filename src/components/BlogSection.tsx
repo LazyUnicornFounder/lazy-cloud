@@ -84,7 +84,7 @@ export const blogPosts: BlogPost[] = [
 
       "A directory about autonomous companies that is itself an autonomous company. The meta-proof of the thesis. The ultimate lazy unicorn.",
 
-      "We're not there yet. But every product decision, every infrastructure choice, every hire we consider — it all gets evaluated against that north star. If it moves us toward autonomy, we do it. If it makes us more dependent on human labor, we question it hard.",
+      "I'm not there yet. But every product decision, every infrastructure choice — it all gets evaluated against that north star. If it moves toward autonomy, I do it. If it makes the business more dependent on human labor, I question it hard.",
 
       "That discipline is what makes this interesting as an investment. Not just a directory — a directory that is actively becoming a demonstration of the most important idea in entrepreneurship right now.",
 
