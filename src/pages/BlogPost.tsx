@@ -105,7 +105,7 @@ const BlogPost = () => {
             href="/blog/lazy-unicorn-raising-angel-round"
             className="font-body text-[11px] tracking-[0.15em] uppercase text-orange-400 hover:text-orange-300 font-semibold transition-colors"
           >
-            We're raising!
+            I'm raising!
           </a>
           <a
             href="/#submit"
