@@ -2,6 +2,7 @@ import { Pin } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import unicornBg from "@/assets/unicorn-beach.png";
+import polsiaArtwork from "@/assets/polsia-artwork.png";
 import type { BlogPost } from "@/data/blogPosts";
 
 export const blogPosts: BlogPost[] = [
