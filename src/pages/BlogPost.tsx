@@ -41,10 +41,12 @@ const BlogPost = () => {
         "@type": "Article",
         "headline": post.title,
         "description": post.excerpt,
+        "image": "https://lazyunicorn.com/og-image.png",
         "datePublished": "2026-03-01",
-        "author": { "@type": "Organization", "name": "Lazy Unicorn" },
-        "publisher": { "@type": "Organization", "name": "Lazy Unicorn", "url": "https://lazyunicorn.com" },
-        "mainEntityOfPage": `https://lazyunicorn.com/blog/${post.slug}`
+        "dateModified": "2026-03-01",
+        "author": { "@type": "Organization", "name": "Lazy Unicorn", "url": "https://lazyunicorn.com" },
+        "publisher": { "@type": "Organization", "name": "Lazy Unicorn", "url": "https://lazyunicorn.com", "logo": { "@type": "ImageObject", "url": "https://lazyunicorn.com/og-image.png" } },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `https://lazyunicorn.com/blog/${post.slug}` }
       })}} />
       {/* Background */}
       <div className="fixed inset-0 z-0">

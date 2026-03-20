@@ -29,11 +29,13 @@ const Index = () => {
         "@type": "WebSite",
         "name": "Lazy Unicorn",
         "url": "https://lazyunicorn.com",
-        "description": "The definitive directory of AI companies that let you start, run, and scale businesses while you sleep.",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://lazyunicorn.com/?q={search_term_string}",
-          "query-input": "required name=search_term_string"
+        "description": "The definitive directory of AI-powered autonomous companies that let you start, run, and scale businesses while you sleep.",
+        "image": "https://lazyunicorn.com/og-image.png",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Lazy Unicorn",
+          "url": "https://lazyunicorn.com",
+          "logo": "https://lazyunicorn.com/og-image.png"
         }
       })}} />
       {/* Full-bleed background */}
