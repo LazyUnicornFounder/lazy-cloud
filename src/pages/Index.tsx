@@ -163,7 +163,7 @@ const Index = () => {
               again.
             </h1>
             <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-md leading-relaxed">
-              Discover autonomous company builders to launch, run and scale your startup.
+              Discover autonomous company building tools to help you launch, run and scale your own autonomous startup.
             </p>
             <a
               href="#directory"
