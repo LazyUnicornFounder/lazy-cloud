@@ -39,6 +39,12 @@ const Index = () => {
           </a>
           <span className="w-px h-4 bg-foreground/20" />
           <a
+            href="#mission"
+            className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
+          >
+            Mission
+          </a>
+          <a
             href="#directory"
             className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
           >
