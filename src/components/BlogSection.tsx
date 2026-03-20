@@ -272,6 +272,84 @@ export const blogPosts: BlogPost[] = [
       "It's later now. The work is optional. The income doesn't have to be.",
     ],
   },
+  },
+  {
+    slug: "autonomous-capitalism-for-the-rest-of-us",
+    title: "Autonomous Capitalism for the Rest of Us",
+    date: "March 2026",
+    readTime: "8 min read",
+    thumbnail: unicornBg,
+    excerpt: "For most of history, owning a business that runs itself was a privilege reserved for the already-rich. AI just made it available to everyone with a laptop and a decent idea.",
+    content: [
+      "There's a version of capitalism that has always existed — quiet, invisible, embarrassingly simple — that most people never got access to. It works like this: you own something that generates money. That something runs without your daily labor. You collect the difference between what it earns and what it costs to operate. You do this at scale. You get rich.",
+
+      "Simple. Obvious. And for most of human history, almost entirely inaccessible to anyone who wasn't already wealthy.",
+
+      "The factory owner didn't work the factory floor. The landlord didn't lay the bricks. The franchise owner didn't flip the burgers. The fund manager didn't manually execute the trades. At every layer of serious wealth creation, what was actually being sold was ownership of a system that ran itself — powered by other people's labor, other people's time, other people's presence.",
+
+      "The brutal irony of the last century of capitalism is that the people doing the actual work — the ones keeping the system running — were almost never the ones who owned it. Ownership and operation were split along class lines so consistently that we stopped noticing it was a choice, not a law of nature.",
+
+      "AI is breaking that split open. And it's doing it faster than anyone expected.",
+
+      "\"For the first time in history, a single person with a laptop can own a self-running business without inheriting one.\"",
+
+      "Who Autonomous Business Used to Be For",
+
+      "To understand why this moment matters, you have to understand exactly how narrow the path to autonomous income actually was — and who it was available to.",
+
+      "The Heir — inherited assets like property, stocks, and business stakes that generated income without requiring their presence. Born into the system running itself. The Funded Founder — raised millions to hire a team to build and operate the company, exchanging equity for the capital to pay other humans to do the work. The Operator — built one successful business, used the proceeds to hire professional management for the next one. Self-funded autonomy, available only after the first win.",
+
+      "Notice what all three have in common: they required either inherited wealth, external capital, or prior success to achieve. The self-running business was a destination, not a starting point. And the price of admission — in money, in connections, in luck — was high enough to exclude most people permanently.",
+
+      "The person with the idea, the drive, and the capability — but not the capital — was stuck. They could build something. But they'd have to run it themselves, forever, or until they could afford to hire people to run it for them. The dream of ownership without operation was structurally gatekept.",
+
+      "What Changed, and Why Now",
+
+      "The change didn't happen in a single moment. It was a slow accumulation of infrastructure that suddenly hit a tipping point.",
+
+      "Building a business used to require capital to hire people before proving anything, a team to cover every skill gap, constant human oversight for operations, more people to scale, and an exit to finally stop being the operator. Now? $49/month covers an entire AI operating team. One prompt deploys agents across every business function. AI agents run operations autonomously, day and night. Scale happens without adding headcount or management. Day one can look like what used to require years to reach.",
+
+      "The tipping point is the word autonomous. Not automated — that just means faster human-designed processes. Autonomous means the system decides what to do next, executes it, measures the result, and improves. It means the gap between ownership and operation is finally closeable without a team of humans filling it.",
+
+      "Naïve and Polsia as Class Equalizers",
+
+      "This is where platforms like Naïve and Polsia become genuinely significant — not just as productivity tools, but as infrastructure for a different kind of economic participation.",
+
+      "Polsia charges $49 a month to run your company. Not assist you in running it. Not give you better tools to run it yourself. Run it. Planning, coding, marketing, operations, customer support, investor relations — all of it, handled by AI agents that work continuously without your presence. Over 800 companies are currently running on this model, generating real revenue, with founders who check in occasionally rather than showing up daily.",
+
+      "Naïve removes even the prerequisite of having a company to hand over. You describe what you want to build — one message — and Naïve creates the structure, hires the agents, and starts operating. The founding moment and the ongoing operation collapse into a single act. The gap between \"I have an idea\" and \"I own a running business\" has never been shorter.",
+
+      "The democratization is real: A 19-year-old with a laptop in Amman, a single parent in Manila, a teacher in Lagos with an idea but no capital — for the first time, they have access to the same autonomous business infrastructure that used to require a funded startup or an inheritance. That's not a small thing.",
+
+      "The Uncomfortable Part of This Story",
+
+      "None of this is without tension. If AI agents are running the businesses, the jobs those businesses used to create — the marketers, the developers, the support reps, the ops coordinators — are no longer being created. The same technology that democratizes ownership compresses employment. Those two things are happening simultaneously, and pretending otherwise would be dishonest.",
+
+      "The honest version of this story is that autonomous capitalism is genuinely liberating for owners and genuinely disruptive for workers — and that most people will need to figure out which side of that line they want to be on. The option to be on the ownership side has never been more accessible. But it requires a shift in how you think about value creation — from \"what can I do\" to \"what can I direct.\"",
+
+      "The founders who win in this era won't be the ones who work the hardest. They'll be the ones who are most skilled at directing autonomous systems toward valuable outcomes. That's a learnable skill. It's not exclusive to the already-privileged. But it does require a deliberate decision to step into the owner role rather than waiting for someone to hand it to you.",
+
+      "A New Kind of Founding Manifesto",
+
+      "If autonomous capitalism is really becoming available to everyone, it comes with a new set of principles — a different way of thinking about what it means to build something:",
+
+      "I. Your job is to own and direct, not to execute. Execution is what agents are for. II. A business that requires your daily presence is a job. A business that runs without you is an asset. III. The bottleneck is no longer capital or team. It's the quality of your idea and the clarity of your direction. IV. Doing something manually when an agent can do it is not virtue. It's inefficiency dressed up as work ethic. V. The best founders of this era will be remembered not for how hard they worked, but for how well they let go.",
+
+      "The Rest of Us",
+
+      "The title of this essay isn't accidental. \"For the rest of us\" is a deliberate provocation — because the assumption embedded in most startup culture is that serious company-building is for a specific kind of person. Someone with connections. Someone with a network. Someone who went to the right school, lives in the right city, knows the right people, has the right background.",
+
+      "That assumption is being dismantled in real time by a $49-a-month subscription and a well-written prompt.",
+
+      "The rest of us — the people who had the ideas but not the capital, the drive but not the network, the vision but not the team — have never had a better moment to act. The infrastructure for autonomous business ownership is here, it's cheap, and it's available to anyone with an internet connection and something worth building.",
+
+      "Autonomous capitalism isn't coming for the already-wealthy. They already have it. It's coming for everyone else. And for the first time, that's not a threat. It's an invitation.",
+
+      "\"The factory used to require a fortune to own. Now it fits in a browser tab and costs less than a tank of gas.\"",
+
+      "The question isn't whether this shift is happening. It's whether you're going to be on the side that owns the autonomous company — or the side that watches someone else build one.",
+    ],
+  },
 ];
 
 const BlogSection = () => {
