@@ -9,6 +9,7 @@ import PitchDeck from "@/components/PitchDeck";
 import SEO from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import BlogTicker from "@/components/BlogTicker";
+import Navbar from "@/components/Navbar";
 
 const Index = () => {
 
