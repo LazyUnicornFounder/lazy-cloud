@@ -102,7 +102,7 @@ const Index = () => {
              href="#pitch"
              className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
            >
-             Pitch
+             Pitch Deck
            </a>
           <a
             href="#submit"
