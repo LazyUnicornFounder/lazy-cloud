@@ -95,9 +95,15 @@ const Index = () => {
           <a
             href="#mission"
             className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
-          >
-            Mission
-          </a>
+           >
+             Mission
+           </a>
+           <a
+             href="#pitch"
+             className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors"
+           >
+             Pitch
+           </a>
           <a
             href="#submit"
             className="font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-5 py-1.5 rounded-full font-semibold hover:opacity-90 transition-opacity"
