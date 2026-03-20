@@ -10,7 +10,7 @@ export const blogPosts: BlogPost[] = [
     date: "March 2026",
     readTime: "12 min read",
     thumbnail: unicornBg,
-    excerpt: "We're building the world's first self-building directory of autonomous company tools — and we're looking for investors who believe the laziest founders will own the future.",
+    excerpt: "I'm building the world's first self-building directory of autonomous company tools — and I'm looking for investors who believe the laziest founders will own the future.",
     content: [
       "I'll be upfront about something: this fundraising announcement was written, formatted, and published with significant help from AI. The irony is entirely intentional. Lazy Unicorn is a company that practices what it preaches — and what it preaches is that the future belongs to founders who know how to delegate everything except the vision.",
 
