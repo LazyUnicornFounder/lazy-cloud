@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
 
       "Today, I'm sharing that vision with people who might want to own a piece of it.",
 
-      "Lazy Unicorn is raising an angel round. Here's the full story — what we're building, why now, and why I think this is one of the most interesting bets in the current AI landscape.",
+      "Lazy Unicorn is raising an angel round. Here's the full story — what I'm building, why now, and why I think this is one of the most interesting bets in the current AI landscape.",
 
       "Our Mission: Make it possible for anyone to become a lazy unicorn — a founder who owns a thriving company without burning out building it.",
 
