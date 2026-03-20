@@ -234,6 +234,37 @@ const Index = () => {
         </motion.div>
       </section>
 
+      {/* About */}
+      <section id="about" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-24">
+        <div className="max-w-2xl bg-background/60 backdrop-blur-2xl rounded-3xl px-8 py-10 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4"
+          >
+            About
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="space-y-4"
+          >
+            <p className="font-body text-lg md:text-xl text-foreground/70 leading-relaxed">
+              We're obsessed with self-building startups — companies that design, ship, and scale themselves with AI agents doing the heavy lifting.
+            </p>
+            <p className="font-body text-base text-foreground/50 leading-relaxed">
+              Lazy Unicorn exists to become the definitive, self-building directory of the best tools and platforms that help anyone launch and run a business without the grind. Our mission is simple: make it possible for all of us to become lazy unicorns — founders who own thriving companies without burning out building them.
+            </p>
+            <p className="font-body text-base text-foreground/50 leading-relaxed">
+              The directory itself is a living experiment in autonomous capitalism. We practice what we preach.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Mission */}
       <section id="mission" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-24">
         <div className="max-w-2xl bg-background/60 backdrop-blur-2xl rounded-3xl px-8 py-10 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
