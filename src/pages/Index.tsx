@@ -31,19 +31,19 @@ const Index = () => {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Lazy Unicorn",
-        "url": "https://lazyunicorn.com",
+        "url": "https://www.lazyunicorn.ai",
         "description": "The definitive directory of AI-powered autonomous companies that let you start, run, and scale businesses while you sleep.",
-        "image": "https://lazyunicorn.com/og-image.png",
+        "image": "https://www.lazyunicorn.ai/og-image.png",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://lazyunicorn.com/?q={search_term_string}",
+          "target": "https://www.lazyunicorn.ai/?q={search_term_string}",
           "query-input": "required name=search_term_string"
         },
         "publisher": {
           "@type": "Organization",
           "name": "Lazy Unicorn",
-          "url": "https://lazyunicorn.com",
-          "logo": { "@type": "ImageObject", "url": "https://lazyunicorn.com/og-image.png" },
+          "url": "https://www.lazyunicorn.ai",
+          "logo": { "@type": "ImageObject", "url": "https://www.lazyunicorn.ai/og-image.png" },
           "sameAs": ["https://x.com/SaadSahawneh"]
         }
       })}} />

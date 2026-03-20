@@ -9,14 +9,14 @@ const Blog = () => {
     "@type": "CollectionPage",
     "name": "Lazy Unicorn Blog",
     "description": "Essays on autonomous companies, AI agents, and the future of work.",
-    "url": "https://lazyunicorn.com/blog",
-    "publisher": { "@type": "Organization", "name": "Lazy Unicorn", "url": "https://lazyunicorn.com" },
+    "url": "https://www.lazyunicorn.ai/blog",
+    "publisher": { "@type": "Organization", "name": "Lazy Unicorn", "url": "https://www.lazyunicorn.ai" },
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": blogPosts.map((post, i) => ({
         "@type": "ListItem",
         "position": i + 1,
-        "url": `https://lazyunicorn.com/blog/${post.slug}`,
+        "url": `https://www.lazyunicorn.ai/blog/${post.slug}`,
         "name": post.title,
       })),
     },

@@ -22,4 +22,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://lazyunicorn.com/sitemap.xml
+Sitemap: https://www.lazyunicorn.ai/sitemap.xml
