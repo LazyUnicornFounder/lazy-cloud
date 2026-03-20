@@ -276,7 +276,7 @@ const BlogSection = () => {
                       {post.readTime}
                     </span>
                   </div>
-                  <h2 className="font-display text-xl md:text-2xl font-extrabold text-foreground group-hover:text-primary transition-colors leading-tight mb-2">
+                  <h2 className="font-display text-xl font-extrabold text-foreground group-hover:text-primary transition-colors leading-tight mb-2 line-clamp-3">
                     {post.title}
                   </h2>
                   <p className="font-body text-sm text-foreground/50 leading-relaxed line-clamp-2">
