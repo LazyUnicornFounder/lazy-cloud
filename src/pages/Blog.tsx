@@ -6,6 +6,11 @@ import SEO from "@/components/SEO";
 const Blog = () => {
   return (
     <div className="min-h-screen text-foreground relative">
+      <SEO
+        title="Blog"
+        description="Essays on autonomous companies, AI agents, and the future of work. Accelerate the future of autonomous capitalism."
+        url="/blog"
+      />
       {/* Full-bleed background */}
       <div className="fixed inset-0 z-0">
         <img src={unicornBg} alt="" className="w-full h-full object-cover" />
