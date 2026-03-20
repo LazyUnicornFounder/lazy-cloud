@@ -5,6 +5,95 @@ import type { BlogPost } from "@/data/blogPosts";
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "lazy-unicorn-raising-angel-round",
+    title: "Lazy Unicorn Is Raising an Angel Round",
+    date: "March 2026",
+    readTime: "12 min read",
+    thumbnail: unicornBg,
+    excerpt: "We're building the world's first self-building directory of autonomous company tools — and we're looking for investors who believe the laziest founders will own the future.",
+    content: [
+      "I'll be upfront about something: this fundraising announcement was written, formatted, and published with significant help from AI. The irony is entirely intentional. Lazy Unicorn is a company that practices what it preaches — and what it preaches is that the future belongs to founders who know how to delegate everything except the vision.",
+
+      "Today, I'm sharing that vision with people who might want to own a piece of it.",
+
+      "Lazy Unicorn is raising an angel round. Here's the full story — what we're building, why now, and why I think this is one of the most interesting bets in the current AI landscape.",
+
+      "Our Mission: Make it possible for anyone to become a lazy unicorn — a founder who owns a thriving company without burning out building it.",
+
+      "I've been fascinated with self-building startups for a while now — companies that design, ship, and scale themselves with AI agents doing the heavy lifting. Not \"AI-assisted\" companies where a human still does most of the work. Genuinely autonomous companies where the system decides what to do, does it, measures the result, and improves.",
+
+      "What fascinated me most wasn't the technology. It was the implication. If a company can build and run itself, then ownership and operation are finally separable for the first time in history. Anyone with a good idea and the right tools can own a business without it consuming their life. The billion-dollar company doesn't require a billion hours of founder labor anymore.",
+
+      "That's the idea Lazy Unicorn is built around. And the directory is just the beginning.",
+
+      "\"The laziest founders will own the future. Not because they don't work hard — because they work on the right things and let AI handle everything else.\"",
+
+      "At its core, Lazy Unicorn is a curated directory of the best tools and platforms that help anyone launch and run a business without doing all the heavy lifting themselves. Think of it as the definitive resource for anyone who wants to build an autonomous company — every tool reviewed, ranked, and explained for the founder who refuses to be the bottleneck in their own business.",
+
+      "But the directory is also something more interesting than a list of tools. It's a living experiment in autonomous capitalism — a business that is itself trying to become the thing it writes about.",
+
+      "Lazy Unicorn isn't just describing autonomous companies. It's attempting to become one. The content is increasingly AI-assisted. The operations are being handed to agents where possible. The distribution is being automated. Every week, the goal is for the directory to require less of the founder's time — not because we're scaling the team, but because we're scaling the autonomy.",
+
+      "The directory is a proof of concept for its own thesis. If Lazy Unicorn can become a genuinely autonomous business, it validates everything it writes about. If it can't, we'll write honestly about why not. Either way, it's the most interesting experiment in the space.",
+
+      "The Three Bets We're Making",
+
+      "Bet 01: Autonomous companies are the dominant startup model within 5 years. The cost of operating a company has collapsed. The tools are here, cheap, and improving weekly. Every founder who discovers this model will want a resource that helps them navigate it. Lazy Unicorn is that resource.",
+
+      "Bet 02: The directory becomes the most trusted brand in autonomous entrepreneurship. There's no authoritative voice in this space yet. No curated, honest, founder-focused resource for autonomous company tools. Lazy Unicorn is positioning to own that category before it gets crowded.",
+
+      "Bet 03: The directory itself becomes a model autonomous business. A directory that runs itself — updating, curating, distributing, and monetizing autonomously — is the ultimate demonstration of the thesis. That's the destination we're building toward.",
+
+      "Why This Market, Why Now",
+
+      "The tools just crossed a threshold. Platforms like Naïve and Polsia are already running 800+ companies autonomously. This isn't a future state. The autonomous company is a product you can subscribe to today for $49/month. The market exists — it just needs a trusted guide.",
+
+      "No one owns the category yet. There's no Product Hunt for autonomous companies. No TechCrunch covering this beat with real depth. No trusted curator helping founders navigate the space. The window to become the definitive resource is open right now and won't stay open long.",
+
+      "The audience is massive and underserved. Solo founders, side-project builders, FIRE enthusiasts, passive income seekers, first-time entrepreneurs — all of them want what autonomous companies offer. None of them have a single place to find the best tools. That's the gap Lazy Unicorn fills.",
+
+      "The business model is clean. Affiliate partnerships with the tools we feature. Sponsored listings. Premium membership for founders who want deeper access and community. All three are proven directory business models. All three can be operated largely autonomously once set up.",
+
+      "800+ companies are already running autonomously on Polsia alone. The monthly cost to run an autonomous company is $49 — the new normal. And there are zero authoritative directories for this space currently existing.",
+
+      "How We'll Use the Capital",
+
+      "40% — Product & autonomous infrastructure. Building the technical foundation for a directory that updates, curates, and improves itself — integrating AI agents across content, distribution, and operations.",
+
+      "25% — Content & SEO foundation. Establishing authority in the autonomous company space through deep editorial content — the kind that ranks, gets shared, and builds the brand as the trusted voice in the category.",
+
+      "20% — Community & distribution. Building the audience of founders, operators, and investors who care about autonomous companies — newsletter, community, events, partnerships with the tools we feature.",
+
+      "15% — Operations & runway. 18 months of operational runway to reach meaningful distribution metrics and prove the autonomous business model before the next round.",
+
+      "We're not looking for a board member or a micromanager. We're looking for believers — people who see the same shift we see and want to be early to the category that captures it.",
+
+      "Ideal angels are founders, operators, or investors who have direct experience with the autonomous company space — who have used Polsia, built with Naïve, or watched firsthand as AI agents took over operational functions that used to require a team. People who understand viscerally why this matters and want to help build the resource that the whole ecosystem needs.",
+
+      "What you'd be investing in: The earliest and most honest voice in the autonomous company space. A directory that practices what it preaches. A brand that can own a category that doesn't fully exist yet — and will be enormous when it does. And possibly the only pitch deck in history that was partially written by the AI it's asking you to believe in.",
+
+      "This is early. The autonomous company category is real, growing fast, and underserved — but it's still early. The directory has traction and a clear thesis, but it hasn't yet proven the autonomous business model at scale. That's what this round is for: building the foundation and proving the concept before the category becomes obvious and the competition arrives.",
+
+      "The risk is timing. Too early and the market isn't ready. Too late and someone else owns the space. Our bet is that we're sitting at exactly the right moment — early enough to establish authority, late enough that the tools are real and the audience exists.",
+
+      "Polsia is running 800 companies right now. Naïve is deploying AI agents for founders across the world. The audience for Lazy Unicorn is already out there, already using these tools, already looking for a trusted curator. We just need to be the one they find first.",
+
+      "\"Every major category has a definitive directory. SaaS has G2. No-code has Nocode.tech. Autonomous companies don't have one yet. That's the opportunity.\"",
+
+      "The north star for Lazy Unicorn isn't a well-curated website. It's a directory that operates itself — discovering new tools, writing reviews, updating rankings, distributing content, managing affiliate relationships, and growing its audience without requiring daily founder input.",
+
+      "A directory about autonomous companies that is itself an autonomous company. The meta-proof of the thesis. The ultimate lazy unicorn.",
+
+      "We're not there yet. But every product decision, every infrastructure choice, every hire we consider — it all gets evaluated against that north star. If it moves us toward autonomy, we do it. If it makes us more dependent on human labor, we question it hard.",
+
+      "That discipline is what makes this interesting as an investment. Not just a directory — a directory that is actively becoming a demonstration of the most important idea in entrepreneurship right now.",
+
+      "Interested in the round? We're talking to angels who move fast and think long. If this resonates — if you see the same shift we see — let's talk.",
+
+      "Written by the founder of Lazy Unicorn. Yes, with AI help. That's the point.",
+    ],
+  },
+  {
     slug: "rise-of-autonomous-companies",
     title: "The Rise of Autonomous Companies: Why Your Next Startup Runs Itself",
     date: "March 2026",
@@ -635,95 +724,6 @@ export const blogPosts: BlogPost[] = [
       "The company doesn't need you to run it. Your time doesn't need to be traded for income. The only thing left to decide is what you're going to do with all of it.",
 
       "\"The best time to retire was when you started your career. The second best time is the day your company stops needing you to show up.\"",
-    ],
-  },
-  {
-    slug: "lazy-unicorn-raising-angel-round",
-    title: "Lazy Unicorn Is Raising an Angel Round",
-    date: "March 2026",
-    readTime: "12 min read",
-    thumbnail: unicornBg,
-    excerpt: "We're building the world's first self-building directory of autonomous company tools — and we're looking for investors who believe the laziest founders will own the future.",
-    content: [
-      "I'll be upfront about something: this fundraising announcement was written, formatted, and published with significant help from AI. The irony is entirely intentional. Lazy Unicorn is a company that practices what it preaches — and what it preaches is that the future belongs to founders who know how to delegate everything except the vision.",
-
-      "Today, I'm sharing that vision with people who might want to own a piece of it.",
-
-      "Lazy Unicorn is raising an angel round. Here's the full story — what we're building, why now, and why I think this is one of the most interesting bets in the current AI landscape.",
-
-      "Our Mission: Make it possible for anyone to become a lazy unicorn — a founder who owns a thriving company without burning out building it.",
-
-      "I've been fascinated with self-building startups for a while now — companies that design, ship, and scale themselves with AI agents doing the heavy lifting. Not \"AI-assisted\" companies where a human still does most of the work. Genuinely autonomous companies where the system decides what to do, does it, measures the result, and improves.",
-
-      "What fascinated me most wasn't the technology. It was the implication. If a company can build and run itself, then ownership and operation are finally separable for the first time in history. Anyone with a good idea and the right tools can own a business without it consuming their life. The billion-dollar company doesn't require a billion hours of founder labor anymore.",
-
-      "That's the idea Lazy Unicorn is built around. And the directory is just the beginning.",
-
-      "\"The laziest founders will own the future. Not because they don't work hard — because they work on the right things and let AI handle everything else.\"",
-
-      "At its core, Lazy Unicorn is a curated directory of the best tools and platforms that help anyone launch and run a business without doing all the heavy lifting themselves. Think of it as the definitive resource for anyone who wants to build an autonomous company — every tool reviewed, ranked, and explained for the founder who refuses to be the bottleneck in their own business.",
-
-      "But the directory is also something more interesting than a list of tools. It's a living experiment in autonomous capitalism — a business that is itself trying to become the thing it writes about.",
-
-      "Lazy Unicorn isn't just describing autonomous companies. It's attempting to become one. The content is increasingly AI-assisted. The operations are being handed to agents where possible. The distribution is being automated. Every week, the goal is for the directory to require less of the founder's time — not because we're scaling the team, but because we're scaling the autonomy.",
-
-      "The directory is a proof of concept for its own thesis. If Lazy Unicorn can become a genuinely autonomous business, it validates everything it writes about. If it can't, we'll write honestly about why not. Either way, it's the most interesting experiment in the space.",
-
-      "The Three Bets We're Making",
-
-      "Bet 01: Autonomous companies are the dominant startup model within 5 years. The cost of operating a company has collapsed. The tools are here, cheap, and improving weekly. Every founder who discovers this model will want a resource that helps them navigate it. Lazy Unicorn is that resource.",
-
-      "Bet 02: The directory becomes the most trusted brand in autonomous entrepreneurship. There's no authoritative voice in this space yet. No curated, honest, founder-focused resource for autonomous company tools. Lazy Unicorn is positioning to own that category before it gets crowded.",
-
-      "Bet 03: The directory itself becomes a model autonomous business. A directory that runs itself — updating, curating, distributing, and monetizing autonomously — is the ultimate demonstration of the thesis. That's the destination we're building toward.",
-
-      "Why This Market, Why Now",
-
-      "The tools just crossed a threshold. Platforms like Naïve and Polsia are already running 800+ companies autonomously. This isn't a future state. The autonomous company is a product you can subscribe to today for $49/month. The market exists — it just needs a trusted guide.",
-
-      "No one owns the category yet. There's no Product Hunt for autonomous companies. No TechCrunch covering this beat with real depth. No trusted curator helping founders navigate the space. The window to become the definitive resource is open right now and won't stay open long.",
-
-      "The audience is massive and underserved. Solo founders, side-project builders, FIRE enthusiasts, passive income seekers, first-time entrepreneurs — all of them want what autonomous companies offer. None of them have a single place to find the best tools. That's the gap Lazy Unicorn fills.",
-
-      "The business model is clean. Affiliate partnerships with the tools we feature. Sponsored listings. Premium membership for founders who want deeper access and community. All three are proven directory business models. All three can be operated largely autonomously once set up.",
-
-      "800+ companies are already running autonomously on Polsia alone. The monthly cost to run an autonomous company is $49 — the new normal. And there are zero authoritative directories for this space currently existing.",
-
-      "How We'll Use the Capital",
-
-      "40% — Product & autonomous infrastructure. Building the technical foundation for a directory that updates, curates, and improves itself — integrating AI agents across content, distribution, and operations.",
-
-      "25% — Content & SEO foundation. Establishing authority in the autonomous company space through deep editorial content — the kind that ranks, gets shared, and builds the brand as the trusted voice in the category.",
-
-      "20% — Community & distribution. Building the audience of founders, operators, and investors who care about autonomous companies — newsletter, community, events, partnerships with the tools we feature.",
-
-      "15% — Operations & runway. 18 months of operational runway to reach meaningful distribution metrics and prove the autonomous business model before the next round.",
-
-      "We're not looking for a board member or a micromanager. We're looking for believers — people who see the same shift we see and want to be early to the category that captures it.",
-
-      "Ideal angels are founders, operators, or investors who have direct experience with the autonomous company space — who have used Polsia, built with Naïve, or watched firsthand as AI agents took over operational functions that used to require a team. People who understand viscerally why this matters and want to help build the resource that the whole ecosystem needs.",
-
-      "What you'd be investing in: The earliest and most honest voice in the autonomous company space. A directory that practices what it preaches. A brand that can own a category that doesn't fully exist yet — and will be enormous when it does. And possibly the only pitch deck in history that was partially written by the AI it's asking you to believe in.",
-
-      "This is early. The autonomous company category is real, growing fast, and underserved — but it's still early. The directory has traction and a clear thesis, but it hasn't yet proven the autonomous business model at scale. That's what this round is for: building the foundation and proving the concept before the category becomes obvious and the competition arrives.",
-
-      "The risk is timing. Too early and the market isn't ready. Too late and someone else owns the space. Our bet is that we're sitting at exactly the right moment — early enough to establish authority, late enough that the tools are real and the audience exists.",
-
-      "Polsia is running 800 companies right now. Naïve is deploying AI agents for founders across the world. The audience for Lazy Unicorn is already out there, already using these tools, already looking for a trusted curator. We just need to be the one they find first.",
-
-      "\"Every major category has a definitive directory. SaaS has G2. No-code has Nocode.tech. Autonomous companies don't have one yet. That's the opportunity.\"",
-
-      "The north star for Lazy Unicorn isn't a well-curated website. It's a directory that operates itself — discovering new tools, writing reviews, updating rankings, distributing content, managing affiliate relationships, and growing its audience without requiring daily founder input.",
-
-      "A directory about autonomous companies that is itself an autonomous company. The meta-proof of the thesis. The ultimate lazy unicorn.",
-
-      "We're not there yet. But every product decision, every infrastructure choice, every hire we consider — it all gets evaluated against that north star. If it moves us toward autonomy, we do it. If it makes us more dependent on human labor, we question it hard.",
-
-      "That discipline is what makes this interesting as an investment. Not just a directory — a directory that is actively becoming a demonstration of the most important idea in entrepreneurship right now.",
-
-      "Interested in the round? We're talking to angels who move fast and think long. If this resonates — if you see the same shift we see — let's talk.",
-
-      "Written by the founder of Lazy Unicorn. Yes, with AI help. That's the point.",
     ],
   },
 ];
