@@ -156,7 +156,7 @@ const Index = () => {
               again.
             </h1>
             <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-md leading-relaxed">
-              A directory of AI companies that let you start, run, and scale businesses while you sleep.
+              A directory of autonomous company builders that let you start, run and scale your startup, while agents handle everything.
             </p>
           </div>
         </motion.div>
