@@ -9,7 +9,7 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
-    title: "The Rise of Autonomous Commerce: Why Your Next Startup Runs Itself",
+    title: "The Rise of Autonomous Companies: Why Your Next Startup Runs Itself",
     date: "March 2026",
     readTime: "6 min read",
     content: [
