@@ -201,6 +201,9 @@ const Index = () => {
 
       <SubmitSection />
 
+      {/* Pitch Deck */}
+      <PitchDeck />
+
       {/* Blog CTA */}
       <section className="relative z-10 px-8 md:px-12 pb-16">
         <motion.div
