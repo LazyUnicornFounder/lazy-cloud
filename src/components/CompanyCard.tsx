@@ -20,10 +20,10 @@ const CompanyCard = ({ name, url, description, index }: CompanyCardProps) => {
       className="group flex items-baseline justify-between py-5 border-b border-foreground/10 cursor-pointer hover:pl-2 transition-all duration-300"
     >
       <div>
-        <h3 className="font-display text-lg md:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+        <h3 className="font-display text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
           {name}
         </h3>
-        <p className="font-body text-xs text-foreground/40 mt-1 max-w-sm leading-relaxed">
+        <p className="font-body text-sm text-foreground/40 mt-1 max-w-md leading-relaxed">
           {description}
         </p>
       </div>
