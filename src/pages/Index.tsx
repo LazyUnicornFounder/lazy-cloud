@@ -69,13 +69,16 @@ const Index = () => {
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
           className="inline-block bg-background/60 backdrop-blur-2xl rounded-3xl px-10 py-8 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
         >
-          <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.9] text-foreground">
+           <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.9] text-foreground">
             Never have
             <br />
             to work
             <br />
             again.
           </h1>
+          <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-md leading-relaxed">
+            A directory of companies accelerating the future of autonomous capitalism.
+          </p>
         </motion.div>
 
         {/* Retro sticker */}
