@@ -320,6 +320,18 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+      {/* Valuation Breakdown */}
+      <section className="relative z-10 px-8 md:px-12 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-sm bg-background/60 backdrop-blur-2xl rounded-2xl px-6 py-6 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+          <ValuationBreakdown />
+        </motion.div>
+      </section>
+
       <PitchDeck />
 
 
