@@ -176,6 +176,11 @@ const Index = () => {
               </a>
             </div>
           </div>
+
+          {/* Valuation Breakdown */}
+          <div className="bg-background/60 backdrop-blur-2xl rounded-3xl px-10 py-8 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] mt-4 w-full">
+            <ValuationBreakdown />
+          </div>
         </motion.div>
 
 
