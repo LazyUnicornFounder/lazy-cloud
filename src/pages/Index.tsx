@@ -298,7 +298,7 @@ const Index = () => {
               Accelerate the future of autonomous capitalism.
             </p>
             <p className="font-body text-base text-foreground/50 leading-relaxed">
-              I'm trying to build Lazy Unicorn into a $1 billion autonomous startup that runs itself, sell it, and then invest in a new project.
+              Lazy Unicorn wants to be the first one-person unicorn built on Lovable.
             </p>
           </motion.div>
         </div>
