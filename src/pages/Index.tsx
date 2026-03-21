@@ -31,27 +31,27 @@ const Index = () => {
 
   const logoMap: Record<string, string> = {
     "Naive": logoNaive,
-    "Polsia": logoPolsia,
+    "Polsia": logoPolsia
   };
 
   const { data: companies = [] } = useQuery({
     queryKey: ["approved-companies"],
     queryFn: async () => {
-      const { data } = await supabase
-        .from("submissions")
-        .select("name, url, tagline, is_paid, slug")
-        .eq("status", "approved")
-        .order("is_paid", { ascending: false })
-        .order("created_at", { ascending: true });
+      const { data } = await supabase.
+      from("submissions").
+      select("name, url, tagline, is_paid, slug").
+      eq("status", "approved").
+      order("is_paid", { ascending: false }).
+      order("created_at", { ascending: true });
       return (data || []).map((c) => ({
         name: c.name,
         url: c.url,
         description: c.tagline,
         thumbnail: logoMap[c.name],
         isPaid: c.is_paid,
-        slug: c.slug,
+        slug: c.slug
       }));
-    },
+    }
   });
 
   const scrollToLaunch = () => {
@@ -63,30 +63,30 @@ const Index = () => {
     <div className="min-h-screen text-foreground relative">
       <SEO
         url="/"
-        breadcrumbs={[{ name: "Home", url: "/" }]}
-      />
+        breadcrumbs={[{ name: "Home", url: "/" }]} />
+      
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Lazy Unicorn",
-        "url": "https://www.lazyunicorn.ai",
-        "description": "Discover AI tools for solo founders to build autonomous startups. The definitive directory of autonomous company builders.",
-        "image": "https://www.lazyunicorn.ai/og-image.png",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://www.lazyunicorn.ai/?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        },
-        "publisher": {
-          "@type": "Organization",
+          "@context": "https://schema.org",
+          "@type": "WebSite",
           "name": "Lazy Unicorn",
           "url": "https://www.lazyunicorn.ai",
-          "logo": { "@type": "ImageObject", "url": "https://www.lazyunicorn.ai/og-image.png" },
-          "sameAs": ["https://x.com/SaadSahawneh"]
-        }
-      })}} />
-      {companies.length > 0 && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "description": "Discover AI tools for solo founders to build autonomous startups. The definitive directory of autonomous company builders.",
+          "image": "https://www.lazyunicorn.ai/og-image.png",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.lazyunicorn.ai/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Lazy Unicorn",
+            "url": "https://www.lazyunicorn.ai",
+            "logo": { "@type": "ImageObject", "url": "https://www.lazyunicorn.ai/og-image.png" },
+            "sameAs": ["https://x.com/SaadSahawneh"]
+          }
+        }) }} />
+      {companies.length > 0 &&
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ItemList",
           "name": "Autonomous Company Directory",
@@ -95,10 +95,10 @@ const Index = () => {
             "@type": "ListItem",
             "position": i + 1,
             "name": c.name,
-            "url": c.url,
-          })),
-        })}} />
-      )}
+            "url": c.url
+          }))
+        }) }} />
+      }
       {/* Full-bleed background */}
       <div className="fixed inset-0 z-0">
         <img src={unicornBg} alt="" className="w-full h-full object-cover" />
@@ -119,27 +119,27 @@ const Index = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="flex flex-col items-center"
-        >
+          className="flex flex-col items-center">
+          
           <a
             href="https://www.producthunt.com/products/lazy-unicorn?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-lazy-unicorn"
             target="_blank"
             rel="noopener noreferrer"
-            className="mb-3"
-          >
+            className="mb-3">
+            
             <img
               alt="Lazy Unicorn - Discover tools to launch your autonomous startup. | Product Hunt"
               width="250"
               height="54"
-              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1103538&theme=dark&t=1774065246015"
-            />
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1103538&theme=dark&t=1774065246015" />
+            
           </a>
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mb-[-1px] relative z-10"
-          >
+            className="mb-[-1px] relative z-10">
+            
             <div className="bg-background/60 backdrop-blur-2xl border border-foreground/10 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
               <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
                 Autonomous capitalism for the rest of us
@@ -151,8 +151,9 @@ const Index = () => {
           </motion.div>
 
           <div className="bg-background/60 backdrop-blur-2xl rounded-3xl px-10 py-8 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-            <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.9] text-foreground">
-              Tools to build
+            <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.9] text-foreground">Tools for solo founders to  build
+autonomous startups.
+
               <br />
               autonomous startups
               <br />
@@ -162,16 +163,15 @@ const Index = () => {
               Discover AI tools for solo founders to build autonomous startups.
             </p>
             <div className="flex items-center gap-3 mt-6">
-              <a
-                href="#directory"
-                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
-              >
+              <a href="#directory"
+              className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]">
+                
                 Directory
               </a>
               <a
                 href="#launch"
-                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase border border-foreground/20 text-foreground/70 hover:text-primary hover:border-primary/40 px-6 py-2.5 rounded-full font-semibold transition-colors active:scale-[0.97]"
-              >
+                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase border border-foreground/20 text-foreground/70 hover:text-primary hover:border-primary/40 px-6 py-2.5 rounded-full font-semibold transition-colors active:scale-[0.97]">
+                
                 Launch your startup
               </a>
             </div>
@@ -189,15 +189,15 @@ const Index = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-8"
-          >
+            className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-8">
+            
             Directory
           </motion.p>
           <div className="space-y-px">
             <a
               href="#launch"
-              className="group flex items-center justify-between py-5 border-b border-dashed border-primary/20 hover:pl-2 transition-all duration-300 cursor-pointer"
-            >
+              className="group flex items-center justify-between py-5 border-b border-dashed border-primary/20 hover:pl-2 transition-all duration-300 cursor-pointer">
+              
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-lg border border-dashed border-primary/30 bg-primary/5 flex items-center justify-center shrink-0">
                   <span className="text-primary text-lg">✦</span>
@@ -215,23 +215,23 @@ const Index = () => {
                 Free ↗
               </span>
             </a>
-            {companies.map((company, i) => (
-              <CompanyCard
-                key={company.name}
-                name={company.name}
-                url={company.url}
-                description={company.description}
-                thumbnail={company.thumbnail}
-                isPaid={company.isPaid}
-                slug={company.slug}
-                index={i}
-              />
-            ))}
+            {companies.map((company, i) =>
+            <CompanyCard
+              key={company.name}
+              name={company.name}
+              url={company.url}
+              description={company.description}
+              thumbnail={company.thumbnail}
+              isPaid={company.isPaid}
+              slug={company.slug}
+              index={i} />
+
+            )}
           </div>
           <a
             href="#launch"
-            className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97] mt-8"
-          >
+            className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97] mt-8">
+            
             Add your startup
           </a>
         </div>
@@ -249,8 +249,8 @@ const Index = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-2xl bg-background/60 backdrop-blur-2xl rounded-3xl px-8 py-10 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-        >
+          className="max-w-2xl bg-background/60 backdrop-blur-2xl rounded-3xl px-8 py-10 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+          
           <p className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
             Blog
           </p>
@@ -259,8 +259,8 @@ const Index = () => {
           </p>
           <Link
             to="/blog"
-            className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity"
-          >
+            className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity">
+            
             Read the blog →
           </Link>
         </motion.div>
@@ -273,8 +273,8 @@ const Index = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4"
-          >
+            className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
+            
             About
           </motion.p>
           <motion.div
@@ -282,8 +282,8 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="space-y-4"
-          >
+            className="space-y-4">
+            
             <p className="font-body text-lg md:text-xl text-foreground/70 leading-relaxed">
               I'm obsessed with self-building startups — companies that design, ship, and scale themselves with AI agents doing the heavy lifting.
             </p>
@@ -298,16 +298,16 @@ const Index = () => {
                 href="https://x.com/SaadSahawneh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-4 py-1.5"
-              >
+                className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-4 py-1.5">
+                
                 Follow me on 𝕏
               </a>
               <a
                 href="https://www.linkedin.com/in/saadsahawneh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-4 py-1.5"
-              >
+                className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-4 py-1.5">
+                
                 Follow on LinkedIn
               </a>
             </div>
@@ -324,8 +324,8 @@ const Index = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4"
-          >
+            className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
+            
             Mission
           </motion.p>
           <motion.div
@@ -333,8 +333,8 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="space-y-4"
-          >
+            className="space-y-4">
+            
             <p className="font-body text-lg md:text-xl text-foreground/70 leading-relaxed">
               Accelerate the future of autonomous capitalism.
             </p>
@@ -351,8 +351,8 @@ const Index = () => {
           Lazy Unicorn © 2026
         </span>
       </footer>
-    </div>
-  );
+    </div>);
+
 };
 
 export default Index;
