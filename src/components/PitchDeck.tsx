@@ -18,7 +18,7 @@ const slides = [
         </h2>
         <div className="w-16 h-px bg-primary/40 my-6" />
         <p className="font-body text-sm md:text-base text-foreground/50 max-w-sm leading-relaxed">
-21:           The autonomous company directory.
+The autonomous company directory.
           <br />
           Start, run & scale — agents handle everything.
         </p>
