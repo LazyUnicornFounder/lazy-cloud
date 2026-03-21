@@ -71,24 +71,48 @@ export type Database = {
       submissions: {
         Row: {
           created_at: string
+          description: string | null
+          features: string[] | null
           id: string
+          is_paid: boolean
+          logo_url: string | null
           name: string
+          polar_customer_id: string | null
+          polar_subscription_id: string | null
+          screenshot_url: string | null
+          slug: string | null
           status: string
           tagline: string
           url: string
         }
         Insert: {
           created_at?: string
+          description?: string | null
+          features?: string[] | null
           id?: string
+          is_paid?: boolean
+          logo_url?: string | null
           name: string
+          polar_customer_id?: string | null
+          polar_subscription_id?: string | null
+          screenshot_url?: string | null
+          slug?: string | null
           status?: string
           tagline: string
           url: string
         }
         Update: {
           created_at?: string
+          description?: string | null
+          features?: string[] | null
           id?: string
+          is_paid?: boolean
+          logo_url?: string | null
           name?: string
+          polar_customer_id?: string | null
+          polar_subscription_id?: string | null
+          screenshot_url?: string | null
+          slug?: string | null
           status?: string
           tagline?: string
           url?: string
