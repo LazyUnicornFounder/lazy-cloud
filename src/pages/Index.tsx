@@ -218,6 +218,8 @@ const Index = () => {
 
       <SubmitSection />
 
+      <PricingSection onSubmitClick={scrollToLaunch} />
+
 
       {/* Blog CTA */}
       <section className="relative z-10 px-8 md:px-12 pb-16">
