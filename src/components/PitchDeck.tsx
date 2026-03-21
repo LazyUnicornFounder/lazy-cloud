@@ -300,24 +300,24 @@ const PitchDeck = () => {
               </button>
             </div>
           </div>
-        </div>
-        <div className="flex items-center gap-3 mt-6">
-          <a
-            href="https://x.com/SaadSahawneh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-4 py-1.5"
-          >
-            Let's chat on 𝕏
-          </a>
-          <a
-            href="https://www.linkedin.com/in/saadsahawneh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-4 py-1.5"
-          >
-            Let's chat on LinkedIn
-          </a>
+          <div className="flex items-center gap-3 px-6 pb-6">
+            <a
+              href="https://x.com/SaadSahawneh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-4 py-1.5"
+            >
+              Let's chat on 𝕏
+            </a>
+            <a
+              href="https://www.linkedin.com/in/saadsahawneh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-4 py-1.5"
+            >
+              Let's chat on LinkedIn
+            </a>
+          </div>
         </div>
       </div>
     </section>
