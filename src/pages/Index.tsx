@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import unicornBg from "@/assets/unicorn-beach.png";
 import CompanyCard from "@/components/CompanyCard";
 import SubmitSection from "@/components/SubmitSection";
@@ -12,6 +13,16 @@ import BlogTicker from "@/components/BlogTicker";
 import Navbar from "@/components/Navbar";
 
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
+      }
+    }
+  }, [location.hash]);
 
   const { data: companies = [] } = useQuery({
     queryKey: ["approved-companies"],
