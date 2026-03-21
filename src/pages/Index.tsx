@@ -28,6 +28,11 @@ const Index = () => {
     }
   }, [location.hash]);
 
+  const logoMap: Record<string, string> = {
+    "Naive": logoNaive,
+    "Polsia": logoPolsia,
+  };
+
   const { data: companies = [] } = useQuery({
     queryKey: ["approved-companies"],
     queryFn: async () => {
@@ -36,7 +41,7 @@ const Index = () => {
         .select("name, url, tagline")
         .eq("status", "approved")
         .order("created_at", { ascending: true });
-      return (data || []).map((c) => ({ name: c.name, url: c.url, description: c.tagline }));
+      return (data || []).map((c) => ({ name: c.name, url: c.url, description: c.tagline, thumbnail: logoMap[c.name] }));
     },
   });
 
