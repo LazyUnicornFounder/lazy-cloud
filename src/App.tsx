@@ -9,6 +9,8 @@ import Admin from "./pages/Admin.tsx";
 import Blog from "./pages/Blog.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
 import CompanyDetail from "./pages/CompanyDetail.tsx";
+import NaivePage from "./pages/NaivePage.tsx";
+import PolsiaPage from "./pages/PolsiaPage.tsx";
 import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
