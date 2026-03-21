@@ -120,7 +120,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
               }}
               className="font-display text-xs font-semibold tracking-[0.15em] uppercase text-foreground hover:text-primary transition-colors"
             >
-              Lazy Unicorn
+              Lazy&#160;Unicorn
             </a>
             <button
               onClick={() => setOpen(!open)}
