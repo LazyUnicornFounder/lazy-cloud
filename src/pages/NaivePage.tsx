@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Check, Zap, Bot, BarChart3, Plug, DollarSign } from "lucide-react";
