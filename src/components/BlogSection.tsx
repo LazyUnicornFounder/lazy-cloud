@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import unicornBg from "@/assets/unicorn-beach.png";
 import type { BlogPost } from "@/data/blogPosts";
+import { useDbBlogPosts } from "@/hooks/useDbBlogPosts";
 
-export const blogPosts: BlogPost[] = [
+export const staticBlogPosts: BlogPost[] = [
   {
     slug: "lazy-unicorn-raising-angel-round",
     title: "Lazy Unicorn Is Raising an Angel Round",
