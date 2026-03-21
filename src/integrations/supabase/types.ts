@@ -95,6 +95,51 @@ export type Database = {
         }
         Relationships: []
       }
+      visitors: {
+        Row: {
+          city: string | null
+          country: string | null
+          country_code: string | null
+          created_at: string
+          id: string
+          ip_hash: string
+          latitude: number | null
+          longitude: number | null
+          page: string | null
+          referrer: string | null
+          region: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          city?: string | null
+          country?: string | null
+          country_code?: string | null
+          created_at?: string
+          id?: string
+          ip_hash: string
+          latitude?: number | null
+          longitude?: number | null
+          page?: string | null
+          referrer?: string | null
+          region?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          city?: string | null
+          country?: string | null
+          country_code?: string | null
+          created_at?: string
+          id?: string
+          ip_hash?: string
+          latitude?: number | null
+          longitude?: number | null
+          page?: string | null
+          referrer?: string | null
+          region?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
