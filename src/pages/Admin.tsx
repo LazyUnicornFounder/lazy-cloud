@@ -28,7 +28,7 @@ const Admin = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics">("submissions");
+  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics">("analytics");
   const [generating, setGenerating] = useState(false);
 
   const fetchSubmissions = useCallback(async (pw: string) => {
