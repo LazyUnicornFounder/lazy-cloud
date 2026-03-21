@@ -282,7 +282,7 @@ const Index = () => {
               Accelerate the future of autonomous capitalism.
             </p>
             <p className="font-body text-base text-foreground/50 leading-relaxed">
-              I'm trying to build Lazy Unicorn into a $1 billion autonomous startup that runs itself, sell it, and then invest in a new project. For now I'd like to find companies similar to Polsia and Naive to grow the directory, and find cool new ways to grow Lazy Unicorn autonomously.
+              I'm trying to build Lazy Unicorn into a $1 billion autonomous startup that runs itself, sell it, and then invest in a new project.
             </p>
           </motion.div>
         </div>
