@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import LiveCounter from "@/components/LiveCounter";
 
@@ -18,8 +19,10 @@ interface NavbarProps {
 const Navbar = ({ activePage = "home" }: NavbarProps) => {
   const isMobile = useIsMobile();
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
-  const isHome = activePage === "home";
+  // Only treat as "home" if we're actually on the root path
+  const isHome = location.pathname === "/";
   const prefix = isHome ? "" : "/#";
 
   const links: NavLink[] = [
