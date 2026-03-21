@@ -125,7 +125,7 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-3xl mx-auto">
+    <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-5xl mx-auto">
       {/* Tabs */}
       <div className="flex items-center gap-4 mb-6">
         <button
