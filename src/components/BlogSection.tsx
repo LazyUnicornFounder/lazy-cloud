@@ -207,7 +207,7 @@ export const blogPosts: BlogPost[] = [
     title: "The Man Who Built a Company That Runs Itself",
     date: "March 2026",
     readTime: "6 min read",
-    thumbnail: benCeraOg,
+    thumbnail: unicornBg,
     excerpt: "Ben Cera quit a global executive role at Travis Kalanick's CloudKitchens, moved to San Francisco, and built a $1M run-rate business in under two months — with zero employees and a lot of agents.",
     ogImage: "polsia-ben-cera-profile.png",
     content: [
