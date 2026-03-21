@@ -123,7 +123,7 @@ const Index = () => {
               again.
             </h1>
             <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-lg leading-relaxed">
-              Discover tools that help you build an autonomous business.
+              Discover AI tools for solo founders to build autonomous startups.
             </p>
             <a
               href="#directory"
