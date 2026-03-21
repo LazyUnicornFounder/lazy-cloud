@@ -27,11 +27,8 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
   const links: NavLink[] = [
     { label: "Directory", href: isHome ? "#directory" : "/#directory" },
-    { label: "Pricing", href: isHome ? "#pricing" : "/#pricing" },
     { label: "Blog", href: "/blog", highlight: activePage === "blog" },
     { label: "About", href: isHome ? "#about" : "/#about" },
-    { label: "Pitch\u00A0Deck", href: isHome ? "#pitch" : "/#pitch" },
-    { label: "I'm\u00A0raising!", href: "/blog/lazy-unicorn-raising-angel-round", highlight: true },
     { label: "Submit", href: isHome ? "#launch" : "/#launch", isCta: true },
   ];
 
@@ -87,14 +84,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
                 >
                   {link.label}
                 </a>
-              ) : link.label === "I'm raising!" ? (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="font-body text-[11px] tracking-[0.15em] uppercase text-orange-400 hover:text-orange-300 font-semibold transition-colors"
-                >
-                  {link.label}
-                </a>
               ) : (
                 <a
                   key={link.label}
@@ -143,15 +132,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
                     href={link.href}
                     onClick={() => setOpen(false)}
                     className="font-body text-xs tracking-[0.15em] uppercase bg-primary text-primary-foreground px-5 py-2 rounded-full font-semibold text-center hover:opacity-90 transition-opacity"
-                  >
-                    {link.label}
-                  </a>
-                ) : link.label === "I'm raising!" ? (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="font-body text-xs tracking-[0.15em] uppercase text-orange-400 hover:text-orange-300 font-semibold transition-colors"
                   >
                     {link.label}
                   </a>
