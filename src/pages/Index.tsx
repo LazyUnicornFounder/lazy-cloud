@@ -112,27 +112,33 @@ const Index = () => {
             <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-lg leading-relaxed">
               Discover tools that help you launch, run and scale your autonomous startup.
             </p>
-            <div className="flex items-center gap-4 mt-6 flex-wrap">
-              <a
-                href="#directory"
-                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
-              >
-                Directory
-              </a>
-              <a
-                href="https://www.producthunt.com/products/lazy-unicorn?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-lazy-unicorn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  alt="Lazy Unicorn - Discover tools to launch your autonomous startup. | Product Hunt"
-                  width="250"
-                  height="54"
-                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1103538&theme=light&t=1774065109737"
-                />
-              </a>
-            </div>
+            <a
+              href="#directory"
+              className="inline-block mt-6 font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
+            >
+              Directory
+            </a>
           </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-6"
+        >
+          <a
+            href="https://www.producthunt.com/products/lazy-unicorn?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-lazy-unicorn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              alt="Lazy Unicorn - Discover tools to launch your autonomous startup. | Product Hunt"
+              width="250"
+              height="54"
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1103538&theme=light&t=1774065109737"
+            />
+          </a>
         </motion.div>
 
       </header>
