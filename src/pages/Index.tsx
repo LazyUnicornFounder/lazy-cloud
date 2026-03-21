@@ -245,7 +245,7 @@ const Index = () => {
 
       <SubmitSection />
 
-      <PricingSection onSubmitClick={scrollToLaunch} />
+      {/* <PricingSection onSubmitClick={scrollToLaunch} /> */}
 
 
       {/* Blog CTA */}
