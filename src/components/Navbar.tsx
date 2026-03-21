@@ -28,7 +28,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
     { label: "About", href: isHome ? "#about" : "/#about" },
     { label: "Pitch Deck", href: isHome ? "#pitch" : "/#pitch" },
     { label: "I'm raising!", href: "/blog/lazy-unicorn-raising-angel-round", highlight: true },
-    { label: "Submit", href: isHome ? "#submit" : "/#submit", isCta: true },
+    { label: "Launch", href: isHome ? "#submit" : "/#submit", isCta: true },
   ];
 
   const brandHref = isHome ? "#top" : "/";
