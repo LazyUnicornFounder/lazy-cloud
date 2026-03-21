@@ -2,7 +2,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 Deno.serve(async (req) => {
@@ -28,6 +28,7 @@ Deno.serve(async (req) => {
   }
 
   try {
+    // === Submission actions ===
     if (action === "list") {
       const { data, error } = await supabase
         .from("submissions")
@@ -54,6 +55,51 @@ Deno.serve(async (req) => {
       const { error } = await supabase
         .from("submissions")
         .update({ status: "rejected" })
+        .eq("id", id);
+      if (error) throw error;
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // === Blog post actions ===
+    if (action === "list_posts") {
+      const { data, error } = await supabase
+        .from("blog_posts")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return new Response(JSON.stringify(data), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "publish_post" && id) {
+      const { error } = await supabase
+        .from("blog_posts")
+        .update({ status: "published", published_at: new Date().toISOString() })
+        .eq("id", id);
+      if (error) throw error;
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "reject_post" && id) {
+      const { error } = await supabase
+        .from("blog_posts")
+        .update({ status: "rejected" })
+        .eq("id", id);
+      if (error) throw error;
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "delete_post" && id) {
+      const { error } = await supabase
+        .from("blog_posts")
+        .delete()
         .eq("id", id);
       if (error) throw error;
       return new Response(JSON.stringify({ success: true }), {
