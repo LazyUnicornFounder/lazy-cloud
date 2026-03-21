@@ -1,14 +1,17 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import unicornBg from "@/assets/unicorn-beach.png";
-import { blogPosts } from "@/components/BlogSection";
+import { staticBlogPosts } from "@/components/BlogSection";
+import { useDbBlogPosts } from "@/hooks/useDbBlogPosts";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import BlogTicker from "@/components/BlogTicker";
 
 const BlogPost = () => {
   const { slug } = useParams();
-  const post = blogPosts.find((p) => p.slug === slug);
+  const { posts: dbPosts } = useDbBlogPosts();
+  const allPosts = [...staticBlogPosts, ...dbPosts];
+  const post = allPosts.find((p) => p.slug === slug);
 
   if (!post) {
     return (
