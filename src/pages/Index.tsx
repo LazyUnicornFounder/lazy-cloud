@@ -194,6 +194,27 @@ const Index = () => {
             Directory
           </motion.p>
           <div className="space-y-px">
+            <a
+              href="#pricing"
+              className="group flex items-center justify-between py-5 border-b border-dashed border-primary/20 hover:pl-2 transition-all duration-300 cursor-pointer"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-lg border border-dashed border-primary/30 bg-primary/5 flex items-center justify-center shrink-0">
+                  <span className="text-primary text-lg">✦</span>
+                </div>
+                <div>
+                  <p className="font-display text-lg md:text-xl font-bold text-primary/70 group-hover:text-primary transition-colors">
+                    Your startup here
+                  </p>
+                  <p className="font-body text-sm text-foreground/30 mt-0.5">
+                    Get a Pro listing featured here &amp; your own company page
+                  </p>
+                </div>
+              </div>
+              <span className="font-body text-[10px] tracking-[0.15em] uppercase text-primary/40 group-hover:text-primary/70 transition-colors shrink-0 ml-4">
+                $5/mo ↗
+              </span>
+            </a>
             {companies.map((company, i) => (
               <CompanyCard
                 key={company.name}
