@@ -38,10 +38,18 @@ const Index = () => {
     queryFn: async () => {
       const { data } = await supabase
         .from("submissions")
-        .select("name, url, tagline")
+        .select("name, url, tagline, is_paid, slug")
         .eq("status", "approved")
+        .order("is_paid", { ascending: false })
         .order("created_at", { ascending: true });
-      return (data || []).map((c) => ({ name: c.name, url: c.url, description: c.tagline, thumbnail: logoMap[c.name] }));
+      return (data || []).map((c) => ({
+        name: c.name,
+        url: c.url,
+        description: c.tagline,
+        thumbnail: logoMap[c.name],
+        isPaid: c.is_paid,
+        slug: c.slug,
+      }));
     },
   });
 
