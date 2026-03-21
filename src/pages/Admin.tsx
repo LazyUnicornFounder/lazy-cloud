@@ -144,6 +144,14 @@ const Admin = () => {
         >
           Blog Posts
         </button>
+        <button
+          onClick={() => setActiveTab("analytics")}
+          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
+            activeTab === "analytics" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          Analytics
+        </button>
       </div>
 
       {loading && <p className="font-body text-sm text-muted-foreground">Loading…</p>}
