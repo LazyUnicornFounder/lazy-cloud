@@ -151,7 +151,7 @@ Deno.serve(async (req) => {
           logo_url: logo_url || null,
           screenshot_url: screenshot_url || null,
         })
-        .eq("id", submission_id);
+        .eq("slug", submission_id);
 
       return new Response(
         JSON.stringify({ success: true }),
