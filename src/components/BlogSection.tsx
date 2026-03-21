@@ -2,7 +2,8 @@ import { Pin } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import unicornBg from "@/assets/unicorn-beach.png";
-import polsiaArtwork from "@/assets/polsia-artwork.png";
+import naiveOg from "/og/naive-sean-dennis-profile.png";
+import benCeraOg from "/og/polsia-ben-cera-profile-v2.png";
 import type { BlogPost } from "@/data/blogPosts";
 
 export const blogPosts: BlogPost[] = [
@@ -96,12 +97,119 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
+    slug: "naive-sean-dennis-profile",
+    title: "The Berkeley Dropouts Who Built an AI That Hires Itself a Team",
+    date: "March 2026",
+    readTime: "6 min read",
+    thumbnail: naiveOg,
+    excerpt: "Sean Dorje started building computer vision companies at 15. Dennis Zax was building alongside him. Together they dropped out of Berkeley, went through YC twice, and built Naïve — an AI that shows up with its own email, bank account, and identity.",
+    ogImage: "naive-sean-dennis-profile.png",
+    content: [
+      "Most founders build tools. Sean Dorje and Dennis Zax are building colleagues.",
+
+      "Not AI assistants that wait to be asked. Not automation workflows that execute pre-defined scripts. Actual autonomous employees — entities with their own identity, their own credentials, their own bank accounts, their own compute — that show up to your company on day one and start working without being told exactly what to do.",
+
+      "That's Naïve. And the story of how two Berkeley dropouts built it is, appropriately, one of the most recursive founder stories in recent memory: a company built by people who had already spent years building companies with AI, to help other people build companies with AI, using the very thing they were building to build the thing they were building.",
+
+      "Stay with it. It makes sense by the end.",
+
+      "<strong>Sean Dorje</strong> · CEO & Co-Founder — Berkeley dropout · YC X25 · Computer vision · ezML co-founder · Relixir CEO. Started building computer vision systems at 15, scaling them to six-figure revenues. Co-founded ezML — an enterprise computer vision platform backed by Pear VC — while still at Berkeley. Dropped out to pursue the company. Went through Y Combinator's X25 batch with Relixir, the AI GEO platform he and Dennis built before pivoting their core insight into Naïve.",
+
+      "<strong>Dennis Zax</strong> · CTO & Co-Founder — Berkeley alum · YC X25 · Systems builder · ezML co-founder · Relixir CTO. The technical spine of every company Sean has co-founded. Built the systems architecture at ezML, co-developed the autonomous content infrastructure at Relixir that ranked them #1 across 200+ search queries, and now leads the engineering behind Naïve's AI employee runtime.",
+
+      "<strong>How You Get to Naïve</strong>",
+
+      "The path from Berkeley undergrads to YC-backed autonomous company builders is not a straight line. It's a series of increasingly ambitious bets on a single idea: that AI should do more of the work, and that the human's job is to point it in the right direction.",
+
+      "At 15, Sean starts building with AI — computer vision systems, scaled to six-figure revenues. Not a school project. Real products, real customers, real money. The founding instinct — that technical systems can do meaningful commercial work with minimal human operation — gets planted early.",
+
+      "At UC Berkeley, Sean and Dennis co-found ezML — an enterprise computer vision platform building AI-powered video analysis infrastructure for sports, manufacturing, and logistics. Backed by Pear VC. The first iteration of the partnership that would eventually build Naïve.",
+
+      "Sean drops out of Berkeley's EECS program to pursue entrepreneurship full time. Dennis follows. The decision that separates the people who are serious about building from the ones who are serious about credentials.",
+
+      "In the YC X25 batch, Sean and Dennis go through Y Combinator with <strong>Relixir</strong> — an AI Generative Engine Optimization platform that helps companies rank in ChatGPT, Perplexity, and other AI search engines. To build Relixir, they needed to automate content creation at scale. So they built an internal autonomous content system that ranked them <strong>#1 across 200+ search queries</strong>. They were building autonomous company infrastructure before they had a name for it.",
+
+      "Then the pivot. The autonomous agents they built to run Relixir's own operations were more interesting than Relixir itself. The insight: what if anyone could deploy this kind of system for their company? Not just content. Everything. <strong>Naïve is born.</strong>",
+
+      "YC Spring 2025 — Naïve launches. Within its first months it's running autonomous employees for 500+ companies including Airwallex and HackerRank. The AI employees have their own email addresses, their own bank accounts, their own credentials. They sign up for tools, pay for services, and file documents <strong>as themselves.</strong>",
+
+      "<strong>What Makes Naïve Different From Everything Else</strong>",
+
+      "There are a lot of products claiming to automate business operations. What makes Naïve distinct — and what reflects Sean and Dennis's specific technical background — is the depth of the agent identity model.",
+
+      "Most AI agents are glorified workflows. They execute tasks you define, using credentials you set up, within boundaries you specify. They have no persistent identity. They don't learn. They don't exist between tasks. They're tools with a nicer interface.",
+
+      "Naïve's agents are something closer to employees. And the distinction is specific and technical, not just marketing language.",
+
+      "<strong>Identity</strong> — Each Naïve employee has their own email address, bank account, login credentials, and compute. They sign up for tools themselves. They pay for services themselves. They file documents as themselves. They exist in the world as entities, not just as processes running on your account.",
+
+      "<strong>Memory</strong> — Every output, every result, every interaction gets stored and analyzed. The agents extract patterns about your specific business — not generic patterns. Your customers, your voice, your conversion data. Performance compounds week over week without the founder adding anything.",
+
+      "<strong>Deployment</strong> — Describe your business in a single chat. Naïve builds the infrastructure, deploys the right agents for each function, and starts executing. Landing pages, outbound sequences, SEO content, LinkedIn posts — all live before you've done anything else.",
+
+      "<strong>Integration</strong> — For existing businesses, Naïve plugs in rather than replaces. Connect your CRM, codebase, Shopify, Notion, or whatever you're already running. Naïve employees plug in on day one and start augmenting what's already working.",
+
+      "The numbers: <strong>500+</strong> companies running Naïve employees including Airwallex & HackerRank. <strong>200+</strong> search queries ranked #1 — proof of concept built before the product. <strong>1</strong> message needed to deploy a full autonomous company team.",
+
+      "<strong>The Relixir Insight That Changed Everything</strong>",
+
+      "The most interesting part of Sean and Dennis's story isn't Naïve itself. It's how they got there.",
+
+      "At Relixir, they needed to rank #1 in AI search for their customers. To do that, they needed to create enormous amounts of high-quality, brand-specific content continuously. No human content team could do this at scale. So they built an autonomous content system — AI agents that produced, published, and optimized content without human input at each step.",
+
+      "It worked. They ranked #1 across 200+ search queries. They went through YC. They were building a GEO platform.",
+
+      "And then they looked at what they'd actually built to run Relixir — the internal autonomous operations system — and realized it was more interesting than the product they were selling.",
+
+      "At Relixir, they'd accidentally built an autonomous company runtime. Agents that ran the business's core functions without requiring a human at each step. Agents that learned from results and got better. Agents that had access to real tools and real accounts and could take real actions in the world. The pivot to Naïve wasn't a retreat. It was a zoom out. <strong>Instead of selling one specific autonomous capability, why not sell the whole runtime?</strong> Let any founder describe any business, and deploy the same autonomous infrastructure they'd built for themselves. Naïve is Relixir's internal operating system, productized for the world.",
+
+      "<strong>Two Builders, One Vision</strong>",
+
+      "What comes through in the story of Sean and Dennis is a specific kind of founder partnership — one where the technical and commercial instincts are so tightly integrated that it's hard to tell where one ends and the other begins.",
+
+      "Sean brings the sales velocity, the product instinct, the founder energy that turns an idea into a company. He started building commercial products at 15. He knows how to get customers, how to talk to users, how to position a product in a market that doesn't fully exist yet.",
+
+      "Dennis brings the systems architecture that makes the ambitious thing work. Every autonomous AI platform lives or dies on its underlying infrastructure — the agent memory model, the identity system, the learning loops, the way results feed back into improved behavior. That's Dennis's domain, and it's the difference between a demo and a product that scales.",
+
+      "\"Berkeley dropouts who built the first internal GEO system at their previous company to rank #1 in 200+ searches by auto-producing a high-quality content farm.\"",
+
+      "That's how YC describes them. It's deliberately matter-of-fact about something remarkable: they proved the autonomous company thesis on themselves before they sold it to anyone else.",
+
+      "<strong>What Naïve Is Actually Building Toward</strong>",
+
+      "The current product — deploy autonomous employees with a single prompt, run your company from a dashboard — is the first chapter. The vision Sean and Dennis are building toward is more radical.",
+
+      "The end state: A world where starting and running a company requires no operational expertise. Where the quality of your idea and the clarity of your direction are the only inputs. Where AI employees with real-world identities — their own bank accounts, their own professional presence, their own learned expertise in your specific business — handle everything between the vision and the outcome. Not AI that helps humans run companies. AI that runs companies, <strong>with humans setting the destination.</strong>",
+
+      "They're not alone in the race. Ben Cera is building something similar at Polsia — one founder, zero employees, $5M run rate in under 90 days. The autonomous company space is moving fast and getting crowded.",
+
+      "But Naïve has something Polsia doesn't: the agent identity model. AI employees who exist in the world as entities, not just as processes. Who have their own email addresses and bank accounts. Who can sign up for tools and pay for services without the founder's credentials being involved.",
+
+      "That's not a feature. That's a different theory of what an autonomous business actually is.",
+
+      "<strong>What Two Berkeley Dropouts Understood That Most People Didn't</strong>",
+
+      "The conventional wisdom about AI in 2024 was that it was a productivity multiplier. It helped you do more of the same thing, faster. It was a tool you picked up and put down. It waited for you.",
+
+      "Sean and Dennis didn't believe that. They'd been building systems that acted autonomously — computer vision systems that analyzed video without human review, content systems that published without human approval, GEO systems that ranked without human involvement at each step. They knew from direct experience that AI wasn't just a tool. It was a team member. A junior one that needed good direction. But a real one.",
+
+      "Naïve is that intuition made into a product. Not \"AI helps your company.\" Not \"AI assists your employees.\" <strong>AI is your employees.</strong> They show up. They have email addresses. They learn your business. They get better at it every week. They do the work while you think about what to build next.",
+
+      "Sean started building companies at 15. Dennis has been building the systems that make those companies run. Together they've spent the better part of a decade proving that autonomous systems can do meaningful commercial work with minimal human operation.",
+
+      "Naïve is the distillation of everything they learned. And the market is just starting to pay attention.",
+
+      "Visit <a href='https://usenaive.ai' target='_blank' rel='noopener noreferrer'>usenaive.ai</a> — and describe your company to see what happens.",
+    ],
+  },
+  {
     slug: "polsia-ben-cera-profile",
     title: "The Man Who Built a Company That Runs Itself",
     date: "March 2026",
     readTime: "6 min read",
-    thumbnail: polsiaArtwork,
+    thumbnail: benCeraOg,
     excerpt: "Ben Cera quit a global executive role at Travis Kalanick's CloudKitchens, moved to San Francisco, and built a $1M run-rate business in under two months — with zero employees and a lot of agents.",
+    ogImage: "polsia-ben-cera-profile.png",
     content: [
       "Somewhere on the drive between Los Angeles and San Francisco — hours of open road, no meetings, no inbox — Ben Cera stopped asking the wrong question.",
 
