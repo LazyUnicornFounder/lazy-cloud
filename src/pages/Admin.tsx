@@ -174,6 +174,14 @@ const Admin = () => {
         >
           Analytics
         </button>
+        <button
+          onClick={() => setActiveTab("twitter")}
+          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
+            activeTab === "twitter" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          Twitter
+        </button>
       </div>
 
       {loading && <p className="font-body text-sm text-muted-foreground">Loading…</p>}
