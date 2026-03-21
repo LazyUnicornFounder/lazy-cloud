@@ -771,93 +771,6 @@ export const staticBlogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "the-recursive-startup",
-    title: "The Recursive Startup",
-    date: "March 2026",
-    readTime: "9 min read",
-    thumbnail: unicornBg,
-    excerpt: "A company that improves its own ability to improve itself. Not just autonomous — self-compounding. This is the idea that keeps AI researchers up at night and should excite every founder paying attention.",
-    content: [
-      "In computer science, recursion is when a function calls itself. It's one of the most elegant ideas in all of programming — a process that contains itself, that feeds its own output back as its own input, that can solve infinitely complex problems through nothing more than a clean loop and a clear stopping condition.",
-
-      "It also breaks everything if you don't know what you're doing.",
-
-      "The startup world is about to discover recursion. Not as a metaphor — as a literal description of how the most advanced autonomous companies are beginning to operate. Companies that don't just run themselves, but actively improve their own ability to run themselves. Systems that learn from their outputs, redesign their processes, and compound in capability over time without anyone telling them to.",
-
-      "This is the recursive startup. And it changes everything about how we think about building a business.",
-
-      "The difference looks small on a screen. In practice, it's the difference between a treadmill and a flywheel.",
-
-      "\"A company that gets better at getting better is not just autonomous. It's unstoppable — given time and the right direction.\"",
-
-      "What Recursion Actually Looks Like in a Business",
-
-      "Recursion in a startup isn't abstract. It shows up as a very specific loop — one that every self-improving system runs, whether it's biological, computational, or corporate.",
-
-      "The loop has five steps. First, Execute: the company does something — sends emails, runs ads, ships code, handles support tickets, publishes content. Second, Measure: the results come back as data — open rates, conversion rates, churn, revenue. Third, Learn: the system identifies what worked, what didn't, and why. Fourth, Improve itself: the system modifies its own behavior — not just this campaign, but the underlying approach, the templates, the targeting, the strategy. Fifth, Execute again — better: the next cycle runs with the improved system, and the loop continues.",
-
-      "This loop isn't new. Great founders have always tried to build it — the discipline of measuring, learning, and iterating is the backbone of every lean startup methodology. What's new is who's running the loop. In the recursive startup, the system runs this loop on itself, continuously, without a human initiating each cycle. The founder doesn't schedule the retrospective. The company just does it.",
-
-      "The Four Levels of Startup Recursion",
-
-      "Not all recursive behavior is equal. There's a spectrum — from simple feedback loops most businesses already have, to something genuinely unprecedented at the top end.",
-
-      "Level 1 — Basic: The company measures and reports. Analytics dashboards, email open rate tracking, conversion funnels. Data comes back to the founder, who interprets it and decides what to change. The loop exists but a human is required at every step. Most businesses are here.",
-
-      "Level 2 — Automated: The company measures and adjusts automatically. A/B testing that auto-selects winners. Ad bidding that optimizes spend in real time. Email sequences that adapt based on behavior. The loop runs without human intervention — but only within predefined parameters. The system improves execution, not strategy.",
-
-      "Level 3 — Autonomous: The company decides what to improve and does it. AI agents that notice what's working across the whole business and reallocate effort toward it. A system that identifies its own weakest function and prioritizes fixing it. The loop now covers strategy, not just execution. This is where Naïve and Polsia operate today.",
-
-      "Level 4 — Recursive: The company improves its own ability to improve. The system doesn't just get better at running the business — it gets better at getting better. It redesigns its own learning processes. It identifies which metrics matter and creates new ones. It rewrites the playbook it uses to rewrite the playbook. This is the frontier. It exists in glimpses today and will be the norm within five years.",
-
-      "Level 4 is where the word \"recursive\" earns its weight. A company that improves its own improvement process doesn't grow linearly. It compounds. Each cycle makes the next cycle faster and better. Given enough time and a clear direction, the ceiling is effectively infinite.",
-
-      "Naïve and Polsia at the Frontier",
-
-      "The most honest description of where both platforms sit today is firmly at Level 3, with clear architectural ambitions toward Level 4. That's not a criticism — Level 3 is already extraordinary. It's also where the recursive behavior starts to produce results that surprise even the people who built the system.",
-
-      "Naïve's agents don't just execute campaigns — they measure every output, identify what's converting, and double down autonomously. A LinkedIn post that outperforms becomes a template. A subject line that lifts open rates gets used everywhere. The system learns your business's voice and your audience's preferences over time, making each cycle more effective than the last.",
-
-      "Polsia's architecture is explicitly designed around the recursive loop. Its agents run tasks, measure results, and update their own behavior based on what they learn — continuously, without human intervention. Crucially, Polsia used itself to build and market Polsia — a company that ran its own development through the same autonomous loop it offers to customers. That's not a marketing claim. That's recursion made literal.",
-
-      "\"A company that gets better at getting better doesn't have a ceiling. It has a direction.\"",
-
-      "The Base Case Problem — and Why It Matters",
-
-      "In computer science, an infinite recursive loop without a base case — a stopping condition — crashes the system. Stack overflow. The function calls itself forever, consuming all available memory, until everything collapses.",
-
-      "The recursive startup has the same risk. A system that improves itself without constraint, without a clear definition of what \"better\" means, without a human maintaining the direction — that's not a feature. That's a crash waiting to happen.",
-
-      "The founder's real job in a recursive startup: You are the base case. You define what \"better\" means. You set the values the system optimizes toward. You are the stopping condition that prevents the loop from collapsing into pure metric-chasing at the expense of everything that actually matters. The system handles the recursion. You handle the direction. Neither works without the other.",
-
-      "This is why \"just let the AI run everything\" is bad advice despite being appealing. A recursive system pointed in the wrong direction gets very good at going the wrong way, very fast. The human role isn't to do the work. It's to ensure the compounding is aimed at something worth compounding toward.",
-
-      "What Happens When Every Startup Is Recursive",
-
-      "We're still early. Most startups today are at Level 1 or 2. A growing number are reaching Level 3 through platforms like Naïve and Polsia. Level 4 is a horizon that's getting closer but hasn't arrived for most.",
-
-      "But project this forward five years — to a world where recursive self-improvement is the default mode of company operation — and the implications get genuinely strange.",
-
-      "Competition between companies stops being about who has the best team and becomes about who has the best improvement loop. The company with the superior recursive architecture doesn't just win in the short term — it compounds its advantage every single day. The gap between a Level 3 and Level 4 company, given a year of compounding, becomes structurally unbridgeable by a team of humans working manually.",
-
-      "It also means the most important strategic decision a founder makes isn't about the product or the market. It's about the quality and direction of the recursive loop. Get the loop right — clear metrics, aligned incentives, strong direction — and the rest follows almost automatically. Get it wrong, and no amount of effort will compensate for a system that's compounding in the wrong direction.",
-
-      "\"Strategy used to be about where to compete. In the recursive startup era, it's about how fast you improve — and what you're improving toward.\"",
-
-      "The Loop Is Already Running",
-
-      "Somewhere right now, Polsia is running its autonomous task cycle. It's executing, measuring, learning, and updating itself for the next cycle. Naïve is watching which campaigns work and reconfiguring its agents based on what it finds. Both systems are running their recursive loops on hundreds of companies simultaneously, getting better with every iteration.",
-
-      "This isn't theoretical. The recursion is live. The compounding has started.",
-
-      "The most important insight from computer science about recursion is this: you don't need to understand every iteration to trust the loop. You need to define the base case clearly, start the function, and let the process do what recursive processes do.",
-
-      "Build the company. Point it in the right direction. Write the base case. Then let it call itself.",
-
-      "\"The best thing you'll ever build isn't the product. It's the loop that improves the product forever.\"",
-    ],
-  },
-  {
     slug: "retire-early-keep-the-company",
     title: "Retire Early. Keep the Company.",
     date: "March 2026",
@@ -922,7 +835,7 @@ export const staticBlogPosts: BlogPost[] = [
     slug: "what-is-a-recursive-startup",
     title: "What Is a Recursive Startup?",
     date: "March 2026",
-    readTime: "8 min read",
+    readTime: "12 min read",
     thumbnail: unicornBg,
     excerpt: "A startup that improves its own ability to improve itself. Not just autonomous — self-compounding. Here's what it means, how it works, and why the founders building them will look like they have an unfair advantage.",
     content: [
@@ -974,9 +887,19 @@ export const staticBlogPosts: BlogPost[] = [
 
       "If you want a single sentence: <em>A recursive startup uses its own results to improve the quality of its future results — automatically, continuously, without requiring a founder to initiate each improvement cycle.</em>",
 
+      "What Happens When Every Startup Is Recursive",
+
+      "We're still early. Most startups today are at Level 0 or 1. A growing number are reaching Level 3 through platforms like Naïve and Polsia. Level 4 is a horizon that's getting closer but hasn't arrived for most. But project this forward five years — to a world where recursive self-improvement is the default mode of company operation — and the implications get genuinely strange.",
+
+      "Competition between companies stops being about who has the best team and becomes about who has the best improvement loop. The company with the superior recursive architecture doesn't just win in the short term — it compounds its advantage every single day. The gap between a Level 3 and Level 4 company, given a year of compounding, becomes structurally unbridgeable by a team of humans working manually.",
+
+      "It also means the most important strategic decision a founder makes isn't about the product or the market. It's about the quality and direction of the recursive loop. Get the loop right — clear metrics, aligned incentives, strong direction — and the rest follows almost automatically. Get it wrong, and no amount of effort will compensate for a system that's compounding in the wrong direction.",
+
+      "\"Strategy used to be about where to compete. In the recursive startup era, it's about how fast you improve — and what you're improving toward.\"",
+
       "It's the difference between a company you run and a company that runs itself — and gets better at running itself — while you think about where to point it next. Naïve and Polsia are the clearest current examples. But the pattern is spreading. Every founder who understands it early has a structural advantage that compounds.",
 
-      "That's what a recursive startup is. And that's why it matters.",
+      "\"The best thing you'll ever build isn't the product. It's the loop that improves the product forever.\"",
     ],
   },
   {
