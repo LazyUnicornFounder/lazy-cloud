@@ -107,6 +107,32 @@ Deno.serve(async (req) => {
       });
     }
 
+    // === Visitor analytics actions ===
+    if (action === "visitors") {
+      const { data, error } = await supabase
+        .from("visitors")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(1000);
+      if (error) throw error;
+      return new Response(JSON.stringify(data), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "visitor_stats") {
+      // Get country breakdown
+      const { data: all, error } = await supabase
+        .from("visitors")
+        .select("country, country_code, city, region, latitude, longitude, created_at, user_agent, page, referrer")
+        .order("created_at", { ascending: false })
+        .limit(5000);
+      if (error) throw error;
+      return new Response(JSON.stringify(all), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     return new Response(JSON.stringify({ error: "Invalid action" }), {
       status: 400,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
