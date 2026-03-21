@@ -56,6 +56,7 @@ const PolsiaPage = () => {
         <BlogTicker />
       </div>
       <Navbar activePage="home" />
+      <FloatingProductCTA />
 
       <main className="relative z-10 pt-28 pb-32 px-6 md:px-12">
         <div className="max-w-3xl">
