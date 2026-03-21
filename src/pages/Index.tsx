@@ -115,73 +115,79 @@ const Index = () => {
 
       {/* Hero — full viewport, architectural feel */}
       <header className="relative z-10 min-h-screen flex flex-col justify-center items-start px-8 md:px-12 pb-16">
-        {/* Entrance sign + Hero box wrapper */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="flex flex-col items-center">
-          
-          <a
-            href="https://www.producthunt.com/products/lazy-unicorn?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-lazy-unicorn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mb-3">
-            
-            <img
-              alt="Lazy Unicorn - Discover tools to launch your autonomous startup. | Product Hunt"
-              width="250"
-              height="54"
-              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1103538&theme=dark&t=1774065246015" />
-            
-          </a>
+        <div className="flex flex-col md:flex-row md:items-end md:gap-6 w-full">
+          {/* Entrance sign + Hero box wrapper */}
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mb-[-1px] relative z-10">
+            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+            className="flex flex-col items-center">
             
-            <div className="bg-background/60 backdrop-blur-2xl border border-foreground/10 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
-              <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
-                Autonomous capitalism for the rest of us
+            <a
+              href="https://www.producthunt.com/products/lazy-unicorn?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-lazy-unicorn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mb-3">
+              
+              <img
+                alt="Lazy Unicorn - Discover tools to launch your autonomous startup. | Product Hunt"
+                width="250"
+                height="54"
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1103538&theme=dark&t=1774065246015" />
+              
+            </a>
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+              className="mb-[-1px] relative z-10">
+              
+              <div className="bg-background/60 backdrop-blur-2xl border border-foreground/10 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
+                <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
+                  Autonomous capitalism for the rest of us
+                </p>
+                <p className="font-body text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-foreground/60 text-center mt-1">
+                  ★  EST. 2026  ★
+                </p>
+              </div>
+            </motion.div>
+
+            <div className="bg-background/60 backdrop-blur-2xl rounded-3xl px-10 py-8 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+              <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.95] text-foreground">
+                Build your autonomous
+                <br />
+                startup as a
+                <br />
+                solo founder.
+              </h1>
+              <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-xl leading-relaxed">
+                Discover AI tools for solo founders to build autonomous startups.
               </p>
-              <p className="font-body text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-foreground/60 text-center mt-1">
-                ★  EST. 2026  ★
-              </p>
+              <div className="flex items-center gap-3 mt-6">
+                <a href="#directory"
+                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]">
+                  
+                  Directory
+                </a>
+                <a
+                  href="#launch"
+                  className="inline-block font-body text-[11px] tracking-[0.15em] uppercase border border-foreground/20 text-foreground/70 hover:text-primary hover:border-primary/40 px-6 py-2.5 rounded-full font-semibold transition-colors active:scale-[0.97]">
+                  
+                  Launch your startup
+                </a>
+              </div>
             </div>
           </motion.div>
 
-          <div className="bg-background/60 backdrop-blur-2xl rounded-3xl px-10 py-8 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-            <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.95] text-foreground">
-              Build your autonomous
-              <br />
-              startup as a
-              <br />
-              solo founder.
-            </h1>
-            <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-xl leading-relaxed">
-              Discover AI tools for solo founders to build autonomous startups.
-            </p>
-            <div className="flex items-center gap-3 mt-6">
-              <a href="#directory"
-              className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]">
-                
-                Directory
-              </a>
-              <a
-                href="#launch"
-                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase border border-foreground/20 text-foreground/70 hover:text-primary hover:border-primary/40 px-6 py-2.5 rounded-full font-semibold transition-colors active:scale-[0.97]">
-                
-                Launch your startup
-              </a>
-            </div>
-          </div>
-
           {/* Valuation Breakdown */}
-          <div className="bg-background/60 backdrop-blur-2xl rounded-3xl px-10 py-8 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] mt-4 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="bg-background/60 backdrop-blur-2xl rounded-2xl px-6 py-6 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] mt-4 md:mt-0 md:max-w-[280px] w-full shrink-0">
             <ValuationBreakdown />
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
 
       </header>
