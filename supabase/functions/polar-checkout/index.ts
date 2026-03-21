@@ -126,7 +126,7 @@ Deno.serve(async (req) => {
             polar_customer_id: checkout.customer_id || null,
             polar_subscription_id: checkout.subscription_id || null,
           })
-          .eq("id", submission_id);
+          .eq("slug", submission_id);
       }
 
       return new Response(
@@ -151,7 +151,7 @@ Deno.serve(async (req) => {
           logo_url: logo_url || null,
           screenshot_url: screenshot_url || null,
         })
-        .eq("id", submission_id);
+        .eq("slug", submission_id);
 
       return new Response(
         JSON.stringify({ success: true }),
