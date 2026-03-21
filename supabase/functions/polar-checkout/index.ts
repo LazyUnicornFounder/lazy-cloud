@@ -126,7 +126,7 @@ Deno.serve(async (req) => {
             polar_customer_id: checkout.customer_id || null,
             polar_subscription_id: checkout.subscription_id || null,
           })
-          .eq("id", submission_id);
+          .eq("slug", submission_id);
       }
 
       return new Response(
