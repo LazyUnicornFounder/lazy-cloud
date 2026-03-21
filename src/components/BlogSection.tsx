@@ -1099,6 +1099,11 @@ export const staticBlogPosts: BlogPost[] = [
 ];
 
 const BlogSection = () => {
+  const { posts: dbPosts } = useDbBlogPosts();
+
+  // Merge static posts with DB posts, static first (pinned post stays on top)
+  const allPosts = [...staticBlogPosts, ...dbPosts];
+
   return (
     <section id="blog" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-24">
       <div className="max-w-5xl">
@@ -1119,7 +1124,7 @@ const BlogSection = () => {
 
         {/* Post grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {blogPosts.map((post, i) => (
+          {allPosts.map((post, i) => (
             <motion.div
               key={post.slug}
               initial={{ opacity: 0, y: 16 }}
@@ -1132,11 +1137,15 @@ const BlogSection = () => {
               >
                 {/* Thumbnail */}
                 <div className="relative h-44 overflow-hidden">
-                  <img
-                    src={post.thumbnail}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                  {post.thumbnail ? (
+                    <img
+                      src={post.thumbnail}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-primary/10" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                   {post.slug === "lazy-unicorn-raising-angel-round" && (
                     <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-orange-400/90 backdrop-blur-sm text-background text-[9px] font-semibold tracking-[0.15em] uppercase rounded-full px-3 py-1 shadow-lg">

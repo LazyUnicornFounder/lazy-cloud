@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import unicornBg from "@/assets/unicorn-beach.png";
-import BlogSection, { blogPosts } from "@/components/BlogSection";
+import BlogSection, { staticBlogPosts } from "@/components/BlogSection";
+import { useDbBlogPosts } from "@/hooks/useDbBlogPosts";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import BlogTicker from "@/components/BlogTicker";
