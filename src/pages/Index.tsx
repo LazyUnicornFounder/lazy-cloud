@@ -179,14 +179,6 @@ const Index = () => {
             </div>
           </motion.div>
 
-          {/* Valuation Breakdown */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="bg-background/60 backdrop-blur-2xl rounded-2xl px-6 py-6 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] mt-4 md:mt-0 md:max-w-[280px] w-full shrink-0">
-            <ValuationBreakdown />
-          </motion.div>
         </div>
 
 
