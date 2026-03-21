@@ -195,6 +195,8 @@ const Index = () => {
                 url={company.url}
                 description={company.description}
                 thumbnail={company.thumbnail}
+                isPaid={company.isPaid}
+                slug={company.slug}
                 index={i}
               />
             ))}
