@@ -84,14 +84,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
                 >
                   {link.label}
                 </a>
-              ) : link.label === "I'm raising!" ? (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="font-body text-[11px] tracking-[0.15em] uppercase text-orange-400 hover:text-orange-300 font-semibold transition-colors"
-                >
-                  {link.label}
-                </a>
               ) : (
                 <a
                   key={link.label}
