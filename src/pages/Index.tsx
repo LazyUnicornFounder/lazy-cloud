@@ -133,7 +133,7 @@ const Index = () => {
               <br />
               again.
             </h1>
-            <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-lg leading-relaxed">
+            <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-xl leading-relaxed">
               Discover AI tools for solo founders to build autonomous startups.
             </p>
             <a
