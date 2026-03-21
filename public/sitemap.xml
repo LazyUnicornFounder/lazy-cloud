@@ -105,6 +105,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.lazyunicorn.ai/blog/get-out-of-unicorn-race</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.lazyunicorn.ai/company/naive</loc>
     <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>
