@@ -161,7 +161,7 @@ const Index = () => {
                 that builds itself.
               </h1>
               <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-xl leading-relaxed">
-                Discover AI tools and resources to build your autonomous startup, and follow my journey as I attempt to build an autonomous unicorn with Lovable—as a solo founder.
+                Discover AI tools and resources to build your autonomous startup, and follow my journey as I attempt to build Lazy Unicorn into an autonomous unicorn, using Lovable—as a solo founder.
               </p>
               <div className="flex items-center gap-3 mt-6">
                 <a href="#directory"
