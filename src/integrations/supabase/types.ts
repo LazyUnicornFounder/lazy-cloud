@@ -29,6 +29,45 @@ export type Database = {
         }
         Relationships: []
       }
+      blog_posts: {
+        Row: {
+          content: string[]
+          created_at: string
+          excerpt: string
+          id: string
+          published_at: string | null
+          read_time: string
+          slug: string
+          status: string
+          thumbnail: string | null
+          title: string
+        }
+        Insert: {
+          content?: string[]
+          created_at?: string
+          excerpt: string
+          id?: string
+          published_at?: string | null
+          read_time?: string
+          slug: string
+          status?: string
+          thumbnail?: string | null
+          title: string
+        }
+        Update: {
+          content?: string[]
+          created_at?: string
+          excerpt?: string
+          id?: string
+          published_at?: string | null
+          read_time?: string
+          slug?: string
+          status?: string
+          thumbnail?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
       submissions: {
         Row: {
           created_at: string
