@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink, Check, Zap, Bot, BarChart3, Plug, DollarSign }
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import BlogTicker from "@/components/BlogTicker";
+import FloatingProductCTA from "@/components/FloatingProductCTA";
 import unicornBg from "@/assets/unicorn-beach.png";
 import logoNaive from "@/assets/logo-naive.jpg";
 import screenshotNaive from "@/assets/screenshot-naive.jpg";

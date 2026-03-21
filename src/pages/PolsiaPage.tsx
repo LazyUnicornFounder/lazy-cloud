@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink, Check, Brain, Rocket, Clock, Eye } from "lucid
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import BlogTicker from "@/components/BlogTicker";
+import FloatingProductCTA from "@/components/FloatingProductCTA";
 import unicornBg from "@/assets/unicorn-beach.png";
 import logoPolsia from "@/assets/logo-polsia.jpg";
 import screenshotPolsia from "@/assets/screenshot-polsia.jpg";
