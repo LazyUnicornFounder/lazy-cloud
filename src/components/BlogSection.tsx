@@ -2,8 +2,6 @@ import { Pin } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import unicornBg from "@/assets/unicorn-beach.png";
-import naiveOg from "/og/naive-sean-dennis-profile.png";
-import benCeraOg from "/og/polsia-ben-cera-profile-v2.png";
 import type { BlogPost } from "@/data/blogPosts";
 
 export const blogPosts: BlogPost[] = [
@@ -101,7 +99,7 @@ export const blogPosts: BlogPost[] = [
     title: "The Berkeley Dropouts Who Built an AI That Hires Itself a Team",
     date: "March 2026",
     readTime: "6 min read",
-    thumbnail: naiveOg,
+    thumbnail: unicornBg,
     excerpt: "Sean Dorje started building computer vision companies at 15. Dennis Zax was building alongside him. Together they dropped out of Berkeley, went through YC twice, and built Naïve — an AI that shows up with its own email, bank account, and identity.",
     ogImage: "naive-sean-dennis-profile.png",
     content: [
@@ -207,7 +205,7 @@ export const blogPosts: BlogPost[] = [
     title: "The Man Who Built a Company That Runs Itself",
     date: "March 2026",
     readTime: "6 min read",
-    thumbnail: benCeraOg,
+    thumbnail: unicornBg,
     excerpt: "Ben Cera quit a global executive role at Travis Kalanick's CloudKitchens, moved to San Francisco, and built a $1M run-rate business in under two months — with zero employees and a lot of agents.",
     ogImage: "polsia-ben-cera-profile.png",
     content: [
