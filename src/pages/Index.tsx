@@ -154,7 +154,7 @@ const Index = () => {
 
             <div className="bg-background/60 backdrop-blur-2xl rounded-3xl px-10 py-8 border border-foreground/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
               <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.95] text-foreground">
-                The Guide to
+                The guide to
                 <br />
                 building a startup
                 <br />
