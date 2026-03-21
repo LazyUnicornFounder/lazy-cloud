@@ -76,7 +76,7 @@ const SubmitSection = () => {
           Launch your autonomous startup.
         </motion.h2>
         <p className="font-body text-sm text-foreground/50 leading-relaxed mb-8">
-          List your new autonomous startup on Lazy Directory and we'll help you grow.
+          List your new autonomous startup on Lazy Unicorn and we'll help you grow.
         </p>
 
         {submitted ? (
