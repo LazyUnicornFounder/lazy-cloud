@@ -195,7 +195,7 @@ const Index = () => {
           </motion.p>
           <div className="space-y-px">
             <a
-              href="#pricing"
+              href="#launch"
               className="group flex items-center justify-between py-5 border-b border-dashed border-primary/20 hover:pl-2 transition-all duration-300 cursor-pointer"
             >
               <div className="flex items-center gap-3">
@@ -207,12 +207,12 @@ const Index = () => {
                     Your startup here
                   </p>
                   <p className="font-body text-sm text-foreground/30 mt-0.5">
-                    Get a Pro listing featured here &amp; your own company page
+                    List your autonomous startup for free
                   </p>
                 </div>
               </div>
               <span className="font-body text-[10px] tracking-[0.15em] uppercase text-primary/40 group-hover:text-primary/70 transition-colors shrink-0 ml-4">
-                $5/mo ↗
+                Free ↗
               </span>
             </a>
             {companies.map((company, i) => (
