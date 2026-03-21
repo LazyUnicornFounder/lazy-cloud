@@ -12,7 +12,16 @@ interface CompanyCardProps {
   slug?: string;
 }
 
+const CUSTOM_PAGES: Record<string, string> = {
+  naive: "/company/naive",
+  polsia: "/company/polsia",
+};
+
 const CompanyCard = ({ name, url, description, index, thumbnail, isPaid, slug }: CompanyCardProps) => {
+  const customPage = slug ? CUSTOM_PAGES[slug] : undefined;
+  const hasDetailPage = customPage || (isPaid && slug);
+  const detailUrl = customPage || `/company/${slug}`;
+
   const content = (
     <>
       <div className="flex items-center gap-4">
@@ -41,14 +50,14 @@ const CompanyCard = ({ name, url, description, index, thumbnail, isPaid, slug }:
         </div>
       </div>
       <span className="font-body text-[10px] tracking-[0.15em] uppercase text-foreground/30 group-hover:text-foreground/60 transition-colors shrink-0 ml-4">
-        {isPaid && slug ? "View ↗" : "Visit ↗"}
+        {hasDetailPage ? "View ↗" : "Visit ↗"}
       </span>
     </>
   );
 
   const className = "group flex items-center justify-between py-5 border-b border-foreground/10 cursor-pointer hover:pl-2 transition-all duration-300";
 
-  if (isPaid && slug) {
+  if (hasDetailPage) {
     return (
       <motion.div
         initial={{ opacity: 0, y: 12 }}
@@ -56,7 +65,7 @@ const CompanyCard = ({ name, url, description, index, thumbnail, isPaid, slug }:
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: index * 0.06 }}
       >
-        <Link to={`/company/${slug}`} className={className}>
+        <Link to={detailUrl} className={className}>
           {content}
         </Link>
       </motion.div>
