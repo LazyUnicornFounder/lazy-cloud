@@ -115,7 +115,7 @@ const SubmitSection = () => {
               disabled={loading}
               className="w-full bg-primary text-primary-foreground font-body font-semibold text-sm py-2.5 rounded-full hover:opacity-90 transition-opacity mt-2 disabled:opacity-50"
             >
-              {loading ? "Submitting…" : "Submit Company"}
+              {loading ? "Launching…" : "Launch Company"}
             </button>
           </form>
         )}
