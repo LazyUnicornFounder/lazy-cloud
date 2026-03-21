@@ -319,7 +319,6 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-      <ValuationBreakdown />
       <PitchDeck />
 
 
