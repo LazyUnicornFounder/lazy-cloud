@@ -1,8 +1,10 @@
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 2
 
 User-agent: Twitterbot
 Allow: /
@@ -19,7 +21,19 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-User-agent: *
+User-agent: Applebot
 Allow: /
 
+User-agent: PetalBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /checkout/
+
 Sitemap: https://www.lazyunicorn.ai/sitemap.xml
+Host: https://www.lazyunicorn.ai
