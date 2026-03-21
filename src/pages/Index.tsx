@@ -136,12 +136,20 @@ const Index = () => {
             <p className="font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-xl leading-relaxed">
               Discover AI tools for solo founders to build autonomous startups.
             </p>
-            <a
-              href="#directory"
-              className="inline-block mt-6 font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
-            >
-              Directory
-            </a>
+            <div className="flex items-center gap-3 mt-6">
+              <a
+                href="#directory"
+                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
+              >
+                Directory
+              </a>
+              <a
+                href="#submit"
+                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase border border-foreground/20 text-foreground/70 hover:text-primary hover:border-primary/40 px-6 py-2.5 rounded-full font-semibold transition-colors active:scale-[0.97]"
+              >
+                Submit your startup
+              </a>
+            </div>
           </div>
         </motion.div>
 
