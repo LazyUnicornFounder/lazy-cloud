@@ -56,7 +56,7 @@ const Index = () => {
         "@type": "WebSite",
         "name": "Lazy Unicorn",
         "url": "https://www.lazyunicorn.ai",
-        "description": "A directory of autonomous company builders that let you start, run and scale your startup, while agents handle everything.",
+        "description": "Discover AI tools for solo founders to build autonomous startups. The definitive directory of autonomous company builders.",
         "image": "https://www.lazyunicorn.ai/og-image.png",
         "potentialAction": {
           "@type": "SearchAction",
