@@ -303,6 +303,13 @@ const NaivePage = () => {
               </a>
             </div>
           </motion.div>
+
+          <Link
+            to="/#directory"
+            className="inline-block mt-8 font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-6 py-2.5"
+          >
+            ← Discover other products
+          </Link>
         </div>
       </main>
     </div>
