@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import LiveCounter from "@/components/LiveCounter";
 
 interface NavLink {
   label: string;
