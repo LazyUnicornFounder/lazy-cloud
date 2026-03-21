@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import unicornBg from "@/assets/unicorn-beach.png";
+import logoNaive from "@/assets/logo-naive.jpg";
+import logoPolsia from "@/assets/logo-polsia.jpg";
 import CompanyCard from "@/components/CompanyCard";
 import SubmitSection from "@/components/SubmitSection";
 import PitchDeck from "@/components/PitchDeck";
@@ -26,6 +28,11 @@ const Index = () => {
     }
   }, [location.hash]);
 
+  const logoMap: Record<string, string> = {
+    "Naive": logoNaive,
+    "Polsia": logoPolsia,
+  };
+
   const { data: companies = [] } = useQuery({
     queryKey: ["approved-companies"],
     queryFn: async () => {
@@ -34,7 +41,7 @@ const Index = () => {
         .select("name, url, tagline")
         .eq("status", "approved")
         .order("created_at", { ascending: true });
-      return (data || []).map((c) => ({ name: c.name, url: c.url, description: c.tagline }));
+      return (data || []).map((c) => ({ name: c.name, url: c.url, description: c.tagline, thumbnail: logoMap[c.name] }));
     },
   });
 
@@ -177,6 +184,7 @@ const Index = () => {
                 name={company.name}
                 url={company.url}
                 description={company.description}
+                thumbnail={company.thumbnail}
                 index={i}
               />
             ))}
