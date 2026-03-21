@@ -51,18 +51,19 @@ const SubmitForm = ({ open, onClose }: SubmitFormProps) => {
     }
     setLoading(true);
     const slug = result.data.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-    const { data, error } = await supabase.from("submissions").insert({
+    const submissionSlug = `${slug}-${Date.now()}`;
+    const { error } = await supabase.from("submissions").insert({
       name: result.data.name,
       url: result.data.url,
       tagline: result.data.tagline,
-      slug: `${slug}-${Date.now()}`,
-    }).select("id").single();
+      slug: submissionSlug,
+    });
     setLoading(false);
     if (error) {
       setErrors({ name: "Something went wrong. Please try again." });
       return;
     }
-    setSubmissionId(data.id);
+    setSubmissionId(submissionSlug);
     setSubmitted(true);
   };
 
