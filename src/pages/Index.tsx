@@ -230,12 +230,12 @@ const Index = () => {
 
             )}
           </div>
-          <Link
-            to="/launch"
+          <a
+            href="#launch"
             className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97] mt-8">
             
-            Launch your startup
-          </Link>
+            Add your startup
+          </a>
         </div>
       </main>
 
