@@ -350,7 +350,7 @@ const GuidePage = () => {
           transition={{ duration: 0.6 }}
           className="max-w-lg mx-auto mt-12 text-center"
         >
-          <div className="rounded-2xl border border-primary/20 bg-transparent backdrop-blur-xl p-8 md:p-10">
+          <div className="rounded-3xl border border-primary/20 bg-transparent backdrop-blur-xl p-8 md:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
             <span className="text-4xl">🦄</span>
             <h2 className="font-display text-2xl md:text-3xl font-bold mt-4 text-foreground">
               Now go build it.
