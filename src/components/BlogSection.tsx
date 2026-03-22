@@ -2123,7 +2123,7 @@ const BlogSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-transparent backdrop-blur-sm rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
+          className="bg-transparent backdrop-blur rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
         >
           <h1 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-3">
             Blog
@@ -2144,7 +2144,7 @@ const BlogSection = () => {
             >
               <Link
                 to={`/blog/${post.slug}`}
-                className="group flex flex-col h-full bg-transparent backdrop-blur-sm rounded-3xl border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] overflow-hidden hover:border-primary/40 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_30px_rgba(var(--primary-rgb),0.15)] transition-all duration-300"
+                className="group flex flex-col h-full bg-transparent backdrop-blur rounded-3xl border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] overflow-hidden hover:border-primary/40 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_30px_rgba(var(--primary-rgb),0.15)] transition-all duration-300"
               >
                 {/* Thumbnail */}
                 <div className="relative h-44 overflow-hidden">
@@ -2159,7 +2159,7 @@ const BlogSection = () => {
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                   {post.slug === "lazy-unicorn-raising-angel-round" && (
-                    <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-orange-400/90 backdrop-blur-sm text-background text-[9px] font-semibold tracking-[0.15em] uppercase rounded-full px-3 py-1 shadow-lg">
+                    <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-orange-400/90 backdrop-blur text-background text-[9px] font-semibold tracking-[0.15em] uppercase rounded-full px-3 py-1 shadow-lg">
                       <Pin className="w-3 h-3" />
                       Pinned
                     </div>
