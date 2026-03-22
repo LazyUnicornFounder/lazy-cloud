@@ -127,6 +127,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.lazyunicorn.ai/blog/self-growing-business</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.lazyunicorn.ai/og/self-growing-business.png</image:loc>
+      <image:title>The Self-Growing Business</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.lazyunicorn.ai/company/naive</loc>
     <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>
