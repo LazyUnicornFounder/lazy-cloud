@@ -316,10 +316,10 @@ const GuidePage = () => {
               Autonomous Unicorn
             </span>
           </h1>
-          <p className="font-body text-sm md:text-base text-muted-foreground max-w-md mx-auto">
+          <p className="font-body text-lg md:text-xl text-muted-foreground max-w-md mx-auto">
             Six steps. One founder. Zero excuses.
             <br />
-            <span className="text-foreground/50">Tap each step to explore.</span>
+            <span className="text-foreground/50 text-base md:text-lg">Tap each step to explore.</span>
           </p>
         </motion.div>
 
