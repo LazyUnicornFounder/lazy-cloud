@@ -64,7 +64,7 @@ const Index = () => {
     <div className="min-h-screen text-foreground relative">
       <SEO
         url="/"
-        description="The definitive directory of AI tools and resources for solo founders building autonomous startups. Discover platforms that let you own a company that runs itself — built with Lovable by a solo founder."
+        description="The solo founder's guide to building an autonomous unicorn. Discover AI tools and resources to build a startup that builds itself."
         keywords="autonomous companies, AI business tools, passive income startups, autonomous capitalism, AI agents, self-running business, solo founder tools, startup directory, Lazy Unicorn, self-building startup, one-person unicorn, Lovable, build startup with AI"
         breadcrumbs={[{ name: "Home", url: "/" }]}
         faq={[
