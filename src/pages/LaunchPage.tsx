@@ -144,7 +144,7 @@ const LaunchPage = () => {
                     <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.15em] uppercase text-primary/70 group-hover:text-primary transition-colors">
                       {prompt.trim() ? (
                         <>
-                          <Copy size={10} /> Copy & Go
+                          <Copy size={10} /> Copy your prompt & Go
                         </>
                       ) : (
                         <>
