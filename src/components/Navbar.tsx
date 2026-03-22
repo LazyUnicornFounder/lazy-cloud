@@ -79,14 +79,14 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 flex flex-col items-center w-full px-8 transition-all duration-300 ${
         scrolled
-          ? "bg-background/60 backdrop-blur-xl border-b border-foreground/10 shadow-[0_4px_16px_rgba(0,0,0,0.3)] pt-3 pb-1"
+          ? "bg-background/60 backdrop-blur-xl-xl border-b border-foreground/10 shadow-[0_4px_16px_rgba(0,0,0,0.3)] pt-3 pb-1"
           : "pt-6"
       }`}
     >
       {!isMobile ? (
         <>
           <div className="mb-1.5 flex items-center gap-2">
-            <div className="bg-transparent backdrop-blur border border-foreground/10 rounded-full px-4 py-1 shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+            <div className="bg-transparent backdrop-blur-xl border border-foreground/10 rounded-full px-4 py-1 shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
               <LiveCounter />
             </div>
           </div>
@@ -128,7 +128,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
         </>
       ) : (
         <>
-          <div className="flex items-center justify-between w-full bg-background/60 backdrop-blur-2xl border border-foreground/10 rounded-full px-5 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+          <div className="flex items-center justify-between w-full bg-background/60 backdrop-blur-xl-2xl border border-foreground/10 rounded-full px-5 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
             <a
               href={brandHref}
               onClick={(e) => {
@@ -149,7 +149,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
           </div>
 
           {open && (
-            <div className="mt-2 w-full bg-background/80 backdrop-blur-2xl border border-foreground/10 rounded-2xl px-5 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex flex-col gap-3">
+            <div className="mt-2 w-full bg-background/80 backdrop-blur-xl-2xl border border-foreground/10 rounded-2xl px-5 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex flex-col gap-3">
               {links.map((link) =>
                 link.isCta ? (
                   <a
