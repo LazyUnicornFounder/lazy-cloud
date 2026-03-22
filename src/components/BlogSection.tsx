@@ -96,6 +96,96 @@ export const staticBlogPosts: BlogPost[] = [
     ],
   },
   {
+    slug: "part-time-founder-full-time-robots",
+    title: "Part-Time Solo Founder, Full-Time Robots",
+    date: "March 2026",
+    readTime: "7 min read",
+    thumbnail: unicornBg,
+    excerpt: "What your week actually looks like when AI runs the company and you just point it. Not the fantasy version. The working version — hours, tasks, what you do, what the agents do, and why the split is finally in your favour.",
+    ogImage: "part-time-founder-full-time-robots.png",
+    content: [
+      "The pitch for autonomous companies sounds great in theory: the robots handle the business, you handle the direction, everyone wins. But what does the actual split look like? What are you doing on a Tuesday? What are the agents doing while you're doing it? And how long until the split gets to a place where \"part-time founder\" stops being aspirational and starts being accurate?",
+
+      "This is the honest version of that answer. Not the utopian version where you're on a beach and your phone silently accumulates revenue. The working version — messy, iterative, and significantly better than anything that existed two years ago.",
+
+      "\"You are not replacing yourself with robots. You are promoting yourself — out of the operations and into the direction.\"",
+
+      "<strong>The Human-Robot Split — What Each Side Actually Owns</strong>",
+
+      "The autonomous company is a division of labour between two parties with fundamentally different capabilities. Understanding what each side is genuinely good at is what makes the split work. Assign the wrong tasks to the wrong party and the whole thing falls apart.",
+
+      "<strong>You — The Human (5–8 hours per week at steady state):</strong> Direction — what we're building, for whom, why it matters. Taste — reviewing outputs, catching what's off-brand. Judgment calls — pricing, partnerships, pivots. High-stakes relationships — the conversations that need a human. Course corrections — adjusting agent briefs when outputs drift.",
+
+      "<strong>The Agents — Full Time (168 hours per week — all of them):</strong> Outbound — researching, writing, sending, following up. Content — publishing, optimising, distributing. Support — answering tickets, resolving issues, onboarding. Product — shipping fixes, triaging requests, building features. Growth — measuring what works, doubling down, improving.",
+
+      "The numbers at the top of each column are the honest numbers at steady state — meaning after the first two to three months of calibration. Month one looks different. Month one, the founder is doing significantly more. But the direction of travel is what matters: as the agents learn the business, the founder's required hours decline. By month six, five to eight hours per week is realistic for a well-built autonomous company.",
+
+      "<strong>What a Real Week Actually Looks Like</strong>",
+
+      "Abstract time allocations are less useful than concrete ones. Here is a real week — not idealised, not aspirational, just what the weekly schedule looks like for a solo founder running an autonomous company at steady state.",
+
+      "<strong>Monday:</strong> Read weekend status emails. 30 min. Note what to adjust. Agents: Outbound running. Content queued. Support handled. Code shipped overnight.",
+
+      "<strong>Tuesday:</strong> Write next week's content brief. 45 min. Give Claude the topics. Agents: SEO articles published. Outbound sequences running. Leads being qualified.",
+
+      "<strong>Wednesday:</strong> Product decision — 30 min in Lovable. One feature, described, shipped. Agents: Customer support resolved. Onboarding emails sent. Ad campaigns optimised.",
+
+      "<strong>Thursday:</strong> One relationship call. 45 min. Partnership, key customer, or investor. Agents: Referral sequences running. Upgrade conversations triggered for engaged users.",
+
+      "<strong>Friday:</strong> Weekly review. 90 min. Revenue, metrics, agent outputs. Adjust briefs. Agents: Full week's work compiled. Status report drafted. Weekend run already started.",
+
+      "<strong>Saturday–Sunday:</strong> Nothing. Weekend. The business doesn't need you. Agents: Company operating at full capacity. Revenue arriving. No founder required.",
+
+      "Total founder involvement: roughly seven hours. Not seven hours of grinding — seven hours of thinking, reviewing, and directing. The kind of work that actually requires a human. Everything else runs continuously without your presence.",
+
+      "<strong>The Questions Everyone Has — Answered Honestly</strong>",
+
+      "<strong>\"Doesn't the AI just make mistakes all the time?\"</strong> Yes, especially early. The first two to three months require significant calibration — reviewing every output, giving feedback constantly, adjusting the briefs. The mistake rate drops significantly as the agents learn your specific business. By month three, the outputs are reliably good enough that weekly review catches anything that matters.",
+
+      "<strong>\"What if something goes wrong while I'm not watching?\"</strong> Something will go wrong. Polsia's founder handed his AI his inbox for a VC fundraise and it told an investor he didn't take meetings — right after he'd confirmed a call. He sent an apology email. Business continued. The answer to things going wrong is not constant surveillance — it's good briefing, clear boundaries, and a review cadence that catches issues before they compound.",
+
+      "<strong>\"Can the agents really handle sales?\"</strong> Depends on the type of sale. High-touch enterprise deals still need a human. Volume outbound, lead qualification, follow-up sequences, onboarding conversations, and transactional sales — agents handle these reliably. Most early-stage autonomous company revenue comes from exactly those categories.",
+
+      "<strong>\"Five to eight hours a week sounds too low. Is that real?\"</strong> At steady state, yes — for a company that has been properly calibrated over two to three months. The first month is more like thirty to forty hours. The hours decline as the system learns. By month six, five to eight hours per week is not aspirational — it's what the architecture produces when the setup was done correctly.",
+
+      "<strong>\"Don't I still need a day job while this is getting started?\"</strong> Almost certainly yes, for at least the first three to six months. The part-time nature of this model is a feature, not a bug — it's specifically designed to be built alongside a day job. Five to eight hours per week at steady state fits around a full-time job.",
+
+      "\"The business that ran itself overnight wasn't built in a day. But it was built in evenings and weekends — by someone who kept a day job while the robots were being hired.\"",
+
+      "<strong>The Robots You're Actually Hiring</strong>",
+
+      "<strong>Polsia</strong> (polsia.com · $49/month): The nightly CEO agent assesses your business, sets tomorrow's priorities, and assigns tasks to specialist agents covering marketing, engineering, support, and operations. Running 1,000+ companies autonomously right now. Ben Cera: solo founder, zero employees, $5M ARR in under 90 days.",
+
+      "<strong>Naïve</strong> (usenaive.ai · Free to start): AI employees with their own email addresses, bank accounts, and credentials. They show up, start working, and recursively learn your business. 500+ companies including Airwallex and HackerRank. Best for outreach, partnerships, and content functions that benefit from a consistent voice that sounds like you.",
+
+      "<strong>How You Get From Full-Time to Part-Time</strong>",
+
+      "Nobody starts as a part-time founder. The transition happens in three stages, and each one requires a specific decision to move forward.",
+
+      "<strong>Stage one: full-time you, no robots.</strong> The default. You're doing everything. You are the developer, the marketer, the sales rep, the support agent, the product manager. This is the baseline that most solo founders know intimately. It's unsustainable at scale and it's what you're trying to leave.",
+
+      "<strong>Stage two: full-time you, part-time robots.</strong> You've connected the first agent. Polsia is handling some of the outbound. Content is being published without you writing every post. You're still reviewing everything, still initiating most tasks, still very much in the daily operations. But the ratio has started to shift. This is months two and three for most founders.",
+
+      "<strong>Stage three: part-time you, full-time robots.</strong> The agents have enough context to make good decisions most of the time. The content engine is compounding. Revenue arrives during weeks when you're not actively working. Your job is the weekly review and the occasional direction correction. This is the destination — and it's achievable by month five or six.",
+
+      "The thing that stalls people at stage two is the reflex to take tasks back when the agents make mistakes. Don't. The mistake was in the brief, not in the model. Fix the brief. Let the agent run again.",
+
+      "\"The robots don't get better when you watch them. They get better when you brief them well and let them work.\"",
+
+      "<strong>Part-time founder. Full-time robots. Full-time income.</strong>",
+
+      "The model works because the split is honest about what each side is good at. You are good at judgment, taste, direction, and the relationships that require a human being. The agents are good at volume, consistency, availability, and the work that scales without friction.",
+
+      "Combining those two things — in the right ratio, with the right tools, built in the right sequence — produces something that didn't exist before 2024: a business that earns without requiring your continuous presence. Part-time input. Full-time output. The math finally works in the founder's favour.",
+
+      "The robots are not your competition. They're your team. The best team you'll ever have — they work every hour, they never burn out, they get better every week, and they cost less per month than a single payroll run.",
+
+      "Hire them. Brief them well. Then do the part that actually needs you.",
+
+      "Everything else? That's what the robots are for.",
+    ],
+  },
+  {
     slug: "solo-founder-guide-autonomous-unicorn",
     title: "The Solo Founder's Guide to Building an Autonomous Unicorn",
     date: "March 2026",
