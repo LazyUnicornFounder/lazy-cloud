@@ -163,6 +163,7 @@ const LaunchPage = () => {
             )}
           </motion.div>
         </div>
+      </main>
 
       {/* Redirect overlay */}
       <AnimatePresence>
