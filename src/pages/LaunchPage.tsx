@@ -119,6 +119,12 @@ const LaunchPage = () => {
             </p>
           </motion.div>
 
+          {/* Step 2 */}
+          <div className="flex items-center gap-3 mb-4">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-display text-sm font-bold">2</span>
+            <span className="font-display text-sm font-bold tracking-[0.1em] uppercase text-foreground/60">Pick a platform</span>
+          </div>
+
           {/* Platform buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
