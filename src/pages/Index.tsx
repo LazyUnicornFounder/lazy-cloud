@@ -181,8 +181,55 @@ const Index = () => {
       </header>
 
 
+      {/* Guide Preview */}
+      <section className="relative z-10 px-8 md:px-12 pt-16 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
+        >
+          <p className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
+            The Guide
+          </p>
+          <p className="font-body text-lg text-foreground/50 leading-relaxed mb-6">
+            How to build an autonomous unicorn — in 6 steps. One founder, zero excuses.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+            {[
+              { num: "01", label: "Idea", icon: "💡" },
+              { num: "02", label: "Build", icon: "🛠" },
+              { num: "03", label: "Content", icon: "✍️" },
+              { num: "04", label: "Monetize", icon: "💰" },
+              { num: "05", label: "Agents", icon: "🤖" },
+              { num: "06", label: "Compound", icon: "📈" },
+            ].map((step, i) => (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="bg-background/40 border border-foreground/10 rounded-xl p-4 text-center"
+              >
+                <span className="text-2xl mb-2 block">{step.icon}</span>
+                <span className="font-body text-[10px] tracking-[0.2em] uppercase text-primary/60 block">{step.num}</span>
+                <span className="font-display text-sm font-bold text-foreground/80">{step.label}</span>
+              </motion.div>
+            ))}
+          </div>
+          <Link
+            to="/guide"
+            className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity"
+          >
+            Explore the full guide →
+          </Link>
+        </motion.div>
+      </section>
+
       {/* Directory */}
-      <main id="directory" className="relative z-10 px-8 md:px-12 pt-16 pb-32 scroll-mt-20">
+      <main id="directory" className="relative z-10 px-8 md:px-12 pb-32 scroll-mt-20">
         <div className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
           <motion.p
             initial={{ opacity: 0 }}
@@ -261,53 +308,6 @@ const Index = () => {
             className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
           >
             Open Launch Pad →
-          </Link>
-        </motion.div>
-      </section>
-
-      {/* Guide Preview */}
-      <section className="relative z-10 px-8 md:px-12 pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
-        >
-          <p className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
-            The Guide
-          </p>
-          <p className="font-body text-lg text-foreground/50 leading-relaxed mb-6">
-            How to build an autonomous unicorn — in 6 steps. One founder, zero excuses.
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
-            {[
-              { num: "01", label: "Idea", icon: "💡" },
-              { num: "02", label: "Build", icon: "🛠" },
-              { num: "03", label: "Content", icon: "✍️" },
-              { num: "04", label: "Monetize", icon: "💰" },
-              { num: "05", label: "Agents", icon: "🤖" },
-              { num: "06", label: "Compound", icon: "📈" },
-            ].map((step, i) => (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-background/40 border border-foreground/10 rounded-xl p-4 text-center"
-              >
-                <span className="text-2xl mb-2 block">{step.icon}</span>
-                <span className="font-body text-[10px] tracking-[0.2em] uppercase text-primary/60 block">{step.num}</span>
-                <span className="font-display text-sm font-bold text-foreground/80">{step.label}</span>
-              </motion.div>
-            ))}
-          </div>
-          <Link
-            to="/guide"
-            className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity"
-          >
-            Explore the full guide →
           </Link>
         </motion.div>
       </section>
