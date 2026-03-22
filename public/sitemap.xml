@@ -117,6 +117,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.lazyunicorn.ai/blog/end-of-work</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.lazyunicorn.ai/og/end-of-work.png</image:loc>
+      <image:title>The End of Work</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.lazyunicorn.ai/company/naive</loc>
     <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>

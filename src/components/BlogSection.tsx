@@ -1111,6 +1111,98 @@ export const staticBlogPosts: BlogPost[] = [
     ],
   },
   {
+    slug: "end-of-work",
+    title: "The End of Work",
+    date: "March 2026",
+    readTime: "9 min read",
+    thumbnail: unicornBg,
+    excerpt: "Not the end of all work. The end of a specific kind — the kind that doesn't need you to do it. The kind that burns your hours because there was never another option. Until now.",
+    ogImage: "end-of-work.png",
+    content: [
+      "Every generation has its version of the productivity promise. Each one was supposed to free us from drudgery and deliver us to something better. Each one delivered on the productivity and quietly dropped the freedom.",
+
+      "The printing press meant fewer scribes copying manuscripts by hand. The industrial loom meant fewer weavers threading by candlelight. The spreadsheet meant fewer accountants running calculations on paper. The internet meant fewer everything — fewer travel agents, fewer encyclopaedia salespeople, fewer operators at switchboards.",
+
+      "In every case, the people doing the automated work lost their jobs. And in every case, new work appeared — different work, often better work, eventually more work than before. The economy absorbed the disruption. People adapted. The nightmare scenario of mass permanent unemployment, predicted with absolute certainty by serious people at every technological inflection point, never fully arrived.",
+
+      "Something is different this time. Not because the argument has changed — the techno-optimists are making the same adaptation argument they always have, and they might well be right again. But because the scale of what's being automated, the speed at which it's happening, and the category of work being replaced have never looked quite like this before.",
+
+      "We are not automating a task or a skill. We are automating the <em>operation</em> of entire businesses.",
+
+      "<strong>The question was always: what will people do when machines do the work? The answer is arriving and it is stranger than anyone predicted.</strong>",
+
+      "<strong>Three Different \"Ends of Work\" — Only One Is Actually Happening</strong>",
+
+      "The phrase \"end of work\" gets used to mean three completely different things. Collapsing them together produces confusion. They need to be separated.",
+
+      "<strong>01 — The apocalyptic end: mass unemployment.</strong> The fear: AI replaces every job, billions become economically unnecessary, society destabilises. This version has been predicted, with genuine conviction, since the mechanical loom. It has never fully materialised — not because technology didn't displace workers, but because new categories of work have consistently appeared faster than old ones disappeared. The apocalyptic version is not obviously happening. It may still happen. But it's not the story of right now.",
+
+      "<strong>02 — The utopian end: leisure for all.</strong> The dream: technology handles everything, humans are freed for creativity, play, and the higher pursuits. Keynes predicted a 15-hour work week by now. We're working more hours than the generation before us, not fewer. Productivity gains have historically been absorbed by growth, not leisure. The utopian version hasn't arrived either.",
+
+      "<strong>03 — The operational end — and this one is real.</strong> The specific end that is happening right now: the end of the requirement to do operational work yourself in order to own something productive. Not the end of all work. Not leisure for everyone. The end of the specific dynamic where building and owning a company required you to also operate it — where the founder and the operator were the same exhausted person. That specific version of work is ending. Fast.",
+
+      "The third version is not the headline anyone writes. It's not dramatic enough. \"AI replaces some of what founders have to do\" doesn't capture what's actually happening. What's happening is structural: the gap between owning a productive asset and operating one has been closed. Not reduced. Closed. For the first time in the history of capitalism, those are separable things.",
+
+      "<strong>What Ends. What Doesn't.</strong>",
+
+      "Precision matters here. The lazy version of this argument — \"AI will do everything, humans won't need to do anything\" — is both wrong and unhelpful. The specific version is more interesting and more true.",
+
+      "<strong>What actually ends:</strong> The founder-as-operator trap. The operational bottleneck where every growth decision waits on the human doing support tickets and blog posts and ad campaigns. The scale-requires-headcount rule — agents scale without headcount. Capital as the barrier to ownership — the autonomous company starts at $49/month. Deferred freedom — the exit that would finally deliver the time and money to do what you actually wanted. Freedom no longer requires the exit.",
+
+      "<strong>What doesn't end:</strong> Judgment — the ability to identify what's worth building, for whom, why it matters. Taste — the aesthetic and strategic sensibility that separates a good direction from a bad one. Relationships — trust-building, high-stakes negotiation, reading the room. Ambition — humans fill available time with new forms of wanting. The need for direction — every autonomous system requires a human setting what \"better\" means.",
+
+      "<strong>The Evidence That It's Already Happening</strong>",
+
+      "This is not speculation about a future state. These are current facts about what is running right now.",
+
+      "Ben Cera built <a href='/company/polsia'>Polsia</a> as a solo founder with zero employees. The platform autonomously runs over 1,000 companies — handling their marketing, product development, customer support, and operations daily. He scaled from $1M to $5M annual run rate in 18 days. Not with a team. With agents. The work that would have required 20 people a decade ago was done by systems that cost $49 a month.",
+
+      "Sean Dorje and Dennis Zax built <a href='/company/naive'>Naïve</a> — AI employees with their own email addresses, bank accounts, and credentials, deployed at 500+ companies including Airwallex and HackerRank. The AI employees show up on day one and start executing. They are not tools. They are the team. The work that required hiring doesn't require hiring anymore.",
+
+      "These aren't impressive demos from a research lab. These are production systems generating real revenue for real companies right now. The operational end of work is not a prediction. It is a product you can subscribe to.",
+
+      "<strong>The work that required a team no longer requires a team. The work that required your daily presence no longer requires your presence. The work that remains — the judgment, the direction, the meaning — is the work that was always the most valuable.</strong>",
+
+      "<strong>The Human Question — What Do You Do With the Time?</strong>",
+
+      "Here is the question that the end of operational work actually surfaces: if you don't have to spend your days executing, what do you do?",
+
+      "This sounds like a luxury problem. For most of history it was — available only to people wealthy enough to delegate their operations to employees. The question is now available to anyone who builds an autonomous company. And it turns out it's not actually a luxury problem. It's the most important question you can ask.",
+
+      "Because the answer reveals what you actually wanted all along. Most people who grind through the operational treadmill of building a company are not grinding because they love answering support tickets at midnight. They're grinding because that was the cost of access to the thing they did love — building, creating, owning something that worked.",
+
+      "Remove the operational treadmill and what's left is the thing they were doing it for. The next idea. The creative work. The relationships. The thinking that used to happen at 2am because it was the only hour nobody needed anything from them.",
+
+      "The end of operational work is not the beginning of leisure. It's the beginning of the work that actually matters — the work that requires you specifically, rather than a human being generically.",
+
+      "<strong>The end of operational work is not the beginning of doing nothing. It's the beginning of only doing the things that need you.</strong>",
+
+      "<strong>What Comes Next</strong>",
+
+      "Three things are happening simultaneously that, taken together, paint a fairly clear picture of where the next decade goes.",
+
+      "<strong>01 — The portfolio founder emerges.</strong> When a single company requires 2 hours of weekly direction instead of 60 hours of daily operation, one person can run ten companies. Portfolio entrepreneurship — owning multiple small autonomous businesses simultaneously — becomes the dominant form of solo building.",
+
+      "<strong>02 — Capital requirements approach zero.</strong> The cost of starting a company that runs itself has fallen to the price of a streaming subscription. The financial barrier to trying has effectively disappeared. The result is an explosion in the number of people who attempt to own something productive.",
+
+      "<strong>03 — The labour/ownership divide narrows.</strong> For the entire history of capitalism, most people were on the labour side of the divide — working within systems owned by others. The autonomous company changes who can participate as an owner. The structural barrier has been removed in a way it never was before.",
+
+      "None of this resolves the harder questions cleanly. What happens to the people whose jobs get automated who don't become autonomous founders? What new work emerges, and how quickly, and for whom? How does society adapt to a world where a significant portion of business operations run without human labour?",
+
+      "These questions don't have clean answers yet. They will be worked out in real time, messily, over the next decade, by the combination of policy, culture, technology, and the billions of individual decisions people make about how to participate in a changing economy.",
+
+      "What has clean answers — or at least clear directions — is the question facing any individual who is paying attention right now. The operational work that used to define what building a company felt like is no longer structurally required. The tools to replace it are cheap, available, and getting better every week.",
+
+      "The end of that work is not a threat to anyone whose work goes beyond operation. It's an invitation.",
+
+      "<strong>The work that needed you never needed <em>you.</em> It needed a person. Now it has one.</strong>",
+
+      "The AI is doing the work that needed a person. You are the person who gets to do the work that needs you specifically — the judgment, the direction, the ideas that only come from living your particular life and seeing the particular gaps that only you can see.",
+
+      "That's not the end of work. That's the beginning of the work that was always worth doing. The other stuff was just the price of admission. The price just dropped to nothing.",
+    ],
+  },
+  {
     slug: "freedom-startup-builds-itself",
     title: "Freedom Is a Startup That Builds Itself",
     date: "March 2026",
