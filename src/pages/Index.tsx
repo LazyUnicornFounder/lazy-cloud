@@ -361,7 +361,7 @@ const Index = () => {
                 rel="noopener noreferrer"
                 className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-4 py-1.5">
                 
-                Follow on LinkedIn
+                Follow me on LinkedIn
               </a>
             </div>
           </motion.div>
