@@ -230,16 +230,40 @@ const Index = () => {
 
             )}
           </div>
-          <a
-            href="#launch"
+          <Link
+            to="/launch"
             className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97] mt-8">
             
-            Add your startup
-          </a>
+            Launch your startup
+          </Link>
         </div>
       </main>
 
       <SubmitSection />
+
+      {/* Launch Pad */}
+      <section className="relative z-10 px-8 md:px-12 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
+        >
+          <p className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
+            Launch
+          </p>
+          <p className="font-body text-lg text-foreground/50 leading-relaxed mb-6">
+            Describe your idea, pick a platform, and start building your autonomous startup in seconds.
+          </p>
+          <Link
+            to="/launch"
+            className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
+          >
+            Open Launch Pad →
+          </Link>
+        </motion.div>
+      </section>
 
       {/* Guide Preview */}
       <section className="relative z-10 px-8 md:px-12 pb-16">
