@@ -11,7 +11,7 @@ const FloatingProductCTA = () => {
       className="hidden lg:block fixed right-8 top-32 z-40"
     >
       <Link
-        to="/#pricing"
+        to="/#launch"
         className="group block bg-transparent backdrop-blur-xl rounded-2xl px-5 py-4 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] hover:border-primary/30 transition-all duration-300 w-52"
       >
         <div className="flex items-center gap-2 mb-2">
