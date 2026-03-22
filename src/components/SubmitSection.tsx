@@ -82,7 +82,7 @@ const SubmitSection = () => {
 
   return (
     <section id="launch" className="relative z-10 px-8 md:px-12 pb-32 scroll-mt-24">
-      <div className="max-w-2xl bg-white/[0.30] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+      <div className="max-w-2xl bg-white/[0.06] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

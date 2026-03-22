@@ -2123,7 +2123,7 @@ const BlogSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-white/[0.30] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
+          className="bg-white/[0.06] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
         >
           <h1 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-3">
             Blog
@@ -2144,7 +2144,7 @@ const BlogSection = () => {
             >
               <Link
                 to={`/blog/${post.slug}`}
-                className="group flex flex-col h-full bg-white/[0.30] backdrop-blur-3xl rounded-3xl border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] overflow-hidden hover:border-primary/40 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_30px_rgba(var(--primary-rgb),0.15)] transition-all duration-300"
+                className="group flex flex-col h-full bg-white/[0.06] backdrop-blur-3xl rounded-3xl border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] overflow-hidden hover:border-primary/40 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_30px_rgba(var(--primary-rgb),0.15)] transition-all duration-300"
               >
                 {/* Thumbnail */}
                 <div className="relative h-44 overflow-hidden">

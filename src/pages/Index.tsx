@@ -139,7 +139,7 @@ const Index = () => {
               transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-[-1px] relative z-10">
               
-              <div className="bg-white/[0.30] backdrop-blur-3xl border border-primary/20 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
+              <div className="bg-white/[0.06] backdrop-blur-3xl border border-primary/20 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
                 <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
                   Autonomous capitalism for the rest of us
                 </p>
@@ -149,7 +149,7 @@ const Index = () => {
               </div>
             </motion.div>
 
-            <div className="bg-white/[0.30] backdrop-blur-3xl rounded-3xl px-10 py-8 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+            <div className="bg-white/[0.06] backdrop-blur-3xl rounded-3xl px-10 py-8 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
               <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.95] text-foreground">
                 The solo founder's
                 <br />
@@ -177,7 +177,7 @@ const Index = () => {
 
       {/* Directory */}
       <main id="directory" className="relative z-10 px-8 md:px-12 pt-16 pb-32 scroll-mt-20">
-        <div className="max-w-2xl bg-white/[0.30] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+        <div className="max-w-2xl bg-white/[0.06] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -242,7 +242,7 @@ const Index = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-2xl bg-white/[0.30] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
+          className="max-w-2xl bg-white/[0.06] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
         >
           <p className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
             The Guide
@@ -290,7 +290,7 @@ const Index = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-2xl bg-white/[0.30] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+          className="max-w-2xl bg-white/[0.06] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
           
           <p className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
             Blog
@@ -309,7 +309,7 @@ const Index = () => {
 
       {/* Mission */}
       <section id="mission" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-24">
-        <div className="max-w-2xl bg-white/[0.30] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+        <div className="max-w-2xl bg-white/[0.06] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -343,7 +343,7 @@ const Index = () => {
 
       {/* About */}
       <section id="about" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-24">
-        <div className="max-w-2xl bg-white/[0.30] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+        <div className="max-w-2xl bg-white/[0.06] backdrop-blur-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -392,7 +392,7 @@ const Index = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-sm bg-white/[0.30] backdrop-blur-3xl rounded-2xl px-6 py-6 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+          className="max-w-sm bg-white/[0.06] backdrop-blur-3xl rounded-2xl px-6 py-6 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
           <ValuationBreakdown />
         </motion.div>
       </section> */}

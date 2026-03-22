@@ -25,7 +25,7 @@ const PricingSection = ({ onSubmitClick }: PricingSectionProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white/[0.30] backdrop-blur-3xl rounded-2xl border border-primary/20 p-7 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] flex flex-col"
+            className="bg-white/[0.06] backdrop-blur-3xl rounded-2xl border border-primary/20 p-7 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] flex flex-col"
           >
             <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-1">
               Free
@@ -65,7 +65,7 @@ const PricingSection = ({ onSubmitClick }: PricingSectionProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-white/[0.30] backdrop-blur-3xl rounded-2xl border border-primary/30 p-7 shadow-[0_8px_32px_rgba(0,0,0,0.4)] relative overflow-hidden flex flex-col"
+            className="bg-white/[0.06] backdrop-blur-3xl rounded-2xl border border-primary/30 p-7 shadow-[0_8px_32px_rgba(0,0,0,0.4)] relative overflow-hidden flex flex-col"
           >
             {/* Glow */}
             <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
