@@ -12,7 +12,7 @@ const BlogTicker = () => {
   if (allPosts.length === 0) return null;
 
   return (
-    <div className="w-full overflow-hidden bg-white/10 backdrop-blur-3xl border-t border-b border-primary/20 shadow-[0_-4px_20px_rgba(0,0,0,0.3),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+    <div className="w-full overflow-hidden bg-white/[0.30] backdrop-blur-3xl border-t border-b border-primary/20 shadow-[0_-4px_20px_rgba(0,0,0,0.3),0_0_20px_rgba(var(--primary-rgb),0.08)]">
       <motion.div
         className="flex gap-6 py-3 px-4"
         animate={{ x: [0, -(allPosts.length * 280)] }}
