@@ -199,7 +199,7 @@ const StepCard = ({
         onClick={() => setExpanded(!expanded)}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className={`w-full text-left relative group rounded-2xl border ${step.borderColor} bg-card/60 backdrop-blur-xl-xl p-6 md:p-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] cursor-pointer`}
+        className={`w-full text-left relative group rounded-2xl border ${step.borderColor} bg-transparent backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] cursor-pointer`}
       >
         {/* glow */}
         <div
@@ -350,7 +350,7 @@ const GuidePage = () => {
           transition={{ duration: 0.6 }}
           className="max-w-lg mx-auto mt-12 text-center"
         >
-          <div className="rounded-2xl border border-primary/20 bg-card/60 backdrop-blur-xl-xl p-8 md:p-10">
+          <div className="rounded-2xl border border-primary/20 bg-transparent backdrop-blur-xl p-8 md:p-10">
             <span className="text-4xl">🦄</span>
             <h2 className="font-display text-2xl md:text-3xl font-bold mt-4 text-foreground">
               Now go build it.
