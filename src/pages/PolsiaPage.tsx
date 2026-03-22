@@ -73,7 +73,7 @@ const PolsiaPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-transparent backdrop-blur-xl-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
+            className="bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
           >
             <div className="flex items-start gap-5 mb-6">
               <img
@@ -129,7 +129,7 @@ const PolsiaPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-primary/10 backdrop-blur-xl-2xl rounded-2xl px-8 py-6 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4)] mb-8 text-center"
+            className="bg-primary/10 backdrop-blur-xl rounded-2xl px-8 py-6 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4)] mb-8 text-center"
           >
             <p className="font-display text-3xl md:text-4xl font-extrabold text-primary">5,000+</p>
             <p className="font-body text-sm text-foreground/50 mt-1">companies running autonomously on Polsia right now</p>
@@ -149,7 +149,7 @@ const PolsiaPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-transparent backdrop-blur-xl-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
+            className="bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
           >
             <p className="font-display text-2xl md:text-3xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-8">
               How it works
@@ -175,7 +175,7 @@ const PolsiaPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-transparent backdrop-blur-xl-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
+            className="bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
           >
             <p className="font-display text-2xl md:text-3xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-6">
               Features
@@ -196,7 +196,7 @@ const PolsiaPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-transparent backdrop-blur-xl-3xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
+            className="bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] mb-8"
           >
             <p className="font-display text-2xl md:text-3xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
               Pricing
@@ -223,7 +223,7 @@ const PolsiaPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-transparent backdrop-blur-xl-3xl rounded-3xl px-8 py-8 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
+            className="bg-transparent backdrop-blur-xl rounded-3xl px-8 py-8 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
           >
             <p className="font-display text-lg font-bold text-foreground/60 mb-4">Links</p>
             <div className="flex flex-wrap gap-3">
