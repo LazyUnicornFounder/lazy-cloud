@@ -12,6 +12,7 @@ import CompanyDetail from "./pages/CompanyDetail.tsx";
 import NaivePage from "./pages/NaivePage.tsx";
 import PolsiaPage from "./pages/PolsiaPage.tsx";
 import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
+import GuidePage from "./pages/GuidePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
