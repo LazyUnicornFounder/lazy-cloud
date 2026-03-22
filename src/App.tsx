@@ -12,6 +12,7 @@ import CompanyDetail from "./pages/CompanyDetail.tsx";
 import NaivePage from "./pages/NaivePage.tsx";
 import PolsiaPage from "./pages/PolsiaPage.tsx";
 import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
+import GuidePage from "./pages/GuidePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/guide" element={<GuidePage />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/company/naive" element={<NaivePage />} />
             <Route path="/company/polsia" element={<PolsiaPage />} />
