@@ -297,7 +297,7 @@ const GuidePage = () => {
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
-      <Navbar activePage="home" />
+      <Navbar activePage="guide" />
 
       {/* hero */}
       <div className="relative z-10 pt-36 pb-12 px-6 text-center">
