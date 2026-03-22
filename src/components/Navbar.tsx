@@ -27,6 +27,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
   const links: NavLink[] = [
     { label: "Directory", href: isHome ? "#directory" : "/#directory" },
+    { label: "Guide", href: "/guide", highlight: activePage === "guide" },
     { label: "Blog", href: "/blog", highlight: activePage === "blog" },
     { label: "About", href: isHome ? "#about" : "/#about" },
     { label: "Submit", href: isHome ? "#launch" : "/#launch", isCta: true },
