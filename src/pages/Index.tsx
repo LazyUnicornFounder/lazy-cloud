@@ -139,7 +139,7 @@ const Index = () => {
               transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-[-1px] relative z-10">
               
-              <div className="bg-transparent backdrop-blur-3xl border border-primary/20 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
+              <div className="bg-transparent backdrop-blur-sm border border-primary/20 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
                 <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
                   Autonomous capitalism for the rest of us
                 </p>
@@ -149,7 +149,7 @@ const Index = () => {
               </div>
             </motion.div>
 
-            <div className="bg-transparent backdrop-blur-3xl rounded-3xl px-10 py-8 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+            <div className="bg-transparent backdrop-blur-sm rounded-3xl px-10 py-8 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
               <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.95] text-foreground">
                 The solo founder's
                 <br />
