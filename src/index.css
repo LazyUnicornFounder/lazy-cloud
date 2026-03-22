@@ -35,6 +35,7 @@
     --ring: 160 80% 55%;
 
     --radius: 0.75rem;
+    --primary-rgb: 38, 224, 163;
 
     --font-display: 'Syne', system-ui, sans-serif;
     --font-body: 'Space Grotesk', system-ui, sans-serif;
