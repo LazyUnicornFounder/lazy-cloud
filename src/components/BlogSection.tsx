@@ -2144,7 +2144,7 @@ const BlogSection = () => {
             >
               <Link
                 to={`/blog/${post.slug}`}
-                className="group flex flex-col h-full bg-transparent backdrop-blur-3xl rounded-3xl border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] overflow-hidden hover:border-primary/40 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_30px_rgba(var(--primary-rgb),0.15)] transition-all duration-300"
+                className="group flex flex-col h-full bg-transparent rounded-3xl border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] overflow-hidden hover:border-primary/40 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_30px_rgba(var(--primary-rgb),0.15)] transition-all duration-300"
               >
                 {/* Thumbnail */}
                 <div className="relative h-44 overflow-hidden">
