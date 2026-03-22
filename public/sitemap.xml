@@ -65,6 +65,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.lazyunicorn.ai/blog/you-never-needed-a-team</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.lazyunicorn.ai/og/you-never-needed-a-team.png</image:loc>
+      <image:title>You Never Needed a Team. You Just Didn't Have Another Option.</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.lazyunicorn.ai/blog/rise-of-autonomous-companies</loc>
     <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>
