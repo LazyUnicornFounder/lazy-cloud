@@ -85,11 +85,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
     >
       {!isMobile ? (
         <>
-          <div className="mb-1.5 flex items-center gap-2">
-            <div className="bg-transparent backdrop-blur-xl border border-foreground/10 rounded-full px-4 py-1 shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
-              <LiveCounter />
-            </div>
-          </div>
           <div className="flex items-center justify-between w-full py-3">
             <a
               href={brandHref}
