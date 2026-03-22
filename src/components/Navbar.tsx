@@ -79,7 +79,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 flex flex-col items-center w-full px-8 transition-all duration-300 ${
         scrolled
-          ? "bg-background/60 backdrop-blur-xl-xl border-b border-foreground/10 shadow-[0_4px_16px_rgba(0,0,0,0.3)] pt-3 pb-1"
+          ? "bg-transparent backdrop-blur-xl border-b border-foreground/10 shadow-[0_4px_16px_rgba(0,0,0,0.3)] pt-3 pb-1"
           : "pt-6"
       }`}
     >
