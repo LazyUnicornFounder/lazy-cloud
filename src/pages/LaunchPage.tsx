@@ -90,9 +90,6 @@ const LaunchPage = () => {
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[0.95] mb-4">
               What will you build?
             </h1>
-            <p className="font-body text-base text-foreground/50 leading-relaxed max-w-md mx-auto">
-              Describe your idea below, pick a platform, and we'll copy your prompt so you can hit the ground running.
-            </p>
           </motion.div>
 
           {/* Chat box */}
