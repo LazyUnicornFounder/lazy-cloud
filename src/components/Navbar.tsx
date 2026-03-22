@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X as XIcon, Linkedin } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -24,7 +24,14 @@ const XLogo = () => (
 const Navbar = ({ activePage = "home" }: NavbarProps) => {
   const isMobile = useIsMobile();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const isHome = location.pathname === "/";
 
@@ -69,7 +76,13 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
   );
 
   return (
-    <nav className="fixed top-6 left-0 right-0 z-50 flex flex-col items-center w-full px-8">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 flex flex-col items-center w-full px-8 transition-all duration-300 ${
+        scrolled
+          ? "bg-background/60 backdrop-blur-xl border-b border-foreground/10 shadow-[0_4px_16px_rgba(0,0,0,0.3)] pt-3 pb-1"
+          : "pt-6"
+      }`}
+    >
       {!isMobile ? (
         <>
           <div className="mb-1.5 flex items-center gap-2">
