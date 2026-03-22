@@ -137,6 +137,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.lazyunicorn.ai/blog/how-to-build-autonomous-unicorn</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.lazyunicorn.ai/og/how-to-build-autonomous-unicorn.png</image:loc>
+      <image:title>How to Build an Autonomous Unicorn</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.lazyunicorn.ai/company/naive</loc>
     <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>
