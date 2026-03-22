@@ -26,7 +26,7 @@ const steps = [
   {
     num: "02",
     icon: Hammer,
-    title: "Build on Lovable",
+    title: "Build with AI",
     subtitle: "Describe it. Ship it. Same day.",
     color: "from-fuchsia-400 to-purple-500",
     bgGlow: "bg-fuchsia-500/10",
