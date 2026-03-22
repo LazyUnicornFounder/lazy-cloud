@@ -32,7 +32,7 @@ const steps = [
     bgGlow: "bg-fuchsia-500/10",
     borderColor: "border-fuchsia-500/30",
     details: [
-      "Go to lovable.dev and describe your product in plain English.",
+      "Go to lovable.dev, polsia.com, or usenaive.ai and describe your product in plain English.",
       "Database, auth, UI, deployment — all handled.",
       "Working prototype by end of day. Zero code.",
     ],
