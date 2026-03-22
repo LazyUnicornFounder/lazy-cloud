@@ -1504,7 +1504,7 @@ const BlogSection = () => {
   // Merge static posts with DB posts, newest first (pinned post stays on top)
   const pinnedSlug = "lazy-unicorn-raising-angel-round";
   const pinned = staticBlogPosts.filter(p => p.slug === pinnedSlug);
-  const rest = [...staticBlogPosts.filter(p => p.slug !== pinnedSlug), ...dbPosts].reverse();
+  const rest = [...staticBlogPosts.filter(p => p.slug !== pinnedSlug), ...dbPosts];
   const allPosts = [...pinned, ...rest];
 
   return (
