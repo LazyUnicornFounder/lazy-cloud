@@ -13,7 +13,7 @@ interface NavLink {
 
 interface NavbarProps {
   /** Which page is active — used to highlight the correct link */
-  activePage?: "home" | "blog";
+  activePage?: "home" | "blog" | "guide";
 }
 
 const Navbar = ({ activePage = "home" }: NavbarProps) => {
