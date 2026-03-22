@@ -141,7 +141,7 @@ const LaunchPage = () => {
                     <p className="font-body text-xs text-foreground/40 mb-4 leading-relaxed">
                       {platform.description}
                     </p>
-                    <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.15em] uppercase text-primary/70 group-hover:text-primary transition-colors">
+                    <span className="inline-flex items-center justify-center gap-1.5 w-full font-body text-[10px] tracking-[0.15em] uppercase bg-primary/10 border border-primary/20 text-primary rounded-full px-4 py-2 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                       {prompt.trim() ? (
                         <>
                           <Copy size={10} /> Copy your prompt & Go
