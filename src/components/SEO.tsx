@@ -53,7 +53,7 @@ const SEO = ({
   const fullUrl = url ? `${BASE_URL}${url}` : BASE_URL;
   const imageAlt = title
     ? `${title} — ${SITE_NAME}`
-    : "Lazy Unicorn — The guide to building a startup that builds itself";
+    : "Lazy Unicorn — The solo founder's guide to building an autonomous unicorn";
   const robotsContent = noindex
     ? "noindex, nofollow"
     : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
