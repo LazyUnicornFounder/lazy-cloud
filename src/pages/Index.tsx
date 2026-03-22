@@ -16,6 +16,7 @@ import { supabase } from "@/integrations/supabase/client";
 import BlogTicker from "@/components/BlogTicker";
 import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
+import LiveCounter from "@/components/LiveCounter";
 
 const Index = () => {
   useTrackVisit();
