@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Lightbulb, Hammer, Bot, TrendingUp, Compass, Rocket, ChevronDown, ArrowRight, Download } from "lucide-react";
 import unicornBg from "@/assets/unicorn-beach.png";
