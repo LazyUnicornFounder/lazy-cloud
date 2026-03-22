@@ -148,7 +148,7 @@ const LaunchPage = () => {
                         </>
                       ) : (
                         <>
-                          <ExternalLink size={10} /> Copy prompt and start building
+                          <ExternalLink size={10} /> Copy prompt and start
                         </>
                       )}
                     </span>
