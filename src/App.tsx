@@ -14,6 +14,7 @@ import PolsiaPage from "./pages/PolsiaPage.tsx";
 import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
 import GuidePage from "./pages/GuidePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/admin" element={<Admin />} />
