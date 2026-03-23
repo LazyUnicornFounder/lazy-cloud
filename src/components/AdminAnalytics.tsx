@@ -229,6 +229,37 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
     return { pageViews, promptCopies, tiers, dailyTrend };
   }, [events]);
 
+  const blogStats = useMemo(() => {
+    const published = blogPosts.filter(p => p.status === "published");
+    const drafts = blogPosts.filter(p => p.status === "draft");
+    const totalPublished = published.length;
+    const totalDrafts = drafts.length;
+
+    const todayStr = new Date().toDateString();
+    const publishedToday = published.filter(p => p.published_at && new Date(p.published_at).toDateString() === todayStr).length;
+
+    // Daily published (last 30 days)
+    const dailyMap: Record<string, number> = {};
+    const now = new Date();
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(now);
+      d.setDate(d.getDate() - i);
+      dailyMap[d.toISOString().split("T")[0]] = 0;
+    }
+    published.forEach(p => {
+      if (p.published_at) {
+        const day = new Date(p.published_at).toISOString().split("T")[0];
+        if (dailyMap[day] !== undefined) dailyMap[day]++;
+      }
+    });
+    const dailyPublished = Object.entries(dailyMap).map(([date, count]) => ({
+      date: new Date(date).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+      posts: count,
+    }));
+
+    return { totalPublished, totalDrafts, publishedToday, dailyPublished };
+  }, [blogPosts]);
+
   if (loading) {
     return <p className="font-body text-sm text-muted-foreground py-8 text-center">Loading analytics…</p>;
   }
