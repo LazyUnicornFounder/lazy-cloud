@@ -131,7 +131,7 @@ const Index = () => {
       <Navbar activePage="home" />
 
       {/* Hero — full viewport, architectural feel */}
-      <header className="relative z-10 min-h-screen flex flex-col justify-center items-start px-8 md:px-12 pb-16">
+      <header className="relative z-10 min-h-screen flex flex-col justify-center items-start px-4 sm:px-8 md:px-12 pb-16">
         <div className="flex flex-col md:flex-row md:items-end md:gap-6 w-full">
           {/* Entrance sign + Hero box wrapper */}
           <motion.div
@@ -162,8 +162,8 @@ const Index = () => {
               </div>
             </motion.div>
 
-            <div className="bg-transparent backdrop-blur-xl rounded-3xl px-10 py-8 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
-              <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.95] text-foreground">
+            <div className="bg-transparent backdrop-blur-xl rounded-3xl px-5 sm:px-8 md:px-10 py-8 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+              <h1 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[0.95] text-foreground">
                 The solo founder's
                 <br />
                 guide to building an
@@ -468,7 +468,7 @@ const Index = () => {
       {/* <PitchDeck /> */}
 
       {/* Footer */}
-      <footer className="relative z-10 px-8 md:px-12 py-8 border-t border-foreground/10">
+      <footer className="relative z-10 px-8 md:px-12 py-8 pb-20 border-t border-foreground/10">
         <span className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/50">
           Lazy Unicorn © 2026
         </span>

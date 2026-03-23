@@ -88,7 +88,7 @@ const CompanyDetail = () => {
         >
           {/* Header */}
           <div className="bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
-            <div className="flex items-start gap-6">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
               {company.logo_url && (
                 <img
                   src={company.logo_url}
@@ -97,7 +97,7 @@ const CompanyDetail = () => {
                 />
               )}
               <div className="flex-1">
-                <h1 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight">
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
                   {company.name}
                 </h1>
                 <p className="font-body text-lg text-foreground/50 mt-2">

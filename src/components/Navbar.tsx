@@ -146,7 +146,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
           </div>
 
           {open && (
-            <div className="mt-2 w-full bg-background/80 backdrop-blur-xl-2xl border border-foreground/10 rounded-2xl px-5 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex flex-col gap-3">
+            <div className="mt-2 w-full bg-background/80 backdrop-blur-2xl border border-foreground/10 rounded-2xl px-5 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex flex-col gap-3">
               {links.map((link) =>
                 link.isCta ? (
                   <a
