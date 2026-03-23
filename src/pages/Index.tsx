@@ -329,12 +329,44 @@ const Index = () => {
           <p className="font-body text-lg text-foreground/50 leading-relaxed mb-6">
             Read our latest posts on the rise of autonomous capitalism — and why your next startup might run itself.
           </p>
-          <Link
-            to="/blog"
-            className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity">
-            
-            Read the blog →
-          </Link>
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              to="/blog"
+              className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity">
+              Read the blog →
+            </Link>
+            <Link
+              to="/lazy-blogger"
+              className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase border border-primary/30 text-primary px-6 py-2.5 rounded-full font-semibold hover:bg-primary/10 transition-all">
+              ✍️ Build your own blog →
+            </Link>
+          </div>
+
+          {/* Lazy Blogger promo block */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-8 p-5 rounded-2xl border border-accent/20 bg-accent/5"
+          >
+            <div className="flex items-start gap-3">
+              <span className="text-2xl shrink-0">🤖</span>
+              <div>
+                <p className="font-display text-sm font-bold text-foreground/80 mb-1">
+                  Lazy Blogger — Autonomous Blog Engine
+                </p>
+                <p className="font-body text-xs text-foreground/50 leading-relaxed mb-3">
+                  Publish up to 32 SEO-optimized blog posts per day on your Lovable project — fully automated. One prompt. Zero maintenance.
+                </p>
+                <Link
+                  to="/lazy-blogger"
+                  className="inline-block font-body text-[10px] tracking-[0.15em] uppercase text-accent font-semibold hover:text-primary transition-colors">
+                  Learn more about Lazy Blogger →
+                </Link>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </section>
 

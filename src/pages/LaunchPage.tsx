@@ -171,6 +171,32 @@ const LaunchPage = () => {
               </p>
             )}
           </motion.div>
+
+          {/* Lazy Blogger CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="mt-10 bg-transparent backdrop-blur-xl rounded-3xl px-8 py-8 border border-accent/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
+          >
+            <div className="flex items-start gap-4">
+              <span className="text-3xl shrink-0">✍️</span>
+              <div className="flex-1">
+                <p className="font-display text-lg md:text-xl font-extrabold text-foreground mb-1">
+                  Need content too?
+                </p>
+                <p className="font-body text-sm text-foreground/50 leading-relaxed mb-4">
+                  Once you've launched your startup, use <span className="text-primary font-semibold">Lazy Blogger</span> to auto-publish up to 32 SEO-optimized blog posts per day — fully autonomous, built for Lovable.
+                </p>
+                <a
+                  href="/lazy-blogger"
+                  className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
+                >
+                  Set up Lazy Blogger →
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </main>
 

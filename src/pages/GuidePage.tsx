@@ -50,6 +50,7 @@ const steps = [
       "Write 3–5 long-form posts about your space.",
       "Use Claude to draft. Edit for your voice.",
       "This is your organic growth foundation.",
+      "Or skip it all — use Lazy Blogger to auto-publish up to 32 SEO posts/day on Lovable. → /lazy-blogger",
     ],
     emoji: "🚀",
   },
