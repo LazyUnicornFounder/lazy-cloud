@@ -5,7 +5,7 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages";
+const LOVABLE_AI_URL = "https://ai.gateway.lovable.dev/v1/chat/completions";
 
 const SYSTEM_PROMPT = `You are a senior editorial writer for Lazy Unicorn — a publication covering the rise of autonomous capitalism and recursive startups (companies that improve their own ability to improve themselves).
 
@@ -53,8 +53,8 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
-    if (!ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not configured");
+    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
@@ -64,19 +64,17 @@ Deno.serve(async (req) => {
     // Pick a random topic
     const topic = TOPIC_PROMPTS[Math.floor(Math.random() * TOPIC_PROMPTS.length)];
 
-    // Generate blog post using Claude
-    const aiResponse = await fetch(ANTHROPIC_API_URL, {
+    // Generate blog post using Lovable AI
+    const aiResponse = await fetch(LOVABLE_AI_URL, {
       method: "POST",
       headers: {
-        "x-api-key": ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
+        Authorization: `Bearer ${LOVABLE_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 4096,
-        system: SYSTEM_PROMPT,
+        model: "google/gemini-3-flash-preview",
         messages: [
+          { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: topic },
         ],
       }),
@@ -84,19 +82,25 @@ Deno.serve(async (req) => {
 
     if (!aiResponse.ok) {
       const errText = await aiResponse.text();
-      console.error("Claude API error:", aiResponse.status, errText);
+      console.error("Lovable AI error:", aiResponse.status, errText);
       if (aiResponse.status === 429) {
         return new Response(JSON.stringify({ error: "Rate limited, try again later" }), {
           status: 429,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      throw new Error(`Claude API error: ${aiResponse.status} - ${errText}`);
+      if (aiResponse.status === 402) {
+        return new Response(JSON.stringify({ error: "AI credits exhausted, please add funds in Settings > Workspace > Usage" }), {
+          status: 402,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      throw new Error(`Lovable AI error: ${aiResponse.status} - ${errText}`);
     }
 
     const aiData = await aiResponse.json();
-    const rawContent = aiData.content?.[0]?.text;
-    if (!rawContent) throw new Error("No content from Claude");
+    const rawContent = aiData.choices?.[0]?.message?.content;
+    if (!rawContent) throw new Error("No content from Lovable AI");
 
     // Parse JSON from the response (handle markdown code blocks)
     let jsonStr = rawContent;
@@ -123,7 +127,7 @@ Deno.serve(async (req) => {
 
     if (error) throw error;
 
-    console.log("Generated blog post via Claude:", data.title);
+    console.log("Generated blog post via Lovable AI:", data.title);
 
     return new Response(JSON.stringify({ success: true, post: data }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },

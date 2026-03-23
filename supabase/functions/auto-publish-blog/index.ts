@@ -6,7 +6,7 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages";
+const LOVABLE_AI_URL = "https://ai.gateway.lovable.dev/v1/chat/completions";
 
 const SYSTEM_PROMPT = `You are the writer for LazyUnicorn.ai — a directory of AI tools for solo founders building autonomous companies. Write one blog post per call. Pick a fresh angle every time — vary the topic, structure, and opening. Never repeat a title. Topics rotate across: autonomous companies, solo founding, AI agents, self-building startups, the future of work, passive income via AI, autonomous unicorns, and the end of hiring. Tone: dark, editorial, provocative, honest. Return a JSON object with four fields only: title (string), slug (url-friendly lowercase-hyphenated string), excerpt (one punchy sentence max 160 chars), and body (full article in clean markdown, no HTML, no bullet points in prose, headers using ##, short punchy paragraphs, 800-1200 words). Always end with a one-paragraph CTA pointing to lazyunicorn.ai. Return only valid JSON, no preamble, no markdown code fences, no other text.`;
 
@@ -37,31 +37,30 @@ const TOPIC_SEEDS = [
   "Write about autonomous customer support — when your users never talk to a human.",
 ];
 
-async function callAnthropic(apiKey: string, topic: string): Promise<string> {
-  const cleanKey = apiKey.replace(/[^\x20-\x7E]/g, "").trim();
-  const response = await fetch(ANTHROPIC_API_URL, {
+async function callLovableAI(apiKey: string, topic: string): Promise<string> {
+  const response = await fetch(LOVABLE_AI_URL, {
     method: "POST",
-    headers: new Headers({
-      "x-api-key": cleanKey,
-      "anthropic-version": "2023-06-01",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
-    }),
+    },
     body: JSON.stringify({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 2000,
-      system: SYSTEM_PROMPT,
-      messages: [{ role: "user", content: topic }],
+      model: "google/gemini-3-flash-preview",
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        { role: "user", content: topic },
+      ],
     }),
   });
 
   if (!response.ok) {
     const errText = await response.text();
-    throw new Error(`Anthropic ${response.status}: ${errText}`);
+    throw new Error(`Lovable AI ${response.status}: ${errText}`);
   }
 
   const data = await response.json();
-  const text = data.content?.[0]?.text;
-  if (!text) throw new Error("Empty response from Anthropic");
+  const text = data.choices?.[0]?.message?.content;
+  if (!text) throw new Error("Empty response from Lovable AI");
   return text;
 }
 
@@ -83,20 +82,20 @@ Deno.serve(async (req) => {
   );
 
   try {
-    const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
-    if (!ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not configured");
+    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
     const topic = TOPIC_SEEDS[Math.floor(Math.random() * TOPIC_SEEDS.length)];
 
-    // Call Anthropic with one retry on parse failure
+    // Call Lovable AI with one retry on parse failure
     let post: { title: string; slug: string; excerpt: string; body: string };
-    let raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
+    let raw = await callLovableAI(LOVABLE_API_KEY, topic);
 
     try {
       post = parseJson(raw);
     } catch {
       console.warn("Parse failed, retrying...");
-      raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
+      raw = await callLovableAI(LOVABLE_API_KEY, topic);
       try {
         post = parseJson(raw);
       } catch (secondErr) {
