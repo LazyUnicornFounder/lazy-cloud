@@ -4,6 +4,13 @@ import AdminAnalytics from "@/components/AdminAnalytics";
 import { toast } from "sonner";
 import { Twitter, Pencil, X, Check, Trash2 } from "lucide-react";
 import { staticBlogPosts } from "@/components/BlogSection";
+import logoNaive from "@/assets/logo-naive.jpg";
+import logoPolsia from "@/assets/logo-polsia.jpg";
+
+const FALLBACK_LOGOS: Record<string, string> = {
+  "Naive": logoNaive,
+  "Polsia": logoPolsia,
+};
 
 interface Submission {
   id: string;
@@ -284,8 +291,8 @@ const Admin = () => {
               ) : (
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex items-start gap-3">
-                    {s.logo_url && (
-                      <img src={s.logo_url} alt={s.name} className="h-10 w-10 rounded-lg object-cover border border-border shrink-0" />
+                    {(s.logo_url || FALLBACK_LOGOS[s.name]) && (
+                      <img src={s.logo_url || FALLBACK_LOGOS[s.name]} alt={s.name} className="h-10 w-10 rounded-lg object-cover border border-border shrink-0" />
                     )}
                     <div>
                       <h2 className="font-display font-bold text-foreground truncate">{s.name}</h2>
