@@ -142,6 +142,7 @@ Deno.serve(async (req) => {
       const { data, error } = await supabase
         .from("blog_posts")
         .select("*")
+        .order("published_at", { ascending: false, nullsFirst: false })
         .order("created_at", { ascending: false });
       if (error) throw error;
       return new Response(JSON.stringify(data), {
