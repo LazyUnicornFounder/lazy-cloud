@@ -9,15 +9,16 @@ import { useTrackEvent } from "@/hooks/useTrackEvent";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-function FrequencyModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+function FrequencyModal({ open, onClose, onCopy }: { open: boolean; onClose: () => void; onCopy: (tier: FrequencyTier) => void }) {
   const [copied, setCopied] = useState<number | null>(null);
 
   const handleCopy = useCallback(async (tier: FrequencyTier) => {
     await navigator.clipboard.writeText(buildPrompt(tier));
     setCopied(tier.postsPerDay);
+    onCopy(tier);
     toast.success(`Copied! Paste this into your Lovable project chat.`);
     setTimeout(() => setCopied(null), 2500);
-  }, []);
+  }, [onCopy]);
 
   if (!open) return null;
 
