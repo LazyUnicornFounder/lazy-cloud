@@ -128,10 +128,12 @@ const LazyBloggerPage = () => {
         </section>
 
         {/* ── Social Proof Bar ── */}
-        <section className="w-full border-y border-border py-4 mt-20 mb-20">
-          <p className="font-body text-xs md:text-sm text-muted-foreground text-center max-w-3xl mx-auto px-6">
-            Works inside any existing Lovable project. No new accounts. No separate tools. No configuration outside of Lovable.
-          </p>
+        <section className="max-w-4xl mx-auto px-6 mt-20 mb-20">
+          <div className="bg-transparent backdrop-blur-xl rounded-3xl px-8 py-6 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+            <p className="font-body text-xs md:text-sm text-muted-foreground text-center max-w-3xl mx-auto">
+              Works inside any existing Lovable project. No new accounts. No separate tools. No configuration outside of Lovable.
+            </p>
+          </div>
         </section>
 
         {/* ── How It Works ── */}
