@@ -47,12 +47,14 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
   ];
 
   const brandHref = isHome ? "#top" : "/";
-  const handleBrandClick = isHome
+  const handleBrandClick = isHome && !isMobile
     ? (e: React.MouseEvent) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     : undefined;
+
+  const mobileBrandHref = "/";
 
   const socialIcons = (
     <>
@@ -127,11 +129,8 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
         <>
           <div className="flex items-center justify-between w-full bg-transparent backdrop-blur-xl border border-foreground/10 rounded-full px-5 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
             <a
-              href={brandHref}
-              onClick={(e) => {
-                handleBrandClick?.(e);
-                setOpen(false);
-              }}
+              href={mobileBrandHref}
+              onClick={() => setOpen(false)}
               className="font-display text-xs font-semibold tracking-[0.15em] uppercase text-foreground hover:text-primary transition-colors"
             >
               Lazy&#160;Unicorn
