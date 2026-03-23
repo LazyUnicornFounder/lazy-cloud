@@ -5,10 +5,17 @@ import {
   Geography,
   Marker,
 } from "react-simple-maps";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, FunnelChart, Funnel, LabelList } from "recharts";
 import { supabase } from "@/integrations/supabase/client";
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+
+interface AnalyticsEvent {
+  event_name: string;
+  event_data: Record<string, unknown> | null;
+  page: string | null;
+  created_at: string;
+}
 
 interface Visitor {
   country: string | null;
