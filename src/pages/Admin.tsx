@@ -226,7 +226,7 @@ const Admin = () => {
             activeTab === "submissions" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
           }`}
         >
-          Submissions
+          Directory
         </button>
         <button
           onClick={() => { setActiveTab("blog"); fetchBlogPosts(password); }}
