@@ -52,20 +52,33 @@ function parseUA(ua: string | null): { browser: string; os: string } {
   return { browser, os };
 }
 
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  status: string;
+  created_at: string;
+  published_at: string | null;
+}
+
 const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
   const [visitors, setVisitors] = useState<Visitor[]>([]);
   const [events, setEvents] = useState<AnalyticsEvent[]>([]);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const [visitorsRes, eventsRes] = await Promise.all([
+      const [visitorsRes, eventsRes, postsRes] = await Promise.all([
         supabase.functions.invoke("admin-submissions", {
           body: { action: "visitor_stats", password },
         }),
         supabase.functions.invoke("admin-submissions", {
           body: { action: "analytics_events", password },
+        }),
+        supabase.functions.invoke("admin-submissions", {
+          body: { action: "list_posts", password },
         }),
       ]);
       if (!visitorsRes.error && visitorsRes.data && !visitorsRes.data.error) {
@@ -73,6 +86,9 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
       }
       if (!eventsRes.error && eventsRes.data && !eventsRes.data.error) {
         setEvents(eventsRes.data);
+      }
+      if (!postsRes.error && postsRes.data && !postsRes.data.error) {
+        setBlogPosts(postsRes.data);
       }
       setLoading(false);
     };
@@ -213,6 +229,37 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
     return { pageViews, promptCopies, tiers, dailyTrend };
   }, [events]);
 
+  const blogStats = useMemo(() => {
+    const published = blogPosts.filter(p => p.status === "published");
+    const drafts = blogPosts.filter(p => p.status === "draft");
+    const totalPublished = published.length;
+    const totalDrafts = drafts.length;
+
+    const todayStr = new Date().toDateString();
+    const publishedToday = published.filter(p => p.published_at && new Date(p.published_at).toDateString() === todayStr).length;
+
+    // Daily published (last 30 days)
+    const dailyMap: Record<string, number> = {};
+    const now = new Date();
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(now);
+      d.setDate(d.getDate() - i);
+      dailyMap[d.toISOString().split("T")[0]] = 0;
+    }
+    published.forEach(p => {
+      if (p.published_at) {
+        const day = new Date(p.published_at).toISOString().split("T")[0];
+        if (dailyMap[day] !== undefined) dailyMap[day]++;
+      }
+    });
+    const dailyPublished = Object.entries(dailyMap).map(([date, count]) => ({
+      date: new Date(date).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+      posts: count,
+    }));
+
+    return { totalPublished, totalDrafts, publishedToday, dailyPublished };
+  }, [blogPosts]);
+
   if (loading) {
     return <p className="font-body text-sm text-muted-foreground py-8 text-center">Loading analytics…</p>;
   }
@@ -231,7 +278,51 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
         </div>
       </div>
 
-      {/* Lazy Blogger Funnel */}
+      {/* Blog Post Analytics */}
+      <div className="border border-border rounded-xl bg-card p-4">
+        <h3 className="font-display font-bold text-foreground mb-3">Blog Post Analytics</h3>
+        <div className="grid grid-cols-3 gap-3 mb-4">
+          <div className="text-center p-3 rounded-lg bg-background/50 border border-border/50">
+            <p className="font-display text-2xl font-bold text-foreground">{blogStats.totalPublished}</p>
+            <p className="font-body text-xs text-muted-foreground">Published</p>
+          </div>
+          <div className="text-center p-3 rounded-lg bg-background/50 border border-border/50">
+            <p className="font-display text-2xl font-bold text-primary">{blogStats.publishedToday}</p>
+            <p className="font-body text-xs text-muted-foreground">Today</p>
+          </div>
+          <div className="text-center p-3 rounded-lg bg-background/50 border border-border/50">
+            <p className="font-display text-2xl font-bold text-muted-foreground">{blogStats.totalDrafts}</p>
+            <p className="font-body text-xs text-muted-foreground">Drafts Queued</p>
+          </div>
+        </div>
+        <div className="w-full h-48">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={blogStats.dailyPublished} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+              <XAxis
+                dataKey="date"
+                tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+                interval={Math.floor(blogStats.dailyPublished.length / 7)}
+                tickLine={false}
+                axisLine={{ stroke: "hsl(var(--border))" }}
+              />
+              <YAxis tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} allowDecimals={false} />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "hsl(var(--card))",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "8px",
+                  fontSize: "12px",
+                }}
+                labelStyle={{ color: "hsl(var(--foreground))", fontWeight: "bold" }}
+                itemStyle={{ color: "hsl(var(--primary))" }}
+              />
+              <Bar dataKey="posts" name="Posts Published" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
       <div className="border border-border rounded-xl bg-card p-4">
         <h3 className="font-display font-bold text-foreground mb-3">Lazy Blogger — Funnel</h3>
         <div className="grid grid-cols-2 gap-3 mb-4">
