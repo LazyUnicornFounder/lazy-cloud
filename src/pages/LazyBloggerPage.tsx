@@ -39,7 +39,7 @@ function FrequencyModal({ open, onClose, onCopy }: { open: boolean; onClose: () 
               <button
                 key={tier.postsPerDay}
                 onClick={() => handleCopy(tier)}
-                className={`rounded-xl border p-4 text-left transition-all cursor-pointer ${
+                className={`rounded-xl border p-6 text-left transition-all cursor-pointer ${
                   isCopied
                     ? "border-primary bg-primary/10"
                     : "border-border hover:border-primary/40 bg-card"
