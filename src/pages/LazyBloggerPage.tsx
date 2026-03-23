@@ -32,7 +32,7 @@ function FrequencyModal({ open, onClose, onCopy }: { open: boolean; onClose: () 
       >
         <h3 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">How many posts per day?</h3>
         <p className="font-body text-lg text-muted-foreground mb-10">Pick one. The prompt adjusts automatically.</p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-5">
           {frequencyTiers.map((tier) => {
             const isCopied = copied === tier.postsPerDay;
             return (
