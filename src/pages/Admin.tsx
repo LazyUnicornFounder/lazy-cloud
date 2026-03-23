@@ -29,8 +29,8 @@ interface BlogPost {
 
 
 const Admin = () => {
-  const [password, setPassword] = useState("");
-  const [authenticated, setAuthenticated] = useState(false);
+  const [password, setPassword] = useState(() => sessionStorage.getItem("admin_pw") || "");
+  const [authenticated, setAuthenticated] = useState(() => !!sessionStorage.getItem("admin_pw"));
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   
