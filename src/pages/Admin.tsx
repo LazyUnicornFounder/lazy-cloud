@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import AdminAnalytics from "@/components/AdminAnalytics";
 import AdminSeo from "@/components/AdminSeo";
 import AdminGeo from "@/components/AdminGeo";
+import AdminPrompts from "@/components/AdminPrompts";
 import { toast } from "sonner";
 import { Twitter, Pencil, X, Check, Trash2, Upload, Loader2 } from "lucide-react";
 import { staticBlogPosts } from "@/components/BlogSection";
