@@ -655,6 +655,10 @@ const Admin = () => {
         <AdminAnalytics password={password} />
       )}
 
+      {activeTab === "seo" && <AdminSeo />}
+
+      {activeTab === "geo" && <AdminGeo />}
+
     </div>
   );
 };
