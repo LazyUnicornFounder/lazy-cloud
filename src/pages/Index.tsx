@@ -48,11 +48,11 @@ const Index = () => {
     queryFn: async () => {
       const { data } = await supabase.
       from("submissions").
-      select("name, url, tagline, is_paid, slug").
+      select("name, url, tagline, is_paid, slug, display_order").
       eq("status", "approved").
-      order("is_paid", { ascending: false }).
+      order("display_order", { ascending: true }).
       order("created_at", { ascending: true });
-      const mapped = (data || []).map((c) => ({
+      return (data || []).map((c: any) => ({
         name: c.name,
         url: c.url,
         description: c.tagline,
@@ -60,10 +60,6 @@ const Index = () => {
         isPaid: c.is_paid,
         slug: c.slug
       }));
-      // Pin Lazy Blogger to the top
-      const pinned = mapped.filter(c => c.name === "Lazy Blogger");
-      const rest = mapped.filter(c => c.name !== "Lazy Blogger");
-      return [...pinned, ...rest];
     }
   });
 
