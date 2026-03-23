@@ -18,6 +18,7 @@ import BlogTicker from "@/components/BlogTicker";
 import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 import LiveCounter from "@/components/LiveCounter";
+import TotalVisitorCount from "@/components/TotalVisitorCount";
 
 const Index = () => {
   useTrackVisit();
