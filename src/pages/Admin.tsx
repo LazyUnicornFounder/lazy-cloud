@@ -420,8 +420,10 @@ const Admin = () => {
         <div className="space-y-3">
           {/* Stats */}
           {(() => {
-            const published = blogPosts.filter(p => p.status === "published").length;
-            const totalOnSite = published + staticBlogPosts.length;
+            const published = blogPosts.filter(p => p.status === "published");
+            const staticSlugs = new Set(staticBlogPosts.map(p => p.slug));
+            const uniqueDbPublished = published.filter(p => !staticSlugs.has(p.slug));
+            const totalOnSite = uniqueDbPublished.length + staticBlogPosts.length;
             const drafts = blogPosts.filter(p => p.status === "draft").length;
             const today = new Date().toDateString();
             const publishedToday = blogPosts.filter(p => p.status === "published" && p.published_at && new Date(p.published_at).toDateString() === today).length;
