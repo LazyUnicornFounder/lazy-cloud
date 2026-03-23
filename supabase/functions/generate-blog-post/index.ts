@@ -118,6 +118,15 @@ Deno.serve(async (req) => {
 
     const post = JSON.parse(jsonStr);
 
+    // Convert title to Title Case
+    const minorWords = new Set(["a","an","the","and","but","or","nor","for","yet","so","in","on","at","to","by","of","up","as","is","if","it","no"]);
+    const toTitleCase = (str: string) =>
+      str.replace(/\w\S*/g, (word, index) => {
+        if (index !== 0 && minorWords.has(word.toLowerCase())) return word.toLowerCase();
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      });
+    post.title = toTitleCase(post.title);
+
     // Check for slug collision and only append suffix if needed
     let slug = post.slug;
     const { count } = await supabase.from("blog_posts").select("id", { count: "exact", head: true }).eq("slug", slug);
