@@ -5,45 +5,25 @@ import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import BlogTicker from "@/components/BlogTicker";
-import unicornBg from "@/assets/unicorn-beach.png";
-
-const SETUP_PROMPT = `Add an autonomous blog publishing engine called Lazy Blogger to this project. Use the built-in Lovable AI integration for all AI calls — no external API key required from the user.
-
-1. Database Create a Supabase table called blog_posts with fields: id (uuid, primary key, default gen_random_uuid()), title (text), slug (text, unique), excerpt (text), body (text), published_at (timestamptz, default now()), status (text, default 'published'). Create a Supabase table called blog_settings with fields: id (uuid, primary key), business_description (text), target_reader (text), topics (text), tone (text), is_publishing (boolean, default true), queue_index (integer, default 0). Create a Supabase table called blog_errors with fields: id (uuid, primary key), error_message (text), created_at (timestamptz, default now()).
-
-2. Setup page Create a page at /lazy-blogger-setup. It shows a form with four fields: Business description (what does your site do and who is it for?), Target reader (who reads your blog?), Topics (what subjects should posts cover?), Tone (select: provocative / editorial / educational / conversational). A submit button labelled 'Start Publishing'. On submit, save all values to the blog_settings table. If a row already exists, update it. After saving, redirect to /lazy-blogger-dashboard with a success message: 'Lazy Blogger is running. Your first post publishes at the next scheduled time.'
-
-3. Edge function Create a Supabase edge function called lazy-blogger-publish triggered by a cron schedule four times per day at 6am, 12pm, 6pm, and 11pm UTC. On each run: read the blog_settings table. If is_publishing is false, exit immediately. Use the built-in Lovable AI to generate the blog post. Build a prompt using the stored settings: 'You are the blog writer for a site described as: [business_description]. You are writing for: [target_reader]. Cover topics including: [topics]. Tone: [tone]. Write one blog post. Return only a valid JSON object with no preamble, no markdown code fences, and no other text. The JSON must have exactly four fields: title (string), slug (lowercase hyphenated url-friendly string), excerpt (one punchy sentence under 160 characters), body (full article in clean markdown — no HTML, no bullet points in body prose, use ## for section headers, short punchy paragraphs, 800 to 1200 words). Pick a fresh angle every run. Never repeat a title. The post body must end with two paragraphs: first, a call to action relevant to the business. Second, exactly this paragraph: Looking for more tools to build and run your business autonomously? LazyUnicorn.ai is the definitive directory of AI tools for solo founders building autonomous companies. Hyperlink LazyUnicorn.ai to https://lazyunicorn.ai and Lazy Blogger to https://lazyunicorn.ai/lazy-blogger in that final paragraph.' Parse the JSON response. If parsing fails, retry once. If it fails again, log the error to blog_errors and exit. Check if the slug already exists in blog_posts. If it does, append a random four-digit number to the slug. Insert the new post into blog_posts.
-
-4. Blog pages Create a public page at /blog showing all posts from blog_posts where status is 'published', ordered by published_at descending. Show each post as a card with title, excerpt, and published date. Each card links to /blog/[slug]. At the bottom of the /blog page add a small footer line: 'Powered by Lazy Blogger — the autonomous blog engine for Lovable sites. Built by LazyUnicorn.ai' — link Lazy Blogger to https://lazyunicorn.ai/lazy-blogger and LazyUnicorn.ai to https://lazyunicorn.ai. Create a public page at /blog/[slug] that fetches and displays the full post. Render the body markdown as formatted HTML. Show title, published date, and full body content. At the bottom of every individual post page, after the post body, add a small branded line: '🦄 Written by Lazy Blogger — autonomous blog publishing for Lovable sites. Discover more at LazyUnicorn.ai' — link Lazy Blogger to https://lazyunicorn.ai/lazy-blogger and LazyUnicorn.ai to https://lazyunicorn.ai.
-
-5. Dashboard Create a page at /lazy-blogger-dashboard showing: total posts published, posts published this week, a toggle to pause or resume publishing (updates is_publishing in blog_settings), a button labelled 'Publish One Now' that manually triggers the lazy-blogger-publish edge function immediately, a table of the last 20 posts with title, published date, and a link to view each post, and a link to /lazy-blogger-setup labelled 'Edit Settings'.
-
-6. Navigation Add a Blog link to the main site navigation pointing to /blog.`;
+import FrequencySelector from "@/components/lazy-blogger/FrequencySelector";
+import { frequencyTiers, buildPrompt, type FrequencyTier } from "@/components/lazy-blogger/frequencyData";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const steps = [
-  { num: 1, text: "Copy the setup prompt from this page." },
-  { num: 2, text: "Open your Lovable project and paste it into the chat." },
-  { num: 3, text: "Lovable builds everything — blog pages, database, publishing engine, dashboard." },
-  { num: 4, text: "Visit /lazy-blogger-setup on your site, answer five questions, hit Start Publishing." },
+  { num: 1, text: "Pick your publishing frequency below." },
+  { num: 2, text: "Copy the setup prompt — it adjusts to your chosen speed." },
+  { num: 3, text: "Paste it into your Lovable project chat." },
+  { num: 4, text: "Answer five questions on /lazy-blogger-setup and hit Start Publishing." },
 ];
 
 const buildItems = [
   { icon: Layout, title: "A public blog at /blog", desc: "All published posts, newest first, linked from your main navigation." },
   { icon: Layers, title: "Individual post pages at /blog/[slug]", desc: "Full article pages with clean formatted content." },
   { icon: Sparkles, title: "A publishing engine", desc: "A Supabase edge function that uses Lovable AI to generate and publish on schedule." },
-  { icon: Clock, title: "A cron schedule", desc: "Posts publish automatically at 6am, 12pm, 6pm, and 11pm every day." },
+  { icon: Clock, title: "A cron schedule", desc: "Posts publish automatically at your chosen frequency — all day, every day." },
   { icon: BarChart3, title: "An owner dashboard at /lazy-blogger-dashboard", desc: "See all posts, pause publishing, trigger a post manually." },
   { icon: Settings, title: "A settings page at /lazy-blogger-setup", desc: "Update your business description, topics, and tone anytime." },
-];
-
-const scheduleMarkers = [
-  { time: "6 AM", label: "Post publishes" },
-  { time: "12 PM", label: "Post publishes" },
-  { time: "6 PM", label: "Post publishes" },
-  { time: "11 PM", label: "Post publishes" },
 ];
 
 const faqs = [
@@ -53,6 +33,7 @@ const faqs = [
   { q: "Will posts sound like me?", a: "You set your business description, target reader, topics, and tone in the five-question setup. The more specific your answers, the sharper the posts." },
   { q: "What if something breaks?", a: "Errors log automatically to a Supabase table inside your project. Your Lovable dashboard shows everything. Ask Lovable to fix any issue in the chat — it knows the full setup." },
   { q: "Can I change topics or tone later?", a: "Yes. Visit /lazy-blogger-setup anytime and update your settings. Changes apply from the next scheduled post." },
+  { q: "Can I change frequency later?", a: "Yes. Re-paste the prompt for a different frequency tier and Lovable will update the cron schedule." },
 ];
 
 const costItems = [
@@ -61,14 +42,14 @@ const costItems = [
   { label: "AI content generation", value: "Included" },
 ];
 
-function CopyButton({ className = "" }: { className?: string }) {
+function CopyButton({ prompt, className = "" }: { prompt: string; className?: string }) {
   const [copied, setCopied] = useState(false);
   const handleCopy = useCallback(async () => {
-    await navigator.clipboard.writeText(SETUP_PROMPT);
+    await navigator.clipboard.writeText(prompt);
     setCopied(true);
     toast.success("Copied to clipboard!");
     setTimeout(() => setCopied(false), 2000);
-  }, []);
+  }, [prompt]);
   return (
     <button
       onClick={handleCopy}
@@ -80,15 +61,18 @@ function CopyButton({ className = "" }: { className?: string }) {
 }
 
 const LazyBloggerPage = () => {
-  const scrollToHowItWorks = () => {
-    document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+  const [selectedTier, setSelectedTier] = useState<FrequencyTier>(frequencyTiers[0]);
+  const prompt = buildPrompt(selectedTier);
+
+  const scrollToFrequency = () => {
+    document.getElementById("pick-frequency")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Blogger — Autonomous Blog Engine for Lovable"
-        description="One prompt installs an autonomous blog publishing engine inside your Lovable project. Four SEO posts a day, zero effort."
+        description="One prompt installs an autonomous blog publishing engine inside your Lovable project. Up to 32 SEO posts a day, zero effort."
         url="/lazy-blogger"
       />
       <Navbar />
@@ -102,15 +86,15 @@ const LazyBloggerPage = () => {
               <span className="text-lovable">Lovable.</span>
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10">
-              Paste one prompt into your Lovable project. Answer five questions. Lazy Blogger installs itself and starts publishing four SEO blog posts a day to your site — automatically, forever, without you writing a word.
+              Paste one prompt into your Lovable project. Answer five questions. Lazy Blogger installs itself and starts publishing up to 32 SEO blog posts a day to your site — automatically, forever, without you writing a word.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-              <CopyButton />
+              <CopyButton prompt={prompt} />
               <button
-                onClick={scrollToHowItWorks}
+                onClick={scrollToFrequency}
                 className="inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full border border-border text-foreground/70 hover:text-foreground hover:border-foreground/30 transition-colors"
               >
-                See How It Works <ChevronDown size={16} />
+                Pick Your Speed <ChevronDown size={16} />
               </button>
             </div>
             <div className="inline-flex items-center gap-2 bg-lovable/10 border border-lovable/20 rounded-full px-4 py-1.5">
@@ -126,6 +110,11 @@ const LazyBloggerPage = () => {
             Works inside any existing Lovable project. No new accounts. No separate tools. No configuration outside of Lovable.
           </p>
         </section>
+
+        {/* ── Frequency Selector ── */}
+        <div id="pick-frequency">
+          <FrequencySelector selected={selectedTier} onSelect={setSelectedTier} />
+        </div>
 
         {/* ── How It Works ── */}
         <section id="how-it-works" className="max-w-5xl mx-auto px-6 mb-24">
@@ -191,13 +180,16 @@ const LazyBloggerPage = () => {
 
         {/* ── Publishing Schedule ── */}
         <section className="max-w-4xl mx-auto px-6 mb-24">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-center mb-12">
-            Four posts a day. Every day.<br />While <span className="text-lovable">Lovable</span> runs the engine.
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-center mb-4">
+            <span className="text-primary">{selectedTier.postsPerDay} posts a day.</span> Every day.<br />While <span className="text-lovable">Lovable</span> runs the engine.
           </motion.h2>
+          <p className="font-body text-sm text-muted-foreground text-center mb-12">
+            Publishing {selectedTier.cronDescription}.
+          </p>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="relative">
             <div className="hidden sm:block absolute top-5 left-[12.5%] right-[12.5%] h-px bg-border" />
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
-              {scheduleMarkers.map((m) => (
+              {selectedTier.scheduleMarkers.map((m) => (
                 <div key={m.time} className="flex flex-col items-center text-center">
                   <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mb-3 relative z-10">
                     <Clock size={16} className="text-primary-foreground" />
@@ -207,6 +199,11 @@ const LazyBloggerPage = () => {
                 </div>
               ))}
             </div>
+            {selectedTier.postsPerDay > 4 && (
+              <p className="font-body text-xs text-muted-foreground text-center mt-4">
+                Showing first 4 of {selectedTier.postsPerDay} daily slots. The schedule continues around the clock.
+              </p>
+            )}
           </motion.div>
           <p className="font-body text-sm text-muted-foreground text-center mt-10 max-w-2xl mx-auto">
             Each post is 800 to 1,200 words of SEO-optimised content written in your brand voice on your chosen topics. Lovable handles the scheduling and the writing. You handle nothing.
@@ -223,11 +220,11 @@ const LazyBloggerPage = () => {
               "Add an autonomous blog publishing engine called Lazy Blogger to this project."
             </p>
             <p className="font-body text-xs text-muted-foreground mt-3">
-              + complete build instructions for database, edge function, cron schedule, blog pages, and dashboard.
+              + complete build instructions for database, edge function, cron schedule ({selectedTier.postsPerDay}×/day), blog pages, and dashboard.
             </p>
           </motion.div>
           <div className="text-center">
-            <CopyButton className="text-base px-10 py-5" />
+            <CopyButton prompt={prompt} className="text-base px-10 py-5" />
             <p className="font-body text-xs text-muted-foreground mt-4 max-w-md mx-auto">
               Paste it into your Lovable chat exactly as copied. Lovable reads the full instructions and builds everything in one go.
             </p>
@@ -284,7 +281,7 @@ const LazyBloggerPage = () => {
             <p className="font-body text-base text-muted-foreground max-w-xl mx-auto leading-relaxed mb-10">
               Every post builds domain authority. Every week that passes makes your site harder to catch. The best time to start was three months ago. The second best time is right now.
             </p>
-            <CopyButton className="text-base px-10 py-5" />
+            <CopyButton prompt={prompt} className="text-base px-10 py-5" />
             <p className="font-body text-xs text-muted-foreground mt-4 max-w-md mx-auto">
               Then open your Lovable project, paste it into the chat, and answer five questions. Your site starts publishing today.
             </p>
