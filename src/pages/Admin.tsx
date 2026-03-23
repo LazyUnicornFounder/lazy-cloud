@@ -401,28 +401,6 @@ const Admin = () => {
         <AdminAnalytics password={password} />
       )}
 
-
-      {activeTab === "early_access" && (
-        <div className="space-y-3">
-          <p className="font-body text-sm text-muted-foreground mb-4">
-            {earlyAccess.length} email{earlyAccess.length !== 1 ? "s" : ""} collected
-          </p>
-          {earlyAccess.length === 0 && !loading && (
-            <p className="font-body text-sm text-muted-foreground text-center py-8">No signups yet.</p>
-          )}
-          {earlyAccess.map((entry) => (
-            <div key={entry.id} className="border border-border rounded-xl bg-card p-4 flex items-center justify-between">
-              <div>
-                <p className="font-body text-sm font-medium text-foreground">{entry.email}</p>
-                <p className="font-body text-xs text-muted-foreground">
-                  {new Date(entry.created_at).toLocaleString()}
-                  {entry.source && <span className="ml-2 text-muted-foreground/60">· {entry.source}</span>}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };
