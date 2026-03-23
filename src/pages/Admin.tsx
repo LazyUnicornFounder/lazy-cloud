@@ -463,7 +463,7 @@ const Admin = () => {
               disabled={generating}
               className="font-body text-sm px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shrink-0 h-fit"
             >
-              {generating ? "Generating…" : "Generate"}
+              {generating ? "Generating…" : customTopic.split("\n").filter(t => t.trim()).length > 1 ? `Generate ${customTopic.split("\n").filter(t => t.trim()).length} Posts` : "Generate"}
             </button>
           </div>
 
