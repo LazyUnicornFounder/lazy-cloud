@@ -24,12 +24,8 @@ interface BlogPost {
   created_at: string;
   published_at: string | null;
 }
-interface EarlyAccessEntry {
-  id: string;
-  email: string;
-  source: string | null;
-  created_at: string;
-}
+
+
 
 const Admin = () => {
   const [password, setPassword] = useState("");
