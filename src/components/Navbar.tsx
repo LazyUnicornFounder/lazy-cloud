@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X as XIcon, Linkedin, Heart } from "lucide-react";
+import { Menu, X as XIcon, Linkedin } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -93,13 +93,10 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a
               href={brandHref}
               onClick={handleBrandClick}
-              className="font-display text-[10px] font-semibold tracking-[0.15em] uppercase text-foreground hover:text-primary transition-colors cursor-pointer leading-tight flex items-center gap-2"
+              className="font-display text-[10px] font-semibold tracking-[0.15em] uppercase text-foreground hover:text-primary transition-colors cursor-pointer leading-tight flex flex-col"
             >
-              <Heart size={14} className="text-primary fill-primary shrink-0" />
-              <span className="flex flex-col">
-                <span>Lazy</span>
-                <span>Unicorn</span>
-              </span>
+              <span>Lazy</span>
+              <span>Unicorn</span>
             </a>
             <div className="flex items-center gap-6">
               {links.map((link) =>
@@ -135,13 +132,10 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a
               href={mobileBrandHref}
               onClick={() => setOpen(false)}
-              className="font-display text-[9px] font-semibold tracking-[0.15em] uppercase text-foreground hover:text-primary transition-colors leading-tight flex items-center gap-1.5"
+              className="font-display text-[9px] font-semibold tracking-[0.15em] uppercase text-foreground hover:text-primary transition-colors leading-tight flex flex-col"
             >
-              <Heart size={12} className="text-primary fill-primary shrink-0" />
-              <span className="flex flex-col">
-                <span>Lazy</span>
-                <span>Unicorn</span>
-              </span>
+              <span>Lazy</span>
+              <span>Unicorn</span>
             </a>
             <button
               onClick={() => setOpen(!open)}
