@@ -103,8 +103,7 @@ Deno.serve(async (req) => {
       excerpt: post.excerpt,
       content: paragraphs,
       read_time: readTime,
-      status: "published",
-      published_at: new Date().toISOString(),
+      status: "draft",
     }).select().single();
 
     if (error) throw error;

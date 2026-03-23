@@ -29,7 +29,8 @@ const Admin = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics" | "twitter">("analytics");
+  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "queue" | "analytics" | "twitter">("analytics");
+  const [queue, setQueue] = useState<BlogPost[]>([]);
   const [generating, setGenerating] = useState(false);
   const [tweetText, setTweetText] = useState("");
   const [tweeting, setTweeting] = useState(false);
@@ -58,6 +59,8 @@ const Admin = () => {
       return;
     }
     setBlogPosts(data);
+    // Filter drafts for queue (sorted newest first)
+    setQueue((data || []).filter((p: BlogPost) => p.status === "draft"));
   }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -159,6 +162,14 @@ const Admin = () => {
           Submissions
         </button>
         <button
+          onClick={() => { setActiveTab("queue"); fetchBlogPosts(password); }}
+          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
+            activeTab === "queue" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          Queue ({queue.length})
+        </button>
+        <button
           onClick={() => { setActiveTab("blog"); fetchBlogPosts(password); }}
           className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
             activeTab === "blog" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
@@ -227,6 +238,50 @@ const Admin = () => {
           {!loading && submissions.length === 0 && (
             <p className="font-body text-sm text-muted-foreground text-center py-8">No submissions yet.</p>
           )}
+        </div>
+      )}
+
+      {activeTab === "queue" && (
+        <div className="space-y-3">
+          <p className="font-body text-sm text-muted-foreground mb-4">
+            AI-generated drafts waiting for your approval. Auto-publish runs 4× daily (6am, 12pm, 6pm, 11pm UTC).
+          </p>
+          {queue.length === 0 && !loading && (
+            <p className="font-body text-sm text-muted-foreground text-center py-8">Queue is empty — next batch arrives soon.</p>
+          )}
+          {queue.map((post) => (
+            <div key={post.id} className="border border-border rounded-xl bg-card p-4">
+              <div className="flex items-start justify-between gap-4">
+                <div className="min-w-0 flex-1">
+                  <h2 className="font-display font-bold text-foreground">{post.title}</h2>
+                  <p className="font-body text-sm text-muted-foreground mt-1 line-clamp-2">{post.excerpt}</p>
+                  <span className="font-body text-xs text-muted-foreground mt-2 block">
+                    Generated {new Date(post.created_at).toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex gap-2 shrink-0">
+                  <button
+                    onClick={() => handleBlogAction(post.id, "publish_post")}
+                    className="font-body text-xs px-3 py-1.5 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors"
+                  >
+                    Publish
+                  </button>
+                  <button
+                    onClick={() => handleBlogAction(post.id, "reject_post")}
+                    className="font-body text-xs px-3 py-1.5 rounded-lg bg-destructive/20 text-destructive hover:bg-destructive/30 transition-colors"
+                  >
+                    Reject
+                  </button>
+                  <button
+                    onClick={() => handleBlogAction(post.id, "delete_post")}
+                    className="font-body text-xs px-3 py-1.5 rounded-lg bg-destructive/10 text-destructive hover:bg-destructive/20 transition-colors"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       )}
 
