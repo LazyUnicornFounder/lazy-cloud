@@ -114,10 +114,7 @@ const LazyBloggerPage = () => {
               Paste one prompt. Answer five questions. Your blog publishes SEO posts every day — automatically, forever, for free.
             </p>
             <CopyPromptButton />
-            <div className="mt-6 inline-flex items-center gap-2 bg-lovable/10 border border-lovable/20 rounded-full px-4 py-1.5">
-              <Heart size={14} className="text-lovable fill-lovable" />
-              <span className="font-body text-xs text-lovable">Built for Lovable projects. No API keys needed.</span>
-            </div>
+            <p className="font-body text-xs text-muted-foreground mt-4">Built for Lovable projects. No API keys needed.</p>
           </motion.div>
         </section>
 
