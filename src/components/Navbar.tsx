@@ -171,7 +171,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
                   <a
                     key={link.label}
                     href={link.href}
-                    className={`font-body text-[11px] tracking-[0.15em] uppercase transition-colors ${
+                    className={`font-body text-[11px] tracking-[0.15em] uppercase font-bold transition-colors ${
                       link.highlight
                         ? "text-primary"
                         : "text-foreground/70 hover:text-primary"
