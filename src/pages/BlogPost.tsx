@@ -122,17 +122,22 @@ const BlogPost = () => {
             </h1>
 
             <div className="space-y-5">
-              {post.content.map((paragraph, j) => (
-                <motion.p
-                  key={j}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: j * 0.04 }}
-                  className="font-body text-base text-foreground/60 leading-relaxed [&_a]:text-primary [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity"
-                  dangerouslySetInnerHTML={{ __html: paragraph }}
-                />
-              ))}
+              {post.content.map((paragraph, j) => {
+                // Strip hashtags from AI-generated content
+                const cleaned = paragraph.replace(/#\w+/g, "").replace(/\s{2,}/g, " ").trim();
+                if (!cleaned) return null;
+                return (
+                  <motion.p
+                    key={j}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: j * 0.04 }}
+                    className="font-body text-base text-foreground/60 leading-relaxed [&_a]:text-primary [&_a]:underline [&_a]:hover:opacity-80 [&_a]:transition-opacity"
+                    dangerouslySetInnerHTML={{ __html: cleaned }}
+                  />
+                );
+              })}
             </div>
           </motion.div>
         </div>

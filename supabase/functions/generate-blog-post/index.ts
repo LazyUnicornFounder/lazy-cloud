@@ -27,7 +27,7 @@ Output format: Return valid JSON with this exact structure:
   "readTime": "X min read"
 }
 
-Content should be 6-12 paragraphs. Use <strong> tags for emphasis. Include relevant links using <a> tags where natural.`;
+Content should be 6-12 paragraphs. Use <strong> tags for emphasis. Include relevant links using <a> tags where natural. NEVER include hashtags (#) anywhere in the output — no hashtags in titles, content, or anywhere else.`;
 
 const TOPIC_PROMPTS = [
   "Write about a specific trend you're seeing in autonomous companies right now — something most people haven't noticed yet.",
