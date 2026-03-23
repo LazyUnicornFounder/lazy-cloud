@@ -61,8 +61,14 @@ Deno.serve(async (req) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     );
 
-    // Pick a random topic
-    const topic = TOPIC_PROMPTS[Math.floor(Math.random() * TOPIC_PROMPTS.length)];
+    // Use custom topic from request body, or pick a random one
+    let topic: string;
+    try {
+      const body = await req.json();
+      topic = body?.topic || TOPIC_PROMPTS[Math.floor(Math.random() * TOPIC_PROMPTS.length)];
+    } catch {
+      topic = TOPIC_PROMPTS[Math.floor(Math.random() * TOPIC_PROMPTS.length)];
+    }
 
     // Generate blog post using Claude
     const aiResponse = await fetch(ANTHROPIC_API_URL, {

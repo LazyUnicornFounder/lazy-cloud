@@ -38,6 +38,7 @@ const Admin = () => {
   const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics">("analytics");
   const [generating, setGenerating] = useState(false);
+  const [customTopic, setCustomTopic] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editForm, setEditForm] = useState({ name: "", url: "", tagline: "", description: "", logo_url: "" });
 
@@ -102,7 +103,10 @@ const Admin = () => {
   const handleGeneratePost = async () => {
     setGenerating(true);
     try {
-      await supabase.functions.invoke("generate-blog-post");
+      await supabase.functions.invoke("generate-blog-post", {
+        body: customTopic.trim() ? { topic: customTopic.trim() } : {},
+      });
+      setCustomTopic("");
       await fetchBlogPosts(password);
     } catch {
       // ignore
@@ -364,13 +368,24 @@ const Admin = () => {
             );
           })()}
 
-          <button
-            onClick={handleGeneratePost}
-            disabled={generating}
-            className="font-body text-sm px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50 mb-4"
-          >
-            {generating ? "Generating…" : "Generate New Post"}
-          </button>
+          <div className="flex gap-3 items-end mb-4">
+            <div className="flex-1">
+              <textarea
+                value={customTopic}
+                onChange={(e) => setCustomTopic(e.target.value)}
+                placeholder="Describe the blog post you want to generate (leave empty for random topic)…"
+                rows={2}
+                className="w-full font-body text-sm bg-card border border-border rounded-lg px-3 py-2 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 resize-none"
+              />
+            </div>
+            <button
+              onClick={handleGeneratePost}
+              disabled={generating}
+              className="font-body text-sm px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shrink-0 h-fit"
+            >
+              {generating ? "Generating…" : "Generate"}
+            </button>
+          </div>
 
           {blogPosts.map((post) => (
             <div key={post.id} className="border border-border rounded-xl bg-card p-4">
