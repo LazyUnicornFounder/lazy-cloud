@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Copy, Check, Clock, Sparkles, Zap } from "lucide-react";
+import FlyingBlogCards from "@/components/lazy-blogger/FlyingBlogCards";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
