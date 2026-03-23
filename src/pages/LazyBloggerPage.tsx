@@ -130,7 +130,7 @@ const LazyBloggerPage = () => {
             </motion.p>
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-6">
               <span>The autonomous</span><br />
-              <span className="text-lovable">@Lovable</span>{" "}
+              <span className="text-lovable">Lovable</span>{" "}
               <span className="text-gradient-primary">blog engine</span>
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
