@@ -131,6 +131,120 @@ export type Database = {
         }
         Relationships: []
       }
+      seo_errors: {
+        Row: {
+          created_at: string
+          error_message: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          error_message: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          error_message?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      seo_keywords: {
+        Row: {
+          current_position: number | null
+          id: string
+          keyword: string
+          last_checked: string | null
+          page_url: string | null
+          previous_position: number | null
+        }
+        Insert: {
+          current_position?: number | null
+          id?: string
+          keyword: string
+          last_checked?: string | null
+          page_url?: string | null
+          previous_position?: number | null
+        }
+        Update: {
+          current_position?: number | null
+          id?: string
+          keyword?: string
+          last_checked?: string | null
+          page_url?: string | null
+          previous_position?: number | null
+        }
+        Relationships: []
+      }
+      seo_posts: {
+        Row: {
+          body: string
+          excerpt: string | null
+          id: string
+          published_at: string
+          slug: string
+          status: string
+          target_keyword: string | null
+          title: string
+        }
+        Insert: {
+          body: string
+          excerpt?: string | null
+          id?: string
+          published_at?: string
+          slug: string
+          status?: string
+          target_keyword?: string | null
+          title: string
+        }
+        Update: {
+          body?: string
+          excerpt?: string | null
+          id?: string
+          published_at?: string
+          slug?: string
+          status?: string
+          target_keyword?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      seo_settings: {
+        Row: {
+          business_description: string
+          competitors: string
+          created_at: string
+          google_search_console_connected: boolean
+          id: string
+          is_running: boolean
+          publishing_frequency: string
+          site_url: string
+          target_keywords: string
+        }
+        Insert: {
+          business_description: string
+          competitors: string
+          created_at?: string
+          google_search_console_connected?: boolean
+          id?: string
+          is_running?: boolean
+          publishing_frequency?: string
+          site_url: string
+          target_keywords: string
+        }
+        Update: {
+          business_description?: string
+          competitors?: string
+          created_at?: string
+          google_search_console_connected?: boolean
+          id?: string
+          is_running?: boolean
+          publishing_frequency?: string
+          site_url?: string
+          target_keywords?: string
+        }
+        Relationships: []
+      }
       submissions: {
         Row: {
           created_at: string
