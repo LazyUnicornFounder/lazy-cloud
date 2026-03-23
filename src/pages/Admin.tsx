@@ -234,6 +234,22 @@ const Admin = () => {
         >
           Analytics
         </button>
+        <button
+          onClick={() => setActiveTab("seo")}
+          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
+            activeTab === "seo" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          Lazy SEO
+        </button>
+        <button
+          onClick={() => setActiveTab("geo")}
+          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
+            activeTab === "geo" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          Lazy GEO
+        </button>
       </div>
 
       {loading && <p className="font-body text-sm text-muted-foreground">Loading…</p>}
