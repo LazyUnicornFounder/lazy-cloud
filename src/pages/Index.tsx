@@ -131,7 +131,7 @@ const Index = () => {
       <Navbar activePage="home" />
 
       {/* Hero — full viewport, architectural feel */}
-      <header className="relative z-10 min-h-screen flex flex-col justify-center items-start px-8 md:px-12 pb-16">
+      <header className="relative z-10 min-h-screen flex flex-col justify-center items-start px-4 sm:px-8 md:px-12 pb-16">
         <div className="flex flex-col md:flex-row md:items-end md:gap-6 w-full">
           {/* Entrance sign + Hero box wrapper */}
           <motion.div

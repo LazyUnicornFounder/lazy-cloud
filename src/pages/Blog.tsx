@@ -58,7 +58,7 @@ const Blog = () => {
       </div>
 
       {/* Footer */}
-      <footer className="relative z-10 px-8 md:px-12 py-8 border-t border-foreground/10">
+      <footer className="relative z-10 px-8 md:px-12 py-8 pb-20 border-t border-foreground/10">
         <span className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/50">
           Lazy Unicorn © 2026
         </span>

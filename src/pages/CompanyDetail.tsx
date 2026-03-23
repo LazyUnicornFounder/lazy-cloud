@@ -97,7 +97,7 @@ const CompanyDetail = () => {
                 />
               )}
               <div className="flex-1">
-                <h1 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight">
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
                   {company.name}
                 </h1>
                 <p className="font-body text-lg text-foreground/50 mt-2">
