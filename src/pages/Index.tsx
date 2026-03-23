@@ -147,17 +147,18 @@ const Index = () => {
               transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-[-1px] relative z-10 flex flex-col items-center">
               
-              {/* LiveCounter hidden */}
+              {/* Total visitor counter pill */}
+              <div className="mb-[-1px] relative z-10">
+                <TotalVisitorCount />
+              </div>
+
               <div className="bg-transparent backdrop-blur-xl border border-primary/20 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
                 <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
                   Autonomous capitalism for the rest of us
                 </p>
-                <div className="flex items-center justify-center gap-3 mt-1">
-                  <p className="font-body text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-foreground/60">
-                    ★  EST. 2026  ★
-                  </p>
-                  <TotalVisitorCount />
-                </div>
+                <p className="font-body text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-foreground/60 text-center mt-1">
+                  ★  EST. 2026  ★
+                </p>
               </div>
             </motion.div>
 
