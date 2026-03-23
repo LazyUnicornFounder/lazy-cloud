@@ -425,7 +425,7 @@ const Admin = () => {
                     onClick={() => {
                       const url = `https://lazyunicorn.ai/blog/${post.slug}`;
                       const hashtags = "#AutonomousCapitalism #AI #RecursiveStartups #SoloFounder #LazyUnicorn";
-                      const text = `${post.title}. 🦄 🤖\n${url}\n\n${hashtags}`;
+                      const text = `${post.title}. 🦄 🤖\n\n${hashtags}\n\n${url}`;
                       navigator.clipboard.writeText(text);
                       toast.success("X post copied to clipboard!");
                     }}
