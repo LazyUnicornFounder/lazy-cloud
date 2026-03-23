@@ -91,9 +91,6 @@ const LazyBloggerPage = () => {
         description="One prompt installs an autonomous blog publishing engine inside your Lovable project. Four SEO posts a day, zero effort."
         url="/lazy-blogger"
       />
-      <div className="fixed bottom-0 left-0 right-0 z-50">
-        <BlogTicker />
-      </div>
       <Navbar />
 
       <main className="relative z-10 pt-28 pb-32">
