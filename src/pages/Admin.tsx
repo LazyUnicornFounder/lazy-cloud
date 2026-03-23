@@ -125,6 +125,34 @@ const Admin = () => {
     setGenerating(false);
   };
 
+  const startEdit = (s: Submission) => {
+    setEditingId(s.id);
+    setEditForm({
+      name: s.name,
+      url: s.url,
+      tagline: s.tagline,
+      description: s.description || "",
+      logo_url: s.logo_url || "",
+    });
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingId) return;
+    try {
+      const { data, error } = await supabase.functions.invoke("admin-submissions", {
+        body: { action: "update_submission", password, id: editingId, updates: editForm },
+      });
+      if (error || data?.error) {
+        toast.error(data?.error || "Failed to update");
+        return;
+      }
+      toast.success("Submission updated");
+      setEditingId(null);
+      fetchSubmissions(password);
+    } catch {
+      toast.error("Failed to update");
+    }
+  };
 
   if (!authenticated) {
     return (
