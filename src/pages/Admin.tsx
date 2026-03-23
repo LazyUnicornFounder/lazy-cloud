@@ -191,14 +191,6 @@ const Admin = () => {
         >
           Analytics
         </button>
-        <button
-          onClick={() => { setActiveTab("early_access"); fetchEarlyAccess(password); }}
-          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
-            activeTab === "early_access" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Early Access ({earlyAccess.length})
-        </button>
       </div>
 
       {loading && <p className="font-body text-sm text-muted-foreground">Loading…</p>}
