@@ -307,6 +307,19 @@ const Admin = () => {
                         </button>
                       </>
                     )}
+                    <button
+                      onClick={async () => {
+                        if (!confirm(`Delete "${s.name}"?`)) return;
+                        await supabase.functions.invoke("admin-submissions", {
+                          body: { action: "delete_submission", password, id: s.id },
+                        });
+                        fetchSubmissions(password);
+                        toast.success("Submission deleted");
+                      }}
+                      className="font-body text-xs px-3 py-1.5 rounded-lg bg-destructive/10 text-destructive hover:bg-destructive/20 transition-colors flex items-center gap-1"
+                    >
+                      <Trash2 size={12} /> Delete
+                    </button>
                   </div>
                 </div>
               )}
