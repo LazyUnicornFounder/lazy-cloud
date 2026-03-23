@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Heart, Copy, Check, Clock, Sparkles, Zap } from "lucide-react";
+import { Copy, Check, Clock, Sparkles, Zap } from "lucide-react";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
@@ -120,11 +120,7 @@ const LazyBloggerPage = () => {
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[0.95] mb-6">
               The autonomous blog engine
-              <br />built for{" "}
-              <span className="text-lovable inline-flex items-center gap-2">
-                <Heart size={28} className="fill-lovable text-lovable inline-block" />
-                Lovable.
-              </span>
+              <br />built for <span className="text-lovable">Lovable.</span>
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
               Paste one prompt. Answer five questions. Your website publishes blog posts every day — automatically, forever, for free.
