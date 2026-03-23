@@ -119,8 +119,8 @@ const LazyBloggerPage = () => {
         <section className="max-w-3xl mx-auto text-center px-6 mb-20">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[0.95] mb-6">
-              The autonomous blog engine<br />
-              for <span className="text-lovable">Lovable.</span>
+              <span className="whitespace-nowrap">The autonomous blog engine</span><br />
+              <span>for <span className="text-lovable">Lovable.</span></span>
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
               Paste one prompt. Answer five questions. Your website publishes blog posts every day — automatically, forever, for free.
