@@ -32,7 +32,7 @@ const steps = [
 const buildItems = [
   { icon: Layout, title: "A public blog at /blog", desc: "All published posts, newest first, linked from your main navigation." },
   { icon: Layers, title: "Individual post pages at /blog/[slug]", desc: "Full article pages with clean formatted content." },
-  { icon: Sparkles, title: "A publishing engine", desc: "A Supabase edge function that calls the Anthropic API and publishes on schedule." },
+  { icon: Sparkles, title: "A publishing engine", desc: "A Supabase edge function that uses Lovable AI to generate and publish on schedule." },
   { icon: Clock, title: "A cron schedule", desc: "Posts publish automatically at 6am, 12pm, 6pm, and 11pm every day." },
   { icon: BarChart3, title: "An owner dashboard at /lazy-blogger-dashboard", desc: "See all posts, pause publishing, trigger a post manually." },
   { icon: Settings, title: "A settings page at /lazy-blogger-setup", desc: "Update your business description, topics, and tone anytime." },
@@ -57,7 +57,7 @@ const faqs = [
 const costItems = [
   { label: "Lazy Blogger", value: "Free forever" },
   { label: "Lovable", value: "Your existing plan" },
-  { label: "Anthropic API", value: "~$2–$5 / month" },
+  { label: "AI content generation", value: "Included" },
 ];
 
 function CopyButton({ className = "" }: { className?: string }) {
@@ -211,7 +211,7 @@ const LazyBloggerPage = () => {
             </div>
           </motion.div>
           <p className="font-body text-sm text-muted-foreground text-center mt-10 max-w-2xl mx-auto">
-            Each post is 800 to 1,200 words of SEO-optimised content written in your brand voice on your chosen topics. Lovable's Supabase edge functions handle the scheduling. The Anthropic API handles the writing. You handle nothing.
+            Each post is 800 to 1,200 words of SEO-optimised content written in your brand voice on your chosen topics. Lovable handles the scheduling and the writing. You handle nothing.
           </p>
         </section>
 
@@ -250,7 +250,7 @@ const LazyBloggerPage = () => {
             ))}
           </div>
           <p className="font-body text-sm text-muted-foreground text-center mt-6 max-w-2xl mx-auto">
-            No Lazy Blogger subscription. No extra Lovable features required. The only running cost is the Anthropic API calls — billed directly to your Anthropic account at roughly $0.01 per post.
+            No Lazy Blogger subscription. No extra features required. No external API keys needed. Everything runs inside your Lovable project at zero additional cost.
           </p>
         </section>
 
