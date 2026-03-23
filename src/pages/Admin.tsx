@@ -37,11 +37,9 @@ const Admin = () => {
   const [earlyAccess, setEarlyAccess] = useState<EarlyAccessEntry[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "queue" | "analytics" | "twitter" | "early_access">("analytics");
+  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "queue" | "analytics" | "early_access">("analytics");
   const [queue, setQueue] = useState<BlogPost[]>([]);
   const [generating, setGenerating] = useState(false);
-  const [tweetText, setTweetText] = useState("");
-  const [tweeting, setTweeting] = useState(false);
 
   const fetchSubmissions = useCallback(async (pw: string) => {
     setLoading(true);
@@ -126,24 +124,6 @@ const Admin = () => {
     setGenerating(false);
   };
 
-  const handleTweet = async () => {
-    if (!tweetText.trim()) return;
-    setTweeting(true);
-    try {
-      const { data, error } = await supabase.functions.invoke("post-to-twitter", {
-        body: { text: tweetText.trim(), password },
-      });
-      if (error || data?.error) {
-        toast.error(data?.error || "Failed to post tweet");
-      } else {
-        toast.success("Tweet posted!");
-        setTweetText("");
-      }
-    } catch {
-      toast.error("Failed to post tweet");
-    }
-    setTweeting(false);
-  };
 
   if (!authenticated) {
     return (
@@ -205,14 +185,6 @@ const Admin = () => {
           }`}
         >
           Analytics
-        </button>
-        <button
-          onClick={() => setActiveTab("twitter")}
-          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
-            activeTab === "twitter" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Twitter
         </button>
         <button
           onClick={() => { setActiveTab("early_access"); fetchEarlyAccess(password); }}
@@ -392,30 +364,6 @@ const Admin = () => {
         <AdminAnalytics password={password} />
       )}
 
-      {activeTab === "twitter" && (
-        <div className="space-y-4 max-w-lg">
-          <textarea
-            value={tweetText}
-            onChange={(e) => setTweetText(e.target.value)}
-            placeholder="What's happening?"
-            maxLength={280}
-            rows={4}
-            className="w-full font-body text-sm bg-card border border-border rounded-lg px-3 py-2.5 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 resize-none"
-          />
-          <div className="flex items-center justify-between">
-            <span className={`font-body text-xs ${tweetText.length > 260 ? "text-destructive" : "text-muted-foreground"}`}>
-              {tweetText.length}/280
-            </span>
-            <button
-              onClick={handleTweet}
-              disabled={tweeting || !tweetText.trim()}
-              className="font-body text-sm px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50"
-            >
-              {tweeting ? "Posting…" : "Post Tweet"}
-            </button>
-          </div>
-        </div>
-      )}
 
       {activeTab === "early_access" && (
         <div className="space-y-3">
