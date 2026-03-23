@@ -26,7 +26,32 @@ const TOPIC_SEEDS = [
   "Write about the dark side of autonomous capitalism — what nobody warns you about.",
   "Write about the trust problem: when should you let AI make real business decisions?",
   "Write about company culture when your entire team is AI agents.",
+  "Write about the economics of running a company for $49/month.",
+  "Write about why the best startups of 2027 will have no employees.",
+  "Write about recursive improvement: companies that get better at getting better.",
+  "Write about the loneliness myth — why solo founders with AI teams aren't actually alone.",
+  "Write about when autonomous companies compete with each other — what happens next.",
+  "Write about the first autonomous company to hit $1M ARR — what it looked like.",
+  "Write about why middle management is the first casualty of autonomous capitalism.",
+  "Write about the founder who automated themselves out of their own company.",
+  "Write about autonomous customer support — when your users never talk to a human.",
 ];
+
+const POSTS_PER_BATCH = 24;
+const DELAY_BETWEEN_CALLS_MS = 5000; // 5s between API calls to avoid rate limits
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 async function callAnthropic(apiKey: string, topic: string): Promise<string> {
   const cleanKey = apiKey.replace(/[^\x20-\x7E]/g, "").trim();
@@ -58,7 +83,6 @@ async function callAnthropic(apiKey: string, topic: string): Promise<string> {
 
 function parseJson(raw: string) {
   let str = raw.trim();
-  // Strip markdown fences if present
   const match = str.match(/```(?:json)?\s*([\s\S]*?)```/);
   if (match) str = match[1].trim();
   return JSON.parse(str);
@@ -78,74 +102,103 @@ Deno.serve(async (req) => {
     const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
     if (!ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not configured");
 
-    const topic = TOPIC_SEEDS[Math.floor(Math.random() * TOPIC_SEEDS.length)];
+    // Shuffle topics and pick 24
+    const topics = shuffle(TOPIC_SEEDS).slice(0, POSTS_PER_BATCH);
+    // If we have fewer seeds than 24, cycle through them
+    while (topics.length < POSTS_PER_BATCH) {
+      topics.push(TOPIC_SEEDS[Math.floor(Math.random() * TOPIC_SEEDS.length)]);
+    }
 
-    // Call Anthropic with one retry on parse failure
-    let post: { title: string; slug: string; excerpt: string; body: string };
-    let raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
+    const results: { title: string; slug: string; success: boolean }[] = [];
 
-    try {
-      post = parseJson(raw);
-    } catch (firstErr) {
-      console.warn("First parse failed, retrying:", firstErr.message);
-      raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
+    for (let i = 0; i < topics.length; i++) {
+      const topic = topics[i];
+
       try {
-        post = parseJson(raw);
-      } catch (secondErr) {
-        // Log error and bail
-        await supabase.from("blog_errors").insert({
-          error_message: `Parse failed twice. Last error: ${secondErr.message}. Raw: ${raw.slice(0, 500)}`,
+        // Call Anthropic with one retry on parse failure
+        let post: { title: string; slug: string; excerpt: string; body: string };
+        let raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
+
+        try {
+          post = parseJson(raw);
+        } catch {
+          console.warn(`Post ${i + 1}: parse failed, retrying...`);
+          await sleep(2000);
+          raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
+          try {
+            post = parseJson(raw);
+          } catch (secondErr) {
+            await supabase.from("blog_errors").insert({
+              error_message: `Post ${i + 1} parse failed twice: ${secondErr.message}. Raw: ${raw.slice(0, 500)}`,
+            });
+            results.push({ title: "(parse error)", slug: "", success: false });
+            continue;
+          }
+        }
+
+        // Split body into paragraphs for content text[] column
+        const paragraphs: string[] = post.body
+          .split(/\n\n+/)
+          .map((p: string) => p.trim())
+          .filter((p: string) => p.length > 0);
+
+        // Deduplicate slug
+        let slug = post.slug;
+        const { data: existing } = await supabase
+          .from("blog_posts")
+          .select("id")
+          .eq("slug", slug)
+          .maybeSingle();
+
+        if (existing) {
+          const rand = Math.floor(1000 + Math.random() * 9000);
+          slug = `${slug}-${rand}`;
+        }
+
+        const wordCount = post.body.split(/\s+/).length;
+        const readTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
+
+        const { error } = await supabase.from("blog_posts").insert({
+          slug,
+          title: post.title,
+          excerpt: post.excerpt,
+          content: paragraphs,
+          read_time: readTime,
+          status: "draft",
         });
-        throw new Error("JSON parse failed after retry");
+
+        if (error) throw error;
+
+        console.log(`Post ${i + 1}/24 queued: ${post.title}`);
+        results.push({ title: post.title, slug, success: true });
+      } catch (postErr) {
+        console.error(`Post ${i + 1} failed:`, postErr.message);
+        try {
+          await supabase.from("blog_errors").insert({
+            error_message: `Post ${i + 1}: ${postErr.message}`,
+          });
+        } catch { /* ignore */ }
+        results.push({ title: "(error)", slug: "", success: false });
+      }
+
+      // Delay between calls (skip after last)
+      if (i < topics.length - 1) {
+        await sleep(DELAY_BETWEEN_CALLS_MS);
       }
     }
 
-    // Split body into paragraphs for the content text[] column
-    const paragraphs: string[] = post.body
-      .split(/\n\n+/)
-      .map((p: string) => p.trim())
-      .filter((p: string) => p.length > 0);
+    const successCount = results.filter((r) => r.success).length;
+    console.log(`Batch complete: ${successCount}/${POSTS_PER_BATCH} posts queued as drafts.`);
 
-    // Deduplicate slug
-    let slug = post.slug;
-    const { data: existing } = await supabase
-      .from("blog_posts")
-      .select("id")
-      .eq("slug", slug)
-      .maybeSingle();
-
-    if (existing) {
-      const rand = Math.floor(1000 + Math.random() * 9000);
-      slug = `${slug}-${rand}`;
-    }
-
-    // Estimate read time
-    const wordCount = post.body.split(/\s+/).length;
-    const readTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
-
-    const { data, error } = await supabase.from("blog_posts").insert({
-      slug,
-      title: post.title,
-      excerpt: post.excerpt,
-      content: paragraphs,
-      read_time: readTime,
-      status: "draft",
-      published_at: new Date().toISOString(),
-    }).select().single();
-
-    if (error) throw error;
-
-    console.log("Auto-generated blog post:", data.title);
-
-    return new Response(JSON.stringify({ success: true, post: data }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ success: true, generated: successCount, total: POSTS_PER_BATCH, results }),
+      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
   } catch (err) {
-    console.error("auto-publish-blog error:", err);
-    // Best-effort error log
+    console.error("auto-publish-blog batch error:", err);
     try {
       await supabase.from("blog_errors").insert({
-        error_message: err.message || String(err),
+        error_message: `Batch error: ${err.message || String(err)}`,
       });
     } catch { /* ignore */ }
 
