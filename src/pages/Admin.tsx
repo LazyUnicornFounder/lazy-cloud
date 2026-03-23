@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import AdminAnalytics from "@/components/AdminAnalytics";
 import { toast } from "sonner";
-import { Twitter, Pencil, X, Check } from "lucide-react";
+import { Twitter, Pencil, X, Check, Trash2 } from "lucide-react";
 
 interface Submission {
   id: string;
