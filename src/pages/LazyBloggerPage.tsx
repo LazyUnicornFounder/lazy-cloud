@@ -95,6 +95,16 @@ const steps = [
 ];
 
 const LazyBloggerPage = () => {
+  const trackEvent = useTrackEvent();
+
+  useEffect(() => {
+    trackEvent("lazy_blogger_page_view");
+  }, [trackEvent]);
+
+  const handlePromptCopy = useCallback((tier: FrequencyTier) => {
+    trackEvent("lazy_blogger_prompt_copy", { postsPerDay: tier.postsPerDay, label: tier.label });
+  }, [trackEvent]);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
