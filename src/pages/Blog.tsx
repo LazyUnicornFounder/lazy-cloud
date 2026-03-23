@@ -54,24 +54,6 @@ const Blog = () => {
 
       {/* Content */}
       <div className="pt-32">
-        {/* Autonomous blog CTA */}
-        <div className="relative z-10 px-8 md:px-12 mb-12 max-w-3xl mx-auto text-center">
-          <motion.a
-            href="/lazy-blogger"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="group block rounded-2xl border border-primary/30 bg-background/40 backdrop-blur-xl px-8 py-6 shadow-[0_0_40px_-12px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_60px_-12px_hsl(var(--primary)/0.5)] hover:border-primary/50 transition-all duration-500"
-          >
-            <p className="font-display text-base md:text-lg text-foreground/90 leading-relaxed">
-              This entire blog writes and publishes itself autonomously.
-            </p>
-            <span className="inline-block mt-2 font-display text-sm md:text-base font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:brightness-125 transition-all">
-              Build your own autonomous blog just like this one →
-            </span>
-          </motion.a>
-        </div>
-
         <BlogSection />
       </div>
 
