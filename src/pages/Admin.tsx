@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import AdminAnalytics from "@/components/AdminAnalytics";
 import { toast } from "sonner";
 import { Twitter, Pencil, X, Check, Trash2 } from "lucide-react";
+import { staticBlogPosts } from "@/components/BlogSection";
 
 interface Submission {
   id: string;
@@ -336,6 +337,7 @@ const Admin = () => {
           {/* Stats */}
           {(() => {
             const published = blogPosts.filter(p => p.status === "published").length;
+            const totalOnSite = published + staticBlogPosts.length;
             const drafts = blogPosts.filter(p => p.status === "draft").length;
             const today = new Date().toDateString();
             const publishedToday = blogPosts.filter(p => p.status === "published" && p.published_at && new Date(p.published_at).toDateString() === today).length;
@@ -343,8 +345,8 @@ const Admin = () => {
             return (
               <div className="grid grid-cols-4 gap-3 mb-4">
                 <div className="border border-border rounded-xl bg-card p-3 text-center">
-                  <p className="font-display text-2xl font-bold text-foreground">{published}</p>
-                  <p className="font-body text-xs text-muted-foreground">Published</p>
+                  <p className="font-display text-2xl font-bold text-foreground">{totalOnSite}</p>
+                  <p className="font-body text-xs text-muted-foreground">Total on Site</p>
                 </div>
                 <div className="border border-border rounded-xl bg-card p-3 text-center">
                   <p className="font-display text-2xl font-bold text-foreground">{drafts}</p>
