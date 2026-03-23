@@ -8,7 +8,7 @@ const corsHeaders = {
 
 const ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages";
 
-const SYSTEM_PROMPT = `You are the writer for LazyUnicorn.ai — a directory of AI tools for solo founders building autonomous companies. Write one blog post per call. Return a JSON object with four fields only: title (string), slug (url-friendly string), excerpt (one sentence, max 160 chars), and body (the full article in clean markdown — no HTML, no bullet points in prose, headers using ##, short punchy paragraphs, 800-1200 words). Topics rotate across: autonomous companies, solo founding, AI agents, self-building startups, the future of work, passive income via AI, autonomous unicorns, and the end of hiring. Tone: dark, editorial, provocative, honest. Always end with a one-paragraph call to action pointing readers to the LazyUnicorn.ai directory. Return only valid JSON, no other text.`;
+const SYSTEM_PROMPT = `You are the writer for LazyUnicorn.ai — a directory of AI tools for solo founders building autonomous companies. Write one blog post per call. Pick a fresh angle every time — vary the topic, structure, and opening. Never repeat a title. Topics rotate across: autonomous companies, solo founding, AI agents, self-building startups, the future of work, passive income via AI, autonomous unicorns, and the end of hiring. Tone: dark, editorial, provocative, honest. Return a JSON object with four fields only: title (string), slug (url-friendly lowercase-hyphenated string), excerpt (one punchy sentence max 160 chars), and body (full article in clean markdown, no HTML, no bullet points in prose, headers using ##, short punchy paragraphs, 800-1200 words). Always end with a one-paragraph CTA pointing to lazyunicorn.ai. Return only valid JSON, no preamble, no markdown code fences, no other text.`;
 
 const TOPIC_SEEDS = [
   "Write about why autonomous companies will replace traditional startups within 5 years.",
@@ -28,72 +28,97 @@ const TOPIC_SEEDS = [
   "Write about company culture when your entire team is AI agents.",
 ];
 
+async function callAnthropic(apiKey: string, topic: string): Promise<string> {
+  const response = await fetch(ANTHROPIC_API_URL, {
+    method: "POST",
+    headers: {
+      "x-api-key": apiKey,
+      "anthropic-version": "2023-06-01",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-20250514",
+      max_tokens: 2000,
+      system: SYSTEM_PROMPT,
+      messages: [{ role: "user", content: topic }],
+    }),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`Anthropic ${response.status}: ${errText}`);
+  }
+
+  const data = await response.json();
+  const text = data.content?.[0]?.text;
+  if (!text) throw new Error("Empty response from Anthropic");
+  return text;
+}
+
+function parseJson(raw: string) {
+  let str = raw.trim();
+  // Strip markdown fences if present
+  const match = str.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (match) str = match[1].trim();
+  return JSON.parse(str);
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const supabase = createClient(
+    Deno.env.get("SUPABASE_URL")!,
+    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+  );
+
   try {
     const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
     if (!ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not configured");
 
-    const supabase = createClient(
-      Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
-    );
-
     const topic = TOPIC_SEEDS[Math.floor(Math.random() * TOPIC_SEEDS.length)];
 
-    const aiResponse = await fetch(ANTHROPIC_API_URL, {
-      method: "POST",
-      headers: {
-        "x-api-key": ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 4096,
-        system: SYSTEM_PROMPT,
-        messages: [{ role: "user", content: topic }],
-      }),
-    });
+    // Call Anthropic with one retry on parse failure
+    let post: { title: string; slug: string; excerpt: string; body: string };
+    let raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
 
-    if (!aiResponse.ok) {
-      const errText = await aiResponse.text();
-      console.error("Anthropic API error:", aiResponse.status, errText);
-      if (aiResponse.status === 429) {
-        return new Response(JSON.stringify({ error: "Rate limited, try again later" }), {
-          status: 429,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
+    try {
+      post = parseJson(raw);
+    } catch (firstErr) {
+      console.warn("First parse failed, retrying:", firstErr.message);
+      raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
+      try {
+        post = parseJson(raw);
+      } catch (secondErr) {
+        // Log error and bail
+        await supabase.from("blog_errors").insert({
+          error_message: `Parse failed twice. Last error: ${secondErr.message}. Raw: ${raw.slice(0, 500)}`,
         });
+        throw new Error("JSON parse failed after retry");
       }
-      throw new Error(`Anthropic API error: ${aiResponse.status}`);
     }
 
-    const aiData = await aiResponse.json();
-    const rawContent = aiData.content?.[0]?.text;
-    if (!rawContent) throw new Error("No content from Anthropic");
-
-    // Parse JSON — handle possible markdown code fences
-    let jsonStr = rawContent.trim();
-    const codeBlockMatch = jsonStr.match(/```(?:json)?\s*([\s\S]*?)```/);
-    if (codeBlockMatch) {
-      jsonStr = codeBlockMatch[1].trim();
-    }
-
-    const post = JSON.parse(jsonStr);
-
-    // Split markdown body into paragraphs for the content text[] column
+    // Split body into paragraphs for the content text[] column
     const paragraphs: string[] = post.body
       .split(/\n\n+/)
       .map((p: string) => p.trim())
       .filter((p: string) => p.length > 0);
 
-    // Ensure unique slug
-    const slug = `${post.slug}-${Date.now()}`;
+    // Deduplicate slug
+    let slug = post.slug;
+    const { data: existing } = await supabase
+      .from("blog_posts")
+      .select("id")
+      .eq("slug", slug)
+      .maybeSingle();
 
-    // Estimate read time (~200 wpm)
+    if (existing) {
+      const rand = Math.floor(1000 + Math.random() * 9000);
+      slug = `${slug}-${rand}`;
+    }
+
+    // Estimate read time
     const wordCount = post.body.split(/\s+/).length;
     const readTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
 
@@ -104,17 +129,25 @@ Deno.serve(async (req) => {
       content: paragraphs,
       read_time: readTime,
       status: "draft",
+      published_at: new Date().toISOString(),
     }).select().single();
 
     if (error) throw error;
 
-    console.log("Auto-published blog post:", data.title);
+    console.log("Auto-generated blog post:", data.title);
 
     return new Response(JSON.stringify({ success: true, post: data }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
     console.error("auto-publish-blog error:", err);
+    // Best-effort error log
+    try {
+      await supabase.from("blog_errors").insert({
+        error_message: err.message || String(err),
+      });
+    } catch { /* ignore */ }
+
     return new Response(JSON.stringify({ error: err.message }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },

@@ -29,6 +29,24 @@ export type Database = {
         }
         Relationships: []
       }
+      blog_errors: {
+        Row: {
+          created_at: string
+          error_message: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          error_message: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          error_message?: string
+          id?: string
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           content: string[]
