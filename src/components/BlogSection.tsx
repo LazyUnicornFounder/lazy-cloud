@@ -2519,7 +2519,7 @@ const BlogHeader = () => {
           </span>
         </div>
         <h1 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-3">
-          Blog
+          The Lazy Unicorn Blog
         </h1>
         <p className="font-body text-lg text-foreground/50 leading-relaxed max-w-xl">
           Accelerate the future of autonomous capitalism.
