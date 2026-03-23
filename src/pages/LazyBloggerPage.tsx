@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
-import { Zap, Clock, FileText, BarChart3, Play, Pause, PenTool, Search, ChevronDown } from "lucide-react";
+import { Zap, Clock, FileText, BarChart3, Play, Pause, PenTool, Search, ChevronDown, Mail } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import BlogTicker from "@/components/BlogTicker";
-
+import { supabase } from "@/integrations/supabase/client";
 import unicornBg from "@/assets/unicorn-beach.png";
-
-const TEMPLATE_URL = "#"; // TODO: replace with actual template URL
 
 const steps = [
   { num: 1, title: "Clone the template", desc: "One click to fork it into your Lovable project." },
@@ -36,6 +35,30 @@ const faqs = [
 
 const LazyBloggerPage = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [email, setEmail] = useState("");
+  const [footerEmail, setFooterEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleEarlyAccess = async (emailValue: string, setter: (v: string) => void) => {
+    if (!emailValue.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue.trim())) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    setSubmitting(true);
+    const { error } = await supabase.from("early_access").insert({ email: emailValue.trim().toLowerCase() });
+    setSubmitting(false);
+    if (error?.code === "23505") {
+      toast.info("You're already on the list!");
+      setter("");
+      return;
+    }
+    if (error) {
+      toast.error("Something went wrong. Try again.");
+      return;
+    }
+    toast.success("You're in! We'll notify you when Lazy Blogger launches.");
+    setter("");
+  };
 
   return (
     <div className="min-h-screen text-foreground relative">
@@ -76,12 +99,27 @@ const LazyBloggerPage = () => {
             <p className="font-body text-lg md:text-xl text-foreground/50 max-w-2xl mx-auto leading-relaxed mb-10">
               Answer five questions about your business. Lazy Blogger writes and publishes four SEO blog posts a day to your Lovable site — automatically, forever, without you touching anything.
             </p>
-            <a
-              href={TEMPLATE_URL}
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full hover:opacity-90 transition-opacity shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)]"
-            >
-              Get the Template →
-            </a>
+            <div className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto">
+              <div className="relative flex-1 w-full">
+                <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/30" />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleEarlyAccess(email, setEmail)}
+                  placeholder="you@example.com"
+                  className="w-full pl-10 pr-4 py-4 rounded-full bg-foreground/5 backdrop-blur-xl border border-primary/20 text-foreground placeholder:text-foreground/30 font-body text-sm focus:outline-none focus:border-primary/50 transition-colors"
+                />
+              </div>
+              <button
+                onClick={() => handleEarlyAccess(email, setEmail)}
+                disabled={submitting}
+                className="whitespace-nowrap bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full hover:opacity-90 transition-opacity shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)] disabled:opacity-50"
+              >
+                {submitting ? "Joining…" : "Get Early Access"}
+              </button>
+            </div>
+            <p className="font-body text-[11px] text-foreground/30 mt-4">No spam. Just a heads-up when it's ready.</p>
           </motion.div>
         </section>
 
@@ -172,12 +210,12 @@ const LazyBloggerPage = () => {
                   </li>
                 ))}
               </ul>
-              <a
-                href={TEMPLATE_URL}
-                className="block text-center bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
+              <button
+                onClick={() => document.querySelector<HTMLInputElement>('#hero-email')?.focus()}
+                className="block w-full text-center bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
               >
-                Get the Template
-              </a>
+                Get Early Access
+              </button>
             </motion.div>
 
             {/* Pro */}
@@ -265,12 +303,26 @@ const LazyBloggerPage = () => {
               Stop Writing.<br />
               <span className="text-primary">Start Compounding.</span>
             </h2>
-            <a
-              href={TEMPLATE_URL}
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full hover:opacity-90 transition-opacity shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)]"
-            >
-              Get the Template →
-            </a>
+            <div className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto">
+              <div className="relative flex-1 w-full">
+                <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/30" />
+                <input
+                  type="email"
+                  value={footerEmail}
+                  onChange={(e) => setFooterEmail(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleEarlyAccess(footerEmail, setFooterEmail)}
+                  placeholder="you@example.com"
+                  className="w-full pl-10 pr-4 py-4 rounded-full bg-foreground/5 backdrop-blur-xl border border-primary/20 text-foreground placeholder:text-foreground/30 font-body text-sm focus:outline-none focus:border-primary/50 transition-colors"
+                />
+              </div>
+              <button
+                onClick={() => handleEarlyAccess(footerEmail, setFooterEmail)}
+                disabled={submitting}
+                className="whitespace-nowrap bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full hover:opacity-90 transition-opacity shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)] disabled:opacity-50"
+              >
+                {submitting ? "Joining…" : "Get Early Access"}
+              </button>
+            </div>
           </motion.div>
         </section>
       </main>
