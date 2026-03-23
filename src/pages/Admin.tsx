@@ -21,15 +21,22 @@ interface BlogPost {
   created_at: string;
   published_at: string | null;
 }
+interface EarlyAccessEntry {
+  id: string;
+  email: string;
+  source: string | null;
+  created_at: string;
+}
 
 const Admin = () => {
   const [password, setPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [earlyAccess, setEarlyAccess] = useState<EarlyAccessEntry[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "queue" | "analytics" | "twitter">("analytics");
+  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "queue" | "analytics" | "twitter" | "early_access">("analytics");
   const [queue, setQueue] = useState<BlogPost[]>([]);
   const [generating, setGenerating] = useState(false);
   const [tweetText, setTweetText] = useState("");
