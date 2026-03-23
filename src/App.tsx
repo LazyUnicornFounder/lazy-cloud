@@ -23,6 +23,7 @@ import LazySeoSetup from "./pages/LazySeoSetup.tsx";
 import LazySeoDashboard from "./pages/LazySeoDashboard.tsx";
 import SeoBlog from "./pages/SeoBlog.tsx";
 import SeoBlogPost from "./pages/SeoBlogPost.tsx";
+import LazyGeoPage from "./pages/LazyGeoPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => (
             <Route path="/lazy-seo-dashboard" element={<LazySeoDashboard />} />
             <Route path="/seo-blog" element={<SeoBlog />} />
             <Route path="/seo-blog/:slug" element={<SeoBlogPost />} />
+            <Route path="/lazy-geo" element={<LazyGeoPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

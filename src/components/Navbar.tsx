@@ -89,6 +89,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
       children: [
         { label: "Lazy Blogger", href: "/lazy-blogger" },
         { label: "Lazy SEO", href: "/lazy-seo" },
+        { label: "Lazy GEO", href: "/lazy-geo" },
       ],
     },
     { label: "Mission", href: isHome ? "#mission" : "/#mission" },
