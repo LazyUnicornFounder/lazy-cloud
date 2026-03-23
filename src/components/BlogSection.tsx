@@ -2497,12 +2497,17 @@ const BlogSection = () => {
           <p className="font-body text-lg text-foreground/50 leading-relaxed mb-3">
             Accelerate the future of autonomous capitalism.
           </p>
-          <p className="font-body text-sm text-foreground/40 leading-relaxed">
-            This entire blog writes and publishes itself autonomously.{" "}
-            <a href="/lazy-blogger" className="text-primary hover:text-primary/80 font-semibold transition-colors">
-              Build your own autonomous blog just like this one →
-            </a>
-          </p>
+          <a
+            href="/lazy-blogger"
+            className="group inline-flex items-center gap-2 mt-2 px-5 py-2.5 rounded-xl border border-primary/30 bg-primary/10 hover:bg-primary/20 hover:border-primary/50 shadow-[0_0_20px_-6px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_30px_-6px_hsl(var(--primary)/0.5)] transition-all duration-300"
+          >
+            <span className="font-body text-sm text-foreground/70">
+              This entire blog writes &amp; publishes itself.
+            </span>
+            <span className="font-display text-sm font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:brightness-125 transition-all whitespace-nowrap">
+              Build your own →
+            </span>
+          </a>
         </motion.div>
 
         {/* Post grid */}
