@@ -1,7 +1,7 @@
-import { Pin, Zap, Clock } from "lucide-react";
+import { Pin, Zap, Clock, Tag } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import unicornBg from "@/assets/unicorn-beach.png";
 import type { BlogPost } from "@/data/blogPosts";
 import { useDbBlogPosts } from "@/hooks/useDbBlogPosts";
