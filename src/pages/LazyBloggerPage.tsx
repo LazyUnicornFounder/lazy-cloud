@@ -210,12 +210,12 @@ const LazyBloggerPage = () => {
                   </li>
                 ))}
               </ul>
-              <a
-                href={TEMPLATE_URL}
-                className="block text-center bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
+              <button
+                onClick={() => document.querySelector<HTMLInputElement>('#hero-email')?.focus()}
+                className="block w-full text-center bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
               >
-                Get the Template
-              </a>
+                Get Early Access
+              </button>
             </motion.div>
 
             {/* Pro */}
