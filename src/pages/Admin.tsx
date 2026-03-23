@@ -538,6 +538,16 @@ const Admin = () => {
                             >
                               Publish Now
                             </button>
+                            <button
+                              onClick={async () => {
+                                await handleBlogAction(post.id, "delete_post");
+                                toast.success(`"${post.title}" deleted`);
+                              }}
+                              className="font-body text-xs px-2 py-1 rounded-lg bg-destructive/10 text-destructive hover:bg-destructive/20 transition-colors"
+                              title="Delete draft"
+                            >
+                              <Trash2 size={12} />
+                            </button>
                             <span className="font-body text-xs text-muted-foreground">
                               ~{publishTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                             </span>
