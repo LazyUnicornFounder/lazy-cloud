@@ -15,6 +15,7 @@ import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
 import GuidePage from "./pages/GuidePage.tsx";
 import LaunchPage from "./pages/LaunchPage.tsx";
 import AutonomyScale from "./pages/AutonomyScale.tsx";
+import LazyBloggerPage from "./pages/LazyBloggerPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
