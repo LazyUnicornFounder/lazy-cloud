@@ -256,20 +256,29 @@ const StepCard = ({
             >
               <div className="pt-5 mt-5 border-t border-foreground/10">
                 <ul className="space-y-3">
-                  {step.details.map((d, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-3"
-                    >
-                      <ArrowRight className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      <span className="font-body text-sm text-foreground/80">
-                        {d}
-                      </span>
-                    </motion.li>
-                  ))}
+                  {step.details.map((d, i) => {
+                    const linkMatch = d.match(/^(.+?)\s*→\s*(\/\S+)$/);
+                    return (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        className="flex items-start gap-3"
+                      >
+                        <ArrowRight className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                        {linkMatch ? (
+                          <Link to={linkMatch[2]} className="font-body text-sm text-primary hover:underline">
+                            {linkMatch[1]} →
+                          </Link>
+                        ) : (
+                          <span className="font-body text-sm text-foreground/80">
+                            {d}
+                          </span>
+                        )}
+                      </motion.li>
+                    );
+                  })}
                 </ul>
               </div>
             </motion.div>
