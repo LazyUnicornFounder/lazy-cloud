@@ -92,7 +92,7 @@ const LazyBloggerPage = () => {
               </span>
             </div>
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[0.92] mb-6">
-              Your Site.<br />
+              Your Lovable Site.<br />
               Four Blog Posts a Day.<br />
               <span className="text-primary">Zero Effort.</span>
             </h1>
