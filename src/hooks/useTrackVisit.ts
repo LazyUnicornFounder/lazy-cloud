@@ -6,6 +6,7 @@ let tracked = false;
 export function useTrackVisit() {
   useEffect(() => {
     if (tracked) return;
+    if (localStorage.getItem("is_admin") === "true") return;
     tracked = true;
 
     const track = async () => {

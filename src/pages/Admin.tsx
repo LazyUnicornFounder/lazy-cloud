@@ -96,6 +96,7 @@ const Admin = () => {
     }
     setAuthenticated(true);
     sessionStorage.setItem("admin_pw", password);
+    localStorage.setItem("is_admin", "true");
     setSubmissions(data);
     fetchBlogPosts(password);
   };
