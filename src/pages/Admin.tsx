@@ -2,13 +2,15 @@ import { useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import AdminAnalytics from "@/components/AdminAnalytics";
 import { toast } from "sonner";
-import { Twitter } from "lucide-react";
+import { Twitter, Pencil, X, Check } from "lucide-react";
 
 interface Submission {
   id: string;
   name: string;
   url: string;
   tagline: string;
+  description: string | null;
+  logo_url: string | null;
   status: string;
   created_at: string;
 }
