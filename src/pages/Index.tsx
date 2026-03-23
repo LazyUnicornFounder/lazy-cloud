@@ -34,7 +34,8 @@ const Index = () => {
 
   const logoMap: Record<string, string> = {
     "Naive": logoNaive,
-    "Polsia": logoPolsia
+    "Polsia": logoPolsia,
+    "Lazy Blogger": logoLazyBlogger
   };
 
   const { data: companies = [] } = useQuery({
