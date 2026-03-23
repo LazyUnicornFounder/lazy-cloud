@@ -250,7 +250,7 @@ const LazyBloggerPage = () => {
             ))}
           </div>
           <p className="font-body text-sm text-muted-foreground text-center mt-6 max-w-2xl mx-auto">
-            No Lazy Blogger subscription. No extra Lovable features required. The only running cost is the Anthropic API calls — billed directly to your Anthropic account at roughly $0.01 per post.
+            No Lazy Blogger subscription. No extra features required. No external API keys needed. Everything runs inside your Lovable project at zero additional cost.
           </p>
         </section>
 
