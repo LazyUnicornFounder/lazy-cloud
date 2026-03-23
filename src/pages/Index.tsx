@@ -47,7 +47,7 @@ const Index = () => {
       eq("status", "approved").
       order("is_paid", { ascending: false }).
       order("created_at", { ascending: true });
-      return (data || []).map((c) => ({
+      const mapped = (data || []).map((c) => ({
         name: c.name,
         url: c.url,
         description: c.tagline,
@@ -55,6 +55,10 @@ const Index = () => {
         isPaid: c.is_paid,
         slug: c.slug
       }));
+      // Pin Lazy Blogger to the top
+      const pinned = mapped.filter(c => c.name === "Lazy Blogger");
+      const rest = mapped.filter(c => c.name !== "Lazy Blogger");
+      return [...pinned, ...rest];
     }
   });
 
