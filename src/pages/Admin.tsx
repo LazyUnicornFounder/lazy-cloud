@@ -35,7 +35,7 @@ const Admin = () => {
   
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics" | "early_access">("analytics");
+  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics">("analytics");
   const [generating, setGenerating] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editForm, setEditForm] = useState({ name: "", url: "", tagline: "", description: "", logo_url: "" });
