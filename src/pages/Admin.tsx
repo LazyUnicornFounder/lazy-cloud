@@ -453,8 +453,8 @@ const Admin = () => {
               <textarea
                 value={customTopic}
                 onChange={(e) => setCustomTopic(e.target.value)}
-                placeholder="Describe the blog post you want to generate (leave empty for random topic)…"
-                rows={2}
+                placeholder="One topic per line — generate multiple posts at once (leave empty for random)…"
+                rows={3}
                 className="w-full font-body text-sm bg-card border border-border rounded-lg px-3 py-2 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 resize-none"
               />
             </div>
