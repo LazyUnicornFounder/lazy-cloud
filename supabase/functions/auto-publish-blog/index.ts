@@ -165,7 +165,7 @@ Deno.serve(async (req) => {
 
     if (error) throw error;
 
-    console.log(`Queued: ${data.title}`);
+    console.log(`Published: ${data.title}`);
 
     return new Response(JSON.stringify({ success: true, post: data }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
