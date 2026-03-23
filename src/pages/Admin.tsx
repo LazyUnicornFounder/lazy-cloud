@@ -423,6 +423,7 @@ const Admin = () => {
             );
           })()}
 
+          {blogPosts.map((post) => (
             <div key={post.id} className="border border-border rounded-xl bg-card p-4">
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0 flex-1">
