@@ -106,68 +106,26 @@ Deno.serve(async (req) => {
   );
 
   try {
-    const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
-    if (!ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not configured");
-
-    const topic = TOPIC_SEEDS[Math.floor(Math.random() * TOPIC_SEEDS.length)];
-
-    // Call Anthropic with one retry on parse failure
-    let post: { title: string; slug: string; excerpt: string; body: string };
-    let raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
-
-    try {
-      post = parseJson(raw);
-    } catch {
-      console.warn("Parse failed, retrying...");
-      raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
-      try {
-        post = parseJson(raw);
-      } catch (secondErr) {
-        await supabase.from("blog_errors").insert({
-          error_message: `Parse failed twice: ${secondErr.message}. Raw: ${raw.slice(0, 500)}`,
-        });
-        throw new Error("JSON parse failed after retry");
-      }
-    }
-
-    // Split body into paragraphs for content text[] column
-    const paragraphs: string[] = post.body
-      .split(/\n\n+/)
-      .map((p: string) => p.trim())
-      .filter((p: string) => p.length > 0);
-
-    // Deduplicate slug
-    let slug = post.slug;
-    const { data: existing } = await supabase
+    // First, check if there are queued drafts to publish
+    const { data: nextDraft } = await supabase
       .from("blog_posts")
-      .select("id")
-      .eq("slug", slug)
+      .select("*")
+      .eq("status", "draft")
+      .order("created_at", { ascending: true })
+      .limit(1)
       .maybeSingle();
 
-    if (existing) {
-      const rand = Math.floor(1000 + Math.random() * 9000);
-      slug = `${slug}-${rand}`;
-    }
+    if (nextDraft) {
+      // Publish the oldest draft
+      const { error: updateErr } = await supabase
+        .from("blog_posts")
+        .update({ status: "published", published_at: new Date().toISOString() })
+        .eq("id", nextDraft.id);
+      if (updateErr) throw updateErr;
 
-    const wordCount = post.body.split(/\s+/).length;
-    const readTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
+      console.log(`Published from queue: ${nextDraft.title}`);
 
-    const { data, error } = await supabase.from("blog_posts").insert({
-      slug,
-      title: post.title,
-      excerpt: post.excerpt,
-      content: paragraphs,
-      read_time: readTime,
-      thumbnail: "https://www.lazyunicorn.ai/og-image.png",
-      status: "published",
-      published_at: new Date().toISOString(),
-    }).select().single();
-
-    if (error) throw error;
-
-    console.log(`Published: ${data.title}`);
-
-    return new Response(JSON.stringify({ success: true, post: data }), {
+      return new Response(JSON.stringify({ success: true, post: nextDraft, source: "queue" }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
