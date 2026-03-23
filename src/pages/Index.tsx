@@ -72,7 +72,7 @@ const Index = () => {
       <SEO
         url="/"
         description="The solo founder's guide to building an autonomous unicorn. Discover AI tools and resources to build a startup that builds itself."
-        keywords="autonomous companies, AI business tools, passive income startups, autonomous capitalism, AI agents, self-running business, solo founder tools, startup directory, Lazy Unicorn, self-building startup, one-person unicorn, Lovable, build startup with AI"
+        keywords="autonomous business, autonomous company, self-building startup, solo founder, one person business, AI agents for business, autonomous unicorn, build a business with AI, run a business with AI, no code business, AI startup tools, solo founder tools, passive income AI, autonomous SaaS, self-running business, AI business automation, solo founder unicorn, build without a team, AI powered business, business that runs itself, autonomous business software, vibe coding business, Lovable startup, build on Lovable, self-growing business, recursive startup, AI company builder, solo CEO, no code startup, AI team replacement, autonomous marketing, business automation tools, solo founder stack, AI founder tools, AI business tools 2026, autonomous business platform, self-operating business, AI employees"
         breadcrumbs={[{ name: "Home", url: "/" }]}
         faq={[
           { question: "What is Lazy Unicorn?", answer: "Lazy Unicorn is the definitive directory of AI tools and resources for solo founders building autonomous startups — companies that design, ship, and scale themselves with AI agents." },

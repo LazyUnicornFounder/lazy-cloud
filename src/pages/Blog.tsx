@@ -34,7 +34,7 @@ const Blog = () => {
         title="Blog — Autonomous Capitalism, AI Agents & the Future of Work"
         description="Essays and insights on autonomous companies, AI agents, and the future of work. Learn how solo founders are building startups that run themselves."
         url="/blog"
-        keywords="autonomous companies blog, AI agents essays, autonomous capitalism, startup insights, AI business articles, self-building startup, solo founder blog, future of work AI"
+        keywords="autonomous business blog, AI agents for business, autonomous company, solo founder blog, AI blog writing, autonomous content, self-building startup, recursive startup, AI business automation, self-growing business, AI startup tools, solo founder tools, passive income AI, autonomous SaaS, AI powered business, business that runs itself, AI company builder, autonomous marketing, AI founder tools, AI business tools 2026"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Blog", url: "/blog" },
