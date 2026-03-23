@@ -494,7 +494,7 @@ const Admin = () => {
                   <button
                     onClick={async () => {
                       setGenerating(true);
-                      for (let i = 0; i < 10; i++) {
+                      for (let i = 0; i < 3; i++) {
                         try {
                           await supabase.functions.invoke("generate-blog-post", {
                             body: {},
@@ -503,12 +503,12 @@ const Admin = () => {
                       }
                       await fetchBlogPosts(password);
                       setGenerating(false);
-                      toast.success("Generated 10 posts!");
+                      toast.success("Generated 3 posts!");
                     }}
                     disabled={generating}
                     className="font-body text-xs px-3 py-1.5 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors disabled:opacity-50"
                   >
-                    {generating ? "Generating…" : "Generate 10 Posts"}
+                    {generating ? "Generating…" : "Generate 3 Posts"}
                   </button>
                 </div>
                 {queued.length === 0 ? (
