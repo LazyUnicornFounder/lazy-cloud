@@ -5,6 +5,7 @@ import {
   Geography,
   Marker,
 } from "react-simple-maps";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 import { supabase } from "@/integrations/supabase/client";
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
@@ -136,7 +137,26 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
     });
     const markers = Object.values(markerMap);
 
-    return { total, today, countries, cities, browsers, operatingSystems, pages, referrers, markers };
+    // Daily visits (last 30 days)
+    const dailyMap: Record<string, number> = {};
+    const now = new Date();
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(now);
+      d.setDate(d.getDate() - i);
+      dailyMap[d.toISOString().split("T")[0]] = 0;
+    }
+    visitors.forEach((v) => {
+      const day = new Date(v.created_at).toISOString().split("T")[0];
+      if (dailyMap[day] !== undefined) {
+        dailyMap[day]++;
+      }
+    });
+    const dailyVisits = Object.entries(dailyMap).map(([date, count]) => ({
+      date: new Date(date).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+      visits: count,
+    }));
+
+    return { total, today, countries, cities, browsers, operatingSystems, pages, referrers, markers, dailyVisits };
   }, [visitors]);
 
   if (loading) {
@@ -154,6 +174,42 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
         <div className="border border-border rounded-xl bg-card p-4 text-center">
           <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">Today</p>
           <p className="font-display text-3xl font-bold text-primary mt-1">{stats.today}</p>
+        </div>
+      </div>
+
+      {/* Daily visits chart */}
+      <div className="border border-border rounded-xl bg-card p-4">
+        <h3 className="font-display font-bold text-foreground mb-3">Daily Visits (Last 30 Days)</h3>
+        <div className="w-full h-64">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={stats.dailyVisits} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+              <XAxis
+                dataKey="date"
+                tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+                interval={Math.floor(stats.dailyVisits.length / 7)}
+                tickLine={false}
+                axisLine={{ stroke: "hsl(var(--border))" }}
+              />
+              <YAxis
+                tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+                tickLine={false}
+                axisLine={false}
+                allowDecimals={false}
+              />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "hsl(var(--card))",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "8px",
+                  fontSize: "12px",
+                }}
+                labelStyle={{ color: "hsl(var(--foreground))", fontWeight: "bold" }}
+                itemStyle={{ color: "hsl(var(--primary))" }}
+              />
+              <Bar dataKey="visits" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
 
