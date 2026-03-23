@@ -250,6 +250,28 @@ Deno.serve(async (req) => {
       });
     }
 
+    // === Analytics events ===
+    if (action === "analytics_events") {
+      const allEvents: unknown[] = [];
+      const PAGE_SIZE = 1000;
+      let offset = 0;
+      while (true) {
+        const { data: batch, error } = await supabase
+          .from("analytics_events")
+          .select("event_name, event_data, page, created_at")
+          .order("created_at", { ascending: false })
+          .range(offset, offset + PAGE_SIZE - 1);
+        if (error) throw error;
+        if (!batch || batch.length === 0) break;
+        allEvents.push(...batch);
+        if (batch.length < PAGE_SIZE) break;
+        offset += PAGE_SIZE;
+      }
+      return new Response(JSON.stringify(allEvents), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     return new Response(JSON.stringify({ error: "Invalid action" }), {
       status: 400,
       headers: { ...corsHeaders, "Content-Type": "application/json" },

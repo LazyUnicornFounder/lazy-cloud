@@ -54,20 +54,29 @@ function parseUA(ua: string | null): { browser: string; os: string } {
 
 const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
   const [visitors, setVisitors] = useState<Visitor[]>([]);
+  const [events, setEvents] = useState<AnalyticsEvent[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchVisitors = async () => {
+    const fetchData = async () => {
       setLoading(true);
-      const { data, error } = await supabase.functions.invoke("admin-submissions", {
-        body: { action: "visitor_stats", password },
-      });
-      if (!error && data && !data.error) {
-        setVisitors(data);
+      const [visitorsRes, eventsRes] = await Promise.all([
+        supabase.functions.invoke("admin-submissions", {
+          body: { action: "visitor_stats", password },
+        }),
+        supabase.functions.invoke("admin-submissions", {
+          body: { action: "analytics_events", password },
+        }),
+      ]);
+      if (!visitorsRes.error && visitorsRes.data && !visitorsRes.data.error) {
+        setVisitors(visitorsRes.data);
+      }
+      if (!eventsRes.error && eventsRes.data && !eventsRes.data.error) {
+        setEvents(eventsRes.data);
       }
       setLoading(false);
     };
-    fetchVisitors();
+    fetchData();
   }, [password]);
 
   const stats = useMemo(() => {
