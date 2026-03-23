@@ -138,30 +138,32 @@ const LazyBloggerPage = () => {
 
         {/* ── How It Works ── */}
         <section id="how-it-works" className="max-w-5xl mx-auto px-6 mb-24">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-center mb-4">
-            One prompt. Five questions.<br />Then your site writes itself.
-          </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.num}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.1 }}
-                className="rounded-2xl border border-border bg-card p-6"
-              >
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground font-display text-lg font-bold mb-4">
-                  {step.num}
-                </span>
-                <p className="font-body text-sm text-foreground/80 leading-relaxed">{step.text}</p>
-              </motion.div>
-            ))}
+          <div className="bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+            <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-center mb-4">
+              One prompt. Five questions.<br />Then your site writes itself.
+            </motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+              {steps.map((step, i) => (
+                <motion.div
+                  key={step.num}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeUp}
+                  transition={{ delay: i * 0.1 }}
+                  className="rounded-2xl border border-primary/20 bg-black/20 p-6"
+                >
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground font-display text-lg font-bold mb-4">
+                    {step.num}
+                  </span>
+                  <p className="font-body text-sm text-foreground/80 leading-relaxed">{step.text}</p>
+                </motion.div>
+              ))}
+            </div>
+            <p className="font-body text-sm text-muted-foreground text-center mt-8">
+              Lovable handles the entire build. You handle five questions. That is the full setup.
+            </p>
           </div>
-          <p className="font-body text-sm text-muted-foreground text-center mt-8">
-            Lovable handles the entire build. You handle five questions. That is the full setup.
-          </p>
         </section>
 
         {/* ── What Lovable Builds ── */}
