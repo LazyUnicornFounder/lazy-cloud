@@ -12,7 +12,7 @@ interface NavLink {
 }
 
 interface NavbarProps {
-  activePage?: "home" | "blog" | "guide";
+  activePage?: "home" | "blog" | "guide" | "autonomy";
 }
 
 const XLogo = () => (
@@ -37,6 +37,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
   const links: NavLink[] = [
     { label: "Guide", href: "/guide", highlight: activePage === "guide" },
+    { label: "Autonomy Scale", href: "/autonomy-scale", highlight: activePage === "autonomy" },
     { label: "Directory", href: isHome ? "#directory" : "/#directory" },
     { label: "Blog", href: "/blog", highlight: activePage === "blog" },
     { label: "Mission", href: isHome ? "#mission" : "/#mission" },
