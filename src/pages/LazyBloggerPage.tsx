@@ -86,6 +86,10 @@ const LazyBloggerPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <div className="fixed inset-0 z-0">
+        <img src={unicornBg} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
       <SEO
         title="Lazy Blogger — Autonomous Blog Engine for Lovable"
         description="One prompt installs an autonomous blog publishing engine inside your Lovable project. Four SEO posts a day, zero effort."
