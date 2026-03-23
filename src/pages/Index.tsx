@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import unicornBg from "@/assets/unicorn-beach.png";
 import logoNaive from "@/assets/logo-naive.jpg";
 import logoPolsia from "@/assets/logo-polsia.jpg";
+import logoLazyBlogger from "@/assets/logo-lazy-blogger.jpg";
 import CompanyCard from "@/components/CompanyCard";
 import SubmitSection from "@/components/SubmitSection";
 import PricingSection from "@/components/PricingSection";
