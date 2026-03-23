@@ -16,7 +16,7 @@ Deno.serve(async (req) => {
   );
 
   const body = await req.json();
-  const { action, password, id } = body;
+  const { action, password, id, updates } = body;
 
   // Verify admin password
   const adminPassword = Deno.env.get("ADMIN_PASSWORD");
@@ -55,6 +55,22 @@ Deno.serve(async (req) => {
       const { error } = await supabase
         .from("submissions")
         .update({ status: "rejected" })
+        .eq("id", id);
+      if (error) throw error;
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "update_submission" && id && updates) {
+      const allowed = ["name", "url", "tagline", "description", "logo_url", "slug"];
+      const sanitized: Record<string, unknown> = {};
+      for (const key of allowed) {
+        if (key in updates) sanitized[key] = updates[key];
+      }
+      const { error } = await supabase
+        .from("submissions")
+        .update(sanitized)
         .eq("id", id);
       if (error) throw error;
       return new Response(JSON.stringify({ success: true }), {

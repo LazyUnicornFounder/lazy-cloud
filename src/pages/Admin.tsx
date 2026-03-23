@@ -2,13 +2,15 @@ import { useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import AdminAnalytics from "@/components/AdminAnalytics";
 import { toast } from "sonner";
-import { Twitter } from "lucide-react";
+import { Twitter, Pencil, X, Check } from "lucide-react";
 
 interface Submission {
   id: string;
   name: string;
   url: string;
   tagline: string;
+  description: string | null;
+  logo_url: string | null;
   status: string;
   created_at: string;
 }
@@ -39,6 +41,8 @@ const Admin = () => {
   const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics" | "early_access">("analytics");
   const [generating, setGenerating] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editForm, setEditForm] = useState({ name: "", url: "", tagline: "", description: "", logo_url: "" });
 
   const fetchSubmissions = useCallback(async (pw: string) => {
     setLoading(true);
@@ -121,6 +125,34 @@ const Admin = () => {
     setGenerating(false);
   };
 
+  const startEdit = (s: Submission) => {
+    setEditingId(s.id);
+    setEditForm({
+      name: s.name,
+      url: s.url,
+      tagline: s.tagline,
+      description: s.description || "",
+      logo_url: s.logo_url || "",
+    });
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingId) return;
+    try {
+      const { data, error } = await supabase.functions.invoke("admin-submissions", {
+        body: { action: "update_submission", password, id: editingId, updates: editForm },
+      });
+      if (error || data?.error) {
+        toast.error(data?.error || "Failed to update");
+        return;
+      }
+      toast.success("Submission updated");
+      setEditingId(null);
+      fetchSubmissions(password);
+    } catch {
+      toast.error("Failed to update");
+    }
+  };
 
   if (!authenticated) {
     return (
@@ -191,38 +223,117 @@ const Admin = () => {
         <div className="space-y-3">
           {submissions.map((s) => (
             <div key={s.id} className="border border-border rounded-xl bg-card p-4">
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0">
-                  <h2 className="font-display font-bold text-foreground truncate">{s.name}</h2>
-                  <a href={s.url} target="_blank" rel="noopener noreferrer" className="font-body text-xs text-primary hover:underline">
-                    {s.url}
-                  </a>
-                  <p className="font-body text-sm text-muted-foreground mt-1">{s.tagline}</p>
-                  <span className={`inline-block mt-2 font-body text-xs px-2 py-0.5 rounded-full ${
-                    s.status === "approved" ? "bg-primary/20 text-primary" :
-                    s.status === "rejected" ? "bg-destructive/20 text-destructive" :
-                    "bg-muted text-muted-foreground"
-                  }`}>
-                    {s.status}
-                  </span>
-                </div>
-                {s.status === "pending" && (
-                  <div className="flex gap-2 shrink-0">
+              {editingId === s.id ? (
+                <div className="space-y-3">
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="font-body text-xs text-muted-foreground block mb-1">Name</label>
+                      <input
+                        value={editForm.name}
+                        onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                        className="w-full font-body text-sm bg-background border border-border rounded-lg px-3 py-2 text-foreground focus:outline-none focus:border-primary/50"
+                      />
+                    </div>
+                    <div>
+                      <label className="font-body text-xs text-muted-foreground block mb-1">Website</label>
+                      <input
+                        value={editForm.url}
+                        onChange={(e) => setEditForm({ ...editForm, url: e.target.value })}
+                        className="w-full font-body text-sm bg-background border border-border rounded-lg px-3 py-2 text-foreground focus:outline-none focus:border-primary/50"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="font-body text-xs text-muted-foreground block mb-1">Tagline</label>
+                    <input
+                      value={editForm.tagline}
+                      onChange={(e) => setEditForm({ ...editForm, tagline: e.target.value })}
+                      className="w-full font-body text-sm bg-background border border-border rounded-lg px-3 py-2 text-foreground focus:outline-none focus:border-primary/50"
+                    />
+                  </div>
+                  <div>
+                    <label className="font-body text-xs text-muted-foreground block mb-1">Description</label>
+                    <textarea
+                      value={editForm.description}
+                      onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
+                      rows={3}
+                      className="w-full font-body text-sm bg-background border border-border rounded-lg px-3 py-2 text-foreground focus:outline-none focus:border-primary/50 resize-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="font-body text-xs text-muted-foreground block mb-1">Thumbnail URL</label>
+                    <input
+                      value={editForm.logo_url}
+                      onChange={(e) => setEditForm({ ...editForm, logo_url: e.target.value })}
+                      placeholder="https://..."
+                      className="w-full font-body text-sm bg-background border border-border rounded-lg px-3 py-2 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50"
+                    />
+                    {editForm.logo_url && (
+                      <img src={editForm.logo_url} alt="Preview" className="mt-2 h-12 w-12 rounded-lg object-cover border border-border" />
+                    )}
+                  </div>
+                  <div className="flex gap-2">
                     <button
-                      onClick={() => handleAction(s.id, "approve")}
-                      className="font-body text-xs px-3 py-1.5 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors"
+                      onClick={handleSaveEdit}
+                      className="font-body text-xs px-3 py-1.5 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors flex items-center gap-1"
                     >
-                      Approve
+                      <Check size={12} /> Save
                     </button>
                     <button
-                      onClick={() => handleAction(s.id, "reject")}
-                      className="font-body text-xs px-3 py-1.5 rounded-lg bg-destructive/20 text-destructive hover:bg-destructive/30 transition-colors"
+                      onClick={() => setEditingId(null)}
+                      className="font-body text-xs px-3 py-1.5 rounded-lg bg-muted text-muted-foreground hover:bg-muted/80 transition-colors flex items-center gap-1"
                     >
-                      Reject
+                      <X size={12} /> Cancel
                     </button>
                   </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0 flex items-start gap-3">
+                    {s.logo_url && (
+                      <img src={s.logo_url} alt={s.name} className="h-10 w-10 rounded-lg object-cover border border-border shrink-0" />
+                    )}
+                    <div>
+                      <h2 className="font-display font-bold text-foreground truncate">{s.name}</h2>
+                      <a href={s.url} target="_blank" rel="noopener noreferrer" className="font-body text-xs text-primary hover:underline">
+                        {s.url}
+                      </a>
+                      <p className="font-body text-sm text-muted-foreground mt-1">{s.tagline}</p>
+                      <span className={`inline-block mt-2 font-body text-xs px-2 py-0.5 rounded-full ${
+                        s.status === "approved" ? "bg-primary/20 text-primary" :
+                        s.status === "rejected" ? "bg-destructive/20 text-destructive" :
+                        "bg-muted text-muted-foreground"
+                      }`}>
+                        {s.status}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex gap-2 shrink-0">
+                    <button
+                      onClick={() => startEdit(s)}
+                      className="font-body text-xs px-3 py-1.5 rounded-lg bg-foreground/10 text-foreground hover:bg-foreground/20 transition-colors flex items-center gap-1"
+                    >
+                      <Pencil size={12} /> Edit
+                    </button>
+                    {s.status === "pending" && (
+                      <>
+                        <button
+                          onClick={() => handleAction(s.id, "approve")}
+                          className="font-body text-xs px-3 py-1.5 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors"
+                        >
+                          Approve
+                        </button>
+                        <button
+                          onClick={() => handleAction(s.id, "reject")}
+                          className="font-body text-xs px-3 py-1.5 rounded-lg bg-destructive/20 text-destructive hover:bg-destructive/30 transition-colors"
+                        >
+                          Reject
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
           {!loading && submissions.length === 0 && (
