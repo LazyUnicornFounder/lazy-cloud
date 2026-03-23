@@ -230,22 +230,24 @@ const LazyBloggerPage = () => {
 
         {/* ── The Prompt ── */}
         <section className="max-w-3xl mx-auto px-6 mb-24">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-center mb-8">
-            This is all you paste into <span className="text-lovable">Lovable.</span>
-          </motion.h2>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="rounded-2xl border border-border bg-card p-6 md:p-8 mb-6">
-            <p className="font-body text-base text-foreground font-medium leading-relaxed">
-              "Add an autonomous blog publishing engine called Lazy Blogger to this project."
-            </p>
-            <p className="font-body text-xs text-muted-foreground mt-3">
-              + complete build instructions for database, edge function, cron schedule, blog pages, and dashboard.
-            </p>
-          </motion.div>
-          <div className="text-center">
-            <CopyButton className="text-base px-10 py-5" />
-            <p className="font-body text-xs text-muted-foreground mt-4 max-w-md mx-auto">
-              Paste it into your Lovable chat exactly as copied. Lovable reads the full instructions and builds everything in one go.
-            </p>
+          <div className="bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+            <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-center mb-8">
+              This is all you paste into <span className="text-lovable">Lovable.</span>
+            </motion.h2>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="rounded-2xl border border-primary/20 bg-black/20 p-6 md:p-8 mb-6">
+              <p className="font-body text-base text-foreground font-medium leading-relaxed">
+                "Add an autonomous blog publishing engine called Lazy Blogger to this project."
+              </p>
+              <p className="font-body text-xs text-muted-foreground mt-3">
+                + complete build instructions for database, edge function, cron schedule, blog pages, and dashboard.
+              </p>
+            </motion.div>
+            <div className="text-center">
+              <CopyButton className="text-base px-10 py-5" />
+              <p className="font-body text-xs text-muted-foreground mt-4 max-w-md mx-auto">
+                Paste it into your Lovable chat exactly as copied. Lovable reads the full instructions and builds everything in one go.
+              </p>
+            </div>
           </div>
         </section>
 
