@@ -274,8 +274,16 @@ const Index = () => {
               isPaid={company.isPaid}
               slug={company.slug}
               index={i} />
-
             )}
+            <CompanyCard
+              key="lazy-blogger"
+              name="Lazy Blogger"
+              url="/lazy-blogger"
+              description="The autonomous blog engine built for Lovable. One prompt installs everything."
+              isPaid={false}
+              slug="lazy-blogger"
+              index={companies.length}
+            />
           </div>
           <a
             href="#launch"
