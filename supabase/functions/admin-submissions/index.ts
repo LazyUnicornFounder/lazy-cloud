@@ -107,6 +107,18 @@ Deno.serve(async (req) => {
       });
     }
 
+    // === Early access actions ===
+    if (action === "list_early_access") {
+      const { data, error } = await supabase
+        .from("early_access")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return new Response(JSON.stringify(data), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     // === Visitor analytics actions ===
     if (action === "visitors") {
       const { data, error } = await supabase

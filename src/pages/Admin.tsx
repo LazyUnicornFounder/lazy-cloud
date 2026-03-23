@@ -21,15 +21,22 @@ interface BlogPost {
   created_at: string;
   published_at: string | null;
 }
+interface EarlyAccessEntry {
+  id: string;
+  email: string;
+  source: string | null;
+  created_at: string;
+}
 
 const Admin = () => {
   const [password, setPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [earlyAccess, setEarlyAccess] = useState<EarlyAccessEntry[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "queue" | "analytics" | "twitter">("analytics");
+  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "queue" | "analytics" | "twitter" | "early_access">("analytics");
   const [queue, setQueue] = useState<BlogPost[]>([]);
   const [generating, setGenerating] = useState(false);
   const [tweetText, setTweetText] = useState("");
@@ -46,6 +53,19 @@ const Admin = () => {
       return;
     }
     setSubmissions(data);
+  }, []);
+
+  const fetchEarlyAccess = useCallback(async (pw: string) => {
+    setLoading(true);
+    const { data, error } = await supabase.functions.invoke("admin-submissions", {
+      body: { action: "list_early_access", password: pw },
+    });
+    setLoading(false);
+    if (error || data?.error) {
+      setError(data?.error || "Failed to load");
+      return;
+    }
+    setEarlyAccess(data);
   }, []);
 
   const fetchBlogPosts = useCallback(async (pw: string) => {
@@ -192,6 +212,14 @@ const Admin = () => {
           }`}
         >
           Twitter
+        </button>
+        <button
+          onClick={() => { setActiveTab("early_access"); fetchEarlyAccess(password); }}
+          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
+            activeTab === "early_access" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          Early Access ({earlyAccess.length})
         </button>
       </div>
 
@@ -373,6 +401,28 @@ const Admin = () => {
               {tweeting ? "Posting…" : "Post Tweet"}
             </button>
           </div>
+        </div>
+      )}
+
+      {activeTab === "early_access" && (
+        <div className="space-y-3">
+          <p className="font-body text-sm text-muted-foreground mb-4">
+            {earlyAccess.length} email{earlyAccess.length !== 1 ? "s" : ""} collected
+          </p>
+          {earlyAccess.length === 0 && !loading && (
+            <p className="font-body text-sm text-muted-foreground text-center py-8">No signups yet.</p>
+          )}
+          {earlyAccess.map((entry) => (
+            <div key={entry.id} className="border border-border rounded-xl bg-card p-4 flex items-center justify-between">
+              <div>
+                <p className="font-body text-sm font-medium text-foreground">{entry.email}</p>
+                <p className="font-body text-xs text-muted-foreground">
+                  {new Date(entry.created_at).toLocaleString()}
+                  {entry.source && <span className="ml-2 text-muted-foreground/60">· {entry.source}</span>}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </div>
