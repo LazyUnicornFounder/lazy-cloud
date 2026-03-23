@@ -46,7 +46,7 @@ function DropdownItem({ link, onClick }: { link: NavLink; onClick?: () => void }
     <div ref={ref} className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button
         onClick={() => setOpen(!open)}
-        className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors flex items-center gap-1"
+        className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/70 hover:text-primary transition-colors flex items-center gap-1"
       >
         {link.label}
         <ChevronDown size={12} className={`transition-transform ${open ? "rotate-180" : ""}`} />
@@ -171,7 +171,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
                   <a
                     key={link.label}
                     href={link.href}
-                    className={`font-body text-[11px] tracking-[0.15em] uppercase transition-colors ${
+                    className={`font-body text-[11px] tracking-[0.15em] uppercase font-bold transition-colors ${
                       link.highlight
                         ? "text-primary"
                         : "text-foreground/70 hover:text-primary"
