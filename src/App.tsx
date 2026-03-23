@@ -46,6 +46,10 @@ const App = () => (
             <Route path="/company/polsia" element={<PolsiaPage />} />
             <Route path="/company/:slug" element={<CompanyDetail />} />
             <Route path="/checkout/success" element={<CheckoutSuccess />} />
+            <Route path="/lazy-seo-setup" element={<LazySeoSetup />} />
+            <Route path="/lazy-seo-dashboard" element={<LazySeoDashboard />} />
+            <Route path="/seo-blog" element={<SeoBlog />} />
+            <Route path="/seo-blog/:slug" element={<SeoBlogPost />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

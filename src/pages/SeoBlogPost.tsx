@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 import { ArrowLeft } from "lucide-react";
 
 const SeoBlogPost = () => {
