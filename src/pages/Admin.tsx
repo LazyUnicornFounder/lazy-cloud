@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import AdminAnalytics from "@/components/AdminAnalytics";
 import AdminSeo from "@/components/AdminSeo";
 import AdminGeo from "@/components/AdminGeo";
+import AdminPrompts from "@/components/AdminPrompts";
 import { toast } from "sonner";
 import { Twitter, Pencil, X, Check, Trash2, Upload, Loader2 } from "lucide-react";
 import { staticBlogPosts } from "@/components/BlogSection";
@@ -45,9 +46,9 @@ const Admin = () => {
   
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics" | "seo" | "geo">(() => {
+  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics" | "seo" | "geo" | "prompts">(() => {
     const saved = sessionStorage.getItem("admin_tab");
-    return (saved === "submissions" || saved === "blog" || saved === "analytics" || saved === "seo" || saved === "geo") ? saved : "analytics";
+    return (saved === "submissions" || saved === "blog" || saved === "analytics" || saved === "seo" || saved === "geo" || saved === "prompts") ? saved : "analytics";
   });
   useEffect(() => { sessionStorage.setItem("admin_tab", activeTab); }, [activeTab]);
   const [generating, setGenerating] = useState(false);
@@ -249,6 +250,14 @@ const Admin = () => {
           }`}
         >
           Lazy GEO
+        </button>
+        <button
+          onClick={() => setActiveTab("prompts")}
+          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
+            activeTab === "prompts" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          Prompts
         </button>
       </div>
 
@@ -658,6 +667,8 @@ const Admin = () => {
       {activeTab === "seo" && <AdminSeo />}
 
       {activeTab === "geo" && <AdminGeo />}
+
+      {activeTab === "prompts" && <AdminPrompts />}
 
     </div>
   );
