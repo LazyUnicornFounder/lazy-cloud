@@ -291,8 +291,8 @@ const Admin = () => {
               ) : (
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex items-start gap-3">
-                    {s.logo_url && (
-                      <img src={s.logo_url} alt={s.name} className="h-10 w-10 rounded-lg object-cover border border-border shrink-0" />
+                    {(s.logo_url || FALLBACK_LOGOS[s.name]) && (
+                      <img src={s.logo_url || FALLBACK_LOGOS[s.name]} alt={s.name} className="h-10 w-10 rounded-lg object-cover border border-border shrink-0" />
                     )}
                     <div>
                       <h2 className="font-display font-bold text-foreground truncate">{s.name}</h2>
