@@ -124,24 +124,6 @@ const Admin = () => {
     setGenerating(false);
   };
 
-  const handleTweet = async () => {
-    if (!tweetText.trim()) return;
-    setTweeting(true);
-    try {
-      const { data, error } = await supabase.functions.invoke("post-to-twitter", {
-        body: { text: tweetText.trim(), password },
-      });
-      if (error || data?.error) {
-        toast.error(data?.error || "Failed to post tweet");
-      } else {
-        toast.success("Tweet posted!");
-        setTweetText("");
-      }
-    } catch {
-      toast.error("Failed to post tweet");
-    }
-    setTweeting(false);
-  };
 
   if (!authenticated) {
     return (
