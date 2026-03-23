@@ -344,6 +344,18 @@ const Admin = () => {
                   </div>
                 </div>
                 <div className="flex gap-2 shrink-0">
+                  <button
+                    onClick={() => {
+                      const url = `https://lazyunicorn.ai/blog/${post.slug}`;
+                      const text = `${post.title}\n\n${url}`;
+                      navigator.clipboard.writeText(text);
+                      toast.success("X post copied to clipboard!");
+                    }}
+                    className="font-body text-xs px-3 py-1.5 rounded-lg bg-foreground/10 text-foreground hover:bg-foreground/20 transition-colors flex items-center gap-1"
+                    title="Copy X post"
+                  >
+                    <Twitter size={12} /> X
+                  </button>
                   {post.status === "draft" && (
                     <>
                       <button
