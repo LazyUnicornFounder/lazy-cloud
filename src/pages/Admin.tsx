@@ -125,21 +125,28 @@ const Admin = () => {
 
   const handleGeneratePost = async () => {
     setGenerating(true);
-    try {
-      const { data, error } = await supabase.functions.invoke("generate-blog-post", {
-        body: customTopic.trim() ? { topic: customTopic.trim() } : {},
-      });
-      if (error) {
-        toast.error("Failed to generate post");
-      } else {
-        const title = data?.post?.title || "New post";
-        toast.success(`"${title}" added to queue`);
-        setCustomTopic("");
+    const topics = customTopic.trim()
+      ? customTopic.split("\n").map(t => t.trim()).filter(Boolean)
+      : [""];
+    let successCount = 0;
+    for (const topic of topics) {
+      try {
+        const { data, error } = await supabase.functions.invoke("generate-blog-post", {
+          body: topic ? { topic } : {},
+        });
+        if (error) {
+          toast.error(`Failed to generate: ${topic || "random topic"}`);
+        } else {
+          successCount++;
+          const title = data?.post?.title || "New post";
+          toast.success(`"${title}" added to queue`);
+        }
+      } catch {
+        toast.error(`Failed to generate: ${topic || "random topic"}`);
       }
-      await fetchBlogPosts(password);
-    } catch {
-      toast.error("Failed to generate post");
     }
+    if (successCount > 0) setCustomTopic("");
+    await fetchBlogPosts(password);
     setGenerating(false);
   };
 
@@ -446,8 +453,8 @@ const Admin = () => {
               <textarea
                 value={customTopic}
                 onChange={(e) => setCustomTopic(e.target.value)}
-                placeholder="Describe the blog post you want to generate (leave empty for random topic)…"
-                rows={2}
+                placeholder="One topic per line — generate multiple posts at once (leave empty for random)…"
+                rows={3}
                 className="w-full font-body text-sm bg-card border border-border rounded-lg px-3 py-2 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 resize-none"
               />
             </div>
@@ -456,7 +463,7 @@ const Admin = () => {
               disabled={generating}
               className="font-body text-sm px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shrink-0 h-fit"
             >
-              {generating ? "Generating…" : "Generate"}
+              {generating ? "Generating…" : customTopic.split("\n").filter(t => t.trim()).length > 1 ? `Generate ${customTopic.split("\n").filter(t => t.trim()).length} Posts` : "Generate"}
             </button>
           </div>
 
