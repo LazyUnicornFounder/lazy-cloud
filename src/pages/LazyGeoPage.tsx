@@ -86,7 +86,7 @@ const LazyGeoPage = () => {
               transition={{ delay: 0.1, duration: 0.5 }}
               className="font-display text-sm tracking-[0.2em] uppercase text-primary mb-4 font-bold flex items-center justify-center gap-3"
             >
-              Introducing
+              Introducing Lazy GEO
               <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 rounded-full">Beta</span>
             </motion.p>
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-6">
