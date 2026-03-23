@@ -37,22 +37,6 @@ const TOPIC_SEEDS = [
   "Write about autonomous customer support — when your users never talk to a human.",
 ];
 
-const POSTS_PER_BATCH = 24;
-const DELAY_BETWEEN_CALLS_MS = 5000; // 5s between API calls to avoid rate limits
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 async function callAnthropic(apiKey: string, topic: string): Promise<string> {
   const cleanKey = apiKey.replace(/[^\x20-\x7E]/g, "").trim();
   const response = await fetch(ANTHROPIC_API_URL, {
@@ -102,103 +86,70 @@ Deno.serve(async (req) => {
     const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
     if (!ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not configured");
 
-    // Shuffle topics and pick 24
-    const topics = shuffle(TOPIC_SEEDS).slice(0, POSTS_PER_BATCH);
-    // If we have fewer seeds than 24, cycle through them
-    while (topics.length < POSTS_PER_BATCH) {
-      topics.push(TOPIC_SEEDS[Math.floor(Math.random() * TOPIC_SEEDS.length)]);
-    }
+    const topic = TOPIC_SEEDS[Math.floor(Math.random() * TOPIC_SEEDS.length)];
 
-    const results: { title: string; slug: string; success: boolean }[] = [];
+    // Call Anthropic with one retry on parse failure
+    let post: { title: string; slug: string; excerpt: string; body: string };
+    let raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
 
-    for (let i = 0; i < topics.length; i++) {
-      const topic = topics[i];
-
+    try {
+      post = parseJson(raw);
+    } catch {
+      console.warn("Parse failed, retrying...");
+      raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
       try {
-        // Call Anthropic with one retry on parse failure
-        let post: { title: string; slug: string; excerpt: string; body: string };
-        let raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
-
-        try {
-          post = parseJson(raw);
-        } catch {
-          console.warn(`Post ${i + 1}: parse failed, retrying...`);
-          await sleep(2000);
-          raw = await callAnthropic(ANTHROPIC_API_KEY, topic);
-          try {
-            post = parseJson(raw);
-          } catch (secondErr) {
-            await supabase.from("blog_errors").insert({
-              error_message: `Post ${i + 1} parse failed twice: ${secondErr.message}. Raw: ${raw.slice(0, 500)}`,
-            });
-            results.push({ title: "(parse error)", slug: "", success: false });
-            continue;
-          }
-        }
-
-        // Split body into paragraphs for content text[] column
-        const paragraphs: string[] = post.body
-          .split(/\n\n+/)
-          .map((p: string) => p.trim())
-          .filter((p: string) => p.length > 0);
-
-        // Deduplicate slug
-        let slug = post.slug;
-        const { data: existing } = await supabase
-          .from("blog_posts")
-          .select("id")
-          .eq("slug", slug)
-          .maybeSingle();
-
-        if (existing) {
-          const rand = Math.floor(1000 + Math.random() * 9000);
-          slug = `${slug}-${rand}`;
-        }
-
-        const wordCount = post.body.split(/\s+/).length;
-        const readTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
-
-        const { error } = await supabase.from("blog_posts").insert({
-          slug,
-          title: post.title,
-          excerpt: post.excerpt,
-          content: paragraphs,
-          read_time: readTime,
-          status: "draft",
+        post = parseJson(raw);
+      } catch (secondErr) {
+        await supabase.from("blog_errors").insert({
+          error_message: `Parse failed twice: ${secondErr.message}. Raw: ${raw.slice(0, 500)}`,
         });
-
-        if (error) throw error;
-
-        console.log(`Post ${i + 1}/24 queued: ${post.title}`);
-        results.push({ title: post.title, slug, success: true });
-      } catch (postErr) {
-        console.error(`Post ${i + 1} failed:`, postErr.message);
-        try {
-          await supabase.from("blog_errors").insert({
-            error_message: `Post ${i + 1}: ${postErr.message}`,
-          });
-        } catch { /* ignore */ }
-        results.push({ title: "(error)", slug: "", success: false });
-      }
-
-      // Delay between calls (skip after last)
-      if (i < topics.length - 1) {
-        await sleep(DELAY_BETWEEN_CALLS_MS);
+        throw new Error("JSON parse failed after retry");
       }
     }
 
-    const successCount = results.filter((r) => r.success).length;
-    console.log(`Batch complete: ${successCount}/${POSTS_PER_BATCH} posts queued as drafts.`);
+    // Split body into paragraphs for content text[] column
+    const paragraphs: string[] = post.body
+      .split(/\n\n+/)
+      .map((p: string) => p.trim())
+      .filter((p: string) => p.length > 0);
 
-    return new Response(
-      JSON.stringify({ success: true, generated: successCount, total: POSTS_PER_BATCH, results }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    // Deduplicate slug
+    let slug = post.slug;
+    const { data: existing } = await supabase
+      .from("blog_posts")
+      .select("id")
+      .eq("slug", slug)
+      .maybeSingle();
+
+    if (existing) {
+      const rand = Math.floor(1000 + Math.random() * 9000);
+      slug = `${slug}-${rand}`;
+    }
+
+    const wordCount = post.body.split(/\s+/).length;
+    const readTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
+
+    const { data, error } = await supabase.from("blog_posts").insert({
+      slug,
+      title: post.title,
+      excerpt: post.excerpt,
+      content: paragraphs,
+      read_time: readTime,
+      status: "draft",
+    }).select().single();
+
+    if (error) throw error;
+
+    console.log(`Queued: ${data.title}`);
+
+    return new Response(JSON.stringify({ success: true, post: data }), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   } catch (err) {
-    console.error("auto-publish-blog batch error:", err);
+    console.error("auto-publish-blog error:", err);
     try {
       await supabase.from("blog_errors").insert({
-        error_message: `Batch error: ${err.message || String(err)}`,
+        error_message: err.message || String(err),
       });
     } catch { /* ignore */ }
 
