@@ -287,9 +287,9 @@ const GuidePage = () => {
     <div className="min-h-screen text-foreground relative">
       <SEO
         title="Guide — How to Build an Autonomous Unicorn"
-        description="A step-by-step interactive guide to building a one-person billion-dollar company with AI. Six steps from idea to compound growth."
+        description="A step-by-step guide to building an autonomous business as a solo founder. Learn how to build a business with AI, replace your team with AI agents, and create a self-operating company from scratch."
         url="/guide"
-        keywords="autonomous unicorn guide, solo founder playbook, one person billion dollar company, AI startup guide, lovable guide"
+        keywords="autonomous business, solo founder, build a business with AI, one person business, AI agents for business, autonomous unicorn, solo founder tools, no code startup, AI startup tools, self-building startup, build without a team, AI company builder, solo CEO, AI founder tools, vibe coding business, build on Lovable, autonomous business platform"
       />
 
       {/* bg */}
