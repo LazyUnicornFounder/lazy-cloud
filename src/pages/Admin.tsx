@@ -38,6 +38,7 @@ const Admin = () => {
   const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics">("analytics");
   const [generating, setGenerating] = useState(false);
+  const [customTopic, setCustomTopic] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editForm, setEditForm] = useState({ name: "", url: "", tagline: "", description: "", logo_url: "" });
 
