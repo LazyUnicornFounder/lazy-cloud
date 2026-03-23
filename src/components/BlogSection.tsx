@@ -2494,8 +2494,14 @@ const BlogSection = () => {
           <h1 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-3">
             Blog
           </h1>
-          <p className="font-body text-lg text-foreground/50 leading-relaxed">
+          <p className="font-body text-lg text-foreground/50 leading-relaxed mb-3">
             Accelerate the future of autonomous capitalism.
+          </p>
+          <p className="font-body text-sm text-foreground/40 leading-relaxed">
+            This entire blog writes and publishes itself autonomously.{" "}
+            <a href="/lazy-blogger" className="text-primary hover:text-primary/80 font-semibold transition-colors">
+              Build your own autonomous blog just like this one →
+            </a>
           </p>
         </motion.div>
 
