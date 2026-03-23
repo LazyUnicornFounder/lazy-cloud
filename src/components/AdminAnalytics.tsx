@@ -137,7 +137,26 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
     });
     const markers = Object.values(markerMap);
 
-    return { total, today, countries, cities, browsers, operatingSystems, pages, referrers, markers };
+    // Daily visits (last 30 days)
+    const dailyMap: Record<string, number> = {};
+    const now = new Date();
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(now);
+      d.setDate(d.getDate() - i);
+      dailyMap[d.toISOString().split("T")[0]] = 0;
+    }
+    visitors.forEach((v) => {
+      const day = new Date(v.created_at).toISOString().split("T")[0];
+      if (dailyMap[day] !== undefined) {
+        dailyMap[day]++;
+      }
+    });
+    const dailyVisits = Object.entries(dailyMap).map(([date, count]) => ({
+      date: new Date(date).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+      visits: count,
+    }));
+
+    return { total, today, countries, cities, browsers, operatingSystems, pages, referrers, markers, dailyVisits };
   }, [visitors]);
 
   if (loading) {
