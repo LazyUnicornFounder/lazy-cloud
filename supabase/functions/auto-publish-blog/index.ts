@@ -29,10 +29,14 @@ const TOPIC_SEEDS = [
 ];
 
 async function callAnthropic(apiKey: string, topic: string): Promise<string> {
+  const cleanKey = apiKey.replace(/[^\x20-\x7E]/g, "").trim();
   const response = await fetch(ANTHROPIC_API_URL, {
     method: "POST",
-    headers: {
-      "x-api-key": apiKey,
+    headers: new Headers({
+      "x-api-key": cleanKey,
+      "anthropic-version": "2023-06-01",
+      "Content-Type": "application/json",
+    }),
       "anthropic-version": "2023-06-01",
       "Content-Type": "application/json",
     },
