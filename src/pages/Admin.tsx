@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import AdminAnalytics from "@/components/AdminAnalytics";
 import { toast } from "sonner";
@@ -29,8 +29,8 @@ interface BlogPost {
 
 
 const Admin = () => {
-  const [password, setPassword] = useState("");
-  const [authenticated, setAuthenticated] = useState(false);
+  const [password, setPassword] = useState(() => sessionStorage.getItem("admin_pw") || "");
+  const [authenticated, setAuthenticated] = useState(() => !!sessionStorage.getItem("admin_pw"));
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   
@@ -82,9 +82,18 @@ const Admin = () => {
       return;
     }
     setAuthenticated(true);
+    sessionStorage.setItem("admin_pw", password);
     setSubmissions(data);
     fetchBlogPosts(password);
   };
+
+  // Auto-fetch data on mount if already authenticated from sessionStorage
+  useEffect(() => {
+    if (authenticated && password) {
+      fetchSubmissions(password);
+      fetchBlogPosts(password);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleAction = async (id: string, action: "approve" | "reject") => {
     await supabase.functions.invoke("admin-submissions", {
