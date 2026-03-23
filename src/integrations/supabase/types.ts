@@ -131,6 +131,156 @@ export type Database = {
         }
         Relationships: []
       }
+      geo_citations: {
+        Row: {
+          brand_mentioned: boolean
+          confidence: string | null
+          id: string
+          query: string
+          reason: string | null
+          tested_at: string
+        }
+        Insert: {
+          brand_mentioned?: boolean
+          confidence?: string | null
+          id?: string
+          query: string
+          reason?: string | null
+          tested_at?: string
+        }
+        Update: {
+          brand_mentioned?: boolean
+          confidence?: string | null
+          id?: string
+          query?: string
+          reason?: string | null
+          tested_at?: string
+        }
+        Relationships: []
+      }
+      geo_errors: {
+        Row: {
+          created_at: string
+          error_message: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          error_message: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          error_message?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      geo_posts: {
+        Row: {
+          body: string
+          excerpt: string | null
+          id: string
+          published_at: string
+          slug: string
+          status: string
+          target_query: string | null
+          title: string
+        }
+        Insert: {
+          body: string
+          excerpt?: string | null
+          id?: string
+          published_at?: string
+          slug: string
+          status?: string
+          target_query?: string | null
+          title: string
+        }
+        Update: {
+          body?: string
+          excerpt?: string | null
+          id?: string
+          published_at?: string
+          slug?: string
+          status?: string
+          target_query?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      geo_queries: {
+        Row: {
+          brand_cited: boolean
+          created_at: string
+          has_content: boolean
+          id: string
+          last_tested: string | null
+          priority: number
+          query: string
+          query_type: string | null
+        }
+        Insert: {
+          brand_cited?: boolean
+          created_at?: string
+          has_content?: boolean
+          id?: string
+          last_tested?: string | null
+          priority?: number
+          query: string
+          query_type?: string | null
+        }
+        Update: {
+          brand_cited?: boolean
+          created_at?: string
+          has_content?: boolean
+          id?: string
+          last_tested?: string | null
+          priority?: number
+          query?: string
+          query_type?: string | null
+        }
+        Relationships: []
+      }
+      geo_settings: {
+        Row: {
+          brand_name: string
+          business_description: string
+          competitors: string
+          created_at: string
+          id: string
+          is_running: boolean
+          niche_topics: string
+          posts_per_day: number
+          site_url: string
+          target_audience: string
+        }
+        Insert: {
+          brand_name: string
+          business_description: string
+          competitors: string
+          created_at?: string
+          id?: string
+          is_running?: boolean
+          niche_topics: string
+          posts_per_day?: number
+          site_url: string
+          target_audience: string
+        }
+        Update: {
+          brand_name?: string
+          business_description?: string
+          competitors?: string
+          created_at?: string
+          id?: string
+          is_running?: boolean
+          niche_topics?: string
+          posts_per_day?: number
+          site_url?: string
+          target_audience?: string
+        }
+        Relationships: []
+      }
       seo_errors: {
         Row: {
           created_at: string
