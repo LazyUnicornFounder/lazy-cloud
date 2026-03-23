@@ -4,7 +4,7 @@ import { useState } from "react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import BlogTicker from "@/components/BlogTicker";
-import FloatingProductCTA from "@/components/FloatingProductCTA";
+
 import unicornBg from "@/assets/unicorn-beach.png";
 
 const TEMPLATE_URL = "#"; // TODO: replace with actual template URL
