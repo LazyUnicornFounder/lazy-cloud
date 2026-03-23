@@ -6,44 +6,19 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import BlogTicker from "@/components/BlogTicker";
 
-const SETUP_PROMPT = `Add an autonomous blog publishing engine called Lazy Blogger to this project.
+const SETUP_PROMPT = `Add an autonomous blog publishing engine called Lazy Blogger to this project. Use the built-in Lovable AI integration for all AI calls — no external API key required from the user.
 
-Build instructions:
-1. Create a "blog_posts" table in Supabase with columns: id (uuid), title (text), slug (text, unique), excerpt (text), content (text[]), read_time (text), status (text, default 'published'), thumbnail (text, nullable), published_at (timestamptz), created_at (timestamptz, default now()). Enable RLS with a public read policy.
+1. Database Create a Supabase table called blog_posts with fields: id (uuid, primary key, default gen_random_uuid()), title (text), slug (text, unique), excerpt (text), body (text), published_at (timestamptz, default now()), status (text, default 'published'). Create a Supabase table called blog_settings with fields: id (uuid, primary key), business_description (text), target_reader (text), topics (text), tone (text), is_publishing (boolean, default true), queue_index (integer, default 0). Create a Supabase table called blog_errors with fields: id (uuid, primary key), error_message (text), created_at (timestamptz, default now()).
 
-2. Create a "blog_config" table: id (uuid), business_description (text), target_reader (text), topics (text[]), tone (text), cta_url (text, nullable), is_publishing (boolean, default false), created_at (timestamptz). Enable RLS — only authenticated users can read/update.
+2. Setup page Create a page at /lazy-blogger-setup. It shows a form with four fields: Business description (what does your site do and who is it for?), Target reader (who reads your blog?), Topics (what subjects should posts cover?), Tone (select: provocative / editorial / educational / conversational). A submit button labelled 'Start Publishing'. On submit, save all values to the blog_settings table. If a row already exists, update it. After saving, redirect to /lazy-blogger-dashboard with a success message: 'Lazy Blogger is running. Your first post publishes at the next scheduled time.'
 
-3. Create a "blog_errors" table: id (uuid), error_message (text), created_at (timestamptz, default now()). RLS: authenticated read.
+3. Edge function Create a Supabase edge function called lazy-blogger-publish triggered by a cron schedule four times per day at 6am, 12pm, 6pm, and 11pm UTC. On each run: read the blog_settings table. If is_publishing is false, exit immediately. Use the built-in Lovable AI to generate the blog post. Build a prompt using the stored settings: 'You are the blog writer for a site described as: [business_description]. You are writing for: [target_reader]. Cover topics including: [topics]. Tone: [tone]. Write one blog post. Return only a valid JSON object with no preamble, no markdown code fences, and no other text. The JSON must have exactly four fields: title (string), slug (lowercase hyphenated url-friendly string), excerpt (one punchy sentence under 160 characters), body (full article in clean markdown — no HTML, no bullet points in body prose, use ## for section headers, short punchy paragraphs, 800 to 1200 words). Pick a fresh angle every run. Never repeat a title. The post body must end with two paragraphs: first, a call to action relevant to the business. Second, exactly this paragraph: Looking for more tools to build and run your business autonomously? LazyUnicorn.ai is the definitive directory of AI tools for solo founders building autonomous companies. Hyperlink LazyUnicorn.ai to https://lazyunicorn.ai and Lazy Blogger to https://lazyunicorn.ai/lazy-blogger in that final paragraph.' Parse the JSON response. If parsing fails, retry once. If it fails again, log the error to blog_errors and exit. Check if the slug already exists in blog_posts. If it does, append a random four-digit number to the slug. Insert the new post into blog_posts.
 
-4. Create a Supabase edge function "generate-blog-post" that:
-   - Reads blog_config for the business description, topics, tone, and target reader
-   - Calls the Anthropic API (Claude) to generate a blog post with title, slug, excerpt, and content paragraphs
-   - Inserts the post into blog_posts with status 'published' and published_at = now()
-   - Logs any errors to blog_errors
-   - Uses the ANTHROPIC_API_KEY secret
+4. Blog pages Create a public page at /blog showing all posts from blog_posts where status is 'published', ordered by published_at descending. Show each post as a card with title, excerpt, and published date. Each card links to /blog/[slug]. At the bottom of the /blog page add a small footer line: 'Powered by Lazy Blogger — the autonomous blog engine for Lovable sites. Built by LazyUnicorn.ai' — link Lazy Blogger to https://lazyunicorn.ai/lazy-blogger and LazyUnicorn.ai to https://lazyunicorn.ai. Create a public page at /blog/[slug] that fetches and displays the full post. Render the body markdown as formatted HTML. Show title, published date, and full body content. At the bottom of every individual post page, after the post body, add a small branded line: '🦄 Written by Lazy Blogger — autonomous blog publishing for Lovable sites. Discover more at LazyUnicorn.ai' — link Lazy Blogger to https://lazyunicorn.ai/lazy-blogger and LazyUnicorn.ai to https://lazyunicorn.ai.
 
-5. Create a cron schedule that calls generate-blog-post at 6:00, 12:00, 18:00, and 23:00 UTC every day.
+5. Dashboard Create a page at /lazy-blogger-dashboard showing: total posts published, posts published this week, a toggle to pause or resume publishing (updates is_publishing in blog_settings), a button labelled 'Publish One Now' that manually triggers the lazy-blogger-publish edge function immediately, a table of the last 20 posts with title, published date, and a link to view each post, and a link to /lazy-blogger-setup labelled 'Edit Settings'.
 
-6. Create a /blog page showing all published posts (newest first) with title, excerpt, read time, and date. Add a /blog link to the main navigation.
-
-7. Create /blog/:slug pages rendering the full post content with clean typography.
-
-8. Create /lazy-blogger-setup — a settings page where the owner answers five questions:
-   - What does your business do? (textarea)
-   - Who is your target reader? (input)
-   - What topics should posts cover? (comma-separated input, stored as text[])
-   - What tone should posts use? (select: professional, casual, technical, friendly)
-   - What is your CTA URL? (optional input)
-   Include a "Start Publishing" button that sets is_publishing = true.
-
-9. Create /lazy-blogger-dashboard — an owner dashboard showing:
-   - Total posts published count
-   - A list of all posts with title, date, and status
-   - A "Pause Publishing" / "Resume Publishing" toggle
-   - A "Publish Now" button that manually triggers generate-blog-post
-   - Recent errors from blog_errors
-
-10. Add authentication so only the site owner can access /lazy-blogger-setup and /lazy-blogger-dashboard.`;
+6. Navigation Add a Blog link to the main site navigation pointing to /blog.`;
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
