@@ -232,6 +232,71 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
         </div>
       </div>
 
+      {/* Lazy Blogger Funnel */}
+      <div className="border border-border rounded-xl bg-card p-4">
+        <h3 className="font-display font-bold text-foreground mb-3">Lazy Blogger — Funnel</h3>
+        <div className="grid grid-cols-4 gap-3 mb-4">
+          <div className="text-center p-3 rounded-lg bg-background/50 border border-border/50">
+            <p className="font-display text-2xl font-bold text-foreground">{lazyBloggerStats.pageViews}</p>
+            <p className="font-body text-xs text-muted-foreground">Page Views</p>
+          </div>
+          <div className="text-center p-3 rounded-lg bg-background/50 border border-border/50">
+            <p className="font-display text-2xl font-bold text-primary">{lazyBloggerStats.promptCopies}</p>
+            <p className="font-body text-xs text-muted-foreground">Prompt Copies</p>
+          </div>
+          <div className="text-center p-3 rounded-lg bg-background/50 border border-border/50">
+            <p className="font-display text-2xl font-bold text-foreground">{lazyBloggerStats.earlyAccess}</p>
+            <p className="font-body text-xs text-muted-foreground">Early Access</p>
+          </div>
+          <div className="text-center p-3 rounded-lg bg-background/50 border border-border/50">
+            <p className="font-display text-2xl font-bold text-primary">{lazyBloggerStats.conversionRate}%</p>
+            <p className="font-body text-xs text-muted-foreground">Conv. Rate</p>
+          </div>
+        </div>
+
+        {/* Daily trend */}
+        <div className="w-full h-48 mb-4">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={lazyBloggerStats.dailyTrend} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+              <XAxis
+                dataKey="date"
+                tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+                interval={Math.floor(lazyBloggerStats.dailyTrend.length / 5)}
+                tickLine={false}
+                axisLine={{ stroke: "hsl(var(--border))" }}
+              />
+              <YAxis tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={false} allowDecimals={false} />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "hsl(var(--card))",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "8px",
+                  fontSize: "12px",
+                }}
+              />
+              <Bar dataKey="views" name="Page Views" fill="hsl(var(--muted-foreground))" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="copies" name="Prompt Copies" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* Tier breakdown */}
+        {lazyBloggerStats.tiers.length > 0 && (
+          <div>
+            <h4 className="font-display text-sm font-bold text-muted-foreground mb-2">Copies by Frequency</h4>
+            <div className="space-y-1.5">
+              {lazyBloggerStats.tiers.map(([label, count]) => (
+                <div key={label} className="flex items-center justify-between">
+                  <span className="font-body text-sm text-foreground/80">{label}</span>
+                  <span className="font-body text-xs text-muted-foreground">{count}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Daily visits chart */}
       <div className="border border-border rounded-xl bg-card p-4">
         <h3 className="font-display font-bold text-foreground mb-3">Daily Visits (Last 30 Days)</h3>
