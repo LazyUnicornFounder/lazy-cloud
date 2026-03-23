@@ -52,6 +52,8 @@ const Admin = () => {
   const [customTopic, setCustomTopic] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editForm, setEditForm] = useState({ name: "", url: "", tagline: "", description: "", logo_url: "" });
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const fetchSubmissions = useCallback(async (pw: string) => {
     setLoading(true);
