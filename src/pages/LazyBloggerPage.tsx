@@ -1,10 +1,11 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Heart, Copy, Check, Clock, Sparkles, Zap } from "lucide-react";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { frequencyTiers, buildPrompt, type FrequencyTier } from "@/components/lazy-blogger/frequencyData";
+import { useTrackEvent } from "@/hooks/useTrackEvent";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
