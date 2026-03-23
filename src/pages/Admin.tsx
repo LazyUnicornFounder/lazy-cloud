@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import AdminAnalytics from "@/components/AdminAnalytics";
 import { toast } from "sonner";
 import { Twitter, Pencil, X, Check, Trash2 } from "lucide-react";
+import { staticBlogPosts } from "@/components/BlogSection";
 
 interface Submission {
   id: string;
