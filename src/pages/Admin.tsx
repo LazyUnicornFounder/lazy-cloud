@@ -32,7 +32,7 @@ const Admin = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [earlyAccess, setEarlyAccess] = useState<EarlyAccessEntry[]>([]);
+  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics" | "early_access">("analytics");
