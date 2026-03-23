@@ -92,6 +92,16 @@ Deno.serve(async (req) => {
 
     if (error) throw error;
 
+    // Update total visitor count in app_config
+    const { count } = await supabase
+      .from("visitors")
+      .select("id", { count: "exact", head: true });
+    if (count !== null) {
+      await supabase
+        .from("app_config")
+        .upsert({ key: "total_visitors", value: String(count) });
+    }
+
     return new Response(JSON.stringify({ tracked: true }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });

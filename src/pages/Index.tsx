@@ -18,6 +18,7 @@ import BlogTicker from "@/components/BlogTicker";
 import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 import LiveCounter from "@/components/LiveCounter";
+import TotalVisitorCount from "@/components/TotalVisitorCount";
 
 const Index = () => {
   useTrackVisit();
@@ -151,9 +152,12 @@ const Index = () => {
                 <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
                   Autonomous capitalism for the rest of us
                 </p>
-                <p className="font-body text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-foreground/60 text-center mt-1">
-                  ★  EST. 2026  ★
-                </p>
+                <div className="flex items-center justify-center gap-3 mt-1">
+                  <p className="font-body text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-foreground/60">
+                    ★  EST. 2026  ★
+                  </p>
+                  <TotalVisitorCount />
+                </div>
               </div>
             </motion.div>
 
