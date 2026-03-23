@@ -273,24 +273,26 @@ const LazyBloggerPage = () => {
 
         {/* ── FAQ ── */}
         <section className="max-w-3xl mx-auto px-6 mb-24">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-center mb-10">
-            Questions.
-          </motion.h2>
-          <div className="space-y-4">
-            {faqs.map((faq, i) => (
-              <motion.div
-                key={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.05 }}
-                className="rounded-2xl border border-border bg-card p-6"
-              >
-                <h3 className="font-display text-sm font-bold text-foreground mb-2">{faq.q}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
+          <div className="bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+            <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-center mb-10">
+              Questions.
+            </motion.h2>
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <motion.div
+                  key={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeUp}
+                  transition={{ delay: i * 0.05 }}
+                  className="rounded-2xl border border-primary/20 bg-black/20 p-6"
+                >
+                  <h3 className="font-display text-sm font-bold text-foreground mb-2">{faq.q}</h3>
+                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
