@@ -2475,11 +2475,11 @@ export const staticBlogPosts: BlogPost[] = [
 const BlogSection = () => {
   const { posts: dbPosts } = useDbBlogPosts();
 
-  // Merge static posts with DB posts, newest first (pinned post stays on top)
+  // Merge: pinned post first, then DB posts (newest first), then remaining static posts
   const pinnedSlug = "lazy-unicorn-raising-angel-round";
   const pinned = staticBlogPosts.filter(p => p.slug === pinnedSlug);
-  const rest = [...staticBlogPosts.filter(p => p.slug !== pinnedSlug), ...dbPosts];
-  const allPosts = [...pinned, ...rest];
+  const staticRest = staticBlogPosts.filter(p => p.slug !== pinnedSlug);
+  const allPosts = [...pinned, ...dbPosts, ...staticRest];
 
   return (
     <section id="blog" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-24">
