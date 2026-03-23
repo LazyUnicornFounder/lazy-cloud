@@ -7,6 +7,7 @@ import {
 } from "react-simple-maps";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, FunnelChart, Funnel, LabelList } from "recharts";
 import { supabase } from "@/integrations/supabase/client";
+import { staticBlogPosts } from "@/components/BlogSection";
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
@@ -232,7 +233,9 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
   const blogStats = useMemo(() => {
     const published = blogPosts.filter(p => p.status === "published");
     const drafts = blogPosts.filter(p => p.status === "draft");
-    const totalPublished = published.length;
+    const staticSlugs = new Set(staticBlogPosts.map(p => p.slug));
+    const uniqueDbPublished = published.filter(p => !staticSlugs.has(p.slug));
+    const totalPublished = uniqueDbPublished.length + staticBlogPosts.length;
     const totalDrafts = drafts.length;
 
     const todayStr = new Date().toDateString();
