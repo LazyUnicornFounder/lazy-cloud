@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Menu, X as XIcon, Linkedin } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X as XIcon, Linkedin, ChevronDown } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -9,6 +9,7 @@ interface NavLink {
   href: string;
   highlight?: boolean;
   isCta?: boolean;
+  children?: { label: string; href: string }[];
 }
 
 interface NavbarProps {
@@ -21,10 +22,52 @@ const XLogo = () => (
   </svg>
 );
 
+function DropdownItem({ link, onClick }: { link: NavLink; onClick?: () => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  if (!link.children) return null;
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors flex items-center gap-1"
+      >
+        {link.label}
+        <ChevronDown size={12} className={`transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card/95 backdrop-blur-xl border border-border rounded-xl shadow-xl py-2 min-w-[180px] z-50">
+          {link.children.map((child) => (
+            <a
+              key={child.label}
+              href={child.href}
+              onClick={() => { setOpen(false); onClick?.(); }}
+              className="block px-4 py-2 font-body text-[11px] tracking-[0.12em] uppercase text-foreground/70 hover:text-primary hover:bg-primary/5 transition-colors"
+            >
+              {child.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 const Navbar = ({ activePage = "home" }: NavbarProps) => {
   const isMobile = useIsMobile();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -40,7 +83,14 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
     { label: "Autonomy Scale", href: "/autonomy-scale", highlight: activePage === "autonomy" },
     { label: "Directory", href: isHome ? "#directory" : "/#directory" },
     { label: "Blog", href: "/blog", highlight: activePage === "blog" },
-    { label: "Lazy Blogger", href: "/lazy-blogger" },
+    {
+      label: "Lovable Products",
+      href: "#",
+      children: [
+        { label: "Lazy Blogger", href: "/lazy-blogger" },
+        { label: "Lazy SEO", href: "/lazy-seo" },
+      ],
+    },
     { label: "Mission", href: isHome ? "#mission" : "/#mission" },
     { label: "About", href: isHome ? "#about" : "/#about" },
     { label: "Launch Your Autonomous Startup", href: "/launch", isCta: true },
@@ -100,7 +150,9 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             </a>
             <div className="flex items-center gap-6">
               {links.map((link) =>
-                link.isCta ? (
+                link.children ? (
+                  <DropdownItem key={link.label} link={link} />
+                ) : link.isCta ? (
                   <a
                     key={link.label}
                     href={link.href}
@@ -149,7 +201,31 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
           {open && (
             <div className="mt-2 w-full bg-background/80 backdrop-blur-2xl border border-foreground/10 rounded-2xl px-5 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex flex-col gap-3">
               {links.map((link) =>
-                link.isCta ? (
+                link.children ? (
+                  <div key={link.label}>
+                    <button
+                      onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                      className="font-body text-xs tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors flex items-center gap-1 w-full"
+                    >
+                      {link.label}
+                      <ChevronDown size={12} className={`transition-transform ${mobileProductsOpen ? "rotate-180" : ""}`} />
+                    </button>
+                    {mobileProductsOpen && (
+                      <div className="pl-4 mt-2 flex flex-col gap-2">
+                        {link.children.map((child) => (
+                          <a
+                            key={child.label}
+                            href={child.href}
+                            onClick={() => setOpen(false)}
+                            className="font-body text-xs tracking-[0.12em] uppercase text-foreground/50 hover:text-primary transition-colors"
+                          >
+                            {child.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : link.isCta ? (
                   <a
                     key={link.label}
                     href={link.href}
