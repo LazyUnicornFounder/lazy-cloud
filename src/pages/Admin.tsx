@@ -125,21 +125,28 @@ const Admin = () => {
 
   const handleGeneratePost = async () => {
     setGenerating(true);
-    try {
-      const { data, error } = await supabase.functions.invoke("generate-blog-post", {
-        body: customTopic.trim() ? { topic: customTopic.trim() } : {},
-      });
-      if (error) {
-        toast.error("Failed to generate post");
-      } else {
-        const title = data?.post?.title || "New post";
-        toast.success(`"${title}" added to queue`);
-        setCustomTopic("");
+    const topics = customTopic.trim()
+      ? customTopic.split("\n").map(t => t.trim()).filter(Boolean)
+      : [""];
+    let successCount = 0;
+    for (const topic of topics) {
+      try {
+        const { data, error } = await supabase.functions.invoke("generate-blog-post", {
+          body: topic ? { topic } : {},
+        });
+        if (error) {
+          toast.error(`Failed to generate: ${topic || "random topic"}`);
+        } else {
+          successCount++;
+          const title = data?.post?.title || "New post";
+          toast.success(`"${title}" added to queue`);
+        }
+      } catch {
+        toast.error(`Failed to generate: ${topic || "random topic"}`);
       }
-      await fetchBlogPosts(password);
-    } catch {
-      toast.error("Failed to generate post");
     }
+    if (successCount > 0) setCustomTopic("");
+    await fetchBlogPosts(password);
     setGenerating(false);
   };
 
