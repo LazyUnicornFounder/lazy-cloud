@@ -159,7 +159,8 @@ Deno.serve(async (req) => {
       content: paragraphs,
       read_time: readTime,
       thumbnail: "https://www.lazyunicorn.ai/og-image.png",
-      status: "draft",
+      status: "published",
+      published_at: new Date().toISOString(),
     }).select().single();
 
     if (error) throw error;
