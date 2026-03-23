@@ -266,8 +266,58 @@ const Admin = () => {
 
       {activeTab === "submissions" && (
         <div className="space-y-3">
-          {submissions.map((s) => (
+          <div className="flex items-center justify-between mb-2">
+            <p className="font-body text-xs text-muted-foreground">
+              Use arrows to reorder, then save. Order applies to the public directory.
+            </p>
+            <button
+              onClick={async () => {
+                const orders = submissions.map((s, i) => ({ id: s.id, display_order: i }));
+                const { error } = await supabase.functions.invoke("admin-submissions", {
+                  body: { action: "reorder_submissions", password, orders },
+                });
+                if (error) { toast.error("Failed to save order"); return; }
+                toast.success("Directory order saved!");
+                fetchSubmissions(password);
+              }}
+              className="font-body text-xs px-3 py-1.5 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors flex items-center gap-1"
+            >
+              <Save size={12} /> Save Order
+            </button>
+          </div>
+          {submissions.map((s, idx) => (
             <div key={s.id} className="border border-border rounded-xl bg-card p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="flex flex-col gap-0.5">
+                  <button
+                    onClick={() => {
+                      if (idx === 0) return;
+                      const newList = [...submissions];
+                      [newList[idx - 1], newList[idx]] = [newList[idx], newList[idx - 1]];
+                      setSubmissions(newList);
+                    }}
+                    disabled={idx === 0}
+                    className="p-0.5 rounded hover:bg-muted transition-colors disabled:opacity-20"
+                    title="Move up"
+                  >
+                    <ArrowUp size={12} />
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (idx === submissions.length - 1) return;
+                      const newList = [...submissions];
+                      [newList[idx], newList[idx + 1]] = [newList[idx + 1], newList[idx]];
+                      setSubmissions(newList);
+                    }}
+                    disabled={idx === submissions.length - 1}
+                    className="p-0.5 rounded hover:bg-muted transition-colors disabled:opacity-20"
+                    title="Move down"
+                  >
+                    <ArrowDown size={12} />
+                  </button>
+                </div>
+                <span className="font-display text-xs font-bold text-muted-foreground w-5 text-center">{idx + 1}</span>
+              </div>
               {editingId === s.id ? (
                 <div className="space-y-3">
                   <div className="grid grid-cols-2 gap-3">
