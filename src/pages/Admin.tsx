@@ -160,14 +160,6 @@ const Admin = () => {
           Submissions
         </button>
         <button
-          onClick={() => { setActiveTab("queue"); fetchBlogPosts(password); }}
-          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
-            activeTab === "queue" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Queue ({queue.length})
-        </button>
-        <button
           onClick={() => { setActiveTab("blog"); fetchBlogPosts(password); }}
           className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
             activeTab === "blog" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
