@@ -25,19 +25,25 @@ const XLogo = () => (
 function DropdownItem({ link, onClick }: { link: NavLink; onClick?: () => void }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpen(true);
+  };
+
+  const handleLeave = () => {
+    timeoutRef.current = setTimeout(() => setOpen(false), 150);
+  };
 
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
   }, []);
 
   if (!link.children) return null;
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button
         onClick={() => setOpen(!open)}
         className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors flex items-center gap-1"
