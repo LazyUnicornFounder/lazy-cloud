@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
-import { Zap, Clock, FileText, BarChart3, Play, Pause, PenTool, Search, ChevronDown } from "lucide-react";
+import { Zap, Clock, FileText, BarChart3, Play, Pause, PenTool, Search, ChevronDown, Mail } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import BlogTicker from "@/components/BlogTicker";
-
+import { supabase } from "@/integrations/supabase/client";
 import unicornBg from "@/assets/unicorn-beach.png";
-
-const TEMPLATE_URL = "#"; // TODO: replace with actual template URL
 
 const steps = [
   { num: 1, title: "Clone the template", desc: "One click to fork it into your Lovable project." },
