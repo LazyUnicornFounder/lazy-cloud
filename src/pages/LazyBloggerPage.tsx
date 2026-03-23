@@ -28,10 +28,10 @@ function FrequencyModal({ open, onClose, onCopy }: { open: boolean; onClose: () 
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="relative bg-card border border-border rounded-2xl p-9 sm:p-12 max-w-2xl w-full shadow-2xl"
+        className="relative bg-card border border-border rounded-3xl p-12 sm:p-16 max-w-3xl w-full shadow-2xl"
       >
-        <h3 className="font-display text-2xl font-bold text-foreground mb-3">How many posts per day?</h3>
-        <p className="font-body text-base text-muted-foreground mb-8">Pick one. The prompt adjusts automatically.</p>
+        <h3 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">How many posts per day?</h3>
+        <p className="font-body text-lg text-muted-foreground mb-10">Pick one. The prompt adjusts automatically.</p>
         <div className="grid grid-cols-2 gap-4">
           {frequencyTiers.map((tier) => {
             const isCopied = copied === tier.postsPerDay;
