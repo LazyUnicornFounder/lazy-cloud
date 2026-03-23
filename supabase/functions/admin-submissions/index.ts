@@ -5,6 +5,54 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+// --- Inline Twitter/X posting logic ---
+function percentEncode(str: string): string {
+  return encodeURIComponent(str).replace(/[!'()*]/g, (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`);
+}
+
+function generateNonce(): string {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  for (let i = 0; i < 32; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
+  return result;
+}
+
+async function createOAuthSignature(method: string, url: string, oauthParams: Record<string, string>, consumerSecret: string, tokenSecret: string): Promise<string> {
+  const sortedParams = Object.keys(oauthParams).sort().map((k) => `${percentEncode(k)}=${percentEncode(oauthParams[k])}`).join("&");
+  const signatureBase = `${method}&${percentEncode(url)}&${percentEncode(sortedParams)}`;
+  const signingKey = `${percentEncode(consumerSecret)}&${percentEncode(tokenSecret)}`;
+  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey("raw", encoder.encode(signingKey), { name: "HMAC", hash: "SHA-1" }, false, ["sign"]);
+  const signature = await crypto.subtle.sign("HMAC", key, encoder.encode(signatureBase));
+  return btoa(String.fromCharCode(...new Uint8Array(signature)));
+}
+
+async function postTweet(text: string): Promise<{ success: boolean; data?: unknown; error?: string }> {
+  const consumerKey = Deno.env.get("TWITTER_CONSUMER_KEY");
+  const consumerSecret = Deno.env.get("TWITTER_CONSUMER_SECRET");
+  const accessToken = Deno.env.get("TWITTER_ACCESS_TOKEN");
+  const accessTokenSecret = Deno.env.get("TWITTER_ACCESS_TOKEN_SECRET");
+  if (!consumerKey || !consumerSecret || !accessToken || !accessTokenSecret) {
+    return { success: false, error: "Twitter credentials not configured" };
+  }
+  const url = "https://api.x.com/2/tweets";
+  const oauthParams: Record<string, string> = {
+    oauth_consumer_key: consumerKey,
+    oauth_nonce: generateNonce(),
+    oauth_signature_method: "HMAC-SHA1",
+    oauth_timestamp: Math.floor(Date.now() / 1000).toString(),
+    oauth_token: accessToken,
+    oauth_version: "1.0",
+  };
+  const sig = await createOAuthSignature("POST", url, oauthParams, consumerSecret, accessTokenSecret);
+  const params = { ...oauthParams, oauth_signature: sig };
+  const authHeader = "OAuth " + Object.keys(params).sort().map((k) => `${percentEncode(k)}="${percentEncode(params[k])}"`).join(", ");
+  const response = await fetch(url, { method: "POST", headers: { Authorization: authHeader, "Content-Type": "application/json" }, body: JSON.stringify({ text }) });
+  const data = await response.json();
+  if (!response.ok) return { success: false, error: data?.detail || data?.title || "Failed to post tweet" };
+  return { success: true, data };
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
