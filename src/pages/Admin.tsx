@@ -333,6 +333,35 @@ const Admin = () => {
 
       {activeTab === "blog" && (
         <div className="space-y-3">
+          {/* Stats */}
+          {(() => {
+            const published = blogPosts.filter(p => p.status === "published").length;
+            const drafts = blogPosts.filter(p => p.status === "draft").length;
+            const today = new Date().toDateString();
+            const publishedToday = blogPosts.filter(p => p.status === "published" && p.published_at && new Date(p.published_at).toDateString() === today).length;
+            const createdToday = blogPosts.filter(p => new Date(p.created_at).toDateString() === today).length;
+            return (
+              <div className="grid grid-cols-4 gap-3 mb-4">
+                <div className="border border-border rounded-xl bg-card p-3 text-center">
+                  <p className="font-display text-2xl font-bold text-foreground">{published}</p>
+                  <p className="font-body text-xs text-muted-foreground">Published</p>
+                </div>
+                <div className="border border-border rounded-xl bg-card p-3 text-center">
+                  <p className="font-display text-2xl font-bold text-foreground">{drafts}</p>
+                  <p className="font-body text-xs text-muted-foreground">Queued</p>
+                </div>
+                <div className="border border-border rounded-xl bg-card p-3 text-center">
+                  <p className="font-display text-2xl font-bold text-primary">{publishedToday}</p>
+                  <p className="font-body text-xs text-muted-foreground">Published Today</p>
+                </div>
+                <div className="border border-border rounded-xl bg-card p-3 text-center">
+                  <p className="font-display text-2xl font-bold text-foreground">{createdToday}</p>
+                  <p className="font-body text-xs text-muted-foreground">Generated Today</p>
+                </div>
+              </div>
+            );
+          })()}
+
           <button
             onClick={handleGeneratePost}
             disabled={generating}
