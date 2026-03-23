@@ -55,7 +55,20 @@ const Admin = () => {
     setSubmissions(data);
   }, []);
 
-  const fetchBlogPosts = useCallback(async (pw: string) => {
+  const fetchEarlyAccess = useCallback(async (pw: string) => {
+    setLoading(true);
+    const { data, error } = await supabase.functions.invoke("admin-submissions", {
+      body: { action: "list_early_access", password: pw },
+    });
+    setLoading(false);
+    if (error || data?.error) {
+      setError(data?.error || "Failed to load");
+      return;
+    }
+    setEarlyAccess(data);
+  }, []);
+
+
     setLoading(true);
     const { data, error } = await supabase.functions.invoke("admin-submissions", {
       body: { action: "list_posts", password: pw },
