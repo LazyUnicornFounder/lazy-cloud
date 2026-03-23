@@ -399,6 +399,7 @@ export type Database = {
         Row: {
           created_at: string
           description: string | null
+          display_order: number
           features: string[] | null
           id: string
           is_paid: boolean
@@ -415,6 +416,7 @@ export type Database = {
         Insert: {
           created_at?: string
           description?: string | null
+          display_order?: number
           features?: string[] | null
           id?: string
           is_paid?: boolean
@@ -431,6 +433,7 @@ export type Database = {
         Update: {
           created_at?: string
           description?: string | null
+          display_order?: number
           features?: string[] | null
           id?: string
           is_paid?: boolean

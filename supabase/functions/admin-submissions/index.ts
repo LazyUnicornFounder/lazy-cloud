@@ -81,6 +81,7 @@ Deno.serve(async (req) => {
       const { data, error } = await supabase
         .from("submissions")
         .select("*")
+        .order("display_order", { ascending: true })
         .order("created_at", { ascending: false });
       if (error) throw error;
       return new Response(JSON.stringify(data), {
@@ -111,7 +112,7 @@ Deno.serve(async (req) => {
     }
 
     if (action === "update_submission" && id && updates) {
-      const allowed = ["name", "url", "tagline", "description", "logo_url", "slug"];
+      const allowed = ["name", "url", "tagline", "description", "logo_url", "slug", "display_order"];
       const sanitized: Record<string, unknown> = {};
       for (const key of allowed) {
         if (key in updates) sanitized[key] = updates[key];
@@ -121,6 +122,25 @@ Deno.serve(async (req) => {
         .update(sanitized)
         .eq("id", id);
       if (error) throw error;
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "reorder_submissions") {
+      const { orders } = body;
+      if (!orders || !Array.isArray(orders)) {
+        return new Response(JSON.stringify({ error: "Missing orders array" }), {
+          status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      for (const item of orders) {
+        const { error } = await supabase
+          .from("submissions")
+          .update({ display_order: item.display_order })
+          .eq("id", item.id);
+        if (error) throw error;
+      }
       return new Response(JSON.stringify({ success: true }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });

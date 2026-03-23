@@ -1,0 +1,1 @@
+ALTER TABLE public.submissions ADD COLUMN display_order integer NOT NULL DEFAULT 999;
