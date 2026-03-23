@@ -40,6 +40,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
     { label: "Autonomy Scale", href: "/autonomy-scale", highlight: activePage === "autonomy" },
     { label: "Directory", href: isHome ? "#directory" : "/#directory" },
     { label: "Blog", href: "/blog", highlight: activePage === "blog" },
+    { label: "Lazy Blogger", href: "/lazy-blogger" },
     { label: "Mission", href: isHome ? "#mission" : "/#mission" },
     { label: "About", href: isHome ? "#about" : "/#about" },
     { label: "Launch Your Autonomous Startup", href: "/launch", isCta: true },

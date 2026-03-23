@@ -15,6 +15,7 @@ import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
 import GuidePage from "./pages/GuidePage.tsx";
 import LaunchPage from "./pages/LaunchPage.tsx";
 import AutonomyScale from "./pages/AutonomyScale.tsx";
+import LazyBloggerPage from "./pages/LazyBloggerPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/autonomy-scale" element={<AutonomyScale />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/launch" element={<LaunchPage />} />
+            <Route path="/lazy-blogger" element={<LazyBloggerPage />} />
             <Route path="/company/naive" element={<NaivePage />} />
             <Route path="/company/polsia" element={<PolsiaPage />} />
             <Route path="/company/:slug" element={<CompanyDetail />} />
