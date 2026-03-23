@@ -2505,7 +2505,7 @@ const BlogSection = () => {
               This entire blog writes &amp; publishes itself.
             </span>
             <span className="font-display text-sm font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:brightness-125 transition-all whitespace-nowrap">
-              Build your own →
+              Build your own autonomous blog →
             </span>
           </a>
         </motion.div>
