@@ -396,6 +396,33 @@ const Admin = () => {
             </button>
           </div>
 
+          {/* Next 10 queued posts */}
+          {(() => {
+            const queued = blogPosts
+              .filter(p => p.status === "draft")
+              .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())
+              .slice(0, 10);
+            if (queued.length === 0) return null;
+            return (
+              <div className="mb-6">
+                <h3 className="font-display text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">Next Up — Queued for Auto-Publish</h3>
+                <div className="space-y-2">
+                  {queued.map((post, i) => (
+                    <div key={post.id} className="flex items-center gap-3 border border-border/50 rounded-lg bg-card/50 px-3 py-2">
+                      <span className="font-display text-xs font-bold text-primary w-5 shrink-0">{i + 1}</span>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-body text-sm text-foreground truncate">{post.title}</p>
+                        <p className="font-body text-xs text-muted-foreground">
+                          Created {new Date(post.created_at).toLocaleString()}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
+
           {blogPosts.map((post) => (
             <div key={post.id} className="border border-border rounded-xl bg-card p-4">
               <div className="flex items-start justify-between gap-4">
