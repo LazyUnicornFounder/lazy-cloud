@@ -226,7 +226,7 @@ const Admin = () => {
             activeTab === "blog" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
           }`}
         >
-          Blog Posts
+          Lazy Blogger
         </button>
         <button
           onClick={() => setActiveTab("analytics")}
