@@ -57,7 +57,7 @@ const faqs = [
 const costItems = [
   { label: "Lazy Blogger", value: "Free forever" },
   { label: "Lovable", value: "Your existing plan" },
-  { label: "Anthropic API", value: "~$2–$5 / month" },
+  { label: "AI content generation", value: "Included" },
 ];
 
 function CopyButton({ className = "" }: { className?: string }) {
