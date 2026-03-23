@@ -113,9 +113,12 @@ Deno.serve(async (req) => {
 
     const post = JSON.parse(jsonStr);
 
-    // Ensure unique slug by appending timestamp
-    const timestamp = Date.now();
-    const slug = `${post.slug}-${timestamp}`;
+    // Check for slug collision and only append suffix if needed
+    let slug = post.slug;
+    const { count } = await supabase.from("blog_posts").select("id", { count: "exact", head: true }).eq("slug", slug);
+    if (count && count > 0) {
+      slug = `${slug}-${count + 1}`;
+    }
 
     // Insert as draft (requires admin approval)
     const { data, error } = await supabase.from("blog_posts").insert({
