@@ -15,6 +15,7 @@ interface CompanyCardProps {
 const CUSTOM_PAGES: Record<string, string> = {
   naive: "/company/naive",
   polsia: "/company/polsia",
+  "lazy-blogger": "/lazy-blogger",
 };
 
 const CompanyCard = ({ name, url, description, index, thumbnail, isPaid, slug }: CompanyCardProps) => {
