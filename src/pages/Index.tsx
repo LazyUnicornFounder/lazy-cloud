@@ -48,7 +48,7 @@ const Index = () => {
     queryFn: async () => {
       const { data } = await supabase.
       from("submissions").
-      select("name, url, tagline, is_paid, slug, display_order").
+      select("name, url, tagline, is_paid, slug, display_order, logo_url").
       eq("status", "approved").
       order("display_order", { ascending: true }).
       order("created_at", { ascending: true });
@@ -56,7 +56,7 @@ const Index = () => {
         name: c.name,
         url: c.url,
         description: c.tagline,
-        thumbnail: logoMap[c.name],
+        thumbnail: c.logo_url || logoMap[c.name],
         isPaid: c.is_paid,
         slug: c.slug
       }));
