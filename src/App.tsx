@@ -32,6 +32,7 @@ import LazySmsPage from "./pages/LazySmsPage.tsx";
 import LazyStreamPage from "./pages/LazyStreamPage.tsx";
 import LazyStreamSetup from "./pages/LazyStreamSetup.tsx";
 import LazyStreamDashboard from "./pages/LazyStreamDashboard.tsx";
+import LazyCodePage from "./pages/LazyCodePage.tsx";
 import PricingPage from "./pages/PricingPage.tsx";
 
 import AdminLayout from "./pages/admin/AdminLayout.tsx";
@@ -92,6 +93,7 @@ const App = () => (
             <Route path="/lazy-stream" element={<LazyStreamPage />} />
             <Route path="/lazy-stream-setup" element={<LazyStreamSetup />} />
             <Route path="/lazy-stream-dashboard" element={<LazyStreamDashboard />} />
+            <Route path="/lazy-code" element={<LazyCodePage />} />
             <Route path="/pricing" element={<PricingPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

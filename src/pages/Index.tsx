@@ -18,6 +18,7 @@ const products = [
   { cursive: "Lazy", name: "Pay", link: "/lazy-pay", tagline: "Payments that optimise." },
   { cursive: "Lazy", name: "SMS", link: "/lazy-sms", tagline: "Texts that convert." },
   { cursive: "Lazy", name: "Stream", link: "/lazy-stream", tagline: "Streams become content." },
+  { cursive: "Lazy", name: "Code", link: "/lazy-code", tagline: "Commits become changelogs." },
   { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More engines loading." },
 ];
 
@@ -100,6 +101,14 @@ const sketches: Record<string, JSX.Element> = {
       <line x1="50" y1="75" x2="50" y2="85" />
       <line x1="70" y1="75" x2="70" y2="85" />
       <circle cx="85" cy="35" r="4" fill="#f0ead6" stroke="none" />
+    </svg>
+  ),
+  Code: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M45 40 L25 60 L45 80" />
+      <path d="M75 40 L95 60 L75 80" />
+      <line x1="65" y1="30" x2="55" y2="90" />
+      <circle cx="60" cy="60" r="30" strokeDasharray="4 4" />
     </svg>
   ),
   "Coming Soon": (
