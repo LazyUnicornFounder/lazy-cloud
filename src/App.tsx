@@ -105,6 +105,8 @@ const App = () => (
               <Route path="/lazy-contentful" element={<LazyContentfulPage />} />
               <Route path="/lazy-perplexity" element={<LazyPerplexityPage />} />
               <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/autonomy" element={<AutonomyPage />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
