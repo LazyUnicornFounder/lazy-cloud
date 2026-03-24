@@ -67,7 +67,7 @@ const products: Product[] = [
   {
     name: "Lazy GitHub",
     tagline: "Autonomous GitHub content engine",
-    link: "/lazy-code",
+    link: "/lazy-github",
     free: ["Setup prompt included", "Commit-to-changelog generation", "Release notes automation", "Developer blog publishing", "GitHub webhook integration"],
     pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced changelog formatting", "API documentation generation", "Custom templates"], comingSoon: true },
   },

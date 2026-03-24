@@ -19,7 +19,7 @@ const products = [
   { cursive: "Lazy", name: "Perplexity", link: "/lazy-perplexity", tagline: "Research-backed content." },
   { cursive: "Lazy", name: "Store", link: "/lazy-store", tagline: "A store that runs itself." },
   { cursive: "Lazy", name: "Pay", link: "/lazy-pay", tagline: "Payments that optimise." },
-  { cursive: "Lazy", name: "GitHub", link: "/lazy-code", tagline: "Commits become changelogs." },
+  { cursive: "Lazy", name: "GitHub", link: "/lazy-github", tagline: "Commits become changelogs." },
   { cursive: "Lazy", name: "GitLab", link: "/lazy-gitlab", tagline: "Commits become changelogs." },
   { cursive: "Lazy", name: "SMS", link: "/lazy-sms", tagline: "Texts that convert." },
   { cursive: "Lazy", name: "Telegram", link: "/lazy-telegram", tagline: "Your business in Telegram." },

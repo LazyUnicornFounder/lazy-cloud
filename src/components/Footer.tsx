@@ -30,7 +30,7 @@ const engineCategories = [
   {
     label: "Code",
     items: [
-      { name: "GitHub", href: "/lazy-code" },
+      { name: "GitHub", href: "/lazy-github" },
       { name: "GitLab", href: "/lazy-gitlab" },
     ],
   },

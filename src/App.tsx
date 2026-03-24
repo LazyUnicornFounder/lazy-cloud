@@ -94,7 +94,7 @@ const App = () => (
               <Route path="/lazy-stream" element={<LazyStreamPage />} />
               <Route path="/lazy-stream-setup" element={<LazyStreamSetup />} />
               <Route path="/lazy-stream-dashboard" element={<LazyStreamDashboard />} />
-              <Route path="/lazy-code" element={<LazyCodePage />} />
+              <Route path="/lazy-github" element={<LazyCodePage />} />
               <Route path="/lazy-run" element={<LazyRunPage />} />
               <Route path="/lazy-alert" element={<LazyAlertPage />} />
               <Route path="/lazy-gitlab" element={<LazyGitLabPage />} />

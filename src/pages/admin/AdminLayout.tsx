@@ -21,7 +21,7 @@ const navItems = [
   { label: "Lazy Pay", path: "/admin/pay", icon: CreditCard, engine: "pay" },
   { label: "Lazy SMS", path: "/admin/sms", icon: MessageSquare, engine: "sms" },
   { label: "Lazy Stream", path: "/admin/stream", icon: Tv, engine: "stream" },
-  { label: "Lazy Code", path: "/admin/code", icon: Code, engine: "code" },
+  { label: "Lazy GitHub", path: "/admin/code", icon: Code, engine: "code" },
   { label: "Settings", path: "/admin/settings", icon: Settings, engine: null },
 ];
 

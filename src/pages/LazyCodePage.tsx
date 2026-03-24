@@ -6,9 +6,9 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
 
-const SETUP_PROMPT = `[Lazy Code Prompt — v0.0.3 — LazyUnicorn.ai]
+const SETUP_PROMPT = `[Lazy GitHub Prompt — v0.0.3 — LazyUnicorn.ai]
 
-Add a complete autonomous GitHub content engine called Lazy Code to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
+Add a complete autonomous GitHub content engine called Lazy GitHub to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
 
 ---
 
@@ -101,7 +101,7 @@ created_at (timestamptz, default now())
 
 ## 2. Setup page
 
-Create a page at /lazy-code-setup with a form:
+Create a page at /lazy-github-setup with a form:
 - GitHub Personal Access Token (password) — create at github.com/settings/tokens with repo and read:org scope. Stored as Supabase secret GITHUB_TOKEN.
 - GitHub Webhook Secret (password) — any random string you choose. Stored as Supabase secret GITHUB_WEBHOOK_SECRET.
 - GitHub Username
@@ -111,14 +111,14 @@ Create a page at /lazy-code-setup with a form:
 - Business name
 - Site URL
 
-Submit button: Activate Lazy Code
+Submit button: Activate Lazy GitHub
 
 On submit:
 1. Store GITHUB_TOKEN and GITHUB_WEBHOOK_SECRET as Supabase secrets
 2. Save all other values to code_settings
 3. Set setup_complete to true
 4. Show webhook setup instructions: "Go to your GitHub repository Settings → Webhooks → Add webhook. Set Payload URL to [site_url]/api/github-webhook. Set Content type to application/json. Set Secret to your webhook secret. Select events: Pushes and Releases. Click Add webhook."
-5. Redirect to /lazy-code-dashboard with message: "Lazy Code is active. Your next commit or release will be processed and published automatically."
+5. Redirect to /lazy-github-dashboard with message: "Lazy GitHub is active. Your next commit or release will be processed and published automatically."
 
 ---
 
@@ -200,13 +200,13 @@ Render full post with title, published date, target keyword tag, full body as fo
 **/roadmap**
 Show all code_roadmap rows grouped by status — In Progress first, Planned second, Completed last. Each shows title, milestone if present, labels as tags, opened date. Completed items show closed date.
 
-At the bottom of every public page add: "🦄 Powered by Lazy Code — autonomous GitHub content publishing for Lovable sites. Built by LazyUnicorn.ai" — link to https://lazyunicorn.ai.
+At the bottom of every public page add: "🦄 Powered by Lazy GitHub — autonomous GitHub content publishing for Lovable sites. Built by LazyUnicorn.ai" — link to https://lazyunicorn.ai.
 
 ---
 
 ## 7. Admin dashboard
 
-Create a page at /lazy-code-dashboard.
+Create a page at /lazy-github-dashboard.
 
 Show at top: red error banner if code_errors has rows from the last 24 hours.
 
@@ -216,7 +216,7 @@ Six sections:
 - Content log: all code_content with title, type, published date, views, view link
 - Roadmap table: all code_roadmap with status, title, milestone, labels
 - Optimisation log: all code_optimisation_log rows
-- Controls: pause/resume toggle, Sync Roadmap Now button, Optimise Content Now button, error log (last 10 code_errors), link to /lazy-code-setup
+- Controls: pause/resume toggle, Sync Roadmap Now button, Optimise Content Now button, error log (last 10 code_errors), link to /lazy-github-setup
 
 ---
 
@@ -225,7 +225,7 @@ Six sections:
 Add a Changelog link to the main navigation pointing to /changelog.
 Add a Roadmap link pointing to /roadmap.
 Add a Dev Blog link pointing to /devblog.
-Do not add /lazy-code-setup or /lazy-code-dashboard to public navigation.`;
+Do not add /lazy-github-setup or /lazy-github-dashboard to public navigation.`;
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
@@ -244,15 +244,15 @@ const steps = [
   "Copy the setup prompt from this page.",
   "Paste it into your existing Lovable project chat.",
   "Add your GitHub credentials and repository in the setup screen.",
-  "Push code as normal. Lazy Code publishes the changelog, release notes, and blog posts automatically.",
+  "Push code as normal. Lazy GitHub publishes the changelog, release notes, and blog posts automatically.",
 ];
 
 const faqs = [
-  { q: "Does it work with private repositories?", a: "Yes. You authenticate with a GitHub personal access token that has access to your private repositories. Lazy Code reads commits and issues but never exposes your code publicly." },
-  { q: "What counts as a significant feature for a blog post?", a: "Lazy Code uses AI to classify commits by significance. Commits touching more than 3 files or tagged with certain labels trigger a blog post. You can configure the threshold in settings." },
+  { q: "Does it work with private repositories?", a: "Yes. You authenticate with a GitHub personal access token that has access to your private repositories. Lazy GitHub reads commits and issues but never exposes your code publicly." },
+  { q: "What counts as a significant feature for a blog post?", a: "Lazy GitHub uses AI to classify commits by significance. Commits touching more than 3 files or tagged with certain labels trigger a blog post. You can configure the threshold in settings." },
   { q: "Can I edit the content before it publishes?", a: "Not in the current version. Content publishes automatically. A drafts mode is coming in the Pro version." },
   { q: "Does it work with monorepos?", a: "Yes. You can configure which directories or packages to monitor so only relevant commits trigger content." },
-  { q: "What if I push many small commits?", a: "Lazy Code batches commits within a 1-hour window and produces one changelog entry per batch rather than one per commit." },
+  { q: "What if I push many small commits?", a: "Lazy GitHub batches commits within a 1-hour window and produces one changelog entry per batch rather than one per commit." },
 ];
 
 function CopyPromptButton({ className = "" }: { className?: string }) {
@@ -262,7 +262,7 @@ function CopyPromptButton({ className = "" }: { className?: string }) {
   const handleCopy = useCallback(async () => {
     await navigator.clipboard.writeText(SETUP_PROMPT);
     setCopied(true);
-    trackEvent("copy_prompt", { product: "lazy-code" });
+    trackEvent("copy_prompt", { product: "lazy-github" });
     toast.success("Copied! Paste this into your Lovable project chat.");
     setTimeout(() => setCopied(false), 2000);
   }, [trackEvent]);
@@ -281,10 +281,10 @@ const LazyCodePage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Code — Autonomous GitHub Content Engine for Lovable"
+        title="Lazy GitHub — Autonomous GitHub Content Engine for Lovable"
         description="One prompt turns every GitHub commit into a changelog, release notes, and a developer blog post — automatically."
-        url="/lazy-code"
-        keywords="GitHub changelog automation, release notes generator, developer blog, commit to content, autonomous documentation, Lovable, Lazy Code"
+        url="/lazy-github"
+        keywords="GitHub changelog automation, release notes generator, developer blog, commit to content, autonomous documentation, Lovable, Lazy GitHub"
       />
       <Navbar />
 
@@ -298,7 +298,7 @@ const LazyCodePage = () => {
             </div>
             <div className="flex items-center gap-4 flex-wrap">
               <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-                Lazy Code
+                Lazy GitHub
               </h1>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border text-foreground/25 text-xs font-body tracking-wide">
                 <GitBranch size={14} />
@@ -306,7 +306,7 @@ const LazyCodePage = () => {
               </div>
             </div>
             <p className="mt-6 font-body text-base md:text-lg text-foreground/45 max-w-xl leading-relaxed">
-              Lazy Code monitors your GitHub repository, reads your commits and releases, and publishes plain-English changelogs, release notes, SEO developer posts, and a public roadmap to your Lovable site — every time you push.
+              Lazy GitHub monitors your GitHub repository, reads your commits and releases, and publishes plain-English changelogs, release notes, SEO developer posts, and a public roadmap to your Lovable site — every time you push.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
               <CopyPromptButton />
@@ -325,7 +325,7 @@ const LazyCodePage = () => {
       <section id="how-it-works" className="py-20 md:py-28 px-6 border-t border-border">
         <div className="max-w-5xl mx-auto">
           <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-2xl md:text-3xl font-bold tracking-tight text-center mb-14">
-            Push to GitHub. Lazy Code handles the rest.
+            Push to GitHub. Lazy GitHub handles the rest.
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {steps.map((step, i) => (
@@ -379,7 +379,7 @@ const LazyCodePage = () => {
             </div>
             <div className="bg-[#111110] p-8">
               <p className="font-body text-sm text-foreground/50 leading-relaxed">
-                Lazy Code makes the documentation automatic. Push to GitHub and the content engine starts. By the time you have opened your next task the changelog is updated, the release notes are written, and a developer blog post targeting your technical keywords is published and indexed. The work you were already doing becomes a compounding public record of your progress.
+                Lazy GitHub makes the documentation automatic. Push to GitHub and the content engine starts. By the time you have opened your next task the changelog is updated, the release notes are written, and a developer blog post targeting your technical keywords is published and indexed. The work you were already doing becomes a compounding public record of your progress.
               </p>
             </div>
           </div>
@@ -394,7 +394,7 @@ const LazyCodePage = () => {
             A public roadmap that maintains itself.
           </h2>
           <p className="font-body text-sm text-foreground/50 leading-relaxed">
-            Lazy Code reads your GitHub issues and milestones and publishes a public roadmap to your Lovable site automatically. When you open a new issue it appears in the roadmap. When you close one it moves to done. When you create a milestone it becomes a roadmap section. No Notion page to maintain. No Trello board to update. Your GitHub is the source of truth and the roadmap reflects it in real time.
+            Lazy GitHub reads your GitHub issues and milestones and publishes a public roadmap to your Lovable site automatically. When you open a new issue it appears in the roadmap. When you close one it moves to done. When you create a milestone it becomes a roadmap section. No Notion page to maintain. No Trello board to update. Your GitHub is the source of truth and the roadmap reflects it in real time.
           </p>
         </div>
       </section>
@@ -409,7 +409,7 @@ const LazyCodePage = () => {
               <h3 className="font-display text-2xl font-bold text-foreground">Free</h3>
               <ul className="mt-6 space-y-3 flex-1">
                 {[
-                  "Lazy Code setup prompt",
+                  "Lazy GitHub setup prompt",
                   "Self-hosted in your existing Lovable project",
                   "Works with any public or private GitHub repository",
                   "Bring your own GitHub account",
@@ -480,7 +480,7 @@ const LazyCodePage = () => {
       <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#111110" }}>
         <div className="max-w-3xl mx-auto text-center">
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
-            Your commits are content. Lazy Code publishes them.
+            Your commits are content. Lazy GitHub publishes them.
           </h2>
           <p className="mt-6 font-body text-sm text-foreground/50 leading-relaxed max-w-xl mx-auto">
             Every feature you ship, every bug you fix, every release you tag is a changelog entry, a blog post, and an SEO article waiting to be written. One prompt installs the entire pipeline into your existing Lovable project.
