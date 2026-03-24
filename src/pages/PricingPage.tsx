@@ -71,6 +71,13 @@ const products: Product[] = [
     free: ["Setup prompt included", "VOD transcription", "Stream recap generation", "Clip extraction", "SEO article writing"],
     pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced stream analytics", "Self-improving content"], comingSoon: true },
   },
+  {
+    name: "Lazy Run",
+    tagline: "Autonomous operations layer",
+    link: "/lazy-run",
+    free: ["Setup prompt included", "All 9 engines in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
+    pro: { price: "$99", features: ["Hosted version — zero config", "Auto-scaling engine execution", "Priority AI model access", "Dedicated support", "Custom engine configuration"], comingSoon: true },
+  },
 ];
 
 const PricingPage = () => {
