@@ -47,7 +47,6 @@ const engineCategories = [
 ];
 
 const resources = [
-  { name: "Lazy Run", href: "/lazy-run" },
   { name: "Pricing", href: "/pricing" },
   { name: "Blog", href: "/blog" },
   { name: "About", href: "/about" },
