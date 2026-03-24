@@ -306,7 +306,7 @@ const LazyCodePage = () => {
               </div>
             </div>
             <p className="mt-6 font-body text-base md:text-lg text-foreground/45 max-w-xl leading-relaxed">
-              Lazy Code monitors your GitHub repository, reads your commits and releases, and publishes plain-English changelogs, release notes, SEO developer posts, and a public roadmap to your Lovable site — every time you push.
+              Lazy GitHub monitors your GitHub repository, reads your commits and releases, and publishes plain-English changelogs, release notes, SEO developer posts, and a public roadmap to your Lovable site — every time you push.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
               <CopyPromptButton />
