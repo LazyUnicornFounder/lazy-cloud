@@ -274,7 +274,7 @@ const Index = () => {
             <p className="hero-description text-base leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>
               Lovable gave everyone a site. Lazy Unicorn makes it autonomous. Your blog writes itself. Your SEO compounds. AI engines cite you. Your store runs its own promotions. Every post gets narrated. Every stream becomes an article. Every commit becomes a changelog.
             </p>
-            <p className="text-[10px] tracking-[0.12em] uppercase leading-relaxed" style={{ color: "#f0ead6", opacity: 0.2 }}>
+            <p className="text-xs tracking-[0.12em] uppercase leading-relaxed" style={{ color: "#f0ead6", opacity: 0.2 }}>
               Stripe · Twilio · ElevenLabs · Twitch · GitHub · GitLab · Linear · Slack · Telegram · Supabase · Contentful · Firecrawl · Perplexity
             </p>
           </div>
