@@ -110,7 +110,7 @@ const sketches: Record<string, JSX.Element> = {
       <circle cx="85" cy="35" r="4" fill="#f0ead6" stroke="none" />
     </svg>
   ),
-  Code: (
+  GitHub: (
     <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M45 40 L25 60 L45 80" />
       <path d="M75 40 L95 60 L75 80" />
