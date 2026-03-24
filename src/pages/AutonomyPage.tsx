@@ -272,33 +272,39 @@ export default function AutonomyPage() {
         .autonomy-slider {
           -webkit-appearance: none;
           appearance: none;
-          height: 3px;
+          height: 24px;
           background: transparent;
           outline: none;
-          margin-top: -3px;
+          margin-top: -13px;
           position: relative;
           z-index: 5;
+          cursor: pointer;
         }
         .autonomy-slider::-webkit-slider-thumb {
           -webkit-appearance: none;
           appearance: none;
-          width: 14px;
-          height: 14px;
+          width: 24px;
+          height: 24px;
           border-radius: 0;
           background: var(--thumb-color, hsl(45 80% 55%));
           cursor: grab;
-          border: 1px solid rgba(240,234,214,0.3);
+          border: 2px solid rgba(240,234,214,0.4);
         }
         .autonomy-slider::-moz-range-thumb {
-          width: 14px;
-          height: 14px;
+          width: 24px;
+          height: 24px;
           border-radius: 0;
           background: var(--thumb-color, hsl(45 80% 55%));
           cursor: grab;
-          border: 1px solid rgba(240,234,214,0.3);
+          border: 2px solid rgba(240,234,214,0.4);
         }
         .autonomy-slider:active::-webkit-slider-thumb {
           cursor: grabbing;
+          transform: scale(1.15);
+        }
+        .autonomy-slider:active::-moz-range-thumb {
+          cursor: grabbing;
+          transform: scale(1.15);
         }
       `}</style>
     </>
