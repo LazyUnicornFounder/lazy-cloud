@@ -244,7 +244,7 @@ const steps = [
   "Copy the setup prompt from this page.",
   "Paste it into your existing Lovable project chat.",
   "Add your GitHub credentials and repository in the setup screen.",
-  "Push code as normal. Lazy Code publishes the changelog, release notes, and blog posts automatically.",
+  "Push code as normal. Lazy GitHub publishes the changelog, release notes, and blog posts automatically.",
 ];
 
 const faqs = [
