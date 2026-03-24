@@ -7,6 +7,7 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import BlogTicker from "@/components/BlogTicker";
 import unicornBg from "@/assets/unicorn-beach.png";
+import ProductPromoBanner from "@/components/ProductPromoBanner";
 
 const CompanyDetail = () => {
   const { slug } = useParams<{ slug: string }>();
