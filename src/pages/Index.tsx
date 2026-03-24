@@ -492,13 +492,10 @@ const Index = () => {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="space-y-4">
              <p className="font-body text-lg md:text-xl text-foreground/70 leading-relaxed">
-              LazyUnicorn builds autonomous growth tools for Lovable. Drop a prompt into your existing Lovable project and your site starts publishing, ranking, and compounding — without you touching anything after setup.
+              Lazy Unicorn builds autonomous growth tools for Lovable. Drop a prompt into your existing Lovable project and your site starts publishing, ranking, and compounding — without you touching anything after setup.
             </p>
             <p className="font-body text-base text-foreground/50 leading-relaxed">
-              Lazy Blogger publishes SEO-optimised blog posts continuously. Lazy SEO discovers the keywords your site should rank for and writes the articles to capture them. Lazy GEO publishes content structured to be cited by ChatGPT, Claude, and Perplexity when people ask questions in your niche. All three run as edge functions inside your existing Lovable project, on your existing Supabase database, at your existing domain.
-            </p>
-            <p className="font-body text-base text-foreground/50 leading-relaxed">
-              One prompt installs everything. Your site grows while you build.
+              Lazy Blogger publishes SEO and GEO-optimised blog posts continuously. Lazy SEO discovers the keywords your site should rank for and writes the articles to capture them. Lazy GEO publishes content structured to be cited by ChatGPT, Claude, and Perplexity when people ask questions in your niche. All three run as edge functions inside your existing Lovable project, on your existing Supabase database, at your existing domain.
             </p>
             <div className="flex items-center gap-3 mt-2">
               <a
