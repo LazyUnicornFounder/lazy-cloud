@@ -449,40 +449,6 @@ const Index = () => {
         </motion.div>
       </section>
 
-      {/* Mission */}
-      <section id="mission" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-24">
-        <div className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
-            Mission
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="space-y-4">
-            <p className="font-body text-lg md:text-xl text-foreground/70 leading-relaxed">
-              Accelerate the future of autonomous capitalism.
-            </p>
-            <p className="font-body text-base text-foreground/50 leading-relaxed">
-              Lazy Unicorn wants to be the first one-person unicorn built on Lovable.
-            </p>
-            <a
-              href="https://lovable.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97] mt-4"
-            >
-              Start building with Lovable
-            </a>
-          </motion.div>
-        </div>
-      </section>
-
       {/* About */}
       <section id="about" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-24">
         <div className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
@@ -499,13 +465,24 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="space-y-4">
-             <p className="font-body text-lg md:text-xl text-foreground/70 leading-relaxed">
-              Lazy Unicorn builds autonomous growth tools for Lovable. Drop a prompt into your existing Lovable project and your site starts publishing, ranking, and compounding — without you touching anything after setup.
+            <p className="font-body text-lg md:text-xl text-foreground/70 leading-relaxed">
+              Accelerate the future of autonomous capitalism.
+            </p>
+            <p className="font-body text-base text-foreground/50 leading-relaxed">
+              Lazy Unicorn wants to be the first one-person unicorn built on Lovable. We build autonomous growth tools that drop into your existing Lovable project — your site starts publishing, ranking, and compounding without you touching anything after setup.
             </p>
             <p className="font-body text-base text-foreground/50 leading-relaxed">
               Lazy Blogger publishes SEO and GEO-optimised blog posts continuously. Lazy SEO discovers the keywords your site should rank for and writes the articles to capture them. Lazy GEO publishes content structured to be cited by ChatGPT, Claude, and Perplexity when people ask questions in your niche. All three run as edge functions inside your existing Lovable project, on your existing Supabase database, at your existing domain.
             </p>
-            <div className="flex items-center gap-3 mt-2">
+            <div className="flex flex-wrap items-center gap-3 mt-2">
+              <a
+                href="https://lovable.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
+              >
+                Start building with Lovable
+              </a>
               <a
                 href="https://x.com/SaadSahawneh"
                 target="_blank"
