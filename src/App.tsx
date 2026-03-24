@@ -35,6 +35,12 @@ import LazyStreamDashboard from "./pages/LazyStreamDashboard.tsx";
 import LazyCodePage from "./pages/LazyCodePage.tsx";
 import LazyRunPage from "./pages/LazyRunPage.tsx";
 import LazyAlertPage from "./pages/LazyAlertPage.tsx";
+import LazyGitLabPage from "./pages/LazyGitLabPage.tsx";
+import LazySupabasePage from "./pages/LazySupabasePage.tsx";
+import LazyTelegramPage from "./pages/LazyTelegramPage.tsx";
+import LazyLinearPage from "./pages/LazyLinearPage.tsx";
+import LazyContentfulPage from "./pages/LazyContentfulPage.tsx";
+import LazyPerplexityPage from "./pages/LazyPerplexityPage.tsx";
 import PricingPage from "./pages/PricingPage.tsx";
 import PublicLayout from "./components/PublicLayout.tsx";
 
@@ -103,6 +109,12 @@ const App = () => (
               <Route path="/lazy-code" element={<LazyCodePage />} />
               <Route path="/lazy-run" element={<LazyRunPage />} />
               <Route path="/lazy-alert" element={<LazyAlertPage />} />
+              <Route path="/lazy-gitlab" element={<LazyGitLabPage />} />
+              <Route path="/lazy-supabase" element={<LazySupabasePage />} />
+              <Route path="/lazy-telegram" element={<LazyTelegramPage />} />
+              <Route path="/lazy-linear" element={<LazyLinearPage />} />
+              <Route path="/lazy-contentful" element={<LazyContentfulPage />} />
+              <Route path="/lazy-perplexity" element={<LazyPerplexityPage />} />
               <Route path="/pricing" element={<PricingPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

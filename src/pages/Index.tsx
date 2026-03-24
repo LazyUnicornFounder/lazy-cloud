@@ -20,6 +20,12 @@ const products = [
   { cursive: "Lazy", name: "Stream", link: "/lazy-stream", tagline: "Streams become content." },
   { cursive: "Lazy", name: "Code", link: "/lazy-code", tagline: "Commits become changelogs." },
   { cursive: "Lazy", name: "Alert", link: "/lazy-alert", tagline: "Your business in your Slack." },
+  { cursive: "Lazy", name: "GitLab", link: "/lazy-gitlab", tagline: "Commits become changelogs." },
+  { cursive: "Lazy", name: "Supabase", link: "/lazy-supabase", tagline: "Your database tells its story." },
+  { cursive: "Lazy", name: "Telegram", link: "/lazy-telegram", tagline: "Your business in Telegram." },
+  { cursive: "Lazy", name: "Linear", link: "/lazy-linear", tagline: "Issues become changelogs." },
+  { cursive: "Lazy", name: "Contentful", link: "/lazy-contentful", tagline: "Two-way CMS sync." },
+  { cursive: "Lazy", name: "Perplexity", link: "/lazy-perplexity", tagline: "Research-backed content." },
   { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More engines loading." },
 ];
 
@@ -119,6 +125,56 @@ const sketches: Record<string, JSX.Element> = {
       <circle cx="85" cy="35" r="10" fill="#f0ead6" stroke="none" />
       <path d="M85 30 L85 37" stroke="#0a0a08" strokeWidth="2" />
       <circle cx="85" cy="40" r="1.5" fill="#0a0a08" stroke="none" />
+    </svg>
+  ),
+  GitLab: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M60 95 L30 55 L38 25 L48 55 L72 55 L82 25 L90 55 Z" />
+      <circle cx="60" cy="58" r="8" strokeDasharray="3 3" />
+    </svg>
+  ),
+  Supabase: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M60 90 Q30 80 30 55 Q30 30 60 25 Q90 30 90 55 Q90 80 60 90Z" />
+      <line x1="40" y1="50" x2="80" y2="50" />
+      <line x1="40" y1="60" x2="80" y2="60" />
+      <path d="M55 70 L60 78 L70 65" />
+    </svg>
+  ),
+  Telegram: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M25 55 L95 30 L75 90 L55 65 Z" />
+      <line x1="95" y1="30" x2="55" y2="65" />
+      <line x1="55" y1="65" x2="55" y2="85" />
+      <path d="M55 85 L65 72" />
+    </svg>
+  ),
+  Linear: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="60" cy="55" r="28" />
+      <path d="M45 55 L55 65 L75 45" />
+      <line x1="35" y1="88" x2="85" y2="88" strokeDasharray="4 4" />
+    </svg>
+  ),
+  Contentful: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="30" y="28" width="60" height="64" rx="5" />
+      <line x1="60" y1="28" x2="60" y2="92" />
+      <path d="M40 50 L55 50" />
+      <path d="M65 50 L80 50" />
+      <path d="M40 65 L55 65" />
+      <path d="M65 65 L80 65" />
+      <path d="M25 55 L35 60 L25 65" />
+      <path d="M95 55 L85 60 L95 65" />
+    </svg>
+  ),
+  Perplexity: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="55" cy="50" r="22" />
+      <line x1="71" y1="66" x2="90" y2="85" />
+      <path d="M48 45 Q55 35 62 45" />
+      <circle cx="55" cy="55" r="3" fill="#f0ead6" stroke="none" />
+      <path d="M40 75 L50 85 L65 80 L80 90" strokeDasharray="3 3" />
     </svg>
   ),
   "Coming Soon": (
@@ -229,7 +285,7 @@ const Index = () => {
                 Every engine. One prompt.
               </p>
               <p className="max-w-lg text-center" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", color: "#f0ead6", opacity: 0.25, lineHeight: 1.6, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                Blogger · SEO · GEO · Store · Voice · Pay · SMS · Stream · Code
+                Blogger · SEO · GEO · Store · Voice · Pay · SMS · Stream · Code · Alert · GitLab · Supabase · Telegram · Linear · Contentful · Perplexity
               </p>
               <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
                 Made for Lovable

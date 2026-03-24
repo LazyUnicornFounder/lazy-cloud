@@ -92,6 +92,48 @@ const products: Product[] = [
     free: ["Setup prompt included", "Real-time event alerts to Slack", "Daily morning briefing", "Slash commands for engine control", "Bring your own Slack workspace"],
     pro: { price: "$9", features: ["Hosted version", "Custom Slack bot with branded avatar", "Advanced filtering", "Multiple channel routing by event type"], comingSoon: true },
   },
+  {
+    name: "Lazy GitLab",
+    tagline: "Autonomous GitLab content engine",
+    link: "/lazy-gitlab",
+    free: ["Setup prompt included", "Changelog generation", "Release notes automation", "Developer blog publishing", "GitLab webhook integration"],
+    pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced changelog formatting", "Custom templates"], comingSoon: true },
+  },
+  {
+    name: "Lazy Supabase",
+    tagline: "Autonomous database monitoring engine",
+    link: "/lazy-supabase",
+    free: ["Setup prompt included", "User milestone detection", "Edge function error monitoring", "Row milestone tracking", "Weekly growth reports"],
+    pro: { price: "$19", features: ["Hosted version", "Multi-project monitoring", "Advanced growth analytics", "Custom milestone thresholds"], comingSoon: true },
+  },
+  {
+    name: "Lazy Telegram",
+    tagline: "Autonomous Telegram alerts",
+    link: "/lazy-telegram",
+    free: ["Setup prompt included", "Real-time event alerts", "Daily morning briefing", "Bot commands for engine control", "Telegram bots are free"],
+    pro: { price: "$9", features: ["Hosted version", "Group chat support", "Multiple recipient routing", "Custom bot branding"], comingSoon: true },
+  },
+  {
+    name: "Lazy Linear",
+    tagline: "Autonomous Linear content engine",
+    link: "/lazy-linear",
+    free: ["Setup prompt included", "Changelog generation from cycles", "Public roadmap publishing", "Product blog posts", "Works with any Linear plan"],
+    pro: { price: "$19", features: ["Hosted version", "Multi-team support", "Advanced content formatting", "Custom publishing rules"], comingSoon: true },
+  },
+  {
+    name: "Lazy Contentful",
+    tagline: "Autonomous Contentful bridge",
+    link: "/lazy-contentful",
+    free: ["Setup prompt included", "Two-way content sync", "Webhook real-time updates", "Content type mapping", "Works with free Contentful tier"],
+    pro: { price: "$29", features: ["Hosted version", "Multi-space support", "Advanced content type mapping", "Scheduled sync windows"], comingSoon: true },
+  },
+  {
+    name: "Lazy Perplexity",
+    tagline: "Autonomous research & citation engine",
+    link: "/lazy-perplexity",
+    free: ["Setup prompt included", "Real-time niche research", "Citation-rich content generation", "Brand visibility testing", "Bring your own Perplexity API key"],
+    pro: { price: "$29", features: ["Hosted version", "Daily citation monitoring", "Competitive citation tracking", "Advanced research scheduling"], comingSoon: true },
+  },
 ];
 
 const PricingPage = () => {
