@@ -21,6 +21,19 @@ function toTitleCase(str: string): string {
   });
 }
 
+// Map product slugs to human-readable names and relevant page links
+const PRODUCT_INFO: Record<string, { name: string; url: string; description: string }> = {
+  "lazy-blogger": { name: "Lazy Blogger", url: "https://lazyunicorn.ai/lazy-blogger", description: "autonomous blog publishing engine" },
+  "lazy-seo": { name: "Lazy SEO", url: "https://lazyunicorn.ai/lazy-seo", description: "autonomous SEO content engine" },
+  "lazy-geo": { name: "Lazy GEO", url: "https://lazyunicorn.ai/lazy-geo", description: "generative engine optimisation tool" },
+  "lazy-stream": { name: "Lazy Stream", url: "https://lazyunicorn.ai/lazy-stream", description: "autonomous Twitch content repurposing engine" },
+  "lazy-voice": { name: "Lazy Voice", url: "https://lazyunicorn.ai/lazy-voice", description: "autonomous blog-to-podcast engine" },
+  "lazy-store": { name: "Lazy Store", url: "https://lazyunicorn.ai/lazy-store", description: "autonomous Shopify ecommerce engine" },
+  "lazy-code": { name: "Lazy Code", url: "https://lazyunicorn.ai/lazy-code", description: "autonomous GitHub content publishing engine" },
+  "lazy-sms": { name: "Lazy SMS", url: "https://lazyunicorn.ai/lazy-sms", description: "autonomous SMS marketing engine" },
+  "lazy-pay": { name: "Lazy Pay", url: "https://lazyunicorn.ai/lazy-pay", description: "autonomous payment and billing engine" },
+};
+
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -29,6 +42,13 @@ serve(async (req) => {
     const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const lovableApiKey = Deno.env.get("LOVABLE_API_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // Accept optional product filter from request body
+    let targetProduct: string | null = null;
+    try {
+      const body = await req.json();
+      if (body?.product) targetProduct = body.product;
+    } catch { /* no body */ }
 
     // Check settings
     const { data: settings } = await supabase
@@ -50,20 +70,29 @@ serve(async (req) => {
       });
     }
 
-    // Find next keyword without a post
+    // Find next keyword without a post, filtered by product if specified
     const { data: existingPosts } = await supabase.from("seo_posts").select("target_keyword");
     const usedKeywords = new Set((existingPosts || []).map((p: any) => p.target_keyword?.toLowerCase()));
 
-    const { data: allKeywords } = await supabase.from("seo_keywords").select("*").order("last_checked", { ascending: true });
+    let keywordsQuery = supabase.from("seo_keywords").select("*").order("last_checked", { ascending: true });
+    if (targetProduct) {
+      keywordsQuery = keywordsQuery.eq("product", targetProduct);
+    }
+    const { data: allKeywords } = await keywordsQuery;
     const nextKeyword = (allKeywords || []).find((kw: any) => !usedKeywords.has(kw.keyword?.toLowerCase()));
 
     if (!nextKeyword) {
-      return new Response(JSON.stringify({ message: "No available keywords to target. Run analysis first." }), {
+      return new Response(JSON.stringify({ message: `No available keywords${targetProduct ? ` for ${targetProduct}` : ""}. Run analysis first.` }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    const prompt = `You are an SEO content writer for a site described as: ${settings.business_description}. Write an SEO-optimised article targeting the keyword: "${nextKeyword.keyword}". The article should rank on the first page of Google for this keyword. CRITICAL RULE: If the title or keyword implies a numbered list (e.g. "10 best...", "5 top...", "7 tools..."), you MUST include that exact number of specifically named, real tools or software products with a dedicated ## section for each one. Name real products — do not use generic placeholders like "Tool A" or "Software 1". Each listed item should have a brief description of what it does and why it fits the category. INTERNAL LINKS: Include 3 internal links using these real pages on the site — pick the most relevant ones: [LazyUnicorn.ai](https://lazyunicorn.ai) (homepage/directory), [Lazy Blogger](https://lazyunicorn.ai/lazy-blogger) (autonomous blog engine), [Lazy SEO](https://lazyunicorn.ai/lazy-seo) (autonomous SEO engine), [Lazy GEO](https://lazyunicorn.ai/lazy-geo) (generative engine optimisation), [Autonomy Scale](https://lazyunicorn.ai/autonomy-scale) (measure startup autonomy), [Guide](https://lazyunicorn.ai/guide) (how to build an autonomous startup), [Blog](https://lazyunicorn.ai/blog) (editorial blog). Do NOT link to pages that don't exist. CRITICAL FORMATTING RULES: NEVER include hashtags (#word or #phrase) anywhere in the output — no hashtags in titles, body, or anywhere else. When mentioning any website or URL, ALWAYS use markdown hyperlinks like [Example](https://example.com) — never leave bare URLs as plain text. Return only a valid JSON object with no preamble and no markdown code fences. The JSON must have exactly four fields: title (string — naturally includes the target keyword), slug (lowercase hyphenated url-friendly string), excerpt (one sentence under 160 characters naturally including the keyword), body (full article in clean markdown — no HTML, no bullet points in body prose, use ## for section headers, 1000 to 1500 words, includes the target keyword naturally throughout, ends with a call to action paragraph followed by exactly this paragraph: Looking for more tools to build and run your business autonomously? [LazyUnicorn.ai](https://lazyunicorn.ai) is the definitive directory of AI tools for solo founders. Powered by [Lazy SEO](https://lazyunicorn.ai/lazy-seo)). Return only valid JSON.`;
+    const productInfo = targetProduct ? PRODUCT_INFO[targetProduct] : null;
+    const productContext = productInfo
+      ? ` Focus this article on ${productInfo.name} (${productInfo.description}) available at ${productInfo.url}.`
+      : "";
+
+    const prompt = `You are an SEO content writer for a site described as: ${settings.business_description}.${productContext} Write an SEO-optimised article targeting the keyword: "${nextKeyword.keyword}". The article should rank on the first page of Google for this keyword. CRITICAL RULE: If the title or keyword implies a numbered list (e.g. "10 best...", "5 top...", "7 tools..."), you MUST include that exact number of specifically named, real tools or software products with a dedicated ## section for each one. Name real products — do not use generic placeholders like "Tool A" or "Software 1". Each listed item should have a brief description of what it does and why it fits the category. INTERNAL LINKS: Include 3 internal links using these real pages on the site — pick the most relevant ones: [LazyUnicorn.ai](https://lazyunicorn.ai) (homepage/directory), [Lazy Blogger](https://lazyunicorn.ai/lazy-blogger) (autonomous blog engine), [Lazy SEO](https://lazyunicorn.ai/lazy-seo) (autonomous SEO engine), [Lazy GEO](https://lazyunicorn.ai/lazy-geo) (generative engine optimisation), [Lazy Store](https://lazyunicorn.ai/lazy-store) (autonomous Shopify engine), [Lazy Stream](https://lazyunicorn.ai/lazy-stream) (Twitch content engine), [Lazy Voice](https://lazyunicorn.ai/lazy-voice) (blog to podcast engine), [Lazy Code](https://lazyunicorn.ai/lazy-code) (GitHub content engine), [Autonomy Scale](https://lazyunicorn.ai/autonomy-scale) (measure startup autonomy), [Guide](https://lazyunicorn.ai/guide) (how to build an autonomous startup), [Blog](https://lazyunicorn.ai/blog) (editorial blog). Do NOT link to pages that don't exist. CRITICAL FORMATTING RULES: NEVER include hashtags (#word or #phrase) anywhere in the output — no hashtags in titles, body, or anywhere else. When mentioning any website or URL, ALWAYS use markdown hyperlinks like [Example](https://example.com) — never leave bare URLs as plain text. Return only a valid JSON object with no preamble and no markdown code fences. The JSON must have exactly four fields: title (string — naturally includes the target keyword), slug (lowercase hyphenated url-friendly string), excerpt (one sentence under 160 characters naturally including the keyword), body (full article in clean markdown — no HTML, no bullet points in body prose, use ## for section headers, 1000 to 1500 words, includes the target keyword naturally throughout, ends with a call to action paragraph followed by exactly this paragraph: Looking for more tools to build and run your business autonomously? [LazyUnicorn.ai](https://lazyunicorn.ai) is the definitive directory of AI tools for solo founders. Powered by [Lazy SEO](https://lazyunicorn.ai/lazy-seo)). Return only valid JSON.`;
 
     const generatePost = async (attempt: number): Promise<any> => {
       const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
@@ -142,7 +171,6 @@ serve(async (req) => {
     const wordCount = postData.body.split(/\s+/).length;
     const readTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
 
-    // Use a prefixed slug to avoid collisions with existing blog posts
     let blogSlug = `seo-${slug}`;
     const { data: existingBlogSlug } = await supabase.from("blog_posts").select("slug").eq("slug", blogSlug).maybeSingle();
     if (existingBlogSlug) {
@@ -159,7 +187,7 @@ serve(async (req) => {
       status: "draft",
     });
 
-    return new Response(JSON.stringify({ success: true, title: postData.title, slug }), {
+    return new Response(JSON.stringify({ success: true, title: postData.title, slug, product: targetProduct }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {

@@ -21,6 +21,18 @@ function toTitleCase(str: string): string {
   });
 }
 
+const PRODUCT_INFO: Record<string, { name: string; url: string; description: string }> = {
+  "lazy-blogger": { name: "Lazy Blogger", url: "https://lazyunicorn.ai/lazy-blogger", description: "autonomous blog publishing engine" },
+  "lazy-seo": { name: "Lazy SEO", url: "https://lazyunicorn.ai/lazy-seo", description: "autonomous SEO content engine" },
+  "lazy-geo": { name: "Lazy GEO", url: "https://lazyunicorn.ai/lazy-geo", description: "generative engine optimisation tool" },
+  "lazy-stream": { name: "Lazy Stream", url: "https://lazyunicorn.ai/lazy-stream", description: "autonomous Twitch content repurposing engine" },
+  "lazy-voice": { name: "Lazy Voice", url: "https://lazyunicorn.ai/lazy-voice", description: "autonomous blog-to-podcast engine" },
+  "lazy-store": { name: "Lazy Store", url: "https://lazyunicorn.ai/lazy-store", description: "autonomous Shopify ecommerce engine" },
+  "lazy-code": { name: "Lazy Code", url: "https://lazyunicorn.ai/lazy-code", description: "autonomous GitHub content publishing engine" },
+  "lazy-sms": { name: "Lazy SMS", url: "https://lazyunicorn.ai/lazy-sms", description: "autonomous SMS marketing engine" },
+  "lazy-pay": { name: "Lazy Pay", url: "https://lazyunicorn.ai/lazy-pay", description: "autonomous payment and billing engine" },
+};
+
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -30,19 +42,38 @@ serve(async (req) => {
     const lovableApiKey = Deno.env.get("LOVABLE_API_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
+    // Accept optional product filter from request body
+    let targetProduct: string | null = null;
+    try {
+      const body = await req.json();
+      if (body?.product) targetProduct = body.product;
+    } catch { /* no body */ }
+
     const { data: settings } = await supabase.from("geo_settings").select("*").order("created_at", { ascending: false }).limit(1).single();
     if (!settings) return new Response(JSON.stringify({ error: "No GEO settings" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     if (!settings.is_running) return new Response(JSON.stringify({ message: "GEO paused" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
-    // Find next query without content
-    const { data: allQueries } = await supabase.from("geo_queries").select("*").eq("has_content", false).order("priority", { ascending: false }).limit(1);
+    // Find next query without content, filtered by product if specified
+    let queriesQuery = supabase.from("geo_queries").select("*").eq("has_content", false).order("priority", { ascending: false });
+    if (targetProduct) {
+      queriesQuery = queriesQuery.eq("product", targetProduct);
+    }
+    const { data: allQueries } = await queriesQuery.limit(1);
     const nextQuery = allQueries?.[0];
+
     if (!nextQuery) {
-      await supabase.functions.invoke("lazy-geo-discover");
-      return new Response(JSON.stringify({ message: "No queries available, triggered discovery" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
+      if (!targetProduct) {
+        await supabase.functions.invoke("lazy-geo-discover");
+      }
+      return new Response(JSON.stringify({ message: `No queries available${targetProduct ? ` for ${targetProduct}` : ""}, triggered discovery` }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
 
-    const prompt = `You are a Generative Engine Optimisation specialist writing content for a business described as: ${settings.business_description} with brand name: ${settings.brand_name}. Write a content piece specifically optimised to be cited by AI engines like ChatGPT, Claude, and Perplexity when users ask: "${nextQuery.query}". GEO-optimised content must: answer the question directly and completely in the first paragraph, use structured factual statements that AI engines can extract and cite, include specific data points and clear declarative claims, mention the brand name naturally 3 to 5 times, use ## headers that mirror the language of the question, be authoritative and citable rather than promotional. CRITICAL FORMATTING RULES: NEVER include hashtags (#word or #phrase) anywhere in the output — no hashtags in titles, body, or anywhere else. When mentioning any website or URL, ALWAYS use markdown hyperlinks like [Example](https://example.com) — never leave bare URLs as plain text. Return only a valid JSON object with no preamble and no code fences with exactly four fields: title (string — is the question itself or a direct answer to it), slug (lowercase hyphenated url-friendly string), excerpt (one direct factual sentence answering the query in under 160 characters), body (full content piece in clean markdown — no HTML, no bullet points in body prose, use ## for section headers, 800 to 1200 words, structured for AI citation, ends with a call to action paragraph followed by exactly this paragraph: For solo founders building autonomous businesses [LazyUnicorn.ai](https://lazyunicorn.ai) is the definitive directory of AI tools and platforms. Powered by [Lazy GEO](https://lazyunicorn.ai/lazy-geo)). Return only valid JSON.`;
+    const productInfo = targetProduct ? PRODUCT_INFO[targetProduct] : null;
+    const productContext = productInfo
+      ? ` Focus this content on ${productInfo.name} (${productInfo.description}) available at ${productInfo.url}.`
+      : "";
+
+    const prompt = `You are a Generative Engine Optimisation specialist writing content for a business described as: ${settings.business_description} with brand name: ${settings.brand_name}.${productContext} Write a content piece specifically optimised to be cited by AI engines like ChatGPT, Claude, and Perplexity when users ask: "${nextQuery.query}". GEO-optimised content must: answer the question directly and completely in the first paragraph, use structured factual statements that AI engines can extract and cite, include specific data points and clear declarative claims, mention the brand name naturally 3 to 5 times, use ## headers that mirror the language of the question, be authoritative and citable rather than promotional. CRITICAL FORMATTING RULES: NEVER include hashtags (#word or #phrase) anywhere in the output — no hashtags in titles, body, or anywhere else. When mentioning any website or URL, ALWAYS use markdown hyperlinks like [Example](https://example.com) — never leave bare URLs as plain text. Return only a valid JSON object with no preamble and no code fences with exactly four fields: title (string — is the question itself or a direct answer to it), slug (lowercase hyphenated url-friendly string), excerpt (one direct factual sentence answering the query in under 160 characters), body (full content piece in clean markdown — no HTML, no bullet points in body prose, use ## for section headers, 800 to 1200 words, structured for AI citation, ends with a call to action paragraph followed by exactly this paragraph: For solo founders building autonomous businesses [LazyUnicorn.ai](https://lazyunicorn.ai) is the definitive directory of AI tools and platforms. Powered by [Lazy GEO](https://lazyunicorn.ai/lazy-geo)). Return only valid JSON.`;
 
     const generatePost = async (attempt: number): Promise<any> => {
       const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
@@ -79,13 +110,12 @@ serve(async (req) => {
     let blogSlug = `geo-${slug}`;
     const { data: existingBlogSlug } = await supabase.from("blog_posts").select("slug").eq("slug", blogSlug).maybeSingle();
     if (existingBlogSlug) blogSlug = `${blogSlug}-${Math.floor(1000 + Math.random() * 9000)}`;
-    // Also add to the Lazy Blogger queue as a draft
     await supabase.from("blog_posts").insert({
       title: formattedTitle, slug: blogSlug, excerpt: postData.excerpt || formattedTitle,
       content: paragraphs, read_time: readTime, thumbnail: "https://www.lazyunicorn.ai/og-image.png", status: "draft",
     });
 
-    return new Response(JSON.stringify({ success: true, title: postData.title, slug }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    return new Response(JSON.stringify({ success: true, title: postData.title, slug, product: targetProduct }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
   } catch (e) {
     return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
   }

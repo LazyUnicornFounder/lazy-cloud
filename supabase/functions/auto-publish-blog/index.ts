@@ -6,19 +6,40 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-async function triggerEngine(engineName: string): Promise<void> {
+// Product rotation order
+const PRODUCTS = [
+  "lazy-blogger",
+  "lazy-seo",
+  "lazy-geo",
+  "lazy-stream",
+  "lazy-voice",
+  "lazy-store",
+  "lazy-code",
+  "lazy-sms",
+  "lazy-pay",
+];
+
+// Each product gets SEO then GEO, so total slots = products * 2
+// Slot 0 = product 0 SEO, slot 1 = product 0 GEO, slot 2 = product 1 SEO, etc.
+function getSlotInfo(slotIndex: number) {
+  const productIndex = Math.floor(slotIndex / 2) % PRODUCTS.length;
+  const engine = slotIndex % 2 === 0 ? "lazy-seo-publish" : "lazy-geo-publish";
+  return { product: PRODUCTS[productIndex], engine };
+}
+
+async function triggerEngine(engineName: string, product: string): Promise<void> {
   const baseUrl = Deno.env.get("SUPABASE_URL")!;
   const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
   const url = `${baseUrl}/functions/v1/${engineName}`;
 
-  console.log(`Triggering ${engineName} to generate a draft...`);
+  console.log(`Triggering ${engineName} for product "${product}"...`);
   const res = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${anonKey}`,
     },
-    body: JSON.stringify({}),
+    body: JSON.stringify({ product }),
   });
 
   if (!res.ok) {
@@ -95,24 +116,34 @@ Deno.serve(async (req) => {
       published = nextDraft;
     }
 
-    // Determine which engine to trigger next (alternate SEO/GEO)
-    // Count recent drafts by slug prefix to decide
-    const { count: seoCount } = await supabase
-      .from("blog_posts")
-      .select("id", { count: "exact", head: true })
-      .like("slug", "seo-%");
+    // Get the current rotation slot from app_config
+    const { data: rotationRow } = await supabase
+      .from("app_config")
+      .select("value")
+      .eq("key", "publish_rotation_slot")
+      .maybeSingle();
 
-    const { count: geoCount } = await supabase
-      .from("blog_posts")
-      .select("id", { count: "exact", head: true })
-      .like("slug", "geo-%");
+    let currentSlot = parseInt(rotationRow?.value || "0", 10);
+    if (isNaN(currentSlot)) currentSlot = 0;
 
-    // Trigger the engine that has fewer posts (alternating effect)
-    const nextEngine = (seoCount ?? 0) <= (geoCount ?? 0)
-      ? "lazy-seo-publish"
-      : "lazy-geo-publish";
+    const totalSlots = PRODUCTS.length * 2;
+    const { product, engine } = getSlotInfo(currentSlot);
 
-    await triggerEngine(nextEngine);
+    // Advance the slot for next time
+    const nextSlot = (currentSlot + 1) % totalSlots;
+    if (rotationRow) {
+      await supabase
+        .from("app_config")
+        .update({ value: String(nextSlot) })
+        .eq("key", "publish_rotation_slot");
+    } else {
+      await supabase
+        .from("app_config")
+        .insert({ key: "publish_rotation_slot", value: String(nextSlot) });
+    }
+
+    console.log(`Rotation slot ${currentSlot}: ${engine} for ${product} (next: ${nextSlot})`);
+    await triggerEngine(engine, product);
 
     // Check remaining drafts
     const { count: remaining } = await supabase
@@ -123,7 +154,8 @@ Deno.serve(async (req) => {
     return new Response(JSON.stringify({
       success: true,
       published: published ? { title: published.title, slug: published.slug } : null,
-      triggered: nextEngine,
+      triggered: engine,
+      product,
       drafts_remaining: remaining ?? 0,
     }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
