@@ -232,11 +232,8 @@ export default function LazyPayPage() {
               className="font-display text-sm tracking-[0.2em] uppercase text-primary mb-4 font-bold flex items-center justify-center gap-3"
             >
               Introducing Lazy Pay
-              <StripeBadge />
+              <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1">BETA</span>
             </motion.p>
-            <span className="inline-block bg-primary text-primary-foreground font-display text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] px-5 py-1.5 mb-6">
-              BETA
-            </span>
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-8 max-w-3xl mx-auto">
               One Prompt Installs <span className="text-gradient-primary">Stripe</span> Into Your Lovable Project.
             </h1>

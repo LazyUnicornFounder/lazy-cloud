@@ -48,17 +48,32 @@ const LazySeoPage = () => {
       <SEO title="Lazy SEO — Autonomous SEO Engine for Lovable" description="Set up once and watch your Google rankings climb. Lazy SEO analyses competitors, finds keyword gaps, and publishes SEO-optimised content on autopilot." url="/lazy-seo" />
       <Navbar />
       <main className="relative z-10 pt-28 pb-32">
-        <section className="max-w-4xl mx-auto text-center px-6 mb-20">
+        <section className="relative max-w-4xl mx-auto text-center px-6 mb-24">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
-            <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4 font-bold">Made for Lovable</p>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-6">
-              <span style={{ fontFamily: "'Dancing Script', cursive" }}>Lazy</span> SEO
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="font-display text-sm tracking-[0.2em] uppercase text-primary mb-4 font-bold flex items-center justify-center gap-3"
+            >
+              Introducing Lazy SEO
+              <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1">BETA</span>
+            </motion.p>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-8 max-w-3xl mx-auto">
+              Your <span className="text-gradient-primary">Google Rankings</span> Climb on Autopilot.
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
-              Paste one prompt into your Lovable project. It discovers keyword opportunities, writes SEO-optimised content, and publishes daily — on autopilot.
+              Paste one prompt into your Lovable project. It discovers keyword opportunities, writes SEO-optimised content, and publishes daily — on autopilot. No API keys needed.
             </p>
-            <CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} />
-            <p className="font-body text-xs text-muted-foreground mt-4">No API keys needed.</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+              <CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} />
+              <button
+                onClick={(e) => { e.preventDefault(); document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }); }}
+                className="inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-foreground hover:bg-muted transition-colors"
+              >
+                See How It Works
+              </button>
+            </div>
           </motion.div>
         </section>
 

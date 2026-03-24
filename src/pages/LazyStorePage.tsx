@@ -294,12 +294,10 @@ const LazyStorePage = () => {
               className="font-display text-sm tracking-[0.2em] uppercase text-primary mb-4 font-bold flex items-center justify-center gap-3"
             >
               Introducing Lazy Store
-              <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1">Beta</span>
+              <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1">BETA</span>
             </motion.p>
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-8 max-w-3xl mx-auto">
-              The Autonomous<br />
-              <span className="text-lovable">Lovable</span>{" "}
-              <span className="text-gradient-primary">Shopify Store</span>
+              The Autonomous <span className="text-gradient-primary">Shopify Store</span> for Lovable.
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
               One prompt installs a full Shopify store into your Lovable project. It finds the products, writes the listings, sets the prices, and improves its own conversion rate — automatically, forever.
@@ -310,13 +308,9 @@ const LazyStorePage = () => {
                 onClick={scrollToHow}
                 className="inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-foreground hover:bg-muted transition-colors"
               >
-                See How It Works <ArrowRight size={14} />
+                See How It Works
               </button>
             </div>
-            <p className="inline-flex items-center gap-2 font-body text-xs text-muted-foreground">
-              <Heart size={14} className="text-lovable fill-lovable" />
-              Built exclusively for Lovable projects.
-            </p>
           </motion.div>
         </section>
 
