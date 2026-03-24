@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
+import BlogTicker from "@/components/BlogTicker";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
 const NEW_TITLE = "The Autonomous Layer for Lovable — One Prompt, Everything Runs Itself";
