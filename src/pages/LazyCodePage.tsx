@@ -111,7 +111,7 @@ Create a page at /lazy-code-setup with a form:
 - Business name
 - Site URL
 
-Submit button: Activate Lazy Code
+Submit button: Activate Lazy GitHub
 
 On submit:
 1. Store GITHUB_TOKEN and GITHUB_WEBHOOK_SECRET as Supabase secrets
