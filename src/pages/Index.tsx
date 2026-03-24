@@ -58,6 +58,14 @@ const engines = [
     link: "/lazy-store",
     color: "from-amber-500/20 to-orange-500/20",
   },
+  {
+    emoji: "🎙️",
+    name: "Lazy Voice",
+    tagline: "Lazy Voice — Autonomous Audio Narration for Lovable",
+    description: "Autonomous audio narration for every blog post your Lovable site publishes. Powered by ElevenLabs.",
+    link: "/lazy-voice",
+    color: "from-violet-500/20 to-fuchsia-500/20",
+  },
 ];
 
 const Index = () => {
