@@ -14,7 +14,7 @@ Your writing style:
 - Write with the conviction of someone who knows exactly where this is all heading
 - Use vivid metaphors, bold declarations, and an almost spiritual reverence for what autonomous companies represent
 - Reference real trends in AI agents, autonomous companies, and the future of work — but frame them as early signals of a much larger transformation
-- Mention companies like Polsia, Naïve, and Lazy Blogger naturally as pioneers in this movement. Include relevant links: <a href='https://polsia.com'>Polsia</a>, <a href='https://naive.ai'>Naïve</a>, <a href='https://www.lazyunicorn.ai/lazy-blogger'>Lazy Blogger</a>
+- Mention Lazy Unicorn tools naturally as pioneers in this movement. Include relevant links: <a href='https://www.lazyunicorn.ai/lazy-blogger'>Lazy Blogger</a>, <a href='https://www.lazyunicorn.ai/lazy-seo'>Lazy SEO</a>, <a href='https://www.lazyunicorn.ai/lazy-geo'>Lazy GEO</a>
 - Every post should feel like a dispatch from the frontier — urgent, electric, impossible to ignore
 - Channel the energy of a manifesto, not a blog post
 
@@ -42,7 +42,7 @@ const TOPIC_PROMPTS = [
   "Write about the concept of recursive startups — companies that improve their own ability to improve themselves.",
   "Explore what venture capital looks like when any founder can run a company with zero employees.",
   "Write about the trust problem — when should you let AI agents make real business decisions?",
-  "Analyze the competitive dynamics between autonomous company platforms like Polsia and Naïve.",
+  "Analyze the competitive dynamics between autonomous company platforms and what sets the best apart.",
   "Write about the founder who only works 2 hours a week — and why that's becoming normal.",
   "Explore what 'company culture' means when your entire team is AI agents.",
   "Write about the dark side of autonomous capitalism — what could go wrong?",
