@@ -127,7 +127,7 @@ function CopyPromptButton({
 
   const base =
     variant === "primary"
-      ? "bg-primary text-primary-foreground shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)]"
+      ? "bg-primary text-primary-foreground"
       : "border border-border text-foreground hover:bg-muted";
 
   return (

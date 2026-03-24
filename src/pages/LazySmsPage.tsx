@@ -45,7 +45,7 @@ function CopyPromptButton({ className = "", onCopy }: { className?: string; onCo
   return (
     <button
       onClick={handleCopy}
-      className={`inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity bg-primary text-primary-foreground shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)] ${className}`}
+      className={`inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity bg-primary text-primary-foreground ${className}`}
     >
       {copied ? <><Check size={16} /> Copied ✓</> : <><Copy size={16} /> Copy the Lovable Prompt</>}
     </button>
