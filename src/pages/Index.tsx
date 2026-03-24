@@ -190,7 +190,7 @@ const Index = () => {
               <h1 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[0.95] text-foreground">
                 The Autonomous
                 <br />
-                Growth Engines for
+                Growth Engine for
                 <br />
                 <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Lovable Websites.</span>
               </h1>
