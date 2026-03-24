@@ -8,9 +8,6 @@ import Index from "./pages/Index.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import Blog from "./pages/Blog.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
-import CompanyDetail from "./pages/CompanyDetail.tsx";
-import NaivePage from "./pages/NaivePage.tsx";
-import PolsiaPage from "./pages/PolsiaPage.tsx";
 import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
 import GuidePage from "./pages/GuidePage.tsx";
 import LaunchPage from "./pages/LaunchPage.tsx";
@@ -89,9 +86,6 @@ const App = () => (
               <Route path="/launch" element={<LaunchPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/lazy-blogger" element={<LazyBloggerPage />} />
-              <Route path="/company/naive" element={<NaivePage />} />
-              <Route path="/company/polsia" element={<PolsiaPage />} />
-              <Route path="/company/:slug" element={<CompanyDetail />} />
               <Route path="/checkout/success" element={<CheckoutSuccess />} />
               <Route path="/lazy-seo" element={<LazySeoPage />} />
               <Route path="/lazy-seo-setup" element={<LazySeoSetup />} />

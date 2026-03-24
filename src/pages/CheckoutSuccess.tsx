@@ -76,7 +76,7 @@ const CheckoutSuccess = () => {
         <p className="font-body text-muted-foreground text-center max-w-md">
           Something went wrong with your payment. Please try again or contact support.
         </p>
-        <Link to="/" className="font-body text-primary hover:underline text-sm mt-4">← Back to directory</Link>
+        <Link to="/" className="font-body text-primary hover:underline text-sm mt-4">← Back to home</Link>
       </div>
     );
   }
@@ -103,7 +103,7 @@ const CheckoutSuccess = () => {
               to="/"
               className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 font-semibold hover:opacity-90 transition-opacity"
             >
-              Back to directory
+              Back to home
             </Link>
           </div>
         ) : (

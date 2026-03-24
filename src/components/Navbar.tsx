@@ -219,7 +219,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
   const resourceLinks = [
     { label: "Guide", href: "/guide" },
-    { label: "Directory", href: isHome ? "#directory" : "/#directory" },
     { label: "Autonomy Scale", href: "/autonomy-scale" },
     { label: "Launch Your Startup", href: "/launch" },
   ];
