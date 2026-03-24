@@ -58,6 +58,27 @@ const Admin = () => {
   const [editForm, setEditForm] = useState({ name: "", url: "", tagline: "", description: "", logo_url: "" });
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [blogSettings, setBlogSettings] = useState<any>(null);
+  const [savingBlogSettings, setSavingBlogSettings] = useState(false);
+
+  const db = supabase as any;
+
+  const fetchBlogSettings = useCallback(async () => {
+    const { data } = await db.from("blog_settings").select("*").order("created_at", { ascending: false }).limit(1).single();
+    if (data) setBlogSettings(data);
+  }, []);
+
+  useEffect(() => { if (authenticated) fetchBlogSettings(); }, [authenticated, fetchBlogSettings]);
+
+  const saveBlogSettings = async (updates: Record<string, any>) => {
+    if (!blogSettings) return;
+    setSavingBlogSettings(true);
+    const { error } = await db.from("blog_settings").update(updates).eq("id", blogSettings.id);
+    setSavingBlogSettings(false);
+    if (error) { toast.error("Failed to save"); return; }
+    setBlogSettings({ ...blogSettings, ...updates });
+    toast.success("Blog settings updated");
+  };
 
   const fetchSubmissions = useCallback(async (pw: string) => {
     setLoading(true);
