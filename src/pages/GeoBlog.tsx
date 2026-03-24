@@ -45,6 +45,9 @@ const GeoBlog = () => {
             ))}
           </div>
         )}
+        <div className="mt-12">
+          <ProductPromoBanner excludeProduct="geo" glass={false} />
+        </div>
       </div>
     </div>
   );

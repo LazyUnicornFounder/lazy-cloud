@@ -54,6 +54,9 @@ const SeoBlog = () => {
             ))}
           </div>
         )}
+        <div className="mt-12">
+          <ProductPromoBanner excludeProduct="seo" glass={false} />
+        </div>
       </div>
     </div>
   );

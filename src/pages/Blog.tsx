@@ -58,6 +58,11 @@ const Blog = () => {
         <BlogSection />
       </div>
 
+      {/* Product Promo */}
+      <div className="relative z-10 px-6 md:px-12 pb-12 max-w-4xl mx-auto">
+        <ProductPromoBanner />
+      </div>
+
       {/* Footer */}
       <footer className="relative z-10 px-8 md:px-12 py-8 pb-20 border-t border-foreground/10">
         <span className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/50">

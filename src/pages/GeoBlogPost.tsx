@@ -57,6 +57,9 @@ const GeoBlogPost = () => {
           {" "}— autonomous GEO for Lovable sites. Discover more at{" "}
           <a href="https://lazyunicorn.ai" className="text-primary underline hover:text-primary/80">LazyUnicorn.ai</a>
         </div>
+        <div className="mt-10">
+          <ProductPromoBanner excludeProduct="geo" glass={false} />
+        </div>
       </div>
     </div>
   );

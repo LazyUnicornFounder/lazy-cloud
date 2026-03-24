@@ -152,6 +152,11 @@ const CompanyDetail = () => {
             </div>
           )}
         </motion.div>
+
+        {/* Product Promo */}
+        <div className="mt-10">
+          <ProductPromoBanner />
+        </div>
       </main>
     </div>
   );

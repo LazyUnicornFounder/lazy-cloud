@@ -73,6 +73,9 @@ const SeoBlogPost = () => {
             LazyUnicorn.ai
           </a>
         </div>
+        <div className="mt-10">
+          <ProductPromoBanner excludeProduct="seo" glass={false} />
+        </div>
       </div>
     </div>
   );

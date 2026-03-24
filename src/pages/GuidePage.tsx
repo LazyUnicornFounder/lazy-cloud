@@ -390,6 +390,11 @@ const GuidePage = () => {
         </motion.div>
       </div>
 
+      {/* Product Promo */}
+      <div className="relative z-10 px-4 md:px-6 pb-12 max-w-lg mx-auto">
+        <ProductPromoBanner />
+      </div>
+
       {/* footer */}
       <footer className="relative z-10 px-8 md:px-12 py-8 pb-20 border-t border-foreground/10">
         <span className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/50">
