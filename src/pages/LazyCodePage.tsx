@@ -118,7 +118,7 @@ On submit:
 2. Save all other values to code_settings
 3. Set setup_complete to true
 4. Show webhook setup instructions: "Go to your GitHub repository Settings → Webhooks → Add webhook. Set Payload URL to [site_url]/api/github-webhook. Set Content type to application/json. Set Secret to your webhook secret. Select events: Pushes and Releases. Click Add webhook."
-5. Redirect to /lazy-code-dashboard with message: "Lazy Code is active. Your next commit or release will be processed and published automatically."
+5. Redirect to /lazy-code-dashboard with message: "Lazy GitHub is active. Your next commit or release will be processed and published automatically."
 
 ---
 
