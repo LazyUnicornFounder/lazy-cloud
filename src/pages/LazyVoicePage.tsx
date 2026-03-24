@@ -379,7 +379,7 @@ export default function LazyVoicePage() {
                 transition={{ delay: 0.1 }}
                 className="border-2 border-yellow-500/60 rounded-2xl p-8 bg-card/40 flex flex-col relative"
               >
-                <span className="absolute top-4 right-4 bg-yellow-500/20 text-yellow-400 text-[10px] font-display font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                <span className="absolute top-4 right-4 bg-primary/20 text-primary text-[10px] font-display font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                   Coming Soon
                 </span>
                 <h3 className="font-display text-lg font-bold mb-1">Pro</h3>
