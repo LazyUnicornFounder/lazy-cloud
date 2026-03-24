@@ -66,6 +66,14 @@ const engines = [
     link: "/lazy-voice",
     color: "from-violet-500/20 to-fuchsia-500/20",
   },
+  {
+    emoji: "💳",
+    name: "Lazy Pay",
+    tagline: "Lazy Pay — Self-Improving Stripe Payments for Lovable",
+    description: "A self-improving Stripe payments engine for Lovable. One prompt installs payments, subscriptions, conversion optimisation, and abandoned checkout recovery.",
+    link: "/lazy-pay",
+    color: "from-green-500/20 to-emerald-500/20",
+  },
 ];
 
 const Index = () => {
