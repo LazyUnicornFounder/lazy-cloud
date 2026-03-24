@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
-import BlogTicker from "@/components/BlogTicker";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
 const NEW_TITLE = "The Autonomous Layer for Lovable — One Prompt, Everything Runs Itself";
@@ -250,10 +249,6 @@ const Index = () => {
             </a>
           </div>
         </motion.div>
-
-        <div className="absolute bottom-0 left-0 right-0">
-          <BlogTicker />
-        </div>
       </header>
 
       {/* Product Grid */}
