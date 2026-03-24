@@ -195,7 +195,7 @@ const Index = () => {
                 <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Lovable Websites.</span>
               </h1>
               <p className="hero-description font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-xl leading-relaxed">
-                We build autonomous engines for Lovable that turn your website into a self-growing asset with just one prompt.
+                LazyUnicorn builds autonomous growth tools for Lovable. With Lazy Blogger, Lazy SEO and Lazy GEO, just drop a prompt into your existing Lovable project and your site starts publishing, ranking, and compounding — without you touching anything after setup.
               </p>
               <div className="flex items-center gap-3 mt-6">
                 <a
