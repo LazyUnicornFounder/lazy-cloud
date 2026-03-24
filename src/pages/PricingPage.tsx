@@ -16,6 +16,13 @@ interface Product {
 
 const products: Product[] = [
   {
+    name: "Lazy Run",
+    tagline: "Autonomous operations layer",
+    link: "/lazy-run",
+    free: ["Setup prompt included", "All 9 engines in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
+    pro: { price: "$99", features: ["Hosted version — zero config", "Auto-scaling engine execution", "Priority AI model access", "Dedicated support", "Custom engine configuration"], comingSoon: true },
+  },
+  {
     name: "Lazy Blogger",
     tagline: "Autonomous blog engine",
     link: "/lazy-blogger",
@@ -72,18 +79,18 @@ const products: Product[] = [
     pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced stream analytics", "Self-improving content"], comingSoon: true },
   },
   {
+    name: "Lazy Code",
+    tagline: "Autonomous GitHub content engine",
+    link: "/lazy-code",
+    free: ["Setup prompt included", "Commit-to-changelog generation", "Release notes automation", "Developer blog publishing", "GitHub webhook integration"],
+    pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced changelog formatting", "API documentation generation", "Custom templates"], comingSoon: true },
+  },
+  {
     name: "Lazy Alert",
     tagline: "Real-time Slack alerts for every engine",
     link: "/lazy-alert",
     free: ["Setup prompt included", "Real-time event alerts to Slack", "Daily morning briefing", "Slash commands for engine control", "Bring your own Slack workspace"],
     pro: { price: "$9", features: ["Hosted version", "Custom Slack bot with branded avatar", "Advanced filtering", "Multiple channel routing by event type"], comingSoon: true },
-  },
-  {
-    name: "Lazy Run",
-    tagline: "Autonomous operations layer",
-    link: "/lazy-run",
-    free: ["Setup prompt included", "All 9 engines in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
-    pro: { price: "$99", features: ["Hosted version — zero config", "Auto-scaling engine execution", "Priority AI model access", "Dedicated support", "Custom engine configuration"], comingSoon: true },
   },
 ];
 
