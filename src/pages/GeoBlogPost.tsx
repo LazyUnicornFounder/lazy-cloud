@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import SEO from "@/components/SEO";
 import { ArrowLeft } from "lucide-react";
+import ProductPromoBanner from "@/components/ProductPromoBanner";
 
 const GeoBlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
