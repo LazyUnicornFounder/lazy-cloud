@@ -204,43 +204,34 @@ export default function LazyAlertPage() {
       <Navbar />
 
       {/* ── HERO ── */}
-      <header className="pt-32 md:pt-44 pb-20 px-6 md:px-12 max-w-4xl mx-auto">
-        <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
-          <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
-            <SlackBadge />
+      <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+        <div className="max-w-4xl mx-auto">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
+            <div className="flex items-center gap-3 mb-6">
+              <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
+              <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+            </div>
+            <div className="flex items-center gap-4 flex-wrap">
+              <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+                Lazy Alert
+              </h1>
+              <SlackBadge />
+            </div>
+            <p className="mt-6 font-body text-base md:text-lg text-foreground/45 max-w-xl leading-relaxed">
+              Lazy Alert connects every Lazy engine to your Slack workspace. Payments, posts, citations, customer replies, errors, and live events — all delivered as Slack messages the moment they happen. One prompt. Your business in your pocket.
+            </p>
+            <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
+              <CopyPromptButton />
+              <button
+                onClick={() => document.getElementById("events")?.scrollIntoView({ behavior: "smooth" })}
+                className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
+              >
+                See What Gets Sent
+              </button>
+            </div>
           </motion.div>
-
-          <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="mt-6" style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: "#f0ead6", opacity: 0.4 }}>
-            Introducing
-          </motion.p>
-
-          <motion.h1 variants={fadeUp} transition={{ duration: 0.8 }} className="mt-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4vw, 3.2rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-            Your autonomous business.
-            <br />
-            Reporting to you in Slack.
-          </motion.h1>
-
-          <motion.div variants={fadeUp} transition={{ duration: 0.5 }} className="mt-2">
-            <span className="font-body text-[10px] tracking-[0.2em] uppercase px-2 py-0.5 border border-foreground/20 text-foreground/30">
-              BETA
-            </span>
-          </motion.div>
-
-          <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="mt-6 font-body text-base text-foreground/50 max-w-2xl leading-relaxed">
-            Lazy Alert connects every Lazy engine to your Slack workspace. Payments, posts, citations, customer replies, errors, and live events — all delivered as Slack messages the moment they happen. One prompt. Your business in your pocket.
-          </motion.p>
-
-          <motion.div variants={fadeUp} transition={{ duration: 0.5 }} className="flex flex-col sm:flex-row items-start gap-4 mt-10">
-            <CopyPromptButton />
-            <button
-              onClick={() => document.getElementById("events")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center justify-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-8 py-4 font-semibold border border-foreground/20 text-foreground/50 hover:text-foreground hover:border-foreground/40 transition-colors"
-            >
-              See What Gets Sent
-            </button>
-          </motion.div>
-        </motion.div>
-      </header>
+        </div>
+      </section>
 
       {/* ── HOW IT WORKS ── */}
       <section id="how-it-works" className="py-20 md:py-28 px-6 md:px-12 border-t border-border">
