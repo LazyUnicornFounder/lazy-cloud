@@ -205,30 +205,26 @@ export default function LazyVoicePage() {
 
       <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
         {/* ── HERO ── */}
-        <section className="relative pt-32 md:pt-44 pb-20 md:pb-32 px-6 text-center">
-          <div className="max-w-3xl mx-auto flex flex-col items-center gap-6">
-            <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.6 }}>
-              <ElevenLabsBadge />
-            </motion.div>
-
-            <motion.h1
-              variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]"
-            >
-              Your blog posts. Narrated in your voice. Published automatically.
-            </motion.h1>
-
+        <section className="relative max-w-4xl mx-auto text-center px-6 pt-28 pb-24 md:mb-24">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
             <motion.p
-              variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="font-display text-sm tracking-[0.2em] uppercase text-primary mb-4 font-bold flex items-center justify-center gap-3"
             >
-              Lazy Voice monitors every post Lazy Blogger and Lazy SEO publish, sends them to ElevenLabs, and embeds an audio player on every article — automatically. Your site becomes a blog and a podcast at the same time.
+              Introducing Lazy Voice
+              <ElevenLabsBadge />
             </motion.p>
-
-            <motion.div
-              variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center gap-4"
-            >
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-8 max-w-3xl mx-auto">
+              Your Blog Posts.<br />
+              Narrated in <span className="text-gradient-primary">Your Voice</span>.<br />
+              Published Automatically.
+            </h1>
+            <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
+              Lazy Voice monitors every post Lazy Blogger and Lazy SEO publish, sends them to ElevenLabs, and embeds an audio player on every article — automatically. Your site becomes a blog and a podcast at the same time.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
               <CopyPromptButton onCopy={handleCopy} />
               <button
                 onClick={scrollToHowItWorks}
@@ -236,8 +232,8 @@ export default function LazyVoicePage() {
               >
                 See How It Works
               </button>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </section>
 
         {/* ── HOW IT WORKS ── */}
