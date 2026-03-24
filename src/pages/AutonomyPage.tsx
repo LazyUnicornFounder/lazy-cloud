@@ -253,7 +253,7 @@ export default function AutonomyPage() {
           </h2>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-xl mx-auto">
             Most automation tools live at Level 2 — they run on a schedule you
-            set and never change. LazyUnicorn engines are generative at minimum
+            set and never change. Lazy Unicorn engines are generative at minimum
             and self-improving at their best. They do not just execute tasks.
             They measure results, rewrite what does not work, and compound over
             time. That is the difference between a tool and an engine.

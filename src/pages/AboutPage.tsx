@@ -54,7 +54,7 @@ export default function AboutPage() {
                 The engines don't just execute — they learn. Lazy SEO analyses what's ranking and adjusts its strategy. Lazy GEO tests whether AI models cite your brand and writes content to improve citation rates. Lazy Voice converts every blog post into a podcast episode automatically. Each engine feeds the others, creating a compounding loop of content, traffic, and growth.
               </p>
               <p>
-                LazyUnicorn is built entirely on <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Lovable</a>. The website, the engines, the admin dashboard, the edge functions — everything runs on a single Lovable project. No external servers. No DevOps. No infrastructure team.
+                Lazy Unicorn is built entirely on <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Lovable</a>. The website, the engines, the admin dashboard, the edge functions — everything runs on a single Lovable project. No external servers. No DevOps. No infrastructure team.
               </p>
               <p>
                 This is what a company looks like when autonomy is the default and humans are optional.
