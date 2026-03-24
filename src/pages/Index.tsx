@@ -74,6 +74,14 @@ const engines = [
     link: "/lazy-pay",
     color: "from-green-500/20 to-emerald-500/20",
   },
+  {
+    emoji: "📱",
+    name: "Lazy SMS",
+    tagline: "Lazy SMS — Autonomous SMS Engine for Lovable",
+    description: "A self-improving Twilio SMS engine for Lovable. One prompt installs confirmations, sequences, recovery texts, and two-way messaging.",
+    link: "/lazy-sms",
+    color: "from-red-500/20 to-rose-500/20",
+  },
 ];
 
 const Index = () => {
