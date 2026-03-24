@@ -124,8 +124,12 @@ const BlogPost = () => {
 
             <div className="space-y-5">
               {post.content.map((paragraph, j) => {
-                // Strip hashtags from AI-generated content
-                const cleaned = paragraph.replace(/#\w+/g, "").replace(/\s{2,}/g, " ").trim();
+                // Convert ## headers to bold and strip remaining hashtags
+                const cleaned = paragraph
+                  .replace(/^#{1,3}\s+(.+)$/g, '<strong>$1</strong>')
+                  .replace(/#\w+/g, "")
+                  .replace(/\s{2,}/g, " ")
+                  .trim();
                 if (!cleaned) return null;
                 return (
                   <motion.p
