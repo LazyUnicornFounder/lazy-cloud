@@ -103,6 +103,14 @@ const sketches: Record<string, JSX.Element> = {
       <circle cx="85" cy="35" r="4" fill="#f0ead6" stroke="none" />
     </svg>
   ),
+  Code: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M45 40 L25 60 L45 80" />
+      <path d="M75 40 L95 60 L75 80" />
+      <line x1="65" y1="30" x2="55" y2="90" />
+      <circle cx="60" cy="60" r="30" strokeDasharray="4 4" />
+    </svg>
+  ),
   "Coming Soon": (
     <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="60" cy="55" r="25" />
