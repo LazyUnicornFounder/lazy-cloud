@@ -446,6 +446,270 @@ export type Database = {
         }
         Relationships: []
       }
+      stream_clips: {
+        Row: {
+          clip_url: string | null
+          created_at: string
+          duration_seconds: number | null
+          id: string
+          published_at: string | null
+          session_id: string | null
+          thumbnail_url: string | null
+          title: string
+          twitch_clip_id: string
+          view_count: number | null
+        }
+        Insert: {
+          clip_url?: string | null
+          created_at?: string
+          duration_seconds?: number | null
+          id?: string
+          published_at?: string | null
+          session_id?: string | null
+          thumbnail_url?: string | null
+          title: string
+          twitch_clip_id: string
+          view_count?: number | null
+        }
+        Update: {
+          clip_url?: string | null
+          created_at?: string
+          duration_seconds?: number | null
+          id?: string
+          published_at?: string | null
+          session_id?: string | null
+          thumbnail_url?: string | null
+          title?: string
+          twitch_clip_id?: string
+          view_count?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stream_clips_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "stream_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      stream_content: {
+        Row: {
+          body: string
+          content_type: string
+          created_at: string
+          id: string
+          published_at: string | null
+          session_id: string | null
+          slug: string
+          status: string
+          target_keyword: string | null
+          title: string
+          views: number
+        }
+        Insert: {
+          body: string
+          content_type: string
+          created_at?: string
+          id?: string
+          published_at?: string | null
+          session_id?: string | null
+          slug: string
+          status?: string
+          target_keyword?: string | null
+          title: string
+          views?: number
+        }
+        Update: {
+          body?: string
+          content_type?: string
+          created_at?: string
+          id?: string
+          published_at?: string | null
+          session_id?: string | null
+          slug?: string
+          status?: string
+          target_keyword?: string | null
+          title?: string
+          views?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stream_content_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "stream_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      stream_errors: {
+        Row: {
+          created_at: string
+          error_message: string
+          function_name: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          error_message: string
+          function_name: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          error_message?: string
+          function_name?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      stream_optimisation_log: {
+        Row: {
+          content_type: string | null
+          id: string
+          new_template: string | null
+          old_template: string | null
+          optimised_at: string | null
+          trigger_reason: string | null
+        }
+        Insert: {
+          content_type?: string | null
+          id?: string
+          new_template?: string | null
+          old_template?: string | null
+          optimised_at?: string | null
+          trigger_reason?: string | null
+        }
+        Update: {
+          content_type?: string | null
+          id?: string
+          new_template?: string | null
+          old_template?: string | null
+          optimised_at?: string | null
+          trigger_reason?: string | null
+        }
+        Relationships: []
+      }
+      stream_sessions: {
+        Row: {
+          average_viewers: number | null
+          created_at: string
+          duration_minutes: number | null
+          ended_at: string | null
+          game_name: string | null
+          id: string
+          peak_viewers: number | null
+          started_at: string | null
+          status: string
+          title: string
+          twitch_stream_id: string
+        }
+        Insert: {
+          average_viewers?: number | null
+          created_at?: string
+          duration_minutes?: number | null
+          ended_at?: string | null
+          game_name?: string | null
+          id?: string
+          peak_viewers?: number | null
+          started_at?: string | null
+          status?: string
+          title: string
+          twitch_stream_id: string
+        }
+        Update: {
+          average_viewers?: number | null
+          created_at?: string
+          duration_minutes?: number | null
+          ended_at?: string | null
+          game_name?: string | null
+          id?: string
+          peak_viewers?: number | null
+          started_at?: string | null
+          status?: string
+          title?: string
+          twitch_stream_id?: string
+        }
+        Relationships: []
+      }
+      stream_settings: {
+        Row: {
+          business_name: string | null
+          content_niche: string | null
+          created_at: string
+          id: string
+          is_running: boolean
+          recap_template_guidance: string | null
+          setup_complete: boolean
+          site_url: string | null
+          twitch_client_id: string | null
+          twitch_client_secret: string | null
+          twitch_user_id: string | null
+          twitch_username: string | null
+        }
+        Insert: {
+          business_name?: string | null
+          content_niche?: string | null
+          created_at?: string
+          id?: string
+          is_running?: boolean
+          recap_template_guidance?: string | null
+          setup_complete?: boolean
+          site_url?: string | null
+          twitch_client_id?: string | null
+          twitch_client_secret?: string | null
+          twitch_user_id?: string | null
+          twitch_username?: string | null
+        }
+        Update: {
+          business_name?: string | null
+          content_niche?: string | null
+          created_at?: string
+          id?: string
+          is_running?: boolean
+          recap_template_guidance?: string | null
+          setup_complete?: boolean
+          site_url?: string | null
+          twitch_client_id?: string | null
+          twitch_client_secret?: string | null
+          twitch_user_id?: string | null
+          twitch_username?: string | null
+        }
+        Relationships: []
+      }
+      stream_transcripts: {
+        Row: {
+          id: string
+          processed_at: string | null
+          session_id: string | null
+          transcript_text: string
+          word_count: number | null
+        }
+        Insert: {
+          id?: string
+          processed_at?: string | null
+          session_id?: string | null
+          transcript_text: string
+          word_count?: number | null
+        }
+        Update: {
+          id?: string
+          processed_at?: string | null
+          session_id?: string | null
+          transcript_text?: string
+          word_count?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stream_transcripts_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: true
+            referencedRelation: "stream_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       submissions: {
         Row: {
           created_at: string
