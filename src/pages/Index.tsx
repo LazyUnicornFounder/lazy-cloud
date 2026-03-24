@@ -8,7 +8,7 @@ import BlogTicker from "@/components/BlogTicker";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
 const NEW_TITLE = "The Autonomous Layer for Lovable — One Prompt, Everything Runs Itself";
-const NEW_DESCRIPTION = "The autonomous layer for Lovable. One prompt, everything runs itself.";
+const NEW_DESCRIPTION = "The autonomous layer for Lovable. One prompt installs the engine you need — blog posts, SEO, GEO, payments, voice, stores, streams, and more. Everything runs itself.";
 
 const products = [
   { cursive: "Lazy", name: "Blogger", link: "/lazy-blogger", tagline: "Your blog writes itself." },
