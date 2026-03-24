@@ -220,7 +220,7 @@ const Index = () => {
       <Navbar activePage="home" />
 
       {/* Hero */}
-      <header className="relative z-10" style={{ backgroundColor: "#111110" }}>
+      <header className="relative z-10" style={{ backgroundColor: "#0a0a08" }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
