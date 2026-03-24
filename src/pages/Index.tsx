@@ -22,6 +22,36 @@ import { useTrackVisit } from "@/hooks/useTrackVisit";
 import LiveCounter from "@/components/LiveCounter";
 import TotalVisitorCount from "@/components/TotalVisitorCount";
 
+const NEW_TITLE = "The Autonomous Growth Engines for Lovable Websites";
+const NEW_DESCRIPTION = "We build autonomous engines for Lovable that turn your website into a self-growing asset.";
+
+const engines = [
+  {
+    emoji: "✍️",
+    name: "Lazy Blogger",
+    tagline: "The Autonomous Lovable Blog Engine",
+    description: "Publishes high-quality blog posts every day—forever, for free.",
+    link: "/lazy-blogger",
+    color: "from-pink-500/20 to-purple-600/20",
+  },
+  {
+    emoji: "🔍",
+    name: "Lazy SEO",
+    tagline: "The Autonomous Lovable SEO Engine",
+    description: "Discovers keyword opportunities, creates SEO-optimized content, and improves your rankings on autopilot.",
+    link: "/lazy-seo",
+    color: "from-blue-500/20 to-cyan-500/20",
+  },
+  {
+    emoji: "🌐",
+    name: "Lazy GEO",
+    tagline: "The Autonomous Lovable GEO Engine",
+    description: "Gets your brand cited by AI engines like ChatGPT, Claude, and Perplexity by creating citation-ready content and tracking your visibility.",
+    link: "/lazy-geo",
+    color: "from-emerald-500/20 to-teal-500/20",
+  },
+];
+
 const Index = () => {
   useTrackVisit();
   const location = useLocation();
@@ -63,22 +93,19 @@ const Index = () => {
     }
   });
 
-  const scrollToLaunch = () => {
-    const el = document.querySelector("#launch");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div className="min-h-screen text-foreground relative">
       <SEO
+        title={NEW_TITLE}
         url="/"
-        description="The solo founder's guide to building an autonomous unicorn. Discover AI tools and resources to build a startup that builds itself."
-        keywords="autonomous business, autonomous company, self-building startup, solo founder, one person business, AI agents for business, autonomous unicorn, build a business with AI, run a business with AI, no code business, AI startup tools, solo founder tools, passive income AI, autonomous SaaS, self-running business, AI business automation, solo founder unicorn, build without a team, AI powered business, business that runs itself, autonomous business software, vibe coding business, Lovable startup, build on Lovable, self-growing business, recursive startup, AI company builder, solo CEO, no code startup, AI team replacement, autonomous marketing, business automation tools, solo founder stack, AI founder tools, AI business tools 2026, autonomous business platform, self-operating business, AI employees"
+        description={NEW_DESCRIPTION}
+        keywords="autonomous blog engine, autonomous SEO engine, autonomous GEO engine, Lovable website growth, AI blog writer, AI SEO tool, AI citation engine, self-growing website, autonomous content, Lovable startup, solo founder tools, AI business automation, autonomous marketing, self-building startup"
         breadcrumbs={[{ name: "Home", url: "/" }]}
         faq={[
-          { question: "What is Lazy Unicorn?", answer: "Lazy Unicorn is the definitive directory of AI tools and resources for solo founders building autonomous startups — companies that design, ship, and scale themselves with AI agents." },
-          { question: "What is an autonomous startup?", answer: "An autonomous startup is a company that runs itself using AI agents and automation tools. The founder provides the vision while AI handles operations, content, distribution, and scaling." },
-          { question: "How do I list my startup on Lazy Unicorn?", answer: "You can submit your AI tool or autonomous company platform to the Lazy Unicorn directory for free. Your listing will be manually reviewed and approved." },
+          { question: "What are the Autonomous Growth Engines?", answer: "They are three AI-powered engines — Lazy Blogger, Lazy SEO, and Lazy GEO — that autonomously grow your Lovable website by publishing content, optimizing for search, and getting your brand cited by AI assistants." },
+          { question: "How does Lazy Blogger work?", answer: "With a single prompt, Lazy Blogger publishes high-quality blog posts every day on your Lovable website — forever, for free." },
+          { question: "What does Lazy SEO do?", answer: "Lazy SEO discovers keyword opportunities, creates SEO-optimized content, and improves your search rankings on autopilot." },
+          { question: "What is Lazy GEO?", answer: "Lazy GEO gets your brand cited by AI engines like ChatGPT, Claude, and Perplexity by creating citation-ready content and tracking your visibility." },
         ]}
         speakable={["h1", ".hero-description"]}
       />
@@ -88,7 +115,7 @@ const Index = () => {
           "@type": "WebSite",
           "name": "Lazy Unicorn",
           "url": "https://www.lazyunicorn.ai",
-          "description": "Discover AI tools for solo founders to build autonomous startups. The definitive directory of autonomous company builders.",
+          "description": NEW_DESCRIPTION,
           "image": "https://www.lazyunicorn.ai/og-image.png",
           "potentialAction": {
             "@type": "SearchAction",
@@ -130,16 +157,14 @@ const Index = () => {
 
       <Navbar activePage="home" />
 
-      {/* Hero — full viewport, architectural feel */}
+      {/* Hero */}
       <header className="relative z-10 min-h-screen flex flex-col justify-center items-start px-4 sm:px-8 md:px-12 pb-16">
         <div className="flex flex-col md:flex-row md:items-end md:gap-6 w-full">
-          {/* Entrance sign + Hero box wrapper */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
             className="flex flex-col items-center">
-            
             
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -147,14 +172,13 @@ const Index = () => {
               transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-[-1px] relative z-10 flex flex-col items-center">
               
-              {/* Total visitor counter pill */}
               <div className="mb-[-1px] relative z-10">
                 <TotalVisitorCount />
               </div>
 
               <div className="bg-transparent backdrop-blur-xl border border-primary/20 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
                 <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
-                  Autonomous capitalism for the rest of us
+                  Autonomous growth for Lovable
                 </p>
                 <p className="font-body text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-foreground/60 text-center mt-1">
                   ★  EST. 2026  ★
@@ -164,29 +188,98 @@ const Index = () => {
 
             <div className="bg-transparent backdrop-blur-xl rounded-3xl px-5 sm:px-8 md:px-10 py-8 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
               <h1 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[0.95] text-foreground">
-                The solo founder's
+                The Autonomous
                 <br />
-                guide to building an
+                Growth Engines for
                 <br />
-                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">autonomous unicorn.</span>
+                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Lovable Websites.</span>
               </h1>
               <p className="hero-description font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-xl leading-relaxed">
-                Discover AI tools and resources to build a startup that builds itself, and follow my journey as I attempt to build Lazy Unicorn into an autonomous unicorn, using Lovable—as a solo founder.
+                We build autonomous engines for Lovable that turn your website into a self-growing asset.
               </p>
               <div className="flex items-center gap-3 mt-6">
-                <Link to="/guide"
-                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]">
-                  See the Guide
-                </Link>
+                <a
+                  href="#engines"
+                  className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]">
+                  See the Engines
+                </a>
               </div>
             </div>
           </motion.div>
-
         </div>
-
-
       </header>
 
+      {/* How it works intro */}
+      <section className="relative z-10 px-8 md:px-12 pt-16 pb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl"
+        >
+          <p className="font-body text-base sm:text-lg md:text-xl text-foreground/50 leading-relaxed max-w-2xl">
+            With a single prompt, your site can write content, optimize itself for search, and distribute that content across the internet—automatically, continuously, and at scale.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* Engine Cards */}
+      <section id="engines" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl">
+          {engines.map((engine, i) => (
+            <motion.div
+              key={engine.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.12 }}
+            >
+              <Link
+                to={engine.link}
+                className="group block bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] hover:border-primary/40 transition-all duration-300 h-full"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${engine.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl`} />
+                <div className="relative z-10">
+                  <span className="text-4xl mb-4 block">{engine.emoji}</span>
+                  <p className="font-display text-xl md:text-2xl font-extrabold text-foreground mb-1">
+                    {engine.name}
+                  </p>
+                  <p className="font-body text-[10px] tracking-[0.15em] uppercase text-primary/70 mb-4">
+                    {engine.tagline}
+                  </p>
+                  <p className="font-body text-sm text-foreground/50 leading-relaxed mb-6">
+                    {engine.description}
+                  </p>
+                  <span className="inline-block font-body text-[11px] tracking-[0.15em] uppercase text-primary font-semibold group-hover:translate-x-1 transition-transform">
+                    Learn more →
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Compounding statement */}
+      <section className="relative z-10 px-8 md:px-12 pb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
+        >
+          <p className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-foreground leading-snug mb-4">
+            Together, they replace manual work with autonomous growth.
+          </p>
+          <p className="font-body text-base text-foreground/50 leading-relaxed">
+            So your Lovable website doesn't just exist — it compounds.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* ─── Existing content below ─── */}
 
       {/* Guide Preview */}
       <section className="relative z-10 px-8 md:px-12 pt-16 pb-16">
@@ -318,7 +411,6 @@ const Index = () => {
         </motion.div>
       </section>
 
-
       {/* Blog CTA */}
       <section className="relative z-10 px-8 md:px-12 pb-16">
         <motion.div
@@ -346,32 +438,6 @@ const Index = () => {
               ✍️ Build your own blog →
             </Link>
           </div>
-
-          {/* Lazy Blogger promo block */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-8 p-5 rounded-2xl border border-accent/20 bg-accent/5"
-          >
-            <div className="flex items-start gap-3">
-              <span className="text-2xl shrink-0">🤖</span>
-              <div>
-                <p className="font-display text-sm font-bold text-foreground/80 mb-1">
-                  Lazy Blogger — Autonomous Blog Engine
-                </p>
-                <p className="font-body text-xs text-foreground/50 leading-relaxed mb-3">
-                  Publish up to 32 SEO-optimized blog posts per day on your Lovable project — fully automated. One prompt. Zero maintenance.
-                </p>
-                <Link
-                  to="/lazy-blogger"
-                  className="inline-block font-body text-[10px] tracking-[0.15em] uppercase text-accent font-semibold hover:text-primary transition-colors">
-                  Learn more about Lazy Blogger →
-                </Link>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </section>
 
@@ -453,19 +519,6 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-      {/* Valuation Breakdown - hidden for now */}
-      {/* <section className="relative z-10 px-8 md:px-12 pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-sm bg-transparent backdrop-blur-xl rounded-2xl px-6 py-6 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
-          <ValuationBreakdown />
-        </motion.div>
-      </section> */}
-
-      {/* <PitchDeck /> */}
 
       {/* Footer */}
       <footer className="relative z-10 px-8 md:px-12 py-8 pb-20 border-t border-foreground/10">
