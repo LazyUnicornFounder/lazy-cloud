@@ -16,6 +16,8 @@ const engineCategories = [
       { name: "GEO", href: "/lazy-geo" },
       { name: "Voice", href: "/lazy-voice" },
       { name: "Contentful", href: "/lazy-contentful" },
+      { name: "Stream", href: "/lazy-stream" },
+      { name: "Perplexity", href: "/lazy-perplexity" },
     ],
   },
   {
@@ -44,18 +46,6 @@ const engineCategories = [
     items: [
       { name: "Alert", href: "/lazy-alert" },
       { name: "Linear", href: "/lazy-linear" },
-    ],
-  },
-  {
-    label: "Platforms",
-    items: [
-      { name: "Stream", href: "/lazy-stream" },
-    ],
-  },
-  {
-    label: "Intelligence",
-    items: [
-      { name: "Perplexity", href: "/lazy-perplexity" },
       { name: "Supabase", href: "/lazy-supabase" },
     ],
   },

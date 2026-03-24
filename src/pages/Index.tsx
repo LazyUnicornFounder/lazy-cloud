@@ -15,6 +15,8 @@ const products = [
   { cursive: "Lazy", name: "GEO", link: "/lazy-geo", tagline: "Get cited by AI." },
   { cursive: "Lazy", name: "Voice", link: "/lazy-voice", tagline: "Every post, narrated." },
   { cursive: "Lazy", name: "Contentful", link: "/lazy-contentful", tagline: "Two-way CMS sync." },
+  { cursive: "Lazy", name: "Stream", link: "/lazy-stream", tagline: "Streams become content." },
+  { cursive: "Lazy", name: "Perplexity", link: "/lazy-perplexity", tagline: "Research-backed content." },
   { cursive: "Lazy", name: "Store", link: "/lazy-store", tagline: "A store that runs itself." },
   { cursive: "Lazy", name: "Pay", link: "/lazy-pay", tagline: "Payments that optimise." },
   { cursive: "Lazy", name: "GitHub", link: "/lazy-code", tagline: "Commits become changelogs." },
@@ -23,8 +25,6 @@ const products = [
   { cursive: "Lazy", name: "Telegram", link: "/lazy-telegram", tagline: "Your business in Telegram." },
   { cursive: "Lazy", name: "Alert", link: "/lazy-alert", tagline: "Your business in your Slack." },
   { cursive: "Lazy", name: "Linear", link: "/lazy-linear", tagline: "Issues become changelogs." },
-  { cursive: "Lazy", name: "Stream", link: "/lazy-stream", tagline: "Streams become content." },
-  { cursive: "Lazy", name: "Perplexity", link: "/lazy-perplexity", tagline: "Research-backed content." },
   { cursive: "Lazy", name: "Supabase", link: "/lazy-supabase", tagline: "Your database tells its story." },
   { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More engines loading." },
 ];

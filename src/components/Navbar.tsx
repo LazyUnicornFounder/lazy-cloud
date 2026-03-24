@@ -114,6 +114,8 @@ const categories: { label: string; items: { label: string; href: string; tagline
       { label: "GEO", href: "/lazy-geo", tagline: "Get cited by AI.", icon: icons.geo },
       { label: "Voice", href: "/lazy-voice", tagline: "Every post, narrated.", icon: icons.voice },
       { label: "Contentful", href: "/lazy-contentful", tagline: "Two-way CMS sync.", icon: icons.contentful },
+      { label: "Stream", href: "/lazy-stream", tagline: "Streams become content.", icon: icons.stream },
+      { label: "Perplexity", href: "/lazy-perplexity", tagline: "Research-backed content.", icon: icons.perplexity },
     ],
   },
   {
@@ -142,18 +144,6 @@ const categories: { label: string; items: { label: string; href: string; tagline
     items: [
       { label: "Alert", href: "/lazy-alert", tagline: "Your business in Slack.", icon: icons.alert },
       { label: "Linear", href: "/lazy-linear", tagline: "Issues become changelogs.", icon: icons.linear },
-    ],
-  },
-  {
-    label: "Platforms",
-    items: [
-      { label: "Stream", href: "/lazy-stream", tagline: "Streams become content.", icon: icons.stream },
-    ],
-  },
-  {
-    label: "Intelligence",
-    items: [
-      { label: "Perplexity", href: "/lazy-perplexity", tagline: "Research-backed content.", icon: icons.perplexity },
       { label: "Supabase", href: "/lazy-supabase", tagline: "Database tells its story.", icon: icons.supabase },
     ],
   },
