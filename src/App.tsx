@@ -67,6 +67,7 @@ const App = () => (
               <Route path="pay" element={<AdminPlaceholderPage name="Lazy Pay" />} />
               <Route path="sms" element={<AdminPlaceholderPage name="Lazy SMS" />} />
               <Route path="stream" element={<AdminStreamPage />} />
+              <Route path="code" element={<AdminPlaceholderPage name="Lazy Code" />} />
               <Route path="settings" element={<AdminSettingsPage />} />
             </Route>
             <Route path="/blog" element={<Blog />} />

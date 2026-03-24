@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import {
   LayoutDashboard, PenTool, Search, Brain, ShoppingCart,
-  Mic, CreditCard, MessageSquare, Tv, Settings, Menu, X,
+  Mic, CreditCard, MessageSquare, Tv, Code, Settings, Menu, X,
 } from "lucide-react";
 
 const db = supabase as any;
@@ -19,6 +19,7 @@ const navItems = [
   { label: "Lazy Pay", path: "/admin/pay", icon: CreditCard, engine: "pay" },
   { label: "Lazy SMS", path: "/admin/sms", icon: MessageSquare, engine: "sms" },
   { label: "Lazy Stream", path: "/admin/stream", icon: Tv, engine: "stream" },
+  { label: "Lazy Code", path: "/admin/code", icon: Code, engine: "code" },
   { label: "Settings", path: "/admin/settings", icon: Settings, engine: null },
 ];
 
@@ -70,6 +71,7 @@ export default function AdminLayout() {
       status.store = { running: false, hasErrors: false };
       status.pay = { running: false, hasErrors: false };
       status.sms = { running: false, hasErrors: false };
+      status.code = { running: false, hasErrors: false };
 
       return status;
     },
