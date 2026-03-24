@@ -17,6 +17,13 @@ const PRODUCTS = [
   "lazy-code",
   "lazy-sms",
   "lazy-pay",
+  "lazy-alert",
+  "lazy-gitlab",
+  "lazy-supabase",
+  "lazy-telegram",
+  "lazy-linear",
+  "lazy-contentful",
+  "lazy-perplexity",
 ];
 
 // Each product gets SEO then GEO, so total slots = products * 2
