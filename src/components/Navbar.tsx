@@ -265,6 +265,9 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
               <CategoryDropdown key={cat.label} label={cat.label} items={cat.items} />
             ))}
 
+            <a href="/autonomy" className={`font-body text-[11px] tracking-[0.15em] uppercase font-bold transition-colors ${activePage === "autonomy" ? "text-foreground" : "text-foreground/50 hover:text-foreground"}`}>
+              Autonomy
+            </a>
             <a href="/pricing" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
               Pricing
             </a>
@@ -339,6 +342,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
               ))}
 
               {[
+                { label: "Autonomy", href: "/autonomy" },
                 { label: "Pricing", href: "/pricing" },
                 { label: "Blog", href: "/blog" },
                 { label: "About", href: "/about" },
