@@ -133,15 +133,20 @@ const categories: { label: string; items: { label: string; href: string; tagline
     label: "Messaging",
     items: [
       { label: "SMS", href: "/lazy-sms", tagline: "Texts that convert.", icon: icons.sms },
-      { label: "Alert", href: "/lazy-alert", tagline: "Your business in Slack.", icon: icons.alert },
       { label: "Telegram", href: "/lazy-telegram", tagline: "Your business in Telegram.", icon: icons.telegram },
+    ],
+  },
+  {
+    label: "Ops",
+    items: [
+      { label: "Alert", href: "/lazy-alert", tagline: "Your business in Slack.", icon: icons.alert },
+      { label: "Linear", href: "/lazy-linear", tagline: "Issues become changelogs.", icon: icons.linear },
     ],
   },
   {
     label: "Platforms",
     items: [
       { label: "Stream", href: "/lazy-stream", tagline: "Streams become content.", icon: icons.stream },
-      { label: "Linear", href: "/lazy-linear", tagline: "Issues become changelogs.", icon: icons.linear },
       { label: "Contentful", href: "/lazy-contentful", tagline: "Two-way CMS sync.", icon: icons.contentful },
     ],
   },
