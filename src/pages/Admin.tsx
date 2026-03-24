@@ -282,6 +282,14 @@ const Admin = () => {
         >
           Prompts
         </button>
+        <button
+          onClick={() => setActiveTab("agent")}
+          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
+            activeTab === "agent" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          🤖 Ops Agent
+        </button>
       </div>
 
       {loading && <p className="font-body text-sm text-muted-foreground">Loading…</p>}
