@@ -22,6 +22,7 @@ import LazySeoPage from "./pages/LazySeoPage.tsx";
 import LazySeoSetup from "./pages/LazySeoSetup.tsx";
 import LazySeoDashboard from "./pages/LazySeoDashboard.tsx";
 import LazyGeoPage from "./pages/LazyGeoPage.tsx";
+import LazyShopperPage from "./pages/LazyShopperPage.tsx";
 
 const queryClient = new QueryClient();
 
