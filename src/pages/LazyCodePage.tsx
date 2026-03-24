@@ -325,7 +325,7 @@ const LazyCodePage = () => {
       <section id="how-it-works" className="py-20 md:py-28 px-6 border-t border-border">
         <div className="max-w-5xl mx-auto">
           <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-2xl md:text-3xl font-bold tracking-tight text-center mb-14">
-            Push to GitHub. Lazy Code handles the rest.
+            Push to GitHub. Lazy GitHub handles the rest.
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {steps.map((step, i) => (
