@@ -410,37 +410,8 @@ const LazyStorePage = () => {
           </div>
         </section>
 
-        {/* ── Pricing ── */}
-        <section className="max-w-3xl mx-auto px-6 mb-24">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-10">
-            What does it cost?
-          </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Free */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="font-display text-lg font-bold text-foreground mb-1">Free</h3>
-              <p className="font-display text-3xl font-extrabold text-foreground mb-4">$0</p>
-              <ul className="space-y-2 font-body text-sm text-muted-foreground">
-                <li>✓ The Lovable setup prompt</li>
-                <li>✓ Self-hosted in your existing project</li>
-                <li>✓ Bring your own Anthropic API key</li>
-              </ul>
-            </motion.div>
-            {/* Pro */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.08 }} className="rounded-2xl border-2 border-primary/50 bg-card p-6 relative overflow-hidden">
-              <span className="absolute top-3 right-3 bg-primary/20 text-primary text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 rounded-full">
-                Coming Soon
-              </span>
-              <h3 className="font-display text-lg font-bold text-foreground mb-1">Pro</h3>
-              <p className="font-display text-3xl font-extrabold text-foreground mb-4">$49<span className="text-base font-normal text-muted-foreground">/mo</span></p>
-              <ul className="space-y-2 font-body text-sm text-muted-foreground">
-                <li>✓ Hosted version — no API key needed</li>
-                <li>✓ Supplier integrations</li>
-                <li>✓ Advanced conversion analytics</li>
-              </ul>
-            </motion.div>
-          </div>
-        </section>
+
+
 
         {/* ── FAQ ── */}
         <section className="max-w-2xl mx-auto px-6 mb-24">
