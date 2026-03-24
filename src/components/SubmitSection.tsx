@@ -58,7 +58,6 @@ const SubmitSection = () => {
       setErrors({ name: "Something went wrong. Please try again." });
       return;
     }
-    // We can't read back the id due to RLS, so use slug for checkout
     setSubmissionId(submissionSlug);
     setSubmitted(true);
   };
@@ -81,13 +80,13 @@ const SubmitSection = () => {
   };
 
   return (
-    <section id="launch" className="relative z-10 px-8 md:px-12 pb-32 scroll-mt-24">
-      <div className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
+    <section id="launch" className="scroll-mt-24">
+      <div className="max-w-2xl border border-border bg-card px-8 py-10">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-body text-[11px] tracking-[0.2em] uppercase text-foreground/60 mb-4"
+          className="font-body text-[11px] tracking-[0.2em] uppercase text-foreground/40 mb-4"
         >
           Submit
         </motion.p>
@@ -96,11 +95,11 @@ const SubmitSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-[1] text-foreground mb-4"
+          className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight leading-[1] text-foreground mb-4"
         >
           Add your autonomous startup to the directory.
         </motion.h2>
-        <p className="font-body text-sm text-foreground/50 leading-relaxed mb-8">
+        <p className="font-body text-sm text-foreground/40 leading-relaxed mb-8">
           Are you building a startup that helps people build autonomous startups? Get featured in the Directory.
         </p>
 
@@ -112,23 +111,23 @@ const SubmitSection = () => {
           >
             <div>
               <p className="font-body text-foreground text-lg font-medium">Thanks for submitting! 🎉</p>
-              <p className="font-body text-muted-foreground text-sm mt-1">
+              <p className="font-body text-foreground/40 text-sm mt-1">
                 Your startup is under review.
               </p>
             </div>
 
-            <div className="bg-primary/5 border border-primary/20 rounded-xl p-5 text-left">
+            <div className="border border-border bg-background p-5 text-left">
               <div className="flex items-center gap-2 mb-2">
-                <Sparkles size={16} className="text-primary" />
+                <Sparkles size={16} className="text-foreground/60" />
                 <p className="font-display text-sm font-bold text-foreground">Get a Pro Listing — $5/mo</p>
               </div>
-              <p className="font-body text-xs text-muted-foreground leading-relaxed mb-4">
+              <p className="font-body text-xs text-foreground/40 leading-relaxed mb-4">
                 Unlock your own product page with full description, features list, screenshots, and a "Pro" badge in the directory.
               </p>
               <button
                 onClick={handleUpgrade}
                 disabled={checkoutLoading}
-                className="w-full bg-primary text-primary-foreground font-body font-semibold text-sm py-2.5 rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="w-full bg-foreground text-background font-body font-semibold text-sm py-2.5 hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 {checkoutLoading ? "Redirecting to checkout…" : "Upgrade to Pro →"}
               </button>
@@ -142,7 +141,7 @@ const SubmitSection = () => {
               { key: "tagline" as const, label: "Tagline", placeholder: "What does this company do?" },
             ]).map(({ key, label, placeholder }) => (
               <div key={key}>
-                <label className="font-body text-xs font-medium text-muted-foreground uppercase tracking-wider block mb-1.5">
+                <label className="font-body text-xs font-medium text-foreground/40 uppercase tracking-wider block mb-1.5">
                   {label}
                 </label>
                 <input
@@ -150,7 +149,7 @@ const SubmitSection = () => {
                   value={form[key]}
                   onChange={(e) => handleChange(key, e.target.value)}
                   placeholder={placeholder}
-                  className="w-full font-body text-sm bg-background/40 border border-foreground/10 rounded-lg px-3 py-2.5 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
+                  className="w-full font-body text-sm bg-background border border-border px-3 py-2.5 text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground/30 transition-all"
                 />
                 {errors[key] && (
                   <p className="font-body text-xs text-destructive mt-1">{errors[key]}</p>
@@ -160,7 +159,7 @@ const SubmitSection = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-primary text-primary-foreground font-body font-semibold text-sm py-2.5 rounded-full hover:opacity-90 transition-opacity mt-2 disabled:opacity-50"
+              className="w-full bg-foreground text-background font-body font-semibold text-sm py-2.5 hover:opacity-90 transition-opacity mt-2 disabled:opacity-50"
             >
               {loading ? "Submitting…" : "Submit Company"}
             </button>
