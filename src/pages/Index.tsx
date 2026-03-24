@@ -37,7 +37,7 @@ const engines = [
   {
     emoji: "🔍",
     name: "Lazy SEO",
-    tagline: "The Autonomous Lovable SEO Engine",
+    tagline: "Lazy SEO — Autonomous SEO Engine for Lovable",
     description: "Discovers keyword opportunities, creates SEO-optimized content, and improves your rankings on autopilot.",
     link: "/lazy-seo",
     color: "from-blue-500/20 to-cyan-500/20",
