@@ -192,10 +192,10 @@ const Index = () => {
                 <br />
                 Publishing every day.
                 <br />
-                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Without you.</span>
+                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Growing forever.</span>
               </h1>
               <p className="hero-description font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-2xl leading-relaxed">
-                Lazy Unicorn builds autonomous growth tools for your Lovable website or app. With Lazy Blogger, Lazy SEO and Lazy GEO, just drop a prompt into your existing Lovable project and your site starts publishing, ranking, and compounding autonomously— without you touching anything after setup.
+                One prompt turns your Lovable site into a content machine that ranks and compounds forever. <a href="/lazy-blogger" className="text-primary hover:underline">Lazy Blogger</a> publishes daily. <a href="/lazy-seo" className="text-primary hover:underline">Lazy SEO</a> targets your keywords. <a href="/lazy-geo" className="text-primary hover:underline">Lazy GEO</a> gets you into AI answers. Free at <a href="https://www.lazyunicorn.ai" className="text-primary hover:underline">LazyUnicorn.ai</a>.
               </p>
               <div className="flex items-center gap-3 mt-6">
                 <a
