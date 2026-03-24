@@ -96,7 +96,7 @@ function PromptBlock({ title, version, prompt, defaultOpen = false }: { title: s
 const AdminPrompts = () => {
   const bloggerPrompts = frequencyTiers.map((tier) => ({
     title: `Lazy Blogger — ${tier.postsPerDay} posts/day`,
-    version: "v1 — Current",
+    version: `${BLOGGER_VERSION} — ${BLOGGER_VERSION_DATE}`,
     prompt: buildPrompt(tier),
   }));
 
