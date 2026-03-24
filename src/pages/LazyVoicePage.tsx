@@ -182,7 +182,7 @@ const faqs = [
 ];
 
 export default function LazyVoicePage() {
-  const { trackEvent } = useTrackEvent();
+  const trackEvent = useTrackEvent();
 
   useEffect(() => {
     trackEvent("page_view", { page: "/lazy-voice" });
