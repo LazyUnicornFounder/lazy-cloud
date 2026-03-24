@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Search, Zap, Settings, ExternalLink, AlertTriangle, Pencil, Check, X } from "lucide-react";
 
 /* ── Inline-editable field ── */
-function EditableField({ label, value, onSave }: { label: string; value: string; onSave: (v: string) => Promise<void> }) {
+function EditableField({ label, value, onSave, prose = false }: { label: string; value: string; onSave: (v: string) => Promise<void>; prose?: boolean }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(value);
   const [saving, setSaving] = useState(false);
@@ -19,7 +19,6 @@ function EditableField({ label, value, onSave }: { label: string; value: string;
 
   const cancel = () => { setDraft(value); setEditing(false); };
 
-  // Sync if parent value changes
   useEffect(() => { if (!editing) setDraft(value); }, [value, editing]);
 
   if (editing) {
@@ -29,7 +28,7 @@ function EditableField({ label, value, onSave }: { label: string; value: string;
         <textarea
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
-          rows={2}
+          rows={prose ? 4 : 2}
           className="w-full font-body text-sm bg-background border border-primary/40 rounded-lg px-3 py-2 text-foreground focus:outline-none focus:border-primary resize-none"
           autoFocus
         />
@@ -41,6 +40,18 @@ function EditableField({ label, value, onSave }: { label: string; value: string;
             <X size={12} /> Cancel
           </button>
         </div>
+      </div>
+    );
+  }
+
+  if (prose) {
+    return (
+      <div className="group cursor-pointer" onClick={() => setEditing(true)}>
+        <div className="flex items-center gap-1.5 mb-1">
+          <span className="font-body text-xs text-muted-foreground">{label}</span>
+          <Pencil size={10} className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+        </div>
+        <p className="font-body text-sm text-foreground leading-relaxed line-clamp-3">{value || <span className="text-muted-foreground italic">Not set</span>}</p>
       </div>
     );
   }
@@ -247,6 +258,16 @@ const AdminSeo = () => {
               <p className="font-display text-2xl font-bold text-foreground">{settings?.is_running ? "🟢 Running" : "⏸️ Paused"}</p>
               <p className="font-body text-xs text-muted-foreground">Engine Status</p>
             </div>
+          </div>
+
+          {/* Business description — editable */}
+          <div className="border border-border rounded-xl bg-card p-3">
+            <EditableField
+              label="Business Description"
+              value={settings?.business_description || ""}
+              onSave={(v) => updateField("business_description", v)}
+              prose
+            />
           </div>
 
           {/* Stats row 2 — editable settings */}
