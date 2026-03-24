@@ -37,6 +37,7 @@ import LazyContentfulPage from "./pages/LazyContentfulPage.tsx";
 import LazyPerplexityPage from "./pages/LazyPerplexityPage.tsx";
 import PricingPage from "./pages/PricingPage.tsx";
 import AutonomyPage from "./pages/AutonomyPage.tsx";
+import LazySecurityPage from "./pages/LazySecurityPage.tsx";
 import PublicLayout from "./components/PublicLayout.tsx";
 
 import AdminLayout from "./pages/admin/AdminLayout.tsx";
