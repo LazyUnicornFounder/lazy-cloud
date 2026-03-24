@@ -5,30 +5,13 @@ import FlyingSeoCards from "@/components/lazy-seo/FlyingSeoCards";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
+import { useCurrentPrompt } from "@/hooks/usePrompt";
 import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-export const SEO_VERSION = "v2.1";
-export const SEO_VERSION_DATE = "24 March 2026";
-
-const SEO_PROMPT = `[Lazy SEO Prompt — ${SEO_VERSION} — ${SEO_VERSION_DATE}]
-
-Add a Lazy SEO engine to this project. It automatically discovers keyword opportunities and publishes SEO-optimised blog posts. All pages are admin-only — nothing is added to the public site navigation.
-
-1. Database Create a Supabase table called seo_settings with fields: id (uuid, primary key), site_url (text), business_description (text), target_keywords (text), competitors (text), posts_per_day (integer, default 2), is_running (boolean, default true). Create a Supabase table called seo_posts with fields: id (uuid, primary key, default gen_random_uuid()), title (text), slug (text, unique), body (text), target_keyword (text), published_at (timestamptz, default now()), status (text, default 'published'). Create a Supabase table called seo_keywords with fields: id (uuid, primary key, default gen_random_uuid()), keyword (text), has_content (boolean, default false), priority (integer, default 0), created_at (timestamptz, default now()). Create a Supabase table called seo_errors with fields: id (uuid, primary key, default gen_random_uuid()), error_message (text), created_at (timestamptz, default now()).
-
-2. Admin panel If this project already has an admin page, add a Lazy SEO section inside it. If no admin page exists, create one at /admin. The Lazy SEO section has two tabs: Setup and Dashboard. Do not add any link to this page in the public navigation.
-
-Setup tab contains a form with five fields: Site URL, Business description, Target keywords (comma separated), Competitors (up to three URLs — comma separated), Posts per day (select: 1 / 2 / 4). A submit button labelled 'Save and Start'. On submit save to seo_settings. Show success message: 'Lazy SEO is running.'
-
-Dashboard tab shows: total posts published, total keywords discovered, total keywords with content, keywords remaining. A keyword table showing all rows from seo_keywords with columns: keyword, priority, has content, created date. A posts table showing the last 20 rows from seo_posts with columns: title, target keyword, published date, status. A toggle to pause or resume updating is_running. A button labelled 'Discover Keywords Now' triggering lazy-seo-discover. A button labelled 'Publish One Now' triggering lazy-seo-publish. An error count from seo_errors with a button to view them.
-
-3. Edge functions Create a Supabase edge function called lazy-seo-discover that runs every Monday at 6am UTC. Reads seo_settings. Uses the built-in Lovable AI with this prompt: 'You are an SEO strategist. For a site described as [business_description] targeting these topics: [target_keywords] and competing with: [competitors] — generate 20 specific long-tail keyword phrases this site should be ranking for on Google. Each keyword should have clear search intent and be specific enough for a focused 1000-word article. Return only a valid JSON array where each item has two fields: keyword (string) and priority (integer 1 to 10). No preamble. No code fences. Valid JSON only.' Parse the response. Insert new keywords into seo_keywords skipping any that already exist.
-
-Create a Supabase edge function called lazy-seo-publish that runs based on posts_per_day — if 1 run at 8am UTC, if 2 run at 8am and 6pm UTC, if 4 run at 6am, 12pm, 6pm, and 11pm UTC. On each run read seo_settings. If is_running is false exit. Select the highest priority keyword from seo_keywords where has_content is false. If none remain trigger lazy-seo-discover and exit. Use the built-in Lovable AI with this prompt: 'You are an SEO content writer for a site described as: [business_description]. Write an SEO-optimised article targeting this keyword: [target_keyword]. Return only a valid JSON object with no preamble and no code fences with exactly four fields: title (string naturally including the keyword), slug (lowercase hyphenated string), excerpt (one sentence under 160 characters including the keyword), body (clean markdown — no HTML, no bullet points in prose, ## for headers, 1000 to 1500 words, keyword appears naturally throughout at 1 to 2 percent density, keyword in first paragraph and at least one ## header, ends with a call to action paragraph followed by exactly this: Looking for more tools to build and run your business autonomously? LazyUnicorn.ai is the definitive directory of AI tools for solo founders — link LazyUnicorn.ai to https://lazyunicorn.ai and Lazy SEO to https://lazyunicorn.ai/lazy-seo). Return only valid JSON.' Parse the response. If parsing fails retry once. If it fails again log to seo_errors and exit. Check for duplicate slug — append random four digits if exists. Insert into seo_posts. Update has_content to true for the targeted keyword.
-
-4. Public blog The generated posts are stored in seo_posts and are available at /blog/[slug] if a blog already exists on this project. If no blog exists do not create one — just store posts in the database. Do not add anything to the public navigation.`;
+// Fallback prompt in case DB hasn't loaded yet
+const FALLBACK_SEO_PROMPT = "Loading prompt…";
 
 const steps = [
   "Click the button above to copy the Lovable prompt.",
@@ -37,16 +20,16 @@ const steps = [
   "Lazy SEO discovers keywords and starts publishing daily.",
 ];
 
-function CopyPromptButton({ className = "", onCopy }: { className?: string; onCopy: () => void }) {
+function CopyPromptButton({ className = "", onCopy, promptText }: { className?: string; onCopy: () => void; promptText: string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = useCallback(async () => {
-    await navigator.clipboard.writeText(SEO_PROMPT);
+    await navigator.clipboard.writeText(promptText);
     setCopied(true);
     onCopy();
     toast.success("Copied! Paste this into your Lovable project chat.");
     setTimeout(() => setCopied(false), 2500);
-  }, [onCopy]);
+  }, [onCopy, promptText]);
 
   return (
     <button
