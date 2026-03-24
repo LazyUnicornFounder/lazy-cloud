@@ -247,10 +247,10 @@ const Index = () => {
             </p>
           </div>
 
-          {/* Headline */}
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.85rem, 1.8vw, 1.1rem)", color: "#f0ead6", opacity: 0.4 }}>
+          {/* Tagline */}
+          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
             The autonomous🤖 half of Lovable❤️
-          </h1>
+          </p>
 
           {/* Body */}
           <div className="max-w-xl space-y-4 mt-2">
