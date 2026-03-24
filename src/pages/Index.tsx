@@ -6,8 +6,8 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
-const NEW_TITLE = "Drive Traffic Automatically to Your Lovable Website or App";
-const NEW_DESCRIPTION = "We build autonomous engines for Lovable that turn your website into a self-growing asset.";
+const NEW_TITLE = "The Autonomous Layer for Lovable — One Prompt, Everything Runs Itself";
+const NEW_DESCRIPTION = "The autonomous layer for Lovable. One prompt, everything runs itself.";
 
 const products = [
   { cursive: "Lazy", name: "Blogger", link: "/lazy-blogger", tagline: "Your blog writes itself." },
