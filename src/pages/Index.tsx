@@ -227,18 +227,18 @@ const Index = () => {
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center px-6 max-w-3xl"
         >
-          <p className="mb-4 text-sm sm:text-base tracking-wide" style={{ color: "#f0ead6", opacity: 0.5 }}>
+          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.85rem, 1.8vw, 1.1rem)", color: "#f0ead6", opacity: 0.45, fontStyle: "italic", letterSpacing: "0.02em" }}>
             Lovable gave everyone a site. Lazy Unicorn🦄 makes it work while you sleep.
           </p>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+          <h1 className="mt-5" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1.1 }}>
             The autonomous🤖
             <br />
             half of Lovable❤️
           </h1>
-          <p className="mt-4 font-body text-base sm:text-lg tracking-wide" style={{ color: "#f0ead6", opacity: 0.5 }}>
+          <p className="mt-5" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.9rem, 1.8vw, 1.15rem)", color: "#f0ead6", opacity: 0.5, letterSpacing: "0.02em" }}>
             One prompt, everything runs itself.
           </p>
-          <p className="hero-description mt-6 text-sm sm:text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.6 }}>
+          <p className="hero-description mt-8 text-sm sm:text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.6 }}>
             Paste one prompt. Your Lovable site starts running itself.
           </p>
           <p className="mt-4 text-sm sm:text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.6 }}>
