@@ -11,42 +11,42 @@ const engineCategories = [
   {
     label: "Content",
     items: [
-      { name: "Blogger", href: "/lazy-blogger" },
-      { name: "SEO", href: "/lazy-seo" },
-      { name: "GEO", href: "/lazy-geo" },
-      { name: "Voice", href: "/lazy-voice" },
-      { name: "Contentful", href: "/lazy-contentful" },
-      { name: "Stream", href: "/lazy-stream" },
-      { name: "Perplexity", href: "/lazy-perplexity" },
+      { name: "Lazy Blogger", href: "/lazy-blogger" },
+      { name: "Lazy SEO", href: "/lazy-seo" },
+      { name: "Lazy GEO", href: "/lazy-geo" },
+      { name: "Lazy Voice", href: "/lazy-voice" },
+      { name: "Lazy Contentful", href: "/lazy-contentful" },
+      { name: "Lazy Stream", href: "/lazy-stream" },
+      { name: "Lazy Perplexity", href: "/lazy-perplexity" },
     ],
   },
   {
     label: "Commerce",
     items: [
-      { name: "Store", href: "/lazy-store" },
-      { name: "Pay", href: "/lazy-pay" },
+      { name: "Lazy Store", href: "/lazy-store" },
+      { name: "Lazy Pay", href: "/lazy-pay" },
     ],
   },
   {
     label: "Code",
     items: [
-      { name: "GitHub", href: "/lazy-github" },
-      { name: "GitLab", href: "/lazy-gitlab" },
+      { name: "Lazy GitHub", href: "/lazy-github" },
+      { name: "Lazy GitLab", href: "/lazy-gitlab" },
     ],
   },
   {
     label: "Messaging",
     items: [
-      { name: "SMS", href: "/lazy-sms" },
-      { name: "Telegram", href: "/lazy-telegram" },
+      { name: "Lazy SMS", href: "/lazy-sms" },
+      { name: "Lazy Telegram", href: "/lazy-telegram" },
     ],
   },
   {
     label: "Ops",
     items: [
-      { name: "Alert", href: "/lazy-alert" },
-      { name: "Linear", href: "/lazy-linear" },
-      { name: "Supabase", href: "/lazy-supabase" },
+      { name: "Lazy Alert", href: "/lazy-alert" },
+      { name: "Lazy Linear", href: "/lazy-linear" },
+      { name: "Lazy Supabase", href: "/lazy-supabase" },
     ],
   },
 ];

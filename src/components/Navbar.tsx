@@ -109,42 +109,42 @@ const categories: { label: string; items: { label: string; href: string; tagline
   {
     label: "Content",
     items: [
-      { label: "Blogger", href: "/lazy-blogger", tagline: "Your blog writes itself.", icon: icons.blogger },
-      { label: "SEO", href: "/lazy-seo", tagline: "Rankings on autopilot.", icon: icons.seo },
-      { label: "GEO", href: "/lazy-geo", tagline: "Get cited by AI.", icon: icons.geo },
-      { label: "Voice", href: "/lazy-voice", tagline: "Every post, narrated.", icon: icons.voice },
-      { label: "Contentful", href: "/lazy-contentful", tagline: "Two-way CMS sync.", icon: icons.contentful },
-      { label: "Stream", href: "/lazy-stream", tagline: "Streams become content.", icon: icons.stream },
-      { label: "Perplexity", href: "/lazy-perplexity", tagline: "Research-backed content.", icon: icons.perplexity },
+      { label: "Lazy Blogger", href: "/lazy-blogger", tagline: "Your blog writes itself.", icon: icons.blogger },
+      { label: "Lazy SEO", href: "/lazy-seo", tagline: "Rankings on autopilot.", icon: icons.seo },
+      { label: "Lazy GEO", href: "/lazy-geo", tagline: "Get cited by AI.", icon: icons.geo },
+      { label: "Lazy Voice", href: "/lazy-voice", tagline: "Every post, narrated.", icon: icons.voice },
+      { label: "Lazy Contentful", href: "/lazy-contentful", tagline: "Two-way CMS sync.", icon: icons.contentful },
+      { label: "Lazy Stream", href: "/lazy-stream", tagline: "Streams become content.", icon: icons.stream },
+      { label: "Lazy Perplexity", href: "/lazy-perplexity", tagline: "Research-backed content.", icon: icons.perplexity },
     ],
   },
   {
     label: "Commerce",
     items: [
-      { label: "Store", href: "/lazy-store", tagline: "A store that runs itself.", icon: icons.store },
-      { label: "Pay", href: "/lazy-pay", tagline: "Payments that optimise.", icon: icons.pay },
+      { label: "Lazy Store", href: "/lazy-store", tagline: "A store that runs itself.", icon: icons.store },
+      { label: "Lazy Pay", href: "/lazy-pay", tagline: "Payments that optimise.", icon: icons.pay },
     ],
   },
   {
     label: "Code",
     items: [
-      { label: "GitHub", href: "/lazy-github", tagline: "Commits become changelogs.", icon: icons.code },
-      { label: "GitLab", href: "/lazy-gitlab", tagline: "GitLab commits → content.", icon: icons.gitlab },
+      { label: "Lazy GitHub", href: "/lazy-github", tagline: "Commits become changelogs.", icon: icons.code },
+      { label: "Lazy GitLab", href: "/lazy-gitlab", tagline: "GitLab commits → content.", icon: icons.gitlab },
     ],
   },
   {
     label: "Messaging",
     items: [
-      { label: "SMS", href: "/lazy-sms", tagline: "Texts that convert.", icon: icons.sms },
-      { label: "Telegram", href: "/lazy-telegram", tagline: "Your business in Telegram.", icon: icons.telegram },
+      { label: "Lazy SMS", href: "/lazy-sms", tagline: "Texts that convert.", icon: icons.sms },
+      { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Your business in Telegram.", icon: icons.telegram },
     ],
   },
   {
     label: "Ops",
     items: [
-      { label: "Alert", href: "/lazy-alert", tagline: "Your business in Slack.", icon: icons.alert },
-      { label: "Linear", href: "/lazy-linear", tagline: "Issues become changelogs.", icon: icons.linear },
-      { label: "Supabase", href: "/lazy-supabase", tagline: "Database tells its story.", icon: icons.supabase },
+      { label: "Lazy Alert", href: "/lazy-alert", tagline: "Your business in Slack.", icon: icons.alert },
+      { label: "Lazy Linear", href: "/lazy-linear", tagline: "Issues become changelogs.", icon: icons.linear },
+      { label: "Lazy Supabase", href: "/lazy-supabase", tagline: "Database tells its story.", icon: icons.supabase },
     ],
   },
 ];
