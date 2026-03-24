@@ -609,23 +609,8 @@ const Admin = () => {
             );
           })()}
 
-          <div className="flex gap-3 items-end mb-4">
-            <div className="flex-1">
-              <textarea
-                value={customTopic}
-                onChange={(e) => setCustomTopic(e.target.value)}
-                placeholder="One topic per line — generate multiple posts at once (leave empty for random)…"
-                rows={3}
-                className="w-full font-body text-sm bg-card border border-border rounded-lg px-3 py-2 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 resize-none"
-              />
-            </div>
-            <button
-              onClick={handleGeneratePost}
-              disabled={generating}
-              className="font-body text-sm px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shrink-0 h-fit"
-            >
-              {generating ? "Generating…" : customTopic.split("\n").filter(t => t.trim()).length > 1 ? `Generate ${customTopic.split("\n").filter(t => t.trim()).length} Posts` : "Generate"}
-            </button>
+          <div className="mb-4 p-3 rounded-lg border border-border/50 bg-card/50">
+            <p className="font-body text-sm text-muted-foreground">Posts are generated automatically by the SEO and GEO engines. No manual generation needed.</p>
           </div>
 
           {/* Next 10 queued posts */}
@@ -652,25 +637,6 @@ const Admin = () => {
                   <h3 className="font-display text-sm font-bold text-muted-foreground uppercase tracking-wider">
                     Next Up — Queued for Auto-Publish ({queued.length} drafts)
                   </h3>
-                  <button
-                    onClick={async () => {
-                      setGenerating(true);
-                      for (let i = 0; i < 3; i++) {
-                        try {
-                          await supabase.functions.invoke("generate-blog-post", {
-                            body: {},
-                          });
-                        } catch { /* continue */ }
-                      }
-                      await fetchBlogPosts(password);
-                      setGenerating(false);
-                      toast.success("Generated 3 posts!");
-                    }}
-                    disabled={generating}
-                    className="font-body text-xs px-3 py-1.5 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors disabled:opacity-50"
-                  >
-                    {generating ? "Generating…" : "Generate 3 Posts"}
-                  </button>
                 </div>
                 {queued.length === 0 ? (
                   <p className="font-body text-sm text-muted-foreground text-center py-4 border border-border/50 rounded-lg bg-card/50">
@@ -787,7 +753,7 @@ const Admin = () => {
             </div>
           ))}
           {!loading && blogPosts.length === 0 && (
-            <p className="font-body text-sm text-muted-foreground text-center py-8">No blog posts yet. Click "Generate New Post" to create one.</p>
+            <p className="font-body text-sm text-muted-foreground text-center py-8">No blog posts yet. Posts will appear here once the SEO or GEO engines generate them.</p>
           )}
         </div>
       )}
