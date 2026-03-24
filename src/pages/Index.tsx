@@ -22,7 +22,7 @@ import { useTrackVisit } from "@/hooks/useTrackVisit";
 import LiveCounter from "@/components/LiveCounter";
 import TotalVisitorCount from "@/components/TotalVisitorCount";
 
-const NEW_TITLE = "The Autonomous Growth Engine for Lovable Websites";
+const NEW_TITLE = "Drive Traffic Automatically to Your Lovable Website or App";
 const NEW_DESCRIPTION = "We build autonomous engines for Lovable that turn your website into a self-growing asset.";
 
 const engines = [
