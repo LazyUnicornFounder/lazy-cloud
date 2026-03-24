@@ -220,7 +220,7 @@ const Index = () => {
       <Navbar activePage="home" />
 
       {/* Hero */}
-      <header className="relative z-10 aspect-square md:aspect-auto md:min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: "#0a0a08" }}>
+      <header className="relative z-10 min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: "#0a0a08" }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
