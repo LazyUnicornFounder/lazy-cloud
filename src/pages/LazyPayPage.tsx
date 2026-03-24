@@ -9,108 +9,217 @@ import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const LAZY_PAY_PROMPT = `Install Lazy Pay — a self-improving Stripe payments engine — into my existing Lovable project.
+const LAZY_PAY_PROMPT = `[Lazy Pay Prompt — v0.0.3 — LazyUnicorn.ai]
+
+Add a complete self-improving Stripe payments engine called Lazy Pay to this project. It installs one-time payments, subscriptions, webhook handling, a customer portal, confirmation emails, a revenue dashboard, autonomous conversion optimisation, and abandoned checkout recovery — with no manual Stripe integration required after setup.
 
 ---
 
-## Step 1: Ask me two setup questions
-
-Before building anything, ask me these two questions one at a time:
-
-1. What is your Stripe Secret Key? (Get one at dashboard.stripe.com/apikeys)
-2. What is your Stripe Publishable Key?
-
----
-
-## Step 2: Create the database
+## 1. Database
 
 Create these Supabase tables with RLS enabled:
 
-**pay_settings** — id, stripe_secret_key (stored as secret), stripe_publishable_key, is_running boolean default true, setup_complete boolean default false, created_at
-**pay_products** — id, stripe_product_id, stripe_price_id, name, description, price_cents, currency (default 'usd'), product_type (one_time/subscription), interval (month/year/null), is_active boolean default true, views integer default 0, conversions integer default 0, last_optimised_at timestamptz, created_at
-**pay_checkouts** — id, stripe_session_id, product_id, customer_email, status (pending/completed/abandoned/recovered), created_at, completed_at
-**pay_errors** — id, error_message, context text, created_at
+**pay_settings**
+id (uuid, primary key, default gen_random_uuid()),
+business_name (text),
+support_email (text),
+site_url (text),
+currency (text, default 'usd'),
+is_running (boolean, default true),
+setup_complete (boolean, default false),
+created_at (timestamptz, default now())
+
+Note: Store Stripe keys as Supabase secrets — STRIPE_SECRET_KEY, STRIPE_PUBLISHABLE_KEY, STRIPE_WEBHOOK_SECRET. Never store them in the database table.
+
+**pay_products**
+id (uuid, primary key, default gen_random_uuid()),
+name (text),
+description (text),
+price_cents (integer),
+billing_type (text),
+billing_interval (text, nullable),
+stripe_price_id (text),
+stripe_product_id (text),
+active (boolean, default true),
+views (integer, default 0),
+last_optimised (timestamptz),
+created_at (timestamptz, default now())
+
+**pay_customers**
+id (uuid, primary key, default gen_random_uuid()),
+email (text, unique),
+stripe_customer_id (text, unique),
+name (text),
+created_at (timestamptz, default now())
+
+**pay_transactions**
+id (uuid, primary key, default gen_random_uuid()),
+customer_id (uuid),
+product_id (uuid),
+stripe_session_id (text),
+amount_cents (integer),
+currency (text),
+status (text),
+billing_type (text),
+created_at (timestamptz, default now())
+
+**pay_subscriptions**
+id (uuid, primary key, default gen_random_uuid()),
+customer_id (uuid),
+product_id (uuid),
+stripe_subscription_id (text, unique),
+status (text),
+current_period_start (timestamptz),
+current_period_end (timestamptz),
+cancel_at_period_end (boolean, default false),
+created_at (timestamptz, default now())
+
+**pay_abandoned**
+id (uuid, primary key, default gen_random_uuid()),
+customer_email (text),
+product_id (uuid),
+stripe_session_id (text, unique),
+recovery_email_sent (boolean, default false),
+recovery_sent_at (timestamptz),
+converted (boolean, default false),
+created_at (timestamptz, default now())
+
+**pay_optimisation_log**
+id (uuid, primary key, default gen_random_uuid()),
+product_id (uuid),
+product_name (text),
+old_description (text),
+new_description (text),
+old_conversion_rate (numeric),
+optimised_at (timestamptz, default now())
+
+**pay_errors**
+id (uuid, primary key, default gen_random_uuid()),
+function_name (text),
+error_message (text),
+context (text),
+created_at (timestamptz, default now())
 
 ---
 
-## Step 3: Build the checkout flow
+## 2. Setup page
 
-Create a Supabase edge function called pay-checkout that:
-- Accepts a product_id
-- Looks up the Stripe price ID from pay_products
-- Creates a Stripe Checkout Session
-- Returns the checkout URL
-- Increments the product's view count
-- On successful payment (via webhook), updates the checkout status to 'completed' and increments conversions
+Create a page at /lazy-pay-setup with a form:
+- Business name
+- Support email address
+- Site URL
+- Currency (select: USD / GBP / EUR / AUD)
+- Stripe Publishable Key (text) — note: will be stored as Supabase secret STRIPE_PUBLISHABLE_KEY
+- Stripe Secret Key (password) — note: will be stored as Supabase secret STRIPE_SECRET_KEY
+- Stripe Webhook Secret (password) — with instructions: In the Stripe dashboard create a webhook pointing to [site_url]/api/stripe-webhook listening for: payment_intent.succeeded, payment_intent.payment_failed, checkout.session.completed, checkout.session.expired, customer.subscription.created, customer.subscription.updated, customer.subscription.deleted, invoice.payment_failed. Paste the signing secret here. — will be stored as Supabase secret STRIPE_WEBHOOK_SECRET.
 
-Create a Supabase edge function called pay-webhook that:
-- Listens for Stripe webhook events
-- Handles checkout.session.completed — marks checkout as completed, increments product conversions
-- Handles checkout.session.expired — marks checkout as abandoned
-- Handles customer.subscription.updated and customer.subscription.deleted
-- Logs errors to pay_errors
+Submit button: Activate Lazy Pay
 
----
-
-## Step 4: Build the conversion optimiser
-
-Create a Supabase edge function called pay-optimise that runs weekly:
-- Query all active products from pay_products
-- For each product with more than 30 views and a conversion rate below 3%:
-  - Use AI to rewrite the product description based on the product name and current description
-  - Update the description in Stripe via the API
-  - Update the description in pay_products
-  - Set last_optimised_at to now()
-- Log any errors to pay_errors
+On submit:
+1. Store Stripe keys as Supabase secrets
+2. Save business_name, support_email, site_url, currency to pay_settings
+3. Set setup_complete to true
+4. Redirect to /lazy-pay-dashboard with message: "Lazy Pay is active. Add your first product to start taking payments."
 
 ---
 
-## Step 5: Build abandoned checkout recovery
+## 3. Core edge functions
 
-Create a Supabase edge function called pay-recover that runs every hour:
-- Query pay_checkouts where status is 'abandoned' and created_at is between 23 and 25 hours ago
-- For each abandoned checkout with a customer_email:
-  - Send a recovery email with a fresh checkout link
-  - Update status to 'recovered'
-- Log errors to pay_errors
+**pay-checkout** — handles POST requests
+- Accept product_id (uuid) and customer_email (text)
+- Read matching product from pay_products, increment views by 1
+- Read pay_settings and Stripe keys from Supabase secrets
+- Create or retrieve Stripe customer, insert into pay_customers if new
+- Create Stripe checkout session using stripe_price_id. Set mode to subscription or payment based on billing_type. Set success_url to site_url/payment-success, cancel_url to site_url/payment-cancelled
+- Insert into pay_abandoned with stripe_session_id and recovery_email_sent false
+- Return checkout URL
+- Log errors to pay_errors with function_name pay-checkout
 
----
+**pay-webhook** — handles POST requests at /api/stripe-webhook
+- Verify Stripe webhook signature using STRIPE_WEBHOOK_SECRET secret — reject invalid with 400
+- Handle checkout.session.completed: set converted to true in pay_abandoned, insert successful transaction in pay_transactions, send confirmation email with subject "Payment confirmed — [business_name]"
+- Handle checkout.session.expired: mark pay_abandoned row as ready for recovery (recovery_email_sent false, converted false)
+- Handle payment_intent.payment_failed: update transaction status to failed
+- Handle customer.subscription.created: insert into pay_subscriptions with status active
+- Handle customer.subscription.updated: update matching pay_subscriptions row
+- Handle customer.subscription.deleted: update status to cancelled
+- Handle invoice.payment_failed: update subscription status to past_due
+- Log all errors to pay_errors with function_name pay-webhook
 
-## Step 6: Build the revenue dashboard
-
-Create a page at /pay-dashboard showing:
-- MRR (monthly recurring revenue) calculated from active subscriptions
-- Total revenue from completed checkouts
-- Active subscribers count
-- Recent transactions table
-- Product performance table with views, conversions, and conversion rate
-- A toggle to pause/resume the optimiser
-- Error log showing last 10 errors
-
----
-
-## Step 7: Build the customer portal
-
-Add a Stripe Customer Portal link that lets customers manage their own subscriptions.
-
----
-
-## Design rules
-
-- Match my existing site's design system exactly
-- Use my existing fonts, colors, spacing, and component patterns
-- Use shadcn/ui components where appropriate
-- All pages must be fully responsive
+**pay-portal** — handles POST requests
+- Accept customer_email (text)
+- Look up stripe_customer_id from pay_customers
+- Create Stripe billing portal session with return_url set to site_url
+- Return portal URL
+- Log errors to pay_errors with function_name pay-portal
 
 ---
 
-## Important
+## 4. Self-improving edge functions
 
-- Store Stripe keys as Supabase secrets, never in client code
-- Use Lovable Cloud (Supabase) for all database, storage, and edge function needs
-- Every engine must handle errors gracefully and log to pay_errors
-- The entire system should run autonomously after the initial setup
-- Lazy Pay never stores card numbers — Stripe handles all PCI compliance`;
+**pay-optimise**
+Cron: every Sunday at 11am UTC — 0 11 * * 0
+
+1. Read pay_settings. If is_running is false or setup_complete is false exit.
+2. For each active product in pay_products calculate conversion rate: (successful transactions in last 30 days / views) * 100.
+3. If conversion rate < 3% and views > 30 and last_optimised is null or older than 14 days:
+   Call the built-in Lovable AI:
+   "You are a conversion rate specialist for [business_name]. This product has a [conversion_rate]% conversion rate from [views] views. Rewrite the name and description to be significantly more compelling. Product: [name]. Current description: [description]. Price: [price]. Return only a valid JSON object with two fields: name (string) and description (string, 80 to 120 words). No preamble. No code fences. Valid JSON only."
+4. Insert into pay_optimisation_log with old and new values.
+5. Update name and description in pay_products.
+6. Update the product in Stripe via the Products API using STRIPE_SECRET_KEY secret.
+7. Set last_optimised to now.
+Log errors to pay_errors with function_name pay-optimise.
+
+**pay-recover**
+Cron: daily at 10am UTC — 0 10 * * *
+
+1. Read pay_settings. If is_running is false or setup_complete is false exit.
+2. Query pay_abandoned where recovery_email_sent is false and converted is false and created_at is older than 24 hours.
+3. For each row get the matching product from pay_products.
+4. Call pay-checkout to generate a fresh checkout URL for the customer email and product.
+5. Send recovery email: subject "You left something behind" body "You started checking out [product_name] but did not complete your purchase. Complete it here: [fresh checkout URL]. This link is valid for 48 hours. Questions? [support_email]"
+6. Update pay_abandoned: set recovery_email_sent to true, recovery_sent_at to now.
+Log errors to pay_errors with function_name pay-recover.
+
+---
+
+## 5. Public pages
+
+**/pricing**
+Show all active pay_products ordered by price_cents ascending. Each card shows name, description, formatted price, billing interval for subscriptions, and a Buy Now button. On click show email input modal then call pay-checkout and redirect to the Stripe checkout URL.
+
+**/payment-success**
+Show: "Payment confirmed. Thank you for your purchase." Link home.
+
+**/payment-cancelled**
+Show: "Payment cancelled. No charge was made." Link to /pricing.
+
+**/manage-subscription**
+Show email input. On submit call pay-portal and redirect to Stripe customer portal.
+
+---
+
+## 6. Admin dashboard
+
+Create a page at /lazy-pay-dashboard with six sections:
+
+Show at top: red error banner if pay_errors has rows from the last 24 hours.
+
+- Revenue overview: MRR (sum of active subscription prices), total revenue, active subscribers, total customers, abandoned checkouts count, recovery emails sent, recovered conversions count
+- Products table: all pay_products with name, price, billing type, views, conversion rate, last optimised date, active toggle. Plus inline add product form: name, description, price, billing type, billing interval — creates in Stripe and inserts into pay_products.
+- Recent transactions: last 20 pay_transactions with customer email, product name, amount, status, date
+- Optimisation log: all pay_optimisation_log rows with old vs new description toggle
+- Controls: pause/resume toggle, Optimise Now button, Run Recovery Now button
+- Error log: last 10 pay_errors rows
+
+---
+
+## 7. Navigation
+
+Add a Pricing link to the main site navigation pointing to /pricing.
+Add a Manage Subscription link in the site footer pointing to /manage-subscription.
+Do not add /lazy-pay-setup or /lazy-pay-dashboard to public navigation.`;
 
 /* ── Reusable copy button ── */
 function CopyPromptButton({

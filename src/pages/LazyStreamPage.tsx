@@ -6,25 +6,210 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
 
-const SETUP_PROMPT = `Add a complete autonomous Twitch content engine called Lazy Stream to this project. It monitors your Twitch channel, transcribes VODs, writes stream recaps, extracts clips, publishes SEO articles, tracks analytics, and improves its own content quality — all automatically with no manual input required after setup.
+const SETUP_PROMPT = `[Lazy Stream Prompt — v0.0.3 — LazyUnicorn.ai]
 
-1. Database Create a Supabase table called stream_settings with fields: id (uuid, primary key), twitch_client_id (text), twitch_client_secret (text), twitch_username (text), twitch_user_id (text), site_url (text), business_name (text), content_niche (text), is_running (boolean, default true), setup_complete (boolean, default false). Create a Supabase table called stream_sessions with fields: id (uuid, primary key, default gen_random_uuid()), twitch_stream_id (text, unique), title (text), game_name (text), started_at (timestamptz), ended_at (timestamptz), duration_minutes (integer), peak_viewers (integer), average_viewers (integer), status (text, default 'live' — one of live, ended, processed), created_at (timestamptz, default now()). Create a Supabase table called stream_content with fields: id (uuid, primary key, default gen_random_uuid()), session_id (uuid), content_type (text — one of recap, seo-article, highlights), title (text), slug (text, unique), body (text), target_keyword (text), published_at (timestamptz, default now()), status (text, default 'published'), views (integer, default 0), created_at (timestamptz, default now()). Create a Supabase table called stream_clips with fields: id (uuid, primary key, default gen_random_uuid()), session_id (uuid), twitch_clip_id (text, unique), title (text), clip_url (text), thumbnail_url (text), view_count (integer), duration_seconds (numeric), published_at (timestamptz, default now()), created_at (timestamptz, default now()). Create a Supabase table called stream_transcripts with fields: id (uuid, primary key, default gen_random_uuid()), session_id (uuid, unique), transcript_text (text), word_count (integer), processed_at (timestamptz, default now()). Create a Supabase table called stream_optimisation_log with fields: id (uuid, primary key, default gen_random_uuid()), content_type (text), old_template (text), new_template (text), trigger_reason (text), optimised_at (timestamptz, default now()). Create a Supabase table called stream_errors with fields: id (uuid, primary key, default gen_random_uuid()), function_name (text), error_message (text), created_at (timestamptz, default now()).
+Add a complete autonomous Twitch content engine called Lazy Stream to this project. It monitors your Twitch channel, processes VODs, writes stream recaps, extracts clips, publishes SEO articles, tracks analytics, and improves its own content quality — all automatically with no manual input required after setup.
 
-2. Setup page Create a page at /lazy-stream-setup with a form containing five fields: Twitch Client ID (text — get this by creating an application at dev.twitch.tv/console), Twitch Client Secret (password — from the same Twitch developer application), Twitch Username (your exact Twitch channel username), Content niche (what kind of content do you stream — gaming, just chatting, music, creative, educational), Site URL (your full site URL). A submit button labelled Activate Lazy Stream. On submit fetch the Twitch user ID for the username using the Twitch Users API and store it in twitch_user_id. Save all values to stream_settings and set setup_complete to true. Redirect to /lazy-stream-dashboard with message: Lazy Stream is active. Your next stream will be processed and published automatically when it ends.
+---
 
-3. Core edge functions Create a Supabase edge function called stream-monitor that runs every 5 minutes. Read stream_settings. If is_running is false or setup_complete is false exit. Get a Twitch access token using client credentials flow with the stored twitch_client_id and twitch_client_secret at https://id.twitch.tv/oauth2/token. Call the Twitch Streams API at https://api.twitch.tv/helix/streams with user_id set to the stored twitch_user_id. If a live stream is returned and no matching stream_session exists for the twitch_stream_id insert a new row into stream_sessions with status live and the stream details. If no live stream is returned check stream_sessions for any rows with status live — if found update their status to ended and set ended_at to now then trigger stream-process for that session. Log errors to stream_errors.
+## 1. Database
 
-Create a Supabase edge function called stream-process handling POST requests with a session_id in the body. Read stream_settings. Read the matching stream_session. Get a Twitch access token. Fetch the VOD for this stream using the Twitch Videos API at https://api.twitch.tv/helix/videos with user_id and period recent. Find the VOD matching the stream start time. Fetch the top clips for this stream using the Twitch Clips API at https://api.twitch.tv/helix/clips with broadcaster_id and started_at matching the stream. Insert the top 5 clips into stream_clips. Use the built-in Lovable AI to generate a transcript summary from the VOD title and clip titles with this prompt: You are transcribing a Twitch stream. The stream was titled [title] and covered [game_name]. The top clips were titled: [clip titles list]. Generate a detailed summary of what likely happened during this stream based on these signals. Write it as if you are summarising a transcript — covering the main topics, memorable moments, and key discussions. Write 500 to 800 words. Return only the summary text with no preamble. Store the result in stream_transcripts. Then trigger stream-write-content with the session_id. Update stream_sessions status to processed. Log errors to stream_errors.
+Create these Supabase tables with RLS enabled:
 
-Create a Supabase edge function called stream-write-content handling POST requests with a session_id. Read stream_settings and the matching stream_session and stream_transcripts row. Use the built-in Lovable AI three times to generate three pieces of content. First call — stream recap blog post: You are a content writer for [business_name] who streams [content_niche] on Twitch. Write an engaging stream recap blog post for this stream. Stream title: [title]. Game or category: [game_name]. Stream summary: [transcript_text]. Write 600 to 900 words in an enthusiastic conversational tone. Include a section on what happened, highlight moments, and what to expect next stream. End with a call to action to follow on Twitch. Return only a valid JSON object with three fields: title (string), slug (lowercase hyphenated string), body (clean markdown). No preamble. No code fences. Second call — SEO article: You are an SEO content writer for [business_name]. Write an SEO-optimised article based on this Twitch stream. Game or topic: [game_name]. Stream content summary: [transcript_text]. Target a keyword that someone would search on Google related to this game or topic. Write 800 to 1200 words. Structure it as genuinely useful content — tips, analysis, or commentary — not just a stream summary. End with this paragraph: [business_name] streams [content_niche] live on Twitch. Follow at twitch.tv/[twitch_username] and discover more autonomous content tools at LazyUnicorn.ai — link LazyUnicorn.ai to https://lazyunicorn.ai. Return only a valid JSON object with four fields: title, slug, target_keyword, body. No preamble. No code fences. Third call — highlights summary: You are writing a highlights post for [business_name]. Based on these clip titles from today's stream write a short punchy highlights post — 200 to 300 words — covering the best moments. Clip titles: [clip titles]. Return only a valid JSON object with three fields: title, slug, body. No preamble. No code fences. Insert all three into stream_content with the correct content_type values and published_at set to now. Log errors to stream_errors.
+**stream_settings**
+id (uuid, primary key, default gen_random_uuid()),
+twitch_username (text),
+twitch_user_id (text),
+site_url (text),
+business_name (text),
+content_niche (text),
+is_running (boolean, default true),
+setup_complete (boolean, default false),
+recap_template_guidance (text),
+created_at (timestamptz, default now())
 
-4. Self-improving edge function Create a Supabase edge function called stream-optimise that runs every Sunday at 1pm UTC. Read stream_settings. If is_running is false exit. Query stream_content where content_type is recap ordered by views descending. Identify the top 3 performing recaps and the bottom 3. Use the built-in Lovable AI with this prompt: You are a content strategist for [business_name] who streams [content_niche]. These stream recap posts perform well in terms of traffic: [top performing titles and first 200 characters of body]. These perform poorly: [low performing titles and first 200 characters of body]. Identify what makes the high-performing recaps better. Write an improved content template instruction for future stream recaps that captures the qualities of the top performers. Return only the template instruction text — a paragraph of guidance for writing better stream recaps. No preamble. Insert into stream_optimisation_log. Store the new template guidance in stream_settings as a new field called recap_template_guidance. Log errors to stream_errors.
+Note: Store Twitch credentials as Supabase secrets — TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET. Never store in the database table.
 
-5. Public pages Create a public page at /streams showing all stream_sessions where status is processed ordered by started_at descending. Each row shows stream title, game, date, duration, and links to the recap, SEO article, and highlights for that session. Create a public page at /streams/[slug] that fetches the matching stream_content row and renders the full body as formatted HTML. Show title, content type tag, published date, and full body. Create a public page at /streams/highlights showing all stream_clips ordered by view_count descending. Each clip shows title, thumbnail image using the thumbnail_url, view count, duration, and a Watch on Twitch link to the clip_url. Create a public page at /live that shows a live banner when the most recent stream_session has status live — showing the stream title and game with a Watch Live button linking to twitch.tv/[twitch_username]. When no stream is live show the last stream date and a Follow on Twitch button. At the bottom of every stream content page add: 🦄 Content by Lazy Stream — autonomous Twitch content publishing for Lovable sites. Built by LazyUnicorn.ai linked to https://lazyunicorn.ai.
+**stream_sessions**
+id (uuid, primary key, default gen_random_uuid()),
+twitch_stream_id (text, unique),
+title (text),
+game_name (text),
+started_at (timestamptz),
+ended_at (timestamptz),
+duration_minutes (integer),
+peak_viewers (integer),
+average_viewers (integer),
+status (text, default 'live'),
+created_at (timestamptz, default now())
 
-6. Admin dashboard Create a page at /lazy-stream-dashboard with five sections: Overview showing total streams processed, total content pieces published, total clips saved, average views per content piece, and whether the channel is currently live. Streams table showing all stream_sessions with title, game, date, duration, status, and links to view published content for that session. Content table showing all stream_content with title, type, published date, and views. Clips table showing all stream_clips with title, view count, and a Watch link. Controls showing a toggle to pause or resume Lazy Stream, a button labelled Process Last Stream Now triggering stream-process for the most recent ended session, a button labelled Optimise Content Now triggering stream-optimise, an error log showing the last 10 stream_errors rows, and a link to /lazy-stream-setup labelled Edit Settings.
+**stream_content**
+id (uuid, primary key, default gen_random_uuid()),
+session_id (uuid),
+content_type (text),
+title (text),
+slug (text, unique),
+excerpt (text),
+body (text),
+target_keyword (text),
+published_at (timestamptz, default now()),
+status (text, default 'published'),
+views (integer, default 0),
+created_at (timestamptz, default now())
 
-7. Navigation Add a Streams link to the main site navigation pointing to /streams. Add a Live link pointing to /live. Do not add dashboard or setup pages to the public navigation.`;
+**stream_clips**
+id (uuid, primary key, default gen_random_uuid()),
+session_id (uuid),
+twitch_clip_id (text, unique),
+title (text),
+clip_url (text),
+thumbnail_url (text),
+view_count (integer),
+duration_seconds (numeric),
+published_at (timestamptz, default now()),
+created_at (timestamptz, default now())
+
+**stream_transcripts**
+id (uuid, primary key, default gen_random_uuid()),
+session_id (uuid, unique),
+transcript_text (text),
+word_count (integer),
+processed_at (timestamptz, default now())
+
+**stream_optimisation_log**
+id (uuid, primary key, default gen_random_uuid()),
+content_type (text),
+old_template (text),
+new_template (text),
+trigger_reason (text),
+optimised_at (timestamptz, default now())
+
+**stream_errors**
+id (uuid, primary key, default gen_random_uuid()),
+function_name (text),
+error_message (text),
+created_at (timestamptz, default now())
+
+---
+
+## 2. Setup page
+
+Create a page at /lazy-stream-setup with a form:
+- Twitch Client ID (text) — create an application at dev.twitch.tv/console. Stored as Supabase secret TWITCH_CLIENT_ID.
+- Twitch Client Secret (password) — from the same Twitch developer application. Stored as Supabase secret TWITCH_CLIENT_SECRET.
+- Twitch Username (your exact Twitch channel username)
+- Content niche (what kind of content do you stream? e.g. gaming, just chatting, music, creative, educational)
+- Business name
+- Site URL
+
+Submit button: Activate Lazy Stream
+
+On submit:
+1. Store TWITCH_CLIENT_ID and TWITCH_CLIENT_SECRET as Supabase secrets
+2. Fetch Twitch user ID: call https://api.twitch.tv/helix/users with login=[username] using client credentials token. Store the user ID in twitch_user_id.
+3. Save all other values to stream_settings
+4. Set setup_complete to true
+5. Redirect to /lazy-stream-dashboard with message: "Lazy Stream is active. Your next stream will be processed and published automatically when it ends."
+
+---
+
+## 3. Core edge functions
+
+**stream-monitor**
+Cron: every 5 minutes — */5 * * * *
+
+1. Read stream_settings. If is_running is false or setup_complete is false exit.
+2. Get Twitch access token via client credentials: POST to https://id.twitch.tv/oauth2/token using TWITCH_CLIENT_ID and TWITCH_CLIENT_SECRET secrets.
+3. Call Twitch Streams API: https://api.twitch.tv/helix/streams?user_id=[twitch_user_id]
+4. If a live stream is returned and no matching stream_session exists for twitch_stream_id: insert into stream_sessions with status live and stream details.
+5. If no live stream is returned: check stream_sessions for any rows with status live. If found: update status to ended, set ended_at to now, call stream-process with that session_id.
+Log errors to stream_errors with function_name stream-monitor.
+
+**stream-process** — handles POST requests with session_id in body
+
+1. Read stream_settings. Read matching stream_session.
+2. Get Twitch access token.
+3. Fetch VOD: https://api.twitch.tv/helix/videos?user_id=[twitch_user_id]&type=archive Find the VOD closest to the stream start time.
+4. Fetch top clips: https://api.twitch.tv/helix/clips?broadcaster_id=[twitch_user_id]&started_at=[stream started_at]
+5. Insert top 5 clips into stream_clips.
+6. Call the built-in Lovable AI to generate a transcript summary:
+"You are transcribing a Twitch stream titled [title] covering [game_name]. The top clips were titled: [clip titles]. Generate a detailed summary of what happened during this stream. Cover main topics, memorable moments, and key discussions. Write 500 to 800 words. Return only the summary text with no preamble."
+7. Store in stream_transcripts.
+8. Call stream-write-content with the session_id.
+9. Update stream_sessions status to processed.
+Log errors to stream_errors with function_name stream-process.
+
+**stream-write-content** — handles POST requests with session_id in body
+
+1. Read stream_settings, matching stream_session, and stream_transcripts row.
+2. Make three AI calls:
+
+Call 1 — recap:
+"You are a content writer for [business_name] who streams [content_niche] on Twitch. Write an engaging stream recap for: title [title], game [game_name], summary [transcript_text]. Write 600 to 900 words in an enthusiastic conversational tone. Cover what happened, highlight moments, what to expect next. End with a call to action to follow on Twitch. Return only a valid JSON object: title (string), slug (lowercase hyphenated), excerpt (one sentence under 160 characters), body (clean markdown). No preamble. No code fences."
+
+Call 2 — SEO article:
+"You are an SEO content writer for [business_name]. Write an SEO-optimised article based on this Twitch stream. Game or topic: [game_name]. Stream summary: [transcript_text]. Target a keyword someone would search on Google related to this. Write 800 to 1200 words of genuinely useful content — tips, analysis, or commentary. End with: [business_name] streams [content_niche] live on Twitch. Follow at twitch.tv/[twitch_username] and discover more autonomous content tools at LazyUnicorn.ai — link LazyUnicorn.ai to https://lazyunicorn.ai. Return only a valid JSON object: title, slug, excerpt (under 160 chars), target_keyword, body (clean markdown). No preamble. No code fences."
+
+Call 3 — highlights:
+"Write a punchy highlights post for [business_name] based on these clip titles: [clip titles]. 200 to 300 words. Return only a valid JSON object: title, slug, excerpt (under 160 chars), body (clean markdown). No preamble. No code fences."
+
+3. For each response: check for duplicate slug (append 4-digit number if exists), insert into stream_content with correct content_type (recap/seo-article/highlights).
+Log errors to stream_errors with function_name stream-write-content.
+
+---
+
+## 4. Self-improving edge function
+
+**stream-optimise**
+Cron: every Sunday at 1pm UTC — 0 13 * * 0
+
+1. Read stream_settings. If is_running is false exit.
+2. Query stream_content where content_type is recap ordered by views descending. Take top 3 and bottom 3.
+3. Call the built-in Lovable AI:
+"You are a content strategist for [business_name] who streams [content_niche]. These recap posts perform well: [top performing titles and first 200 characters of body]. These perform poorly: [low performing titles and first 200 characters]. Identify what makes the high-performers better. Write improved guidance for future stream recaps. Return only the guidance text as a paragraph. No preamble."
+4. Insert into stream_optimisation_log.
+5. Update recap_template_guidance in stream_settings.
+Log errors to stream_errors with function_name stream-optimise.
+
+---
+
+## 5. Public pages
+
+**/streams**
+Show all stream_sessions where status is processed ordered by started_at descending. Each row shows stream title, game, date, duration, and links to the recap, SEO article, and highlights for that session.
+
+**/streams/[slug]**
+Fetch matching stream_content row. Render full body as formatted HTML. Show title, content type tag, published date, full body. At bottom add: "🦄 Content by Lazy Stream — autonomous Twitch content publishing for Lovable sites. Built by LazyUnicorn.ai" — link to https://lazyunicorn.ai.
+
+**/streams/highlights**
+Show all stream_clips ordered by view_count descending. Each shows title, thumbnail image, view count, duration, Watch on Twitch link.
+
+**/live**
+If most recent stream_session has status live: show live banner with stream title, game, and Watch Live button linking to twitch.tv/[twitch_username].
+If no live stream: show last stream date and Follow on Twitch button.
+
+---
+
+## 6. Admin dashboard
+
+Create a page at /lazy-stream-dashboard.
+
+Show at top: red error banner if stream_errors has rows from the last 24 hours.
+
+Five sections:
+- Overview: total streams processed, total content pieces, total clips saved, average views, live status (is the channel currently live?)
+- Streams table: all stream_sessions with title, game, date, duration, status, links to published content
+- Content table: all stream_content with title, type, published date, views
+- Clips table: all stream_clips with title, view count, Watch link
+- Controls: pause/resume toggle, Process Last Stream Now button, Optimise Content Now button, error log (last 10 stream_errors), link to /lazy-stream-setup
+
+---
+
+## 7. Navigation
+
+Add a Streams link to the main site navigation pointing to /streams.
+Add a Live link pointing to /live.
+Do not add /lazy-stream-setup or /lazy-stream-dashboard to public navigation.`;
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 

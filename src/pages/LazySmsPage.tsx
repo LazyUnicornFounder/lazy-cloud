@@ -9,27 +9,199 @@ import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const LAZY_SMS_PROMPT = `Add a complete self-improving Twilio SMS engine called Lazy SMS to this project. It installs payment confirmations, subscription alerts, abandoned checkout recovery texts, welcome sequences, two-way messaging, opt-out management, delivery tracking, and autonomous message optimisation — with no manual Twilio integration required after setup.
+const LAZY_SMS_PROMPT = `[Lazy SMS Prompt — v0.0.3 — LazyUnicorn.ai]
 
-1. Database Create a Supabase table called sms_settings with fields: id (uuid, primary key), twilio_account_sid (text), twilio_auth_token (text), twilio_phone_number (text), business_name (text), site_url (text), is_running (boolean, default true), setup_complete (boolean, default false). Create a Supabase table called sms_contacts with fields: id (uuid, primary key, default gen_random_uuid()), phone_number (text, unique), name (text), email (text), opted_out (boolean, default false), opted_out_at (timestamptz), created_at (timestamptz, default now()). Create a Supabase table called sms_messages with fields: id (uuid, primary key, default gen_random_uuid()), contact_id (uuid), phone_number (text), message_body (text), direction (text — one of outbound or inbound), message_type (text — one of confirmation, reminder, recovery, welcome, sequence, reply), twilio_message_sid (text), status (text, default 'queued'), sent_at (timestamptz), delivered_at (timestamptz), created_at (timestamptz, default now()). Create a Supabase table called sms_sequences with fields: id (uuid, primary key, default gen_random_uuid()), name (text), trigger (text — one of new-customer, payment-success, subscription-renewal, checkout-abandoned), step_number (integer), delay_hours (integer), message_template (text), response_rate (numeric, default 0), sends (integer, default 0), responses (integer, default 0), last_optimised (timestamptz), active (boolean, default true), created_at (timestamptz, default now()). Create a Supabase table called sms_optouts with fields: id (uuid, primary key, default gen_random_uuid()), phone_number (text, unique), opted_out_at (timestamptz, default now()). Create a Supabase table called sms_optimisation_log with fields: id (uuid, primary key, default gen_random_uuid()), sequence_id (uuid), sequence_name (text), old_template (text), new_template (text), old_response_rate (numeric), optimised_at (timestamptz, default now()). Create a Supabase table called sms_errors with fields: id (uuid, primary key, default gen_random_uuid()), function_name (text), error_message (text), created_at (timestamptz, default now()).
+Add a complete self-improving Twilio SMS engine called Lazy SMS to this project. It installs payment confirmations, subscription alerts, abandoned checkout recovery texts, welcome sequences, two-way messaging, opt-out management, delivery tracking, and autonomous message optimisation — with no manual Twilio integration required after setup.
 
-2. Setup page Create a page at /lazy-sms-setup with a form containing five fields: Twilio Account SID (text field — find this in your Twilio console dashboard), Twilio Auth Token (password field — find this in your Twilio console dashboard), Twilio Phone Number (text field — the SMS-enabled number from your Twilio account in E.164 format like +12025551234), Business name, Site URL. A submit button labelled Activate Lazy SMS. On submit save all values to sms_settings and set setup_complete to true. Seed the sms_sequences table with four default sequences: one with trigger new-customer, step 1, delay 0 hours, message Welcome to [business_name]. We are glad to have you. Reply STOP to opt out. One with trigger payment-success, step 1, delay 0 hours, message Payment confirmed. Thank you for your purchase from [business_name]. Reply STOP to opt out. One with trigger subscription-renewal, step 1, delay 72 hours before renewal, message Your [business_name] subscription renews in 3 days. Manage it here: [site_url]/manage-subscription. Reply STOP to opt out. One with trigger checkout-abandoned, step 1, delay 1 hour, message You left something at [business_name]. Complete your purchase here: [checkout_url]. Reply STOP to opt out. Redirect to /lazy-sms-dashboard with message: Lazy SMS is active. Your site will now text customers automatically at every key moment.
+---
 
-3. Core edge functions Create a Supabase edge function called sms-send handling POST requests. Accept phone_number (text), message_body (text), message_type (text), contact_id (uuid optional). Check sms_optouts for the phone number — if found return without sending. Read sms_settings for Twilio credentials. Send the SMS via the Twilio Messages API at https://api.twilio.com/2010-04-01/Accounts/[account_sid]/Messages.json using Basic Auth with account_sid and auth_token. Request body: From set to twilio_phone_number, To set to phone_number, Body set to message_body. Insert a row into sms_messages with the message details and twilio_message_sid from the response and status set to sent. Log errors to sms_errors.
+## 1. Database
 
-Create a Supabase edge function called sms-receive handling POST requests at /api/sms-receive. This is the Twilio webhook for inbound messages. Parse the Twilio webhook body to get From (the sender phone number), Body (the message text), and MessageSid. Check if the body is STOP, STOPALL, UNSUBSCRIBE, CANCEL, END, or QUIT — if so insert into sms_optouts and update opted_out to true in sms_contacts for that phone number and insert an inbound message into sms_messages with message_type set to opt-out. For all other inbound messages insert into sms_messages with direction inbound. Find the contact in sms_contacts by phone number. Update their responses count on matching outbound messages. Use the built-in Lovable AI to generate an intelligent reply with this prompt: You are a helpful customer service assistant for [business_name]. A customer texted: [message_body]. Write a brief, helpful SMS reply under 160 characters. Be friendly and concise. Do not use emojis. End with: Reply STOP to opt out. Return only the message text, nothing else. Call sms-send with the generated reply and the customer phone number with message_type set to reply. Log errors to sms_errors.
+Create these Supabase tables with RLS enabled:
 
-Create a Supabase edge function called sms-status handling POST requests at /api/sms-status. This is the Twilio status callback webhook. Parse MessageSid and MessageStatus from the Twilio webhook. Update the matching row in sms_messages — set status to the new status, set delivered_at to now if status is delivered. Log errors to sms_errors.
+**sms_settings**
+id (uuid, primary key, default gen_random_uuid()),
+business_name (text),
+site_url (text),
+twilio_phone_number (text),
+is_running (boolean, default true),
+setup_complete (boolean, default false),
+created_at (timestamptz, default now())
 
-4. Trigger edge functions Create a Supabase edge function called sms-sequences-run that runs every hour. Read sms_settings. If is_running is false or setup_complete is false exit. For each active sequence in sms_sequences find contacts who should receive that step now — new-customer trigger checks sms_contacts created in the last hour, payment-success trigger checks pay_transactions table if it exists for successful transactions in the last hour, checkout-abandoned trigger checks pay_abandoned table if it exists for rows where recovery_email_sent is true and created_at is between 1 and 2 hours ago, subscription-renewal trigger checks pay_subscriptions table if it exists for subscriptions where current_period_end is between 72 and 73 hours from now. For each matching contact check they have not already received this sequence step by querying sms_messages. Check they are not in sms_optouts. Personalise the message template by replacing [business_name] with the stored business name and [site_url] with the stored site url and [checkout_url] with the relevant URL if available. Call sms-send for each eligible contact. Update sends count on the sequence row. Log errors to sms_errors.
+Note: Store Twilio credentials as Supabase secrets — TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN. Never store in the database table.
 
-5. Self-improving edge function Create a Supabase edge function called sms-optimise that runs every Sunday at 12pm UTC. Read sms_settings. If is_running is false exit. For each active sequence in sms_sequences where sends is greater than 20 calculate the response rate by dividing responses by sends multiplied by 100 and update response_rate in sms_sequences. If response_rate is below 5 percent and last_optimised is null or older than 14 days use the built-in Lovable AI with this prompt: You are an SMS marketing specialist for [business_name]. This message has a [response_rate] percent response rate from [sends] sends. Rewrite it to be more engaging and likely to get a response. Keep it under 160 characters. Current message: [message_template]. Trigger context: [trigger]. Return only the new message text, nothing else. Do not include STOP instructions — those will be appended automatically. Insert into sms_optimisation_log with old and new template values. Update message_template in sms_sequences with the new version. Set last_optimised to now. Log errors to sms_errors.
+**sms_contacts**
+id (uuid, primary key, default gen_random_uuid()),
+phone_number (text, unique),
+name (text),
+email (text),
+opted_out (boolean, default false),
+opted_out_at (timestamptz),
+created_at (timestamptz, default now())
 
-6. Admin dashboard Create a page at /lazy-sms-dashboard with five sections: Overview showing total messages sent, total delivered, overall delivery rate as a percentage, total contacts, opted-out contacts count, and active sequences count. Messages log showing last 50 rows from sms_messages with phone number, message type, direction, status, and sent time. Sequences table showing all sms_sequences rows with name, trigger, delay, current message template, sends, responses, response rate, last optimised date, and an active toggle. Optimisation log showing all sms_optimisation_log rows with sequence name, old response rate, old template, new template, and date. Controls showing a toggle to pause or resume all Lazy SMS functions updating is_running in sms_settings, a button labelled Run Sequences Now triggering sms-sequences-run, a button labelled Optimise Messages Now triggering sms-optimise, an error log showing the last 10 sms_errors rows, and a link to /lazy-sms-setup labelled Edit Settings.
+**sms_messages**
+id (uuid, primary key, default gen_random_uuid()),
+contact_id (uuid),
+phone_number (text),
+message_body (text),
+direction (text),
+message_type (text),
+twilio_message_sid (text),
+status (text, default 'queued'),
+sent_at (timestamptz),
+delivered_at (timestamptz),
+created_at (timestamptz, default now())
 
-7. Twilio webhook configuration note Display a notice on the dashboard and setup page with these instructions: In your Twilio console go to Phone Numbers, select your number, and set the Messaging webhook URL to [site_url]/api/sms-receive with HTTP POST method. Set the Status Callback URL to [site_url]/api/sms-status with HTTP POST method. Save. Lazy SMS will now receive inbound messages and delivery confirmations automatically.
+**sms_sequences**
+id (uuid, primary key, default gen_random_uuid()),
+name (text),
+trigger (text),
+step_number (integer),
+delay_hours (integer),
+message_template (text),
+response_rate (numeric, default 0),
+sends (integer, default 0),
+responses (integer, default 0),
+last_optimised (timestamptz),
+active (boolean, default true),
+created_at (timestamptz, default now())
 
-8. Navigation Do not add any Lazy SMS pages to the public navigation. All pages are admin-only.`;
+**sms_optouts**
+id (uuid, primary key, default gen_random_uuid()),
+phone_number (text, unique),
+opted_out_at (timestamptz, default now())
+
+**sms_optimisation_log**
+id (uuid, primary key, default gen_random_uuid()),
+sequence_id (uuid),
+sequence_name (text),
+old_template (text),
+new_template (text),
+old_response_rate (numeric),
+optimised_at (timestamptz, default now())
+
+**sms_errors**
+id (uuid, primary key, default gen_random_uuid()),
+function_name (text),
+error_message (text),
+created_at (timestamptz, default now())
+
+---
+
+## 2. Setup page
+
+Create a page at /lazy-sms-setup with a form:
+- Twilio Account SID (text) — find in Twilio console. Stored as Supabase secret TWILIO_ACCOUNT_SID.
+- Twilio Auth Token (password) — find in Twilio console. Stored as Supabase secret TWILIO_AUTH_TOKEN.
+- Twilio Phone Number (text) — the SMS-enabled number in E.164 format e.g. +12025551234
+- Business name
+- Site URL
+
+Show a notice on the setup page:
+"After saving, go to your Twilio console, select your phone number, and set:
+Messaging webhook URL: [site_url]/api/sms-receive (HTTP POST)
+Status Callback URL: [site_url]/api/sms-status (HTTP POST)"
+
+Submit button: Activate Lazy SMS
+
+On submit:
+1. Store TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN as Supabase secrets
+2. Save twilio_phone_number, business_name, site_url to sms_settings
+3. Set setup_complete to true
+4. Seed sms_sequences with four default sequences:
+   - trigger: new-customer, step: 1, delay: 0, template: "Welcome to [business_name]. We are glad to have you. Reply STOP to opt out."
+   - trigger: payment-success, step: 1, delay: 0, template: "Payment confirmed. Thank you for your purchase from [business_name]. Reply STOP to opt out."
+   - trigger: subscription-renewal, step: 1, delay: 72, template: "Your [business_name] subscription renews in 3 days. Manage it here: [site_url]/manage-subscription. Reply STOP to opt out."
+   - trigger: checkout-abandoned, step: 1, delay: 1, template: "You left something at [business_name]. Complete your purchase here: [checkout_url]. Reply STOP to opt out."
+5. Redirect to /lazy-sms-dashboard with message: "Lazy SMS is active. Your site will now text customers automatically."
+
+---
+
+## 3. Core edge functions
+
+**sms-send** — handles POST requests
+- Accept phone_number (text), message_body (text), message_type (text), contact_id (uuid optional)
+- Check sms_optouts for the phone number — if found return without sending
+- Read TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN from Supabase secrets
+- Send via Twilio Messages API: https://api.twilio.com/2010-04-01/Accounts/[TWILIO_ACCOUNT_SID]/Messages.json using Basic Auth
+- Body: From = twilio_phone_number, To = phone_number, Body = message_body
+- Insert into sms_messages with twilio_message_sid from response and status sent
+- Log errors to sms_errors with function_name sms-send
+
+**sms-receive** — handles POST requests at /api/sms-receive
+- Parse Twilio webhook: From (sender number), Body (message text), MessageSid
+- If body is STOP, STOPALL, UNSUBSCRIBE, CANCEL, END, or QUIT: insert into sms_optouts, update opted_out in sms_contacts, insert inbound message with message_type opt-out. Exit.
+- For all other messages: insert into sms_messages with direction inbound. Find contact in sms_contacts by phone number. Increment responses on matching outbound messages.
+- Call the built-in Lovable AI:
+  "You are a helpful customer service assistant for [business_name]. A customer texted: [message_body]. Write a brief helpful SMS reply under 160 characters. Be friendly and concise. Do not use emojis. End with: Reply STOP to opt out. Return only the message text, nothing else."
+- Call sms-send with the reply and customer phone number and message_type reply
+- Log errors to sms_errors with function_name sms-receive
+
+**sms-status** — handles POST requests at /api/sms-status
+- Parse Twilio webhook: MessageSid and MessageStatus
+- Update matching sms_messages row — set status, set delivered_at to now if status is delivered
+- Log errors to sms_errors with function_name sms-status
+
+---
+
+## 4. Sequence edge function
+
+**sms-sequences-run**
+Cron: every hour — 0 * * * *
+
+1. Read sms_settings. If is_running is false or setup_complete is false exit.
+2. For each active sequence in sms_sequences find eligible contacts:
+   - new-customer: sms_contacts created in the last hour
+   - payment-success: pay_transactions where status is succeeded and created_at in the last hour (skip if pay_transactions table does not exist)
+   - checkout-abandoned: pay_abandoned where recovery_email_sent is true and created_at between 1 and 2 hours ago (skip if table does not exist)
+   - subscription-renewal: pay_subscriptions where current_period_end is between 72 and 73 hours from now (skip if table does not exist)
+3. For each matching contact: check they have not already received this sequence step (query sms_messages). Check they are not in sms_optouts.
+4. Personalise template: replace [business_name], [site_url], [checkout_url] with values from sms_settings.
+5. Call sms-send for each eligible contact.
+6. Increment sends on the sequence row.
+Log errors to sms_errors with function_name sms-sequences-run.
+
+---
+
+## 5. Self-improving edge function
+
+**sms-optimise**
+Cron: every Sunday at 12pm UTC — 0 12 * * 0
+
+1. Read sms_settings. If is_running is false exit.
+2. For each active sequence where sends > 20: calculate response_rate = (responses / sends) * 100. Update response_rate in sms_sequences.
+3. If response_rate < 5 and (last_optimised is null or older than 14 days):
+   Call the built-in Lovable AI:
+   "You are an SMS marketing specialist for [business_name]. This message has a [response_rate]% response rate from [sends] sends. Rewrite it to be more engaging. Keep it under 160 characters. Current message: [message_template]. Trigger context: [trigger]. Return only the new message text. Do not include STOP instructions — those will be appended automatically."
+4. Insert into sms_optimisation_log with old and new values.
+5. Update message_template in sms_sequences.
+6. Set last_optimised to now.
+Log errors to sms_errors with function_name sms-optimise.
+
+---
+
+## 6. Admin dashboard
+
+Create a page at /lazy-sms-dashboard.
+
+Show at top: red error banner if sms_errors has rows from the last 24 hours.
+
+Five sections:
+- Overview: total sent, total delivered, delivery rate %, total contacts, opted-out count, active sequences count
+- Messages log: last 50 sms_messages with phone number, message type, direction, status, sent time
+- Sequences table: all sms_sequences with name, trigger, delay, message template, sends, responses, response rate, last optimised, active toggle
+- Optimisation log: all sms_optimisation_log with sequence name, old response rate, old template, new template, date
+- Controls: pause/resume toggle, Run Sequences Now button, Optimise Messages Now button, error log (last 10 sms_errors), link to /lazy-sms-setup
+
+Show the Twilio webhook configuration instructions prominently on the dashboard:
+"Set your Twilio messaging webhook to: [site_url]/api/sms-receive
+Set your Twilio status callback to: [site_url]/api/sms-status"
+
+---
+
+## 7. Navigation
+
+Do not add any Lazy SMS pages to the public navigation. All pages are admin-only.`;
 
 /* ── Reusable copy button ── */
 function CopyPromptButton({ className = "", onCopy }: { className?: string; onCopy: () => void }) {
