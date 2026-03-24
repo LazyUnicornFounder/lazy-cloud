@@ -263,18 +263,18 @@ const Index = () => {
           </div>
 
           {/* Headline */}
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 3.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(3rem, 7vw, 5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
             The autonomous🤖
             <br />
             half of Lovable❤️
           </h1>
 
           {/* Body */}
-          <div className="max-w-xl space-y-4 mt-2">
-            <p className="hero-description text-sm leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>
+          <div className="max-w-2xl space-y-5 mt-4">
+            <p className="hero-description text-base leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>
               Lovable gave everyone a site. Lazy Unicorn makes it autonomous. Your blog writes itself. Your SEO compounds. AI engines cite you. Your store runs its own promotions. Every post gets narrated. Every stream becomes an article. Every commit becomes a changelog.
             </p>
-            <p className="text-[10px] tracking-[0.12em] uppercase leading-relaxed" style={{ color: "#f0ead6", opacity: 0.2 }}>
+            <p className="text-xs tracking-[0.12em] uppercase leading-relaxed" style={{ color: "#f0ead6", opacity: 0.2 }}>
               Stripe · Twilio · ElevenLabs · Twitch · GitHub · GitLab · Linear · Slack · Telegram · Supabase · Contentful · Firecrawl · Perplexity
             </p>
           </div>
