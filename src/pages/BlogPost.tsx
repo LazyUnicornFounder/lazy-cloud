@@ -124,9 +124,10 @@ const BlogPost = () => {
 
             <div className="space-y-5">
               {post.content.map((paragraph, j) => {
-                // Convert ## headers to bold and strip remaining hashtags
+                // Convert markdown to HTML: headers, links, and strip hashtags
                 const cleaned = paragraph
                   .replace(/^#{1,3}\s+(.+)$/g, '<strong>$1</strong>')
+                  .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2">$1</a>')
                   .replace(/#\w+/g, "")
                   .replace(/\s{2,}/g, " ")
                   .trim();
