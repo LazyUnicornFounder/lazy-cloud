@@ -6,9 +6,9 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
 
-const SETUP_PROMPT = `[Lazy Code Prompt — v0.0.3 — LazyUnicorn.ai]
+const SETUP_PROMPT = `[Lazy GitHub Prompt — v0.0.3 — LazyUnicorn.ai]
 
-Add a complete autonomous GitHub content engine called Lazy Code to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
+Add a complete autonomous GitHub content engine called Lazy GitHub to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
 
 ---
 
@@ -101,7 +101,7 @@ created_at (timestamptz, default now())
 
 ## 2. Setup page
 
-Create a page at /lazy-code-setup with a form:
+Create a page at /lazy-github-setup with a form:
 - GitHub Personal Access Token (password) — create at github.com/settings/tokens with repo and read:org scope. Stored as Supabase secret GITHUB_TOKEN.
 - GitHub Webhook Secret (password) — any random string you choose. Stored as Supabase secret GITHUB_WEBHOOK_SECRET.
 - GitHub Username
@@ -118,7 +118,7 @@ On submit:
 2. Save all other values to code_settings
 3. Set setup_complete to true
 4. Show webhook setup instructions: "Go to your GitHub repository Settings → Webhooks → Add webhook. Set Payload URL to [site_url]/api/github-webhook. Set Content type to application/json. Set Secret to your webhook secret. Select events: Pushes and Releases. Click Add webhook."
-5. Redirect to /lazy-code-dashboard with message: "Lazy GitHub is active. Your next commit or release will be processed and published automatically."
+5. Redirect to /lazy-github-dashboard with message: "Lazy GitHub is active. Your next commit or release will be processed and published automatically."
 
 ---
 
@@ -206,7 +206,7 @@ At the bottom of every public page add: "🦄 Powered by Lazy GitHub — autonom
 
 ## 7. Admin dashboard
 
-Create a page at /lazy-code-dashboard.
+Create a page at /lazy-github-dashboard.
 
 Show at top: red error banner if code_errors has rows from the last 24 hours.
 
@@ -216,7 +216,7 @@ Six sections:
 - Content log: all code_content with title, type, published date, views, view link
 - Roadmap table: all code_roadmap with status, title, milestone, labels
 - Optimisation log: all code_optimisation_log rows
-- Controls: pause/resume toggle, Sync Roadmap Now button, Optimise Content Now button, error log (last 10 code_errors), link to /lazy-code-setup
+- Controls: pause/resume toggle, Sync Roadmap Now button, Optimise Content Now button, error log (last 10 code_errors), link to /lazy-github-setup
 
 ---
 
@@ -225,7 +225,7 @@ Six sections:
 Add a Changelog link to the main navigation pointing to /changelog.
 Add a Roadmap link pointing to /roadmap.
 Add a Dev Blog link pointing to /devblog.
-Do not add /lazy-code-setup or /lazy-code-dashboard to public navigation.`;
+Do not add /lazy-github-setup or /lazy-github-dashboard to public navigation.`;
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
