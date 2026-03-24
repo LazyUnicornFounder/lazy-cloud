@@ -72,6 +72,12 @@ const App = () => (
             <Route path="/lazy-pay" element={<LazyPayPage />} />
             <Route path="/lazy-sms" element={<LazySmsPage />} />
             <Route path="/lazy-stream" element={<LazyStreamPage />} />
+            <Route path="/lazy-stream-setup" element={<LazyStreamSetup />} />
+            <Route path="/lazy-stream-dashboard" element={<LazyStreamDashboard />} />
+            <Route path="/streams" element={<StreamsPage />} />
+            <Route path="/streams/highlights" element={<StreamHighlightsPage />} />
+            <Route path="/streams/:slug" element={<StreamContentPage />} />
+            <Route path="/live" element={<LivePage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
