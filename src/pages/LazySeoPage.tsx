@@ -85,7 +85,7 @@ const LazySeoPage = () => {
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
               Paste one prompt into your Lovable project. It discovers keyword opportunities, writes SEO-optimised content, and publishes daily — on autopilot.
             </p>
-            <CopyPromptButton onCopy={handlePromptCopy} />
+            <CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} />
             <p className="font-body text-xs text-muted-foreground mt-4">Built for Lovable projects. No API keys needed.</p>
           </motion.div>
         </section>
