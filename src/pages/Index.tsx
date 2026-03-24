@@ -265,10 +265,10 @@ const Index = () => {
           {/* Body */}
           <div className="max-w-xl space-y-4 mt-2">
             <p className="hero-description text-sm leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>
-              Lovable gave everyone a site. Lazy Unicorn makes it on autopilot. Your blog writes itself. Your SEO compounds. AI engines cite you. Your store runs its own promotions. Every post gets narrated. Every stream becomes an article. Every commit becomes a changelog.
+              Lovable gave everyone a site. Lazy Unicorn makes it autonomous. Your blog writes itself. Your SEO compounds. AI engines cite you. Your store runs its own promotions. Every post gets narrated. Every stream becomes an article. Every commit becomes a changelog.
             </p>
             <p className="text-[10px] tracking-[0.12em] uppercase leading-relaxed" style={{ color: "#f0ead6", opacity: 0.2 }}>
-              Stripe · Twilio · ElevenLabs · Twitch · GitHub · GitLab
+              Stripe · Twilio · ElevenLabs · Twitch · GitHub · GitLab · Linear · Slack · Telegram · Supabase · Contentful · Firecrawl · Perplexity
             </p>
           </div>
 
