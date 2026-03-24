@@ -4,9 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
-import BlogTicker from "@/components/BlogTicker";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
-import TotalVisitorCount from "@/components/TotalVisitorCount";
 
 const NEW_TITLE = "Drive Traffic Automatically to Your Lovable Website or App";
 const NEW_DESCRIPTION = "We build autonomous engines for Lovable that turn your website into a self-growing asset.";
@@ -131,63 +129,35 @@ const Index = () => {
         speakable={["h1", ".hero-description"]}
       />
 
-      {/* Blog Ticker at bottom */}
-      <div className="fixed bottom-0 left-0 right-0 z-50">
-        <BlogTicker />
-      </div>
 
       <Navbar activePage="home" />
 
       {/* Hero */}
-      <header className="relative z-10 min-h-screen flex flex-col justify-center items-start px-4 sm:px-8 md:px-12 pb-16">
-        <div className="flex flex-col md:flex-row md:items-end md:gap-6 w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex flex-col items-center"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="mb-[-1px] relative z-10 flex flex-col items-center"
+      <header className="relative z-10 aspect-square md:aspect-auto md:min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: "#0a0a08" }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center px-6 max-w-3xl"
+        >
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+            Your Lovable site.
+            <br />
+            <span style={{ fontFamily: "'Dancing Script', cursive" }}>Running itself.</span>
+          </h1>
+          <p className="hero-description mt-6 text-sm sm:text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.6 }}>
+            Lazy Unicorn builds the autonomous layer for Lovable. One prompt installs the engine you need — blog posts that publish themselves, SEO that compounds, payments that optimise, SMS that converts, audio that narrates, stores that grow. Everything your site needs to run and grow without you doing it manually.
+          </p>
+          <div className="flex items-center justify-center gap-3 mt-8">
+            <a
+              href="#engines"
+              className="inline-block font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
+              style={{ backgroundColor: "#f0ead6", color: "#0a0a08", borderRadius: 0 }}
             >
-              <div className="mb-[-1px] relative z-10">
-                <TotalVisitorCount />
-              </div>
-              <div className="bg-transparent backdrop-blur-xl border border-primary/20 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
-                <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
-                  Autonomous growth for Lovable
-                </p>
-                <p className="font-body text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-foreground/60 text-center mt-1">
-                  ★  EST. 2026  ★
-                </p>
-              </div>
-            </motion.div>
-
-            <div className="bg-transparent backdrop-blur-xl rounded-3xl px-5 sm:px-8 md:px-10 py-8 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
-              <h1 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[0.95] text-foreground">
-                Your Lovable site.
-                <br />
-                Publishing every day.
-                <br />
-                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Growing forever.</span>
-              </h1>
-              <p className="hero-description font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-2xl leading-relaxed">
-                One prompt turns your Lovable site into a content machine that ranks and compounds forever. <a href="/lazy-blogger" className="text-primary hover:underline">Lazy Blogger</a> publishes daily. <a href="/lazy-seo" className="text-primary hover:underline">Lazy SEO</a> targets your keywords. <a href="/lazy-geo" className="text-primary hover:underline">Lazy GEO</a> gets you into AI answers. Free at <a href="https://www.lazyunicorn.ai" className="text-primary hover:underline">LazyUnicorn.ai</a>.
-              </p>
-              <div className="flex items-center gap-3 mt-6">
-                <a
-                  href="#engines"
-                  className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
-                >
-                  See the Engines
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+              See the Engines
+            </a>
+          </div>
+        </motion.div>
       </header>
 
       {/* Product Grid */}
