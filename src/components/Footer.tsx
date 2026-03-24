@@ -15,6 +15,7 @@ const engineCategories = [
       { name: "SEO", href: "/lazy-seo" },
       { name: "GEO", href: "/lazy-geo" },
       { name: "Voice", href: "/lazy-voice" },
+      { name: "Contentful", href: "/lazy-contentful" },
     ],
   },
   {
@@ -49,7 +50,6 @@ const engineCategories = [
     label: "Platforms",
     items: [
       { name: "Stream", href: "/lazy-stream" },
-      { name: "Contentful", href: "/lazy-contentful" },
     ],
   },
   {
