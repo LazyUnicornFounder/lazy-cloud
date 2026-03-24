@@ -13,19 +13,19 @@ const products = [
   { cursive: "Lazy", name: "Blogger", link: "/lazy-blogger", tagline: "Your blog writes itself." },
   { cursive: "Lazy", name: "SEO", link: "/lazy-seo", tagline: "Rankings on autopilot." },
   { cursive: "Lazy", name: "GEO", link: "/lazy-geo", tagline: "Get cited by AI." },
-  { cursive: "Lazy", name: "Store", link: "/lazy-store", tagline: "A store that runs itself." },
   { cursive: "Lazy", name: "Voice", link: "/lazy-voice", tagline: "Every post, narrated." },
+  { cursive: "Lazy", name: "Store", link: "/lazy-store", tagline: "A store that runs itself." },
   { cursive: "Lazy", name: "Pay", link: "/lazy-pay", tagline: "Payments that optimise." },
   { cursive: "Lazy", name: "SMS", link: "/lazy-sms", tagline: "Texts that convert." },
-  { cursive: "Lazy", name: "Stream", link: "/lazy-stream", tagline: "Streams become content." },
-  { cursive: "Lazy", name: "Code", link: "/lazy-code", tagline: "Commits become changelogs." },
-  { cursive: "Lazy", name: "Alert", link: "/lazy-alert", tagline: "Your business in your Slack." },
+  { cursive: "Lazy", name: "GitHub", link: "/lazy-code", tagline: "Commits become changelogs." },
   { cursive: "Lazy", name: "GitLab", link: "/lazy-gitlab", tagline: "Commits become changelogs." },
-  { cursive: "Lazy", name: "Supabase", link: "/lazy-supabase", tagline: "Your database tells its story." },
-  { cursive: "Lazy", name: "Telegram", link: "/lazy-telegram", tagline: "Your business in Telegram." },
+  { cursive: "Lazy", name: "Stream", link: "/lazy-stream", tagline: "Streams become content." },
   { cursive: "Lazy", name: "Linear", link: "/lazy-linear", tagline: "Issues become changelogs." },
   { cursive: "Lazy", name: "Contentful", link: "/lazy-contentful", tagline: "Two-way CMS sync." },
   { cursive: "Lazy", name: "Perplexity", link: "/lazy-perplexity", tagline: "Research-backed content." },
+  { cursive: "Lazy", name: "Supabase", link: "/lazy-supabase", tagline: "Your database tells its story." },
+  { cursive: "Lazy", name: "Alert", link: "/lazy-alert", tagline: "Your business in your Slack." },
+  { cursive: "Lazy", name: "Telegram", link: "/lazy-telegram", tagline: "Your business in Telegram." },
   { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More engines loading." },
 ];
 
@@ -110,7 +110,7 @@ const sketches: Record<string, JSX.Element> = {
       <circle cx="85" cy="35" r="4" fill="#f0ead6" stroke="none" />
     </svg>
   ),
-  Code: (
+  GitHub: (
     <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M45 40 L25 60 L45 80" />
       <path d="M75 40 L95 60 L75 80" />
@@ -285,7 +285,7 @@ const Index = () => {
                 Every engine. One prompt.
               </p>
               <p className="max-w-lg text-center" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", color: "#f0ead6", opacity: 0.25, lineHeight: 1.6, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                Blogger · SEO · GEO · Store · Voice · Pay · SMS · Stream · Code · Alert · GitLab · Supabase · Telegram · Linear · Contentful · Perplexity
+                Blogger · SEO · GEO · Voice · Store · Pay · SMS · GitHub · GitLab · Stream · Linear · Contentful · Perplexity · Supabase · Alert · Telegram
               </p>
               <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
                 Made for Lovable

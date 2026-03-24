@@ -124,11 +124,16 @@ const categories: { label: string; items: { label: string; href: string; tagline
     ],
   },
   {
+    label: "Code",
+    items: [
+      { label: "GitHub", href: "/lazy-code", tagline: "Commits become changelogs.", icon: icons.code },
+      { label: "GitLab", href: "/lazy-gitlab", tagline: "GitLab commits → content.", icon: icons.gitlab },
+    ],
+  },
+  {
     label: "Platforms",
     items: [
       { label: "Stream", href: "/lazy-stream", tagline: "Streams become content.", icon: icons.stream },
-      { label: "Code", href: "/lazy-code", tagline: "Commits become changelogs.", icon: icons.code },
-      { label: "GitLab", href: "/lazy-gitlab", tagline: "GitLab commits → content.", icon: icons.gitlab },
       { label: "Linear", href: "/lazy-linear", tagline: "Issues become changelogs.", icon: icons.linear },
       { label: "Contentful", href: "/lazy-contentful", tagline: "Two-way CMS sync.", icon: icons.contentful },
     ],

@@ -19,7 +19,7 @@ const products: Product[] = [
     name: "Lazy Run",
     tagline: "Autonomous operations layer",
     link: "/lazy-run",
-    free: ["Setup prompt included", "All 9 engines in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
+    free: ["Setup prompt included", "All engines in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
     pro: { price: "$99", features: ["Hosted version — zero config", "Auto-scaling engine execution", "Priority AI model access", "Dedicated support", "Custom engine configuration"], comingSoon: true },
   },
   {
@@ -44,18 +44,18 @@ const products: Product[] = [
     pro: { price: "$19", features: ["Hosted version", "Real-time citation alerts", "Competitor citation tracking", "Citation influence scoring", "Monthly GEO reports"], comingSoon: true },
   },
   {
-    name: "Lazy Store",
-    tagline: "Autonomous Shopify store engine",
-    link: "/lazy-store",
-    free: ["Setup prompt included", "Shopify integration", "Product discovery & listing", "Price monitoring", "Conversion optimisation"],
-    pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced pricing algorithms", "Automated ad campaigns", "Revenue analytics"], comingSoon: true },
-  },
-  {
     name: "Lazy Voice",
     tagline: "Autonomous audio engine",
     link: "/lazy-voice",
     free: ["Setup prompt included", "Blog-to-podcast conversion", "AI voice narration", "RSS feed generation", "Auto-publish episodes"],
     pro: { price: "$19", features: ["Hosted version", "Custom voice cloning", "Multi-language narration", "Spotify & Apple distribution", "Listener analytics"], comingSoon: true },
+  },
+  {
+    name: "Lazy Store",
+    tagline: "Autonomous Shopify store engine",
+    link: "/lazy-store",
+    free: ["Setup prompt included", "Shopify integration", "Product discovery & listing", "Price monitoring", "Conversion optimisation"],
+    pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced pricing algorithms", "Automated ad campaigns", "Revenue analytics"], comingSoon: true },
   },
   {
     name: "Lazy Pay",
@@ -72,25 +72,11 @@ const products: Product[] = [
     pro: { price: "$19", features: ["Hosted version", "Advanced segmentation", "A/B testing", "Multi-channel messaging", "Compliance automation"], comingSoon: true },
   },
   {
-    name: "Lazy Stream",
-    tagline: "Autonomous Twitch content engine",
-    link: "/lazy-stream",
-    free: ["Setup prompt included", "VOD transcription", "Stream recap generation", "Clip extraction", "SEO article writing"],
-    pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced stream analytics", "Self-improving content"], comingSoon: true },
-  },
-  {
-    name: "Lazy Code",
+    name: "Lazy GitHub",
     tagline: "Autonomous GitHub content engine",
     link: "/lazy-code",
     free: ["Setup prompt included", "Commit-to-changelog generation", "Release notes automation", "Developer blog publishing", "GitHub webhook integration"],
     pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced changelog formatting", "API documentation generation", "Custom templates"], comingSoon: true },
-  },
-  {
-    name: "Lazy Alert",
-    tagline: "Real-time Slack alerts for every engine",
-    link: "/lazy-alert",
-    free: ["Setup prompt included", "Real-time event alerts to Slack", "Daily morning briefing", "Slash commands for engine control", "Bring your own Slack workspace"],
-    pro: { price: "$9", features: ["Hosted version", "Custom Slack bot with branded avatar", "Advanced filtering", "Multiple channel routing by event type"], comingSoon: true },
   },
   {
     name: "Lazy GitLab",
@@ -100,18 +86,11 @@ const products: Product[] = [
     pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced changelog formatting", "Custom templates"], comingSoon: true },
   },
   {
-    name: "Lazy Supabase",
-    tagline: "Autonomous database monitoring engine",
-    link: "/lazy-supabase",
-    free: ["Setup prompt included", "User milestone detection", "Edge function error monitoring", "Row milestone tracking", "Weekly growth reports"],
-    pro: { price: "$19", features: ["Hosted version", "Multi-project monitoring", "Advanced growth analytics", "Custom milestone thresholds"], comingSoon: true },
-  },
-  {
-    name: "Lazy Telegram",
-    tagline: "Autonomous Telegram alerts",
-    link: "/lazy-telegram",
-    free: ["Setup prompt included", "Real-time event alerts", "Daily morning briefing", "Bot commands for engine control", "Telegram bots are free"],
-    pro: { price: "$9", features: ["Hosted version", "Group chat support", "Multiple recipient routing", "Custom bot branding"], comingSoon: true },
+    name: "Lazy Stream",
+    tagline: "Autonomous Twitch content engine",
+    link: "/lazy-stream",
+    free: ["Setup prompt included", "VOD transcription", "Stream recap generation", "Clip extraction", "SEO article writing"],
+    pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced stream analytics", "Self-improving content"], comingSoon: true },
   },
   {
     name: "Lazy Linear",
@@ -133,6 +112,27 @@ const products: Product[] = [
     link: "/lazy-perplexity",
     free: ["Setup prompt included", "Real-time niche research", "Citation-rich content generation", "Brand visibility testing", "Bring your own Perplexity API key"],
     pro: { price: "$29", features: ["Hosted version", "Daily citation monitoring", "Competitive citation tracking", "Advanced research scheduling"], comingSoon: true },
+  },
+  {
+    name: "Lazy Supabase",
+    tagline: "Autonomous database monitoring engine",
+    link: "/lazy-supabase",
+    free: ["Setup prompt included", "User milestone detection", "Edge function error monitoring", "Row milestone tracking", "Weekly growth reports"],
+    pro: { price: "$19", features: ["Hosted version", "Multi-project monitoring", "Advanced growth analytics", "Custom milestone thresholds"], comingSoon: true },
+  },
+  {
+    name: "Lazy Alert",
+    tagline: "Real-time Slack alerts for every engine",
+    link: "/lazy-alert",
+    free: ["Setup prompt included", "Real-time event alerts to Slack", "Daily morning briefing", "Slash commands for engine control", "Bring your own Slack workspace"],
+    pro: { price: "$9", features: ["Hosted version", "Custom Slack bot with branded avatar", "Advanced filtering", "Multiple channel routing by event type"], comingSoon: true },
+  },
+  {
+    name: "Lazy Telegram",
+    tagline: "Autonomous Telegram alerts",
+    link: "/lazy-telegram",
+    free: ["Setup prompt included", "Real-time event alerts", "Daily morning briefing", "Bot commands for engine control", "Telegram bots are free"],
+    pro: { price: "$9", features: ["Hosted version", "Group chat support", "Multiple recipient routing", "Custom bot branding"], comingSoon: true },
   },
 ];
 

@@ -26,11 +26,16 @@ const engineCategories = [
     ],
   },
   {
+    label: "Code",
+    items: [
+      { name: "GitHub", href: "/lazy-code" },
+      { name: "GitLab", href: "/lazy-gitlab" },
+    ],
+  },
+  {
     label: "Platforms",
     items: [
       { name: "Stream", href: "/lazy-stream" },
-      { name: "Code", href: "/lazy-code" },
-      { name: "GitLab", href: "/lazy-gitlab" },
       { name: "Linear", href: "/lazy-linear" },
       { name: "Contentful", href: "/lazy-contentful" },
     ],
