@@ -5,12 +5,14 @@ import { supabase } from "@/integrations/supabase/client";
 import {
   LayoutDashboard, PenTool, Search, Brain, ShoppingCart,
   Mic, CreditCard, MessageSquare, Tv, Code, Settings, Menu, X,
+  BarChart3,
 } from "lucide-react";
 
 const db = supabase as any;
 
 const navItems = [
   { label: "Overview", path: "/admin", icon: LayoutDashboard, engine: null },
+  { label: "Analytics", path: "/admin/analytics", icon: BarChart3, engine: null },
   { label: "Lazy Blogger", path: "/admin/blogger", icon: PenTool, engine: "blogger" },
   { label: "Lazy SEO", path: "/admin/seo", icon: Search, engine: "seo" },
   { label: "Lazy GEO", path: "/admin/geo", icon: Brain, engine: "geo" },

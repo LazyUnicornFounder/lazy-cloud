@@ -45,6 +45,7 @@ import AdminStreamPage from "./pages/admin/AdminStreamPage.tsx";
 import AdminVoicePage from "./pages/admin/AdminVoicePage.tsx";
 import AdminSettingsPage from "./pages/admin/AdminSettingsPage.tsx";
 import AdminPlaceholderPage from "./pages/admin/AdminPlaceholderPage.tsx";
+import AdminAnalyticsPage from "./pages/admin/AdminAnalyticsPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +61,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminOverview />} />
+              <Route path="analytics" element={<AdminAnalyticsPage />} />
               <Route path="blogger" element={<AdminBloggerPage />} />
               <Route path="seo" element={<AdminSeoPage />} />
               <Route path="geo" element={<AdminGeoPage />} />
