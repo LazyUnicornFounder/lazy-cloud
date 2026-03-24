@@ -21,10 +21,17 @@ export default function AboutPage() {
             <p className="font-display text-sm tracking-[0.2em] uppercase text-primary mb-6 font-bold">
               About
             </p>
-            <h1 className="font-display text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-8">
+            <h1 className="font-display text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-4">
               One founder. Zero employees.<br />
               A company that builds itself.
             </h1>
+
+            <div className="mb-8 py-4 px-5 rounded-xl bg-primary/5 border border-primary/10">
+              <p className="font-display text-[10px] tracking-[0.2em] uppercase text-primary/60 mb-1 font-bold">Mission</p>
+              <p className="font-display text-lg md:text-xl font-bold text-foreground/90 tracking-tight">
+                Accelerate autonomous capitalism.
+              </p>
+            </div>
 
             <div className="space-y-6 font-body text-sm text-foreground/50 leading-relaxed">
               <p>
