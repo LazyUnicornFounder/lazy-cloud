@@ -9,101 +9,154 @@ import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const LAZY_VOICE_PROMPT = `Install Lazy Voice — an autonomous audio narration engine powered by ElevenLabs — into my existing Lovable project.
+const LAZY_VOICE_PROMPT = `[Lazy Voice Prompt — v0.0.3 — LazyUnicorn.ai]
+
+Add an autonomous audio narration engine called Lazy Voice to this project. It monitors every new post published to blog_posts, seo_posts, and geo_posts, converts each to audio using the ElevenLabs API, stores the audio file, embeds an audio player on every blog post page, and publishes a podcast feed at /listen — all automatically with no manual input required after setup.
 
 ---
 
-## Step 1: Ask me three setup questions
-
-Before building anything, ask me these three questions one at a time:
-
-1. What is your ElevenLabs API key? (Get one at elevenlabs.io)
-2. Which ElevenLabs voice ID do you want to use? (Paste a voice ID or say "default" to use the Rachel voice)
-3. Do you want to generate a podcast RSS feed at /listen? (yes/no)
-
----
-
-## Step 2: Create the database
+## 1. Database
 
 Create these Supabase tables with RLS enabled:
 
-**voice_settings** — id, elevenlabs_api_key (stored as secret), voice_id, is_running boolean, rss_enabled boolean, created_at
-**voice_episodes** — id, post_id (text), post_title, post_slug, audio_url, duration_seconds, status (pending/processing/published/error), source_table (blog_posts/seo_posts/geo_posts), created_at, published_at
-**voice_errors** — id, error_message, post_id, created_at
+**voice_settings**
+id (uuid, primary key, default gen_random_uuid()),
+podcast_title (text),
+podcast_description (text),
+podcast_author (text),
+site_url (text),
+voice_id (text, default 'EXAVITQu4vr4xnSDxMaL'),
+rss_enabled (boolean, default true),
+is_running (boolean, default true),
+setup_complete (boolean, default false),
+created_at (timestamptz, default now())
+
+Note: Store the ElevenLabs API key as a Supabase secret — ELEVENLABS_API_KEY. Never store it in the database table.
+
+**voice_episodes**
+id (uuid, primary key, default gen_random_uuid()),
+post_id (text),
+post_slug (text, unique),
+post_title (text),
+audio_url (text),
+duration_seconds (integer),
+file_size_bytes (integer),
+source_table (text),
+status (text, default 'published'),
+published_at (timestamptz, default now()),
+created_at (timestamptz, default now())
+
+**voice_errors**
+id (uuid, primary key, default gen_random_uuid()),
+function_name (text),
+error_message (text),
+post_slug (text),
+created_at (timestamptz, default now())
+
+Create a Supabase storage bucket called voice-audio with public access enabled.
 
 ---
 
-## Step 3: Build the audio player component
+## 2. Setup page
 
-Create a reusable AudioPlayer component that:
-- Accepts an audio URL and title
-- Shows play/pause, progress bar, duration, and speed controls
-- Matches my existing site's design system
-- Can be embedded at the top of any blog post page
+Create a page at /lazy-voice-setup with a form:
+- ElevenLabs API key (password) — get one at elevenlabs.io. Will be stored as Supabase secret ELEVENLABS_API_KEY. Never stored in the database.
+- Voice ID (text) — the ElevenLabs voice ID to use. Default: EXAVITQu4vr4xnSDxMaL (Rachel voice). Note: find other voice IDs in your ElevenLabs dashboard under Voices.
+- Podcast title (what is your podcast called?)
+- Podcast description (one sentence describing your podcast)
+- Podcast author name
+- Site URL (your full site URL — used to build the RSS feed)
+- Enable RSS feed (toggle, default on)
 
-Automatically inject this player into every blog post page, SEO post page, and GEO post page when a matching voice_episode with status 'published' exists.
+Submit button: Start Lazy Voice
 
----
-
-## Step 4: Build the /listen page
-
-Create a /listen page that:
-- Lists every published voice_episode as a podcast feed
-- Shows episode title, date, duration, and a play button
-- Includes an inline audio player
-- Has a link to the RSS feed
-- Matches my existing site's design system
+On submit:
+1. Store ElevenLabs API key as Supabase secret ELEVENLABS_API_KEY
+2. Save all other values to voice_settings
+3. Set setup_complete to true
+4. Redirect to /lazy-voice-dashboard with message: "Lazy Voice is running. Every new blog post will be narrated automatically within 30 minutes of publishing."
 
 ---
 
-## Step 5: Build the narration engine
+## 3. Edge functions
 
-Create a Supabase edge function called voice-narrate:
+**voice-narrate**
+Cron: every 30 minutes — */30 * * * *
 
-- Query blog_posts, seo_posts, and geo_posts for any published post that does NOT have a matching voice_episode
-- For each new post, send the post body to the ElevenLabs text-to-speech API using the configured voice_id
-- Store the generated audio in Supabase Storage
-- Insert a voice_episode record with the audio URL and status 'published'
-- Log any errors to voice_errors
-- Run every 30 minutes via pg_cron
+1. Read voice_settings. If is_running is false or setup_complete is false exit.
+2. Query blog_posts, seo_posts, and geo_posts for posts where status is published and published_at is within the last hour. For each table that does not exist skip it gracefully.
+3. For each post check if a voice_episodes row already exists with matching post_slug. If it does skip.
+4. Strip all markdown formatting from the post body to get clean plain text.
+5. Send to ElevenLabs API at https://api.elevenlabs.io/v1/text-to-speech/[voice_id]:
+   - Header: xi-api-key set to ELEVENLABS_API_KEY secret
+   - Header: Content-Type application/json
+   - Body: model_id "eleven_monolingual_v1", text "[post title]. [cleaned post body]", voice_settings stability 0.5 similarity_boost 0.75
+6. Receive the audio binary response.
+7. Upload to voice-audio Supabase storage bucket as [post-slug].mp3.
+8. Get the public URL of the uploaded file.
+9. Insert into voice_episodes: post_slug, post_title, audio_url, source_table (blog_posts/seo_posts/geo_posts), status published, published_at now.
+Log all errors to voice_errors with function_name voice-narrate and the post_slug.
 
----
+**voice-rss**
+Serves the podcast RSS feed when called via GET request.
 
-## Step 6: Generate the RSS feed
-
-Create a Supabase edge function called voice-rss:
-
-- Query all published voice_episodes ordered by published_at desc
-- Generate a valid podcast RSS 2.0 XML feed with iTunes tags
-- Return the XML with proper content-type headers
-- This feed can be submitted to Apple Podcasts and Spotify
-
----
-
-## Step 7: Wire up the autonomous loop
-
-Set up pg_cron to run voice-narrate every 30 minutes. The engine should:
-- Detect every new blog post, SEO post, and GEO post automatically
-- Generate audio and publish the episode without any manual intervention
-- The entire pipeline runs forever after the initial setup
+1. Read voice_settings.
+2. Query all voice_episodes where status is published ordered by published_at descending.
+3. Generate valid RSS 2.0 XML with iTunes podcast namespace:
+   - Channel: title, description, link (site_url), language en-us, itunes:author, itunes:category Technology
+   - Each episode item: title, description (post title), enclosure url (audio_url) type audio/mpeg, pubDate RFC 2822 format, guid (audio_url)
+4. Return XML with Content-Type application/rss+xml.
 
 ---
 
-## Design rules
+## 4. Audio player component
 
-- Match my existing site's design system exactly
-- Use my existing fonts, colors, spacing, and component patterns
-- Use shadcn/ui components where appropriate
-- All pages must be fully responsive
+Create a reusable AudioPlayer React component:
+- Props: audioUrl (string), title (string)
+- Shows: play/pause button, progress bar, current time, total duration, 1x/1.5x/2x speed control
+- Matches the existing site design system
+- Accessible: keyboard navigable, ARIA labels
+
+Modify every blog post page at /blog/[slug], /seo/[slug], and /geo/[slug]:
+- Query voice_episodes for a matching post_slug
+- If an episode exists with status published show the AudioPlayer at the top of the post body before the article content
+- Show a label: "🎧 Listen to this article" above the player
+- If no episode exists show nothing — no loading state, no placeholder
 
 ---
 
-## Important
+## 5. Podcast feed page
 
-- Store the ElevenLabs API key as a Supabase secret, never in client code
-- Use Lovable Cloud (Supabase) for all database, storage, and edge function needs
-- Every engine must handle errors gracefully and log to voice_errors
-- The entire system should run autonomously after the initial setup`;
+Create a public page at /listen:
+- Show podcast title and description from voice_settings at the top
+- Show a copyable RSS feed URL: [site_url]/functions/v1/voice-rss
+- Show instructions: "Copy this RSS URL and submit it to Apple Podcasts at podcasters.apple.com and Spotify at podcasters.spotify.com to distribute your podcast automatically."
+- List all voice_episodes ordered by published_at descending. Each shows: post title, published date, duration, and an embedded HTML audio player using the audio_url.
+- At the bottom add: "🦄 Powered by Lazy Voice — autonomous audio narration for Lovable sites. Built by LazyUnicorn.ai" — link to https://lazyunicorn.ai.
+
+---
+
+## 6. Admin dashboard
+
+Create a page at /lazy-voice-dashboard:
+
+Show at top: red error banner if voice_errors has rows from the last 24 hours.
+
+Show:
+- Stats: total episodes generated, total audio duration (sum of duration_seconds formatted as hours and minutes), episodes this week
+- A large enable/disable toggle updating is_running
+- A Generate Audio Now button that immediately calls voice-narrate
+- A View RSS Feed button linking to the voice-rss function URL
+- Episodes table: all voice_episodes with post title, source table, published date, audio duration, a Play button, and a View Post link
+- Error log: last 10 voice_errors rows
+- Link to /lazy-voice-setup labelled Edit Settings
+
+---
+
+## 7. Navigation
+
+Add a Listen link to the main site navigation pointing to /listen.
+Do not add /lazy-voice-setup or /lazy-voice-dashboard to public navigation.`;
 
 /* ── Reusable copy button ── */
 function CopyPromptButton({

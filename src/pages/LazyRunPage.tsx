@@ -10,25 +10,302 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
-const LAZY_RUN_PROMPT = `Add a complete unified autonomous operations runtime called Lazy Run to this project. Lazy Run installs and manages all Lazy engines — Blogger, SEO, GEO, Store, Voice, Pay, SMS, Stream, and Code — from a single setup prompt, a single dashboard, and a unified scheduling and monitoring system. Install only the engines the user activates during setup.
+const LAZY_RUN_PROMPT = `[Lazy Run Prompt — v0.0.3 — LazyUnicorn.ai]
 
-1. Database Create a Supabase table called run_settings with fields: id (uuid, primary key), site_url (text), brand_name (text), business_description (text), target_audience (text), anthropic_api_key (text), elevenlabs_api_key (text), elevenlabs_voice_id (text), twilio_account_sid (text), twilio_auth_token (text), twilio_phone_number (text), stripe_publishable_key (text), stripe_secret_key (text), stripe_webhook_secret (text), github_token (text), github_username (text), github_repo (text), twitch_client_id (text), twitch_client_secret (text), twitch_username (text), active_engines (text — comma separated list of active engine names), master_running (boolean, default true), setup_complete (boolean, default false), created_at (timestamptz, default now()). Create a Supabase table called run_activity with fields: id (uuid, primary key, default gen_random_uuid()), engine (text), action (text), result (text — one of success, error, optimisation), details (text), created_at (timestamptz, default now()). Create a Supabase table called run_performance with fields: id (uuid, primary key, default gen_random_uuid()), engine (text), metric_name (text), metric_value (numeric), recorded_at (timestamptz, default now())). Create a Supabase table called run_errors with fields: id (uuid, primary key, default gen_random_uuid()), engine (text), function_name (text), error_message (text), created_at (timestamptz, default now()). Also create all database tables required by each activated engine — seo_geo_settings, seo_posts, seo_keywords, geo_posts, geo_queries, geo_citations, blog_posts, blog_settings, store_settings, store_products, store_content, store_promotions, voice_settings, voice_episodes, pay_settings, pay_products, pay_customers, pay_transactions, pay_subscriptions, pay_abandoned, pay_optimisation_log, sms_settings, sms_contacts, sms_messages, sms_sequences, sms_optouts, stream_settings, stream_sessions, stream_content, stream_clips, stream_transcripts, code_settings, code_commits, code_releases, code_content, code_roadmap — create only the tables for engines the user activates. Create engine_errors table shared across all engines with fields: id (uuid, primary key, default gen_random_uuid()), engine (text), function_name (text), error_message (text), created_at (timestamptz, default now()).
+Add a complete unified autonomous operations runtime called Lazy Run to this project. Lazy Run installs and manages all Lazy engines — Blogger, SEO, GEO, Store, Voice, Pay, SMS, Stream, and Code — from a single setup prompt, a single dashboard, and a unified scheduling and monitoring system. Install only the engines the user activates during setup.
 
-2. Setup page Create a multi-step setup page at /lazy-run-setup. Step 1 — Choose your engines. Show nine toggle cards one per engine: Lazy Blogger, Lazy SEO, Lazy GEO, Lazy Store, Lazy Voice, Lazy Pay, Lazy SMS, Lazy Stream, Lazy Code. Each card shows the engine name, a one-line description, and an on/off toggle. Below the cards show which API keys each selected engine requires so the user knows what to prepare. A Next button advances to step 2. Step 2 — Core settings. Fields: Site URL, Brand name, Business description, Target audience. These are shared across all engines. A Next button advances to step 3. Step 3 — API keys. Show only the API key fields required by the engines selected in step 1. Group them by service: Anthropic section shown if any content engine is active — one field for the API key. ElevenLabs section shown if Lazy Voice is active — API key and Voice ID. Twilio section shown if Lazy SMS is active — Account SID, Auth Token, Phone Number. Stripe section shown if Lazy Pay is active — Publishable Key, Secret Key, Webhook Secret. GitHub section shown if Lazy Code is active — Personal Access Token, Username, Repository. Twitch section shown if Lazy Stream is active — Client ID, Client Secret, Username. A Next button advances to step 4. Step 4 — Publishing schedule. Show a simple visual schedule with sliders or selects for each active engine: how many times per day to publish, preferred publish times. Stagger suggestions automatically so engines do not compete. Show a preview of the full weekly schedule. A Launch button submits everything. On submit save all values to run_settings with active_engines set to a comma separated list of the chosen engines. Set setup_complete to true. Seed all engine-specific settings tables with the provided values. Create all required database tables for active engines. Redirect to /lazy-run-dashboard with message: Lazy Run is active. Your autonomous operations layer is running.
+---
 
-3. Master orchestrator edge function Create a Supabase edge function called run-orchestrator that runs every 30 minutes. Read run_settings. If master_running is false or setup_complete is false exit immediately. Read active_engines from run_settings. For each active engine check if it is time to run based on the configured schedule. To prevent simultaneous execution stagger each engine call with a 2-minute delay between them. For each engine due to run call its corresponding edge function: blogger-publish for Lazy Blogger, seo-publish for Lazy SEO, geo-publish for Lazy GEO, store-discover or store-optimise on appropriate days for Lazy Store, voice-generate for Lazy Voice, pay-optimise or pay-recover on appropriate days for Lazy Pay, sms-sequences-run for Lazy SMS. Log each execution to run_activity with the engine name, action, and result. Log any errors to run_errors.
+## IMPORTANT: Function naming
 
-Create a Supabase edge function called run-weekly-report that runs every Monday at 7am UTC. Read run_settings. If master_running is false exit. Collect performance metrics for each active engine from the last 7 days: total posts published for content engines, total revenue and conversion rate for Lazy Pay, total messages sent and response rate for Lazy SMS, total streams processed for Lazy Stream, total commits processed for Lazy Code. Use the built-in Lovable AI to write a weekly performance summary with this prompt: You are writing a weekly performance report for [brand_name]. Here are the metrics from the last 7 days across all autonomous engines: [metrics list]. Write a brief friendly report summarising what the engines accomplished this week, highlighting the best performing engine, noting any areas that could improve, and projecting what next week looks like if performance continues. Keep it under 300 words. Write in second person — you. Return only the report text. Send this report as an email to the support email in run_settings with subject: Your Lazy Run weekly report — [date]. Insert into run_activity with engine set to run, action set to weekly-report, and result set to success. Log errors to run_errors.
+All edge functions must use these exact names. Lazy Run calls them by these names.
 
-Create a Supabase edge function called run-health-check that runs every hour. Read run_settings. For each active engine query the engine_errors table for errors in the last hour. If any engine has more than 3 errors in the last hour add a warning to run_activity with result set to error and details describing which engine is failing and how many errors occurred. Insert a performance snapshot into run_performance for each engine — total content published today, error count today. Log errors to run_errors.
+| Engine | Functions |
+|--------|-----------|
+| Blogger | blog-publish |
+| SEO | seo-discover, seo-publish |
+| GEO | geo-discover, geo-publish, geo-test |
+| Store | store-discover, store-listings, store-prices, store-promote, store-optimise, store-content |
+| Voice | voice-narrate, voice-rss |
+| Pay | pay-checkout, pay-webhook, pay-optimise, pay-recover, pay-portal |
+| SMS | sms-send, sms-receive, sms-status, sms-sequences-run, sms-optimise |
+| Stream | stream-monitor, stream-process, stream-write-content, stream-optimise |
+| Code | github-webhook, code-sync-roadmap, code-write-content, code-optimise |
+| Run | run-orchestrator, run-weekly-report, run-health-check |
 
-4. All individual engine edge functions Install all edge functions required by each active engine as defined in their individual setup prompts. Name them exactly as specified in each engine prompt so run-orchestrator can call them correctly: blogger-publish, seo-discover, seo-publish, geo-discover, geo-publish, geo-test, store-discover, store-price-check, store-promote, store-optimise, store-content, voice-generate, voice-rss, pay-optimise, pay-recover, stripe-checkout, stripe-webhook, stripe-portal, sms-send, sms-receive, sms-sequences-run, sms-optimise, stream-monitor, stream-process, stream-write-content, stream-optimise, code-sync-roadmap, code-write-content, code-optimise. Only install functions for active engines.
+---
 
-5. Unified admin dashboard Create a page at /lazy-run-dashboard. This is the single control panel for the entire autonomous operations layer. Header row: brand name, a large master toggle labelled Everything is running or Everything is paused that updates master_running in run_settings and immediately pauses or resumes all engines, last activity time, next scheduled run time. Engine status grid: one card per active engine showing engine name, individual on/off toggle, posts or actions today, last run time, error count today shown in red if above zero, and a Publish One Now button that triggers one immediate run of that engine. Unified activity feed: a reverse chronological feed of all run_activity rows from the last 7 days. Each row shows a coloured dot — green for success, red for error, gold for optimisation — the engine name, the action, and the timestamp. Filter buttons above the feed to filter by engine or result type. Performance charts: for each active content engine a simple bar chart showing posts published per day for the last 14 days. For Lazy Pay show MRR trend. For Lazy SMS show message volume and response rate trend. Weekly report preview: the most recent run_activity row where action is weekly-report rendered as formatted text. Error log: all run_errors rows from the last 7 days grouped by engine. Each group shows error count and the most recent error message. A Clear button marks errors as read. Quick links: links to the individual setup pages for each active engine so settings can be updated without navigating away from the main dashboard.
+## IMPORTANT: API key storage
 
-6. Public pages Do not add any Lazy Run management pages to the public navigation. The run-orchestrator operates entirely in the background. The content and pages published by individual engines appear on the site as normal through their own public routes.
+ALL API keys and secrets must be stored as Supabase secrets. Never in database tables.
+Reference them in edge functions via Deno.env.get().
 
-7. Navigation Add a single Admin link to the site navigation pointing to /lazy-run-dashboard. This replaces any existing admin links. Do not expose any other admin or setup routes in the public navigation.`;
+Required secrets by engine:
+- Blogger/SEO/GEO/Store: none (uses built-in Lovable AI)
+- Voice: ELEVENLABS_API_KEY
+- Pay: STRIPE_SECRET_KEY, STRIPE_PUBLISHABLE_KEY, STRIPE_WEBHOOK_SECRET
+- SMS: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
+- Stream: TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET
+- Code: GITHUB_TOKEN, GITHUB_WEBHOOK_SECRET
+
+---
+
+## 1. Database
+
+Create these Supabase tables with RLS enabled:
+
+**run_settings**
+id (uuid, primary key, default gen_random_uuid()),
+site_url (text),
+brand_name (text),
+business_description (text),
+target_audience (text),
+support_email (text),
+active_engines (text),
+master_running (boolean, default true),
+setup_complete (boolean, default false),
+created_at (timestamptz, default now())
+
+**run_activity**
+id (uuid, primary key, default gen_random_uuid()),
+engine (text),
+action (text),
+result (text),
+details (text),
+created_at (timestamptz, default now())
+
+**run_performance**
+id (uuid, primary key, default gen_random_uuid()),
+engine (text),
+metric_name (text),
+metric_value (numeric),
+recorded_at (timestamptz, default now())
+
+**run_errors**
+id (uuid, primary key, default gen_random_uuid()),
+engine (text),
+function_name (text),
+error_message (text),
+created_at (timestamptz, default now())
+
+Also create all database tables required by each activated engine. Use these exact table names:
+
+Blogger: blog_settings, blog_posts, blog_errors
+SEO: seo_settings, seo_posts, seo_keywords, seo_errors
+GEO: geo_settings, geo_posts, geo_queries, geo_citations, geo_errors
+Store: store_settings, store_products, store_promotions, store_content, store_errors
+Voice: voice_settings, voice_episodes, voice_errors
+Pay: pay_settings, pay_products, pay_customers, pay_transactions, pay_subscriptions, pay_abandoned, pay_optimisation_log, pay_errors
+SMS: sms_settings, sms_contacts, sms_messages, sms_sequences, sms_optouts, sms_optimisation_log, sms_errors
+Stream: stream_settings, stream_sessions, stream_content, stream_clips, stream_transcripts, stream_optimisation_log, stream_errors
+Code: code_settings, code_commits, code_releases, code_content, code_roadmap, code_optimisation_log, code_errors
+
+Create only the tables for engines the user activates.
+
+---
+
+## 2. Setup page
+
+Create a multi-step setup page at /lazy-run-setup.
+
+**Step 1 — Welcome**
+Show a welcome screen: "Welcome to Lazy Run. In the next 5 minutes you will set up the autonomous operations layer for your Lovable site. After setup your site will publish content, rank on Google, appear in AI answers, and more — automatically, forever."
+Show a Next button.
+
+**Step 2 — Choose engines**
+Show nine engine cards in a grid — one per engine. Each card shows: engine name, one-line description, and an on/off toggle. Default all content engines to on (Blogger, SEO, GEO). Default commerce and media engines to off.
+
+Engine descriptions:
+- Lazy Blogger: Publishes blog posts automatically every 15 minutes
+- Lazy SEO: Discovers keywords and publishes ranking articles
+- Lazy GEO: Publishes content that gets cited by ChatGPT and Perplexity
+- Lazy Store: Discovers products, writes listings, optimises conversion
+- Lazy Voice: Narrates every post in your voice via ElevenLabs
+- Lazy Pay: Installs Stripe with self-improving conversion optimisation
+- Lazy SMS: Sends automated texts via Twilio that improve themselves
+- Lazy Stream: Turns every Twitch stream into blog posts and SEO content
+- Lazy Code: Turns every GitHub commit into a changelog and developer post
+
+Below the cards show which API keys each selected engine will require so the user knows what to prepare.
+Show a Next button.
+
+**Step 3 — Core settings**
+Fields:
+- Site URL
+- Brand name
+- Business description (what does this site do and who is it for?)
+- Target audience (who are your ideal customers?)
+- Support email (for payment confirmations and weekly reports)
+
+Include Suggest buttons next to the business description that auto-fill related fields using the built-in Lovable AI.
+Show a Next button.
+
+**Step 4 — API keys**
+Show only the API key fields required by the engines selected in step 2. Group by service:
+
+Content engines (no API key required — uses built-in Lovable AI):
+Show a note: "Lazy Blogger, SEO, and GEO use Lovable's built-in AI — no API key required."
+
+ElevenLabs section (shown if Lazy Voice is active):
+- ElevenLabs API key (password) — stored as ELEVENLABS_API_KEY secret
+- Voice ID (text, default: EXAVITQu4vr4xnSDxMaL)
+
+Stripe section (shown if Lazy Pay is active):
+- Stripe Publishable Key — stored as STRIPE_PUBLISHABLE_KEY secret
+- Stripe Secret Key (password) — stored as STRIPE_SECRET_KEY secret
+- Stripe Webhook Secret (password) — stored as STRIPE_WEBHOOK_SECRET secret
+
+Twilio section (shown if Lazy SMS is active):
+- Twilio Account SID — stored as TWILIO_ACCOUNT_SID secret
+- Twilio Auth Token (password) — stored as TWILIO_AUTH_TOKEN secret
+- Twilio Phone Number (text)
+
+GitHub section (shown if Lazy Code is active):
+- GitHub Personal Access Token (password) — stored as GITHUB_TOKEN secret
+- GitHub Webhook Secret (password) — stored as GITHUB_WEBHOOK_SECRET secret
+- GitHub Username
+- Repository Name
+
+Twitch section (shown if Lazy Stream is active):
+- Twitch Client ID — stored as TWITCH_CLIENT_ID secret
+- Twitch Client Secret (password) — stored as TWITCH_CLIENT_SECRET secret
+- Twitch Username
+
+Show a Next button.
+
+**Step 5 — Schedule**
+Show a visual publishing schedule. For each active content engine show a select for posts per day. Automatically stagger the cron times so engines do not compete. Show a preview of the full weekly schedule as a timeline.
+Show a Launch button.
+
+**On submit:**
+1. Store all API keys as Supabase secrets
+2. Save run_settings with active_engines as comma-separated list
+3. Set setup_complete to true
+4. Seed all engine-specific settings tables with the provided values
+5. Create all required database tables for active engines
+6. For content engines: immediately trigger one run of blog-publish, seo-discover, and geo-discover
+7. Show loading: "Launching your autonomous operations layer..."
+8. Redirect to /lazy-run-dashboard with message: "Lazy Run is active. Your autonomous operations layer is running."
+
+---
+
+## 3. Master orchestrator edge functions
+
+**run-orchestrator**
+Cron: every 30 minutes — */30 * * * *
+
+1. Read run_settings. If master_running is false or setup_complete is false exit immediately.
+2. Read active_engines (comma-separated list).
+3. For each active engine check if it is time to run based on the configured schedule.
+4. Stagger execution: add a 2-minute delay between each engine call to prevent simultaneous API overload.
+5. Call the corresponding edge function for each engine due to run:
+   - Blogger: blog-publish
+   - SEO: seo-publish (seo-discover runs on its own Monday cron)
+   - GEO: geo-publish (geo-discover runs on its own cron)
+   - Store: store-discover on Mondays, store-optimise on Sundays, store-content on Tuesdays and Fridays, store-listings and store-prices daily
+   - Voice: voice-narrate
+   - Pay: pay-optimise on Sundays, pay-recover daily
+   - SMS: sms-sequences-run
+   - Stream: stream-monitor
+   - Code: code-sync-roadmap
+6. Log each execution to run_activity: engine name, action, result (success or error), details.
+7. Log any failures to run_errors.
+
+**run-weekly-report**
+Cron: every Monday at 7am UTC — 0 7 * * 1
+
+1. Read run_settings. If master_running is false exit.
+2. Collect metrics for each active engine from the last 7 days:
+   - Blogger: total blog_posts published
+   - SEO: total seo_posts published, total seo_keywords discovered
+   - GEO: total geo_posts published, citation rate from geo_queries
+   - Store: total store_products listed, active promotions
+   - Voice: total voice_episodes generated
+   - Pay: total pay_transactions succeeded, MRR from pay_subscriptions
+   - SMS: total sms_messages sent, response rate from sms_sequences
+   - Stream: total stream_sessions processed, total stream_content published
+   - Code: total code_commits processed, total code_content published
+3. Call the built-in Lovable AI:
+"Write a weekly performance report for [brand_name]. Metrics from the last 7 days: [metrics list]. Write a friendly report under 300 words. Cover: what the engines accomplished, the best performing engine, any areas for improvement, projection for next week. Write in second person. Return only the report text."
+4. Send email to support_email with subject: "Your Lazy Run weekly report — [current date]" and the report as the body.
+5. Insert into run_activity with engine run, action weekly-report, result success.
+Log errors to run_errors.
+
+**run-health-check**
+Cron: every hour — 0 * * * *
+
+1. Read run_settings.
+2. For each active engine query its errors table for errors in the last hour.
+3. If any engine has more than 3 errors in the last hour: insert warning into run_activity with result error and details describing which engine is failing and error count.
+4. Insert performance snapshot into run_performance for each engine — total content published today, error count today.
+Log errors to run_errors.
+
+---
+
+## 4. Install all engine edge functions
+
+Install all edge functions for each active engine using these exact function names:
+blog-publish, seo-discover, seo-publish, geo-discover, geo-publish, geo-test, store-discover, store-listings, store-prices, store-promote, store-optimise, store-content, voice-narrate, voice-rss, pay-checkout, pay-webhook, pay-optimise, pay-recover, pay-portal, sms-send, sms-receive, sms-status, sms-sequences-run, sms-optimise, stream-monitor, stream-process, stream-write-content, stream-optimise, github-webhook, code-sync-roadmap, code-write-content, code-optimise.
+
+Only install functions for active engines. The logic for each function is defined in its individual engine prompt. Follow that logic exactly.
+
+---
+
+## 5. Unified admin dashboard
+
+Create a page at /lazy-run-dashboard.
+
+**Header row**
+Brand name. A large master toggle: "Everything is running" or "Everything is paused" — updates master_running in run_settings and immediately pauses or resumes all engines. Last activity time. Next scheduled run time.
+
+Show a red banner at the top if run_errors has any rows from the last 24 hours — show error count and a View Errors button.
+
+**Engine status grid**
+One card per active engine showing:
+- Engine name
+- Individual on/off toggle (updates the is_running field in that engine's settings table)
+- Posts or actions count today
+- Last run time
+- Error count today (shown in red if above zero)
+- A Publish One Now button that triggers one immediate run of that engine's primary publish function
+
+**Unified activity feed**
+All run_activity rows from the last 7 days in reverse chronological order. Each row shows:
+- Coloured dot: green for success, red for error, gold for optimisation
+- Engine name
+- Action description
+- Timestamp
+Filter buttons above the feed to filter by engine or result type.
+
+**Performance charts**
+For each active content engine: a simple bar chart showing posts published per day for the last 14 days.
+For Lazy Pay: MRR trend line for the last 30 days.
+For Lazy SMS: message volume and response rate for the last 14 days.
+
+**Weekly report**
+The most recent run_activity row where action is weekly-report, rendered as formatted text.
+
+**Error log**
+All run_errors rows from the last 7 days grouped by engine. Each group shows error count and most recent error message. A Clear button marks errors as read.
+
+**Quick links**
+Links to the individual setup pages for each active engine so settings can be updated without leaving the dashboard.
+
+---
+
+## 6. Public pages
+
+Do not add any Lazy Run management pages to the public navigation.
+The run-orchestrator operates entirely in the background.
+Content published by individual engines appears through their own public routes as normal.
+
+---
+
+## 7. Navigation
+
+Add a single Admin link to the site navigation pointing to /lazy-run-dashboard.
+This replaces any existing admin links.
+Do not expose any other admin or setup routes in the public navigation.`;
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 

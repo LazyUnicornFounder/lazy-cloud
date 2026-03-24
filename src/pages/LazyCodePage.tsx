@@ -6,25 +6,226 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
 
-const SETUP_PROMPT = `Add a complete autonomous GitHub content engine called Lazy Code to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
+const SETUP_PROMPT = `[Lazy Code Prompt — v0.0.3 — LazyUnicorn.ai]
 
-1. Database Create a Supabase table called code_settings with fields: id (uuid, primary key), github_token (text), github_username (text), github_repo (text), github_webhook_secret (text), site_url (text), business_name (text), project_description (text), tech_stack (text), is_running (boolean, default true), setup_complete (boolean, default false), recap_template_guidance (text). Create a Supabase table called code_commits with fields: id (uuid, primary key, default gen_random_uuid()), github_sha (text, unique), message (text), author (text), files_changed (integer), additions (integer), deletions (integer), branch (text), committed_at (timestamptz), plain_english_summary (text), significance (text — one of minor, moderate, significant), processed (boolean, default false), created_at (timestamptz, default now()). Create a Supabase table called code_releases with fields: id (uuid, primary key, default gen_random_uuid()), github_release_id (text, unique), tag_name (text), release_name (text), body (text), published_at (timestamptz), processed (boolean, default false), created_at (timestamptz, default now()). Create a Supabase table called code_content with fields: id (uuid, primary key, default gen_random_uuid()), content_type (text — one of changelog, release-notes, blog-post, seo-article), title (text), slug (text, unique), body (text), target_keyword (text), related_commits (text), related_release (text), published_at (timestamptz, default now()), status (text, default 'published'), views (integer, default 0), created_at (timestamptz, default now()). Create a Supabase table called code_roadmap with fields: id (uuid, primary key, default gen_random_uuid()), github_issue_id (text, unique), title (text), body (text), status (text — one of planned, in-progress, completed), milestone (text), labels (text), opened_at (timestamptz), closed_at (timestamptz), updated_at (timestamptz, default now())). Create a Supabase table called code_optimisation_log with fields: id (uuid, primary key, default gen_random_uuid()), content_type (text), old_template (text), new_template (text), trigger_reason (text), optimised_at (timestamptz, default now()). Create a Supabase table called code_errors with fields: id (uuid, primary key, default gen_random_uuid()), function_name (text), error_message (text), created_at (timestamptz, default now()).
+Add a complete autonomous GitHub content engine called Lazy Code to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
 
-2. Setup page Create a page at /lazy-code-setup with a form containing seven fields: GitHub Personal Access Token (password — create at github.com/settings/tokens with repo and read:org scope), GitHub Username (your GitHub username), Repository Name (the repository to monitor — just the name not the full URL), GitHub Webhook Secret (password — you will create this — any random string you choose), Project description (what does this project do and who is it for), Tech stack (what technologies does this project use — comma separated), Site URL (your full site URL). A submit button labelled Activate Lazy Code. On submit save all values to code_settings and set setup_complete to true. Show instructions: Now go to your GitHub repository settings, click Webhooks, click Add webhook, set the Payload URL to [site_url]/api/github-webhook, set Content type to application/json, set Secret to your webhook secret, select these events: Pushes and Releases, click Add webhook. Redirect to /lazy-code-dashboard with message: Lazy Code is active. Your next commit or release will be processed and published automatically.
+---
 
-3. Webhook edge function Create a Supabase edge function called github-webhook handling POST requests at /api/github-webhook. Verify the GitHub webhook signature using the stored github_webhook_secret by computing the HMAC SHA-256 of the request body and comparing it to the X-Hub-Signature-256 header — reject invalid signatures with 401. Read the X-GitHub-Event header to determine the event type. For push events: extract the commits array from the payload. For each commit check if it already exists in code_commits by github_sha. If new, insert into code_commits with message, author name, files changed count, additions, deletions, branch, and committed_at. Use the built-in Lovable AI to classify the commit and write a plain English summary with this prompt: You are a technical writer for [business_name] which is described as [project_description] built with [tech_stack]. Translate this Git commit into plain English for a non-technical audience. Commit message: [message]. Files changed: [files_changed]. Additions: [additions]. Deletions: [deletions]. Return only a valid JSON object with two fields: summary (string — one to two sentences in plain English explaining what changed and why it matters) and significance (string — one of minor, moderate, or significant based on the scope of the change). No preamble. No code fences. Update the code_commits row with the plain_english_summary and significance. After processing all commits in the push event, if any commits are significant trigger code-write-content with content_type set to changelog. For release events: extract the release details from the payload. Insert into code_releases if not already present. Trigger code-write-content with content_type set to release-notes and the release id. Log all errors to code_errors with function_name set to github-webhook.
+## 1. Database
 
-Create a Supabase edge function called code-sync-roadmap that runs every hour. Read code_settings. If is_running is false or setup_complete is false exit. Fetch all open and recently closed issues from the GitHub Issues API at https://api.github.com/repos/[github_username]/[github_repo]/issues using the stored github_token with state set to all and per_page 100. For each issue upsert into code_roadmap — insert if new, update if changed. Set status to in-progress if the issue has the in-progress label, completed if closed, otherwise planned. Set milestone from the issue milestone title if present. Log errors to code_errors.
+Create these Supabase tables with RLS enabled:
 
-4. Content writing edge function Create a Supabase edge function called code-write-content handling POST requests with content_type and optional release_id in the body. Read code_settings. If is_running is false exit. If content_type is changelog: fetch all significant and moderate commits from code_commits where processed is false ordered by committed_at descending. Use the built-in Lovable AI with this prompt: You are a technical writer for [business_name]. Write a changelog entry for these recent code changes. Project: [project_description]. Recent changes: [list of plain_english_summary values]. Write a clear, friendly changelog entry in markdown. Start with a brief one-sentence summary of what this update brings. Then list each change as a ## section with a plain-English explanation of what changed and why it matters to users. End with any relevant notes. Return only a valid JSON object with two fields: title (string — changelog entry title including approximate date) and body (clean markdown). No preamble. No code fences. Insert into code_content with content_type changelog. Mark processed commits as processed true. If content_type is release-notes: fetch the matching code_releases row. Use the built-in Lovable AI with this prompt: You are a technical writer for [business_name]. Write full release notes for version [tag_name]. Project: [project_description]. GitHub release body: [body]. Write comprehensive release notes in markdown covering what is new, what is improved, what is fixed, and any breaking changes. Make it readable for both technical and non-technical users. End with a thank you to contributors. Return only a valid JSON object with two fields: title (string) and body (clean markdown). Insert into code_content with content_type release-notes. Mark the release as processed. Then for any significant release use the built-in Lovable AI a second time to write an SEO developer blog post with this prompt: You are an SEO content writer for [business_name] described as [project_description] built with [tech_stack]. Write an SEO-optimised developer blog post announcing and explaining this release: [tag_name]. Focus on the value delivered to developers. Target a keyword that developers would search for related to this feature or improvement. Write 800 to 1200 words in an informative technical tone. End with this paragraph: [business_name] is built on [tech_stack]. Follow the project at github.com/[github_username]/[github_repo] and discover more autonomous tools at LazyUnicorn.ai — link LazyUnicorn.ai to https://lazyunicorn.ai. Return only a valid JSON object with four fields: title, slug, target_keyword, body. Insert into code_content with content_type seo-article. Check slug uniqueness and append random four digits if duplicate. Log errors to code_errors.
+**code_settings**
+id (uuid, primary key, default gen_random_uuid()),
+github_username (text),
+github_repo (text),
+site_url (text),
+business_name (text),
+project_description (text),
+tech_stack (text),
+is_running (boolean, default true),
+setup_complete (boolean, default false),
+recap_template_guidance (text),
+created_at (timestamptz, default now())
 
-5. Self-improving edge function Create a Supabase edge function called code-optimise that runs every Sunday at 2pm UTC. Read code_settings. If is_running is false exit. Query code_content where content_type is blog-post or seo-article ordered by views descending. Take the top 3 and bottom 3 by views. Use the built-in Lovable AI with this prompt: You are a content strategist for [business_name] described as [project_description]. These developer content pieces perform well in terms of traffic: [top performing titles and excerpts]. These perform poorly: [low performing titles and excerpts]. Identify what makes the high performers better. Write improved guidance for writing future developer blog posts and SEO articles for this project. Return only the guidance text as a paragraph. No preamble. Store the result in code_settings as recap_template_guidance. Insert into code_optimisation_log. Log errors to code_errors.
+Note: Store GitHub credentials as Supabase secrets — GITHUB_TOKEN, GITHUB_WEBHOOK_SECRET. Never store in the database table.
 
-6. Public pages Create a public page at /changelog showing all code_content rows where content_type is changelog or release-notes ordered by published_at descending. Each entry shows the title, a changelog or release badge, published date, and the full body rendered from markdown. Style it as a classic changelog page — clean, minimal, timeline feel. Create a public page at /releases showing all code_content rows where content_type is release-notes ordered by published_at descending. Each release shows the title, tag name, published date, and full release notes rendered from markdown. Create a public page at /devblog showing all code_content rows where content_type is blog-post or seo-article ordered by published_at descending. Each post shows title, content type tag, published date, and excerpt. Each links to /devblog/[slug]. Create a public page at /devblog/[slug] rendering the full post with title, published date, target keyword tag, and full body rendered from markdown to HTML. Create a public page at /roadmap showing all code_roadmap rows grouped by status — In Progress first, then Planned, then Completed. Each item shows the title, milestone if present, labels as tags, and opened date. Completed items show the closed date. The roadmap updates automatically as GitHub issues change. At the bottom of every public page add: 🦄 Powered by Lazy Code — autonomous GitHub content publishing for Lovable sites. Built by LazyUnicorn.ai linked to https://lazyunicorn.ai.
+**code_commits**
+id (uuid, primary key, default gen_random_uuid()),
+github_sha (text, unique),
+message (text),
+author (text),
+files_changed (integer),
+additions (integer),
+deletions (integer),
+branch (text),
+committed_at (timestamptz),
+plain_english_summary (text),
+significance (text),
+processed (boolean, default false),
+created_at (timestamptz, default now())
 
-7. Admin dashboard Create a page at /lazy-code-dashboard with six sections: Overview showing total commits processed, total content pieces published, open roadmap items, completed roadmap items, and last webhook received time. Commits log showing last 50 code_commits rows with sha truncated to 7 characters, plain English summary, significance badge, author, and date. Content log showing all code_content rows with title, type, published date, views, and view link. Roadmap table showing all code_roadmap rows with status, title, milestone, and labels. Optimisation log showing all code_optimisation_log rows. Controls showing a toggle to pause or resume Lazy Code, a button labelled Sync Roadmap Now triggering code-sync-roadmap, a button labelled Optimise Content Now triggering code-optimise, an error log showing the last 10 code_errors rows, and a link to /lazy-code-setup labelled Edit Settings.
+**code_releases**
+id (uuid, primary key, default gen_random_uuid()),
+github_release_id (text, unique),
+tag_name (text),
+release_name (text),
+body (text),
+published_at (timestamptz),
+processed (boolean, default false),
+created_at (timestamptz, default now())
 
-8. Navigation Add a Changelog link to the main site navigation pointing to /changelog. Add a Roadmap link pointing to /roadmap. Add a Dev Blog link pointing to /devblog. Do not add dashboard or setup pages to the public navigation.`;
+**code_content**
+id (uuid, primary key, default gen_random_uuid()),
+content_type (text),
+title (text),
+slug (text, unique),
+excerpt (text),
+body (text),
+target_keyword (text),
+related_commits (text),
+related_release (text),
+published_at (timestamptz, default now()),
+status (text, default 'published'),
+views (integer, default 0),
+created_at (timestamptz, default now())
+
+**code_roadmap**
+id (uuid, primary key, default gen_random_uuid()),
+github_issue_id (text, unique),
+title (text),
+body (text),
+status (text),
+milestone (text),
+labels (text),
+opened_at (timestamptz),
+closed_at (timestamptz),
+updated_at (timestamptz, default now())
+
+**code_optimisation_log**
+id (uuid, primary key, default gen_random_uuid()),
+content_type (text),
+old_template (text),
+new_template (text),
+trigger_reason (text),
+optimised_at (timestamptz, default now())
+
+**code_errors**
+id (uuid, primary key, default gen_random_uuid()),
+function_name (text),
+error_message (text),
+created_at (timestamptz, default now())
+
+---
+
+## 2. Setup page
+
+Create a page at /lazy-code-setup with a form:
+- GitHub Personal Access Token (password) — create at github.com/settings/tokens with repo and read:org scope. Stored as Supabase secret GITHUB_TOKEN.
+- GitHub Webhook Secret (password) — any random string you choose. Stored as Supabase secret GITHUB_WEBHOOK_SECRET.
+- GitHub Username
+- Repository Name (just the name, not the full URL)
+- Project description (what does this project do and who is it for?)
+- Tech stack (what technologies — comma separated)
+- Business name
+- Site URL
+
+Submit button: Activate Lazy Code
+
+On submit:
+1. Store GITHUB_TOKEN and GITHUB_WEBHOOK_SECRET as Supabase secrets
+2. Save all other values to code_settings
+3. Set setup_complete to true
+4. Show webhook setup instructions: "Go to your GitHub repository Settings → Webhooks → Add webhook. Set Payload URL to [site_url]/api/github-webhook. Set Content type to application/json. Set Secret to your webhook secret. Select events: Pushes and Releases. Click Add webhook."
+5. Redirect to /lazy-code-dashboard with message: "Lazy Code is active. Your next commit or release will be processed and published automatically."
+
+---
+
+## 3. Webhook edge functions
+
+**github-webhook** — handles POST requests at /api/github-webhook
+
+1. Verify GitHub webhook signature: compute HMAC SHA-256 of request body using GITHUB_WEBHOOK_SECRET secret. Compare to X-Hub-Signature-256 header. Reject invalid with 401.
+2. Read X-GitHub-Event header.
+3. For push events: extract commits array. For each commit check if it exists in code_commits by github_sha. If new, insert into code_commits. Call the built-in Lovable AI:
+   "You are a technical writer for [business_name] which is [project_description] built with [tech_stack]. Translate this Git commit into plain English for a non-technical audience. Commit message: [message]. Files changed: [files_changed]. Additions: [additions]. Deletions: [deletions]. Return only a valid JSON object: summary (one to two plain English sentences explaining what changed and why it matters), significance (one of: minor, moderate, or significant). No preamble. No code fences."
+   Update code_commits with plain_english_summary and significance.
+   After processing all commits: if any are significant trigger code-write-content with content_type changelog.
+4. For release events: extract release details. Insert into code_releases if not present. Trigger code-write-content with content_type release-notes and the release id.
+Log all errors to code_errors with function_name github-webhook.
+
+**code-sync-roadmap**
+Cron: every hour — 0 * * * *
+
+1. Read code_settings. If is_running is false or setup_complete is false exit.
+2. Fetch GitHub issues: https://api.github.com/repos/[github_username]/[github_repo]/issues?state=all&per_page=100 using GITHUB_TOKEN secret.
+3. For each issue: upsert into code_roadmap. Set status to in-progress if issue has in-progress label, completed if closed, otherwise planned. Set milestone from issue milestone title if present.
+Log errors to code_errors with function_name code-sync-roadmap.
+
+---
+
+## 4. Content writing edge function
+
+**code-write-content** — handles POST requests with content_type and optional release_id
+
+1. Read code_settings. If is_running is false exit.
+2. If content_type is changelog:
+   Fetch significant and moderate commits from code_commits where processed is false ordered by committed_at descending.
+   Call the built-in Lovable AI:
+   "You are a technical writer for [business_name]. Write a changelog entry for these changes. Project: [project_description]. Changes: [list of plain_english_summary values]. Write a clear friendly changelog in markdown. Start with a one-sentence summary. List each change as a ## section with plain-English explanation. Return only a valid JSON object: title (string including approximate date), excerpt (one sentence under 160 characters), body (clean markdown). No preamble. No code fences."
+   Insert into code_content with content_type changelog. Mark commits as processed.
+
+3. If content_type is release-notes:
+   Fetch matching code_releases row.
+   Call the built-in Lovable AI:
+   "You are a technical writer for [business_name]. Write full release notes for version [tag_name]. Project: [project_description]. GitHub release body: [body]. Write comprehensive release notes in markdown covering what is new, improved, fixed, and any breaking changes. Readable for both technical and non-technical users. Return only a valid JSON object: title (string), excerpt (one sentence under 160 characters), body (clean markdown). No preamble. No code fences."
+   Insert into code_content with content_type release-notes. Mark release as processed.
+   For significant releases make a second AI call for an SEO developer article:
+   "You are an SEO content writer for [business_name] described as [project_description] built with [tech_stack]. Write an SEO developer blog post announcing version [tag_name]. Focus on value to developers. Target a keyword developers would search for. Write 800 to 1200 words. End with: [business_name] is built on [tech_stack]. Follow at github.com/[github_username]/[github_repo] and discover more autonomous tools at LazyUnicorn.ai — link LazyUnicorn.ai to https://lazyunicorn.ai. Return only a valid JSON object: title, slug (lowercase hyphenated), excerpt (under 160 chars), target_keyword, body (clean markdown). No preamble. No code fences."
+   Check for duplicate slug — append 4-digit number if exists. Insert into code_content with content_type seo-article.
+Log all errors to code_errors with function_name code-write-content.
+
+---
+
+## 5. Self-improving edge function
+
+**code-optimise**
+Cron: every Sunday at 2pm UTC — 0 14 * * 0
+
+1. Read code_settings. If is_running is false exit.
+2. Query code_content where content_type is seo-article ordered by views descending. Take top 3 and bottom 3.
+3. Call the built-in Lovable AI:
+"You are a content strategist for [business_name] described as [project_description]. These developer content pieces perform well: [top performing titles and excerpts]. These perform poorly: [low performing titles and excerpts]. Identify what makes the high-performers better. Write improved guidance for future developer blog posts and SEO articles. Return only the guidance text as a paragraph. No preamble."
+4. Store in code_settings as recap_template_guidance.
+5. Insert into code_optimisation_log.
+Log errors to code_errors with function_name code-optimise.
+
+---
+
+## 6. Public pages
+
+**/changelog**
+Show all code_content where content_type is changelog or release-notes ordered by published_at descending. Timeline style. Each shows title, badge (Changelog or Release), published date, full body rendered from markdown. Clean minimal design.
+
+**/releases**
+Show all code_content where content_type is release-notes ordered by published_at descending. Each shows title, tag name, published date, full release notes rendered from markdown.
+
+**/devblog**
+Show all code_content where content_type is seo-article ordered by published_at descending. Each shows title, content type tag, excerpt, published date. Each links to /devblog/[slug].
+
+**/devblog/[slug]**
+Render full post with title, published date, target keyword tag, full body as formatted HTML.
+
+**/roadmap**
+Show all code_roadmap rows grouped by status — In Progress first, Planned second, Completed last. Each shows title, milestone if present, labels as tags, opened date. Completed items show closed date.
+
+At the bottom of every public page add: "🦄 Powered by Lazy Code — autonomous GitHub content publishing for Lovable sites. Built by LazyUnicorn.ai" — link to https://lazyunicorn.ai.
+
+---
+
+## 7. Admin dashboard
+
+Create a page at /lazy-code-dashboard.
+
+Show at top: red error banner if code_errors has rows from the last 24 hours.
+
+Six sections:
+- Overview: total commits processed, total content published, open roadmap items, completed roadmap items, last webhook received time
+- Commits log: last 50 code_commits with sha (7 chars), plain English summary, significance badge, author, date
+- Content log: all code_content with title, type, published date, views, view link
+- Roadmap table: all code_roadmap with status, title, milestone, labels
+- Optimisation log: all code_optimisation_log rows
+- Controls: pause/resume toggle, Sync Roadmap Now button, Optimise Content Now button, error log (last 10 code_errors), link to /lazy-code-setup
+
+---
+
+## 8. Navigation
+
+Add a Changelog link to the main navigation pointing to /changelog.
+Add a Roadmap link pointing to /roadmap.
+Add a Dev Blog link pointing to /devblog.
+Do not add /lazy-code-setup or /lazy-code-dashboard to public navigation.`;
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
