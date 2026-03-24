@@ -29,7 +29,7 @@ const engines = [
   {
     emoji: "✍️",
     name: "Lazy Blogger",
-    tagline: "The Autonomous Lovable Blog Engine",
+    tagline: "Lazy Blogger — Autonomous Blog Engine for Lovable",
     description: "Publishes high-quality blog posts every day—forever, for free.",
     link: "/lazy-blogger",
     color: "from-pink-500/20 to-purple-600/20",
