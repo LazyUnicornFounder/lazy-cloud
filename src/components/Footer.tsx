@@ -35,15 +35,20 @@ const engineCategories = [
     label: "Messaging",
     items: [
       { name: "SMS", href: "/lazy-sms" },
-      { name: "Alert", href: "/lazy-alert" },
       { name: "Telegram", href: "/lazy-telegram" },
+    ],
+  },
+  {
+    label: "Ops",
+    items: [
+      { name: "Alert", href: "/lazy-alert" },
+      { name: "Linear", href: "/lazy-linear" },
     ],
   },
   {
     label: "Platforms",
     items: [
       { name: "Stream", href: "/lazy-stream" },
-      { name: "Linear", href: "/lazy-linear" },
       { name: "Contentful", href: "/lazy-contentful" },
     ],
   },
