@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import LazyPricingSection from "@/components/LazyPricingSection";
 import { motion } from "framer-motion";
 import { Brain, TrendingUp, Zap, Eye, Copy, Check } from "lucide-react";
 import FlyingGeoCards from "@/components/lazy-geo/FlyingGeoCards";
