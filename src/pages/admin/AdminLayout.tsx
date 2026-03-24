@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import {
   LayoutDashboard, PenTool, Search, Brain, ShoppingCart,
   Mic, CreditCard, MessageSquare, Tv, Code, Settings, Menu, X,
+  BarChart3,
 } from "lucide-react";
 
 const db = supabase as any;
