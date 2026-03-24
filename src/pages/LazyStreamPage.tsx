@@ -290,6 +290,18 @@ const LazyStreamPage = () => {
                 Powered by Twitch
               </div>
             </div>
+            <p className="mt-6 font-body text-base md:text-lg text-foreground/45 max-w-xl leading-relaxed">
+              One prompt turns every Twitch stream into a blog post, SEO article, and highlight reel. Monitors your channel, transcribes VODs, and publishes content to your Lovable site — automatically.
+            </p>
+            <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
+              <CopyPromptButton />
+              <button
+                onClick={(e) => { e.preventDefault(); document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }); }}
+                className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
+              >
+                See How It Works
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>
