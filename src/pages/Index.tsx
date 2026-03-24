@@ -1,88 +1,107 @@
 import { useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import unicornBg from "@/assets/unicorn-beach.png";
-import logoNaive from "@/assets/logo-naive.jpg";
-import logoPolsia from "@/assets/logo-polsia.jpg";
-import logoLazyBlogger from "@/assets/logo-lazy-blogger.jpg";
-import logoLazySeo from "@/assets/logo-lazy-seo.jpg";
-import logoLazyGeo from "@/assets/logo-lazy-geo.jpg";
-import CompanyCard from "@/components/CompanyCard";
-import SubmitSection from "@/components/SubmitSection";
-import PricingSection from "@/components/PricingSection";
-import PitchDeck from "@/components/PitchDeck";
-import ValuationBreakdown from "@/components/ValuationBreakdown";
 
 import SEO from "@/components/SEO";
-import { supabase } from "@/integrations/supabase/client";
-import BlogTicker from "@/components/BlogTicker";
 import Navbar from "@/components/Navbar";
+import BlogTicker from "@/components/BlogTicker";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
-import LiveCounter from "@/components/LiveCounter";
 import TotalVisitorCount from "@/components/TotalVisitorCount";
 
 const NEW_TITLE = "Drive Traffic Automatically to Your Lovable Website or App";
 const NEW_DESCRIPTION = "We build autonomous engines for Lovable that turn your website into a self-growing asset.";
 
-const engines = [
-  {
-    emoji: "✍️",
-    name: "Lazy Blogger",
-    tagline: "Lazy Blogger — Autonomous Blog Engine for Lovable",
-    description: "Publishes high-quality blog posts every day—forever, for free.",
-    link: "/lazy-blogger",
-    color: "from-pink-500/20 to-purple-600/20",
-  },
-  {
-    emoji: "🔍",
-    name: "Lazy SEO",
-    tagline: "Lazy SEO — Autonomous SEO Engine for Lovable",
-    description: "Discovers keyword opportunities, creates SEO-optimized content, and improves your rankings on autopilot.",
-    link: "/lazy-seo",
-    color: "from-blue-500/20 to-cyan-500/20",
-  },
-  {
-    emoji: "🌐",
-    name: "Lazy GEO",
-    tagline: "Lazy GEO — Autonomous GEO Engine for Lovable",
-    description: "Gets your brand cited by AI engines like ChatGPT, Claude, and Perplexity by creating citation-ready content and tracking your visibility.",
-    link: "/lazy-geo",
-    color: "from-emerald-500/20 to-teal-500/20",
-  },
-  {
-    emoji: "🛒",
-    name: "Lazy Store",
-    tagline: "Lazy Store — Autonomous E-Commerce Engine for Lovable",
-    description: "One prompt installs a self-running store. Product discovery, AI listings, pricing, promotions, and conversion optimisation — automatically, forever.",
-    link: "/lazy-store",
-    color: "from-amber-500/20 to-orange-500/20",
-  },
-  {
-    emoji: "🎙️",
-    name: "Lazy Voice",
-    tagline: "Lazy Voice — Autonomous Audio Narration for Lovable",
-    description: "Autonomous audio narration for every blog post your Lovable site publishes. Powered by ElevenLabs.",
-    link: "/lazy-voice",
-    color: "from-violet-500/20 to-fuchsia-500/20",
-  },
-  {
-    emoji: "💳",
-    name: "Lazy Pay",
-    tagline: "Lazy Pay — Self-Improving Stripe Payments for Lovable",
-    description: "A self-improving Stripe payments engine for Lovable. One prompt installs payments, subscriptions, conversion optimisation, and abandoned checkout recovery.",
-    link: "/lazy-pay",
-    color: "from-green-500/20 to-emerald-500/20",
-  },
-  {
-    emoji: "📱",
-    name: "Lazy SMS",
-    tagline: "Lazy SMS — Autonomous SMS Engine for Lovable",
-    description: "A self-improving Twilio SMS engine for Lovable. One prompt installs confirmations, sequences, recovery texts, and two-way messaging.",
-    link: "/lazy-sms",
-    color: "from-red-500/20 to-rose-500/20",
-  },
+const products = [
+  { cursive: "Lazy", name: "Blogger", link: "/lazy-blogger" },
+  { cursive: "Lazy", name: "SEO", link: "/lazy-seo" },
+  { cursive: "Lazy", name: "GEO", link: "/lazy-geo" },
+  { cursive: "Lazy", name: "Store", link: "/lazy-store" },
+  { cursive: "Lazy", name: "Voice", link: "/lazy-voice" },
+  { cursive: "Lazy", name: "Pay", link: "/lazy-pay" },
+  { cursive: "Lazy", name: "SMS", link: "/lazy-sms" },
+  { cursive: "Lazy", name: "Coming Soon", link: "" },
 ];
+
+/* ── Sketch SVG icons ── */
+const sketches: Record<string, JSX.Element> = {
+  Blogger: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="30" y="20" width="50" height="70" rx="3" />
+      <line x1="40" y1="38" x2="70" y2="38" />
+      <line x1="40" y1="48" x2="65" y2="48" />
+      <line x1="40" y1="58" x2="70" y2="58" />
+      <line x1="40" y1="68" x2="55" y2="68" />
+      <path d="M82 90 L90 20 L94 22 L86 92 Z" />
+    </svg>
+  ),
+  SEO: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="50" cy="55" r="22" />
+      <line x1="66" y1="71" x2="85" y2="90" />
+      <rect x="25" y="70" width="8" height="20" rx="1" />
+      <rect x="38" y="60" width="8" height="30" rx="1" />
+      <rect x="51" y="50" width="8" height="40" rx="1" />
+    </svg>
+  ),
+  GEO: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M25 75 Q25 30 60 30 Q95 30 95 75 Q95 85 60 95 Q25 85 25 75Z" />
+      <circle cx="60" cy="58" r="12" />
+      <path d="M54 55 L58 62 L66 54" />
+      <circle cx="55" cy="52" r="2" />
+      <circle cx="65" cy="52" r="2" />
+    </svg>
+  ),
+  Store: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M35 45 L40 25 L80 25 L85 45" />
+      <rect x="35" y="45" width="50" height="50" rx="3" />
+      <path d="M55 25 L55 35" />
+      <path d="M65 25 L65 35" />
+      <rect x="72" y="28" width="12" height="8" rx="1" transform="rotate(25, 78, 32)" />
+      <line x1="78" y1="30" x2="78" y2="34" />
+    </svg>
+  ),
+  Voice: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="50" y="25" width="20" height="40" rx="10" />
+      <path d="M40 55 Q40 80 60 80 Q80 80 80 55" />
+      <line x1="60" y1="80" x2="60" y2="95" />
+      <line x1="48" y1="95" x2="72" y2="95" />
+      <path d="M85 45 Q92 50 92 60 Q92 70 85 75" />
+      <path d="M90 38 Q100 48 100 60 Q100 72 90 82" />
+    </svg>
+  ),
+  Pay: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="20" y="35" width="80" height="50" rx="5" />
+      <line x1="20" y1="50" x2="100" y2="50" />
+      <line x1="30" y1="65" x2="55" y2="65" />
+      <line x1="30" y1="72" x2="45" y2="72" />
+      <circle cx="85" cy="70" r="8" />
+      <path d="M81 70 L84 73 L89 67" />
+    </svg>
+  ),
+  SMS: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="38" y="18" width="44" height="84" rx="8" />
+      <line x1="52" y1="24" x2="68" y2="24" />
+      <circle cx="60" cy="92" r="4" />
+      <path d="M75 50 Q95 50 95 65 Q95 80 75 80 L70 88 L68 80" />
+      <line x1="78" y1="62" x2="90" y2="62" />
+      <line x1="78" y1="68" x2="86" y2="68" />
+    </svg>
+  ),
+  "Coming Soon": (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="60" cy="55" r="25" />
+      <path d="M60 40 L60 58 L72 64" />
+      <circle cx="60" cy="55" r="3" />
+      <line x1="50" y1="88" x2="70" y2="88" />
+      <line x1="55" y1="94" x2="65" y2="94" />
+    </svg>
+  ),
+};
 
 const Index = () => {
   useTrackVisit();
@@ -91,42 +110,12 @@ const Index = () => {
   useEffect(() => {
     if (location.hash) {
       const el = document.querySelector(location.hash);
-      if (el) {
-        setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
-      }
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
     }
   }, [location.hash]);
 
-  const logoMap: Record<string, string> = {
-    "Naive": logoNaive,
-    "Polsia": logoPolsia,
-    "Lazy Blogger": logoLazyBlogger,
-    "Lazy SEO": logoLazySeo,
-    "Lazy GEO": logoLazyGeo,
-  };
-
-  const { data: companies = [] } = useQuery({
-    queryKey: ["approved-companies"],
-    queryFn: async () => {
-      const { data } = await supabase.
-      from("submissions").
-      select("name, url, tagline, is_paid, slug, display_order, logo_url").
-      eq("status", "approved").
-      order("display_order", { ascending: true }).
-      order("created_at", { ascending: true });
-      return (data || []).map((c: any) => ({
-        name: c.name,
-        url: c.url,
-        description: c.tagline,
-        thumbnail: c.logo_url || logoMap[c.name],
-        isPaid: c.is_paid,
-        slug: c.slug
-      }));
-    }
-  });
-
   return (
-    <div className="min-h-screen text-foreground relative">
+    <div className="min-h-screen text-foreground relative bg-[#0a0a08]">
       <SEO
         title={NEW_TITLE}
         url="/"
@@ -134,55 +123,15 @@ const Index = () => {
         keywords="autonomous blog engine, autonomous SEO engine, autonomous GEO engine, Lovable website growth, AI blog writer, AI SEO tool, AI citation engine, self-growing website, autonomous content, Lovable startup, solo founder tools, AI business automation, autonomous marketing, self-building startup"
         breadcrumbs={[{ name: "Home", url: "/" }]}
         faq={[
-          { question: "What are the Autonomous Growth Engines?", answer: "They are three AI-powered engines — Lazy Blogger, Lazy SEO, and Lazy GEO — that autonomously grow your Lovable website by publishing content, optimizing for search, and getting your brand cited by AI assistants." },
+          { question: "What are the Autonomous Growth Engines?", answer: "They are AI-powered engines that autonomously grow your Lovable website by publishing content, optimizing for search, and getting your brand cited by AI assistants." },
           { question: "How does Lazy Blogger work?", answer: "With a single prompt, Lazy Blogger publishes high-quality blog posts every day on your Lovable website — forever, for free." },
           { question: "What does Lazy SEO do?", answer: "Lazy SEO discovers keyword opportunities, creates SEO-optimized content, and improves your search rankings on autopilot." },
           { question: "What is Lazy GEO?", answer: "Lazy GEO gets your brand cited by AI engines like ChatGPT, Claude, and Perplexity by creating citation-ready content and tracking your visibility." },
         ]}
         speakable={["h1", ".hero-description"]}
       />
-      
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Lazy Unicorn",
-          "url": "https://www.lazyunicorn.ai",
-          "description": NEW_DESCRIPTION,
-          "image": "https://www.lazyunicorn.ai/og-image.png",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://www.lazyunicorn.ai/?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Lazy Unicorn",
-            "url": "https://www.lazyunicorn.ai",
-            "logo": { "@type": "ImageObject", "url": "https://www.lazyunicorn.ai/og-image.png" },
-            "sameAs": ["https://x.com/SaadSahawneh"]
-          }
-        }) }} />
-      {companies.length > 0 &&
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          "name": "Autonomous Company Directory",
-          "description": "AI-powered autonomous companies directory",
-          "itemListElement": companies.map((c, i) => ({
-            "@type": "ListItem",
-            "position": i + 1,
-            "name": c.name,
-            "url": c.url
-          }))
-        }) }} />
-      }
-      {/* Full-bleed background */}
-      <div className="fixed inset-0 z-0">
-        <img src={unicornBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
 
-      {/* Blog Ticker at top */}
+      {/* Blog Ticker at bottom */}
       <div className="fixed bottom-0 left-0 right-0 z-50">
         <BlogTicker />
       </div>
@@ -196,18 +145,17 @@ const Index = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex flex-col items-center">
-            
+            className="flex flex-col items-center"
+          >
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="mb-[-1px] relative z-10 flex flex-col items-center">
-              
+              className="mb-[-1px] relative z-10 flex flex-col items-center"
+            >
               <div className="mb-[-1px] relative z-10">
                 <TotalVisitorCount />
               </div>
-
               <div className="bg-transparent backdrop-blur-xl border border-primary/20 border-b-0 rounded-t-2xl px-6 py-2.5 inline-block shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
                 <p className="font-display text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] uppercase text-primary">
                   Autonomous growth for Lovable
@@ -232,7 +180,8 @@ const Index = () => {
               <div className="flex items-center gap-3 mt-6">
                 <a
                   href="#engines"
-                  className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]">
+                  className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
+                >
                   See the Engines
                 </a>
               </div>
@@ -241,299 +190,52 @@ const Index = () => {
         </div>
       </header>
 
-      {/* How it works intro */}
-      <section className="relative z-10 px-8 md:px-12 pt-16 pb-8">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-3xl"
-        >
-          <p className="font-body text-base sm:text-lg md:text-xl text-foreground/50 leading-relaxed max-w-2xl">
-            With a single prompt, your site can write content, optimize itself for search, and distribute that content across the internet—automatically, continuously, and at scale.
-          </p>
-        </motion.div>
-      </section>
+      {/* Product Grid */}
+      <section id="engines" className="relative z-10 scroll-mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {products.map((product, i) => {
+            const isDark = i % 2 === 0;
+            const bgEven = "#0a0a08";
+            const bgOdd = "#111110";
+            // Checkerboard: alternate per row on desktop
+            const row = Math.floor(i / 2);
+            const col = i % 2;
+            const bg = (row + col) % 2 === 0 ? bgEven : bgOdd;
+            const isComingSoon = product.name === "Coming Soon";
 
-      {/* Engine Cards */}
-      <section id="engines" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl">
-          {engines.map((engine, i) => (
-            <motion.div
-              key={engine.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.12 }}
-            >
-              <Link
-                to={engine.link}
-                className="group block bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] hover:border-primary/40 transition-all duration-300 h-full"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${engine.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl`} />
-                <div className="relative z-10">
-                  <span className="text-4xl mb-4 block">{engine.emoji}</span>
-                  <p className="font-display text-xl md:text-2xl font-extrabold text-foreground mb-1">
-                    {engine.name}
-                  </p>
-                  <p className="font-body text-[10px] tracking-[0.15em] uppercase text-primary/70 mb-4">
-                    {engine.tagline}
-                  </p>
-                  <p className="font-body text-sm text-foreground/50 leading-relaxed mb-6">
-                    {engine.description}
-                  </p>
-                  <span className="inline-block font-body text-[11px] tracking-[0.15em] uppercase text-primary font-semibold group-hover:translate-x-1 transition-transform">
-                    Learn more →
-                  </span>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Compounding statement */}
-      <section className="relative z-10 px-8 md:px-12 pb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
-        >
-          <p className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-foreground leading-snug mb-4">
-            Together, they replace manual work with autonomous growth.
-          </p>
-          <p className="font-body text-base text-foreground/50 leading-relaxed">
-            So your Lovable website doesn't just exist — it compounds.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* ─── Existing content below ─── */}
-
-      {/* Guide Preview */}
-      <section className="relative z-10 px-8 md:px-12 pt-16 pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
-        >
-          <p className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
-            The Guide
-          </p>
-          <p className="font-body text-lg text-foreground/50 leading-relaxed mb-6">
-            How to build an autonomous unicorn — in 6 steps. One founder, zero excuses.
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
-            {[
-              { num: "01", label: "Idea", icon: "💡" },
-              { num: "02", label: "Build", icon: "🛠" },
-              { num: "03", label: "Content", icon: "✍️" },
-              { num: "04", label: "Monetize", icon: "💰" },
-              { num: "05", label: "Agents", icon: "🤖" },
-              { num: "06", label: "Compound", icon: "📈" },
-            ].map((step, i) => (
+            const content = (
               <motion.div
-                key={step.num}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-background/40 border border-foreground/10 rounded-xl p-4 text-center"
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                className="aspect-square flex flex-col items-center justify-center gap-6 transition-all duration-300 hover:brightness-[1.15] cursor-pointer"
+                style={{ backgroundColor: bg }}
               >
-                <span className="text-2xl mb-2 block">{step.icon}</span>
-                <span className="font-body text-[10px] tracking-[0.2em] uppercase text-primary/60 block">{step.num}</span>
-                <span className="font-display text-sm font-bold text-foreground/80">{step.label}</span>
+                {sketches[product.name]}
+                <div className="text-center">
+                  <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                    {product.cursive}
+                  </p>
+                  <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                    {product.name}
+                  </p>
+                </div>
               </motion.div>
-            ))}
-          </div>
-          <Link
-            to="/guide"
-            className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity"
-          >
-            Explore the full guide →
-          </Link>
-        </motion.div>
-      </section>
+            );
 
-      {/* Directory */}
-      <main id="directory" className="relative z-10 px-8 md:px-12 pb-32 scroll-mt-20">
-        <div className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
-            
-            Directory
-          </motion.p>
-          <p className="font-body text-lg text-foreground/50 leading-relaxed mb-8">
-            Discover tools that help you build your startup autonomously.
-          </p>
-          <div className="space-y-px">
-            <a
-              href="#launch"
-              className="group flex items-center justify-between py-5 border-b border-dashed border-primary/20 hover:pl-2 transition-all duration-300 cursor-pointer">
-              
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-lg border border-dashed border-primary/30 bg-primary/5 flex items-center justify-center shrink-0">
-                  <span className="text-primary text-lg">✦</span>
-                </div>
-                <div>
-                  <p className="font-display text-lg md:text-xl font-bold text-primary/70 group-hover:text-primary transition-colors">
-                    Your startup here
-                  </p>
-                  <p className="font-body text-sm text-foreground/30 mt-0.5">
-                    List your autonomous startup for free
-                  </p>
-                </div>
-              </div>
-              <span className="font-body text-[10px] tracking-[0.15em] uppercase text-primary/40 group-hover:text-primary/70 transition-colors shrink-0 ml-4">
-                Free ↗
-              </span>
-            </a>
-            {companies.map((company, i) =>
-            <CompanyCard
-              key={company.name}
-              name={company.name}
-              url={company.url}
-              description={company.description}
-              thumbnail={company.thumbnail}
-              isPaid={company.isPaid}
-              slug={company.slug}
-              index={i} />
-            )}
-          </div>
-          <a
-            href="#launch"
-            className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97] mt-8">
-            
-            Add your startup
-          </a>
-        </div>
-      </main>
+            if (isComingSoon) return <div key={i}>{content}</div>;
 
-      <SubmitSection />
-
-      {/* Launch Pad */}
-      <section className="relative z-10 px-8 md:px-12 pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
-        >
-          <p className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
-            Launch
-          </p>
-          <p className="font-body text-lg text-foreground/50 leading-relaxed mb-6">
-            Describe your idea, pick a platform, and start building your autonomous startup in seconds.
-          </p>
-          <Link
-            to="/launch"
-            className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
-          >
-            Open Launch Pad →
-          </Link>
-        </motion.div>
-      </section>
-
-      {/* Blog CTA */}
-      <section className="relative z-10 px-8 md:px-12 pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
-          
-          <p className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
-            Blog
-          </p>
-          <p className="font-body text-lg text-foreground/50 leading-relaxed mb-6">
-            Read our latest posts on the rise of autonomous capitalism — and why your next startup might run itself.
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              to="/blog"
-              className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity">
-              Read the blog →
-            </Link>
-            <Link
-              to="/lazy-blogger"
-              className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase border border-primary/30 text-primary px-6 py-2.5 rounded-full font-semibold hover:bg-primary/10 transition-all">
-              ✍️ Build your own blog →
-            </Link>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="relative z-10 px-8 md:px-12 pb-16 scroll-mt-24">
-        <div className="max-w-2xl bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-extrabold tracking-[0.1em] uppercase text-foreground/60 mb-4">
-            About
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="space-y-4">
-            <p className="font-body text-lg md:text-xl text-foreground/70 leading-relaxed">
-              Accelerate the future of autonomous capitalism.
-            </p>
-            <p className="font-body text-base text-foreground/50 leading-relaxed">
-              Lazy Unicorn wants to be the first one-person unicorn built on Lovable. We build autonomous growth tools that drop into your existing Lovable project — your site starts publishing, ranking, and compounding without you touching anything after setup.
-            </p>
-            <p className="font-body text-base text-foreground/50 leading-relaxed">
-              Lazy Blogger publishes SEO and GEO-optimised blog posts continuously. Lazy SEO discovers the keywords your site should rank for and writes the articles to capture them. Lazy GEO publishes content structured to be cited by ChatGPT, Claude, and Perplexity when people ask questions in your niche. All three run as edge functions inside your existing Lovable project, on your existing Supabase database, at your existing domain.
-            </p>
-            <div className="flex flex-wrap items-center gap-3 mt-2">
-              <a
-                href="https://lovable.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
-              >
-                Start building with Lovable
-              </a>
-              <a
-                href="https://x.com/SaadSahawneh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-4 py-1.5">
-                Follow me on 𝕏
-              </a>
-              <a
-                href="https://www.linkedin.com/in/saadsahawneh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-body text-[11px] tracking-[0.15em] uppercase text-foreground/50 hover:text-primary transition-colors border border-foreground/10 rounded-full px-4 py-1.5">
-                Follow me on LinkedIn
-              </a>
-            </div>
-          </motion.div>
+            return (
+              <Link key={i} to={product.link} className="block">
+                {content}
+              </Link>
+            );
+          })}
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="relative z-10 px-8 md:px-12 py-8 pb-20 border-t border-foreground/10">
-        <span className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/50">
-          Lazy Unicorn © 2026
-        </span>
-      </footer>
-    </div>);
-
+    </div>
+  );
 };
 
 export default Index;
