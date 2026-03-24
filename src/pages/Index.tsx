@@ -20,6 +20,12 @@ const products = [
   { cursive: "Lazy", name: "Stream", link: "/lazy-stream", tagline: "Streams become content." },
   { cursive: "Lazy", name: "Code", link: "/lazy-code", tagline: "Commits become changelogs." },
   { cursive: "Lazy", name: "Alert", link: "/lazy-alert", tagline: "Your business in your Slack." },
+  { cursive: "Lazy", name: "GitLab", link: "/lazy-gitlab", tagline: "Commits become changelogs." },
+  { cursive: "Lazy", name: "Supabase", link: "/lazy-supabase", tagline: "Your database tells its story." },
+  { cursive: "Lazy", name: "Telegram", link: "/lazy-telegram", tagline: "Your business in Telegram." },
+  { cursive: "Lazy", name: "Linear", link: "/lazy-linear", tagline: "Issues become changelogs." },
+  { cursive: "Lazy", name: "Contentful", link: "/lazy-contentful", tagline: "Two-way CMS sync." },
+  { cursive: "Lazy", name: "Perplexity", link: "/lazy-perplexity", tagline: "Research-backed content." },
   { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More engines loading." },
 ];
 
