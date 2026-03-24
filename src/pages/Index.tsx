@@ -226,6 +226,39 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Directory */}
+      <section id="directory" className="relative z-10 py-24 px-6 md:px-12 scroll-mt-20" style={{ backgroundColor: "#111110" }}>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: "#f0ead6", opacity: 0.4 }}>
+              Directory
+            </p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2, marginTop: "0.5rem" }}>
+              Tools for autonomous startups.
+            </h2>
+          </div>
+
+          {companies.length > 0 && (
+            <div className="mb-16">
+              {companies.map((company, i) => (
+                <CompanyCard
+                  key={company.id}
+                  name={company.name}
+                  url={company.url}
+                  description={company.tagline}
+                  index={i}
+                  thumbnail={company.logo_url || undefined}
+                  isPaid={company.is_paid}
+                  slug={company.slug || undefined}
+                />
+              ))}
+            </div>
+          )}
+
+          <SubmitSection />
+        </div>
+      </section>
+
       {/* About */}
       <section id="about" className="relative z-10 py-24 px-6" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-2xl mx-auto text-center">
