@@ -10,12 +10,15 @@ export interface PromptVersion {
   created_at: string;
 }
 
+// Cast to bypass typed client since prompt_versions isn't in generated types yet
+const db = supabase as any;
+
 export function useCurrentPrompt(product: string) {
   const [prompt, setPrompt] = useState<PromptVersion | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase
+    db
       .from("prompt_versions")
       .select("*")
       .eq("product", product)
@@ -23,7 +26,7 @@ export function useCurrentPrompt(product: string) {
       .order("created_at", { ascending: false })
       .limit(1)
       .single()
-      .then(({ data }) => {
+      .then(({ data }: { data: any }) => {
         if (data) setPrompt(data as PromptVersion);
         setLoading(false);
       });
@@ -36,9 +39,9 @@ export function usePromptHistory(product: string) {
   const [versions, setVersions] = useState<PromptVersion[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetch = async () => {
+  const fetchVersions = async () => {
     setLoading(true);
-    const { data } = await supabase
+    const { data } = await db
       .from("prompt_versions")
       .select("*")
       .eq("product", product)
@@ -47,22 +50,20 @@ export function usePromptHistory(product: string) {
     setLoading(false);
   };
 
-  useEffect(() => { fetch(); }, [product]);
+  useEffect(() => { fetchVersions(); }, [product]);
 
-  return { versions, loading, refetch: fetch };
+  return { versions, loading, refetch: fetchVersions };
 }
 
 /** Save a new prompt version and mark all previous versions as not current */
 export async function savePromptVersion(product: string, promptText: string, version: string) {
-  // Mark old versions as not current
-  await supabase
+  await db
     .from("prompt_versions")
     .update({ is_current: false })
     .eq("product", product)
     .eq("is_current", true);
 
-  // Insert new current version
-  const { error } = await supabase
+  const { error } = await db
     .from("prompt_versions")
     .insert({ product, version, prompt_text: promptText, is_current: true });
 
