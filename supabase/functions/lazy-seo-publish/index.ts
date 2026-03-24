@@ -6,6 +6,21 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+const MINOR_WORDS = new Set(["a","an","the","and","but","or","nor","for","yet","so","in","on","at","to","by","of","up","as","is","if","it","no"]);
+const ABBREVIATIONS = new Set(["ai","vc","seo","geo","api","saas","roi","cto","ceo","llm","gpt","url","crm","cms","b2b","b2c"]);
+
+function toTitleCase(str: string): string {
+  return str.replace(/\S+/g, (word, index) => {
+    const lower = word.toLowerCase();
+    const bare = lower.replace(/[^a-z]/g, "");
+    if (ABBREVIATIONS.has(bare)) {
+      return word.replace(new RegExp(bare, "i"), bare.toUpperCase());
+    }
+    if (index !== 0 && MINOR_WORDS.has(lower)) return lower;
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  });
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -100,8 +115,10 @@ serve(async (req) => {
       slug = `${slug}-${Math.floor(1000 + Math.random() * 9000)}`;
     }
 
+    const formattedTitle = toTitleCase(postData.title);
+
     const { error: insertErr } = await supabase.from("seo_posts").insert({
-      title: postData.title,
+      title: formattedTitle,
       slug,
       body: postData.body,
       excerpt: postData.excerpt || null,
@@ -133,7 +150,7 @@ serve(async (req) => {
     }
 
     await supabase.from("blog_posts").insert({
-      title: postData.title,
+      title: formattedTitle,
       slug: blogSlug,
       excerpt: postData.excerpt || postData.title,
       content: paragraphs,

@@ -6,6 +6,21 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+const MINOR_WORDS = new Set(["a","an","the","and","but","or","nor","for","yet","so","in","on","at","to","by","of","up","as","is","if","it","no"]);
+const ABBREVIATIONS = new Set(["ai","vc","seo","geo","api","saas","roi","cto","ceo","llm","gpt","url","crm","cms","b2b","b2c"]);
+
+function toTitleCase(str: string): string {
+  return str.replace(/\S+/g, (word, index) => {
+    const lower = word.toLowerCase();
+    const bare = lower.replace(/[^a-z]/g, "");
+    if (ABBREVIATIONS.has(bare)) {
+      return word.replace(new RegExp(bare, "i"), bare.toUpperCase());
+    }
+    if (index !== 0 && MINOR_WORDS.has(lower)) return lower;
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  });
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -54,18 +69,19 @@ serve(async (req) => {
     const { data: existingSlug } = await supabase.from("geo_posts").select("slug").eq("slug", slug);
     if (existingSlug && existingSlug.length > 0) slug = `${slug}-${Math.floor(1000 + Math.random() * 9000)}`;
 
-    await supabase.from("geo_posts").insert({ title: postData.title, slug, body: postData.body, excerpt: postData.excerpt, target_query: nextQuery.query, status: "published" });
-    await supabase.from("geo_queries").update({ has_content: true }).eq("id", nextQuery.id);
+    const formattedTitle = toTitleCase(postData.title);
 
-    // Also add to the Lazy Blogger queue as a draft
+    await supabase.from("geo_posts").insert({ title: formattedTitle, slug, body: postData.body, excerpt: postData.excerpt, target_query: nextQuery.query, status: "published" });
+    await supabase.from("geo_queries").update({ has_content: true }).eq("id", nextQuery.id);
     const paragraphs = postData.body.split(/\n\n+/).map((p: string) => p.trim()).filter((p: string) => p.length > 0);
     const wordCount = postData.body.split(/\s+/).length;
     const readTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
     let blogSlug = `geo-${slug}`;
     const { data: existingBlogSlug } = await supabase.from("blog_posts").select("slug").eq("slug", blogSlug).maybeSingle();
     if (existingBlogSlug) blogSlug = `${blogSlug}-${Math.floor(1000 + Math.random() * 9000)}`;
+    // Also add to the Lazy Blogger queue as a draft
     await supabase.from("blog_posts").insert({
-      title: postData.title, slug: blogSlug, excerpt: postData.excerpt || postData.title,
+      title: formattedTitle, slug: blogSlug, excerpt: postData.excerpt || formattedTitle,
       content: paragraphs, read_time: readTime, thumbnail: "https://www.lazyunicorn.ai/og-image.png", status: "draft",
     });
 
