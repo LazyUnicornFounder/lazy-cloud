@@ -24,6 +24,9 @@ import LazySeoDashboard from "./pages/LazySeoDashboard.tsx";
 import LazyGeoPage from "./pages/LazyGeoPage.tsx";
 import LazyStorePage from "./pages/LazyStorePage.tsx";
 import LazyVoicePage from "./pages/LazyVoicePage.tsx";
+import LazyVoiceSetup from "./pages/LazyVoiceSetup.tsx";
+import LazyVoiceDashboard from "./pages/LazyVoiceDashboard.tsx";
+import ListenPage from "./pages/ListenPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +57,9 @@ const App = () => (
             <Route path="/lazy-geo" element={<LazyGeoPage />} />
             <Route path="/lazy-store" element={<LazyStorePage />} />
             <Route path="/lazy-voice" element={<LazyVoicePage />} />
+            <Route path="/lazy-voice-setup" element={<LazyVoiceSetup />} />
+            <Route path="/lazy-voice-dashboard" element={<LazyVoiceDashboard />} />
+            <Route path="/listen" element={<ListenPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

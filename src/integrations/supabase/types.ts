@@ -545,6 +545,105 @@ export type Database = {
         }
         Relationships: []
       }
+      voice_episodes: {
+        Row: {
+          audio_url: string | null
+          created_at: string
+          duration_seconds: number | null
+          file_size_bytes: number | null
+          id: string
+          post_id: string | null
+          post_slug: string
+          post_title: string
+          published_at: string | null
+          status: string
+        }
+        Insert: {
+          audio_url?: string | null
+          created_at?: string
+          duration_seconds?: number | null
+          file_size_bytes?: number | null
+          id?: string
+          post_id?: string | null
+          post_slug: string
+          post_title: string
+          published_at?: string | null
+          status?: string
+        }
+        Update: {
+          audio_url?: string | null
+          created_at?: string
+          duration_seconds?: number | null
+          file_size_bytes?: number | null
+          id?: string
+          post_id?: string | null
+          post_slug?: string
+          post_title?: string
+          published_at?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
+      voice_errors: {
+        Row: {
+          created_at: string
+          error_message: string
+          id: string
+          post_slug: string | null
+        }
+        Insert: {
+          created_at?: string
+          error_message: string
+          id?: string
+          post_slug?: string | null
+        }
+        Update: {
+          created_at?: string
+          error_message?: string
+          id?: string
+          post_slug?: string | null
+        }
+        Relationships: []
+      }
+      voice_settings: {
+        Row: {
+          created_at: string
+          elevenlabs_api_key: string | null
+          id: string
+          is_running: boolean
+          podcast_author: string | null
+          podcast_description: string | null
+          podcast_title: string | null
+          setup_complete: boolean
+          site_url: string | null
+          voice_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          elevenlabs_api_key?: string | null
+          id?: string
+          is_running?: boolean
+          podcast_author?: string | null
+          podcast_description?: string | null
+          podcast_title?: string | null
+          setup_complete?: boolean
+          site_url?: string | null
+          voice_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          elevenlabs_api_key?: string | null
+          id?: string
+          is_running?: boolean
+          podcast_author?: string | null
+          podcast_description?: string | null
+          podcast_title?: string | null
+          setup_complete?: boolean
+          site_url?: string | null
+          voice_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

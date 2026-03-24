@@ -7,7 +7,7 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import BlogTicker from "@/components/BlogTicker";
 import ProductPromoBanner from "@/components/ProductPromoBanner";
-
+import BlogAudioPlayer from "@/components/BlogAudioPlayer";
 const BlogPost = () => {
   const { slug } = useParams();
   const { posts: dbPosts } = useDbBlogPosts();
@@ -121,6 +121,9 @@ const BlogPost = () => {
             <h1 className="font-display text-2xl md:text-4xl font-extrabold text-foreground leading-tight mb-8">
               {post.title}
             </h1>
+
+            {/* Audio player */}
+            {slug && <BlogAudioPlayer postSlug={slug} />}
 
             <div className="space-y-5">
               {post.content.map((paragraph, j) => {
