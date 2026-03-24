@@ -202,7 +202,6 @@ export default function AutonomyPage() {
         description="Explore what each Lazy engine does at every level of autonomy — from fully manual to self-improving."
       />
       <Navbar />
-      <LevelLegend />
 
       {/* Hero */}
       <section
@@ -227,6 +226,7 @@ export default function AutonomyPage() {
           Drag the slider on any engine to see what autonomy looks like at each
           level — and where each engine sits today.
         </motion.p>
+        <LevelScale />
       </section>
 
       {/* Engine Cards by Category */}
