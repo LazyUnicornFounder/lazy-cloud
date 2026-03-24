@@ -285,7 +285,7 @@ const Index = () => {
                 Every engine. One prompt.
               </p>
               <p className="max-w-lg text-center" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", color: "#f0ead6", opacity: 0.25, lineHeight: 1.6, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                Blogger · SEO · GEO · Store · Voice · Pay · SMS · Stream · Code
+                Blogger · SEO · GEO · Store · Voice · Pay · SMS · Stream · Code · Alert · GitLab · Supabase · Telegram · Linear · Contentful · Perplexity
               </p>
               <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
                 Made for Lovable

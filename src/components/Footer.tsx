@@ -19,6 +19,12 @@ const engines = [
   { name: "Lazy Stream", href: "/lazy-stream" },
   { name: "Lazy Code", href: "/lazy-code" },
   { name: "Lazy Alert", href: "/lazy-alert" },
+  { name: "Lazy GitLab", href: "/lazy-gitlab" },
+  { name: "Lazy Supabase", href: "/lazy-supabase" },
+  { name: "Lazy Telegram", href: "/lazy-telegram" },
+  { name: "Lazy Linear", href: "/lazy-linear" },
+  { name: "Lazy Contentful", href: "/lazy-contentful" },
+  { name: "Lazy Perplexity", href: "/lazy-perplexity" },
 ];
 
 const resources = [

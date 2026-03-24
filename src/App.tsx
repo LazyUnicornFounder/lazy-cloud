@@ -109,6 +109,12 @@ const App = () => (
               <Route path="/lazy-code" element={<LazyCodePage />} />
               <Route path="/lazy-run" element={<LazyRunPage />} />
               <Route path="/lazy-alert" element={<LazyAlertPage />} />
+              <Route path="/lazy-gitlab" element={<LazyGitLabPage />} />
+              <Route path="/lazy-supabase" element={<LazySupabasePage />} />
+              <Route path="/lazy-telegram" element={<LazyTelegramPage />} />
+              <Route path="/lazy-linear" element={<LazyLinearPage />} />
+              <Route path="/lazy-contentful" element={<LazyContentfulPage />} />
+              <Route path="/lazy-perplexity" element={<LazyPerplexityPage />} />
               <Route path="/pricing" element={<PricingPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
