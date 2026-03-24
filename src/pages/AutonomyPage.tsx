@@ -1,0 +1,306 @@
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
+import Navbar from "@/components/Navbar";
+import {
+  LEVEL_LABELS,
+  LEVEL_COLORS,
+  LEVEL_BG_TINTS,
+  ENGINE_CATEGORIES,
+  type EngineData,
+} from "@/data/autonomyData";
+
+/* ── Sticky Level Legend ── */
+function LevelLegend() {
+  return (
+    <div
+      className="sticky top-0 z-40 w-full border-b border-border"
+      style={{ backgroundColor: "#0a0a08" }}
+    >
+      <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap gap-2 justify-center">
+        {LEVEL_LABELS.map((label, i) => (
+          <span
+            key={i}
+            className="text-[11px] font-mono px-3 py-1 border"
+            style={{
+              color: LEVEL_COLORS[i],
+              borderColor: LEVEL_COLORS[i] + "44",
+              backgroundColor: LEVEL_BG_TINTS[i],
+            }}
+          >
+            {i} — {label}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── Engine Card ── */
+function EngineCard({ engine }: { engine: EngineData }) {
+  const [selectedLevel, setSelectedLevel] = useState(engine.currentLevel);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const color = LEVEL_COLORS[selectedLevel];
+  const currentColor = LEVEL_COLORS[engine.currentLevel];
+  const currentPct = (engine.currentLevel / 5) * 100;
+
+  // Determine glow intensity for the fixed dot
+  const glowClass =
+    engine.currentLevel === 5
+      ? "animate-pulse shadow-[0_0_12px_3px]"
+      : engine.currentLevel === 4
+        ? "animate-pulse shadow-[0_0_8px_2px]"
+        : "";
+
+  return (
+    <div className="border border-border p-5 space-y-4">
+      {/* Header */}
+      <div className="flex items-start justify-between gap-2">
+        <div>
+          <h3 className="text-sm font-semibold text-foreground">
+            {engine.link ? (
+              <Link to={engine.link} className="hover:underline">
+                {engine.name}
+              </Link>
+            ) : (
+              engine.name
+            )}
+          </h3>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            {engine.description}
+          </p>
+        </div>
+        <span
+          className="text-[10px] font-mono whitespace-nowrap px-2 py-0.5 border"
+          style={{
+            color: currentColor,
+            borderColor: currentColor + "44",
+          }}
+        >
+          L{engine.currentLevel}
+        </span>
+      </div>
+
+      {/* Slider Track */}
+      <div className="space-y-1">
+        <div className="relative" ref={trackRef}>
+          {/* Background track – gradient */}
+          <div
+            className="w-full h-[3px] relative"
+            style={{
+              background: `linear-gradient(to right, ${LEVEL_COLORS[0]}, ${LEVEL_COLORS[2]}, ${LEVEL_COLORS[3]}, ${LEVEL_COLORS[4]}, ${LEVEL_COLORS[5]})`,
+              opacity: 0.25,
+            }}
+          />
+
+          {/* Active fill */}
+          <div
+            className="absolute top-0 left-0 h-[3px] transition-all duration-200"
+            style={{
+              width: `${(selectedLevel / 5) * 100}%`,
+              background: `linear-gradient(to right, ${LEVEL_COLORS[0]}, ${color})`,
+            }}
+          />
+
+          {/* Fixed "current level" dot */}
+          <div
+            className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full z-10 ${glowClass}`}
+            style={{
+              left: `${currentPct}%`,
+              transform: `translate(-50%, -50%)`,
+              backgroundColor: currentColor,
+              boxShadow: glowClass ? `0 0 10px ${currentColor}` : undefined,
+            }}
+          >
+            <span
+              className="absolute -top-5 left-1/2 -translate-x-1/2 text-[8px] font-mono whitespace-nowrap"
+              style={{ color: currentColor }}
+            >
+              today
+            </span>
+          </div>
+        </div>
+
+        {/* Range input */}
+        <input
+          type="range"
+          min={0}
+          max={5}
+          step={1}
+          value={selectedLevel}
+          onChange={(e) => setSelectedLevel(Number(e.target.value))}
+          className="w-full autonomy-slider"
+          style={
+            {
+              "--thumb-color": color,
+              accentColor: color,
+            } as React.CSSProperties
+          }
+        />
+
+        {/* Level labels */}
+        <div className="flex justify-between">
+          {LEVEL_LABELS.map((_, i) => (
+            <span
+              key={i}
+              className="text-[9px] font-mono cursor-pointer"
+              style={{
+                color: i === selectedLevel ? LEVEL_COLORS[i] : "rgba(240,234,214,0.2)",
+              }}
+              onClick={() => setSelectedLevel(i)}
+            >
+              {i}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Dynamic text block */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={selectedLevel}
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.2 }}
+          className="text-xs leading-relaxed p-3 border border-border"
+          style={{
+            color: "hsl(var(--foreground))",
+            backgroundColor: LEVEL_BG_TINTS[selectedLevel],
+            borderLeft: `2px solid ${color}`,
+          }}
+        >
+          <span
+            className="text-[10px] font-mono block mb-1"
+            style={{ color }}
+          >
+            Level {selectedLevel} — {LEVEL_LABELS[selectedLevel]}
+            {selectedLevel === engine.currentLevel && " (today)"}
+          </span>
+          {engine.levels[selectedLevel]}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/* ── Main Page ── */
+export default function AutonomyPage() {
+  return (
+    <>
+      <SEO
+        title="Autonomy Levels — LazyUnicorn"
+        description="Explore what each Lazy engine does at every level of autonomy — from fully manual to self-improving."
+      />
+      <Navbar />
+      <LevelLegend />
+
+      {/* Hero */}
+      <section
+        className="max-w-4xl mx-auto px-4 pt-20 pb-12 text-center"
+        style={{ fontFamily: "var(--font-body)" }}
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-3xl md:text-5xl font-bold text-foreground mb-4"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          How autonomous is your business?
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+        >
+          Most tools automate tasks. LazyUnicorn engines automate outcomes.
+          Drag the slider on any engine to see what autonomy looks like at each
+          level — and where each engine sits today.
+        </motion.p>
+      </section>
+
+      {/* Engine Cards by Category */}
+      <section className="max-w-6xl mx-auto px-4 pb-24 space-y-12">
+        {ENGINE_CATEGORIES.map((cat) => (
+          <div key={cat.label}>
+            <h2 className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mb-4">
+              {cat.label}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {cat.engines.map((engine) => (
+                <EngineCard key={engine.name} engine={engine} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* Footer CTA */}
+      <section
+        className="border-t border-border py-20 px-4"
+        style={{ backgroundColor: "#0a0a08" }}
+      >
+        <div className="max-w-3xl mx-auto text-center space-y-6">
+          <h2
+            className="text-2xl md:text-3xl font-bold text-foreground"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Every engine starts at Level 3. The self-improving ones reach
+            Level 5.
+          </h2>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            Most automation tools live at Level 2 — they run on a schedule you
+            set and never change. LazyUnicorn engines are generative at minimum
+            and self-improving at their best. They do not just execute tasks.
+            They measure results, rewrite what does not work, and compound over
+            time. That is the difference between a tool and an engine.
+          </p>
+          <Link
+            to="/lazy-run"
+            className="inline-block text-xs font-mono px-5 py-2 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+          >
+            Install Lazy Run — all eighteen engines in one prompt
+          </Link>
+        </div>
+      </section>
+
+      {/* Slider CSS */}
+      <style>{`
+        .autonomy-slider {
+          -webkit-appearance: none;
+          appearance: none;
+          height: 3px;
+          background: transparent;
+          outline: none;
+          margin-top: -3px;
+          position: relative;
+          z-index: 5;
+        }
+        .autonomy-slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 14px;
+          height: 14px;
+          border-radius: 0;
+          background: var(--thumb-color, hsl(45 80% 55%));
+          cursor: grab;
+          border: 1px solid rgba(240,234,214,0.3);
+        }
+        .autonomy-slider::-moz-range-thumb {
+          width: 14px;
+          height: 14px;
+          border-radius: 0;
+          background: var(--thumb-color, hsl(45 80% 55%));
+          cursor: grab;
+          border: 1px solid rgba(240,234,214,0.3);
+        }
+        .autonomy-slider:active::-webkit-slider-thumb {
+          cursor: grabbing;
+        }
+      `}</style>
+    </>
+  );
+}
