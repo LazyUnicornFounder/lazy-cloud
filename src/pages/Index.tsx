@@ -167,7 +167,7 @@ const Index = () => {
             <span style={{ fontFamily: "'Dancing Script', cursive" }}>Running itself.</span>
           </h1>
           <p className="hero-description mt-6 text-sm sm:text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.6 }}>
-            Lazy Unicorn builds the autonomous layer for Lovable. One prompt installs the engine you need — blog posts that publish themselves, SEO that compounds, payments that optimise, SMS that converts, audio that narrates, stores that grow. Everything your site needs to run and grow without you doing it manually.
+            Lazy Unicorn builds autonomous engines for Lovable. Lazy Blogger publishes your blog. Lazy SEO writes keyword-targeted articles and climbs the rankings. Lazy GEO gets your brand cited by ChatGPT, Claude, and Perplexity. Lazy Store runs your Shopify storefront. Lazy Voice turns every post into a podcast episode. Lazy Code converts GitHub commits into changelogs, release notes, and developer blog posts. Lazy Stream repurposes your Twitch streams into written content. Lazy Pay handles payments. Lazy SMS sends campaigns that convert. One prompt installs any engine — it runs and grows your site without you.
           </p>
           <div className="flex items-center justify-center gap-3 mt-8">
             <a
