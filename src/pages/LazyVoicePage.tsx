@@ -344,58 +344,20 @@ export default function LazyVoicePage() {
         </section>
 
         {/* ── PRICING ── */}
-        <section className="py-20 md:py-28 px-6 border-t border-border">
-          <div className="max-w-3xl mx-auto">
-            <motion.h2
-              variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="font-display text-2xl md:text-3xl font-bold tracking-tight text-center mb-14"
-            >
-              Pricing
-            </motion.h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Free */}
-              <motion.div
-                variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="border border-border rounded-2xl p-8 bg-card/40 flex flex-col"
-              >
-                <h3 className="font-display text-lg font-bold mb-1">Free</h3>
-                <p className="font-body text-2xl font-bold mb-4">$0</p>
-                <ul className="font-body text-sm text-muted-foreground space-y-2 flex-1">
-                  <li>✓ Lazy Voice setup prompt</li>
-                  <li>✓ Self-hosted</li>
-                  <li>✓ Uses ElevenLabs free tier voice</li>
-                  <li>✓ Bring your own ElevenLabs API key</li>
-                </ul>
-                <CopyPromptButton onCopy={handleCopy} className="mt-6 w-full justify-center" />
-              </motion.div>
-
-              {/* Pro */}
-              <motion.div
-                variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="border-2 border-primary/60 rounded-2xl p-8 bg-card/40 flex flex-col relative"
-              >
-                <span className="absolute top-4 right-4 bg-primary/20 text-primary text-[10px] font-display font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                  Coming Soon
-                </span>
-                <h3 className="font-display text-lg font-bold mb-1">Pro</h3>
-                <p className="font-body text-2xl font-bold mb-4">$19<span className="text-sm text-muted-foreground font-normal">/month</span></p>
-                <ul className="font-body text-sm text-muted-foreground space-y-2 flex-1">
-                  <li>✓ Hosted version</li>
-                  <li>✓ Priority audio processing</li>
-                  <li>✓ Automatic podcast submission to Apple &amp; Spotify</li>
-                </ul>
-                <button
-                  disabled
-                  className="mt-6 w-full inline-flex items-center justify-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full border border-border text-muted-foreground cursor-not-allowed opacity-50"
-                >
-                  Coming Soon
-                </button>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+        <LazyPricingSection
+          lazyFeatures={[
+            "Lazy Voice setup prompt",
+            "Self-hosted",
+            "Uses ElevenLabs free tier voice",
+            "Bring your own ElevenLabs API key",
+          ]}
+          proFeatures={[
+            "Hosted version",
+            "Priority audio processing",
+            "Automatic podcast submission to Apple & Spotify",
+          ]}
+          ctaButton={<CopyPromptButton onCopy={handleCopy} className="w-full justify-center" />}
+        />
 
         {/* ── FAQ ── */}
         <section className="py-20 md:py-28 px-6 border-t border-border">
