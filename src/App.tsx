@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
 import Blog from "./pages/Blog.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
 import CompanyDetail from "./pages/CompanyDetail.tsx";
@@ -72,6 +73,7 @@ const App = () => (
             <Route path="/autonomy-scale" element={<AutonomyScale />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/launch" element={<LaunchPage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/lazy-blogger" element={<LazyBloggerPage />} />
             <Route path="/company/naive" element={<NaivePage />} />
             <Route path="/company/polsia" element={<PolsiaPage />} />
