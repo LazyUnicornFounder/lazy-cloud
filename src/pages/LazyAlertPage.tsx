@@ -265,7 +265,7 @@ export default function LazyAlertPage() {
                   <p className="font-display text-sm font-bold text-foreground">{card.engine}</p>
                   <p className="font-body text-xs text-foreground/30">{card.trigger}</p>
                 </div>
-                <SlackMessage avatar={card.avatar} name="LazyUnicorn" time="just now">
+                <SlackMessage avatar={card.avatar} name="Lazy Unicorn" time="just now">
                   {card.example}
                 </SlackMessage>
               </motion.div>
@@ -286,7 +286,7 @@ export default function LazyAlertPage() {
           </motion.p>
 
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-10">
-            <SlackMessage avatar="🦄" name="LazyUnicorn" time="8:00 AM">
+            <SlackMessage avatar="🦄" name="Lazy Unicorn" time="8:00 AM">
               <strong className="text-foreground/80">📊 Daily Briefing — Monday 24 Mar</strong>
               <div className="mt-2 space-y-1 text-sm">
                 <p>📝 <strong className="text-foreground/70">Posts published:</strong> 3 (2 SEO, 1 GEO)</p>

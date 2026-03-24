@@ -7,8 +7,8 @@ export default function AboutPage() {
   return (
     <>
       <SEO
-        title="About LazyUnicorn — One Founder. Zero Employees."
-        description="LazyUnicorn is a company that builds itself. Autonomous engines replace teams, run operations, and grow the business — all without manual input."
+        title="About Lazy Unicorn — One Founder. Zero Employees."
+        description="Lazy Unicorn is a company that builds itself. Autonomous engines replace teams, run operations, and grow the business — all without manual input."
       />
       <Navbar />
       <div className="min-h-screen bg-background text-foreground pt-32 pb-20 px-8">
@@ -35,7 +35,7 @@ export default function AboutPage() {
 
             <div className="space-y-6 font-body text-sm text-foreground/50 leading-relaxed">
               <p>
-                LazyUnicorn is an experiment in autonomous capitalism. The idea is simple: what happens when you replace every human role in a company with an AI engine?
+                Lazy Unicorn is an experiment in autonomous capitalism. The idea is simple: what happens when you replace every human role in a company with an AI engine?
               </p>
               <p>
                 No content team. No SEO specialist. No social media manager. No podcast producer. No customer support agents. No employees at all. Just a single founder and a growing ecosystem of autonomous engines that handle everything — from writing and publishing to optimisation and distribution.
@@ -54,7 +54,7 @@ export default function AboutPage() {
                 The engines don't just execute — they learn. Lazy SEO analyses what's ranking and adjusts its strategy. Lazy GEO tests whether AI models cite your brand and writes content to improve citation rates. Lazy Voice converts every blog post into a podcast episode automatically. Each engine feeds the others, creating a compounding loop of content, traffic, and growth.
               </p>
               <p>
-                LazyUnicorn is built entirely on <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Lovable</a>. The website, the engines, the admin dashboard, the edge functions — everything runs on a single Lovable project. No external servers. No DevOps. No infrastructure team.
+                Lazy Unicorn is built entirely on <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Lovable</a>. The website, the engines, the admin dashboard, the edge functions — everything runs on a single Lovable project. No external servers. No DevOps. No infrastructure team.
               </p>
               <p>
                 This is what a company looks like when autonomy is the default and humans are optional.

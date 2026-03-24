@@ -106,7 +106,7 @@ export default function ListenPage() {
           <div className="mt-16 text-center">
             <p className="font-body text-xs text-muted-foreground/50">
               🦄 Powered by Lazy Voice — autonomous audio narration for Lovable sites. Built by{" "}
-              <a href="https://lazyunicorn.ai" className="underline hover:text-primary transition-colors">LazyUnicorn.ai</a>
+              <a href="https://lazyunicorn.ai" className="underline hover:text-primary transition-colors">Lazy Unicorn</a>
             </p>
           </div>
         </div>

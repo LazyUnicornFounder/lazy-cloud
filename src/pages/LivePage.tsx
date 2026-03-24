@@ -75,7 +75,7 @@ const LivePage = () => {
         )}
 
         <p className="mt-20 font-body text-xs text-foreground/15">
-          🦄 Content by Lazy Stream — autonomous Twitch content publishing for Lovable sites. Built by <a href="https://lazyunicorn.ai" className="underline hover:text-foreground/30">LazyUnicorn.ai</a>
+          🦄 Content by Lazy Stream — autonomous Twitch content publishing for Lovable sites. Built by <a href="https://lazyunicorn.ai" className="underline hover:text-foreground/30">Lazy Unicorn</a>
         </p>
       </main>
     </div>
