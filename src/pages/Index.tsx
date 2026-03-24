@@ -131,10 +131,6 @@ const Index = () => {
         speakable={["h1", ".hero-description"]}
       />
 
-      {/* Blog Ticker at bottom */}
-      <div className="fixed bottom-0 left-0 right-0 z-50">
-        <BlogTicker />
-      </div>
 
       <Navbar activePage="home" />
 
