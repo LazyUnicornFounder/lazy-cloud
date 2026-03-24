@@ -802,6 +802,8 @@ const Admin = () => {
 
       {activeTab === "prompts" && <AdminPrompts />}
 
+      {activeTab === "agent" && <AdminOpsAgent />}
+
     </div>
   );
 };
