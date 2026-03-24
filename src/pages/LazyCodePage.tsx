@@ -262,7 +262,7 @@ function CopyPromptButton({ className = "" }: { className?: string }) {
   const handleCopy = useCallback(async () => {
     await navigator.clipboard.writeText(SETUP_PROMPT);
     setCopied(true);
-    trackEvent("copy_prompt", { product: "lazy-code" });
+    trackEvent("copy_prompt", { product: "lazy-github" });
     toast.success("Copied! Paste this into your Lovable project chat.");
     setTimeout(() => setCopied(false), 2000);
   }, [trackEvent]);
