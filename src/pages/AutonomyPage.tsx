@@ -168,25 +168,29 @@ function EngineCard({ engine }: { engine: EngineData }) {
       <AnimatePresence mode="wait">
         <motion.div
           key={selectedLevel}
-          initial={{ opacity: 0, y: 4 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -4 }}
-          transition={{ duration: 0.2 }}
-          className="text-xs leading-relaxed p-3 border border-border"
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.97 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="p-5 md:p-6 border border-border rounded-sm"
           style={{
-            color: "hsl(var(--foreground))",
             backgroundColor: LEVEL_BG_TINTS[selectedLevel],
-            borderLeft: `2px solid ${color}`,
+            borderLeft: `3px solid ${color}`,
           }}
         >
           <span
-            className="text-[10px] font-mono block mb-1"
+            className="text-xs font-mono block mb-2 tracking-wide"
             style={{ color }}
           >
             Level {selectedLevel} — {LEVEL_LABELS[selectedLevel]}
-            {selectedLevel === engine.currentLevel && " (today)"}
+            {selectedLevel === engine.currentLevel && " ← today"}
           </span>
-          {engine.levels[selectedLevel]}
+          <p
+            className="text-base md:text-lg leading-relaxed font-medium"
+            style={{ color: "hsl(var(--foreground))" }}
+          >
+            {engine.levels[selectedLevel]}
+          </p>
         </motion.div>
       </AnimatePresence>
     </div>
