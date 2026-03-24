@@ -79,8 +79,9 @@ serve(async (req) => {
     let blogSlug = `geo-${slug}`;
     const { data: existingBlogSlug } = await supabase.from("blog_posts").select("slug").eq("slug", blogSlug).maybeSingle();
     if (existingBlogSlug) blogSlug = `${blogSlug}-${Math.floor(1000 + Math.random() * 9000)}`;
+    // Also add to the Lazy Blogger queue as a draft
     await supabase.from("blog_posts").insert({
-      title: postData.title, slug: blogSlug, excerpt: postData.excerpt || postData.title,
+      title: formattedTitle, slug: blogSlug, excerpt: postData.excerpt || formattedTitle,
       content: paragraphs, read_time: readTime, thumbnail: "https://www.lazyunicorn.ai/og-image.png", status: "draft",
     });
 
