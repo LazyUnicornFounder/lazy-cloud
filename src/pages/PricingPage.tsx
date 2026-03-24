@@ -79,6 +79,13 @@ const products: Product[] = [
     pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced changelog formatting", "Custom templates"], comingSoon: true },
   },
   {
+    name: "Lazy SMS",
+    tagline: "Autonomous SMS engine",
+    link: "/lazy-sms",
+    free: ["Setup prompt included", "Twilio integration", "Automated SMS campaigns", "Contact management", "Conversion tracking"],
+    pro: { price: "$19", features: ["Hosted version", "Advanced segmentation", "A/B testing", "Multi-channel messaging", "Compliance automation"], comingSoon: true },
+  },
+  {
     name: "Lazy Stream",
     tagline: "Autonomous Twitch content engine",
     link: "/lazy-stream",
