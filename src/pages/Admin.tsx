@@ -753,7 +753,7 @@ const Admin = () => {
             </div>
           ))}
           {!loading && blogPosts.length === 0 && (
-            <p className="font-body text-sm text-muted-foreground text-center py-8">No blog posts yet. Click "Generate New Post" to create one.</p>
+            <p className="font-body text-sm text-muted-foreground text-center py-8">No blog posts yet. Posts will appear here once the SEO or GEO engines generate them.</p>
           )}
         </div>
       )}
