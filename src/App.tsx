@@ -37,6 +37,7 @@ import LazyContentfulPage from "./pages/LazyContentfulPage.tsx";
 import LazyPerplexityPage from "./pages/LazyPerplexityPage.tsx";
 import PricingPage from "./pages/PricingPage.tsx";
 import AutonomyPage from "./pages/AutonomyPage.tsx";
+import LazySecurityPage from "./pages/LazySecurityPage.tsx";
 import PublicLayout from "./components/PublicLayout.tsx";
 
 import AdminLayout from "./pages/admin/AdminLayout.tsx";
@@ -106,6 +107,7 @@ const App = () => (
               <Route path="/lazy-perplexity" element={<LazyPerplexityPage />} />
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/autonomy" element={<AutonomyPage />} />
+              <Route path="/lazy-security" element={<LazySecurityPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
