@@ -205,7 +205,7 @@ export default function AutonomyPage() {
 
       {/* Hero */}
       <section
-        className="max-w-4xl mx-auto px-4 pt-20 pb-12 text-center"
+        className="max-w-4xl mx-auto px-4 min-h-screen flex flex-col items-center justify-center text-center"
         style={{ fontFamily: "var(--font-body)" }}
       >
         <motion.h1
