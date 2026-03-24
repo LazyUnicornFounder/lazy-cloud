@@ -260,6 +260,16 @@ const AdminSeo = () => {
             </div>
           </div>
 
+          {/* Business description — editable */}
+          <div className="border border-border rounded-xl bg-card p-3">
+            <EditableField
+              label="Business Description"
+              value={settings?.business_description || ""}
+              onSave={(v) => updateField("business_description", v)}
+              prose
+            />
+          </div>
+
           {/* Stats row 2 — editable settings */}
           <div className="grid grid-cols-2 gap-3">
             <div className="border border-border rounded-xl bg-card p-3">
