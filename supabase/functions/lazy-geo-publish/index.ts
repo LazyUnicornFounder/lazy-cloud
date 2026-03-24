@@ -69,10 +69,10 @@ serve(async (req) => {
     const { data: existingSlug } = await supabase.from("geo_posts").select("slug").eq("slug", slug);
     if (existingSlug && existingSlug.length > 0) slug = `${slug}-${Math.floor(1000 + Math.random() * 9000)}`;
 
-    await supabase.from("geo_posts").insert({ title: postData.title, slug, body: postData.body, excerpt: postData.excerpt, target_query: nextQuery.query, status: "published" });
-    await supabase.from("geo_queries").update({ has_content: true }).eq("id", nextQuery.id);
+    const formattedTitle = toTitleCase(postData.title);
 
-    // Also add to the Lazy Blogger queue as a draft
+    await supabase.from("geo_posts").insert({ title: formattedTitle, slug, body: postData.body, excerpt: postData.excerpt, target_query: nextQuery.query, status: "published" });
+    await supabase.from("geo_queries").update({ has_content: true }).eq("id", nextQuery.id);
     const paragraphs = postData.body.split(/\n\n+/).map((p: string) => p.trim()).filter((p: string) => p.length > 0);
     const wordCount = postData.body.split(/\s+/).length;
     const readTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
