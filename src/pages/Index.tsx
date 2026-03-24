@@ -188,11 +188,11 @@ const Index = () => {
 
             <div className="bg-transparent backdrop-blur-xl rounded-3xl px-5 sm:px-8 md:px-10 py-8 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]">
               <h1 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[0.95] text-foreground">
-                Drive traffic
+                Your Lovable site.
                 <br />
-                automatically to your
+                Publishing every day.
                 <br />
-                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Lovable website or app.</span>
+                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Without you.</span>
               </h1>
               <p className="hero-description font-body text-sm sm:text-base md:text-lg text-foreground/60 mt-4 max-w-2xl leading-relaxed">
                 Lazy Unicorn builds autonomous growth tools for your Lovable website or app. With Lazy Blogger, Lazy SEO and Lazy GEO, just drop a prompt into your existing Lovable project and your site starts publishing, ranking, and compounding autonomously— without you touching anything after setup.
