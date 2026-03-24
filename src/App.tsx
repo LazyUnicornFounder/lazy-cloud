@@ -24,6 +24,9 @@ import LazySeoDashboard from "./pages/LazySeoDashboard.tsx";
 import LazyGeoPage from "./pages/LazyGeoPage.tsx";
 import LazyStorePage from "./pages/LazyStorePage.tsx";
 import LazyVoicePage from "./pages/LazyVoicePage.tsx";
+import LazyVoiceSetup from "./pages/LazyVoiceSetup.tsx";
+import LazyVoiceDashboard from "./pages/LazyVoiceDashboard.tsx";
+import ListenPage from "./pages/ListenPage.tsx";
 
 const queryClient = new QueryClient();
 
