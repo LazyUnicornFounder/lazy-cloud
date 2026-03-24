@@ -217,11 +217,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
       }
     : undefined;
 
-  const resourceLinks = [
-    { label: "Guide", href: "/guide" },
-    { label: "Autonomy Scale", href: "/autonomy-scale" },
-    { label: "Launch Your Startup", href: "/launch" },
-  ];
 
   const toggleMobileDropdown = (label: string) => {
     setMobileDropdowns(prev => ({ ...prev, [label]: !prev[label] }));
