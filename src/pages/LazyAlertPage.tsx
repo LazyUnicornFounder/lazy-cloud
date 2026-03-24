@@ -83,7 +83,7 @@ const SlackBadge = () => (
 
 function CopyPromptButton() {
   const [copied, setCopied] = useState(false);
-  const { trackEvent } = useTrackEvent();
+  const trackEvent = useTrackEvent();
 
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(LAZY_ALERT_PROMPT);
