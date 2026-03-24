@@ -377,7 +377,7 @@ export default function LazyVoicePage() {
               <motion.div
                 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="border-2 border-yellow-500/60 rounded-2xl p-8 bg-card/40 flex flex-col relative"
+                className="border-2 border-primary/60 rounded-2xl p-8 bg-card/40 flex flex-col relative"
               >
                 <span className="absolute top-4 right-4 bg-primary/20 text-primary text-[10px] font-display font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                   Coming Soon
