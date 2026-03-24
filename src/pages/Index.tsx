@@ -4,9 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
-import BlogTicker from "@/components/BlogTicker";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
-import TotalVisitorCount from "@/components/TotalVisitorCount";
 
 const NEW_TITLE = "Drive Traffic Automatically to Your Lovable Website or App";
 const NEW_DESCRIPTION = "We build autonomous engines for Lovable that turn your website into a self-growing asset.";
