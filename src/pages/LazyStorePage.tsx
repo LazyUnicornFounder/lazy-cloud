@@ -295,8 +295,10 @@ const LazyStorePage = () => {
               Introducing Lazy Store
               <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 rounded-full">Beta</span>
             </motion.p>
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-8 max-w-3xl mx-auto">
-              One prompt installs a store into your Lovable project. It finds the products, writes the listings, sets the prices, and improves its own conversion rate — automatically, forever.
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-8 max-w-3xl mx-auto">
+              The Autonomous<br />
+              <span className="text-lovable">Lovable</span>{" "}
+              <span className="text-gradient-primary">Shopify Store</span>
             </h1>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
               <CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} />
