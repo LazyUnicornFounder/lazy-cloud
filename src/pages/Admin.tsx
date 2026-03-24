@@ -4,6 +4,7 @@ import AdminAnalytics from "@/components/AdminAnalytics";
 import AdminSeo from "@/components/AdminSeo";
 import AdminGeo from "@/components/AdminGeo";
 import AdminPrompts from "@/components/AdminPrompts";
+import AdminOpsAgent from "@/components/AdminOpsAgent";
 import { toast } from "sonner";
 import { Twitter, Pencil, X, Check, Trash2, Upload, Loader2, ArrowUp, ArrowDown, Save } from "lucide-react";
 import { staticBlogPosts } from "@/components/BlogSection";
@@ -47,9 +48,9 @@ const Admin = () => {
   
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics" | "seo" | "geo" | "prompts">(() => {
+  const [activeTab, setActiveTab] = useState<"submissions" | "blog" | "analytics" | "seo" | "geo" | "prompts" | "agent">(() => {
     const saved = sessionStorage.getItem("admin_tab");
-    return (saved === "submissions" || saved === "blog" || saved === "analytics" || saved === "seo" || saved === "geo" || saved === "prompts") ? saved : "analytics";
+    return (saved === "submissions" || saved === "blog" || saved === "analytics" || saved === "seo" || saved === "geo" || saved === "prompts" || saved === "agent") ? saved : "analytics";
   });
   useEffect(() => { sessionStorage.setItem("admin_tab", activeTab); }, [activeTab]);
   const [generating, setGenerating] = useState(false);
@@ -280,6 +281,14 @@ const Admin = () => {
           }`}
         >
           Prompts
+        </button>
+        <button
+          onClick={() => setActiveTab("agent")}
+          className={`font-display text-lg font-bold pb-1 border-b-2 transition-colors ${
+            activeTab === "agent" ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          🤖 Ops Agent
         </button>
       </div>
 
@@ -792,6 +801,8 @@ const Admin = () => {
       {activeTab === "geo" && <AdminGeo />}
 
       {activeTab === "prompts" && <AdminPrompts />}
+
+      {activeTab === "agent" && <AdminOpsAgent />}
 
     </div>
   );
