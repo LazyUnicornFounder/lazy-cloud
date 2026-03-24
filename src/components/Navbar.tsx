@@ -83,6 +83,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
   const isHome = location.pathname === "/";
 
   const links: NavLink[] = [
+    { label: "Lazy Run", href: "/lazy-run" },
     { label: "Lazy Blogger", href: "/lazy-blogger" },
     { label: "Lazy SEO", href: "/lazy-seo" },
     { label: "Lazy GEO", href: "/lazy-geo" },

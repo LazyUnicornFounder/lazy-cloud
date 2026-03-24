@@ -221,7 +221,7 @@ export default function LazyRunPage() {
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
               transition={{ delay: 0.1 }}
               className="border-2 border-amber-500/40 p-8 bg-card flex flex-col relative">
-              <span className="absolute top-4 right-4 bg-amber-500/10 text-amber-500/70 text-[10px] font-display font-bold uppercase tracking-wider px-3 py-1">
+              <span className="absolute top-4 right-4 bg-accent text-accent-foreground text-[10px] font-display font-bold uppercase tracking-wider px-3 py-1">
                 Coming Soon
               </span>
               <h3 className="font-display text-lg font-bold mb-1">Pro</h3>
