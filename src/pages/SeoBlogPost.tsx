@@ -73,6 +73,22 @@ const SeoBlogPost = () => {
             LazyUnicorn.ai
           </a>
         </div>
+
+        <div className="mt-16 pt-8 border-t border-border space-y-4 text-sm text-muted-foreground leading-relaxed">
+          <p>
+            <a href="https://lazyunicorn.ai" className="text-primary underline hover:text-primary/80 font-semibold">LazyUnicorn</a> builds autonomous growth tools for{" "}
+            <a href="https://lovable.dev" className="text-primary underline hover:text-primary/80">Lovable</a>. Drop a prompt into your existing Lovable project and your site starts publishing, ranking, and compounding — without you touching anything after setup.
+          </p>
+          <p>
+            <a href="https://lazyunicorn.ai/lazy-blogger" className="text-primary underline hover:text-primary/80">Lazy Blogger</a> publishes SEO-optimised blog posts continuously.{" "}
+            <a href="https://lazyunicorn.ai/lazy-seo" className="text-primary underline hover:text-primary/80">Lazy SEO</a> discovers the keywords your site should rank for and writes the articles to capture them.{" "}
+            <a href="https://lazyunicorn.ai/lazy-geo" className="text-primary underline hover:text-primary/80">Lazy GEO</a> publishes content structured to be cited by ChatGPT, Claude, and Perplexity when people ask questions in your niche. All three run as edge functions inside your existing Lovable project, on your existing database, at your existing domain.
+          </p>
+          <p className="font-medium text-foreground">
+            One prompt installs everything. Your site grows while you build.
+          </p>
+        </div>
+
         <div className="mt-10">
           <ProductPromoBanner excludeProduct="seo" glass={false} />
         </div>
