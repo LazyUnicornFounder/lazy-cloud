@@ -73,6 +73,7 @@ const App = () => (
             <Route path="/autonomy-scale" element={<AutonomyScale />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/launch" element={<LaunchPage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/lazy-blogger" element={<LazyBloggerPage />} />
             <Route path="/company/naive" element={<NaivePage />} />
             <Route path="/company/polsia" element={<PolsiaPage />} />

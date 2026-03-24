@@ -93,7 +93,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
     { label: "Lazy Stream", href: "/lazy-stream" },
     { label: "Pricing", href: "/pricing" },
     { label: "Blog", href: "/blog", highlight: activePage === "blog" },
-    { label: "About", href: isHome ? "#about" : "/#about" },
+    { label: "About", href: "/about" },
     {
       label: "Resources",
       href: "#",
