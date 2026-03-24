@@ -13,24 +13,133 @@ import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const FALLBACK_PROMPT = `Add a complete autonomous store to my Lovable project using Lazy Store. I want:
+const FALLBACK_PROMPT = `Install Lazy Store — an autonomous e-commerce engine that runs itself — into my existing Lovable project.
 
-1. A /lazy-store-setup page that asks me five questions about my niche, business model, brand voice, product sources, and pricing strategy
-2. A product catalog that discovers and adds trending products in my niche automatically
-3. AI-written product listings with SEO-optimised titles, descriptions, and pages
-4. A pricing engine that monitors competitors and adjusts prices automatically
-5. A promotion engine that identifies slow-moving products and creates offers automatically
-6. A conversion optimiser that rewrites underperforming product pages weekly
-7. An SEO content engine that publishes buying guides and product comparisons
+---
 
-Ask me these questions before building:
-- What niche or industry is your store in?
-- Which model: dropshipping, digital products, or affiliate?
-- What's your brand voice and tone?
-- Do you have existing product sources or should it discover products for you?
-- What's your target price range?
+## Step 1: Ask me five setup questions
 
-Make the store feel native to my existing site — match my fonts, colors, and spacing exactly.`;
+Before building anything, ask me these five questions one at a time. Store my answers in a store_settings table so every engine can reference them:
+
+1. What niche or industry is your store in? (e.g. fitness gear, home office, pet supplies)
+2. Which store model do you want?
+   - Dropshipping — connect a supplier, products sync automatically, orders route to fulfilment
+   - Digital Products — AI generates and lists digital products, zero inventory
+   - Affiliate — no inventory, list affiliate products, earn commission on every sale
+3. What is your brand voice and tone? (e.g. friendly and casual, premium and minimal, bold and energetic)
+4. Do you have existing product sources (paste URLs or API endpoints) or should the engine discover products for you?
+5. What is your target price range? (e.g. $10-$50, $50-$200, premium $200+)
+
+---
+
+## Step 2: Create the database
+
+Create these Supabase tables with RLS enabled:
+
+**store_settings** — one row, stores the five setup answers plus site_url, is_running boolean
+**store_products** — id, title, slug, description, price, compare_at_price, images (text[]), category, tags (text[]), source_url, status (draft/published), variant_data (jsonb), inventory_count, created_at, updated_at, conversion_rate, page_views, last_optimised_at
+**store_orders** — id, product_id (references store_products), customer_email, status, total, created_at
+**store_analytics** — id, product_id, event (view/add_to_cart/purchase), created_at
+**store_content** — id, title, slug, body, content_type (buying_guide/comparison/review), target_keywords (text[]), status, published_at
+**store_errors** — id, engine_name, error_message, created_at
+
+---
+
+## Step 3: Build the storefront pages
+
+Create these pages matching my existing site's design system (fonts, colors, spacing, components):
+
+- **/store** — product catalog with grid layout, category filters, search, sort by price/newest/popular
+- **/store/:slug** — individual product page with image gallery, variant selector, add-to-cart button, AI-written description, related products
+- **/store/cart** — shopping cart with quantity controls, price totals, checkout button
+- **/store/guides** — SEO content hub listing all buying guides and product comparisons
+- **/store/guides/:slug** — individual guide/comparison page
+
+Add a slide-out cart component accessible from any page. Track every product view and add-to-cart as analytics events.
+
+---
+
+## Step 4: Connect Shopify checkout
+
+Use the Lovable Shopify integration for secure checkout and payments. When a user clicks checkout, redirect them to Shopify checkout with their cart contents. Create a development store if I don't have one.
+
+---
+
+## Step 5: Build the autonomous engines
+
+Create these Supabase edge functions. Each one should log errors to store_errors and be callable on a schedule:
+
+### 5a. Product Discovery Engine (store-discover-products)
+- Read my niche and model from store_settings
+- Use Lovable AI (google/gemini-3-flash-preview) to research trending products in my niche
+- For each discovered product, generate: title, description, price suggestion, category, tags
+- Insert new products into store_products with status 'draft'
+- Run daily via pg_cron
+
+### 5b. Listing Writer Engine (store-write-listings)
+- Find all products in store_products with status 'draft'
+- Use Lovable AI to write an SEO-optimised title, a compelling product description (in my brand voice from store_settings), and meta description
+- Update the product to status 'published'
+- Run every 2 hours via pg_cron
+
+### 5c. Pricing Engine (store-update-prices)
+- For each published product, use Lovable AI to analyse the product category and suggest competitive pricing based on the niche and price range from store_settings
+- Update compare_at_price and price fields
+- Run daily via pg_cron
+
+### 5d. Promotion Engine (store-run-promotions)
+- Query store_analytics to find products with high views but low conversion (views > 50, conversion_rate < 2%)
+- Use Lovable AI to generate a discount offer or promotional banner copy for slow-moving products
+- Store the promotion data in the product's variant_data jsonb field
+- Run weekly via pg_cron
+
+### 5e. Conversion Optimiser (store-optimise-conversions)
+- Query store_products for items where last_optimised_at is older than 7 days and page_views > 20
+- Use Lovable AI to rewrite the product description based on conversion data, keeping the same brand voice
+- Update the product description and set last_optimised_at to now
+- Run weekly via pg_cron
+
+### 5f. SEO Content Engine (store-publish-content)
+- Use Lovable AI to identify buying-intent keywords in my niche (e.g. "best [product] for [use case]", "[product] vs [product]")
+- Generate a buying guide or product comparison article targeting that keyword
+- Insert into store_content with status 'published'
+- Run 3x per week via pg_cron
+
+---
+
+## Step 6: Create the setup wizard page
+
+Create a **/lazy-store-setup** page that:
+- Walks through the five setup questions with a clean step-by-step UI
+- Saves answers to store_settings
+- On completion, triggers the first run of the product discovery engine
+- Shows a success screen: "Your store is live. The engines are running."
+
+---
+
+## Step 7: Wire up the autonomous loop
+
+Set up pg_cron schedules for all six engines so they run automatically without any manual intervention. The store should discover products, write listings, adjust prices, create promotions, optimise conversions, and publish SEO content — all on autopilot.
+
+---
+
+## Design rules
+
+- Match my existing site's design system exactly — read my tailwind.config, index.css, and existing components
+- Use my existing fonts, colors, spacing, border radius, and component patterns
+- The store should feel like it was always part of my site, not a bolt-on
+- Use shadcn/ui components where appropriate
+- All pages must be fully responsive
+
+---
+
+## Important
+
+- Use Lovable AI (via the Lovable AI Gateway) for all AI tasks — do not ask me for an API key
+- Use Lovable Cloud (Supabase) for all database and edge function needs
+- Use the Lovable Shopify integration for checkout and payments
+- Every engine must handle errors gracefully and log to store_errors
+- The entire system should run autonomously after the initial five-question setup`;
 
 /* ── Reusable copy button ── */
 function CopyPromptButton({
