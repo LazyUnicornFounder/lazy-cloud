@@ -85,23 +85,23 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
   const isHome = location.pathname === "/";
 
   const links: NavLink[] = [
-    {
-      label: "Lovable Products",
-      href: "#",
-      children: [
-        { label: "Lazy Blogger", href: "/lazy-blogger" },
-        { label: "Lazy SEO", href: "/lazy-seo" },
-        { label: "Lazy GEO", href: "/lazy-geo" },
-        { label: "Lazy Store", href: "/lazy-store" },
-      ],
-    },
-    { label: "Guide", href: "/guide", highlight: activePage === "guide" },
-    { label: "Directory", href: isHome ? "#directory" : "/#directory" },
-    { label: "Autonomy Scale", href: "/autonomy-scale", highlight: activePage === "autonomy" },
+    { label: "Lazy Blogger", href: "/lazy-blogger" },
+    { label: "Lazy SEO", href: "/lazy-seo" },
+    { label: "Lazy GEO", href: "/lazy-geo" },
+    { label: "Lazy Store", href: "/lazy-store" },
     { label: "Blog", href: "/blog", highlight: activePage === "blog" },
     { label: "Mission", href: isHome ? "#mission" : "/#mission" },
     { label: "About", href: isHome ? "#about" : "/#about" },
-    { label: "Launch Your Autonomous Startup", href: "/launch", isCta: true },
+    {
+      label: "Resources",
+      href: "#",
+      children: [
+        { label: "Guide", href: "/guide" },
+        { label: "Directory", href: isHome ? "#directory" : "/#directory" },
+        { label: "Autonomy Scale", href: "/autonomy-scale" },
+        { label: "Launch Your Autonomous Startup", href: "/launch" },
+      ],
+    },
   ];
 
   const brandHref = isHome ? "#top" : "/";
