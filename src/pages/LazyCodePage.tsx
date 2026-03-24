@@ -281,10 +281,10 @@ const LazyCodePage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Code — Autonomous GitHub Content Engine for Lovable"
+        title="Lazy GitHub — Autonomous GitHub Content Engine for Lovable"
         description="One prompt turns every GitHub commit into a changelog, release notes, and a developer blog post — automatically."
         url="/lazy-code"
-        keywords="GitHub changelog automation, release notes generator, developer blog, commit to content, autonomous documentation, Lovable, Lazy Code"
+        keywords="GitHub changelog automation, release notes generator, developer blog, commit to content, autonomous documentation, Lovable, Lazy GitHub"
       />
       <Navbar />
 
