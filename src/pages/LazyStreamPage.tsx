@@ -281,24 +281,14 @@ const LazyStreamPage = () => {
               <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
               <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
             </div>
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-              Lazy Stream
-            </h1>
-            <p className="mt-6 font-body text-base md:text-lg text-foreground/45 max-w-xl leading-relaxed">
-              One prompt turns every Twitch stream into a blog post, SEO article, and highlight reel. Monitors your channel, transcribes VODs, and publishes content to your Lovable site — automatically.
-            </p>
-            <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
-              <CopyPromptButton />
-              <button
-                onClick={(e) => { e.preventDefault(); document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }); }}
-                className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
-              >
-                See How It Works
-              </button>
-            </div>
-            <div className="mt-8 inline-flex items-center gap-2 px-4 py-1.5 border border-border text-foreground/25 text-xs font-body tracking-wide">
-              <Tv size={14} />
-              Powered by Twitch
+            <div className="flex items-center gap-4 flex-wrap">
+              <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+                Lazy Stream
+              </h1>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border text-foreground/25 text-xs font-body tracking-wide">
+                <Tv size={14} />
+                Powered by Twitch
+              </div>
             </div>
           </motion.div>
         </div>
