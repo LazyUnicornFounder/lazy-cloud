@@ -96,6 +96,17 @@ const sketches: Record<string, JSX.Element> = {
       <line x1="78" y1="68" x2="86" y2="68" />
     </svg>
   ),
+  Stream: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="25" y="30" width="70" height="45" rx="3" />
+      <circle cx="60" cy="52" r="10" />
+      <path d="M56 49 L66 52 L56 55 Z" fill="#f0ead6" stroke="none" />
+      <line x1="40" y1="85" x2="80" y2="85" />
+      <line x1="50" y1="75" x2="50" y2="85" />
+      <line x1="70" y1="75" x2="70" y2="85" />
+      <circle cx="85" cy="35" r="4" fill="#f0ead6" stroke="none" />
+    </svg>
+  ),
   "Coming Soon": (
     <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="60" cy="55" r="25" />
