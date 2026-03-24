@@ -250,10 +250,6 @@ const Index = () => {
             </a>
           </div>
         </motion.div>
-
-        <div className="absolute bottom-0 left-0 right-0">
-          <BlogTicker />
-        </div>
       </header>
 
       {/* Product Grid */}
