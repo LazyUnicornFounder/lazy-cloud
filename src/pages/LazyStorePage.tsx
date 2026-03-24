@@ -14,133 +14,229 @@ import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const FALLBACK_PROMPT = `Install Lazy Store — an autonomous e-commerce engine that runs itself — into my existing Lovable project.
+const FALLBACK_PROMPT = `[Lazy Store Prompt — v0.0.3 — LazyUnicorn.ai]
+
+Add an autonomous e-commerce engine called Lazy Store to this project. It automatically discovers products, writes listings, monitors pricing, runs promotions, optimises conversion, and publishes SEO content — with no manual input required after setup. Payments are handled by Stripe checkout. All management pages are admin-only.
 
 ---
 
-## Step 1: Ask me five setup questions
-
-Before building anything, ask me these five questions one at a time. Store my answers in a store_settings table so every engine can reference them:
-
-1. What niche or industry is your store in? (e.g. fitness gear, home office, pet supplies)
-2. Which store model do you want?
-   - Dropshipping — connect a supplier, products sync automatically, orders route to fulfilment
-   - Digital Products — AI generates and lists digital products, zero inventory
-   - Affiliate — no inventory, list affiliate products, earn commission on every sale
-3. What is your brand voice and tone? (e.g. friendly and casual, premium and minimal, bold and energetic)
-4. Do you have existing product sources (paste URLs or API endpoints) or should the engine discover products for you?
-5. What is your target price range? (e.g. $10-$50, $50-$200, premium $200+)
-
----
-
-## Step 2: Create the database
+## 1. Database
 
 Create these Supabase tables with RLS enabled:
 
-**store_settings** — one row, stores the five setup answers plus site_url, is_running boolean
-**store_products** — id, title, slug, description, price, compare_at_price, images (text[]), category, tags (text[]), source_url, status (draft/published), variant_data (jsonb), inventory_count, created_at, updated_at, conversion_rate, page_views, last_optimised_at
-**store_orders** — id, product_id (references store_products), customer_email, status, total, created_at
-**store_analytics** — id, product_id, event (view/add_to_cart/purchase), created_at
-**store_content** — id, title, slug, body, content_type (buying_guide/comparison/review), target_keywords (text[]), status, published_at
-**store_errors** — id, engine_name, error_message, created_at
+**store_settings**
+id (uuid, primary key, default gen_random_uuid()),
+brand_name (text),
+business_description (text),
+niche (text),
+target_audience (text),
+store_model (text),
+brand_voice (text),
+currency (text, default 'USD'),
+price_range_min (integer),
+price_range_max (integer),
+site_url (text),
+is_running (boolean, default true),
+setup_complete (boolean, default false),
+created_at (timestamptz, default now())
+
+Note: Store Stripe keys as Supabase secrets — STRIPE_SECRET_KEY, STRIPE_PUBLISHABLE_KEY. Never store in database.
+
+**store_products**
+id (uuid, primary key, default gen_random_uuid()),
+name (text),
+slug (text, unique),
+description (text),
+excerpt (text),
+price (numeric),
+compare_at_price (numeric),
+category (text),
+tags (text),
+source_url (text),
+affiliate_url (text),
+stripe_price_id (text),
+stripe_product_id (text),
+status (text, default 'published'),
+views (integer, default 0),
+sales (integer, default 0),
+conversion_rate (numeric, default 0),
+last_optimised (timestamptz),
+created_at (timestamptz, default now())
+
+**store_promotions**
+id (uuid, primary key, default gen_random_uuid()),
+product_id (uuid),
+promotion_type (text),
+discount_percent (integer),
+start_date (timestamptz),
+end_date (timestamptz),
+active (boolean, default true),
+created_at (timestamptz, default now())
+
+**store_content**
+id (uuid, primary key, default gen_random_uuid()),
+title (text),
+slug (text, unique),
+excerpt (text),
+body (text),
+content_type (text),
+target_keyword (text),
+published_at (timestamptz, default now()),
+status (text, default 'published')
+
+**store_errors**
+id (uuid, primary key, default gen_random_uuid()),
+function_name (text),
+error_message (text),
+created_at (timestamptz, default now())
 
 ---
 
-## Step 3: Build the storefront pages
+## 2. Setup page
 
-Create these pages matching my existing site's design system (fonts, colors, spacing, components):
+Create a page at /lazy-store-setup with a welcome message:
+"In the next 2 minutes you will set up an autonomous store. After setup your store will discover products, write listings, set prices, and publish buying guides — automatically."
 
-- **/store** — product catalog with grid layout, category filters, search, sort by price/newest/popular
-- **/store/:slug** — individual product page with image gallery, variant selector, add-to-cart button, AI-written description, related products
-- **/store/cart** — shopping cart with quantity controls, price totals, checkout button
-- **/store/guides** — SEO content hub listing all buying guides and product comparisons
-- **/store/guides/:slug** — individual guide/comparison page
+Form fields:
+- Brand name
+- Store niche (what products or category does this store focus on?)
+- Target audience (who are your ideal customers?)
+- Store model (select: Affiliate — earn commission on every sale, no inventory / Digital Products — AI generates and sells digital products, zero fulfilment / Physical / Dropshipping — list physical products, connect your own fulfilment)
+- Brand voice (select: Professional / Friendly / Minimal / Bold)
+- Target price range minimum ($)
+- Target price range maximum ($)
+- Currency (select: USD / GBP / EUR / AUD)
+- Site URL
+- Stripe Publishable Key (text) — stored as Supabase secret STRIPE_PUBLISHABLE_KEY
+- Stripe Secret Key (password) — stored as Supabase secret STRIPE_SECRET_KEY
 
-Add a slide-out cart component accessible from any page. Track every product view and add-to-cart as analytics events.
+Submit button: Launch My Store
 
----
-
-## Step 4: Connect Shopify checkout
-
-Use the Lovable Shopify integration for secure checkout and payments. When a user clicks checkout, redirect them to Shopify checkout with their cart contents. Create a development store if I don't have one.
-
----
-
-## Step 5: Build the autonomous engines
-
-Create these Supabase edge functions. Each one should log errors to store_errors and be callable on a schedule:
-
-### 5a. Product Discovery Engine (store-discover-products)
-- Read my niche and model from store_settings
-- Use Lovable AI (google/gemini-3-flash-preview) to research trending products in my niche
-- For each discovered product, generate: title, description, price suggestion, category, tags
-- Insert new products into store_products with status 'draft'
-- Run daily via pg_cron
-
-### 5b. Listing Writer Engine (store-write-listings)
-- Find all products in store_products with status 'draft'
-- Use Lovable AI to write an SEO-optimised title, a compelling product description (in my brand voice from store_settings), and meta description
-- Update the product to status 'published'
-- Run every 2 hours via pg_cron
-
-### 5c. Pricing Engine (store-update-prices)
-- For each published product, use Lovable AI to analyse the product category and suggest competitive pricing based on the niche and price range from store_settings
-- Update compare_at_price and price fields
-- Run daily via pg_cron
-
-### 5d. Promotion Engine (store-run-promotions)
-- Query store_analytics to find products with high views but low conversion (views > 50, conversion_rate < 2%)
-- Use Lovable AI to generate a discount offer or promotional banner copy for slow-moving products
-- Store the promotion data in the product's variant_data jsonb field
-- Run weekly via pg_cron
-
-### 5e. Conversion Optimiser (store-optimise-conversions)
-- Query store_products for items where last_optimised_at is older than 7 days and page_views > 20
-- Use Lovable AI to rewrite the product description based on conversion data, keeping the same brand voice
-- Update the product description and set last_optimised_at to now
-- Run weekly via pg_cron
-
-### 5f. SEO Content Engine (store-publish-content)
-- Use Lovable AI to identify buying-intent keywords in my niche (e.g. "best [product] for [use case]", "[product] vs [product]")
-- Generate a buying guide or product comparison article targeting that keyword
-- Insert into store_content with status 'published'
-- Run 3x per week via pg_cron
+On submit:
+1. Store Stripe keys as Supabase secrets
+2. Save all other values to store_settings
+3. Set setup_complete to true
+4. Immediately call store-discover once
+5. Show loading: "Discovering products for your store..."
+6. Redirect to /lazy-store-dashboard with message: "Your store is live. Products are being discovered and listed automatically."
 
 ---
 
-## Step 6: Create the setup wizard page
+## 3. Autonomous edge functions
 
-Create a **/lazy-store-setup** page that:
-- Walks through the five setup questions with a clean step-by-step UI
-- Saves answers to store_settings
-- On completion, triggers the first run of the product discovery engine
-- Shows a success screen: "Your store is live. The engines are running."
+**store-discover**
+Cron: daily at 7am UTC — 0 7 * * *
+
+1. Read store_settings. If is_running is false or setup_complete is false exit.
+2. Call the built-in Lovable AI:
+"You are a product research specialist for a [store_model] store in the niche [niche] targeting [target_audience] with a price range of [price_range_min] to [price_range_max] [currency]. Identify 5 trending products this store should be selling. Return only a valid JSON array where each item has: name (string), category (string), suggested_price (number), affiliate_url (string — a plausible product search URL, or empty string if not applicable), reason (string — one sentence why this is trending). No preamble. No code fences. Valid JSON array only."
+3. For each product call store-listings to generate the listing.
+Log errors to store_errors with function_name store-discover.
+
+**store-listings**
+Cron: every 2 hours — 0 */2 * * *
+
+1. Read store_settings. If is_running is false exit.
+2. Find all store_products where description is null or empty.
+3. For each product call the built-in Lovable AI:
+"You are a product copywriter for [brand_name] in [brand_voice] voice. Write a compelling listing for this product in the [niche] niche for [target_audience]. Product name: [name]. Category: [category]. Price: [price] [currency]. Return only a valid JSON object: description (string, 100 to 150 words), excerpt (string, one punchy sentence under 160 characters), slug (lowercase hyphenated string). No preamble. No code fences."
+4. Update the product with the generated description, excerpt, and slug.
+5. If Stripe keys exist create the product in Stripe and store stripe_product_id and stripe_price_id.
+Log errors to store_errors with function_name store-listings.
+
+**store-prices**
+Cron: daily at 9am UTC — 0 9 * * *
+
+1. Read store_settings. If is_running is false exit.
+2. For all published products call the built-in Lovable AI:
+"You are a pricing strategist for a [store_model] store in the [niche] niche targeting [target_audience]. Price range: [price_range_min] to [price_range_max] [currency]. Review these products and suggest competitive prices: [list of product names and current prices]. Return only a valid JSON array where each item has: product_id (string), suggested_price (number), compare_at_price (number — the original price to show as crossed out, must be higher than suggested_price). No preamble. No code fences."
+3. Update price and compare_at_price in store_products where the suggested price differs by more than 5%.
+Log errors to store_errors with function_name store-prices.
+
+**store-promote**
+Cron: every Monday at 8am UTC — 0 8 * * 1
+
+1. Read store_settings. If is_running is false exit.
+2. Query store_products where status is published and sales < 2 and created_at is older than 7 days.
+3. Call the built-in Lovable AI:
+"You are a promotions manager for [brand_name] selling [niche] products. These products are underperforming: [list of product names]. Suggest a promotion for each. Return only a valid JSON array where each item has: product_id (string), promotion_type (string — flash-sale, bundle-deal, or limited-time), discount_percent (integer 10 to 40), duration_days (integer). No preamble. No code fences."
+4. Insert promotions into store_promotions with active true and calculated end_date.
+Log errors to store_errors with function_name store-promote.
+
+**store-optimise**
+Cron: every Sunday at 10am UTC — 0 10 * * 0
+
+1. Read store_settings. If is_running is false exit.
+2. Query store_products where views > 20 and conversion_rate < 2 and (last_optimised is null or older than 14 days).
+3. For each underperforming product call the built-in Lovable AI:
+"You are a conversion rate specialist for [brand_name] in [brand_voice] voice. This product page has a [conversion_rate]% conversion rate from [views] views. Rewrite the description to be more compelling. Product: [name]. Current description: [description]. Target audience: [target_audience]. Return only a valid JSON object with two fields: description (string, 100 to 150 words) and excerpt (string, under 160 characters). No preamble. No code fences."
+4. Update description and excerpt in store_products.
+5. If stripe_product_id exists update the product description in Stripe.
+6. Set last_optimised to now.
+Log errors to store_errors with function_name store-optimise.
+
+**store-content**
+Cron: Tuesday and Friday at 8am UTC — 0 8 * * 2,5
+
+1. Read store_settings. If is_running is false exit.
+2. Call the built-in Lovable AI:
+"You are an SEO content writer for [brand_name] selling [niche] products to [target_audience]. Write one piece of SEO content that attracts shoppers before they are ready to buy. Choose from: a buying guide, a product comparison, or a product review. Pick a fresh angle every time. Return only a valid JSON object: title (string), slug (lowercase hyphenated), excerpt (one sentence under 160 characters), content_type (string — buying-guide, comparison, or review), target_keyword (string), body (clean markdown — no HTML, no bullet points in prose, ## for headers, 800 to 1200 words, ends with a CTA linking to /store, then exactly: Discover more autonomous business tools at LazyUnicorn.ai — link LazyUnicorn.ai to https://lazyunicorn.ai). No preamble. No code fences."
+3. Check for duplicate slug — append random 4-digit number if exists.
+4. Insert into store_content.
+Log errors to store_errors with function_name store-content.
 
 ---
 
-## Step 7: Wire up the autonomous loop
+## 4. Checkout edge function
 
-Set up pg_cron schedules for all six engines so they run automatically without any manual intervention. The store should discover products, write listings, adjust prices, create promotions, optimise conversions, and publish SEO content — all on autopilot.
-
----
-
-## Design rules
-
-- Match my existing site's design system exactly — read my tailwind.config, index.css, and existing components
-- Use my existing fonts, colors, spacing, border radius, and component patterns
-- The store should feel like it was always part of my site, not a bolt-on
-- Use shadcn/ui components where appropriate
-- All pages must be fully responsive
+**store-checkout** — handles POST requests
+- Accept product_id (uuid) and customer_email (text)
+- Read matching product from store_products, increment views
+- Read STRIPE_SECRET_KEY from Supabase secrets
+- Create Stripe checkout session using stripe_price_id with mode payment
+- Set success_url to site_url/store/success, cancel_url to site_url/store
+- Return checkout URL
+- Log errors to store_errors with function_name store-checkout
 
 ---
 
-## Important
+## 5. Public pages
 
-- Use Lovable AI (via the Lovable AI Gateway) for all AI tasks — do not ask me for an API key
-- Use Lovable Cloud (Supabase) for all database and edge function needs
-- Use the Lovable Shopify integration for checkout and payments
-- Every engine must handle errors gracefully and log to store_errors
-- The entire system should run autonomously after the initial five-question setup`;
+**/store**
+Show all store_products where status is published ordered by created_at descending. Grid layout. Each card shows name, excerpt, formatted price. If an active promotion exists in store_promotions show compare_at_price crossed out and the discounted price with a badge. Each card links to /store/[slug].
+
+**/store/[slug]**
+Show full product: name, description, price, promotion badge if active, and a Buy Now button. On click show email input modal then call store-checkout and redirect to Stripe checkout URL. Track page views by incrementing views on each visit. At the bottom add: "🦄 Powered by Lazy Store — autonomous e-commerce for Lovable sites. Built by LazyUnicorn.ai" — link to https://lazyunicorn.ai.
+
+**/store/guides**
+Show all store_content where status is published ordered by published_at descending. Each shows title, content_type tag, target_keyword, published date. Each links to /store/guides/[slug].
+
+**/store/guides/[slug]**
+Show full content with title, content type, published date, full body rendered from markdown to HTML.
+
+**/store/success**
+Show payment success message and link to /store.
+
+---
+
+## 6. Admin dashboard
+
+Create a page at /lazy-store-dashboard.
+
+Show at top: red error banner if store_errors has rows from the last 24 hours.
+
+Four sections:
+- Overview: total products, active promotions, total content pieces, average conversion rate
+- Products table: all store_products with name, price, views, sales, conversion_rate, last_optimised, active promotion badge. Inline add product form: name, category, suggested_price — inserts and triggers store-listings.
+- Content table: all store_content with title, type, target_keyword, published date, view link
+- Controls: pause/resume toggle, Discover Products Now button, Optimise Listings Now button, Run Promotions Now button, Publish Content Now button, error log showing last 10 store_errors, link to /lazy-store-setup
+
+---
+
+## 7. Navigation
+
+Add a Shop link to the main site navigation pointing to /store.
+Do not add /lazy-store-setup or /lazy-store-dashboard to public navigation.`;
 
 /* ── Reusable copy button ── */
 function CopyPromptButton({
