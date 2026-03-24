@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import SEO from "@/components/SEO";
+import ProductPromoBanner from "@/components/ProductPromoBanner";
 
 const GeoBlog = () => {
   const [posts, setPosts] = useState<any[]>([]);
