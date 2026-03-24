@@ -231,7 +231,7 @@ const Index = () => {
             Lovable gave everyone a site. Lazy Unicorn makes it work while you sleep.
           </p>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-            The missing autonomous 🤖
+            The autonomous 🤖
             <br />
             half of Lovable❤️
           </h1>
