@@ -5,7 +5,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
-import Admin from "./pages/Admin.tsx";
 import Blog from "./pages/Blog.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
 import CompanyDetail from "./pages/CompanyDetail.tsx";
@@ -34,6 +33,16 @@ import LazyStreamSetup from "./pages/LazyStreamSetup.tsx";
 import LazyStreamDashboard from "./pages/LazyStreamDashboard.tsx";
 import PricingPage from "./pages/PricingPage.tsx";
 
+import AdminLayout from "./pages/admin/AdminLayout.tsx";
+import AdminOverview from "./pages/admin/AdminOverview.tsx";
+import AdminBloggerPage from "./pages/admin/AdminBloggerPage.tsx";
+import AdminSeoPage from "./pages/admin/AdminSeoPage.tsx";
+import AdminGeoPage from "./pages/admin/AdminGeoPage.tsx";
+import AdminStreamPage from "./pages/admin/AdminStreamPage.tsx";
+import AdminVoicePage from "./pages/admin/AdminVoicePage.tsx";
+import AdminSettingsPage from "./pages/admin/AdminSettingsPage.tsx";
+import AdminPlaceholderPage from "./pages/admin/AdminPlaceholderPage.tsx";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -46,7 +55,18 @@ const App = () => (
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminOverview />} />
+              <Route path="blogger" element={<AdminBloggerPage />} />
+              <Route path="seo" element={<AdminSeoPage />} />
+              <Route path="geo" element={<AdminGeoPage />} />
+              <Route path="store" element={<AdminPlaceholderPage name="Lazy Store" />} />
+              <Route path="voice" element={<AdminVoicePage />} />
+              <Route path="pay" element={<AdminPlaceholderPage name="Lazy Pay" />} />
+              <Route path="sms" element={<AdminPlaceholderPage name="Lazy SMS" />} />
+              <Route path="stream" element={<AdminStreamPage />} />
+              <Route path="settings" element={<AdminSettingsPage />} />
+            </Route>
             <Route path="/blog" element={<Blog />} />
             <Route path="/guide" element={<GuidePage />} />
             <Route path="/autonomy-scale" element={<AutonomyScale />} />
@@ -65,7 +85,6 @@ const App = () => (
             <Route path="/lazy-voice" element={<LazyVoicePage />} />
             <Route path="/lazy-voice-setup" element={<LazyVoiceSetup />} />
             <Route path="/lazy-voice-dashboard" element={<LazyVoiceDashboard />} />
-            
             <Route path="/lazy-pay" element={<LazyPayPage />} />
             <Route path="/lazy-sms" element={<LazySmsPage />} />
             <Route path="/lazy-stream" element={<LazyStreamPage />} />
