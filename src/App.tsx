@@ -34,6 +34,7 @@ import LazyStreamSetup from "./pages/LazyStreamSetup.tsx";
 import LazyStreamDashboard from "./pages/LazyStreamDashboard.tsx";
 import LazyCodePage from "./pages/LazyCodePage.tsx";
 import LazyRunPage from "./pages/LazyRunPage.tsx";
+import LazyAlertPage from "./pages/LazyAlertPage.tsx";
 import PricingPage from "./pages/PricingPage.tsx";
 
 import AdminLayout from "./pages/admin/AdminLayout.tsx";
