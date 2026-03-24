@@ -116,9 +116,8 @@ export default function LazySmsPage() {
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
             <motion.p initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.5 }} className="font-display text-sm tracking-[0.2em] uppercase text-primary mb-4 font-bold flex items-center justify-center gap-3">
               Introducing Lazy SMS
-              <TwilioBadge />
+              <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1">BETA</span>
             </motion.p>
-            <span className="inline-block bg-primary text-primary-foreground font-display text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] px-5 py-1.5 mb-6">BETA</span>
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-8 max-w-3xl mx-auto">
               One Prompt Installs <span className="text-gradient-primary">Twilio</span> Into Your Lovable Project.
             </h1>

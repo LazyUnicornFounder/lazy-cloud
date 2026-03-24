@@ -89,59 +89,50 @@ const LazyStreamPage = () => {
       <Navbar />
 
       {/* Hero */}
-      <header className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6" style={{ backgroundColor: "#0a0a08" }}>
-        <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }} className="text-center max-w-3xl">
-          <motion.div variants={fadeUp} transition={{ duration: 0.6 }}>
-            <span className="inline-block font-body text-[10px] tracking-[0.2em] uppercase px-3 py-1 border border-border text-foreground/40 mb-6">
-              Powered by Twitch
-            </span>
-          </motion.div>
-          <motion.p variants={fadeUp} transition={{ duration: 0.6 }} style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: "#f0ead6", opacity: 0.4 }}>
-            Lazy Stream
+      <section className="relative max-w-4xl mx-auto text-center px-6 pt-28 pb-24 md:mb-24">
+        <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="font-display text-sm tracking-[0.2em] uppercase text-primary mb-4 font-bold flex items-center justify-center gap-3"
+          >
+            Introducing Lazy Stream
+            <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1">BETA</span>
           </motion.p>
-          <motion.h1 variants={fadeUp} transition={{ duration: 0.8 }} className="mt-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4vw, 3.2rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-            One prompt turns every Twitch stream into a blog post, SEO article, and highlight reel — automatically.
-          </motion.h1>
-          <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="mt-6 text-sm sm:text-base leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-8 max-w-3xl mx-auto">
+            One Prompt Turns Every <span className="text-gradient-primary">Twitch Stream</span> Into Content.
+          </h1>
+          <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
             Lazy Stream monitors your Twitch channel, transcribes your VODs, writes stream recaps, extracts highlights, and publishes SEO content to your Lovable site — all while you are still eating dinner after the stream ends.
-          </motion.p>
-          <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <CopyPromptButton />
-            <a
-              href="#how-it-works"
-              className="inline-block font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-all"
+            <button
               onClick={(e) => { e.preventDefault(); document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }); }}
+              className="inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-foreground hover:bg-muted transition-colors"
             >
               See How It Works
-            </a>
-          </motion.div>
-          <motion.div variants={fadeUp} transition={{ duration: 0.6 }}>
-            <span className="inline-block font-body text-[10px] tracking-[0.15em] uppercase px-3 py-1 border border-border text-foreground/20 mt-6">
-              BETA
-            </span>
-          </motion.div>
+            </button>
+          </div>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border bg-muted/40 text-muted-foreground text-xs font-body tracking-wide">
+            <Tv size={14} />
+            Powered by Twitch
+          </div>
         </motion.div>
-      </header>
+      </section>
 
       {/* How it works */}
-      <section id="how-it-works" className="py-24 px-6 md:px-12 scroll-mt-20" style={{ backgroundColor: "#111110" }}>
-        <div className="max-w-3xl mx-auto">
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>How it works</p>
-          <h2 className="mt-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
+      <section id="how-it-works" className="py-20 md:py-28 px-6 border-t border-border">
+        <div className="max-w-5xl mx-auto">
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-2xl md:text-3xl font-bold tracking-tight text-center mb-14">
             Stream. Then do nothing. Lazy Stream handles the rest.
-          </h2>
-          <div className="mt-12 space-y-0">
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="flex gap-4 py-5 border-b border-border"
-              >
-                <span className="font-display text-2xl font-bold text-foreground/20 shrink-0 w-8">{i + 1}</span>
-                <p className="font-body text-sm text-foreground/60 leading-relaxed">{step}</p>
+              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
+                <span className="w-10 h-10 bg-primary/10 text-primary font-display font-bold text-sm flex items-center justify-center">{i + 1}</span>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">{step}</p>
               </motion.div>
             ))}
           </div>

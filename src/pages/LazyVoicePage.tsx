@@ -215,12 +215,10 @@ export default function LazyVoicePage() {
               className="font-display text-sm tracking-[0.2em] uppercase text-primary mb-4 font-bold flex items-center justify-center gap-3"
             >
               Introducing Lazy Voice
-              <ElevenLabsBadge />
+              <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1">BETA</span>
             </motion.p>
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-8 max-w-3xl mx-auto">
-              Your Blog Posts.<br />
-              Narrated in <span className="text-gradient-primary">Your Voice</span>.<br />
-              Published Automatically.
+              Your Blog Posts. Narrated in <span className="text-gradient-primary">Your Voice</span>. Automatically.
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
               Lazy Voice monitors every post Lazy Blogger and Lazy SEO publish, sends them to ElevenLabs, and embeds an audio player on every article — automatically. Your site becomes a blog and a podcast at the same time.
