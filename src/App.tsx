@@ -21,11 +21,8 @@ import ScrollToTop from "./components/ScrollToTop.tsx";
 import LazySeoPage from "./pages/LazySeoPage.tsx";
 import LazySeoSetup from "./pages/LazySeoSetup.tsx";
 import LazySeoDashboard from "./pages/LazySeoDashboard.tsx";
-import SeoBlog from "./pages/SeoBlog.tsx";
-import SeoBlogPost from "./pages/SeoBlogPost.tsx";
-import LazyGeoPage from "./pages/LazyGeoPage.tsx";
-import GeoBlog from "./pages/GeoBlog.tsx";
-import GeoBlogPost from "./pages/GeoBlogPost.tsx";
+
+
 
 const queryClient = new QueryClient();
 
