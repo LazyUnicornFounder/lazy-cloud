@@ -72,6 +72,13 @@ const products: Product[] = [
     pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced stream analytics", "Self-improving content"], comingSoon: true },
   },
   {
+    name: "Lazy Alert",
+    tagline: "Real-time Slack alerts for every engine",
+    link: "/lazy-alert",
+    free: ["Setup prompt included", "Real-time event alerts to Slack", "Daily morning briefing", "Slash commands for engine control", "Bring your own Slack workspace"],
+    pro: { price: "$9", features: ["Hosted version", "Custom Slack bot with branded avatar", "Advanced filtering", "Multiple channel routing by event type"], comingSoon: true },
+  },
+  {
     name: "Lazy Run",
     tagline: "Autonomous operations layer",
     link: "/lazy-run",

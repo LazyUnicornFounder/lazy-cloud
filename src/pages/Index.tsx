@@ -19,6 +19,7 @@ const products = [
   { cursive: "Lazy", name: "SMS", link: "/lazy-sms", tagline: "Texts that convert." },
   { cursive: "Lazy", name: "Stream", link: "/lazy-stream", tagline: "Streams become content." },
   { cursive: "Lazy", name: "Code", link: "/lazy-code", tagline: "Commits become changelogs." },
+  { cursive: "Lazy", name: "Alert", link: "/lazy-alert", tagline: "Your business in your Slack." },
   { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More engines loading." },
 ];
 
