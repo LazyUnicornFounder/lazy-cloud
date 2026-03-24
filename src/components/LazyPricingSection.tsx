@@ -36,7 +36,7 @@ export default function LazyPricingSection({
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="border border-border rounded-2xl p-8 bg-card/40 flex flex-col"
+            className="border border-border p-8 bg-card flex flex-col"
           >
             <h3 className="font-display text-lg font-bold mb-1">Lazy</h3>
             <p className="font-body text-2xl font-bold mb-4">$0</p>
@@ -55,9 +55,9 @@ export default function LazyPricingSection({
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="border-2 border-primary/60 rounded-2xl p-8 bg-card/40 flex flex-col relative"
+            className="border-2 border-foreground/30 p-8 bg-card flex flex-col relative"
           >
-            <span className="absolute top-4 right-4 bg-primary/20 text-primary text-[10px] font-display font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+            <span className="absolute top-4 right-4 bg-foreground/10 text-foreground/50 text-[10px] font-display font-bold uppercase tracking-wider px-3 py-1">
               Coming Soon
             </span>
             <h3 className="font-display text-lg font-bold mb-1">Pro</h3>
@@ -72,7 +72,7 @@ export default function LazyPricingSection({
             </ul>
             <button
               disabled
-              className="mt-6 w-full inline-flex items-center justify-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full border border-border text-muted-foreground cursor-not-allowed opacity-50"
+              className="mt-6 w-full inline-flex items-center justify-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-muted-foreground cursor-not-allowed opacity-50"
             >
               Coming Soon
             </button>

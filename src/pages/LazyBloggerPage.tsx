@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import { motion } from "framer-motion";
 import { Copy, Check, Clock, Sparkles, Zap } from "lucide-react";
-import FlyingBlogCards from "@/components/lazy-blogger/FlyingBlogCards";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
@@ -27,11 +26,11 @@ function FrequencyModal({ open, onClose, onCopy, template }: { open: boolean; on
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-background/80" onClick={onClose} />
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="relative bg-card border border-border rounded-3xl p-12 sm:p-16 max-w-3xl w-full shadow-2xl"
+        className="relative bg-card border border-border p-12 sm:p-16 max-w-3xl w-full"
       >
         <h3 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">How many posts per day?</h3>
         <p className="font-body text-lg text-muted-foreground mb-10">Pick one. The prompt adjusts automatically.</p>
@@ -42,10 +41,10 @@ function FrequencyModal({ open, onClose, onCopy, template }: { open: boolean; on
               <button
                 key={tier.postsPerDay}
                 onClick={() => handleCopy(tier)}
-                className={`rounded-2xl border p-8 text-left transition-all cursor-pointer ${
+                className={`border p-8 text-left transition-all cursor-pointer ${
                   isCopied
-                    ? "border-primary bg-primary/10"
-                    : "border-border hover:border-primary/40 bg-card"
+                    ? "border-foreground bg-foreground/5"
+                    : "border-border hover:border-foreground/30 bg-card"
                 }`}
               >
                 <div className="flex items-center gap-3 mb-2">
@@ -53,7 +52,7 @@ function FrequencyModal({ open, onClose, onCopy, template }: { open: boolean; on
                   <span className="font-body text-lg text-muted-foreground">/ day</span>
                 </div>
                 <p className="font-body text-base text-muted-foreground">{tier.description}</p>
-                <div className="mt-5 flex items-center gap-2 text-base font-display font-bold text-primary">
+                <div className="mt-5 flex items-center gap-2 text-base font-display font-bold text-foreground">
                   {isCopied ? (
                     <><Check size={16} /> Copied!</>
                   ) : (
@@ -81,7 +80,7 @@ function CopyPromptButton({ className = "", onCopy, template }: { className?: st
     <>
       <button
         onClick={() => setOpen(true)}
-        className={`inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full hover:opacity-90 transition-opacity shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)] ${className}`}
+        className={`inline-flex items-center gap-2 bg-foreground text-background font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity ${className}`}
       >
         <Copy size={16} /> Copy the Lovable Prompt
       </button>
@@ -120,63 +119,47 @@ const LazyBloggerPage = () => {
       <Navbar />
 
       <main className="relative z-10 pt-28 pb-32">
-        {/* ── Hero ── */}
-        <section className="relative max-w-5xl mx-auto text-center px-6 mb-20 min-h-[520px] flex items-center justify-center">
-          <FlyingBlogCards />
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }} className="relative z-10">
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
-              className="font-display text-sm tracking-[0.2em] uppercase text-primary mb-4 font-bold flex items-center justify-center gap-3"
-            >
-              Introducing Lazy Blogger
-              <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 rounded-full">Beta</span>
-            </motion.p>
+        {/* Hero */}
+        <section className="max-w-4xl mx-auto text-center px-6 mb-20">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
+            <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4 font-bold">
+              Made for Lovable
+            </p>
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-6">
-              <span>The Autonomous</span><br />
-              <span className="text-lovable">Lovable</span>{" "}
-              <span className="text-gradient-primary">Blog Engine</span>
+              <span style={{ fontFamily: "'Dancing Script', cursive" }}>Lazy</span>{" "}
+              Blogger
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
               Paste one prompt into your Lovable project. Your website starts publishing blog posts every day — automatically, forever, for free.
             </p>
             <CopyPromptButton onCopy={handlePromptCopy} template={template} />
-            <p className="font-body text-xs text-muted-foreground mt-4">Built for Lovable projects. No API keys needed.</p>
+            <p className="font-body text-xs text-muted-foreground mt-4">No API keys needed.</p>
           </motion.div>
         </section>
 
-        {/* ── How It Works — 4 simple steps ── */}
+        {/* How It Works */}
         <section className="max-w-2xl mx-auto px-6 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
             How it works
           </motion.h2>
           <div className="space-y-4">
             {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.08 }}
-                className="flex items-start gap-4"
-              >
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground font-display text-sm font-bold flex items-center justify-center mt-0.5">
+              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className="flex items-start gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-foreground text-background font-display text-sm font-bold flex items-center justify-center mt-0.5">
                   {i + 1}
                 </span>
-                <p className="font-body text-sm text-foreground/80 leading-relaxed pt-1">{step}</p>
+                <p className="font-body text-sm text-foreground/60 leading-relaxed pt-1">{step}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* ── What You Get ── */}
+        {/* What You Get */}
         <section className="max-w-3xl mx-auto px-6 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
             What you get
           </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border border-border">
             {[
               { icon: Sparkles, title: "Auto-publishing", desc: "AI writes and publishes blog posts on a schedule you choose." },
               { icon: Clock, title: "Up to 32 posts/day", desc: "Pick 4, 8, 16, or 32 posts per day. Change anytime." },
@@ -189,11 +172,9 @@ const LazyBloggerPage = () => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 transition={{ delay: i * 0.08 }}
-                className="rounded-2xl border border-border bg-card p-5 text-center"
+                className="border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-border bg-card p-6 text-center"
               >
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                  <item.icon size={18} className="text-primary" />
-                </div>
+                <item.icon size={18} className="text-foreground/40 mx-auto mb-3" />
                 <h3 className="font-display text-sm font-bold text-foreground mb-1">{item.title}</h3>
                 <p className="font-body text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
               </motion.div>
@@ -201,44 +182,25 @@ const LazyBloggerPage = () => {
           </div>
         </section>
 
-        {/* ── PRICING ── */}
         <LazyPricingSection
-          lazyFeatures={[
-            "Lazy Blogger setup prompt",
-            "Self-hosted in your Lovable project",
-            "Up to 32 posts per day",
-            "No API keys needed",
-          ]}
-          proFeatures={[
-            "Hosted version",
-            "Advanced analytics dashboard",
-            "Custom brand voice training",
-            "Priority content generation",
-          ]}
+          lazyFeatures={["Lazy Blogger setup prompt", "Self-hosted in your Lovable project", "Up to 32 posts per day", "No API keys needed"]}
+          proFeatures={["Hosted version", "Advanced analytics dashboard", "Custom brand voice training", "Priority content generation"]}
           ctaButton={<CopyPromptButton onCopy={handlePromptCopy} template={template} className="w-full justify-center" />}
         />
 
-        {/* ── FAQ — only the essentials ── */}
+        {/* FAQ */}
         <section className="max-w-2xl mx-auto px-6 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
             Questions
           </motion.h2>
-          <div className="space-y-4">
+          <div className="space-y-0 border border-border">
             {[
               { q: "Is it really free?", a: "Yes. Lazy Blogger runs inside your existing Lovable project at zero additional cost. No API keys needed." },
               { q: "Do I need to know how to code?", a: "No. Paste the prompt, answer five questions, done." },
               { q: "Will the posts sound like me?", a: "You tell it your business, your audience, your topics, and your tone. The more specific you are, the better it writes." },
               { q: "Can I change settings later?", a: "Yes. Visit /lazy-blogger-setup on your site anytime to update topics, tone, or frequency." },
             ].map((faq, i) => (
-              <motion.div
-                key={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.05 }}
-                className="rounded-2xl border border-border bg-card p-5"
-              >
+              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.05 }} className="border-b last:border-b-0 border-border bg-card p-5">
                 <h3 className="font-display text-sm font-bold text-foreground mb-1">{faq.q}</h3>
                 <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
               </motion.div>
@@ -246,9 +208,9 @@ const LazyBloggerPage = () => {
           </div>
         </section>
 
-        {/* ── Bottom CTA ── */}
+        {/* Bottom CTA */}
         <section className="max-w-3xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="rounded-3xl border border-border bg-card px-8 py-14 text-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">
               Start publishing today.
             </h2>

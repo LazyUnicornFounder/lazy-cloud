@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Syne', 'system-ui', 'sans-serif'],
+        display: ['Playfair Display', 'serif'],
         body: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
@@ -50,10 +50,6 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
-        },
-        lovable: {
-          DEFAULT: "hsl(var(--lovable))",
-          foreground: "hsl(var(--lovable-foreground))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
