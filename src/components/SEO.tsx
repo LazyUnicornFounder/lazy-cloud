@@ -27,11 +27,11 @@ interface SEOProps {
 }
 
 const SITE_NAME = "Lazy Unicorn";
-const DEFAULT_TITLE = "The Autonomous Growth Engines for Lovable Websites — Lazy Unicorn";
-const DEFAULT_DESCRIPTION = "We build autonomous engines for Lovable that turn your website into a self-growing asset. Blog, SEO, and GEO engines that run themselves.";
+const DEFAULT_TITLE = "Lazy Unicorn — The Autonomous Layer for Lovable";
+const DEFAULT_DESCRIPTION = "The autonomous layer for Lovable. One prompt installs the engine you need — blog posts, SEO, GEO, payments, voice, stores, streams, and more. Everything runs itself.";
 const DEFAULT_IMAGE = "https://www.lazyunicorn.ai/og-image.png";
 const BASE_URL = "https://www.lazyunicorn.ai";
-const DEFAULT_KEYWORDS = "autonomous blog engine, autonomous SEO engine, autonomous GEO engine, Lovable website growth, AI blog writer, AI SEO tool, AI citation engine, self-growing website, autonomous content, Lovable startup, solo founder tools, AI business automation, autonomous marketing, self-building startup, autonomous business, AI agents for business";
+const DEFAULT_KEYWORDS = "Lazy Unicorn, autonomous layer for Lovable, Lovable plugins, Lazy Blogger, Lazy SEO, Lazy GEO, Lazy Store, Lazy Voice, Lazy Pay, Lazy SMS, Lazy Stream, Lazy Code, Lazy Run, Lazy Alert, autonomous blog engine, AI SEO tool, AI citation engine, self-growing website, solo founder tools, AI business automation, autonomous marketing, one prompt startup";
 const TWITTER_HANDLE = "@SaadSahawneh";
 
 const SEO = ({
