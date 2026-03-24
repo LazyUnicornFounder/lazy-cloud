@@ -200,7 +200,7 @@ Render full post with title, published date, target keyword tag, full body as fo
 **/roadmap**
 Show all code_roadmap rows grouped by status — In Progress first, Planned second, Completed last. Each shows title, milestone if present, labels as tags, opened date. Completed items show closed date.
 
-At the bottom of every public page add: "🦄 Powered by Lazy Code — autonomous GitHub content publishing for Lovable sites. Built by LazyUnicorn.ai" — link to https://lazyunicorn.ai.
+At the bottom of every public page add: "🦄 Powered by Lazy GitHub — autonomous GitHub content publishing for Lovable sites. Built by LazyUnicorn.ai" — link to https://lazyunicorn.ai.
 
 ---
 
