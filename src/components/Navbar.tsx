@@ -7,7 +7,7 @@ interface NavLink {
   label: string;
   href: string;
   highlight?: boolean;
-  children?: { label: string; href: string }[];
+  children?: { label: string; href: string; group?: string }[];
 }
 
 interface NavbarProps {
@@ -40,6 +40,21 @@ function DropdownItem({ link, onClick }: { link: NavLink; onClick?: () => void }
 
   if (!link.children) return null;
 
+  // Group children by group label
+  const groups: { label: string; items: { label: string; href: string }[] }[] = [];
+  let currentGroup: { label: string; items: { label: string; href: string }[] } | null = null;
+  for (const child of link.children) {
+    const g = child.group || "";
+    if (!currentGroup || currentGroup.label !== g) {
+      currentGroup = { label: g, items: [] };
+      groups.push(currentGroup);
+    }
+    currentGroup.items.push(child);
+  }
+
+  const hasGroups = groups.some(g => g.label !== "");
+  const isWide = hasGroups && link.children.length > 8;
+
   return (
     <div ref={ref} className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button
@@ -50,17 +65,45 @@ function DropdownItem({ link, onClick }: { link: NavLink; onClick?: () => void }
         <ChevronDown size={12} className={`transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border py-2 min-w-[180px] z-50">
-          {link.children.map((child) => (
-            <a
-              key={child.label}
-              href={child.href}
-              onClick={() => { setOpen(false); onClick?.(); }}
-              className="block px-4 py-2 font-body text-[11px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground hover:bg-secondary transition-colors"
-            >
-              {child.label}
-            </a>
-          ))}
+        <div
+          className={`absolute top-full mt-3 bg-card border border-border py-3 z-50 ${
+            isWide
+              ? "right-0 grid grid-cols-2 gap-0 min-w-[360px]"
+              : "left-1/2 -translate-x-1/2 min-w-[180px]"
+          }`}
+        >
+          {isWide ? (
+            groups.map((group) => (
+              <div key={group.label} className="px-1">
+                {group.label && (
+                  <p className="px-3 pt-1 pb-2 font-body text-[9px] tracking-[0.2em] uppercase text-foreground/25 font-semibold">
+                    {group.label}
+                  </p>
+                )}
+                {group.items.map((child) => (
+                  <a
+                    key={child.label}
+                    href={child.href}
+                    onClick={() => { setOpen(false); onClick?.(); }}
+                    className="block px-3 py-1.5 font-body text-[11px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground hover:bg-secondary transition-colors"
+                  >
+                    {child.label}
+                  </a>
+                ))}
+              </div>
+            ))
+          ) : (
+            link.children.map((child) => (
+              <a
+                key={child.label}
+                href={child.href}
+                onClick={() => { setOpen(false); onClick?.(); }}
+                className="block px-4 py-2 font-body text-[11px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground hover:bg-secondary transition-colors"
+              >
+                {child.label}
+              </a>
+            ))
+          )}
         </div>
       )}
     </div>
@@ -71,7 +114,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
   const isMobile = useIsMobile();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileDropdowns, setMobileDropdowns] = useState<Record<string, boolean>>({});
   const location = useLocation();
 
   useEffect(() => {
@@ -84,22 +127,28 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
   const links: NavLink[] = [
     { label: "Lazy Run", href: "/lazy-run" },
-    { label: "Lazy Blogger", href: "/lazy-blogger" },
-    { label: "Lazy SEO", href: "/lazy-seo" },
-    { label: "Lazy GEO", href: "/lazy-geo" },
-    { label: "Lazy Store", href: "/lazy-store" },
-    { label: "Lazy Voice", href: "/lazy-voice" },
-    { label: "Lazy Pay", href: "/lazy-pay" },
-    { label: "Lazy SMS", href: "/lazy-sms" },
-    { label: "Lazy Stream", href: "/lazy-stream" },
-    { label: "Lazy Code", href: "/lazy-code" },
-    { label: "Lazy Alert", href: "/lazy-alert" },
-    { label: "Lazy GitLab", href: "/lazy-gitlab" },
-    { label: "Lazy Supabase", href: "/lazy-supabase" },
-    { label: "Lazy Telegram", href: "/lazy-telegram" },
-    { label: "Lazy Linear", href: "/lazy-linear" },
-    { label: "Lazy Contentful", href: "/lazy-contentful" },
-    { label: "Lazy Perplexity", href: "/lazy-perplexity" },
+    {
+      label: "Engines",
+      href: "#",
+      children: [
+        { label: "Blogger", href: "/lazy-blogger", group: "Content" },
+        { label: "SEO", href: "/lazy-seo", group: "Content" },
+        { label: "GEO", href: "/lazy-geo", group: "Content" },
+        { label: "Voice", href: "/lazy-voice", group: "Content" },
+        { label: "Store", href: "/lazy-store", group: "Commerce" },
+        { label: "Pay", href: "/lazy-pay", group: "Commerce" },
+        { label: "SMS", href: "/lazy-sms", group: "Commerce" },
+        { label: "Stream", href: "/lazy-stream", group: "Platforms" },
+        { label: "Code", href: "/lazy-code", group: "Platforms" },
+        { label: "GitLab", href: "/lazy-gitlab", group: "Platforms" },
+        { label: "Linear", href: "/lazy-linear", group: "Platforms" },
+        { label: "Contentful", href: "/lazy-contentful", group: "Platforms" },
+        { label: "Perplexity", href: "/lazy-perplexity", group: "Intelligence" },
+        { label: "Supabase", href: "/lazy-supabase", group: "Intelligence" },
+        { label: "Alert", href: "/lazy-alert", group: "Intelligence" },
+        { label: "Telegram", href: "/lazy-telegram", group: "Intelligence" },
+      ],
+    },
     { label: "Pricing", href: "/pricing" },
     { label: "Blog", href: "/blog", highlight: activePage === "blog" },
     { label: "About", href: "/about" },
@@ -124,6 +173,10 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
     : undefined;
 
   const mobileBrandHref = "/";
+
+  const toggleMobileDropdown = (label: string) => {
+    setMobileDropdowns(prev => ({ ...prev, [label]: !prev[label] }));
+  };
 
   const socialIcons = (
     <>
@@ -208,18 +261,18 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
           </div>
 
           {open && (
-            <div className="mt-0 w-full bg-background border border-t-0 border-border px-5 py-4 flex flex-col gap-3">
+            <div className="mt-0 w-full bg-background border border-t-0 border-border px-5 py-4 flex flex-col gap-3 max-h-[80vh] overflow-y-auto">
               {links.map((link) =>
                 link.children ? (
                   <div key={link.label}>
                     <button
-                      onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                      onClick={() => toggleMobileDropdown(link.label)}
                       className="font-body text-xs tracking-[0.15em] uppercase text-foreground/50 hover:text-foreground transition-colors flex items-center gap-1 w-full"
                     >
                       {link.label}
-                      <ChevronDown size={12} className={`transition-transform ${mobileProductsOpen ? "rotate-180" : ""}`} />
+                      <ChevronDown size={12} className={`transition-transform ${mobileDropdowns[link.label] ? "rotate-180" : ""}`} />
                     </button>
-                    {mobileProductsOpen && (
+                    {mobileDropdowns[link.label] && (
                       <div className="pl-4 mt-2 flex flex-col gap-2">
                         {link.children.map((child) => (
                           <a
