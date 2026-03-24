@@ -166,7 +166,7 @@ async function refillQueue(supabase: any) {
     try {
       const draft = await generateDraft(supabase, ANTHROPIC_API_KEY);
       generated++;
-      console.log(`Draft ${generated}/10: ${draft.title}`);
+      console.log(`Draft ${generated}/3: ${draft.title}`);
     } catch (err) {
       console.error(`Draft generation ${i + 1} failed:`, err.message);
       try {
@@ -192,6 +192,39 @@ Deno.serve(async (req) => {
   );
 
   try {
+    // Check blog_settings
+    const { data: settings } = await supabase
+      .from("blog_settings")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    // If settings exist and publishing is paused, exit
+    if (settings && !settings.is_publishing) {
+      return new Response(JSON.stringify({ message: "Lazy Blogger is paused" }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Check if we've hit the daily limit
+    if (settings?.posts_per_day) {
+      const todayStart = new Date();
+      todayStart.setUTCHours(0, 0, 0, 0);
+      const { count } = await supabase
+        .from("blog_posts")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "published")
+        .gte("published_at", todayStart.toISOString());
+
+      if ((count ?? 0) >= settings.posts_per_day) {
+        console.log(`Daily limit reached: ${count}/${settings.posts_per_day}`);
+        return new Response(JSON.stringify({ message: `Daily limit reached (${count}/${settings.posts_per_day})` }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    }
+
     // Check for queued drafts to publish
     const { data: nextDraft } = await supabase
       .from("blog_posts")
@@ -231,7 +264,6 @@ Deno.serve(async (req) => {
     const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
     if (!ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not configured");
 
-    // Generate 10 drafts
     const refilled = await refillQueue(supabase);
 
     if (refilled === 0) throw new Error("Failed to generate any drafts");

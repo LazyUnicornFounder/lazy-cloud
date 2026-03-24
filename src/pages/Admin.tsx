@@ -58,6 +58,27 @@ const Admin = () => {
   const [editForm, setEditForm] = useState({ name: "", url: "", tagline: "", description: "", logo_url: "" });
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [blogSettings, setBlogSettings] = useState<any>(null);
+  const [savingBlogSettings, setSavingBlogSettings] = useState(false);
+
+  const db = supabase as any;
+
+  const fetchBlogSettings = useCallback(async () => {
+    const { data } = await db.from("blog_settings").select("*").order("created_at", { ascending: false }).limit(1).single();
+    if (data) setBlogSettings(data);
+  }, []);
+
+  useEffect(() => { if (authenticated) fetchBlogSettings(); }, [authenticated, fetchBlogSettings]);
+
+  const saveBlogSettings = async (updates: Record<string, any>) => {
+    if (!blogSettings) return;
+    setSavingBlogSettings(true);
+    const { error } = await db.from("blog_settings").update(updates).eq("id", blogSettings.id);
+    setSavingBlogSettings(false);
+    if (error) { toast.error("Failed to save"); return; }
+    setBlogSettings({ ...blogSettings, ...updates });
+    toast.success("Blog settings updated");
+  };
 
   const fetchSubmissions = useCallback(async (pw: string) => {
     setLoading(true);
@@ -496,6 +517,57 @@ const Admin = () => {
 
       {activeTab === "blog" && (
         <div className="space-y-3">
+          {/* Publishing Settings */}
+          {blogSettings && (
+            <div className="border border-border rounded-xl bg-card p-4 mb-4">
+              <h3 className="font-display text-sm font-bold text-foreground mb-3">Publishing Settings</h3>
+              <div className="grid grid-cols-3 gap-4">
+                <div>
+                  <label className="font-body text-xs text-muted-foreground block mb-1">Posts per Day</label>
+                  <select
+                    value={blogSettings.posts_per_day}
+                    onChange={(e) => saveBlogSettings({ posts_per_day: parseInt(e.target.value) })}
+                    disabled={savingBlogSettings}
+                    className="w-full font-body text-sm bg-background border border-border rounded-lg px-3 py-2 text-foreground focus:outline-none focus:border-primary/50"
+                  >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="12">12</option>
+                    <option value="24">24</option>
+                    <option value="48">48 (every 30 min)</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="font-body text-xs text-muted-foreground block mb-1">Frequency</label>
+                  <select
+                    value={blogSettings.frequency_minutes}
+                    onChange={(e) => saveBlogSettings({ frequency_minutes: parseInt(e.target.value) })}
+                    disabled={savingBlogSettings}
+                    className="w-full font-body text-sm bg-background border border-border rounded-lg px-3 py-2 text-foreground focus:outline-none focus:border-primary/50"
+                  >
+                    <option value="30">Every 30 minutes</option>
+                    <option value="60">Every hour</option>
+                    <option value="120">Every 2 hours</option>
+                    <option value="360">Every 6 hours</option>
+                    <option value="720">Every 12 hours</option>
+                    <option value="1440">Every 24 hours</option>
+                  </select>
+                  <p className="font-body text-[10px] text-muted-foreground mt-1">Cron fires every 30 min. Posts are rate-limited by the daily cap above.</p>
+                </div>
+                <div className="flex items-end">
+                  <button
+                    onClick={() => saveBlogSettings({ is_publishing: !blogSettings.is_publishing })}
+                    disabled={savingBlogSettings}
+                    className={`font-body text-xs px-4 py-2 rounded-lg transition-colors w-full ${blogSettings.is_publishing ? "bg-destructive/20 text-destructive hover:bg-destructive/30" : "bg-primary/20 text-primary hover:bg-primary/30"}`}
+                  >
+                    {blogSettings.is_publishing ? "⏸️ Pause Publishing" : "▶️ Resume Publishing"}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
           {/* Stats */}
           {(() => {
             const published = blogPosts.filter(p => p.status === "published");

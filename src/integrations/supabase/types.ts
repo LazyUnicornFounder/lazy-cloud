@@ -110,6 +110,30 @@ export type Database = {
         }
         Relationships: []
       }
+      blog_settings: {
+        Row: {
+          created_at: string
+          frequency_minutes: number
+          id: string
+          is_publishing: boolean
+          posts_per_day: number
+        }
+        Insert: {
+          created_at?: string
+          frequency_minutes?: number
+          id?: string
+          is_publishing?: boolean
+          posts_per_day?: number
+        }
+        Update: {
+          created_at?: string
+          frequency_minutes?: number
+          id?: string
+          is_publishing?: boolean
+          posts_per_day?: number
+        }
+        Relationships: []
+      }
       early_access: {
         Row: {
           created_at: string
