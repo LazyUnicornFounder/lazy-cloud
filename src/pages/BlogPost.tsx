@@ -122,6 +122,9 @@ const BlogPost = () => {
               {post.title}
             </h1>
 
+            {/* Audio player */}
+            {slug && <BlogAudioPlayer postSlug={slug} />}
+
             <div className="space-y-5">
               {post.content.map((paragraph, j) => {
                 // Convert markdown to HTML: headers, links, and strip hashtags
