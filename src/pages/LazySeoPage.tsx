@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import LazyPricingSection from "@/components/LazyPricingSection";
 import { motion } from "framer-motion";
 import { Search, TrendingUp, Zap, BarChart3, Copy, Check } from "lucide-react";
 import FlyingSeoCards from "@/components/lazy-seo/FlyingSeoCards";
