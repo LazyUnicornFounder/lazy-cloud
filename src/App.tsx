@@ -86,9 +86,6 @@ const App = () => (
               <Route path="/launch" element={<LaunchPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/lazy-blogger" element={<LazyBloggerPage />} />
-              <Route path="/company/naive" element={<NaivePage />} />
-              <Route path="/company/polsia" element={<PolsiaPage />} />
-              <Route path="/company/:slug" element={<CompanyDetail />} />
               <Route path="/checkout/success" element={<CheckoutSuccess />} />
               <Route path="/lazy-seo" element={<LazySeoPage />} />
               <Route path="/lazy-seo-setup" element={<LazySeoSetup />} />

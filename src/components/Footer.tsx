@@ -53,7 +53,6 @@ const resources = [
   { name: "About", href: "/about" },
   { name: "Guide", href: "/guide" },
   { name: "Autonomy Scale", href: "/autonomy-scale" },
-  { name: "Directory", href: "/#directory" },
   { name: "Launch Your Startup", href: "/launch" },
 ];
 
