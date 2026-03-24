@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import LazyPricingSection from "@/components/LazyPricingSection";
 import { motion } from "framer-motion";
 import { Copy, Check, Mic, Headphones, Rss, Radio, Volume2, Play } from "lucide-react";
 import SEO from "@/components/SEO";
