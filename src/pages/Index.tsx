@@ -220,47 +220,78 @@ const Index = () => {
       <Navbar activePage="home" />
 
       {/* Hero */}
-      <header className="relative z-10 min-h-screen flex flex-col items-center justify-center" style={{ backgroundColor: "#0a0a08" }}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-center px-6 max-w-3xl"
-        >
-          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.85rem, 1.8vw, 1.1rem)", color: "#f0ead6", opacity: 0.45, fontStyle: "italic", letterSpacing: "0.02em" }}>
-            Lovable gave everyone a site. Lazy Unicorn🦄 makes it work while you sleep.
-          </p>
-          <h1 className="mt-5" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-            The autonomous🤖
-            <br />
-            half of Lovable❤️
-          </h1>
-          <p className="mt-5" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.9rem, 1.8vw, 1.15rem)", color: "#f0ead6", opacity: 0.5, letterSpacing: "0.02em" }}>
-            One prompt, everything runs itself.
-          </p>
-          <p className="hero-description mt-8 text-sm sm:text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.6 }}>
-            Paste one prompt. Your Lovable site starts running itself.
-          </p>
-          <p className="mt-4 text-sm sm:text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.6 }}>
-            Your blog writes and publishes every day. Your SEO compounds while you sleep. ChatGPT and Perplexity start citing you. Your store finds products, sets prices, and runs its own promotions. Stripe optimises its own conversion rate. Customers get texts that improve themselves. Every post gets narrated in your voice. Every stream becomes an article. Every commit becomes a changelog.
-          </p>
-          <p className="mt-4 text-sm sm:text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.6 }}>
-            You still build. You just build a lot less of the boring parts.
-          </p>
-          <p className="mt-4 text-sm sm:text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.6 }}>
-            Works with <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Stripe</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Twilio</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>ElevenLabs</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Twitch</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>GitHub</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>GitLab</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Linear</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Slack</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Telegram</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Supabase</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Contentful</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Firecrawl</strong>, and <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Perplexity</strong>. Eighteen engines. One existing Lovable project. A lot less effort after setup.
-          </p>
+      <header className="relative z-10" style={{ backgroundColor: "#0a0a08" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
+          {/* Left — branding block */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-center justify-center px-8 py-20"
+            style={{ backgroundColor: "#0a0a08" }}
+          >
+            <svg width="140" height="140" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="mb-8 opacity-30">
+              <circle cx="60" cy="55" r="35" />
+              <path d="M45 50 Q60 25 75 50" />
+              <line x1="60" y1="55" x2="60" y2="85" />
+              <path d="M50 85 L60 95 L70 85" />
+              <circle cx="50" cy="52" r="2" fill="#f0ead6" stroke="none" />
+              <circle cx="70" cy="52" r="2" fill="#f0ead6" stroke="none" />
+            </svg>
+            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(2.5rem, 5vw, 3.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+              Lazy
+            </p>
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 3.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+              Unicorn🦄
+            </p>
+            <p className="mt-6" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.75rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+              Made for Lovable
+            </p>
+          </motion.div>
 
-          <div className="flex items-center justify-center gap-3 mt-8">
-            <a
-              href="#engines"
-              className="inline-block font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
-              style={{ backgroundColor: "#f0ead6", color: "#0a0a08", borderRadius: 0 }}
-            >
-              See the Engines
-            </a>
-          </div>
-        </motion.div>
+          {/* Right — copy block */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="flex flex-col justify-center px-8 md:px-12 py-20"
+            style={{ backgroundColor: "#111110" }}
+          >
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.8rem, 1.5vw, 0.95rem)", color: "#f0ead6", opacity: 0.35, fontStyle: "italic", letterSpacing: "0.02em" }}>
+              Lovable gave everyone a site.
+            </p>
+            <h1 className="mt-4" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4vw, 3.2rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+              The autonomous🤖
+              <br />
+              half of Lovable❤️
+            </h1>
+            <p className="mt-6" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.85rem, 1.5vw, 1rem)", color: "#f0ead6", opacity: 0.45 }}>
+              One prompt, everything runs itself.
+            </p>
+
+            <div className="mt-8 space-y-4">
+              <p className="hero-description text-sm sm:text-base leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
+                Your blog writes and publishes every day. Your SEO compounds while you sleep. ChatGPT and Perplexity start citing you. Your store lists products, sets prices, and runs its own promotions. Every post gets narrated. Every stream becomes an article. Every commit becomes a changelog.
+              </p>
+              <p className="text-sm sm:text-base leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
+                You still build. You just stop doing the boring parts.
+              </p>
+              <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>
+                Works with <strong style={{ opacity: 1, color: "#f0ead6" }}>Stripe</strong>, <strong style={{ opacity: 1, color: "#f0ead6" }}>Twilio</strong>, <strong style={{ opacity: 1, color: "#f0ead6" }}>ElevenLabs</strong>, <strong style={{ opacity: 1, color: "#f0ead6" }}>Twitch</strong>, <strong style={{ opacity: 1, color: "#f0ead6" }}>GitHub</strong>, <strong style={{ opacity: 1, color: "#f0ead6" }}>GitLab</strong>, <strong style={{ opacity: 1, color: "#f0ead6" }}>Linear</strong>, <strong style={{ opacity: 1, color: "#f0ead6" }}>Slack</strong>, <strong style={{ opacity: 1, color: "#f0ead6" }}>Telegram</strong>, <strong style={{ opacity: 1, color: "#f0ead6" }}>Supabase</strong>, <strong style={{ opacity: 1, color: "#f0ead6" }}>Contentful</strong>, <strong style={{ opacity: 1, color: "#f0ead6" }}>Firecrawl</strong>, and <strong style={{ opacity: 1, color: "#f0ead6" }}>Perplexity</strong>.
+              </p>
+            </div>
+
+            <div className="mt-10">
+              <a
+                href="#engines"
+                className="inline-block font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold hover:opacity-90 transition-opacity active:scale-[0.97]"
+                style={{ backgroundColor: "#f0ead6", color: "#0a0a08", borderRadius: 0 }}
+              >
+                See the Engines
+              </a>
+            </div>
+          </motion.div>
+        </div>
       </header>
 
       {/* Product Grid */}
