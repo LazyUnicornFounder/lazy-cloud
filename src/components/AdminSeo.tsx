@@ -1,7 +1,70 @@
 import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Search, Zap, Settings, Trash2, ExternalLink, AlertTriangle } from "lucide-react";
+import { Search, Zap, Settings, ExternalLink, AlertTriangle, Pencil, Check, X } from "lucide-react";
+
+/* ── Inline-editable field ── */
+function EditableField({ label, value, onSave }: { label: string; value: string; onSave: (v: string) => Promise<void> }) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(value);
+  const [saving, setSaving] = useState(false);
+
+  const save = async () => {
+    if (draft === value) { setEditing(false); return; }
+    setSaving(true);
+    await onSave(draft);
+    setSaving(false);
+    setEditing(false);
+  };
+
+  const cancel = () => { setDraft(value); setEditing(false); };
+
+  // Sync if parent value changes
+  useEffect(() => { if (!editing) setDraft(value); }, [value, editing]);
+
+  if (editing) {
+    return (
+      <div className="space-y-1.5">
+        <label className="font-body text-xs text-muted-foreground block">{label}</label>
+        <textarea
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          rows={2}
+          className="w-full font-body text-sm bg-background border border-primary/40 rounded-lg px-3 py-2 text-foreground focus:outline-none focus:border-primary resize-none"
+          autoFocus
+        />
+        <div className="flex gap-1.5">
+          <button onClick={save} disabled={saving} className="inline-flex items-center gap-1 font-body text-xs px-2.5 py-1 rounded-md bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-50">
+            <Check size={12} /> {saving ? "Saving…" : "Save"}
+          </button>
+          <button onClick={cancel} className="inline-flex items-center gap-1 font-body text-xs px-2.5 py-1 rounded-md bg-muted text-muted-foreground hover:bg-muted/80">
+            <X size={12} /> Cancel
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const items = value ? value.split(",").map((s) => s.trim()).filter(Boolean) : [];
+
+  return (
+    <div className="group cursor-pointer" onClick={() => setEditing(true)}>
+      <div className="flex items-center gap-1.5 mb-1">
+        <span className="font-body text-xs text-muted-foreground">{label}</span>
+        <Pencil size={10} className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+      </div>
+      <p className="font-display text-2xl font-bold text-foreground">{items.length}</p>
+      <div className="flex flex-wrap gap-1 mt-1.5">
+        {items.slice(0, 5).map((item, i) => (
+          <span key={i} className="font-body text-[10px] px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground truncate max-w-[140px]">{item}</span>
+        ))}
+        {items.length > 5 && (
+          <span className="font-body text-[10px] px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground">+{items.length - 5}</span>
+        )}
+      </div>
+    </div>
+  );
+}
 
 const AdminSeo = () => {
   const [tab, setTab] = useState<"setup" | "dashboard">("dashboard");
@@ -49,6 +112,24 @@ const AdminSeo = () => {
 
   useEffect(() => { fetchAll(); }, [fetchAll]);
 
+  const updateField = async (field: string, value: string) => {
+    if (!settings) return;
+    const { error } = await supabase.from("seo_settings").update({ [field]: value }).eq("id", settings.id);
+    if (error) { toast.error("Failed to update"); return; }
+    setSettings({ ...settings, [field]: value });
+    toast.success("Updated — re-discovering keywords…");
+    // Auto re-discover keywords with updated settings
+    setDiscovering(true);
+    try {
+      await supabase.functions.invoke("lazy-seo-analyse");
+      toast.success("Keywords refreshed!");
+      await fetchAll();
+    } catch (e: any) {
+      toast.error("Discovery failed: " + (e.message || "Unknown"));
+    }
+    setDiscovering(false);
+  };
+
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
@@ -61,7 +142,6 @@ const AdminSeo = () => {
     await fetchAll();
     setSaving(false);
     setTab("dashboard");
-    // Auto-run keyword discovery with updated settings
     setDiscovering(true);
     try {
       await supabase.functions.invoke("lazy-seo-analyse");
@@ -153,7 +233,7 @@ const AdminSeo = () => {
 
       {tab === "dashboard" && (
         <div className="space-y-6">
-          {/* Stats */}
+          {/* Stats row 1 — counts */}
           <div className="grid grid-cols-3 gap-3">
             <div className="border border-border rounded-xl bg-card p-3 text-center">
               <p className="font-display text-2xl font-bold text-foreground">{posts.length}</p>
@@ -161,11 +241,29 @@ const AdminSeo = () => {
             </div>
             <div className="border border-border rounded-xl bg-card p-3 text-center">
               <p className="font-display text-2xl font-bold text-foreground">{keywords.length}</p>
-              <p className="font-body text-xs text-muted-foreground">Keywords Tracked</p>
+              <p className="font-body text-xs text-muted-foreground">Keywords Discovered</p>
             </div>
             <div className="border border-border rounded-xl bg-card p-3 text-center">
               <p className="font-display text-2xl font-bold text-foreground">{settings?.is_running ? "🟢 Running" : "⏸️ Paused"}</p>
               <p className="font-body text-xs text-muted-foreground">Engine Status</p>
+            </div>
+          </div>
+
+          {/* Stats row 2 — editable settings */}
+          <div className="grid grid-cols-2 gap-3">
+            <div className="border border-border rounded-xl bg-card p-3">
+              <EditableField
+                label="Target Keywords"
+                value={settings?.target_keywords || ""}
+                onSave={(v) => updateField("target_keywords", v)}
+              />
+            </div>
+            <div className="border border-border rounded-xl bg-card p-3">
+              <EditableField
+                label="Competitors"
+                value={settings?.competitors || ""}
+                onSave={(v) => updateField("competitors", v)}
+              />
             </div>
           </div>
 
