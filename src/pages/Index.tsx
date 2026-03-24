@@ -227,6 +227,9 @@ const Index = () => {
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center px-6 max-w-3xl"
         >
+          <p className="mb-4 text-sm sm:text-base tracking-wide" style={{ color: "#f0ead6", opacity: 0.5 }}>
+            Lovable gave everyone a site. LazyUnicorn makes it work while you sleep.
+          </p>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1.1 }}>
             The missing (autonomous 🤖) half of Lovable❤️
           </h1>
