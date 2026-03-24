@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import unicornBg from "@/assets/unicorn-beach.png";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
+import ProductPromoBanner from "@/components/ProductPromoBanner";
 
 const levels = [
   {
