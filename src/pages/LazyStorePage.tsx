@@ -300,6 +300,9 @@ const LazyStorePage = () => {
               <span className="text-lovable">Lovable</span>{" "}
               <span className="text-gradient-primary">Shopify Store</span>
             </h1>
+            <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
+              One prompt installs a full Shopify store into your Lovable project. It finds the products, writes the listings, sets the prices, and improves its own conversion rate — automatically, forever.
+            </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
               <CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} />
               <button
