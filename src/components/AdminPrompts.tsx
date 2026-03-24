@@ -32,9 +32,9 @@ function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) 
 }
 
 function bumpVersion(version: string): string {
-  const match = version.match(/^v(\d+)\.(\d+)$/);
-  if (!match) return "v2.2";
-  return `v${match[1]}.${parseInt(match[2]) + 1}`;
+  const match = version.match(/^(\d+)\.(\d+)\.(\d+)$/);
+  if (!match) return "0.0.2";
+  return `${match[1]}.${match[2]}.${parseInt(match[3]) + 1}`;
 }
 
 function formatDate(iso: string) {
@@ -69,8 +69,8 @@ function PromptEditor({
     const today = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
     // Update the version header in the prompt text
     let updatedText = draft.replace(
-      /\[.*?Prompt — v[\d.]+ — .*?\]/,
-      `[${product.label.replace(/^[^\w]*/, "").trim()} Prompt — ${newVersion} — ${today}]`
+      /\[.*?Prompt — v?[\d.]+ — .*?\]/,
+      `[${product.label.replace(/^[^\w]*/, "").trim()} Prompt — v${newVersion} — ${today}]`
     );
     const { error } = await savePromptVersion(product.key, updatedText, newVersion);
     setSaving(false);
