@@ -68,7 +68,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-10 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-8 gap-10 md:gap-6">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="inline-block">
