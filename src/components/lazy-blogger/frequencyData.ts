@@ -62,8 +62,13 @@ export const frequencyTiers: FrequencyTier[] = [
   },
 ];
 
+export const BLOGGER_VERSION = "v2.1";
+export const BLOGGER_VERSION_DATE = "24 March 2026";
+
 export function buildPrompt(tier: FrequencyTier): string {
-  return `Add an autonomous blog publishing engine called Lazy Blogger to this project. Use the built-in Lovable AI integration for all AI calls — no external API key required from the user.
+  return `[Lazy Blogger Prompt — ${BLOGGER_VERSION} — ${BLOGGER_VERSION_DATE}]
+
+Add an autonomous blog publishing engine called Lazy Blogger to this project. Use the built-in Lovable AI integration for all AI calls — no external API key required from the user.
 
 1. Database Create a Supabase table called blog_posts with fields: id (uuid, primary key, default gen_random_uuid()), title (text), slug (text, unique), excerpt (text), body (text), published_at (timestamptz, default now()), status (text, default 'published'). Create a Supabase table called blog_settings with fields: id (uuid, primary key), business_description (text), target_reader (text), topics (text), tone (text), is_publishing (boolean, default true), queue_index (integer, default 0). Create a Supabase table called blog_errors with fields: id (uuid, primary key), error_message (text), created_at (timestamptz, default now()).
 

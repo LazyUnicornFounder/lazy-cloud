@@ -9,7 +9,12 @@ import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const SEO_PROMPT = `Add a Lazy SEO engine to this project. It automatically discovers keyword opportunities and publishes SEO-optimised blog posts. All pages are admin-only — nothing is added to the public site navigation.
+export const SEO_VERSION = "v2.1";
+export const SEO_VERSION_DATE = "24 March 2026";
+
+const SEO_PROMPT = `[Lazy SEO Prompt — ${SEO_VERSION} — ${SEO_VERSION_DATE}]
+
+Add a Lazy SEO engine to this project. It automatically discovers keyword opportunities and publishes SEO-optimised blog posts. All pages are admin-only — nothing is added to the public site navigation.
 
 1. Database Create a Supabase table called seo_settings with fields: id (uuid, primary key), site_url (text), business_description (text), target_keywords (text), competitors (text), posts_per_day (integer, default 2), is_running (boolean, default true). Create a Supabase table called seo_posts with fields: id (uuid, primary key, default gen_random_uuid()), title (text), slug (text, unique), body (text), target_keyword (text), published_at (timestamptz, default now()), status (text, default 'published'). Create a Supabase table called seo_keywords with fields: id (uuid, primary key, default gen_random_uuid()), keyword (text), has_content (boolean, default false), priority (integer, default 0), created_at (timestamptz, default now()). Create a Supabase table called seo_errors with fields: id (uuid, primary key, default gen_random_uuid()), error_message (text), created_at (timestamptz, default now()).
 
