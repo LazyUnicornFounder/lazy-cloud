@@ -57,10 +57,20 @@ const AdminSeo = () => {
     } else {
       await supabase.from("seo_settings").insert(form);
     }
-    toast.success("SEO settings saved. Lazy SEO is running.");
+    toast.success("SEO settings saved. Re-discovering keywords…");
     await fetchAll();
     setSaving(false);
     setTab("dashboard");
+    // Auto-run keyword discovery with updated settings
+    setDiscovering(true);
+    try {
+      await supabase.functions.invoke("lazy-seo-analyse");
+      toast.success("Keywords updated with new settings!");
+      await fetchAll();
+    } catch (e: any) {
+      toast.error("Keyword discovery failed: " + (e.message || "Unknown"));
+    }
+    setDiscovering(false);
   };
 
   const toggleRunning = async () => {
