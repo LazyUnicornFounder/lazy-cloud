@@ -1,15 +1,10 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { Star } from "lucide-react";
 
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
-import { supabase } from "@/integrations/supabase/client";
-import CompanyCard from "@/components/CompanyCard";
-import SubmitSection from "@/components/SubmitSection";
 
 const NEW_TITLE = "Drive Traffic Automatically to Your Lovable Website or App";
 const NEW_DESCRIPTION = "We build autonomous engines for Lovable that turn your website into a self-growing asset.";
