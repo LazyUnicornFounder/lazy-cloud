@@ -90,7 +90,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
     { label: "Lazy GEO", href: "/lazy-geo" },
     { label: "Lazy Store", href: "/lazy-store" },
     { label: "Blog", href: "/blog", highlight: activePage === "blog" },
-    { label: "Mission", href: isHome ? "#mission" : "/#mission" },
     { label: "About", href: isHome ? "#about" : "/#about" },
     {
       label: "Resources",
