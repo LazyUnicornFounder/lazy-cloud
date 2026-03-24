@@ -28,6 +28,7 @@ import LazyVoiceSetup from "./pages/LazyVoiceSetup.tsx";
 import LazyVoiceDashboard from "./pages/LazyVoiceDashboard.tsx";
 import ListenPage from "./pages/ListenPage.tsx";
 import LazyPayPage from "./pages/LazyPayPage.tsx";
+import LazySmsPage from "./pages/LazySmsPage.tsx";
 
 const queryClient = new QueryClient();
 
