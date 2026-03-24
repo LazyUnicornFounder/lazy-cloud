@@ -228,10 +228,10 @@ const Index = () => {
           className="text-center px-6 max-w-3xl"
         >
           <p className="mb-4 text-sm sm:text-base tracking-wide" style={{ color: "#f0ead6", opacity: 0.5 }}>
-            Lovable gave everyone a site. Lazy Unicorn 🦄 makes it work while you sleep.
+            Lovable gave everyone a site. Lazy Unicorn🦄 makes it work while you sleep.
           </p>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-            The autonomous 🤖
+            The autonomous🤖
             <br />
             half of Lovable❤️
           </h1>
