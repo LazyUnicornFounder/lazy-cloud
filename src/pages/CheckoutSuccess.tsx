@@ -101,7 +101,7 @@ const CheckoutSuccess = () => {
             <p className="font-body text-lg text-primary font-semibold">Listing updated!</p>
             <Link
               to="/"
-              className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-opacity"
+              className="inline-block font-body text-[11px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-6 py-2.5 font-semibold hover:opacity-90 transition-opacity"
             >
               Back to directory
             </Link>

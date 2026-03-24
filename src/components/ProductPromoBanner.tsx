@@ -45,8 +45,8 @@ const ProductPromoBanner = ({ excludeProduct, glass = true }: ProductPromoBanner
   });
 
   const containerClass = glass
-    ? "bg-transparent backdrop-blur-xl rounded-3xl px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
-    : "bg-card/60 backdrop-blur-lg rounded-3xl px-8 py-10 border border-border";
+    ? "px-8 py-10 border border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)]"
+    : "bg-card px-8 py-10 border border-border";
 
   return (
     <motion.div
@@ -69,7 +69,7 @@ const ProductPromoBanner = ({ excludeProduct, glass = true }: ProductPromoBanner
             <Link
               key={product.name}
               to={product.href}
-              className="group relative overflow-hidden rounded-2xl border border-foreground/10 hover:border-primary/40 bg-background/20 hover:bg-background/30 transition-all duration-300 p-5 text-left"
+              className="group relative overflow-hidden border border-foreground/10 hover:border-primary/40 bg-background/20 hover:bg-background/30 transition-all duration-300 p-5 text-left"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
               <div className="relative z-10">

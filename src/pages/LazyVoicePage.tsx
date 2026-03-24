@@ -133,7 +133,7 @@ function CopyPromptButton({
   return (
     <button
       onClick={handleCopy}
-      className={`inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full hover:opacity-90 transition-opacity ${base} ${className}`}
+      className={`inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity ${base} ${className}`}
     >
       {copied ? (
         <><Check size={16} /> Copied ✓</>
@@ -147,7 +147,7 @@ function CopyPromptButton({
 /* ── ElevenLabs badge ── */
 function ElevenLabsBadge() {
   return (
-    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-muted/40 text-muted-foreground text-xs font-body tracking-wide">
+    <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border bg-muted/40 text-muted-foreground text-xs font-body tracking-wide">
       <Volume2 size={14} />
       Powered by ElevenLabs
     </div>
@@ -229,7 +229,7 @@ export default function LazyVoicePage() {
               <CopyPromptButton onCopy={handleCopy} />
               <button
                 onClick={scrollToHowItWorks}
-                className="inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full border border-border text-foreground hover:bg-muted transition-colors"
+                className="inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-foreground hover:bg-muted transition-colors"
               >
                 See How It Works
               </button>
@@ -255,7 +255,7 @@ export default function LazyVoicePage() {
                   transition={{ delay: i * 0.1 }}
                   className="flex flex-col items-center text-center gap-3"
                 >
-                  <span className="w-10 h-10 rounded-full bg-primary/10 text-primary font-display font-bold text-sm flex items-center justify-center">
+                  <span className="w-10 h-10 bg-primary/10 text-primary font-display font-bold text-sm flex items-center justify-center">
                     {i + 1}
                   </span>
                   <p className="font-body text-sm text-muted-foreground leading-relaxed">{step}</p>
@@ -281,7 +281,7 @@ export default function LazyVoicePage() {
                   key={i}
                   variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="border border-border rounded-2xl p-6 bg-card/40"
+                  className="border border-border p-6 bg-card"
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <f.icon size={20} className="text-primary" />
@@ -375,7 +375,7 @@ export default function LazyVoicePage() {
                   key={i}
                   variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="border border-border rounded-2xl p-6 bg-card/40"
+                  className="border border-border p-6 bg-card"
                 >
                   <h3 className="font-display text-sm font-bold mb-2">{faq.q}</h3>
                   <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>

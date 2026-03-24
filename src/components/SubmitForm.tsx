@@ -101,7 +101,7 @@ const SubmitForm = ({ open, onClose }: SubmitFormProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-background/80 backdrop-blur-xl-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-background/80-sm"
           onClick={handleClose}
         >
           <motion.div
@@ -110,7 +110,7 @@ const SubmitForm = ({ open, onClose }: SubmitFormProps) => {
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.25 }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-2xl"
+            className="w-full max-w-md border border-border bg-card p-6 shadow-2xl"
           >
             <div className="flex items-center justify-between mb-6">
               <h2 className="font-display text-xl font-bold text-foreground">Submit a Company</h2>
@@ -128,7 +128,7 @@ const SubmitForm = ({ open, onClose }: SubmitFormProps) => {
                   </p>
                 </div>
 
-                <div className="bg-primary/5 border border-primary/20 rounded-xl p-5 text-left">
+                <div className="bg-primary/5 border border-primary/20 p-5 text-left">
                   <div className="flex items-center gap-2 mb-2">
                     <Sparkles size={16} className="text-primary" />
                     <p className="font-display text-sm font-bold text-foreground">Get a Pro Listing — $5/mo</p>

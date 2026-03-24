@@ -45,7 +45,7 @@ function CopyPromptButton({ className = "", onCopy }: { className?: string; onCo
   return (
     <button
       onClick={handleCopy}
-      className={`inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full hover:opacity-90 transition-opacity bg-primary text-primary-foreground shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)] ${className}`}
+      className={`inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity bg-primary text-primary-foreground shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)] ${className}`}
     >
       {copied ? <><Check size={16} /> Copied ✓</> : <><Copy size={16} /> Copy the Lovable Prompt</>}
     </button>
@@ -54,7 +54,7 @@ function CopyPromptButton({ className = "", onCopy }: { className?: string; onCo
 
 function TwilioBadge() {
   return (
-    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-muted/40 text-muted-foreground text-xs font-body tracking-wide">
+    <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border bg-muted/40 text-muted-foreground text-xs font-body tracking-wide">
       <Phone size={14} />
       Powered by Twilio
     </div>
@@ -118,7 +118,7 @@ export default function LazySmsPage() {
               Introducing Lazy SMS
               <TwilioBadge />
             </motion.p>
-            <span className="inline-block bg-primary text-primary-foreground font-display text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] px-5 py-1.5 rounded-full mb-6">BETA</span>
+            <span className="inline-block bg-primary text-primary-foreground font-display text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] px-5 py-1.5 mb-6">BETA</span>
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-8 max-w-3xl mx-auto">
               One Prompt Installs <span className="text-gradient-primary">Twilio</span> Into Your Lovable Project.
             </h1>
@@ -127,7 +127,7 @@ export default function LazySmsPage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
               <CopyPromptButton onCopy={handleCopy} />
-              <button onClick={scrollToHowItWorks} className="inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full border border-border text-foreground hover:bg-muted transition-colors">
+              <button onClick={scrollToHowItWorks} className="inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-foreground hover:bg-muted transition-colors">
                 See How It Works
               </button>
             </div>
@@ -143,7 +143,7 @@ export default function LazySmsPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {steps.map((step, i) => (
                 <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
-                  <span className="w-10 h-10 rounded-full bg-primary/10 text-primary font-display font-bold text-sm flex items-center justify-center">{i + 1}</span>
+                  <span className="w-10 h-10 bg-primary/10 text-primary font-display font-bold text-sm flex items-center justify-center">{i + 1}</span>
                   <p className="font-body text-sm text-muted-foreground leading-relaxed">{step}</p>
                 </motion.div>
               ))}
@@ -159,7 +159,7 @@ export default function LazySmsPage() {
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {features.map((f, i) => (
-                <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="border border-border rounded-2xl p-6 bg-card/40">
+                <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="border border-border p-6 bg-card">
                   <div className="flex items-center gap-3 mb-3">
                     <f.icon size={20} className="text-primary" />
                     <h3 className="font-display text-sm font-bold tracking-tight">{f.title}</h3>
@@ -203,7 +203,7 @@ export default function LazySmsPage() {
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {payCards.map((card, i) => (
-                <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="border border-border rounded-2xl p-6 bg-card/40">
+                <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="border border-border p-6 bg-card">
                   <div className="flex items-center gap-3 mb-3">
                     <Zap size={20} className="text-primary" />
                     <h3 className="font-display text-sm font-bold tracking-tight">{card.title}</h3>
@@ -238,7 +238,7 @@ export default function LazySmsPage() {
             <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-2xl md:text-3xl font-bold tracking-tight text-center mb-14">FAQ</motion.h2>
             <div className="flex flex-col gap-4">
               {faqs.map((faq, i) => (
-                <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="border border-border rounded-2xl p-6 bg-card/40">
+                <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="border border-border p-6 bg-card">
                   <h3 className="font-display text-sm font-bold mb-2">{faq.q}</h3>
                   <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
                 </motion.div>

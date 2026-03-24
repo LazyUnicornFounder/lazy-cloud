@@ -172,7 +172,7 @@ function CopyPromptButton({
   return (
     <button
       onClick={handleCopy}
-      className={`inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full hover:opacity-90 transition-opacity ${base} ${className}`}
+      className={`inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity ${base} ${className}`}
     >
       {copied ? (
         <><Check size={16} /> Copied to clipboard ✓</>
@@ -212,7 +212,7 @@ function SelfImprovingLoop() {
             className="absolute w-28 text-center"
             style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%,-50%)" }}
           >
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-display text-xs font-bold mb-1">
+            <span className="inline-flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground font-display text-xs font-bold mb-1">
               {i + 1}
             </span>
             <p className="font-body text-xs text-foreground/80 leading-tight">{step}</p>
@@ -294,7 +294,7 @@ const LazyStorePage = () => {
               className="font-display text-sm tracking-[0.2em] uppercase text-primary mb-4 font-bold flex items-center justify-center gap-3"
             >
               Introducing Lazy Store
-              <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 rounded-full">Beta</span>
+              <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1">Beta</span>
             </motion.p>
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-8 max-w-3xl mx-auto">
               The Autonomous<br />
@@ -308,7 +308,7 @@ const LazyStorePage = () => {
               <CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} />
               <button
                 onClick={scrollToHow}
-                className="inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full border border-border text-foreground hover:bg-muted transition-colors"
+                className="inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-foreground hover:bg-muted transition-colors"
               >
                 See How It Works <ArrowRight size={14} />
               </button>
@@ -334,9 +334,9 @@ const LazyStorePage = () => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 transition={{ delay: i * 0.08 }}
-                className="rounded-2xl border border-border bg-card p-5 text-center"
+                className="border border-border bg-card p-5 text-center"
               >
-                <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground font-display text-sm font-bold mb-3">
+                <span className="inline-flex items-center justify-center w-9 h-9 bg-primary text-primary-foreground font-display text-sm font-bold mb-3">
                   {i + 1}
                 </span>
                 <p className="font-body text-sm text-foreground/80 leading-relaxed">{step}</p>
@@ -359,9 +359,9 @@ const LazyStorePage = () => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 transition={{ delay: i * 0.06 }}
-                className="rounded-2xl border border-border bg-card p-6"
+                className="border border-border bg-card p-6"
               >
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
                   <item.icon size={18} className="text-primary" />
                 </div>
                 <h3 className="font-display text-sm font-bold text-foreground mb-1">{item.title}</h3>
@@ -402,9 +402,9 @@ const LazyStorePage = () => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 transition={{ delay: i * 0.08 }}
-                className="rounded-2xl border border-border bg-card p-6 text-center"
+                className="border border-border bg-card p-6 text-center"
               >
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mx-auto mb-3">
                   <item.icon size={18} className="text-primary" />
                 </div>
                 <h3 className="font-display text-sm font-bold text-foreground mb-1">{item.title}</h3>
@@ -448,7 +448,7 @@ const LazyStorePage = () => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 transition={{ delay: i * 0.05 }}
-                className="rounded-2xl border border-border bg-card p-5"
+                className="border border-border bg-card p-5"
               >
                 <h3 className="font-display text-sm font-bold text-foreground mb-1">{faq.q}</h3>
                 <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
@@ -459,7 +459,7 @@ const LazyStorePage = () => {
 
         {/* ── Bottom CTA ── */}
         <section className="max-w-3xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="rounded-3xl border border-border bg-card px-8 py-14 text-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">
               The store that builds and runs itself.
             </h2>
