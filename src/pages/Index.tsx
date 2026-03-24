@@ -237,20 +237,12 @@ const Index = () => {
             <circle cx="70" cy="52" r="2" fill="#f0ead6" stroke="none" />
           </svg>
 
-          {/* Brand name */}
-          <div>
-            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(2.5rem, 5vw, 3.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-              Lazy
-            </p>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 3.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-              Unicorn🦄
-            </p>
-          </div>
-
-          {/* Tagline */}
-          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
-            The autonomous🤖 half of Lovable❤️
-          </p>
+          {/* Headline */}
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 3.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+            The autonomous🤖
+            <br />
+            half of Lovable❤️
+          </h1>
 
           {/* Body */}
           <div className="max-w-xl space-y-4 mt-2">
