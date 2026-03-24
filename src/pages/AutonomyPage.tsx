@@ -62,7 +62,7 @@ function EngineCard({ engine }: { engine: EngineData }) {
         : "";
 
   return (
-    <div className="border border-border p-5 space-y-4">
+    <div className="border border-border p-6 md:p-8 space-y-6">
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
         <div>
