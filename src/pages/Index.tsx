@@ -170,41 +170,7 @@ const Index = () => {
             One prompt, everything runs itself.
           </p>
           <p className="hero-description mt-6 text-sm sm:text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.6 }}>
-            Lazy Unicorn builds the autonomous layer for Lovable. One prompt installs the engine you need — blog posts that publish themselves, SEO that compounds, payments that optimise, SMS that converts, audio that narrates, stores that grow. Everything your site needs to run and grow without you doing it manually.
-          </p>
-
-          {/* Integration logos */}
-          <div className="flex items-center justify-center gap-7 sm:gap-9 mt-10 flex-wrap">
-            {/* Lovable — flame/heart mark */}
-            <svg width="20" height="24" viewBox="0 0 256 308" fill="#f0ead6" opacity="0.35" aria-label="Lovable">
-              <path d="M128 0C93.9 0 66.5 27.4 66.5 61.5c0 22.3 11.8 41.8 29.5 52.6L128 308l32-193.9c17.7-10.8 29.5-30.3 29.5-52.6C189.5 27.4 162.1 0 128 0z"/>
-            </svg>
-            {/* GitHub — octocat mark */}
-            <svg width="24" height="24" viewBox="0 0 98 96" fill="#f0ead6" opacity="0.35" aria-label="GitHub">
-              <path fillRule="evenodd" clipRule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0112.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/>
-            </svg>
-            {/* Shopify — shopping bag mark */}
-            <svg width="21" height="24" viewBox="0 0 109 124" fill="#f0ead6" opacity="0.35" aria-label="Shopify">
-              <path d="M95.8 28.2c-.1-.6-.6-1-1.1-1-.5 0-10.2-1.1-10.2-1.1s-8.1-7.9-9-8.8c-.9-.9-2.6-.6-3.3-.4-.1 0-1.8.5-4.7 1.4-2.8-8.1-7.7-15.5-16.4-15.5h-.7C48.4.9 46.1 0 44.1 0 21.9 0 11.2 27.7 7.9 41.8c-8.6 2.7-14.7 4.6-15.4 4.8C-3.7 48.1-3.9 48.3-4.2 52.4-4.4 55.5-24 124 -24 124l80.8 14L109 124S96 28.8 95.8 28.2zM67.5 21.4l-7.6 2.4c0-4.1-.6-9.8-2.3-14.7C63.5 10.5 66.4 16.9 67.5 21.4zM53.7 25.3l-16.4 5.1c1.6-6.1 4.6-12.2 8.3-16.2 1.4-1.5 3.3-3.1 5.5-4.1C53.3 14.8 53.8 21.2 53.7 25.3zM44.2 3.6c1.8 0 3.3.6 4.6 1.9-7.3 3.4-15.1 12.1-18.4 29.4l-13 4C20.7 27.3 30 3.6 44.2 3.6z"/>
-              <path d="M94.7 27.2c-.5 0-10.2-1.1-10.2-1.1s-8.1-7.9-9-8.8c-.3-.3-.7-.5-1.2-.5l-11.1 117.2 45.8-9.9S96 28.8 95.8 28.2c-.1-.6-.6-1-1.1-1z"/>
-              <path d="M58.1 43.4l-4.8 14.4s-5.3-2.8-11.7-2.8c-9.5 0-10 6-10 7.5 0 8.2 21.4 11.3 21.4 30.5 0 15.1-9.6 24.8-22.5 24.8-15.5 0-23.5-9.6-23.5-9.6l4.2-13.8s8.2 7 15.1 7c4.5 0 6.3-3.5 6.3-6.1 0-10.7-17.6-11.2-17.6-28.7C15 47.9 27.7 30.3 51.3 30.3c9.1 0 6.8 13.1 6.8 13.1z"/>
-            </svg>
-            {/* Twitch — glitch mark */}
-            <svg width="22" height="24" viewBox="0 0 256 268" fill="#f0ead6" opacity="0.35" aria-label="Twitch">
-              <path d="M17.458 0L0 46.556v185.262h63.981V268h46.555l36.121-36.121h54.388L256 177.48V0H17.458zm23.259 23.471H232.53v142.136l-42.106 42.106h-65.333l-36.121 36.121v-36.121H40.717V23.471zm69.413 104.227h23.471V69.578h-23.471v58.12zm63.769 0h23.471V69.578h-23.471v58.12z"/>
-            </svg>
-            {/* Stripe — "S" mark approximation */}
-            <svg width="20" height="24" viewBox="0 0 60 80" fill="#f0ead6" opacity="0.35" aria-label="Stripe">
-              <path d="M13.3 28.8C13.3 26.2 15.5 25 19 25c4.7 0 10.7 1.4 15.4 4V13.5C29.5 11.5 24.7 10.5 19 10.5 7.6 10.5 0 16.7 0 26.2c0 14.8 20.4 12.4 20.4 18.8 0 3.1-2.7 4.1-6.5 4.1-5.6 0-12.8-2.3-18.5-5.4v15.8c6.3 2.7 12.6 3.9 18.5 3.9 11.7 0 19.8-5.8 19.8-15.5C33.7 31.9 13.3 34.7 13.3 28.8z" transform="translate(13,5)"/>
-            </svg>
-            {/* ElevenLabs — "XI" mark */}
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="#f0ead6" opacity="0.35" aria-label="ElevenLabs">
-              <rect x="8" y="3" width="3" height="18" rx="1.5"/>
-              <rect x="13" y="3" width="3" height="18" rx="1.5"/>
-            </svg>
-          </div>
-          <p className="mt-3 font-body text-[9px] tracking-[0.2em] uppercase" style={{ color: "#f0ead6", opacity: 0.15 }}>
-            Works with Lovable · GitHub · Shopify · Twitch · Stripe · ElevenLabs
+            Lazy Unicorn builds the autonomous layer for <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Lovable</strong>. One prompt installs the engine you need — blog posts that publish themselves, SEO that compounds, payments that optimise, SMS that converts, audio that narrates, stores that grow. Works with <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>GitHub</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Shopify</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Twitch</strong>, <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>Stripe</strong>, and <strong className="font-semibold" style={{ opacity: 1, color: "#f0ead6" }}>ElevenLabs</strong>. Everything your site needs to run and grow without you doing it manually.
           </p>
 
           <div className="flex items-center justify-center gap-3 mt-8">
