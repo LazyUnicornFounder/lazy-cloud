@@ -51,6 +51,7 @@ const App = () => (
             <Route path="/lazy-seo-setup" element={<LazySeoSetup />} />
             <Route path="/lazy-seo-dashboard" element={<LazySeoDashboard />} />
             <Route path="/lazy-geo" element={<LazyGeoPage />} />
+            <Route path="/lazy-shopper" element={<LazyShopperPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
