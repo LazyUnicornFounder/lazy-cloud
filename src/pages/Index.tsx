@@ -207,6 +207,44 @@ const Index = () => {
           })}
         </div>
       </section>
+
+      {/* About */}
+      <section id="about" className="relative z-10 py-24 px-6" style={{ backgroundColor: "#0a0a08" }}>
+        <div className="max-w-2xl mx-auto text-center">
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: "#f0ead6", opacity: 0.4 }}>
+            About
+          </p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2, marginTop: "0.5rem" }}>
+            One founder. Zero employees.
+            <br />
+            A company that builds itself.
+          </h2>
+          <div className="mt-10 space-y-6 text-sm sm:text-base leading-relaxed" style={{ color: "#f0ead6", opacity: 0.55 }}>
+            <p>
+              Lazy Unicorn is an experiment in autonomous capitalism — a company designed to discover what people need, build the tools to solve it, grow its own audience, and generate its own revenue. No team. No investors. Just engines.
+            </p>
+            <p>
+              Every product runs as an autonomous engine inside your Lovable project. Lazy Blogger writes and publishes your blog. Lazy SEO finds keywords and creates content that compounds. Lazy GEO gets your brand cited by AI assistants. Lazy Store, Voice, Pay, SMS — each one handles a layer of your business so you don't have to.
+            </p>
+            <p>
+              Built by{" "}
+              <a
+                href="https://x.com/saaborz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 hover:opacity-80 transition-opacity"
+                style={{ color: "#f0ead6", opacity: 1 }}
+              >
+                Saad
+              </a>
+              . One prompt at a time.
+            </p>
+          </div>
+          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>
+            Made for Lovable
+          </p>
+        </div>
+      </section>
     </div>
   );
 };
