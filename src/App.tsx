@@ -30,6 +30,12 @@ import ListenPage from "./pages/ListenPage.tsx";
 import LazyPayPage from "./pages/LazyPayPage.tsx";
 import LazySmsPage from "./pages/LazySmsPage.tsx";
 import LazyStreamPage from "./pages/LazyStreamPage.tsx";
+import LazyStreamSetup from "./pages/LazyStreamSetup.tsx";
+import LazyStreamDashboard from "./pages/LazyStreamDashboard.tsx";
+import StreamsPage from "./pages/StreamsPage.tsx";
+import StreamContentPage from "./pages/StreamContentPage.tsx";
+import StreamHighlightsPage from "./pages/StreamHighlightsPage.tsx";
+import LivePage from "./pages/LivePage.tsx";
 
 const queryClient = new QueryClient();
 
