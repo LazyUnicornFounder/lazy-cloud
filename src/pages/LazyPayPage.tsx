@@ -234,7 +234,7 @@ export default function LazyPayPage() {
                 Lazy Pay
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/45 max-w-xl leading-relaxed">
-                Payments, subscriptions, and a revenue dashboard that improves its own conversion rate — automatically.
+                One prompt installs Stripe payments, subscriptions, and a revenue dashboard that improves its own conversion rate — automatically.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
                 <CopyPromptButton onCopy={handleCopy} />
