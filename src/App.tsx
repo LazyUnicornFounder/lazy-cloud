@@ -79,6 +79,7 @@ const App = () => (
             <Route path="/streams/highlights" element={<StreamHighlightsPage />} />
             <Route path="/streams/:slug" element={<StreamContentPage />} />
             <Route path="/live" element={<LivePage />} />
+            <Route path="/pricing" element={<PricingPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
