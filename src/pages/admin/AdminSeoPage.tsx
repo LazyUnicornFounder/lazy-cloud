@@ -131,6 +131,11 @@ export default function AdminSeoPage() {
                   <div key={kw.id} className="flex items-center justify-between py-2 px-2 border-b border-[#f0ead6]/5 hover:bg-[#f0ead6]/3 transition-colors">
                     <div className="flex-1 min-w-0">
                       <p className="font-body text-xs text-[#f0ead6]/70 truncate">{kw.keyword}</p>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        {kw.product && kw.product !== 'general' && (
+                          <span className="font-body text-[9px] px-1.5 py-0.5 border border-[#c8a961]/20 text-[#c8a961]/60 uppercase tracking-wider">{kw.product}</span>
+                        )}
+                      </div>
                       {kw.page_url && (
                         <a href={kw.page_url} target="_blank" rel="noopener noreferrer" className="font-body text-[10px] text-[#c8a961]/50 hover:text-[#c8a961] truncate block">
                           {kw.page_url.replace(/^https?:\/\//, '').slice(0, 40)}

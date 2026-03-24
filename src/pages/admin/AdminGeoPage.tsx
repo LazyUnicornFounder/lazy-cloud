@@ -187,6 +187,9 @@ export default function AdminGeoPage() {
                   <div className="flex-1 min-w-0">
                     <p className="font-body text-xs text-[#f0ead6]/70 truncate">{q.query}</p>
                     <div className="flex items-center gap-2 mt-0.5">
+                      {q.product && q.product !== 'general' && (
+                        <span className="font-body text-[9px] px-1.5 py-0.5 border border-[#c8a961]/20 text-[#c8a961]/60 uppercase tracking-wider">{q.product}</span>
+                      )}
                       {q.query_type && (
                         <span className={`font-body text-[9px] px-1.5 py-0.5 border ${typeColors[q.query_type] || "text-[#f0ead6]/30 border-[#f0ead6]/10"} uppercase tracking-wider`}>{q.query_type}</span>
                       )}

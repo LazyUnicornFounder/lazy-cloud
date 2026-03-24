@@ -241,6 +241,7 @@ export type Database = {
           id: string
           last_tested: string | null
           priority: number
+          product: string | null
           query: string
           query_type: string | null
         }
@@ -251,6 +252,7 @@ export type Database = {
           id?: string
           last_tested?: string | null
           priority?: number
+          product?: string | null
           query: string
           query_type?: string | null
         }
@@ -261,6 +263,7 @@ export type Database = {
           id?: string
           last_tested?: string | null
           priority?: number
+          product?: string | null
           query?: string
           query_type?: string | null
         }
@@ -358,6 +361,7 @@ export type Database = {
           last_checked: string | null
           page_url: string | null
           previous_position: number | null
+          product: string | null
         }
         Insert: {
           current_position?: number | null
@@ -366,6 +370,7 @@ export type Database = {
           last_checked?: string | null
           page_url?: string | null
           previous_position?: number | null
+          product?: string | null
         }
         Update: {
           current_position?: number | null
@@ -374,6 +379,7 @@ export type Database = {
           last_checked?: string | null
           page_url?: string | null
           previous_position?: number | null
+          product?: string | null
         }
         Relationships: []
       }
