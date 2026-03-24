@@ -228,9 +228,11 @@ const Index = () => {
           className="text-center px-6 max-w-3xl"
         >
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-            The Autonomous Layer
+            Lovable gave everyone a site.
             <br />
-            for Lovable.
+            LazyUnicorn makes it work
+            <br />
+            while you sleep.
           </h1>
           <p className="mt-4 font-body text-base sm:text-lg tracking-wide" style={{ color: "#f0ead6", opacity: 0.5 }}>
             One prompt, everything runs itself.
