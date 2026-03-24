@@ -235,15 +235,15 @@ const Index = () => {
             </div>
             <div className="w-full h-[3px]" style={{ backgroundColor: "rgba(240,234,214,0.1)" }}>
               <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: "40%" }}
+              initial={{ width: 0 }}
+                animate={{ width: "33.3%" }}
                 transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                 className="h-full"
                 style={{ backgroundColor: "#f0ead6" }}
               />
             </div>
             <div className="flex justify-between mt-1.5">
-              {[1, 2, 3, 4, 5].map((level) => (
+              {[1, 2, 3, 4, 5, 6].map((level) => (
                 <span
                   key={level}
                   className="text-[8px]"
