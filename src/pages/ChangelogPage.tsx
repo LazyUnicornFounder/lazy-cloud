@@ -24,12 +24,12 @@ interface Release {
 }
 
 const ENGINE_CATEGORIES: Record<string, string[]> = {
-  "Content Engines": ["Lazy Blogger", "Lazy SEO", "Lazy GEO", "Lazy Voice", "Lazy Contentful", "Lazy Stream", "Lazy Perplexity", "Lazy Crawl"],
-  "Commerce Engines": ["Lazy Store", "Lazy Pay", "Lazy SMS"],
-  "Media Engines": ["Lazy Voice", "Lazy Stream"],
-  "Developer Engines": ["Lazy Code", "Lazy GitLab", "Lazy Linear"],
-  "Channels": ["Lazy Alert", "Lazy Telegram", "Lazy Contentful", "Lazy Supabase"],
-  "Security": ["Lazy Security"],
+  "Lazy Content": ["Lazy Blogger", "Lazy SEO", "Lazy GEO", "Lazy Crawl", "Lazy Perplexity"],
+  "Lazy Commerce": ["Lazy Store", "Lazy Pay", "Lazy SMS"],
+  "Lazy Media": ["Lazy Voice", "Lazy Stream"],
+  "Lazy Dev": ["Lazy Code", "Lazy GitLab", "Lazy Linear"],
+  "Lazy Channels": ["Lazy Alert", "Lazy Telegram", "Lazy Contentful", "Lazy Supabase"],
+  "Lazy Shield": ["Lazy Security"],
 };
 
 const CATEGORY_FILTERS = ["All Engines", ...Object.keys(ENGINE_CATEGORIES)];

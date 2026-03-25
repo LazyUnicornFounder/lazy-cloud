@@ -12,9 +12,9 @@ import { Badge } from "@/components/ui/badge";
 
 const fade = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
-type Category = "All" | "Payments" | "Communication" | "Media" | "Content" | "Developer" | "Commerce" | "Security";
+type Category = "All" | "Payments" | "Communication" | "Lazy Media" | "Lazy Content" | "Lazy Dev" | "Lazy Commerce" | "Lazy Shield";
 
-const filters: Category[] = ["All", "Content", "Commerce", "Payments", "Communication", "Developer", "Media", "Security"];
+const filters: Category[] = ["All", "Lazy Content", "Lazy Commerce", "Payments", "Communication", "Lazy Dev", "Lazy Media", "Lazy Shield"];
 
 interface Integration {
   name: string;
@@ -61,7 +61,7 @@ const integrations: Integration[] = [
   },
   {
     name: "ElevenLabs",
-    category: "Media",
+    category: "Lazy Media",
     description: "Generate high-quality audio and text-to-speech in your Lovable site using any voice — including a clone of your own.",
     unlocks: [
       "Narrate every blog post in your voice automatically.",
@@ -76,7 +76,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Firecrawl",
-    category: "Content",
+    category: "Lazy Content",
     description: "Scrape, crawl, and extract structured content from any website directly inside your Lovable project.",
     unlocks: [
       "Monitor competitor websites weekly for pricing changes and new features.",
@@ -92,7 +92,7 @@ const integrations: Integration[] = [
   },
   {
     name: "GitLab",
-    category: "Developer",
+    category: "Lazy Dev",
     description: "Back up, sync, and collaborate on your Lovable code with GitLab — and turn every commit into published content.",
     unlocks: [
       "Publish a plain-English changelog automatically every time you push code.",
@@ -107,7 +107,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Linear",
-    category: "Developer",
+    category: "Lazy Dev",
     description: "Import your Linear issues and specs to inform app creation — and turn completed cycles into published product updates.",
     unlocks: [
       "Publish a cycle summary automatically every time a sprint completes.",
@@ -122,7 +122,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Perplexity",
-    category: "Content",
+    category: "Lazy Content",
     description: "Answer questions and run web-backed research inside your Lovable project using live search results with citations.",
     unlocks: [
       "Research your niche daily with live web data and feed findings into your blog queue.",
@@ -167,7 +167,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Twitch",
-    category: "Media",
+    category: "Lazy Media",
     description: "Connect your Lovable site to Twitch to monitor streams and turn live content into published articles.",
     unlocks: [
       "Publish a stream recap blog post automatically every time you go offline.",
@@ -182,7 +182,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Supabase",
-    category: "Developer",
+    category: "Lazy Dev",
     description: "Authenticate users and store data — the backbone of every Lovable project, now with autonomous milestone monitoring.",
     unlocks: [
       "Publish a celebration post automatically when you hit 100, 500, or 1,000 users.",
@@ -197,7 +197,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Contentful",
-    category: "Content",
+    category: "Lazy Content",
     description: "Sync content between your Lovable site and Contentful in both directions — automatically, continuously.",
     unlocks: [
       "Pull published Contentful entries into your Lovable site automatically.",
@@ -212,7 +212,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Aikido",
-    category: "Security",
+    category: "Lazy Shield",
     description: "Run penetration tests against your live Lovable app and get audit-ready security reports automatically.",
     unlocks: [
       "Run a full pentest automatically on a configurable schedule — weekly, monthly, or quarterly.",
@@ -229,7 +229,7 @@ const integrations: Integration[] = [
   },
   {
     name: "GitHub",
-    category: "Developer",
+    category: "Lazy Dev",
     description: "Turn every GitHub commit into changelogs, release notes, and developer blog posts automatically.",
     unlocks: [
       "Publish a plain-English changelog automatically every time you push code.",

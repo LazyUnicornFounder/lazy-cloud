@@ -40,7 +40,7 @@ export interface EngineCategory {
 
 export const ENGINE_CATEGORIES: EngineCategory[] = [
   {
-    label: "Content Engines",
+    label: "Lazy Content",
     engines: [
       {
         name: "Lazy Blogger",
@@ -111,24 +111,10 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "It tracks your citation rate and optimises for it. Coming soon.",
         ],
       },
-      {
-        name: "Lazy Contentful",
-        description: "Two-way content sync with Contentful",
-        currentLevel: 3,
-        link: "/lazy-contentful",
-        levels: [
-          "You copy content between systems by hand.",
-          "CSV export/import. Always behind.",
-          "Nightly sync job. One-directional and fragile.",
-          "Two-way sync. Every post appears in both systems automatically.",
-          "It adapts content format per Contentful content type. Coming soon.",
-          "It prioritises what syncs based on performance. Coming soon.",
-        ],
-      },
     ],
   },
   {
-    label: "Commerce Engines",
+    label: "Lazy Commerce",
     engines: [
       {
         name: "Lazy Store",
@@ -158,10 +144,24 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "It recovers abandoned carts, rewrites low-converting pages, and improves itself weekly.",
         ],
       },
+      {
+        name: "Lazy SMS",
+        description: "Self-improving SMS sequences via Twilio",
+        currentLevel: 5,
+        link: "/lazy-sms",
+        levels: [
+          "You send texts manually and track responses in a spreadsheet.",
+          "Bulk SMS tool. You still write everything.",
+          "Drip sequence runs on schedule. Never changes.",
+          "Customer actions trigger texts. Signup → welcome. Payment → confirmation.",
+          "One prompt installs welcome sequences, recovery texts, opt-out, and delivery tracking.",
+          "Low-engagement messages get rewritten automatically. Your SMS gets better every week.",
+        ],
+      },
     ],
   },
   {
-    label: "Media Engines",
+    label: "Lazy Media",
     engines: [
       {
         name: "Lazy Voice",
@@ -191,24 +191,10 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "It learns which stream topics drive traffic and adjusts templates. Coming soon.",
         ],
       },
-      {
-        name: "Lazy SMS",
-        description: "Self-improving SMS sequences via Twilio",
-        currentLevel: 5,
-        link: "/lazy-sms",
-        levels: [
-          "You send texts manually and track responses in a spreadsheet.",
-          "Bulk SMS tool. You still write everything.",
-          "Drip sequence runs on schedule. Never changes.",
-          "Customer actions trigger texts. Signup → welcome. Payment → confirmation.",
-          "One prompt installs welcome sequences, recovery texts, opt-out, and delivery tracking.",
-          "Low-engagement messages get rewritten automatically. Your SMS gets better every week.",
-        ],
-      },
     ],
   },
   {
-    label: "Developer Engines",
+    label: "Lazy Dev",
     engines: [
       {
         name: "Lazy Code",
@@ -252,24 +238,10 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "It learns which updates your users care about. Coming soon.",
         ],
       },
-      {
-        name: "Lazy Supabase",
-        description: "Narrates your database growth story automatically",
-        currentLevel: 3,
-        link: "/lazy-supabase",
-        levels: [
-          "You notice milestones days later. Maybe tweet about it.",
-          "Basic error alerts. You get paged when it's down.",
-          "Weekly metrics email. You read it sometimes.",
-          "Hit 1,000 users? Celebration post publishes itself. Error spike? You're alerted.",
-          "It feeds growth patterns into your content strategy. Coming soon.",
-          "It detects anomalies before they become problems. Coming soon.",
-        ],
-      },
     ],
   },
   {
-    label: "Channels",
+    label: "Lazy Channels",
     engines: [
       {
         name: "Lazy Alert",
@@ -299,10 +271,38 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "It alerts you before problems compound. Coming soon.",
         ],
       },
+      {
+        name: "Lazy Contentful",
+        description: "Two-way content sync with Contentful",
+        currentLevel: 3,
+        link: "/lazy-contentful",
+        levels: [
+          "You copy content between systems by hand.",
+          "CSV export/import. Always behind.",
+          "Nightly sync job. One-directional and fragile.",
+          "Two-way sync. Every post appears in both systems automatically.",
+          "It adapts content format per Contentful content type. Coming soon.",
+          "It prioritises what syncs based on performance. Coming soon.",
+        ],
+      },
+      {
+        name: "Lazy Supabase",
+        description: "Narrates your database growth story automatically",
+        currentLevel: 3,
+        link: "/lazy-supabase",
+        levels: [
+          "You notice milestones days later. Maybe tweet about it.",
+          "Basic error alerts. You get paged when it's down.",
+          "Weekly metrics email. You read it sometimes.",
+          "Hit 1,000 users? Celebration post publishes itself. Error spike? You're alerted.",
+          "It feeds growth patterns into your content strategy. Coming soon.",
+          "It detects anomalies before they become problems. Coming soon.",
+        ],
+      },
     ],
   },
   {
-    label: "Security",
+    label: "Lazy Shield",
     engines: [
       {
         name: "Lazy Security",

@@ -8,54 +8,61 @@ const fade = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }
 
 const engineGroups = [
   {
-    label: "Content Engines",
+    label: "Lazy Content",
     description: "Autonomous content creation, SEO, and AI citation.",
     engines: [
       { name: "Lazy Blogger", tagline: "Your blog writes itself. Four posts a day, zero input.", href: "/lazy-blogger" },
       { name: "Lazy SEO", tagline: "Discovers keywords and publishes ranking articles.", href: "/lazy-seo" },
       { name: "Lazy GEO", tagline: "Gets your brand cited by ChatGPT and Perplexity.", href: "/lazy-geo" },
-      { name: "Lazy Voice", tagline: "Narrates every post into a podcast episode.", href: "/lazy-voice" },
-      { name: "Lazy Contentful", tagline: "Two-way content sync with Contentful.", href: "/lazy-contentful" },
-      { name: "Lazy Stream", tagline: "Turns every Twitch stream into blog posts and SEO content.", href: "/lazy-stream" },
+      { name: "Lazy Crawl", tagline: "Monitors competitors and feeds intelligence to your engines.", href: "/lazy-crawl" },
       { name: "Lazy Perplexity", tagline: "Queries Perplexity for trends and feeds your content engines.", href: "/lazy-perplexity" },
     ],
   },
   {
-    label: "Commerce Engines",
+    label: "Lazy Commerce",
     description: "Autonomous storefronts, payments, and conversion optimisation.",
     engines: [
       { name: "Lazy Store", tagline: "Discovers products, writes listings, optimises conversion.", href: "/lazy-store" },
       { name: "Lazy Pay", tagline: "Full Stripe integration that optimises its own conversion rate.", href: "/lazy-pay" },
+      { name: "Lazy SMS", tagline: "Self-improving SMS sequences via Twilio.", href: "/lazy-sms" },
     ],
   },
   {
-    label: "Developer Engines",
+    label: "Lazy Media",
+    description: "Autonomous audio narration and stream content.",
+    engines: [
+      { name: "Lazy Voice", tagline: "Narrates every post into a podcast episode.", href: "/lazy-voice" },
+      { name: "Lazy Stream", tagline: "Turns every Twitch stream into blog posts and SEO content.", href: "/lazy-stream" },
+    ],
+  },
+  {
+    label: "Lazy Dev",
     description: "Turn commits, issues, and cycles into public content.",
     engines: [
       { name: "Lazy GitHub", tagline: "Turns every GitHub commit into a changelog and developer post.", href: "/lazy-github" },
       { name: "Lazy GitLab", tagline: "Turns GitLab activity into public content.", href: "/lazy-gitlab" },
       { name: "Lazy Linear", tagline: "Turns Linear cycles into product update content.", href: "/lazy-linear" },
+    ],
+  },
+  {
+    label: "Lazy Channels",
+    description: "Real-time notifications and content distribution.",
+    engines: [
+      { name: "Lazy Alert", tagline: "Every engine event reported to Slack in real time.", href: "/lazy-alert" },
+      { name: "Lazy Telegram", tagline: "Real-time engine reporting via Telegram bot.", href: "/lazy-telegram" },
+      { name: "Lazy Contentful", tagline: "Two-way content sync with Contentful.", href: "/lazy-contentful" },
       { name: "Lazy Supabase", tagline: "Narrates your database growth story automatically.", href: "/lazy-supabase" },
     ],
   },
   {
-    label: "Messaging Engines",
-    description: "Automated texts and real-time notifications.",
-    engines: [
-      { name: "Lazy SMS", tagline: "Self-improving SMS sequences via Twilio.", href: "/lazy-sms" },
-      { name: "Lazy Telegram", tagline: "Real-time engine reporting via Telegram bot.", href: "/lazy-telegram" },
-      { name: "Lazy Alert", tagline: "Every engine event reported to Slack in real time.", href: "/lazy-alert" },
-    ],
-  },
-  {
-    label: "Security",
+    label: "Lazy Shield",
     description: "Autonomous pentesting and vulnerability monitoring.",
     engines: [
       { name: "Lazy Security", tagline: "Autonomous pentesting and vulnerability monitoring via Aikido.", href: "/lazy-security" },
     ],
   },
   {
-    label: "Operations",
+    label: "Lazy Unicorn",
     description: "Unified runtime and dashboard for the entire stack.",
     engines: [
       { name: "Lazy Run", tagline: "One prompt installs and orchestrates every engine.", href: "/lazy-run" },

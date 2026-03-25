@@ -9,48 +9,49 @@ const XLogo = () => (
 
 const engineCategories = [
   {
-    label: "Content",
+    label: "Lazy Content",
     items: [
       { name: "Lazy Blogger", href: "/lazy-blogger" },
       { name: "Lazy SEO", href: "/lazy-seo" },
       { name: "Lazy GEO", href: "/lazy-geo" },
-      { name: "Lazy Voice", href: "/lazy-voice" },
-      { name: "Lazy Contentful", href: "/lazy-contentful" },
-      { name: "Lazy Stream", href: "/lazy-stream" },
+      { name: "Lazy Crawl", href: "/lazy-crawl" },
       { name: "Lazy Perplexity", href: "/lazy-perplexity" },
     ],
   },
   {
-    label: "Commerce",
+    label: "Lazy Commerce",
     items: [
       { name: "Lazy Store", href: "/lazy-store" },
       { name: "Lazy Pay", href: "/lazy-pay" },
+      { name: "Lazy SMS", href: "/lazy-sms" },
     ],
   },
   {
-    label: "Code",
+    label: "Lazy Media",
+    items: [
+      { name: "Lazy Voice", href: "/lazy-voice" },
+      { name: "Lazy Stream", href: "/lazy-stream" },
+    ],
+  },
+  {
+    label: "Lazy Dev",
     items: [
       { name: "Lazy GitHub", href: "/lazy-github" },
       { name: "Lazy GitLab", href: "/lazy-gitlab" },
+      { name: "Lazy Linear", href: "/lazy-linear" },
     ],
   },
   {
-    label: "Messaging",
-    items: [
-      { name: "Lazy SMS", href: "/lazy-sms" },
-      { name: "Lazy Telegram", href: "/lazy-telegram" },
-    ],
-  },
-  {
-    label: "Ops",
+    label: "Lazy Channels",
     items: [
       { name: "Lazy Alert", href: "/lazy-alert" },
-      { name: "Lazy Linear", href: "/lazy-linear" },
+      { name: "Lazy Telegram", href: "/lazy-telegram" },
+      { name: "Lazy Contentful", href: "/lazy-contentful" },
       { name: "Lazy Supabase", href: "/lazy-supabase" },
     ],
   },
   {
-    label: "Security",
+    label: "Lazy Shield",
     items: [
       { name: "Lazy Security", href: "/lazy-security" },
     ],

@@ -21,34 +21,34 @@ const navGroups: NavGroup[] = [
     { label: "Overview", path: "/admin/overview", icon: LayoutDashboard, engine: null },
     { label: "Analytics", path: "/admin/analytics", icon: BarChart3, engine: null },
   ]},
-  { label: "Content Engines", items: [
+  { label: "Lazy Content", items: [
     { label: "Blogger", path: "/admin/blogger", icon: PenTool, engine: "blogger" },
     { label: "SEO", path: "/admin/seo", icon: Search, engine: "seo" },
     { label: "GEO", path: "/admin/geo", icon: Brain, engine: "geo" },
     { label: "Crawl", path: "/admin/crawl", icon: Radar, engine: "crawl" },
     { label: "Perplexity", path: "/admin/perplexity", icon: Compass, engine: "perplexity" },
   ]},
-  { label: "Commerce Engines", items: [
+  { label: "Lazy Commerce", items: [
     { label: "Store", path: "/admin/store", icon: ShoppingCart, engine: "store" },
     { label: "Pay", path: "/admin/pay", icon: CreditCard, engine: "pay" },
     { label: "SMS", path: "/admin/sms", icon: MessageSquare, engine: "sms" },
   ]},
-  { label: "Media Engines", items: [
+  { label: "Lazy Media", items: [
     { label: "Voice", path: "/admin/voice", icon: Mic, engine: "voice" },
     { label: "Stream", path: "/admin/stream", icon: Tv, engine: "stream" },
   ]},
-  { label: "Developer Engines", items: [
+  { label: "Lazy Dev", items: [
     { label: "Code", path: "/admin/code", icon: Code, engine: "code" },
     { label: "GitLab", path: "/admin/gitlab", icon: GitBranch, engine: "gitlab" },
     { label: "Linear", path: "/admin/linear", icon: CheckCircle, engine: "linear" },
   ]},
-  { label: "Channels", items: [
+  { label: "Lazy Channels", items: [
     { label: "Alert", path: "/admin/alert", icon: Bell, engine: "alert" },
     { label: "Telegram", path: "/admin/telegram", icon: Send, engine: "telegram" },
     { label: "Contentful", path: "/admin/contentful", icon: DbIcon, engine: "contentful" },
     { label: "Supabase", path: "/admin/supabase-monitor", icon: DbIcon, engine: "supabase_monitor" },
   ]},
-  { label: "Security", items: [
+  { label: "Lazy Shield", items: [
     { label: "Security", path: "/admin/security", icon: Shield, engine: "security" },
   ]},
   { label: "", items: [
