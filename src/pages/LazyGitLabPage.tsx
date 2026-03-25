@@ -46,7 +46,8 @@ Add a complete autonomous GitLab content engine called Lazy GitLab to this proje
 1. Database
 Create these Supabase tables with RLS enabled:
 
-gitlab_settings: id (uuid, primary key, default gen_random_uuid()), gitlab_username (text), gitlab_project_id (text), gitlab_project_path (text), site_url (text), business_name (text), project_description (text), tech_stack (text), is_running (boolean, default true), setup_complete (boolean, default false), recap_template_guidance (text), created_at (timestamptz, default now()).
+gitlab_settings: id (uuid, primary key, default gen_random_uuid()), gitlab_username (text), gitlab_project_id (text), gitlab_project_path (text), site_url (text), business_name (text), project_description (text), tech_stack (text), is_running (boolean, default true), setup_complete (boolean, default false),
+prompt_version (text, nullable), recap_template_guidance (text), created_at (timestamptz, default now()).
 Note: Store GITLAB_TOKEN and GITLAB_WEBHOOK_SECRET as Supabase secrets. Never in the database.
 
 gitlab_commits: id (uuid, primary key, default gen_random_uuid()), gitlab_sha (text, unique), message (text), author (text), files_changed (integer), branch (text), committed_at (timestamptz), plain_english_summary (text), significance (text), processed (boolean, default false), created_at (timestamptz, default now()).
@@ -79,7 +80,7 @@ Submit button: Activate Lazy GitLab
 On submit:
 1. Store GITLAB_TOKEN and GITLAB_WEBHOOK_SECRET as Supabase secrets
 2. Save all other values to gitlab_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.1'
 4. Show instructions: Go to your GitLab project, Settings → Webhooks → Add new webhook. Set URL to [site_url]/api/gitlab-webhook. Set Secret Token to your webhook secret. Select Push events, Tag push events, Merge request events, Releases events. Click Add webhook.
 5. Redirect to /admin with message: Lazy GitLab is active. Your next commit will be processed and published automatically.
 

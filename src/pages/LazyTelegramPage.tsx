@@ -49,7 +49,8 @@ Add a complete Telegram bot integration called Lazy Telegram to this project. It
 1. Database
 Create these Supabase tables with RLS enabled:
 
-telegram_settings: id (uuid, primary key, default gen_random_uuid()), chat_id (text), daily_briefing_enabled (boolean, default true), daily_briefing_time (text, default '08:00'), alert_payments (boolean, default true), alert_sms_replies (boolean, default true), alert_posts (boolean, default false), alert_keywords (boolean, default true), alert_citations (boolean, default true), alert_products (boolean, default true), alert_streams (boolean, default true), alert_releases (boolean, default true), alert_errors (boolean, default true), last_checked (timestamptz), is_running (boolean, default true), setup_complete (boolean, default false), created_at (timestamptz, default now()).
+telegram_settings: id (uuid, primary key, default gen_random_uuid()), chat_id (text), daily_briefing_enabled (boolean, default true), daily_briefing_time (text, default '08:00'), alert_payments (boolean, default true), alert_sms_replies (boolean, default true), alert_posts (boolean, default false), alert_keywords (boolean, default true), alert_citations (boolean, default true), alert_products (boolean, default true), alert_streams (boolean, default true), alert_releases (boolean, default true), alert_errors (boolean, default true), last_checked (timestamptz), is_running (boolean, default true), setup_complete (boolean, default false),
+prompt_version (text, nullable), created_at (timestamptz, default now()).
 Note: Store TELEGRAM_BOT_TOKEN as a Supabase secret. Never in the database.
 
 telegram_log: id (uuid, primary key, default gen_random_uuid()), engine (text), event_type (text), message (text), telegram_response (text), sent_at (timestamptz, default now()), success (boolean, default true).
@@ -69,7 +70,7 @@ Submit button: Connect to Telegram
 On submit:
 1. Store TELEGRAM_BOT_TOKEN as Supabase secret
 2. Save chat_id and all toggles to telegram_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.1'
 4. Send a test message via Telegram: Your Lazy Telegram bot is connected. Your autonomous business will now report to you here.
 5. Redirect to /admin with message: Telegram connected. Check your bot for the test message.
 

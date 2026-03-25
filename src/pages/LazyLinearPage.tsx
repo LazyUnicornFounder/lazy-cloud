@@ -46,7 +46,8 @@ Add a complete autonomous Linear content engine called Lazy Linear to this proje
 1. Database
 Create these Supabase tables with RLS enabled:
 
-linear_settings: id (uuid, primary key, default gen_random_uuid()), brand_name (text), business_description (text), site_url (text), linear_team_id (text), is_running (boolean, default true), setup_complete (boolean, default false), recap_template_guidance (text), created_at (timestamptz, default now()).
+linear_settings: id (uuid, primary key, default gen_random_uuid()), brand_name (text), business_description (text), site_url (text), linear_team_id (text), is_running (boolean, default true), setup_complete (boolean, default false),
+prompt_version (text, nullable), recap_template_guidance (text), created_at (timestamptz, default now()).
 Note: Store LINEAR_API_KEY as Supabase secret. Never in the database.
 
 linear_issues: id (uuid, primary key, default gen_random_uuid()), linear_id (text, unique), title (text), description (text), state (text), priority (integer), assignee (text), cycle_id (text), project_id (text), labels (text), created_at_linear (timestamptz), completed_at (timestamptz), synced_at (timestamptz, default now()).
@@ -74,7 +75,7 @@ Submit button: Activate Lazy Linear
 On submit:
 1. Store LINEAR_API_KEY as Supabase secret
 2. Save all other values to linear_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.1'
 4. Immediately call linear-sync-all to do a first full sync
 5. Redirect to /admin with message: Lazy Linear is active. Syncing your Linear workspace now.
 

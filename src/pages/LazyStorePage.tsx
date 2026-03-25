@@ -38,6 +38,7 @@ price_range_max (integer),
 site_url (text),
 is_running (boolean, default true),
 setup_complete (boolean, default false),
+prompt_version (text, nullable),
 created_at (timestamptz, default now())
 
 Note: Store Stripe keys as Supabase secrets — STRIPE_SECRET_KEY, STRIPE_PUBLISHABLE_KEY. Never store in database.
@@ -115,7 +116,7 @@ Submit button: Launch My Store
 On submit:
 1. Store Stripe keys as Supabase secrets
 2. Save all other values to store_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.3'
 4. Immediately call store-discover once
 5. Show loading: "Discovering products for your store..."
 6. Redirect to /admin with message: "Your store is live. Products are being discovered and listed automatically."

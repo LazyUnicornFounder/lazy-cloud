@@ -29,6 +29,7 @@ voice_id (text, default 'EXAVITQu4vr4xnSDxMaL'),
 rss_enabled (boolean, default true),
 is_running (boolean, default true),
 setup_complete (boolean, default false),
+prompt_version (text, nullable),
 created_at (timestamptz, default now())
 
 Note: Store the ElevenLabs API key as a Supabase secret — ELEVENLABS_API_KEY. Never store it in the database table.
@@ -73,7 +74,7 @@ Submit button: Start Lazy Voice
 On submit:
 1. Store ElevenLabs API key as Supabase secret ELEVENLABS_API_KEY
 2. Save all other values to voice_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.3'
 4. Redirect to /admin with message: "Lazy Voice is running. Every new blog post will be narrated automatically within 30 minutes of publishing."
 
 ---

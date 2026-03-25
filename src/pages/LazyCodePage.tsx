@@ -26,6 +26,7 @@ project_description (text),
 tech_stack (text),
 is_running (boolean, default true),
 setup_complete (boolean, default false),
+prompt_version (text, nullable),
 recap_template_guidance (text),
 created_at (timestamptz, default now())
 
@@ -116,7 +117,7 @@ Submit button: Activate Lazy Code
 On submit:
 1. Store GITHUB_TOKEN and GITHUB_WEBHOOK_SECRET as Supabase secrets
 2. Save all other values to code_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.3'
 4. Show webhook setup instructions: "Go to your GitHub repository Settings → Webhooks → Add webhook. Set Payload URL to [site_url]/api/github-webhook. Set Content type to application/json. Set Secret to your webhook secret. Select events: Pushes and Releases. Click Add webhook."
 5. Redirect to /admin with message: "Lazy Code is active. Your next commit or release will be processed and published automatically."
 

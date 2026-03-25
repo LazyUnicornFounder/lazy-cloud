@@ -46,7 +46,8 @@ Add a complete autonomous Perplexity research and citation engine called Lazy Pe
 1. Database
 Create these Supabase tables with RLS enabled:
 
-perplexity_settings: id (uuid, primary key, default gen_random_uuid()), brand_name (text), business_description (text), niche (text), target_audience (text), competitors (text), site_url (text), research_topics (text), is_running (boolean, default true), setup_complete (boolean, default false), created_at (timestamptz, default now()).
+perplexity_settings: id (uuid, primary key, default gen_random_uuid()), brand_name (text), business_description (text), niche (text), target_audience (text), competitors (text), site_url (text), research_topics (text), is_running (boolean, default true), setup_complete (boolean, default false),
+prompt_version (text, nullable), created_at (timestamptz, default now()).
 Note: Store PERPLEXITY_API_KEY as Supabase secret. Never in the database.
 
 perplexity_research: id (uuid, primary key, default gen_random_uuid()), query (text), model_used (text, default 'sonar'), response_text (text), citations (jsonb), research_type (text — one of trend, question, competitor, brand-check, topic-brief), processed (boolean, default false), researched_at (timestamptz, default now()).
@@ -73,7 +74,7 @@ Submit button: Activate Lazy Perplexity
 On submit:
 1. Store PERPLEXITY_API_KEY as Supabase secret
 2. Save all other values to perplexity_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.1'
 4. Immediately trigger perplexity-research once
 5. Redirect to /admin with message: Lazy Perplexity is active. Researching your niche now.
 

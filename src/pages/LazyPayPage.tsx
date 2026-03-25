@@ -27,6 +27,7 @@ site_url (text),
 currency (text, default 'usd'),
 is_running (boolean, default true),
 setup_complete (boolean, default false),
+prompt_version (text, nullable),
 created_at (timestamptz, default now())
 
 Note: Store Stripe keys as Supabase secrets — STRIPE_SECRET_KEY, STRIPE_PUBLISHABLE_KEY, STRIPE_WEBHOOK_SECRET. Never store them in the database table.
@@ -118,7 +119,7 @@ Submit button: Activate Lazy Pay
 On submit:
 1. Store Stripe keys as Supabase secrets
 2. Save business_name, support_email, site_url, currency to pay_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.3'
 4. Redirect to /admin with message: "Lazy Pay is active. Add your first product to start taking payments."
 
 ---

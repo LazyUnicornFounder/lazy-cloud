@@ -46,7 +46,8 @@ Add a complete autonomous Supabase monitoring and content engine called Lazy Sup
 1. Database
 Create these Supabase tables with RLS enabled:
 
-supabase_settings: id (uuid, primary key, default gen_random_uuid()), brand_name (text), business_description (text), site_url (text), supabase_project_url (text), monitor_signups (boolean, default true), monitor_errors (boolean, default true), monitor_storage (boolean, default true), monitor_milestones (boolean, default true), milestone_tables (text), is_running (boolean, default true), setup_complete (boolean, default false), created_at (timestamptz, default now()).
+supabase_settings: id (uuid, primary key, default gen_random_uuid()), brand_name (text), business_description (text), site_url (text), supabase_project_url (text), monitor_signups (boolean, default true), monitor_errors (boolean, default true), monitor_storage (boolean, default true), monitor_milestones (boolean, default true), milestone_tables (text), is_running (boolean, default true), setup_complete (boolean, default false),
+prompt_version (text, nullable), created_at (timestamptz, default now()).
 Note: Store SUPABASE_SERVICE_ROLE_KEY as a Supabase secret. Never in the database.
 
 supabase_snapshots: id (uuid, primary key, default gen_random_uuid()), snapshot_type (text — one of signups, errors, storage, table-size), metric_name (text), metric_value (numeric), recorded_at (timestamptz, default now()).
@@ -75,7 +76,7 @@ Submit button: Activate Lazy Supabase
 On submit:
 1. Store SUPABASE_SERVICE_ROLE_KEY as Supabase secret
 2. Save all values to supabase_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.1'
 4. Immediately call supabase-monitor once
 5. Redirect to /admin with message: Lazy Supabase is running. Monitoring your database for milestones and events.
 

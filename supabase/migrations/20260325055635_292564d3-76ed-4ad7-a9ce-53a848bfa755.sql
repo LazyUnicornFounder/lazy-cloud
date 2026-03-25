@@ -1,0 +1,1 @@
+UPDATE prompt_versions SET is_current = false WHERE is_current = true;

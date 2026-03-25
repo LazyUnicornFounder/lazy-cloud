@@ -26,6 +26,7 @@ site_url (text),
 twilio_phone_number (text),
 is_running (boolean, default true),
 setup_complete (boolean, default false),
+prompt_version (text, nullable),
 created_at (timestamptz, default now())
 
 Note: Store Twilio credentials as Supabase secrets — TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN. Never store in the database table.
@@ -107,7 +108,7 @@ Submit button: Activate Lazy SMS
 On submit:
 1. Store TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN as Supabase secrets
 2. Save twilio_phone_number, business_name, site_url to sms_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.3'
 4. Seed sms_sequences with four default sequences:
    - trigger: new-customer, step: 1, delay: 0, template: "Welcome to [business_name]. We are glad to have you. Reply STOP to opt out."
    - trigger: payment-success, step: 1, delay: 0, template: "Payment confirmed. Thank you for your purchase from [business_name]. Reply STOP to opt out."

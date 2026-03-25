@@ -46,7 +46,8 @@ Add a complete autonomous Contentful integration called Lazy Contentful to this 
 1. Database
 Create these Supabase tables with RLS enabled:
 
-contentful_settings: id (uuid, primary key, default gen_random_uuid()), space_id (text), environment_id (text, default 'master'), content_type_blog (text, default 'blogPost'), content_type_seo (text, default 'seoArticle'), content_type_geo (text, default 'geoContent'), sync_from_contentful (boolean, default true), sync_to_contentful (boolean, default true), site_url (text), brand_name (text), is_running (boolean, default true), setup_complete (boolean, default false), last_synced (timestamptz), created_at (timestamptz, default now()).
+contentful_settings: id (uuid, primary key, default gen_random_uuid()), space_id (text), environment_id (text, default 'master'), content_type_blog (text, default 'blogPost'), content_type_seo (text, default 'seoArticle'), content_type_geo (text, default 'geoContent'), sync_from_contentful (boolean, default true), sync_to_contentful (boolean, default true), site_url (text), brand_name (text), is_running (boolean, default true), setup_complete (boolean, default false),
+prompt_version (text, nullable), last_synced (timestamptz), created_at (timestamptz, default now()).
 Note: Store CONTENTFUL_DELIVERY_TOKEN, CONTENTFUL_MANAGEMENT_TOKEN, and CONTENTFUL_WEBHOOK_SECRET as Supabase secrets. Never in the database.
 
 contentful_entries: id (uuid, primary key, default gen_random_uuid()), contentful_id (text, unique), content_type (text), title (text), slug (text), excerpt (text), body_markdown (text), published_at (timestamptz), author (text), tags (text), featured_image_url (text), synced_at (timestamptz, default now()), status (text, default 'published')).
@@ -75,7 +76,7 @@ Submit button: Activate Lazy Contentful
 On submit:
 1. Store all tokens as Supabase secrets
 2. Save all other values to contentful_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.1'
 4. Show instructions: Go to your Contentful space, Settings → Webhooks → Add webhook. Set URL to [site_url]/api/contentful-webhook. Add a secret header: X-Contentful-Secret with your webhook secret. Select triggers: Entry Published, Entry Unpublished.
 5. Immediately call contentful-pull to do first sync.
 6. Redirect to /admin with message: Lazy Contentful is active. Pulling your Contentful content now.

@@ -25,6 +25,7 @@ business_name (text),
 content_niche (text),
 is_running (boolean, default true),
 setup_complete (boolean, default false),
+prompt_version (text, nullable),
 recap_template_guidance (text),
 created_at (timestamptz, default now())
 
@@ -108,7 +109,7 @@ On submit:
 1. Store TWITCH_CLIENT_ID and TWITCH_CLIENT_SECRET as Supabase secrets
 2. Fetch Twitch user ID: call https://api.twitch.tv/helix/users with login=[username] using client credentials token. Store the user ID in twitch_user_id.
 3. Save all other values to stream_settings
-4. Set setup_complete to true
+4. Set setup_complete to true and prompt_version to 'v0.0.3'
 5. Redirect to /admin with message: "Lazy Stream is active. Your next stream will be processed and published automatically when it ends."
 
 ---

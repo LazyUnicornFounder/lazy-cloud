@@ -40,6 +40,7 @@ alert_errors (boolean, default true),
 last_checked (timestamptz),
 is_running (boolean, default true),
 setup_complete (boolean, default false),
+prompt_version (text, nullable),
 created_at (timestamptz, default now())
 
 Note: Store SLACK_SIGNING_SECRET as Supabase secret.
@@ -80,7 +81,7 @@ Submit button: Connect to Slack
 On submit:
 1. Store SLACK_SIGNING_SECRET as Supabase secret
 2. Save all values to alert_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.1'
 4. Send a test message via the webhook: "Your Lazy Alert is connected. Your autonomous business will now report to you in Slack."
 5. Redirect to /admin with message: "Slack connected. Check your channel for the test message."
 

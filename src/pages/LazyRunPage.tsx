@@ -83,6 +83,7 @@ support_email (text),
 active_engines (text),
 master_running (boolean, default true),
 setup_complete (boolean, default false),
+prompt_version (text, nullable),
 created_at (timestamptz, default now())
 
 **run_activity**
@@ -107,7 +108,7 @@ function_name (text),
 error_message (text),
 created_at (timestamptz, default now())
 
-Also create all database tables for each activated engine using these exact table names:
+Also create all database tables for each activated engine using these exact table names. Every engine settings table must include a prompt_version (text, nullable) field in addition to the standard fields. Set the prompt_version value when seeding each engine settings table in step 4 of the setup submit using the current version strings from SPEC.md.
 
 Blogger: blog_settings, blog_posts, blog_errors
 SEO: seo_settings, seo_posts, seo_keywords (add source field: text), seo_errors
@@ -232,7 +233,7 @@ Launch button.
 **On submit:**
 1. Store all API keys as Supabase secrets
 2. Save run_settings with active_engines as comma-separated list
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.4'
 4. Seed all engine-specific settings tables with provided values
 5. Create all required database tables for active engines
 6. For content engines immediately trigger: blog-publish, seo-discover, geo-discover

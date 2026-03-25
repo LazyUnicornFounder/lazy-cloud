@@ -32,6 +32,7 @@ telegram_chat_id (text),
 next_pentest_at (timestamptz),
 is_running (boolean, default true),
 setup_complete (boolean, default false),
+prompt_version (text, nullable),
 created_at (timestamptz, default now())
 
 **security_scans**
@@ -107,7 +108,7 @@ Submit button: Activate Lazy Security
 On submit:
 1. Store AIKIDO_API_KEY as Supabase secret
 2. Save all other values to security_settings
-3. Set setup_complete to true
+3. Set setup_complete to true and prompt_version to 'v0.0.1'
 4. Set next_pentest_at to now plus 5 minutes
 5. Immediately call security-scan
 6. Redirect to /admin with message: "Lazy Security is active. Your first pentest is queued. Results will appear here within the next hour."
