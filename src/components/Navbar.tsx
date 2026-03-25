@@ -278,9 +278,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
               <CategoryDropdown key={cat.label} label={cat.label} items={cat.items} />
             ))}
 
-            <a href="/autonomy" className={`font-body text-[11px] tracking-[0.15em] uppercase font-bold transition-colors ${activePage === "autonomy" ? "text-foreground" : "text-foreground/50 hover:text-foreground"}`}>
-              Autonomy
-            </a>
+            
             <a href="/pricing" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
               Pricing
             </a>
@@ -288,6 +286,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
               label="Resources"
               children={[
                 { label: "Blog", href: "/blog" },
+                { label: "Autonomy", href: "/autonomy" },
                 { label: "Changelog", href: "/changelog" },
                 { label: "Upgrade Guide", href: "/upgrade-guide" },
                 { label: "About", href: "/about" },
@@ -355,8 +354,8 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
               {[
                 { label: "Lazy Admin", href: "/lazy-admin" },
-                { label: "Autonomy", href: "/autonomy" },
                 { label: "Pricing", href: "/pricing" },
+                { label: "Autonomy", href: "/autonomy" },
                 { label: "Blog", href: "/blog" },
                 { label: "Changelog", href: "/changelog" },
                 { label: "Upgrade Guide", href: "/upgrade-guide" },
