@@ -204,9 +204,12 @@ const LazyPerplexityPage = () => {
                 <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
                 <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               </div>
-              <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-                Lazy Perplexity
-              </h1>
+              <div className="flex items-center gap-4 flex-wrap">
+                <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+                  Lazy Perplexity
+                </h1>
+                <ServiceBadge />
+              </div>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/45 max-w-xl leading-relaxed">
                 Lazy Perplexity uses the Perplexity API to research your niche with live web data, feed current intelligence into your blog and SEO engines, and test whether your brand appears when people ask AI questions about your industry.
               </p>
@@ -218,9 +221,6 @@ const LazyPerplexityPage = () => {
                 >
                   See How It Works
                 </button>
-              </div>
-              <div className="mt-6">
-                <ServiceBadge />
               </div>
             </motion.div>
           </div>

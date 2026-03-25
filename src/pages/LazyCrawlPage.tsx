@@ -91,9 +91,12 @@ const LazyCrawlPage = () => {
                 <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
                 <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               </div>
-              <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-                Lazy Crawl
-              </h1>
+              <div className="flex items-center gap-4 flex-wrap">
+                <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+                  Lazy Crawl
+                </h1>
+                <ServiceBadge />
+              </div>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/45 max-w-xl leading-relaxed">
                 Lazy Crawl uses the Firecrawl API to monitor competitor websites, extract trending topics, discover keyword opportunities, and feed real current data into your content engines — automatically, forever.
               </p>
@@ -105,9 +108,6 @@ const LazyCrawlPage = () => {
                 >
                   See How It Works
                 </button>
-              </div>
-              <div className="mt-6">
-                <ServiceBadge />
               </div>
             </motion.div>
           </div>
