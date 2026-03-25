@@ -114,7 +114,7 @@ Show a welcome screen: "Welcome to Lazy Run. In the next 5 minutes you will set 
 Show a Next button.
 
 **Step 2 — Choose engines**
-Show nine engine cards in a grid — one per engine. Each card shows: engine name, one-line description, and an on/off toggle. Default all content engines to on (Blogger, SEO, GEO). Default commerce and media engines to off.
+Show eighteen engine cards in a grid — one per engine. Each card shows: engine name, one-line description, and an on/off toggle. Default all content engines to on (Blogger, SEO, GEO). Default commerce and media engines to off.
 
 Engine descriptions:
 - Lazy Blogger: Publishes blog posts automatically every 15 minutes
@@ -451,7 +451,7 @@ export default function LazyRunPage() {
           </div>
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
             className="font-body text-sm text-foreground/30 text-center mt-10 max-w-lg mx-auto">
-            All nine engines install in one prompt. All run automatically. All managed from one dashboard.
+            All eighteen engines install in one prompt. All run automatically. All managed from one dashboard.
           </motion.p>
         </div>
       </section>
@@ -483,11 +483,11 @@ export default function LazyRunPage() {
         <div className="max-w-3xl mx-auto">
           <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
             className="font-display text-2xl md:text-4xl font-bold tracking-tight mb-8">
-            Nine engines compounding simultaneously.
+            Eighteen engines compounding simultaneously.
           </motion.h2>
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.1 }}
             className="font-body text-base md:text-lg text-foreground/45 leading-relaxed">
-            Each Lazy engine compounds on its own. Lazy Blogger builds domain authority. Lazy SEO captures keyword traffic. Lazy GEO earns AI citations. Lazy Store grows revenue. Together they compound on each other. The blog posts support the SEO. The SEO drives traffic to the store. The store triggers the SMS sequences. The SMS drives repeat purchases. The payments data improves the copy. Lazy Run coordinates the whole system so every engine feeds every other one. One prompt. Nine compounding loops. Running forever.
+            Each Lazy engine compounds on its own. Lazy Blogger builds domain authority. Lazy SEO captures keyword traffic. Lazy GEO earns AI citations. Lazy Store grows revenue. Together they compound on each other. The blog posts support the SEO. The SEO drives traffic to the store. The store triggers the SMS sequences. The SMS drives repeat purchases. The payments data improves the copy. Lazy Run coordinates the whole system so every engine feeds every other one. One prompt. Eighteen compounding loops. Running forever.
           </motion.p>
         </div>
       </section>
@@ -508,7 +508,7 @@ export default function LazyRunPage() {
               <ul className="font-body text-sm text-muted-foreground space-y-2 flex-1">
                 <li>✓ Lazy Run setup prompt</li>
                 <li>✓ Self-hosted in your existing Lovable project</li>
-                <li>✓ Installs all nine engines</li>
+                <li>✓ Installs all eighteen engines</li>
                 <li>✓ Bring your own API keys for each service</li>
               </ul>
               <div className="mt-6"><CopyPromptButton label="Get the Prompt" /></div>
