@@ -1,38 +1,69 @@
-import { useState, useEffect, useCallback } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import {
-  LayoutDashboard, PenTool, Search, Brain, ShoppingCart,
-  Mic, CreditCard, MessageSquare, Tv, Code, Settings, Menu, X,
-  BarChart3,
+  LayoutDashboard, PenTool, Search, Brain, Radar, Compass,
+  ShoppingCart, CreditCard, MessageSquare, Mic, Tv,
+  Code, GitBranch, CheckCircle, Bell, Send, Database as DbIcon,
+  Shield, Settings, Menu, X, ChevronDown,
 } from "lucide-react";
 
 const db = supabase as any;
 
-const navItems = [
-  { label: "Overview", path: "/admin", icon: LayoutDashboard, engine: null },
-  { label: "Analytics", path: "/admin/analytics", icon: BarChart3, engine: null },
-  { label: "Lazy Blogger", path: "/admin/blogger", icon: PenTool, engine: "blogger" },
-  { label: "Lazy SEO", path: "/admin/seo", icon: Search, engine: "seo" },
-  { label: "Lazy GEO", path: "/admin/geo", icon: Brain, engine: "geo" },
-  { label: "Lazy Store", path: "/admin/store", icon: ShoppingCart, engine: "store" },
-  { label: "Lazy Voice", path: "/admin/voice", icon: Mic, engine: "voice" },
-  { label: "Lazy Pay", path: "/admin/pay", icon: CreditCard, engine: "pay" },
-  { label: "Lazy SMS", path: "/admin/sms", icon: MessageSquare, engine: "sms" },
-  { label: "Lazy Stream", path: "/admin/stream", icon: Tv, engine: "stream" },
-  { label: "Lazy GitHub", path: "/admin/code", icon: Code, engine: "code" },
-  { label: "Settings", path: "/admin/settings", icon: Settings, engine: null },
+interface NavGroup {
+  label: string;
+  items: { label: string; path: string; icon: any; engine: string | null }[];
+}
+
+const navGroups: NavGroup[] = [
+  { label: "", items: [
+    { label: "Overview", path: "/admin/overview", icon: LayoutDashboard, engine: null },
+  ]},
+  { label: "Content Engines", items: [
+    { label: "Blogger", path: "/admin/blogger", icon: PenTool, engine: "blogger" },
+    { label: "SEO", path: "/admin/seo", icon: Search, engine: "seo" },
+    { label: "GEO", path: "/admin/geo", icon: Brain, engine: "geo" },
+    { label: "Crawl", path: "/admin/crawl", icon: Radar, engine: "crawl" },
+    { label: "Perplexity", path: "/admin/perplexity", icon: Compass, engine: "perplexity" },
+  ]},
+  { label: "Commerce Engines", items: [
+    { label: "Store", path: "/admin/store", icon: ShoppingCart, engine: "store" },
+    { label: "Pay", path: "/admin/pay", icon: CreditCard, engine: "pay" },
+    { label: "SMS", path: "/admin/sms", icon: MessageSquare, engine: "sms" },
+  ]},
+  { label: "Media Engines", items: [
+    { label: "Voice", path: "/admin/voice", icon: Mic, engine: "voice" },
+    { label: "Stream", path: "/admin/stream", icon: Tv, engine: "stream" },
+  ]},
+  { label: "Developer Engines", items: [
+    { label: "Code", path: "/admin/code", icon: Code, engine: "code" },
+    { label: "GitLab", path: "/admin/gitlab", icon: GitBranch, engine: "gitlab" },
+    { label: "Linear", path: "/admin/linear", icon: CheckCircle, engine: "linear" },
+  ]},
+  { label: "Channels", items: [
+    { label: "Alert", path: "/admin/alert", icon: Bell, engine: "alert" },
+    { label: "Telegram", path: "/admin/telegram", icon: Send, engine: "telegram" },
+    { label: "Contentful", path: "/admin/contentful", icon: DbIcon, engine: "contentful" },
+    { label: "Supabase", path: "/admin/supabase-monitor", icon: DbIcon, engine: "supabase_monitor" },
+  ]},
+  { label: "Security", items: [
+    { label: "Security", path: "/admin/security", icon: Shield, engine: "security" },
+  ]},
+  { label: "", items: [
+    { label: "Changelog", path: "/admin/changelog", icon: PenTool, engine: null },
+    { label: "Settings", path: "/admin/settings", icon: Settings, engine: null },
+  ]},
 ];
+
+const allEngineItems = navGroups.flatMap(g => g.items).filter(i => i.engine);
 
 export default function AdminLayout() {
   const [password, setPassword] = useState(() => sessionStorage.getItem("admin_pw") || "");
   const [authenticated, setAuthenticated] = useState(() => !!sessionStorage.getItem("admin_pw"));
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
-  // Redirect /admin to /admin (overview is the index)
   useEffect(() => { setMobileOpen(false); }, [location.pathname]);
 
   const handleLogin = (e: React.FormEvent) => {
@@ -41,45 +72,57 @@ export default function AdminLayout() {
     setAuthenticated(true);
   };
 
-  // Check engine running status
+  // Engine status polling
   const { data: engineStatus = {} } = useQuery({
-    queryKey: ["admin-engine-status"],
+    queryKey: ["admin-engine-status-v2"],
     queryFn: async () => {
       const status: Record<string, { running: boolean; hasErrors: boolean }> = {};
-
-      const [blogSettings, seoSettings, geoSettings, voiceSettings, streamSettings] = await Promise.all([
-        db.from("blog_settings").select("is_publishing").limit(1).single(),
-        db.from("seo_settings").select("is_running").limit(1).single(),
-        db.from("geo_settings").select("is_running").limit(1).single(),
-        db.from("voice_settings").select("is_running").limit(1).single(),
-        db.from("stream_settings").select("is_running").limit(1).single(),
-      ]);
+      const settingsTables: Record<string, { table: string; runField: string }> = {
+        blogger: { table: "blog_settings", runField: "is_publishing" },
+        seo: { table: "seo_settings", runField: "is_running" },
+        geo: { table: "geo_settings", runField: "is_running" },
+        voice: { table: "voice_settings", runField: "is_running" },
+        stream: { table: "stream_settings", runField: "is_running" },
+      };
+      const errorTables: Record<string, string> = {
+        blogger: "blog_errors",
+        seo: "seo_errors",
+        geo: "geo_errors",
+        voice: "voice_errors",
+        stream: "stream_errors",
+      };
 
       const yesterday = new Date(Date.now() - 86400000).toISOString();
-      const [blogErrors, seoErrors, geoErrors, voiceErrors, streamErrors] = await Promise.all([
-        db.from("blog_errors").select("id", { count: "exact", head: true }).gte("created_at", yesterday),
-        db.from("seo_errors").select("id", { count: "exact", head: true }).gte("created_at", yesterday),
-        db.from("geo_errors").select("id", { count: "exact", head: true }).gte("created_at", yesterday),
-        db.from("voice_errors").select("id", { count: "exact", head: true }).gte("created_at", yesterday),
-        db.from("stream_errors").select("id", { count: "exact", head: true }).gte("created_at", yesterday),
-      ]);
 
-      status.blogger = { running: blogSettings.data?.is_publishing ?? false, hasErrors: (blogErrors.count ?? 0) > 0 };
-      status.seo = { running: seoSettings.data?.is_running ?? false, hasErrors: (seoErrors.count ?? 0) > 0 };
-      status.geo = { running: geoSettings.data?.is_running ?? false, hasErrors: (geoErrors.count ?? 0) > 0 };
-      status.voice = { running: voiceSettings.data?.is_running ?? false, hasErrors: (voiceErrors.count ?? 0) > 0 };
-      status.stream = { running: streamSettings.data?.is_running ?? false, hasErrors: (streamErrors.count ?? 0) > 0 };
-      // Store, Pay, SMS don't have settings tables yet
-      status.store = { running: false, hasErrors: false };
-      status.pay = { running: false, hasErrors: false };
-      status.sms = { running: false, hasErrors: false };
-      status.code = { running: false, hasErrors: false };
+      await Promise.all(
+        Object.entries(settingsTables).map(async ([key, { table, runField }]) => {
+          const { data } = await db.from(table).select(runField).limit(1).single();
+          const errTable = errorTables[key];
+          let hasErrors = false;
+          if (errTable) {
+            const { count } = await db.from(errTable).select("id", { count: "exact", head: true }).gte("created_at", yesterday);
+            hasErrors = (count ?? 0) > 0;
+          }
+          status[key] = { running: data?.[runField] ?? false, hasErrors };
+        })
+      );
+
+      // Engines without settings tables yet
+      ["store", "pay", "sms", "code", "crawl", "perplexity", "gitlab", "linear", "alert", "telegram", "contentful", "supabase_monitor", "security"].forEach(key => {
+        if (!status[key]) status[key] = { running: false, hasErrors: false };
+      });
 
       return status;
     },
     enabled: authenticated,
-    refetchInterval: 30000,
+    refetchInterval: 60000,
   });
+
+  // Master status
+  const runningCount = Object.values(engineStatus).filter(s => s.running).length;
+  const errorCount = Object.values(engineStatus).filter(s => s.hasErrors).length;
+  const masterColor = errorCount > 0 ? "bg-red-500" : runningCount > 0 ? "bg-emerald-500" : "bg-[#c8a961]";
+  const masterLabel = errorCount > 0 ? `${errorCount} engine${errorCount > 1 ? "s" : ""} need attention` : runningCount > 0 ? "All engines running" : "Everything paused";
 
   if (!authenticated) {
     return (
@@ -102,8 +145,8 @@ export default function AdminLayout() {
   }
 
   const isActive = (path: string) => {
-    if (path === "/admin") return location.pathname === "/admin";
-    return location.pathname.startsWith(path);
+    if (path === "/admin/overview") return location.pathname === "/admin" || location.pathname === "/admin/overview";
+    return location.pathname === path;
   };
 
   return (
@@ -118,32 +161,43 @@ export default function AdminLayout() {
           <p className="font-body text-[9px] tracking-[0.15em] uppercase text-[#f0ead6]/20 mt-2">Mission Control</p>
         </div>
 
-        <nav className="flex-1 py-3 overflow-y-auto">
-          {navItems.map((item) => {
-            const active = isActive(item.path);
-            const status = item.engine ? engineStatus[item.engine] : null;
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`flex items-center gap-3 px-5 py-2.5 font-body text-xs tracking-[0.08em] transition-colors relative ${
-                  active
-                    ? "text-[#c8a961] bg-[#c8a961]/8"
-                    : "text-[#f0ead6]/40 hover:text-[#f0ead6]/70 hover:bg-[#f0ead6]/3"
-                }`}
-              >
-                <item.icon size={14} />
-                <span>{item.label}</span>
-                {status && (
-                  <div className="ml-auto flex items-center gap-1.5">
-                    {status.hasErrors && <span className="w-1.5 h-1.5 rounded-full bg-red-500" />}
-                    {status.running && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />}
-                    {!status.running && !status.hasErrors && <span className="w-1.5 h-1.5 rounded-full bg-[#f0ead6]/15" />}
-                  </div>
-                )}
-              </Link>
-            );
-          })}
+        {/* Master status */}
+        <div className="px-5 py-3 border-b border-[#f0ead6]/8 flex items-center gap-2">
+          <span className={`w-2.5 h-2.5 rounded-full ${masterColor}`} />
+          <span className="font-body text-[10px] tracking-[0.08em] text-[#f0ead6]/40">{masterLabel}</span>
+        </div>
+
+        <nav className="flex-1 py-2 overflow-y-auto">
+          {navGroups.map((group, gi) => (
+            <div key={gi}>
+              {group.label && (
+                <p className="px-5 pt-4 pb-1 font-body text-[9px] tracking-[0.15em] uppercase text-[#f0ead6]/15">{group.label}</p>
+              )}
+              {group.items.map((item) => {
+                const active = isActive(item.path);
+                const status = item.engine ? engineStatus[item.engine] : null;
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`flex items-center gap-3 px-5 py-2 font-body text-[11px] tracking-[0.08em] transition-colors relative ${
+                      active
+                        ? "text-[#c8a961] bg-[#c8a961]/8 border-l-2 border-[#c8a961]"
+                        : "text-[#f0ead6]/40 hover:text-[#f0ead6]/70 hover:bg-[#f0ead6]/3 border-l-2 border-transparent"
+                    }`}
+                  >
+                    <item.icon size={13} />
+                    <span>{item.label}</span>
+                    {status && (
+                      <span className={`ml-auto w-1.5 h-1.5 rounded-full ${
+                        status.hasErrors ? "bg-red-500" : status.running ? "bg-emerald-500" : "bg-[#f0ead6]/15"
+                      }`} />
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+          ))}
         </nav>
 
         <div className="px-5 py-4 border-t border-[#f0ead6]/8">
@@ -158,13 +212,15 @@ export default function AdminLayout() {
 
       {/* Mobile header */}
       <div className="fixed top-0 left-0 right-0 z-40 md:hidden bg-[#0a0a08] border-b border-[#f0ead6]/8 px-4 py-3 flex items-center justify-between">
-        <p className="font-display text-[10px] font-semibold tracking-[0.15em] uppercase text-[#f0ead6]">Admin</p>
+        <div className="flex items-center gap-2">
+          <span className={`w-2 h-2 rounded-full ${masterColor}`} />
+          <p className="font-display text-[10px] font-semibold tracking-[0.15em] uppercase text-[#f0ead6]">Admin</p>
+        </div>
         <button onClick={() => setMobileOpen(!mobileOpen)} className="text-[#f0ead6]/50">
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile overlay */}
       {mobileOpen && <div className="fixed inset-0 z-40 bg-black/50 md:hidden" onClick={() => setMobileOpen(false)} />}
 
       {/* Main content */}
