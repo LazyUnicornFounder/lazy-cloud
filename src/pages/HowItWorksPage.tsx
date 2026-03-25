@@ -89,10 +89,10 @@ export default function HowItWorksPage() {
                 The autonomous layer for Lovable
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
-                How it works
+                Lovable gave everyone a website. Lazy Unicorn makes it work while you sleep.
               </h1>
               <p className="font-body text-foreground/50 text-lg max-w-2xl mx-auto leading-relaxed mb-6">
-                <strong className="text-foreground/80">Lovable</strong> gave everyone a website. <strong className="text-foreground/80">Lazy Unicorn</strong> makes it work while you sleep. Every engine is a self-contained prompt you paste into your Lovable project. Each one installs its own database tables, edge functions, and UI — then runs itself autonomously.
+                Every engine is a self-contained prompt you paste into your Lovable project. Each one installs its own database tables, edge functions, and UI — then runs itself autonomously.
               </p>
               <p className="font-body text-foreground/30 text-sm max-w-xl mx-auto leading-relaxed">
                 Integrates with <strong className="text-foreground/50">Stripe</strong>, <strong className="text-foreground/50">Twilio</strong>, <strong className="text-foreground/50">ElevenLabs</strong>, <strong className="text-foreground/50">Twitch</strong>, <strong className="text-foreground/50">GitHub</strong>, <strong className="text-foreground/50">GitLab</strong>, <strong className="text-foreground/50">Linear</strong>, <strong className="text-foreground/50">Slack</strong>, <strong className="text-foreground/50">Telegram</strong>, <strong className="text-foreground/50">Supabase</strong>, <strong className="text-foreground/50">Contentful</strong>, <strong className="text-foreground/50">Firecrawl</strong>, and <strong className="text-foreground/50">Perplexity</strong>.
