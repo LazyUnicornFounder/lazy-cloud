@@ -323,6 +323,9 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
               <a href="/how-it-works" onClick={() => setOpen(false)} className="font-body text-[13px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground transition-colors font-semibold">
                 How It Works
               </a>
+              <a href="/use-cases" onClick={() => setOpen(false)} className="font-body text-[13px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground transition-colors font-semibold">
+                Use Cases
+              </a>
             <div>
                 <button
                   onClick={() => toggleMobileDropdown("Lazy Unicorn")}
