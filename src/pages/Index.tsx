@@ -275,9 +275,6 @@ const Index = () => {
             <p className="hero-description text-base leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>
               Lovable gave everyone a site. Lazy Unicorn makes it autonomous. Your blog writes itself. Your SEO compounds. AI engines cite you. Your store runs its own promotions. Every post gets narrated. Every stream becomes an article. Every commit becomes a changelog.
             </p>
-            <p className="text-xs tracking-[0.12em] uppercase leading-relaxed" style={{ color: "#f0ead6", opacity: 0.2 }}>
-              Stripe · Twilio · ElevenLabs · Twitch · GitHub · GitLab · Linear · Slack · Telegram · Supabase · Contentful · Firecrawl · Perplexity
-            </p>
           </div>
 
           {/* CTA */}
@@ -288,6 +285,28 @@ const Index = () => {
           >
             See the Engines
           </a>
+
+          {/* Integrations */}
+          <div className="mt-8">
+            <p className="text-[10px] tracking-[0.2em] uppercase font-semibold mb-4" style={{ color: "#f0ead6", opacity: 0.25 }}>
+              Integrations
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["Stripe", "Twilio", "ElevenLabs", "Twitch", "GitHub", "GitLab", "Linear", "Slack", "Telegram", "Supabase", "Contentful", "Firecrawl", "Perplexity"].map((name, i) => (
+                <motion.span
+                  key={name}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 + i * 0.06, duration: 0.4 }}
+                  whileHover={{ scale: 1.1, opacity: 1 }}
+                  className="text-[10px] tracking-[0.1em] uppercase font-medium px-3 py-1.5 border transition-colors duration-200 cursor-default"
+                  style={{ color: "#f0ead6", opacity: 0.4, borderColor: "rgba(240,234,214,0.12)" }}
+                >
+                  {name}
+                </motion.span>
+              ))}
+            </div>
+          </div>
 
         </motion.div>
       </header>
