@@ -19,6 +19,7 @@ interface NavGroup {
 const navGroups: NavGroup[] = [
   { label: "", items: [
     { label: "Overview", path: "/admin/overview", icon: LayoutDashboard, engine: null },
+    { label: "Analytics", path: "/admin/analytics", icon: BarChart3, engine: null },
   ]},
   { label: "Content Engines", items: [
     { label: "Blogger", path: "/admin/blogger", icon: PenTool, engine: "blogger" },
