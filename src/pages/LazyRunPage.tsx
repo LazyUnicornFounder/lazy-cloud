@@ -387,7 +387,7 @@ const engines = [
   { name: "Lazy Alert", desc: "Every engine event reported to Slack in real time.", icon: Bell, href: "/lazy-alert" },
   { name: "Lazy Telegram", desc: "Real-time engine reporting via Telegram bot.", icon: Send, href: "/lazy-telegram" },
   { name: "Lazy Security", desc: "Autonomous pentesting and vulnerability monitoring via Aikido.", icon: Shield, href: "/lazy-security" },
-  { name: "Lazy Admin", desc: "One dashboard for every engine. 60 seconds a day.", icon: LayoutDashboard, href: "/lazy-admin" },
+  
 ];
 
 const faqs = [
