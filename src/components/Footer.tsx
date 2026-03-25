@@ -93,7 +93,7 @@ export default function Footer() {
 
           {/* Get started — prominent left column */}
           <div className="col-span-1 md:col-span-1">
-            <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4">
+            <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4 max-w-[60px]">
               Get Started
             </p>
             <ul className="space-y-2">
