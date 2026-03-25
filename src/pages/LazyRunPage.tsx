@@ -4,7 +4,8 @@ import { toast } from "sonner";
 import {
   FileText, Search, Globe, ShoppingCart, Mic, CreditCard,
   MessageSquare, Video, Code, ChevronDown, Zap, Activity,
-  Clock, ArrowRight
+  Clock, ArrowRight, Radar, Compass, Layers, BarChart3,
+  Database, Bell, Send
 } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
