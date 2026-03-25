@@ -27,9 +27,9 @@ const rotatingWords = [
 
 function RotatingHeadline() {
   const [index, setIndex] = useState(0);
-  const [width, setWidth] = useState(120);
+  const [width, setWidth] = useState(200);
+  const [ready, setReady] = useState(false);
   const hiddenRef = useRef<HTMLSpanElement>(null);
-  const containerRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,34 +40,45 @@ function RotatingHeadline() {
 
   const current = rotatingWords[index];
 
-  // Measure using a hidden off-screen span that matches the font
+  // Measure using a hidden off-screen span
   useEffect(() => {
-    if (hiddenRef.current) {
-      hiddenRef.current.textContent = `${current.word} ${current.emoji}`;
-      setWidth(hiddenRef.current.offsetWidth);
+    const measure = () => {
+      if (hiddenRef.current) {
+        hiddenRef.current.textContent = `${current.word} ${current.emoji}`;
+        const w = hiddenRef.current.offsetWidth;
+        if (w > 0) {
+          setWidth(w);
+          setReady(true);
+        }
+      }
+    };
+    measure();
+    // Re-measure after fonts load
+    if (!ready) {
+      document.fonts?.ready?.then(measure);
     }
-  }, [current]);
+  }, [current, ready]);
 
   return (
-    <p ref={containerRef} style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.4rem, 3vw, 2.2rem)", color: "#f0ead6", opacity: 0.7 }} className="mb-2">
+    <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.4rem, 3vw, 2.2rem)", color: "#f0ead6", opacity: 0.7 }} className="mb-2">
       {/* Hidden measurer */}
       <span
         ref={hiddenRef}
         aria-hidden="true"
-        className="whitespace-nowrap invisible absolute"
-        style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.4rem, 3vw, 2.2rem)" }}
+        className="whitespace-nowrap invisible fixed pointer-events-none"
+        style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.4rem, 3vw, 2.2rem)", top: -9999, left: -9999 }}
       />
       Lovable<span className="mx-1">❤️</span>
       <motion.span
-        className="inline-flex justify-center relative overflow-hidden"
-        style={{ height: "1.3em", verticalAlign: "bottom" }}
-        animate={{ width: width + 8 }}
-        transition={{ type: "spring", stiffness: 250, damping: 25 }}
+        className="inline-flex justify-center relative"
+        style={{ height: "1.3em", verticalAlign: "bottom", overflow: "clip" }}
+        animate={{ width: width + 12 }}
+        transition={ready ? { type: "spring", stiffness: 250, damping: 25 } : { duration: 0 }}
       >
         <AnimatePresence mode="wait">
           <motion.span
             key={current.word}
-            initial={{ y: 16, opacity: 0 }}
+            initial={ready ? { y: 16, opacity: 0 } : false}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -16, opacity: 0 }}
             transition={{ duration: 0.3 }}
