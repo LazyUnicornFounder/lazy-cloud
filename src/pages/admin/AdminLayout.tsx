@@ -38,7 +38,7 @@ const navGroups: NavGroup[] = [
     { label: "Stream", path: "/admin/stream", icon: Tv, engine: "stream" },
   ]},
   { label: "Lazy Dev", items: [
-    { label: "Code", path: "/admin/code", icon: Code, engine: "code" },
+    { label: "GitHub", path: "/admin/code", icon: Code, engine: "code" },
     { label: "GitLab", path: "/admin/gitlab", icon: GitBranch, engine: "gitlab" },
     { label: "Linear", path: "/admin/linear", icon: CheckCircle, engine: "linear" },
   ]},
