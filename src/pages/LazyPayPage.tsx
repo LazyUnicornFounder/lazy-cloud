@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import { motion } from "framer-motion";
 import { Copy, Check, CreditCard, RefreshCw, BarChart3, Mail, ShieldCheck, Users, Zap, ShoppingCart } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -532,31 +533,7 @@ export default function LazyPayPage() {
           ctaButton={<CopyPromptButton onCopy={handleCopy} className="w-full justify-center" />}
         />
 
-        {/* ── FAQ ── */}
-        <section className="py-20 md:py-28 px-6 border-t border-border">
-          <div className="max-w-2xl mx-auto">
-            <motion.h2
-              variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="font-display text-2xl md:text-3xl font-bold tracking-tight text-center mb-14"
-            >
-              FAQ
-            </motion.h2>
-
-            <div className="flex flex-col gap-4">
-              {faqs.map((faq, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className="border border-border p-6 bg-card"
-                >
-                  <h3 className="font-display text-sm font-bold mb-2">{faq.q}</h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <LazyFaqSection faqs={faqs} />
 
         {/* ── BOTTOM CTA ── */}
         <section className="py-20 md:py-28 px-6 border-t border-border">

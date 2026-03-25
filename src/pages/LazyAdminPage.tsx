@@ -6,6 +6,8 @@ import {
   Shield, Eye, ChevronDown, Check, Copy, Settings, Bell,
   BarChart3, Layers
 } from "lucide-react";
+import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -186,38 +188,21 @@ export default function LazyAdminPage() {
           </div>
         </section>
 
-        {/* Pricing */}
-        <section className="py-20 px-6 border-t border-border">
-          <div className="max-w-3xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="border border-border p-6">
-                <h3 className="font-display text-sm font-bold tracking-[0.1em] uppercase mb-3">Free</h3>
-                <p className="font-body text-foreground/50 text-sm mb-4">Lazy Admin setup prompt. Self-hosted in your existing Lovable project. Works with any combination of installed Lazy engines.</p>
-                <p className="font-display text-2xl font-bold">Free</p>
-              </div>
-              <div className="border border-[#c8a961]/30 p-6 relative">
-                <span className="absolute top-3 right-3 font-body text-[9px] tracking-[0.15em] uppercase bg-[#c8a961]/20 text-[#c8a961] px-2 py-0.5">Coming Soon</span>
-                <h3 className="font-display text-sm font-bold tracking-[0.1em] uppercase mb-3 text-[#c8a961]">Pro</h3>
-                <p className="font-body text-foreground/50 text-sm mb-4">Hosted version. Multi-project support. Team access with role-based permissions. Weekly email digest. Mobile app.</p>
-                <p className="font-display text-2xl font-bold">$9<span className="text-sm text-foreground/40">/month</span></p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <LazyPricingSection
+          lazyFeatures={["Lazy Admin setup prompt", "Self-hosted in your existing Lovable project", "Works with any combination of installed Lazy engines"]}
+          proFeatures={["Hosted version", "Multi-project support", "Team access with role-based permissions", "Weekly email digest", "Mobile app"]}
+          proPrice="$9"
+          ctaButton={
+            <button
+              onClick={handleCopy}
+              className="w-full inline-flex items-center justify-center gap-2 bg-foreground text-background font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity"
+            >
+              {copied ? <><Check size={14} /> Copied ✓</> : <><Copy size={14} /> Copy the Lovable Prompt</>}
+            </button>
+          }
+        />
 
-        {/* FAQ */}
-        <section className="py-20 px-6 border-t border-border">
-          <div className="max-w-2xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-2">
-              {faqs.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="border border-border px-5">
-                  <AccordionTrigger className="font-body text-sm text-foreground/70 hover:text-foreground py-4">{faq.q}</AccordionTrigger>
-                  <AccordionContent className="font-body text-sm text-foreground/50 pb-4">{faq.a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </section>
+        <LazyFaqSection faqs={faqs} />
 
         {/* Bottom CTA */}
         <section className="py-24 px-6 border-t border-border">

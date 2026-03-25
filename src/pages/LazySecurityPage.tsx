@@ -4,6 +4,7 @@ import { Shield, Bug, TrendingUp, Bell, FileText, CheckCircle, RotateCcw, BookOp
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import { toast } from "sonner";
 
 const LAZY_SECURITY_PROMPT = `[Lazy Security Prompt — v0.0.5 — LazyUnicorn.ai]
@@ -433,20 +434,7 @@ export default function LazySecurityPage() {
           ctaButton={<CopyPromptButton className="w-full justify-center" />}
         />
 
-        {/* ── FAQ ── */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
-            Questions
-          </motion.h2>
-          <div className="space-y-0 border border-border">
-            {faqs.map((faq, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.05 }} className="border-b last:border-b-0 border-border bg-card p-5">
-                <h3 className="font-display text-sm font-bold text-foreground mb-1">{faq.q}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        <LazyFaqSection faqs={faqs} />
 
         {/* ── Bottom CTA ── */}
         <section className="max-w-3xl mx-auto px-6">

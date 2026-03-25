@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import { motion } from "framer-motion";
 import { AlertTriangle, Brain, Check, Copy, DollarSign, FileText, MessageCircle, Package, Radio, Rocket } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -238,26 +239,15 @@ const LazyTelegramPage = () => {
 
         <LazyPricingSection lazyFeatures={["Lazy Telegram setup prompt", "Self-hosted in your Lovable project", "Real-time event alerts", "Telegram bots are free to create"]} proFeatures={["Hosted version", "Group chat support", "Multiple recipient routing", "Custom bot branding"]} ctaButton={<CopyPromptButton onCopy={handlePromptCopy} className="w-full justify-center" />} />
 
-        {/* FAQ */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">Questions</motion.h2>
-          <div className="space-y-0 border border-border">
-            {[
-              { q: "Is a Telegram account required?", a: "Yes. You need a Telegram account to receive messages. The bot is free to create via BotFather." },
-              { q: "How do I find my chat ID?", a: "Start a conversation with your bot then visit the Telegram API getUpdates URL. Your chat ID appears in the response." },
-              { q: "Is it different from Lazy Alert?", a: "Lazy Alert sends to Slack. Lazy Telegram sends to Telegram. Both install with one prompt and can run simultaneously." },
-              { q: "Can I send to a Telegram group?", a: "Yes. Add your bot to a group and use the group chat ID. Multi-group routing is coming in Pro." },
-              { q: "Do the bot commands work?", a: "Yes. Commands like /status, /publish, /pause, and /errors work in any chat where your bot is present." },
-              { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
-              { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
-            ].map((faq, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.05 }} className="border-b last:border-b-0 border-border bg-card p-5">
-                <h3 className="font-display text-sm font-bold text-foreground mb-1">{faq.q}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        <LazyFaqSection faqs={[
+          { q: "Is a Telegram account required?", a: "Yes. You need a Telegram account to receive messages. The bot is free to create via BotFather." },
+          { q: "How do I find my chat ID?", a: "Start a conversation with your bot then visit the Telegram API getUpdates URL. Your chat ID appears in the response." },
+          { q: "Is it different from Lazy Alert?", a: "Lazy Alert sends to Slack. Lazy Telegram sends to Telegram. Both install with one prompt and can run simultaneously." },
+          { q: "Can I send to a Telegram group?", a: "Yes. Add your bot to a group and use the group chat ID. Multi-group routing is coming in Pro." },
+          { q: "Do the bot commands work?", a: "Yes. Commands like /status, /publish, /pause, and /errors work in any chat where your bot is present." },
+          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+          { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
+        ]} />
 
         {/* Bottom CTA */}
         <section className="max-w-3xl mx-auto px-6">

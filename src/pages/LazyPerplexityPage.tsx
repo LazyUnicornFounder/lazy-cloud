@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import { motion } from "framer-motion";
 import { BarChart3, Check, Copy, Eye, HelpCircle, Quote, Search, TrendingUp, Users, Zap } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -263,26 +264,15 @@ const LazyPerplexityPage = () => {
 
         <LazyPricingSection lazyFeatures={["Lazy Perplexity setup prompt", "Self-hosted in your Lovable project", "Real-time research integration", "Bring your own Perplexity API key"]} proFeatures={["Hosted version", "Daily citation monitoring", "Competitive citation tracking", "Advanced research scheduling"]} ctaButton={<CopyPromptButton onCopy={handlePromptCopy} className="w-full justify-center" />} />
 
-        {/* FAQ */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">Questions</motion.h2>
-          <div className="space-y-0 border border-border">
-            {[
-              { q: "How much does the Perplexity API cost?", a: "Perplexity API starts at $5 for 5 million tokens. Most sites use less than $10/month." },
-              { q: "Does it replace Lazy GEO?", a: "No. It complements it. Lazy GEO generates citation-ready content. Lazy Perplexity tests whether you are actually being cited." },
-              { q: "What model does it use?", a: "It uses the Perplexity sonar model for research and sonar-pro for citation testing." },
-              { q: "How often does it research?", a: "Daily for trend and topic research. Weekly for brand citation testing. All configurable." },
-              { q: "Can I control what topics it researches?", a: "Yes. The setup page lets you specify research topics, competitors, and niche focus areas." },
-              { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
-              { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
-            ].map((faq, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.05 }} className="border-b last:border-b-0 border-border bg-card p-5">
-                <h3 className="font-display text-sm font-bold text-foreground mb-1">{faq.q}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        <LazyFaqSection faqs={[
+          { q: "How much does the Perplexity API cost?", a: "Perplexity API starts at $5 for 5 million tokens. Most sites use less than $10/month." },
+          { q: "Does it replace Lazy GEO?", a: "No. It complements it. Lazy GEO generates citation-ready content. Lazy Perplexity tests whether you are actually being cited." },
+          { q: "What model does it use?", a: "It uses the Perplexity sonar model for research and sonar-pro for citation testing." },
+          { q: "How often does it research?", a: "Daily for trend and topic research. Weekly for brand citation testing. All configurable." },
+          { q: "Can I control what topics it researches?", a: "Yes. The setup page lets you specify research topics, competitors, and niche focus areas." },
+          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+          { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
+        ]} />
 
         {/* Bottom CTA */}
         <section className="max-w-3xl mx-auto px-6">

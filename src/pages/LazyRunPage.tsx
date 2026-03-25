@@ -9,7 +9,8 @@ import {
 } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 
 const LAZY_RUN_PROMPT = `[Lazy Run Prompt — v0.0.4 — LazyUnicorn.ai]
 
@@ -552,75 +553,14 @@ export default function LazyRunPage() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-20 md:py-28 px-6 border-t border-border">
-        <div className="max-w-3xl mx-auto">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            className="font-display text-2xl md:text-3xl font-bold tracking-tight text-center mb-14">
-            Pricing
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Free */}
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="border border-border p-8 bg-card flex flex-col">
-              <h3 className="font-display text-lg font-bold mb-1">Free</h3>
-              <p className="font-body text-2xl font-bold mb-4">$0</p>
-              <ul className="font-body text-sm text-muted-foreground space-y-2 flex-1">
-                <li>✓ Lazy Run setup prompt</li>
-                <li>✓ Self-hosted in your existing Lovable project</li>
-                <li>✓ Installs all eighteen engines</li>
-                <li>✓ Bring your own API keys for each service</li>
-              </ul>
-              <div className="mt-6"><CopyPromptButton label="Get the Prompt" /></div>
-            </motion.div>
+      <LazyPricingSection
+        lazyFeatures={["Lazy Run setup prompt", "Self-hosted in your existing Lovable project", "Installs all eighteen engines", "Bring your own API keys for each service"]}
+        proFeatures={["Hosted version", "All API costs included", "Priority processing", "Weekly performance email", "Dedicated support"]}
+        proPrice="$99"
+        ctaButton={<CopyPromptButton label="Get the Prompt" />}
+      />
 
-            {/* Pro */}
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="border-2 border-primary/40 p-8 bg-card flex flex-col relative">
-              <span className="absolute top-4 right-4 bg-accent text-accent-foreground text-[10px] font-display font-bold uppercase tracking-wider px-3 py-1">
-                Coming Soon
-              </span>
-              <h3 className="font-display text-lg font-bold mb-1">Pro</h3>
-              <p className="font-body text-2xl font-bold mb-4">
-                $99<span className="text-sm text-muted-foreground font-normal">/month</span>
-              </p>
-              <ul className="font-body text-sm text-muted-foreground space-y-2 flex-1">
-                <li>✓ Hosted version</li>
-                <li>✓ All API costs included</li>
-                <li>✓ Priority processing</li>
-                <li>✓ Weekly performance email</li>
-                <li>✓ Dedicated support</li>
-              </ul>
-              <button disabled className="mt-6 w-full inline-flex items-center justify-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-muted-foreground cursor-not-allowed opacity-50">
-                Coming Soon
-              </button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20 md:py-28 px-6 border-t border-border">
-        <div className="max-w-2xl mx-auto">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            className="font-display text-2xl md:text-3xl font-bold tracking-tight text-center mb-14">
-            FAQ
-          </motion.h2>
-          <Accordion type="single" collapsible className="space-y-2">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border border-border bg-card px-6">
-                <AccordionTrigger className="font-display text-sm font-bold hover:no-underline">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="font-body text-sm text-foreground/45 leading-relaxed">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
+      <LazyFaqSection faqs={faqs} />
 
       {/* Bottom CTA */}
       <section className="py-20 md:py-28 px-6 border-t border-border">

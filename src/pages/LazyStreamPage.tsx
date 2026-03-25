@@ -1,5 +1,7 @@
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
+import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import { Copy, Check, Tv, Zap, FileText, Scissors, Search, MessageSquare, BarChart3, Brain } from "lucide-react";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
@@ -379,72 +381,14 @@ const LazyStreamPage = () => {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#111110" }}>
-        <div className="max-w-3xl mx-auto">
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Pricing</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border mt-8">
-            {/* Free */}
-            <div className="bg-card p-8 flex flex-col">
-              <h3 className="font-display text-2xl font-bold text-foreground">Free</h3>
-              <ul className="mt-6 space-y-3 flex-1">
-                {["Lazy Stream setup prompt", "Self-hosted in your existing Lovable project", "Bring your own Twitch developer account", "Free to set up"].map((item, i) => (
-                  <li key={i} className="font-body text-sm text-foreground/40 flex items-start gap-2">
-                    <Check size={14} className="text-foreground/30 mt-0.5 shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8">
-                <CopyPromptButton className="w-full justify-center" />
-              </div>
-            </div>
-            {/* Pro */}
-            <div className="bg-card p-8 flex flex-col border-l-2 border-yellow-600/40">
-              <div className="flex items-center gap-3">
-                <h3 className="font-display text-2xl font-bold text-foreground">Pro</h3>
-                <span className="font-body text-[10px] tracking-[0.15em] uppercase px-2 py-0.5 border border-yellow-600/40 text-yellow-600/70">Coming Soon</span>
-              </div>
-              <p className="font-display text-3xl font-bold text-foreground mt-2">$19<span className="text-base font-normal text-foreground/40">/mo</span></p>
-              <ul className="mt-6 space-y-3 flex-1">
-                {["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced stream analytics"].map((item, i) => (
-                  <li key={i} className="font-body text-sm text-foreground/40 flex items-start gap-2">
-                    <Check size={14} className="text-foreground/30 mt-0.5 shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8">
-                <button disabled className="w-full font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/30 cursor-not-allowed">
-                  Coming Soon
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <LazyPricingSection
+        lazyFeatures={["Lazy Stream setup prompt", "Self-hosted in your existing Lovable project", "Bring your own Twitch developer account", "Free to set up"]}
+        proFeatures={["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced stream analytics"]}
+        proPrice="$19"
+        ctaButton={<CopyPromptButton className="w-full justify-center" />}
+      />
 
-      {/* FAQ */}
-      <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#0a0a08" }}>
-        <div className="max-w-3xl mx-auto">
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>FAQ</p>
-          <div className="mt-8 space-y-0">
-            {faqs.map((faq, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="border-b border-border py-6"
-              >
-                <h3 className="font-display text-base font-bold text-foreground mb-2">{faq.q}</h3>
-                <p className="font-body text-sm text-foreground/40 leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <LazyFaqSection faqs={faqs} />
 
       {/* Bottom CTA */}
       <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#111110" }}>

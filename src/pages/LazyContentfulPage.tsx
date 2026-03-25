@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import { motion } from "framer-motion";
 import { Brain, Check, Copy, Download, Image, Layers, Search, Upload, Webhook, Zap } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -235,26 +236,15 @@ const LazyContentfulPage = () => {
 
         <LazyPricingSection lazyFeatures={["Lazy Contentful setup prompt", "Self-hosted in your Lovable project", "Two-way content sync", "Works with free Contentful tier"]} proFeatures={["Hosted version", "Multi-space support", "Advanced content type mapping", "Scheduled sync windows"]} ctaButton={<CopyPromptButton onCopy={handlePromptCopy} className="w-full justify-center" />} />
 
-        {/* FAQ */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">Questions</motion.h2>
-          <div className="space-y-0 border border-border">
-            {[
-              { q: "Do I need a paid Contentful plan?", a: "The free tier works for basic sync. Heavy usage may require a paid Contentful plan." },
-              { q: "Will it overwrite my existing Contentful content?", a: "No. It only creates new entries or pulls existing ones. It never modifies content you have already written." },
-              { q: "Can I control which content types sync?", a: "Yes. The setup page lets you configure which Contentful content type IDs to use for each category." },
-              { q: "What happens if a sync fails?", a: "Failed syncs are logged and retried automatically. The dashboard shows all sync failures clearly." },
-              { q: "Does it support Contentful rich text?", a: "Yes. Rich text is converted to markdown when pulled into Lovable, and markdown is converted to Contentful format when pushed." },
-              { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
-              { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
-            ].map((faq, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.05 }} className="border-b last:border-b-0 border-border bg-card p-5">
-                <h3 className="font-display text-sm font-bold text-foreground mb-1">{faq.q}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        <LazyFaqSection faqs={[
+          { q: "Do I need a paid Contentful plan?", a: "The free tier works for basic sync. Heavy usage may require a paid Contentful plan." },
+          { q: "Will it overwrite my existing Contentful content?", a: "No. It only creates new entries or pulls existing ones. It never modifies content you have already written." },
+          { q: "Can I control which content types sync?", a: "Yes. The setup page lets you configure which Contentful content type IDs to use for each category." },
+          { q: "What happens if a sync fails?", a: "Failed syncs are logged and retried automatically. The dashboard shows all sync failures clearly." },
+          { q: "Does it support Contentful rich text?", a: "Yes. Rich text is converted to markdown when pulled into Lovable, and markdown is converted to Contentful format when pushed." },
+          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+          { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
+        ]} />
 
         {/* Bottom CTA */}
         <section className="max-w-3xl mx-auto px-6">

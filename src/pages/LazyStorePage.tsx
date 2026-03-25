@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import { motion } from "framer-motion";
 import {
   Copy, Check, Heart, Search, FileText, DollarSign,
@@ -517,28 +518,7 @@ const LazyStorePage = () => {
           ctaButton={<CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} className="w-full justify-center" />}
         />
 
-        {/* ── FAQ ── */}
-        <section className="max-w-2xl mx-auto px-6 mb-24">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
-            Questions
-          </motion.h2>
-          <div className="space-y-4">
-            {faqs.map((faq, i) => (
-              <motion.div
-                key={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.05 }}
-                className="border border-border bg-card p-5"
-              >
-                <h3 className="font-display text-sm font-bold text-foreground mb-1">{faq.q}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        <LazyFaqSection faqs={faqs} />
 
         {/* ── Bottom CTA ── */}
         <section className="max-w-3xl mx-auto px-6">

@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import { motion } from "framer-motion";
 import { AlertTriangle, Check, Copy, Database, DollarSign, HardDrive, Hash, TrendingUp, Users, Zap } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -248,26 +249,15 @@ const LazySupabasePage = () => {
 
         <LazyPricingSection lazyFeatures={["Lazy Supabase setup prompt", "Self-hosted in your Lovable project", "Database milestone monitoring", "Uses your existing Supabase project"]} proFeatures={["Hosted version", "Multi-project monitoring", "Advanced growth analytics", "Custom milestone thresholds"]} ctaButton={<CopyPromptButton onCopy={handlePromptCopy} className="w-full justify-center" />} />
 
-        {/* FAQ */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">Questions</motion.h2>
-          <div className="space-y-0 border border-border">
-            {[
-              { q: "Does it need access to my data?", a: "It uses your service role key to count rows and monitor metrics. It never reads the content of your data." },
-              { q: "What counts as a milestone?", a: "User counts hitting 10, 50, 100, 500, 1000 etc. Row counts in key tables hitting round numbers. MRR milestones if Lazy Pay is installed." },
-              { q: "Will it publish every event?", a: "No. Only significant milestones trigger posts. Routine database activity is monitored but not published." },
-              { q: "Can I choose which tables to monitor?", a: "Yes. The setup page lets you specify which tables to track for row milestones." },
-              { q: "Does it work with multiple Supabase projects?", a: "The current version monitors one project. Multi-project support is coming in Pro." },
-              { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
-              { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
-            ].map((faq, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.05 }} className="border-b last:border-b-0 border-border bg-card p-5">
-                <h3 className="font-display text-sm font-bold text-foreground mb-1">{faq.q}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        <LazyFaqSection faqs={[
+          { q: "Does it need access to my data?", a: "It uses your service role key to count rows and monitor metrics. It never reads the content of your data." },
+          { q: "What counts as a milestone?", a: "User counts hitting 10, 50, 100, 500, 1000 etc. Row counts in key tables hitting round numbers. MRR milestones if Lazy Pay is installed." },
+          { q: "Will it publish every event?", a: "No. Only significant milestones trigger posts. Routine database activity is monitored but not published." },
+          { q: "Can I choose which tables to monitor?", a: "Yes. The setup page lets you specify which tables to track for row milestones." },
+          { q: "Does it work with multiple Supabase projects?", a: "The current version monitors one project. Multi-project support is coming in Pro." },
+          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+          { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
+        ]} />
 
         {/* Bottom CTA */}
         <section className="max-w-3xl mx-auto px-6">
