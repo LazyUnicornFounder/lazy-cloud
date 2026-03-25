@@ -41,6 +41,7 @@ import LazySecurityPage from "./pages/LazySecurityPage.tsx";
 import LazyAdminPage from "./pages/LazyAdminPage.tsx";
 import ChangelogPage from "./pages/ChangelogPage.tsx";
 import UpgradeGuidePage from "./pages/UpgradeGuidePage.tsx";
+import HowItWorksPage from "./pages/HowItWorksPage.tsx";
 import PublicLayout from "./components/PublicLayout.tsx";
 
 import AdminLayout from "./pages/admin/AdminLayout.tsx";
