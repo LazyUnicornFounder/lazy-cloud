@@ -268,6 +268,9 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a href="/how-it-works" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
               How It Works
             </a>
+            <a href="/use-cases" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
+              Use Cases
+            </a>
             <SimpleDropdown
               label="Lazy Unicorn"
               children={[
