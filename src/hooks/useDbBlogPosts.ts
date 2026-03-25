@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import type { BlogPost } from "@/data/blogPosts";
+import unicornBg from "@/assets/unicorn-beach.png";
 
 export interface DbBlogPost {
   id: string;
@@ -24,7 +25,7 @@ function dbToFrontend(db: DbBlogPost): BlogPost {
     title: db.title,
     date: `${monthNames[d.getMonth()]} ${d.getFullYear()}`,
     readTime: db.read_time,
-    thumbnail: db.thumbnail || "",
+    thumbnail: db.thumbnail || unicornBg,
     excerpt: db.excerpt,
     content: db.content,
   };
