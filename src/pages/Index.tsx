@@ -70,8 +70,8 @@ function RotatingHeadline() {
       />
       Lovable<span className="mx-1">❤️</span>
       <motion.span
-        className="inline-flex justify-center items-baseline relative"
-        style={{ height: "1em", verticalAlign: "baseline", overflow: "clip" }}
+        className="inline-flex justify-center relative"
+        style={{ height: "1.2em", verticalAlign: "text-bottom", overflow: "clip" }}
         animate={{ width: width + 12 }}
         transition={ready ? { type: "spring", stiffness: 250, damping: 25 } : { duration: 0 }}
       >
