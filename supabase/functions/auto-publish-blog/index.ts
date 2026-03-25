@@ -14,7 +14,7 @@ const PRODUCTS = [
   "lazy-stream",
   "lazy-voice",
   "lazy-store",
-  "lazy-code",
+  "lazy-github",
   "lazy-sms",
   "lazy-pay",
   "lazy-alert",

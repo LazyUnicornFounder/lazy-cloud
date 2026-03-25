@@ -27,7 +27,7 @@ const ENGINE_CATEGORIES: Record<string, string[]> = {
   "Lazy Content": ["Lazy Blogger", "Lazy SEO", "Lazy GEO", "Lazy Crawl", "Lazy Perplexity"],
   "Lazy Commerce": ["Lazy Store", "Lazy Pay", "Lazy SMS"],
   "Lazy Media": ["Lazy Voice", "Lazy Stream"],
-  "Lazy Dev": ["Lazy Code", "Lazy GitLab", "Lazy Linear"],
+  "Lazy Dev": ["Lazy GitHub", "Lazy GitLab", "Lazy Linear"],
   "Lazy Channels": ["Lazy Alert", "Lazy Telegram", "Lazy Contentful", "Lazy Supabase"],
   "Lazy Shield": ["Lazy Security"],
 };

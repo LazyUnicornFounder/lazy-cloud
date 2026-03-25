@@ -8,9 +8,9 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
 
-const SETUP_PROMPT = `[Lazy Code Prompt — v0.0.4 — LazyUnicorn.ai]
+const SETUP_PROMPT = `[Lazy GitHub Prompt — v0.0.4 — LazyUnicorn.ai]
 
-Add a complete autonomous GitHub content engine called Lazy Code to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
+Add a complete autonomous GitHub content engine called Lazy GitHub to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
 
 ---
 
@@ -104,7 +104,7 @@ created_at (timestamptz, default now())
 
 ## 2. Setup page
 
-Create a page at /lazy-code-setup with a form:
+Create a page at /lazy-github-setup with a form:
 - GitHub Personal Access Token (password) — create at github.com/settings/tokens with repo and read:org scope. Stored as Supabase secret GITHUB_TOKEN.
 - GitHub Webhook Secret (password) — any random string you choose. Stored as Supabase secret GITHUB_WEBHOOK_SECRET.
 - GitHub Username
@@ -114,14 +114,14 @@ Create a page at /lazy-code-setup with a form:
 - Business name
 - Site URL
 
-Submit button: Activate Lazy Code
+Submit button: Activate Lazy GitHub
 
 On submit:
 1. Store GITHUB_TOKEN and GITHUB_WEBHOOK_SECRET as Supabase secrets
 2. Save all other values to code_settings
 3. Set setup_complete to true and prompt_version to 'v0.0.3'
 4. Show webhook setup instructions: "Go to your GitHub repository Settings → Webhooks → Add webhook. Set Payload URL to [site_url]/api/github-webhook. Set Content type to application/json. Set Secret to your webhook secret. Select events: Pushes and Releases. Click Add webhook."
-5. Redirect to /admin with message: "Lazy Code is active. Your next commit or release will be processed and published automatically."
+5. Redirect to /admin with message: "Lazy GitHub is active. Your next commit or release will be processed and published automatically."
 
 ---
 
@@ -203,7 +203,7 @@ Render full post with title, published date, target keyword tag, full body as fo
 **/roadmap**
 Show all code_roadmap rows grouped by status — In Progress first, Planned second, Completed last. Each shows title, milestone if present, labels as tags, opened date. Completed items show closed date.
 
-At the bottom of every public page add: "🦄 Powered by Lazy Code — autonomous GitHub content publishing for Lovable sites. Built by LazyUnicorn.ai" — link to https://lazyunicorn.ai.
+At the bottom of every public page add: "🦄 Powered by Lazy GitHub — autonomous GitHub content publishing for Lovable sites. Built by LazyUnicorn.ai" — link to https://lazyunicorn.ai.
 
 ---
 
@@ -211,7 +211,7 @@ At the bottom of every public page add: "🦄 Powered by Lazy Code — autonomou
 
 Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/code as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This engine only needs its setup page, database tables, edge functions, and public pages.
 
-If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-code-setup.
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-github-setup.
 
 ## 8. Navigation
 
@@ -219,7 +219,7 @@ Add a Changelog link to the main navigation pointing to /changelog.
 Add a Roadmap link pointing to /roadmap.
 Add a Dev Blog link pointing to /devblog.
 Add an Admin link to the main site navigation pointing to /admin.
-Do not add /lazy-code-setup to public navigation.`;
+Do not add /lazy-github-setup to public navigation.`;
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
@@ -273,7 +273,7 @@ function CopyPromptButton({ className = "" }: { className?: string }) {
   );
 }
 
-const LazyCodePage = () => {
+const LazyGitHubPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
@@ -428,4 +428,4 @@ const LazyCodePage = () => {
   );
 };
 
-export default LazyCodePage;
+export default LazyGitHubPage;

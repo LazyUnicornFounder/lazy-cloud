@@ -28,7 +28,7 @@ const PRODUCT_INFO: Record<string, { name: string; url: string; description: str
   "lazy-stream": { name: "Lazy Stream", url: "https://lazyunicorn.ai/lazy-stream", description: "autonomous Twitch content repurposing engine" },
   "lazy-voice": { name: "Lazy Voice", url: "https://lazyunicorn.ai/lazy-voice", description: "autonomous blog-to-podcast engine" },
   "lazy-store": { name: "Lazy Store", url: "https://lazyunicorn.ai/lazy-store", description: "autonomous Shopify ecommerce engine" },
-  "lazy-code": { name: "Lazy Code", url: "https://lazyunicorn.ai/lazy-code", description: "autonomous GitHub content publishing engine" },
+  "lazy-github": { name: "Lazy GitHub", url: "https://lazyunicorn.ai/lazy-github", description: "autonomous GitHub content publishing engine" },
   "lazy-sms": { name: "Lazy SMS", url: "https://lazyunicorn.ai/lazy-sms", description: "autonomous SMS marketing engine" },
   "lazy-pay": { name: "Lazy Pay", url: "https://lazyunicorn.ai/lazy-pay", description: "autonomous payment and billing engine" },
   "lazy-alert": { name: "Lazy Alert", url: "https://lazyunicorn.ai/lazy-alert", description: "autonomous Slack notification engine" },

@@ -26,7 +26,7 @@ import LazySmsPage from "./pages/LazySmsPage.tsx";
 import LazyStreamPage from "./pages/LazyStreamPage.tsx";
 import LazyStreamSetup from "./pages/LazyStreamSetup.tsx";
 import LazyStreamDashboard from "./pages/LazyStreamDashboard.tsx";
-import LazyCodePage from "./pages/LazyCodePage.tsx";
+import LazyGitHubPage from "./pages/LazyGitHubPage.tsx";
 import LazyRunPage from "./pages/LazyRunPage.tsx";
 import LazyAlertPage from "./pages/LazyAlertPage.tsx";
 import LazyGitLabPage from "./pages/LazyGitLabPage.tsx";
@@ -85,7 +85,7 @@ const App = () => (
                 <Route path="pay" element={<AdminPlaceholderPage name="Lazy Pay" />} />
                 <Route path="sms" element={<AdminPlaceholderPage name="Lazy SMS" />} />
                 <Route path="stream" element={<AdminStreamPage />} />
-                <Route path="code" element={<AdminPlaceholderPage name="Lazy Code" />} />
+                <Route path="code" element={<AdminPlaceholderPage name="Lazy GitHub" />} />
                 <Route path="gitlab" element={<AdminPlaceholderPage name="Lazy GitLab" />} />
                 <Route path="linear" element={<AdminPlaceholderPage name="Lazy Linear" />} />
                 <Route path="alert" element={<AdminPlaceholderPage name="Lazy Alert" />} />
@@ -114,7 +114,7 @@ const App = () => (
               <Route path="/lazy-stream" element={<LazyStreamPage />} />
               <Route path="/lazy-stream-setup" element={<LazyStreamSetup />} />
               <Route path="/lazy-stream-dashboard" element={<LazyStreamDashboard />} />
-              <Route path="/lazy-github" element={<LazyCodePage />} />
+              <Route path="/lazy-github" element={<LazyGitHubPage />} />
               <Route path="/lazy-run" element={<LazyRunPage />} />
               <Route path="/lazy-alert" element={<LazyAlertPage />} />
               <Route path="/lazy-gitlab" element={<LazyGitLabPage />} />

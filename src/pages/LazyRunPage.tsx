@@ -162,7 +162,7 @@ Group: Media Engines
 - Lazy Stream: Turns every Twitch stream into blog posts and SEO content
 
 Group: Developer Engines
-- Lazy Code: Turns every GitHub commit into a changelog and developer post
+- Lazy GitHub: Turns every GitHub commit into a changelog and developer post
 - Lazy GitLab: Turns every GitLab commit into a changelog and developer post
 - Lazy Linear: Turns Linear issues and cycles into changelogs and product updates
 
@@ -206,7 +206,7 @@ Twilio section (if Lazy SMS active): Account SID as TWILIO_ACCOUNT_SID, Auth Tok
 
 Twitch section (if Lazy Stream active): Client ID as TWITCH_CLIENT_ID, Client Secret as TWITCH_CLIENT_SECRET, Username.
 
-GitHub section (if Lazy Code active): Personal Access Token as GITHUB_TOKEN, Webhook Secret as GITHUB_WEBHOOK_SECRET, Username, Repository.
+GitHub section (if Lazy GitHub active): Personal Access Token as GITHUB_TOKEN, Webhook Secret as GITHUB_WEBHOOK_SECRET, Username, Repository.
 
 GitLab section (if Lazy GitLab active): Personal Access Token as GITLAB_TOKEN, Webhook Secret as GITLAB_WEBHOOK_SECRET, Username, Project path.
 

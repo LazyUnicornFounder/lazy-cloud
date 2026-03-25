@@ -197,7 +197,7 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
     label: "Lazy Dev",
     engines: [
       {
-        name: "Lazy Code",
+        name: "Lazy GitHub",
         description: "Turns GitHub commits into changelogs and developer content",
         currentLevel: 3,
         link: "/lazy-github",

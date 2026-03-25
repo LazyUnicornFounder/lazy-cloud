@@ -238,7 +238,7 @@ const integrations: Integration[] = [
       "Maintain a public roadmap that updates from your GitHub issues and milestones.",
       "Build a growing developer blog from the work you are already doing.",
     ],
-    engine: "Lazy Code",
+    engine: "Lazy GitHub",
     engineHref: "/lazy-github",
     icon: <Code size={20} />,
   },

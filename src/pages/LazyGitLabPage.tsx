@@ -13,7 +13,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const SETUP_PROMPT = `[Lazy GitLab Prompt — v0.0.5 — LazyUnicorn.ai]
 
-Add a complete autonomous GitLab content engine called Lazy GitLab to this project. It monitors a GitLab repository via webhooks, processes commits and merge requests, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup. Mirrors the Lazy Code engine but for GitLab.
+Add a complete autonomous GitLab content engine called Lazy GitLab to this project. It monitors a GitLab repository via webhooks, processes commits and merge requests, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup. Mirrors the Lazy GitHub engine but for GitLab.
 
 ---
 
@@ -248,7 +248,7 @@ const LazyGitLabPage = () => {
           { q: "Does it work with self-hosted GitLab?", a: "Yes. Set your GitLab instance URL in the setup page." },
           { q: "What is a merge request summary?", a: "When a merge request is merged, Lazy GitLab writes a plain-English explanation of what changed and why." },
           { q: "Does it work with private repositories?", a: "Yes. Your GitLab token authenticates access to private repos. No code is ever exposed publicly." },
-          { q: "Is it different from Lazy Code?", a: "Lazy Code is for GitHub. Lazy GitLab is for GitLab. Identical features, different platform." },
+          { q: "Is it different from Lazy GitHub?", a: "Lazy GitHub is for GitHub. Lazy GitLab is for GitLab. Identical features, different platform." },
           { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
           { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
         ]} />
