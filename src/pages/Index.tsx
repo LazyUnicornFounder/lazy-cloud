@@ -250,35 +250,6 @@ const Index = () => {
           transition={{ duration: 0.8 }}
           className="min-h-screen flex flex-col items-center justify-center gap-6 px-6 text-center"
         >
-          {/* Autonomy Level Bar */}
-          <div className="w-full max-w-xs">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] tracking-[0.12em] uppercase" style={{ color: "#f0ead6", opacity: 0.3 }}>Autonomy Level</span>
-              <span className="text-[10px] tracking-[0.12em] uppercase font-semibold" style={{ color: "#f0ead6", opacity: 0.5 }}>Level 2</span>
-            </div>
-            <div className="w-full h-[3px]" style={{ backgroundColor: "rgba(240,234,214,0.1)" }}>
-              <motion.div
-              initial={{ width: 0 }}
-                animate={{ width: "33.3%" }}
-                transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                className="h-full"
-                style={{ backgroundColor: "#f0ead6" }}
-              />
-            </div>
-            <div className="flex justify-between mt-1.5">
-              {[1, 2, 3, 4, 5, 6].map((level) => (
-                <span
-                  key={level}
-                  className="text-[8px]"
-                  style={{ color: "#f0ead6", opacity: level <= 2 ? 0.5 : 0.15 }}
-                >
-                  {level}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Headline */}
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(3rem, 7vw, 5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
             Make your Lovable❤️
             <br />
