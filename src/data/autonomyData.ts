@@ -301,4 +301,23 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
       },
     ],
   },
+  {
+    label: "Security",
+    engines: [
+      {
+        name: "Lazy Security",
+        description: "Autonomous pentesting and vulnerability monitoring via Aikido",
+        currentLevel: 3,
+        link: "/lazy-security",
+        levels: [
+          "You run security audits manually. Quarterly if lucky.",
+          "Scanning tools help. You still triage everything.",
+          "Scheduled scans. Reports pile up unread.",
+          "Every deploy triggers a scan. Critical findings alert you instantly.",
+          "It writes fix PRs for vulnerabilities automatically. Coming soon.",
+          "It learns your attack surface and prioritises what matters. Coming soon.",
+        ],
+      },
+    ],
+  },
 ];
