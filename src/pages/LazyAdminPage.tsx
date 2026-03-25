@@ -220,7 +220,7 @@ export default function LazyAdminPage() {
             >
               {copied ? <><Check size={14} /> Copied ✓</> : <><Copy size={14} /> Copy the Lovable Prompt</>}
             </button>
-            <p className="font-body text-foreground/20 text-xs mt-4">Open your Lovable project, paste it into the chat. The dashboard builds itself around whatever engines you have installed.</p>
+            <p className="font-body text-foreground/20 text-xs mt-4 max-w-md mx-auto">Open your Lovable project, paste it into the chat. The dashboard builds itself around whatever engines you have installed.</p>
           </div>
         </section>
       </main>
