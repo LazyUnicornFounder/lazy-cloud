@@ -10,7 +10,38 @@ import { useState } from "react";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const SETUP_PROMPT = `Add a complete autonomous Contentful integration called Lazy Contentful to this project. It creates a two-way content sync between Contentful and this Lovable project — pulling Contentful entries into Lovable pages and pushing AI-generated content from Lazy engines back into Contentful automatically.
+const SETUP_PROMPT = `[Lazy Contentful Prompt — v0.0.5 — LazyUnicorn.ai]
+
+Add a complete autonomous Contentful integration called Lazy Contentful to this project. It acts as a two-way bridge — pulling content from Contentful into your Lovable site automatically, and pushing AI-generated blog posts, SEO articles, and GEO content from your Lazy engines back into Contentful for distribution across all your connected channels.
+
+---
+
+MARKETING PAGE PROMPT — paste into LazyUnicorn project:
+
+Add a new page at /lazy-contentful. It is a marketing and landing page for a product called Lazy Contentful — a two-way autonomous content bridge between your Lovable project and Contentful that syncs content in both directions automatically.
+
+Hero section
+Headline: 'Contentful is your CMS. Lazy Contentful fills it automatically.' Subheading: 'Lazy Contentful pulls content from Contentful into your Lovable site and pushes AI-generated blog posts, SEO articles, and GEO content back into Contentful — keeping every channel in sync without any manual publishing.' Primary button: Copy the Lovable Prompt. Secondary button: See How It Works. Badge: Powered by Contentful.
+
+How it works section
+Four steps: 1. Copy the setup prompt. 2. Paste into your Lovable project. 3. Add your Contentful API keys. 4. Content flows in both directions automatically — Contentful to Lovable and Lazy engines to Contentful.
+
+What it does section
+Eight cards: 1. Contentful to Lovable — pulls published entries from Contentful and displays them on your Lovable site automatically. 2. Lazy Blogger to Contentful — every post Lazy Blogger publishes is also pushed to Contentful automatically. 3. Lazy SEO to Contentful — SEO articles published by Lazy SEO sync to Contentful for distribution. 4. Lazy GEO to Contentful — GEO content syncs to Contentful so it reaches every connected channel. 5. Webhook sync — listens for Contentful publish events and updates your Lovable site in real time. 6. Content type mapping — maps Contentful content types to your Lovable pages automatically. 7. Asset handling — Contentful images and media are pulled and displayed in Lovable without manual work. 8. Self-healing sync — detects and repairs sync failures automatically.
+
+Pricing section
+Free — self-hosted, bring your own Contentful space. Pro at $29/month — coming soon, multi-space support, advanced content type mapping, scheduled sync.
+
+Bottom CTA
+Headline: Your Contentful CMS. Filling itself. Primary button: Copy the Lovable Prompt.
+
+Navigation: Add Lazy Contentful to the LazyUnicorn navigation.
+
+---
+
+SETUP PROMPT — paste into user's Lovable project:
+
+Add a complete autonomous Contentful integration called Lazy Contentful to this project. It creates a two-way content sync between Contentful and this Lovable project — pulling Contentful entries into Lovable pages and pushing AI-generated content from Lazy engines back into Contentful automatically.
 
 1. Database
 Create these Supabase tables with RLS enabled:
@@ -47,7 +78,7 @@ On submit:
 3. Set setup_complete to true
 4. Show instructions: Go to your Contentful space, Settings → Webhooks → Add webhook. Set URL to [site_url]/api/contentful-webhook. Add a secret header: X-Contentful-Secret with your webhook secret. Select triggers: Entry Published, Entry Unpublished.
 5. Immediately call contentful-pull to do first sync.
-6. Redirect to /lazy-contentful-dashboard with message: Lazy Contentful is active. Pulling your Contentful content now.
+6. Redirect to /admin with message: Lazy Contentful is active. Pulling your Contentful content now.
 
 3. Pull edge function (Contentful to Lovable)
 Create a Supabase edge function called contentful-pull. Cron: every hour — 0 * * * *
@@ -86,11 +117,15 @@ Log errors to contentful_errors with function_name contentful-push.
 /contentful/[slug] — fetch the matching entry. Show title, author, published date, featured image, and body rendered from markdown to HTML.
 At bottom add: 🦄 Powered by Lazy Contentful — autonomous Contentful sync for Lovable sites. Built by LazyUnicorn.ai — link to https://lazyunicorn.ai.
 
-7. Admin dashboard
-Create a page at /lazy-contentful-dashboard. Red error banner if contentful_errors has rows from the last 24 hours. Five sections: Sync status (last synced time, entries from Contentful count, entries pushed to Contentful count, sync health indicator), Contentful entries table (all contentful_entries with title, content type, published date, synced date, status badge), Sync log (last 50 contentful_sync_log rows with direction badge, content type, entry title, status, time), Controls (pause/resume toggle, Pull Now button, Push Now button, error log, link to /lazy-contentful-setup).
+7. Admin
+
+Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/contentful as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
+
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-contentful-setup.
 
 8. Navigation
-Add a Content link to the main navigation pointing to /contentful. Do not add setup or dashboard to public navigation.`;
+Add a Content link to the main navigation pointing to /contentful. Add an Admin link to the main site navigation pointing to /admin.
+Do not add the setup page to public navigation.`;
 
 const steps = ["Copy the setup prompt from this page.", "Paste it into your existing Lovable project.", "Add your Contentful API keys.", "Content flows in both directions automatically."];
 

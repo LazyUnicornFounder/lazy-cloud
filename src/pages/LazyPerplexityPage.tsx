@@ -10,7 +10,38 @@ import { useState } from "react";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const SETUP_PROMPT = `Add a complete autonomous Perplexity research and citation engine called Lazy Perplexity to this project. It uses the Perplexity API to research topics with live web data, feed intelligence into Lazy Blogger and Lazy SEO, test brand citation rates, and generate citation-rich content automatically.
+const SETUP_PROMPT = `[Lazy Perplexity Prompt — v0.0.5 — LazyUnicorn.ai]
+
+Add a complete autonomous Perplexity integration called Lazy Perplexity to this project. It uses the Perplexity API to research current topics with real web citations, feed fresh intelligence into Lazy Blogger and Lazy SEO, test brand citation rates with real AI queries, and generate citation-rich content that is more likely to be referenced by AI engines — all automatically.
+
+---
+
+MARKETING PAGE PROMPT — paste into LazyUnicorn project:
+
+Add a new page at /lazy-perplexity. It is a marketing and landing page for a product called Lazy Perplexity — an autonomous research and citation engine that uses the Perplexity API to feed real-time web intelligence into your Lazy content engines and test your brand's AI visibility.
+
+Hero section
+Headline: 'Real answers. Real citations. Real content. Powered by Perplexity.' Subheading: 'Lazy Perplexity uses the Perplexity API to research your niche with live web data, feed current intelligence into your blog and SEO engines, and test whether your brand appears when people ask AI questions about your industry.' Primary button: Copy the Lovable Prompt. Secondary button: See How It Works. Badge: Powered by Perplexity.
+
+How it works section
+Four steps: 1. Copy the setup prompt. 2. Paste into your Lovable project. 3. Add your Perplexity API key. 4. Real-time research flows into your content engines automatically.
+
+What it does section
+Eight cards: 1. Real-time research — uses Perplexity to research your niche with live web citations so your blog posts are based on what is actually happening today. 2. Citation-rich content — every AI-generated blog post includes real Perplexity-sourced citations making it more trustworthy and more likely to be cited by other AI engines. 3. Brand visibility testing — asks Perplexity real questions in your niche and checks whether your brand is cited in the answers. 4. Competitor intelligence — asks Perplexity about competitors and extracts what it says about them versus you. 5. Trend discovery — queries Perplexity for current trends in your niche and feeds them into the Lazy SEO keyword queue. 6. Question research — discovers the real questions people are asking AI engines and feeds them into the Lazy GEO query queue. 7. Citation monitoring — tracks your Perplexity citation rate over time and alerts you when it changes significantly. 8. Content improvement — rewrites underperforming posts using Perplexity research to add current citations and improve AI visibility.
+
+Pricing section
+Free — self-hosted, bring your own Perplexity API key. Perplexity API starts at $5 for 5 million tokens. Pro at $29/month — coming soon, hosted version, daily citation monitoring, competitive citation tracking.
+
+Bottom CTA
+Headline: Real research. Real citations. Better content. Primary button: Copy the Lovable Prompt.
+
+Navigation: Add Lazy Perplexity to the LazyUnicorn navigation.
+
+---
+
+SETUP PROMPT — paste into user's Lovable project:
+
+Add a complete autonomous Perplexity research and citation engine called Lazy Perplexity to this project. It uses the Perplexity API to research topics with live web data, feed intelligence into Lazy Blogger and Lazy SEO, test brand citation rates, and generate citation-rich content automatically.
 
 1. Database
 Create these Supabase tables with RLS enabled:
@@ -44,7 +75,7 @@ On submit:
 2. Save all other values to perplexity_settings
 3. Set setup_complete to true
 4. Immediately trigger perplexity-research once
-5. Redirect to /lazy-perplexity-dashboard with message: Lazy Perplexity is active. Researching your niche now.
+5. Redirect to /admin with message: Lazy Perplexity is active. Researching your niche now.
 
 3. Core research edge function
 Create a Supabase edge function called perplexity-research. Cron: daily at 5am UTC — 0 5 * * *
@@ -114,11 +145,15 @@ Log errors to perplexity_errors with function_name perplexity-improve-content.
 /citation-tracker — a public page showing your brand's Perplexity citation rate over time as a line chart. Shows which queries you appear in and which you do not. This page itself attracts GEO traffic for queries about AI brand visibility.
 At bottom of every page: 🦄 Powered by Lazy Perplexity — autonomous AI research for Lovable sites. Built by LazyUnicorn.ai — link to https://lazyunicorn.ai.
 
-8. Admin dashboard
-Create a page at /lazy-perplexity-dashboard. Red error banner if perplexity_errors has rows from the last 24 hours. Six sections: Overview (total research calls made, total citations found, brand citation rate as percentage, content pieces published with citations, last research time), Research log (all perplexity_research with query, type, citation count, processed badge, date), Citations log (all perplexity_citations with query, brand mentioned yes/no, confidence, sources count, date), Content log (all perplexity_content with title, citations count, views, link), Controls (pause/resume toggle, Research Now button, Test Citations Now button, Improve Content Now button, error log, link to /lazy-perplexity-setup).
+8. Admin
+
+Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/perplexity as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
+
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-perplexity-setup.
 
 9. Navigation
-Add Research link to /research. Add Citation Tracker link to /citation-tracker. Do not add setup or dashboard to public navigation.`;
+Add Research link to /research. Add Citation Tracker link to /citation-tracker. Add an Admin link to the main site navigation pointing to /admin.
+Do not add the setup page to public navigation.`;
 
 const steps = ["Copy the setup prompt from this page.", "Paste it into your existing Lovable project.", "Add your Perplexity API key.", "Real-time research flows into your content engines automatically."];
 

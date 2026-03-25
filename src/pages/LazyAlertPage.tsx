@@ -10,83 +10,202 @@ import { useTrackEvent } from "@/hooks/useTrackEvent";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const LAZY_ALERT_PROMPT = `Add a complete Slack integration called Lazy Alert to this project. It sends real-time Slack notifications for every significant event across every installed Lazy engine, delivers a daily morning briefing, installs slash commands for controlling engines from Slack, and alerts on errors — all automatically with no manual input required after setup.
+const LAZY_ALERT_PROMPT = `[Lazy Alert Prompt — v0.0.5 — LazyUnicorn.ai]
 
-1. Database Create a Supabase table called alert_settings with fields: id (uuid, primary key, default gen_random_uuid()), slack_webhook_url (text), slack_bot_token (text), slack_channel (text, default 'general'), daily_briefing_enabled (boolean, default true), daily_briefing_time (text, default '08:00'), alert_payments (boolean, default true), alert_sms_replies (boolean, default true), alert_posts (boolean, default false), alert_keywords (boolean, default true), alert_citations (boolean, default true), alert_products (boolean, default true), alert_streams (boolean, default true), alert_releases (boolean, default true), alert_errors (boolean, default true), is_running (boolean, default true), setup_complete (boolean, default false), created_at (timestamptz, default now()). Create a Supabase table called alert_log with fields: id (uuid, primary key, default gen_random_uuid()), engine (text), event_type (text), message (text), slack_response (text), sent_at (timestamptz, default now()), success (boolean, default true). Create a Supabase table called alert_errors with fields: id (uuid, primary key, default gen_random_uuid()), function_name (text), error_message (text), created_at (timestamptz, default now()).
+Add a complete Slack integration called Lazy Alert to this project. It sends real-time Slack notifications for every significant event across every installed Lazy engine, delivers a daily morning briefing, installs slash commands for controlling engines from Slack, and alerts on errors — all automatically with no manual input required after setup.
 
-2. Setup page Create a page at /lazy-alert-setup. Show a welcome message: 'Connect your autonomous business to Slack. Every significant event across every Lazy engine will send a Slack message automatically.' Form fields: Slack Incoming Webhook URL (text) — with instructions: Go to api.slack.com/apps, create a new app, go to Incoming Webhooks, activate and add a new webhook to your workspace, paste the webhook URL here. Slack Bot Token (password, optional) — with instructions: For slash commands go to your Slack app settings, add the slash commands listed below, then paste your Bot User OAuth Token here. Required only for slash commands. Leave blank if you only want incoming alerts. Slack Channel (text, default: general) — the channel name without the hash symbol. Daily briefing toggle (default on). Daily briefing time (time select, default 8:00am). Alert toggles — a grid of on/off toggles for each alert type: Payments, SMS Replies, Posts Published, Keywords Captured, Brand Citations, Products Listed, Streams Live, Releases Published, Engine Errors. Submit button: Connect to Slack. On submit save all values to alert_settings and set setup_complete to true. Immediately call alert-send with a test message: Your Lazy Alert is connected. Your autonomous business will now report to you in Slack. Show success message: Slack connected. Watch for the test message in your channel.
+Note: Store the Slack signing secret as Supabase secret SLACK_SIGNING_SECRET. Never in the database.
 
-3. Core send function Create a Supabase edge function called alert-send handling POST requests. Accept: message (text), engine (text), event_type (text), fields (array of objects with title and value for Slack attachment fields). Read alert_settings. If is_running is false or setup_complete is false exit. Build a Slack message payload using the Block Kit format:
+---
 
-Header block: a bold title combining the engine name and event type with a relevant emoji prefix — use 💰 for payments, 💬 for SMS replies, 📝 for posts, 🔑 for keywords, 🤖 for citations, 🛍️ for products, 🔴 for streams going live, 🚀 for releases, ⚠️ for errors, 📊 for reports.
+## 1. Database
 
-Section block: the main message text.
+Create these Supabase tables with RLS enabled:
 
-Fields block: up to four key-value pairs showing the most relevant details for that event type.
+**alert_settings**
+id (uuid, primary key, default gen_random_uuid()),
+slack_webhook_url (text),
+slack_channel (text, default 'general'),
+daily_briefing_enabled (boolean, default true),
+daily_briefing_time (text, default '08:00'),
+alert_payments (boolean, default true),
+alert_sms_replies (boolean, default true),
+alert_posts (boolean, default false),
+alert_keywords (boolean, default true),
+alert_citations (boolean, default true),
+alert_products (boolean, default true),
+alert_streams (boolean, default true),
+alert_releases (boolean, default true),
+alert_errors (boolean, default true),
+last_checked (timestamptz),
+is_running (boolean, default true),
+setup_complete (boolean, default false),
+created_at (timestamptz, default now())
 
-Context block: timestamp and engine name in small text. POST the payload to the slack_webhook_url stored in alert_settings. Insert into alert_log with the engine, event_type, message, slack response, and success status. Log errors to alert_errors with function_name alert-send.
+Note: Store SLACK_SIGNING_SECRET as Supabase secret.
 
-4. Event listener edge function Create a Supabase edge function called alert-monitor that runs every 5 minutes. Read alert_settings. If is_running is false or setup_complete is false exit. Check each alert type that is enabled and look for new events since the last run. Use a watermark approach — store the last checked timestamp in alert_settings as last_checked (add this field: last_checked timestamptz). Only process events newer than last_checked.
+**alert_log**
+id (uuid, primary key, default gen_random_uuid()),
+engine (text),
+event_type (text),
+message (text),
+slack_response (text),
+sent_at (timestamptz, default now()),
+success (boolean, default true)
 
-For payments (if alert_payments is true and pay_transactions table exists): Query pay_transactions where status is succeeded and created_at is greater than last_checked. For each new transaction call alert-send with engine Lazy Pay, event_type payment-received, message [customer email] paid [amount] for [product name], fields showing: Amount, Product, Customer, Type (new or returning based on whether customer has prior transactions).
+**alert_errors**
+id (uuid, primary key, default gen_random_uuid()),
+function_name (text),
+error_message (text),
+created_at (timestamptz, default now())
 
-For SMS replies (if alert_sms_replies is true and sms_messages table exists): Query sms_messages where direction is inbound and message_type is not opt-out and created_at is greater than last_checked. For each new reply call alert-send with engine Lazy SMS, event_type customer-replied, message Customer replied: [message_body truncated to 100 characters], fields showing: From, Message, Time.
+---
 
-For keyword captures (if alert_keywords is true and seo_posts table exists): Query seo_posts where published_at is greater than last_checked. Batch these — do not send one per post. Instead send one summary message if any new SEO posts were published: [count] new SEO articles published. Latest: [most recent title]. Fields showing: Count, Latest Title, Latest Keyword, Link.
+## 2. Setup page
 
-For brand citations (if alert_citations is true and geo_citations table exists): Query geo_citations where brand_mentioned is true and tested_at is greater than last_checked. For each new citation call alert-send with engine Lazy GEO, event_type brand-cited, message Your brand was cited by an AI engine for: [query], fields showing: Query, Confidence, Reason, Tested.
+Create a page at /lazy-alert-setup.
 
-For products listed (if alert_products is true and store_products table exists): Query store_products where created_at is greater than last_checked. Batch these — send one summary: [count] new products discovered and listed. Latest: [most recent product name] at [price].
+Welcome message: "Connect your autonomous business to Slack. Every significant event across every Lazy engine will send a Slack message automatically."
 
-For streams going live (if alert_streams is true and stream_sessions table exists): Query stream_sessions where status is live and created_at is greater than last_checked. For each new live session call alert-send with engine Lazy Stream, event_type stream-live, message [twitch_username] is live: [title], fields showing: Game, Started At, Watch link using the Twitch URL.
+Form fields:
+- Slack Incoming Webhook URL (text) — instructions: go to api.slack.com/apps, create a new app, go to Incoming Webhooks, activate and add a webhook, paste the URL here.
+- Slack Bot Token (password, optional) — instructions: for slash commands go to your Slack app, add slash commands pointing to [site_url]/api/slack-command, paste Bot User OAuth Token here.
+- Slack Channel (text, default: general) — without the hash symbol.
+- Daily briefing toggle (default on)
+- Daily briefing time (select: 6am / 7am / 8am / 9am)
+- Alert toggles grid: Payments, SMS Replies, Posts Published, Keywords Captured, Brand Citations, Products Listed, Streams Live, Releases Published, Engine Errors, Crawl Intelligence, Perplexity Citations
 
-For releases published (if alert_releases is true and code_content table exists): Query code_content where content_type is release-notes and published_at is greater than last_checked. For each new release call alert-send with engine Lazy Code, event_type release-published, message New release published: [title], fields showing: Version, Link to release notes.
+Submit button: Connect to Slack
 
-For engine errors (if alert_errors is true): Query all engine error tables that exist — blog_errors, seo_errors, geo_errors, store_errors, voice_errors, pay_errors, sms_errors, stream_errors, code_errors, run_errors — for rows where created_at is greater than last_checked. Group by engine. For any engine with more than 3 new errors call alert-send with engine Lazy Run, event_type engine-error, message [engine name] has [count] errors in the last 5 minutes, fields showing: Engine, Error Count, Last Error Message, Time.
+On submit:
+1. Store SLACK_SIGNING_SECRET as Supabase secret
+2. Save all values to alert_settings
+3. Set setup_complete to true
+4. Send a test message via the webhook: "Your Lazy Alert is connected. Your autonomous business will now report to you in Slack."
+5. Redirect to /admin with message: "Slack connected. Check your channel for the test message."
 
-After processing all events update last_checked in alert_settings to now. Log all errors to alert_errors with function_name alert-monitor.
+---
 
-5. Daily briefing edge function Create a Supabase edge function called alert-briefing that runs every day at the configured daily_briefing_time. Cron: 0 8 * * * (default — adjust based on daily_briefing_time setting). Read alert_settings. If is_running is false or daily_briefing_enabled is false exit. Collect metrics from the last 24 hours from every installed engine:
+## 3. Core send function
 
-blog_posts: count published in last 24 hours, split by post_type
+Create a Supabase edge function called alert-send handling POST requests.
+Accept: message (text), engine (text), event_type (text), fields (array of objects with title and value).
 
-seo_posts: count published in last 24 hours
+Read alert_settings. If is_running is false or setup_complete is false exit.
 
-geo_posts: count published in last 24 hours
+Build Slack Block Kit payload:
+- Header block: bold title with emoji prefix — 💰 payments, 💬 SMS replies, 📝 posts, 🔑 keywords, 🤖 citations, 🛍️ products, 🔴 streams live, 🚀 releases, ⚠️ errors, 📊 reports, 🕷️ crawl intel, 🔍 perplexity
+- Section block: main message text
+- Fields block: up to four key-value pairs
+- Context block: timestamp and engine name
 
-geo_citations: count where brand_mentioned is true in last 24 hours
+POST to slack_webhook_url stored in alert_settings.
+Insert into alert_log with engine, event_type, message, slack response, success status.
+Log errors to alert_errors with function_name alert-send.
 
-pay_transactions: count succeeded, sum of amount_cents divided by 100 for total revenue
+---
 
-sms_messages: count sent, count received, calculate response rate
+## 4. Event monitor edge function
 
-store_products: count new products listed
+Create a Supabase edge function called alert-monitor.
+Cron: every 5 minutes — */5 * * * *
 
-voice_episodes: count new episodes generated
+Read alert_settings. If is_running is false or setup_complete is false exit.
+Use last_checked watermark. Process only events newer than last_checked.
 
-stream_sessions: count processed
+Monitor these events based on their toggle settings:
 
-code_content: count published Skip any table that does not exist gracefully. Call the built-in Lovable AI with this prompt: 'You are writing a daily Slack briefing for [brand_name]. Here are the metrics from the last 24 hours: [metrics list]. Write a very brief friendly summary — 3 to 5 bullet points maximum. Each bullet should be one line. Lead with the most impressive metric. Flag anything that looks wrong or unusually low. End with one forward-looking sentence about what the engines will do today. Return only the briefing text with bullet points. No preamble.' Build a Slack message with the briefing. Header: Good morning [brand_name] — your daily autonomous business report. Body: the AI-generated briefing. Footer: Powered by Lazy Run. Call alert-send with engine Lazy Run, event_type daily-briefing, and the formatted message. Log errors to alert_errors with function_name alert-briefing.
+Payments (if alert_payments and pay_transactions table exists):
+New succeeded transactions → call alert-send with 💰 emoji, engine Lazy Pay, event_type payment-received.
 
-6. Slash command edge function Create a Supabase edge function called alert-command handling POST requests at /api/slack-command. This receives Slack slash command payloads. Verify the request using the Slack signing secret stored as Supabase secret SLACK_SIGNING_SECRET. Parse the command text from the payload. Handle these commands: /lazy status — query all engine settings tables that exist, collect is_running status and last published time for each. Return a formatted Slack response listing each engine with a green circle if running or red circle if paused and the last run time. /lazy publish blog — call blog-publish edge function. Return: Publishing one blog post now. Check Slack in a few minutes. /lazy publish seo — call seo-publish edge function. Return: Publishing one SEO post now. /lazy publish geo — call geo-publish edge function. Return: Publishing one GEO post now. /lazy pause [engine] — update is_running to false in the matching engine settings table. Return: [engine] paused. /lazy resume [engine] — update is_running to true in the matching engine settings table. Return: [engine] resumed. /lazy errors — query all engine error tables for the last 10 errors across all engines ordered by created_at descending. Return a formatted list showing engine, error message, and time for each. /lazy help — return a formatted list of all available commands with descriptions. For unknown commands return: Unknown command. Type /lazy help for a list of available commands. All responses use Slack ephemeral response format so only the person who typed the command sees the response. Log errors to alert_errors with function_name alert-command.
+SMS replies (if alert_sms_replies and sms_messages table exists):
+New inbound messages where message_type is not opt-out → call alert-send with 💬, engine Lazy SMS, event_type customer-replied.
 
-7. Admin dashboard Create a page at /lazy-alert-dashboard. Show at top: red error banner if alert_errors has rows from the last 24 hours. Show:
+Keywords captured (if alert_keywords and seo_posts table exists):
+Batch new SEO posts → one summary message showing count, latest title and keyword.
 
-Connection status: green Connected or red Disconnected badge for Slack, last message sent time, total messages sent today.
+Brand citations (if alert_citations and geo_citations table exists):
+New citations where brand_mentioned is true → call alert-send with 🤖, engine Lazy GEO, event_type brand-cited.
 
-Alert toggles: all alert_settings toggles displayed as a grid — update in real time when toggled without a save button.
+Perplexity citations (if alert_citations and perplexity_citations table exists):
+New real citations where brand_mentioned is true → call alert-send with 🔍, engine Lazy Perplexity, event_type brand-cited-perplexity. Include note that this is a real Perplexity API result.
 
-Recent alert log: last 50 alert_log rows with engine, event type, message preview, sent time, and success badge.
+Products listed (if alert_products and store_products table exists):
+Batch new products → one summary message.
 
-Daily briefing preview: a button labelled Send Briefing Now that immediately triggers alert-briefing regardless of schedule. Shows the last briefing sent below it rendered as formatted text.
+Streams live (if alert_streams and stream_sessions table exists):
+New live sessions → call alert-send with 🔴, engine Lazy Stream, event_type stream-live.
 
-Slash commands reference: a copy-paste ready list of all slash commands with the correct /api/slack-command URL for configuring each one in the Slack app dashboard.
+Releases (if alert_releases and code_content or gitlab_content tables exist):
+New release-notes content → call alert-send with 🚀.
 
-Controls: pause/resume toggle updating is_running, a button labelled Send Test Message triggering a test alert, error log showing last 10 alert_errors rows, link to /lazy-alert-setup labelled Edit Settings.
+Crawl intelligence (if crawl_intel table exists):
+New price-change or brand-mention intel → call alert-send with 🕷️, engine Lazy Crawl.
 
-8. Slack app configuration instructions Show these instructions prominently on both the setup page and dashboard: To enable slash commands: go to api.slack.com/apps and select your app. Click Slash Commands and add these commands one by one, each pointing to [site_url]/api/slack-command: /lazy — Your autonomous business control panel Save each command. Go to OAuth and Permissions, copy the Bot User OAuth Token, and paste it into the Lazy Alert setup page. Go to Basic Information, copy the Signing Secret, and add it to your Supabase project as a secret called SLACK_SIGNING_SECRET. Reinstall the app to your workspace after making changes.
+Security vulnerabilities (if security_vulnerabilities table exists and alert_errors toggle on):
+New critical or high severity vulnerabilities where alerted is false and first_found_at is greater than last_checked → call alert-send with 🚨, engine Lazy Security, event_type vulnerability-found. Message: [severity] vulnerability found: [title]. Fields: Severity, Category, Remediation hint, Dashboard link. After alerting update alerted to true on each vulnerability row.
 
-9. Navigation Do not add any Lazy Alert pages to the public navigation. All pages are admin-only.`;
+Engine errors (if alert_errors toggle on):
+Query all engine error tables that exist for errors since last_checked. Group by engine. Any engine with more than 3 new errors → call alert-send with ⚠️.
+
+Update last_checked in alert_settings to now after all events processed.
+Log all errors to alert_errors with function_name alert-monitor.
+
+---
+
+## 5. Daily briefing edge function
+
+Create a Supabase edge function called alert-briefing.
+Cron: 0 8 * * * (default — adjust based on daily_briefing_time setting)
+
+Read alert_settings. If is_running is false or daily_briefing_enabled is false exit.
+
+Collect metrics from last 24 hours from every installed engine (skip any table that does not exist):
+blog_posts published, seo_posts published, geo_posts published, geo_citations brand_mentioned true, pay_transactions succeeded and total revenue, sms_messages sent and response rate, store_products new, voice_episodes new, stream_sessions processed, code_content published, gitlab_content published, linear_content published, crawl_intel new items and leads found, perplexity_citations brand_mentioned true.
+
+Call the built-in Lovable AI:
+"Write a daily Slack briefing for [brand_name]. Metrics from the last 24 hours: [metrics]. Write 3 to 5 bullet points maximum, each one line. Lead with the most impressive metric. Flag anything unusually low. End with one sentence about what the engines will do today. Return only the briefing text with bullet points. No preamble."
+
+Build Slack message. Header: "Good morning [brand_name] — your daily autonomous business report."
+Call alert-send with engine Lazy Run, event_type daily-briefing.
+Log errors to alert_errors with function_name alert-briefing.
+
+---
+
+## 6. Slash command edge function
+
+Create a Supabase edge function called alert-command handling POST requests at /api/slack-command.
+Verify request using SLACK_SIGNING_SECRET.
+Parse command text.
+
+Handle:
+/lazy status — return engine status from all settings tables
+/lazy publish blog — call blog-publish
+/lazy publish seo — call seo-publish
+/lazy publish geo — call geo-publish
+/lazy crawl — call crawl-run for all active targets
+/lazy research — call perplexity-research
+/lazy pause [engine] — update is_running false in matching settings table
+/lazy resume [engine] — update is_running true
+/lazy errors — last 10 errors across all engine error tables
+/lazy pentest — triggers security-scan immediately if Lazy Security is installed. Reply: Pentest queued. Results will appear in your dashboard within the next hour. If Lazy Security is not installed reply: Lazy Security is not installed. Paste the Lazy Security prompt into your Lovable project to enable pentesting.
+/lazy security — if Lazy Security is installed returns: current security score from the latest completed security_scans row, open critical vulnerability count, open high vulnerability count, and next scheduled pentest date from security_settings. If Lazy Security is not installed reply: Lazy Security is not installed.
+/lazy help — list all commands
+
+All responses use Slack ephemeral format.
+Log errors to alert_errors with function_name alert-command.
+
+---
+
+## 7. Admin
+
+Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/alert as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This engine only needs its setup page, database tables, edge functions, and public pages.
+
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-alert-setup.
+
+## 8. Navigation
+
+Do not add any Lazy Alert pages to public navigation. All pages are admin-only.`;
 
 const SlackBadge = () => (
   <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.15em] uppercase text-foreground/30 border border-border px-3 py-1">

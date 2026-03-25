@@ -9,7 +9,7 @@ import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const LAZY_VOICE_PROMPT = `[Lazy Voice Prompt — v0.0.3 — LazyUnicorn.ai]
+const LAZY_VOICE_PROMPT = `[Lazy Voice Prompt — v0.0.4 — LazyUnicorn.ai]
 
 Add an autonomous audio narration engine called Lazy Voice to this project. It monitors every new post published to blog_posts, seo_posts, and geo_posts, converts each to audio using the ElevenLabs API, stores the audio file, embeds an audio player on every blog post page, and publishes a podcast feed at /listen — all automatically with no manual input required after setup.
 
@@ -74,7 +74,7 @@ On submit:
 1. Store ElevenLabs API key as Supabase secret ELEVENLABS_API_KEY
 2. Save all other values to voice_settings
 3. Set setup_complete to true
-4. Redirect to /lazy-voice-dashboard with message: "Lazy Voice is running. Every new blog post will be narrated automatically within 30 minutes of publishing."
+4. Redirect to /admin with message: "Lazy Voice is running. Every new blog post will be narrated automatically within 30 minutes of publishing."
 
 ---
 
@@ -136,27 +136,17 @@ Create a public page at /listen:
 
 ---
 
-## 6. Admin dashboard
+## 6. Admin
 
-Create a page at /lazy-voice-dashboard:
+Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/voice as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This engine only needs its setup page, database tables, edge functions, and public pages.
 
-Show at top: red error banner if voice_errors has rows from the last 24 hours.
-
-Show:
-- Stats: total episodes generated, total audio duration (sum of duration_seconds formatted as hours and minutes), episodes this week
-- A large enable/disable toggle updating is_running
-- A Generate Audio Now button that immediately calls voice-narrate
-- A View RSS Feed button linking to the voice-rss function URL
-- Episodes table: all voice_episodes with post title, source table, published date, audio duration, a Play button, and a View Post link
-- Error log: last 10 voice_errors rows
-- Link to /lazy-voice-setup labelled Edit Settings
-
----
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-voice-setup.
 
 ## 7. Navigation
 
 Add a Listen link to the main site navigation pointing to /listen.
-Do not add /lazy-voice-setup or /lazy-voice-dashboard to public navigation.`;
+Add an Admin link to the main site navigation pointing to /admin.
+Do not add /lazy-voice-setup to public navigation.`;
 
 /* ── Reusable copy button ── */
 function CopyPromptButton({

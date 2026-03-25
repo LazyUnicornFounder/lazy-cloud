@@ -10,7 +10,38 @@ import { useState } from "react";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const SETUP_PROMPT = `Add a complete autonomous GitLab content engine called Lazy GitLab to this project. It monitors a GitLab repository via webhooks, processes commits, merge requests, and releases, writes plain-English changelogs, release notes, developer blog posts, and SEO articles, and maintains a public roadmap — all automatically.
+const SETUP_PROMPT = `[Lazy GitLab Prompt — v0.0.5 — LazyUnicorn.ai]
+
+Add a complete autonomous GitLab content engine called Lazy GitLab to this project. It monitors a GitLab repository via webhooks, processes commits and merge requests, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup. Mirrors the Lazy Code engine but for GitLab.
+
+---
+
+MARKETING PAGE PROMPT — paste into LazyUnicorn project:
+
+Add a new page at /lazy-gitlab. It is a marketing and landing page for a product called Lazy GitLab — an autonomous GitLab content engine that installs into any existing Lovable project with one prompt.
+
+Hero section
+Headline: 'One prompt turns every GitLab commit into a changelog, release notes, and a developer blog post — automatically.' Subheading: 'Lazy GitLab monitors your GitLab repository, reads your commits and merge requests, and publishes plain-English changelogs, release notes, SEO developer posts, and a public roadmap to your Lovable site — every time you push.' Primary button: Copy the Lovable Prompt. Secondary button: See How It Works. Badge: Powered by GitLab.
+
+How it works section
+Headline: Push to GitLab. Lazy GitLab handles the rest. Four steps: 1. Copy the setup prompt. 2. Paste into your Lovable project. 3. Add your GitLab credentials. 4. Push code as normal — changelog, release notes, and blog posts publish automatically.
+
+What it installs section
+Headline: Every commit becomes content. Eight cards: 1. Changelog — plain-English summary of every meaningful commit. 2. Release notes — written automatically for every tagged release. 3. Developer blog posts — a technical post for every significant feature. 4. Merge request summaries — every merged MR summarised in plain English. 5. Public roadmap — maintained from GitLab issues and milestones automatically. 6. SEO developer content — keyword-targeted articles from your commits. 7. Webhook handler — listens for GitLab push, merge, and release events. 8. Self-improving content — monitors which posts drive the most traffic and improves the writing template.
+
+Pricing section
+Two cards: Free — self-hosted, bring your own GitLab account. Pro at $19/month — coming soon.
+
+Bottom CTA
+Headline: Your commits are content. Lazy GitLab publishes them. Primary button: Copy the Lovable Prompt.
+
+Navigation: Add Lazy GitLab to the LazyUnicorn navigation.
+
+---
+
+SETUP PROMPT — paste into user's Lovable project:
+
+Add a complete autonomous GitLab content engine called Lazy GitLab to this project. It monitors a GitLab repository via webhooks, processes commits, merge requests, and releases, writes plain-English changelogs, release notes, developer blog posts, and SEO articles, and maintains a public roadmap — all automatically.
 
 1. Database
 Create these Supabase tables with RLS enabled:
@@ -50,7 +81,7 @@ On submit:
 2. Save all other values to gitlab_settings
 3. Set setup_complete to true
 4. Show instructions: Go to your GitLab project, Settings → Webhooks → Add new webhook. Set URL to [site_url]/api/gitlab-webhook. Set Secret Token to your webhook secret. Select Push events, Tag push events, Merge request events, Releases events. Click Add webhook.
-5. Redirect to /lazy-gitlab-dashboard with message: Lazy GitLab is active. Your next commit will be processed and published automatically.
+5. Redirect to /admin with message: Lazy GitLab is active. Your next commit will be processed and published automatically.
 
 3. Webhook edge function
 Create a Supabase edge function called gitlab-webhook handling POST requests at /api/gitlab-webhook.
@@ -93,11 +124,15 @@ Log errors to gitlab_errors with function_name gitlab-optimise.
 /gitlab-roadmap — all gitlab_roadmap rows grouped by status — In Progress, Planned, Completed.
 At the bottom of every page add: 🦄 Powered by Lazy GitLab — autonomous GitLab content publishing for Lovable sites. Built by LazyUnicorn.ai — link to https://lazyunicorn.ai.
 
-7. Admin dashboard
-Create a page at /lazy-gitlab-dashboard. Red error banner if gitlab_errors has rows from the last 24 hours. Six sections: Overview (commits processed, content published, open roadmap items, last webhook time), Commits log (last 50 with sha, summary, significance, author, date), Content log (all gitlab_content with title, type, views, link), Roadmap (all gitlab_roadmap rows), Optimisation log, Controls (pause/resume toggle, Sync Roadmap Now button, Optimise Content Now button, error log, link to /lazy-gitlab-setup).
+7. Admin
+
+Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/gitlab as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
+
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-gitlab-setup.
 
 8. Navigation
-Add Changelog link to /gitlab-changelog. Add Roadmap link to /gitlab-roadmap. Do not add setup or dashboard to public navigation.`;
+Add Changelog link to /gitlab-changelog. Add Roadmap link to /gitlab-roadmap. Add an Admin link to the main site navigation pointing to /admin.
+Do not add the setup page to public navigation.`;
 
 const steps = ["Copy the setup prompt from this page.", "Paste it into your existing Lovable project.", "Add your GitLab credentials in the setup screen.", "Push code as normal \u2014 changelogs, release notes, and blog posts publish automatically."];
 

@@ -9,7 +9,7 @@ import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const LAZY_SMS_PROMPT = `[Lazy SMS Prompt — v0.0.3 — LazyUnicorn.ai]
+const LAZY_SMS_PROMPT = `[Lazy SMS Prompt — v0.0.4 — LazyUnicorn.ai]
 
 Add a complete self-improving Twilio SMS engine called Lazy SMS to this project. It installs payment confirmations, subscription alerts, abandoned checkout recovery texts, welcome sequences, two-way messaging, opt-out management, delivery tracking, and autonomous message optimisation — with no manual Twilio integration required after setup.
 
@@ -113,7 +113,7 @@ On submit:
    - trigger: payment-success, step: 1, delay: 0, template: "Payment confirmed. Thank you for your purchase from [business_name]. Reply STOP to opt out."
    - trigger: subscription-renewal, step: 1, delay: 72, template: "Your [business_name] subscription renews in 3 days. Manage it here: [site_url]/manage-subscription. Reply STOP to opt out."
    - trigger: checkout-abandoned, step: 1, delay: 1, template: "You left something at [business_name]. Complete your purchase here: [checkout_url]. Reply STOP to opt out."
-5. Redirect to /lazy-sms-dashboard with message: "Lazy SMS is active. Your site will now text customers automatically."
+5. Redirect to /admin with message: "Lazy SMS is active. Your site will now text customers automatically."
 
 ---
 
@@ -180,24 +180,11 @@ Log errors to sms_errors with function_name sms-optimise.
 
 ---
 
-## 6. Admin dashboard
+## 6. Admin
 
-Create a page at /lazy-sms-dashboard.
+Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/sms as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This engine only needs its setup page, database tables, edge functions, and public pages.
 
-Show at top: red error banner if sms_errors has rows from the last 24 hours.
-
-Five sections:
-- Overview: total sent, total delivered, delivery rate %, total contacts, opted-out count, active sequences count
-- Messages log: last 50 sms_messages with phone number, message type, direction, status, sent time
-- Sequences table: all sms_sequences with name, trigger, delay, message template, sends, responses, response rate, last optimised, active toggle
-- Optimisation log: all sms_optimisation_log with sequence name, old response rate, old template, new template, date
-- Controls: pause/resume toggle, Run Sequences Now button, Optimise Messages Now button, error log (last 10 sms_errors), link to /lazy-sms-setup
-
-Show the Twilio webhook configuration instructions prominently on the dashboard:
-"Set your Twilio messaging webhook to: [site_url]/api/sms-receive
-Set your Twilio status callback to: [site_url]/api/sms-status"
-
----
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-sms-setup.
 
 ## 7. Navigation
 

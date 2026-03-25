@@ -10,7 +10,38 @@ import { useState } from "react";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const SETUP_PROMPT = `Add a complete autonomous Supabase monitoring and content engine called Lazy Supabase to this project. It monitors database events, user signups, edge function errors, and milestones — generating blog posts, product updates, and alerts automatically.
+const SETUP_PROMPT = `[Lazy Supabase Prompt — v0.0.5 — LazyUnicorn.ai]
+
+Add a complete autonomous Supabase monitoring and content engine called Lazy Supabase to this project. It monitors your Supabase project for database events, user signups, edge function errors, and storage activity — turning database milestones, user growth, and system events into blog posts, product updates, and Slack alerts automatically.
+
+---
+
+MARKETING PAGE PROMPT — paste into LazyUnicorn project:
+
+Add a new page at /lazy-supabase. It is a marketing and landing page for a product called Lazy Supabase — an autonomous monitoring and content engine that turns your Supabase database events into product updates, user milestone posts, and system alerts automatically.
+
+Hero section
+Headline: 'Your Supabase database is full of stories. Lazy Supabase tells them automatically.' Subheading: 'Lazy Supabase monitors your database for user signups, milestone events, and system health — turning every significant moment into a product update, blog post, or Slack alert without you writing a word.' Primary button: Copy the Lovable Prompt. Secondary button: See What It Monitors. Badge: Powered by Supabase.
+
+How it works section
+Headline: Your database events. Published automatically. Four steps: 1. Copy the setup prompt. 2. Paste into your Lovable project. 3. Configure which database events to monitor. 4. Significant events trigger content and alerts automatically.
+
+What it monitors section
+Eight cards: 1. User milestones — 100th user, 1000th user, growth streaks. Automatically writes a celebratory blog post for every milestone. 2. Signup spikes — detects unusual signup volume and alerts you in Slack. 3. Edge function errors — monitors all edge function error logs and alerts when error rates spike. 4. Storage growth — tracks storage usage and alerts when approaching limits. 5. Database size — monitors table growth and surfaces which tables are growing fastest. 6. Row milestones — when any key table hits a round number posts a product update automatically. 7. Revenue events — monitors pay_transactions if Lazy Pay is installed and surfaces MRR milestones. 8. Self-improving reports — learns which milestone posts get the most traffic and improves the template.
+
+Pricing section
+Free — self-hosted, uses your existing Supabase project. Pro at $19/month — coming soon.
+
+Bottom CTA
+Headline: Your database is growing. Let it tell its own story. Primary button: Copy the Lovable Prompt.
+
+Navigation: Add Lazy Supabase to the LazyUnicorn navigation.
+
+---
+
+SETUP PROMPT — paste into user's Lovable project:
+
+Add a complete autonomous Supabase monitoring and content engine called Lazy Supabase to this project. It monitors database events, user signups, edge function errors, and milestones — generating blog posts, product updates, and alerts automatically.
 
 1. Database
 Create these Supabase tables with RLS enabled:
@@ -46,7 +77,7 @@ On submit:
 2. Save all values to supabase_settings
 3. Set setup_complete to true
 4. Immediately call supabase-monitor once
-5. Redirect to /lazy-supabase-dashboard with message: Lazy Supabase is running. Monitoring your database for milestones and events.
+5. Redirect to /admin with message: Lazy Supabase is running. Monitoring your database for milestones and events.
 
 3. Core monitoring edge function
 Create a Supabase edge function called supabase-monitor. Cron: every hour — 0 * * * *
@@ -99,11 +130,15 @@ Log errors to supabase_errors with function_name supabase-weekly-report.
 /milestones/[slug] — full post rendered from markdown.
 At the bottom add: 🦄 Powered by Lazy Supabase — autonomous database monitoring for Lovable sites. Built by LazyUnicorn.ai — link to https://lazyunicorn.ai.
 
-7. Admin dashboard
-Create a page at /lazy-supabase-dashboard. Red error banner if supabase_errors has rows from the last 24 hours. Five sections: Live metrics (current user count, signups today, error rate, storage used), Milestones log (all supabase_milestones with type, value, reached date, post published badge), Content log (all supabase_content with title, type, views, link), Snapshots chart (line chart of signups per day for the last 30 days using recharts), Controls (pause/resume toggle, Check Now button triggering supabase-monitor, Send Report Now button triggering supabase-weekly-report, error log, link to /lazy-supabase-setup).
+7. Admin
+
+Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/supabase as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
+
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-supabase-setup.
 
 8. Navigation
-Add Milestones link to the main navigation pointing to /milestones. Do not add setup or dashboard to public navigation.`;
+Add Milestones link to the main navigation pointing to /milestones. Add an Admin link to the main site navigation pointing to /admin.
+Do not add the setup page to public navigation.`;
 
 const steps = ["Copy the setup prompt from this page.", "Paste it into your existing Lovable project.", "Add your Supabase service role key.", "Database milestones publish automatically as blog posts."];
 

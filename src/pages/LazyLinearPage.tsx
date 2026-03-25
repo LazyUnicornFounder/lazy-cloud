@@ -10,7 +10,38 @@ import { useState } from "react";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const SETUP_PROMPT = `Add a complete autonomous Linear content engine called Lazy Linear to this project. It monitors Linear issues, cycles, and projects via the Linear API and automatically publishes changelogs, a public roadmap, product blog posts, and cycle summaries.
+const SETUP_PROMPT = `[Lazy Linear Prompt — v0.0.5 — LazyUnicorn.ai]
+
+Add a complete autonomous Linear integration called Lazy Linear to this project. It monitors your Linear workspace for issue updates, cycle completions, and project milestones — automatically publishing changelogs, roadmap updates, release notes, and product blog posts from your Linear data without any manual writing required.
+
+---
+
+MARKETING PAGE PROMPT — paste into LazyUnicorn project:
+
+Add a new page at /lazy-linear. It is a marketing and landing page for a product called Lazy Linear — an autonomous content engine that turns your Linear issues, cycles, and projects into changelogs, roadmaps, and product blog posts automatically.
+
+Hero section
+Headline: 'Your Linear workspace is your product story. Lazy Linear tells it automatically.' Subheading: 'Lazy Linear monitors your Linear issues and cycles, and automatically publishes changelogs, a public roadmap, release notes, and product updates — without anyone writing a word.' Primary button: Copy the Lovable Prompt. Secondary button: See How It Works. Badge: Powered by Linear.
+
+How it works section
+Four steps: 1. Copy the setup prompt. 2. Paste into your Lovable project. 3. Add your Linear API key. 4. Linear issues and cycles automatically become public content.
+
+What it publishes section
+Eight cards: 1. Public roadmap — automatically updated from Linear projects and cycles. Issues move between planned, in progress, and done in real time. 2. Cycle summaries — when a cycle completes Linear writes a plain-English summary of what shipped. 3. Changelogs — completed issues in each cycle become a changelog entry automatically. 4. Product blog posts — significant features get a product blog post written and published automatically. 5. Release notes — tagged releases trigger comprehensive release notes from the issues they contain. 6. Bug fix roundups — groups of bug fixes get batched into a weekly roundup post automatically. 7. Team velocity reports — weekly reports on cycle completion rate and issue throughput. 8. Self-improving content — monitors which posts get the most traffic and improves the writing template.
+
+Pricing section
+Free — self-hosted, bring your own Linear workspace. Pro at $19/month — coming soon.
+
+Bottom CTA
+Headline: Your Linear issues are your changelog. Start publishing them. Primary button: Copy the Lovable Prompt.
+
+Navigation: Add Lazy Linear to the LazyUnicorn navigation.
+
+---
+
+SETUP PROMPT — paste into user's Lovable project:
+
+Add a complete autonomous Linear content engine called Lazy Linear to this project. It monitors Linear issues, cycles, and projects via the Linear API and automatically publishes changelogs, a public roadmap, product blog posts, and cycle summaries.
 
 1. Database
 Create these Supabase tables with RLS enabled:
@@ -45,7 +76,7 @@ On submit:
 2. Save all other values to linear_settings
 3. Set setup_complete to true
 4. Immediately call linear-sync-all to do a first full sync
-5. Redirect to /lazy-linear-dashboard with message: Lazy Linear is active. Syncing your Linear workspace now.
+5. Redirect to /admin with message: Lazy Linear is active. Syncing your Linear workspace now.
 
 3. Sync edge functions
 Create a Supabase edge function called linear-sync-all. Cron: every hour — 0 * * * *
@@ -100,11 +131,15 @@ Log errors to linear_errors with function_name linear-optimise.
 /product-roadmap — a kanban-style view of linear_projects and linear_issues grouped by state. In Progress column, Planned column, Completed column. Each item shows title and project name.
 At bottom of every page: 🦄 Powered by Lazy Linear — autonomous Linear content publishing for Lovable sites. Built by LazyUnicorn.ai — link to https://lazyunicorn.ai.
 
-8. Admin dashboard
-Create a page at /lazy-linear-dashboard. Red error banner if linear_errors has rows from the last 24 hours. Six sections: Overview (issues synced, cycles completed, content published, last sync time), Issues table (recent linear_issues with title, state, cycle, priority, completed date), Cycles table (all linear_cycles with name, completion rate, processed badge, Write Summary button), Content log (all linear_content with title, type, views, link), Optimisation log, Controls (pause/resume toggle, Sync Now button, Write Changelog Now button, Write Bug Roundup Now button, error log, link to /lazy-linear-setup).
+8. Admin
+
+Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/linear as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
+
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-linear-setup.
 
 9. Navigation
-Add Product Updates link to /product-updates. Add Roadmap link to /product-roadmap. Do not add setup or dashboard to public navigation.`;
+Add Product Updates link to /product-updates. Add Roadmap link to /product-roadmap. Add an Admin link to the main site navigation pointing to /admin.
+Do not add the setup page to public navigation.`;
 
 const steps = ["Copy the setup prompt from this page.", "Paste it into your existing Lovable project.", "Add your Linear API key.", "Issues and cycles automatically become public content."];
 

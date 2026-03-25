@@ -6,7 +6,7 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
 
-const SETUP_PROMPT = `[Lazy Stream Prompt — v0.0.3 — LazyUnicorn.ai]
+const SETUP_PROMPT = `[Lazy Stream Prompt — v0.0.4 — LazyUnicorn.ai]
 
 Add a complete autonomous Twitch content engine called Lazy Stream to this project. It monitors your Twitch channel, processes VODs, writes stream recaps, extracts clips, publishes SEO articles, tracks analytics, and improves its own content quality — all automatically with no manual input required after setup.
 
@@ -109,7 +109,7 @@ On submit:
 2. Fetch Twitch user ID: call https://api.twitch.tv/helix/users with login=[username] using client credentials token. Store the user ID in twitch_user_id.
 3. Save all other values to stream_settings
 4. Set setup_complete to true
-5. Redirect to /lazy-stream-dashboard with message: "Lazy Stream is active. Your next stream will be processed and published automatically when it ends."
+5. Redirect to /admin with message: "Lazy Stream is active. Your next stream will be processed and published automatically when it ends."
 
 ---
 
@@ -190,26 +190,18 @@ If no live stream: show last stream date and Follow on Twitch button.
 
 ---
 
-## 6. Admin dashboard
+## 6. Admin
 
-Create a page at /lazy-stream-dashboard.
+Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/stream as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This engine only needs its setup page, database tables, edge functions, and public pages.
 
-Show at top: red error banner if stream_errors has rows from the last 24 hours.
-
-Five sections:
-- Overview: total streams processed, total content pieces, total clips saved, average views, live status (is the channel currently live?)
-- Streams table: all stream_sessions with title, game, date, duration, status, links to published content
-- Content table: all stream_content with title, type, published date, views
-- Clips table: all stream_clips with title, view count, Watch link
-- Controls: pause/resume toggle, Process Last Stream Now button, Optimise Content Now button, error log (last 10 stream_errors), link to /lazy-stream-setup
-
----
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-stream-setup.
 
 ## 7. Navigation
 
 Add a Streams link to the main site navigation pointing to /streams.
 Add a Live link pointing to /live.
-Do not add /lazy-stream-setup or /lazy-stream-dashboard to public navigation.`;
+Add an Admin link to the main site navigation pointing to /admin.
+Do not add /lazy-stream-setup to public navigation.`;
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 

@@ -9,7 +9,7 @@ import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-const LAZY_PAY_PROMPT = `[Lazy Pay Prompt — v0.0.3 — LazyUnicorn.ai]
+const LAZY_PAY_PROMPT = `[Lazy Pay Prompt — v0.0.4 — LazyUnicorn.ai]
 
 Add a complete self-improving Stripe payments engine called Lazy Pay to this project. It installs one-time payments, subscriptions, webhook handling, a customer portal, confirmation emails, a revenue dashboard, autonomous conversion optimisation, and abandoned checkout recovery — with no manual Stripe integration required after setup.
 
@@ -119,7 +119,7 @@ On submit:
 1. Store Stripe keys as Supabase secrets
 2. Save business_name, support_email, site_url, currency to pay_settings
 3. Set setup_complete to true
-4. Redirect to /lazy-pay-dashboard with message: "Lazy Pay is active. Add your first product to start taking payments."
+4. Redirect to /admin with message: "Lazy Pay is active. Add your first product to start taking payments."
 
 ---
 
@@ -200,26 +200,18 @@ Show email input. On submit call pay-portal and redirect to Stripe customer port
 
 ---
 
-## 6. Admin dashboard
+## 6. Admin
 
-Create a page at /lazy-pay-dashboard with six sections:
+Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/pay as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This engine only needs its setup page, database tables, edge functions, and public pages.
 
-Show at top: red error banner if pay_errors has rows from the last 24 hours.
-
-- Revenue overview: MRR (sum of active subscription prices), total revenue, active subscribers, total customers, abandoned checkouts count, recovery emails sent, recovered conversions count
-- Products table: all pay_products with name, price, billing type, views, conversion rate, last optimised date, active toggle. Plus inline add product form: name, description, price, billing type, billing interval — creates in Stripe and inserts into pay_products.
-- Recent transactions: last 20 pay_transactions with customer email, product name, amount, status, date
-- Optimisation log: all pay_optimisation_log rows with old vs new description toggle
-- Controls: pause/resume toggle, Optimise Now button, Run Recovery Now button
-- Error log: last 10 pay_errors rows
-
----
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-pay-setup.
 
 ## 7. Navigation
 
 Add a Pricing link to the main site navigation pointing to /pricing.
 Add a Manage Subscription link in the site footer pointing to /manage-subscription.
-Do not add /lazy-pay-setup or /lazy-pay-dashboard to public navigation.`;
+Add an Admin link to the main site navigation pointing to /admin.
+Do not add /lazy-pay-setup to public navigation.`;
 
 /* ── Reusable copy button ── */
 function CopyPromptButton({
