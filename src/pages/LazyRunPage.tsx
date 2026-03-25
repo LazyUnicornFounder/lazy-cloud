@@ -452,13 +452,13 @@ export default function LazyRunPage() {
             variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.1 }}
             className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6"
           >
-            <span>The autonomous half of Lovable. In one prompt.</span>
+            <span>All 20 engines in the Lazy Stack. One prompt.</span>
           </motion.h1>
           <motion.p
             variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}
             className="font-body text-base md:text-lg text-foreground/45 max-w-2xl leading-relaxed mb-10"
           >
-            Lazy Run installs the complete autonomous operations layer into your existing Lovable project. Blog posts that publish themselves. SEO that compounds. GEO that gets you cited by AI. Payments that optimise. SMS that converts. Audio that narrates. Stores that grow. All managed from one dashboard. All running without you.
+            Lazy Run is the one prompt that installs everything. Paste it into your Lovable project, and walk away. Your blog writes itself. Your SEO compounds. ChatGPT and Perplexity start citing you. Your store runs its own promotions. Your checkout rewrites copy that is not converting. Your customers get texted back automatically. Every post gets narrated. Every stream becomes an article. Every commit becomes a changelog. Your site gets pentested on a schedule. Everything reports to one dashboard. Nothing requires you after setup.
           </motion.p>
           <motion.div
             variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.3 }}
