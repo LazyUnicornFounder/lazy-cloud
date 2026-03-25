@@ -20,6 +20,9 @@ const rotatingWords = [
   { word: "payments", emoji: "💳" },
   { word: "alerts", emoji: "🔔" },
   { word: "devlogs", emoji: "👨‍💻" },
+  { word: "admin", emoji: "⚙️" },
+  { word: "video", emoji: "🎥" },
+  { word: "SMS", emoji: "📱" },
 ];
 
 function RotatingHeadline() {
