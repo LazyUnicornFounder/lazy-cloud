@@ -257,10 +257,9 @@ function CopyPromptButton({
 /* ── Stripe badge ── */
 function StripeBadge() {
   return (
-    <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border bg-muted/40 text-muted-foreground text-xs font-body tracking-wide">
-      <CreditCard size={14} />
+    <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30 border border-border px-3 py-1">
       Powered by Stripe
-    </div>
+    </span>
   );
 }
 

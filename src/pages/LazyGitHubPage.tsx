@@ -296,10 +296,9 @@ const LazyGitHubPage = () => {
               <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
                 Lazy GitHub
               </h1>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border text-foreground/25 text-xs font-body tracking-wide">
-                <GitBranch size={14} />
+              <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30 border border-border px-3 py-1">
                 Powered by GitHub
-              </div>
+              </span>
             </div>
             <p className="mt-6 font-body text-base md:text-lg text-foreground/45 max-w-xl leading-relaxed">
               Lazy GitHub monitors your GitHub repository, reads your commits and releases, and publishes plain-English changelogs, release notes, SEO developer posts, and a public roadmap to your Lovable site — every time you push.
