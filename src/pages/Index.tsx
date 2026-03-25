@@ -37,7 +37,7 @@ function RotatingHeadline() {
   return (
     <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.4rem, 3vw, 2.2rem)", color: "#f0ead6", opacity: 0.7 }} className="mb-2">
       Lovable<span className="mx-1">❤️</span>
-      <span className="inline-flex items-center min-w-[100px] md:min-w-[140px] justify-center relative">
+      <span className="inline-block w-[130px] md:w-[170px] text-center relative" style={{ height: "1.3em", verticalAlign: "bottom" }}>
         <AnimatePresence mode="wait">
           <motion.span
             key={current.word}
@@ -45,14 +45,14 @@ function RotatingHeadline() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -16, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="inline-flex items-center gap-1"
+            className="absolute inset-0 flex items-center justify-center gap-1"
             style={{ color: "#c8a961" }}
           >
             {current.word}<span>{current.emoji}</span>
           </motion.span>
         </AnimatePresence>
       </span>
-      {" "}on autopilot<span className="ml-1">🤖</span>
+      on autopilot<span className="ml-1">🤖</span>
     </p>
   );
 }
