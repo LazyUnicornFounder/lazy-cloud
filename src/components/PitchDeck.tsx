@@ -89,7 +89,7 @@ const PitchDeck = () => {
                 𝕏
               </a>
               <a
-                href="https://www.linkedin.com/in/saadsahawneh"
+                href="https://www.linkedin.com/company/lazy-unicorn/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-body text-[10px] tracking-[0.12em] uppercase text-muted-foreground hover:text-primary transition-colors border border-border rounded-full px-3 py-1.5"
