@@ -66,7 +66,7 @@ export default function AboutPage() {
               <p className="font-display text-lg font-bold">Saad Sahawneh</p>
               <div className="flex items-center gap-4 mt-3">
                 <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="font-body text-xs text-foreground/30 hover:text-foreground transition-colors">𝕏</a>
-                <a <a href="https://www.linkedin.com/company/lazy-unicorn/" target="_blank" rel="noopener noreferrer" className="font-body text-xs text-foreground/30 hover:text-foreground transition-colors">LinkedIn</a> target="_blank" rel="noopener noreferrer" className="font-body text-xs text-foreground/30 hover:text-foreground transition-colors">LinkedIn</a>
+                <a href="https://www.linkedin.com/company/lazy-unicorn/" target="_blank" rel="noopener noreferrer" className="font-body text-xs text-foreground/30 hover:text-foreground transition-colors">LinkedIn</a>="https://www.linkedin.com/company/lazy-unicorn/" target="_blank" rel="noopener noreferrer" className="font-body text-xs text-foreground/30 hover:text-foreground transition-colors">LinkedIn</a> target="_blank" rel="noopener noreferrer" className="font-body text-xs text-foreground/30 hover:text-foreground transition-colors">LinkedIn</a>
               </div>
             </div>
 
