@@ -404,8 +404,48 @@ const Index = () => {
             </div>
           </div>
 
-        </motion.div>
+      </motion.div>
       </header>
+
+      {/* Three Steps */}
+      <section className="relative z-10 py-24 px-6" style={{ backgroundColor: "#0a0a08" }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#f0ead6", fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-4">
+              Copy. Paste. <span style={{ color: "#c8a961" }}>Autonomy.</span>
+            </h2>
+            <p className="text-sm leading-relaxed max-w-xl mx-auto mb-14" style={{ color: "#f0ead6", opacity: 0.4 }}>
+              Every Lazy engine is a single prompt. Paste it into your Lovable project and it builds itself — tables, functions, UI, and a schedule that runs without you.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { step: "1", title: "Copy the prompt", desc: "Each engine page has a one-click copy button. The prompt contains everything Lovable needs." },
+              { step: "2", title: "Paste into Lovable", desc: "Open your project, paste the prompt into the chat. Lovable installs the engine automatically." },
+              { step: "3", title: "It runs itself", desc: "The engine creates its own schedule, monitors its own output, and improves over time." },
+            ].map((s, i) => (
+              <motion.div
+                key={s.step}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12, duration: 0.45 }}
+                className="border p-6 text-left"
+                style={{ borderColor: "rgba(240,234,214,0.08)" }}
+              >
+                <span style={{ fontFamily: "'Playfair Display', serif", color: "#c8a961", opacity: 0.25, fontSize: "2rem" }} className="font-bold block mb-3">{s.step}</span>
+                <h3 className="text-xs tracking-[0.12em] uppercase font-bold mb-2" style={{ fontFamily: "'Playfair Display', serif", color: "#f0ead6" }}>{s.title}</h3>
+                <p className="text-[13px] leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Product Grid */}
       <section id="engines" className="relative z-10 scroll-mt-20">
