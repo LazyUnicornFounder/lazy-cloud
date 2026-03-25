@@ -12,7 +12,7 @@ const engineGroups = [
     description: "Unified runtime and dashboard for the entire stack.",
     engines: [
       { name: "Lazy Run", tagline: "One prompt installs and orchestrates every engine.", href: "/lazy-run" },
-      { name: "Lazy Admin", tagline: "One dashboard for every engine. 60 seconds a day.", href: "/lazy-admin" },
+      { name: "Lazy Admin", tagline: "One dashboard to manage your entire Lazy stack.", href: "/lazy-admin" },
     ],
   },
   {
