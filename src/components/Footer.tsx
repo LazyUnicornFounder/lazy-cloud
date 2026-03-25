@@ -47,7 +47,6 @@ const engineCategories = [
       { name: "Lazy Alert", href: "/lazy-alert" },
       { name: "Lazy Linear", href: "/lazy-linear" },
       { name: "Lazy Supabase", href: "/lazy-supabase" },
-      { name: "Lazy Admin", href: "/lazy-admin" },
     ],
   },
   {
