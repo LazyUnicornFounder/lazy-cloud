@@ -30,7 +30,7 @@ interface Integration {
 const integrations: Integration[] = [
   {
     name: "Stripe",
-    category: "Payments",
+    category: "Lazy Commerce",
     description: "Handle one-time payments and subscriptions in your Lovable site using chat-driven setup with no manual coding.",
     unlocks: [
       "Accept payments for products, services, or digital downloads.",
@@ -45,7 +45,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Twilio",
-    category: "Communication",
+    category: "Lazy Commerce",
     description: "Send SMS and MMS messages, make voice calls, and add phone-based communication to your Lovable site.",
     unlocks: [
       "Send payment confirmation texts instantly when a customer pays.",
@@ -137,7 +137,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Slack",
-    category: "Communication",
+    category: "Lazy Channels",
     description: "Send alerts, read channels, and post updates from your Lovable site to any Slack workspace.",
     unlocks: [
       "Get an instant Slack message every time a payment comes in.",
@@ -152,7 +152,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Telegram",
-    category: "Communication",
+    category: "Lazy Channels",
     description: "Send messages and receive commands through bots — connecting your Lovable site to Telegram.",
     unlocks: [
       "Get real-time Telegram messages for every significant engine event.",
