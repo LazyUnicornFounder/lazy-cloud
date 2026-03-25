@@ -60,7 +60,7 @@ function RotatingHeadline() {
   }, [current, ready]);
 
   return (
-    <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.4rem, 3vw, 2.2rem)", color: "#f0ead6", opacity: 0.7 }} className="mb-2">
+    <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.4rem, 3vw, 2.2rem)", color: "#f0ead6" }} className="mb-2">
       {/* Hidden measurer */}
       <span
         ref={hiddenRef}
