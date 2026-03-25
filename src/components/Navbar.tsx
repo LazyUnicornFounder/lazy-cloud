@@ -239,7 +239,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
       <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="text-foreground/30 hover:text-foreground transition-colors" aria-label="Follow on X">
         <XLogo />
       </a>
-      <a href="https://www.linkedin.com/in/saadsahawneh" target="_blank" rel="noopener noreferrer" className="text-foreground/30 hover:text-foreground transition-colors" aria-label="Follow on LinkedIn">
+      <a href="https://www.linkedin.com/company/lazy-unicorn/" target="_blank" rel="noopener noreferrer" className="text-foreground/30 hover:text-foreground transition-colors" aria-label="Follow on LinkedIn"> className="text-foreground/30 hover:text-foreground transition-colors" aria-label="Follow on LinkedIn">
         <Linkedin size={14} />
       </a>
     </>
