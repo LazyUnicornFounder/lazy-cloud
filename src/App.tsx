@@ -35,6 +35,7 @@ import LazyTelegramPage from "./pages/LazyTelegramPage.tsx";
 import LazyLinearPage from "./pages/LazyLinearPage.tsx";
 import LazyContentfulPage from "./pages/LazyContentfulPage.tsx";
 import LazyPerplexityPage from "./pages/LazyPerplexityPage.tsx";
+import LazyCrawlPage from "./pages/LazyCrawlPage.tsx";
 import PricingPage from "./pages/PricingPage.tsx";
 import AutonomyPage from "./pages/AutonomyPage.tsx";
 import LazySecurityPage from "./pages/LazySecurityPage.tsx";
@@ -122,6 +123,7 @@ const App = () => (
               <Route path="/lazy-linear" element={<LazyLinearPage />} />
               <Route path="/lazy-contentful" element={<LazyContentfulPage />} />
               <Route path="/lazy-perplexity" element={<LazyPerplexityPage />} />
+              <Route path="/lazy-crawl" element={<LazyCrawlPage />} />
               <Route path="/lazy-admin" element={<LazyAdminPage />} />
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/autonomy" element={<AutonomyPage />} />

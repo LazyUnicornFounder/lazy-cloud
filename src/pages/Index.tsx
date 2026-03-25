@@ -62,6 +62,16 @@ const sketches: Record<string, JSX.Element> = {
       <circle cx="65" cy="52" r="2" />
     </svg>
   ),
+  Crawl: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="60" cy="55" r="25" />
+      <path d="M40 45 Q60 30 80 45" />
+      <path d="M40 65 Q60 80 80 65" />
+      <line x1="60" y1="30" x2="60" y2="80" />
+      <line x1="35" y1="55" x2="85" y2="55" />
+      <circle cx="60" cy="55" r="5" fill="#f0ead6" stroke="none" />
+    </svg>
+  ),
   Store: (
     <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M35 45 L40 25 L80 25 L85 45" />
