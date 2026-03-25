@@ -26,6 +26,15 @@ export default function AdminSettingsPage() {
             { name: "Twilio", hint: "Configure in Lazy SMS settings.", status: "per-engine" },
             { name: "Stripe", hint: "Configure in Lazy Pay settings.", status: "per-engine" },
             { name: "Twitch", hint: "Configure in Lazy Stream settings.", status: "per-engine" },
+            { name: "GitHub", hint: "Configure in Lazy GitHub settings.", status: "per-engine" },
+            { name: "GitLab", hint: "Configure in Lazy GitLab settings.", status: "per-engine" },
+            { name: "Linear", hint: "Configure in Lazy Linear settings.", status: "per-engine" },
+            { name: "Firecrawl", hint: "Configure in Lazy Crawl settings.", status: "per-engine" },
+            { name: "Perplexity", hint: "Configure in Lazy Perplexity settings.", status: "per-engine" },
+            { name: "Slack", hint: "Configure in Lazy Alert settings.", status: "per-engine" },
+            { name: "Telegram", hint: "Configure in Lazy Telegram settings.", status: "per-engine" },
+            { name: "Contentful", hint: "Configure in Lazy Contentful settings.", status: "per-engine" },
+            { name: "Aikido", hint: "Configure in Lazy Security settings.", status: "per-engine" },
           ].map((key) => (
             <div key={key.name} className="flex items-center justify-between px-5 py-3">
               <div>
@@ -49,8 +58,21 @@ export default function AdminSettingsPage() {
               { engine: "Lazy Blogger", schedule: "Every 15 minutes", color: "bg-emerald-500" },
               { engine: "Lazy SEO", schedule: "On-demand via Blogger", color: "bg-blue-500" },
               { engine: "Lazy GEO", schedule: "On-demand via Blogger", color: "bg-purple-500" },
+              { engine: "Lazy Crawl", schedule: "Every 30 minutes", color: "bg-orange-500" },
+              { engine: "Lazy Perplexity", schedule: "Daily 5am research", color: "bg-cyan-500" },
+              { engine: "Lazy Store", schedule: "Daily discovery & listings", color: "bg-amber-500" },
               { engine: "Lazy Voice", schedule: "Every 30 minutes", color: "bg-[#c8a961]" },
+              { engine: "Lazy Pay", schedule: "Daily recovery, weekly optimise", color: "bg-pink-500" },
+              { engine: "Lazy SMS", schedule: "Hourly sequences", color: "bg-teal-500" },
               { engine: "Lazy Stream", schedule: "Every 5 minutes (monitor)", color: "bg-red-500" },
+              { engine: "Lazy GitHub", schedule: "Hourly sync", color: "bg-gray-500" },
+              { engine: "Lazy GitLab", schedule: "Hourly sync", color: "bg-indigo-500" },
+              { engine: "Lazy Linear", schedule: "Hourly sync", color: "bg-violet-500" },
+              { engine: "Lazy Alert", schedule: "Every 5 minutes + daily briefing", color: "bg-yellow-500" },
+              { engine: "Lazy Telegram", schedule: "Every 5 minutes + daily briefing", color: "bg-sky-500" },
+              { engine: "Lazy Contentful", schedule: "Hourly pull, 30-min push", color: "bg-lime-500" },
+              { engine: "Lazy Supabase", schedule: "Hourly monitor", color: "bg-emerald-400" },
+              { engine: "Lazy Security", schedule: "Hourly scan check", color: "bg-rose-500" },
             ].map((item) => (
               <div key={item.engine} className="flex items-center gap-3">
                 <span className={`w-2 h-2 rounded-full ${item.color} flex-shrink-0`} />

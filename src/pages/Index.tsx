@@ -13,6 +13,7 @@ const products = [
   { cursive: "Lazy", name: "Blogger", link: "/lazy-blogger", tagline: "Your blog writes itself." },
   { cursive: "Lazy", name: "SEO", link: "/lazy-seo", tagline: "Rankings on autopilot." },
   { cursive: "Lazy", name: "GEO", link: "/lazy-geo", tagline: "Get cited by AI." },
+  { cursive: "Lazy", name: "Crawl", link: "/lazy-crawl", tagline: "Web intelligence on autopilot." },
   { cursive: "Lazy", name: "Voice", link: "/lazy-voice", tagline: "Every post, narrated." },
   { cursive: "Lazy", name: "Contentful", link: "/lazy-contentful", tagline: "Two-way CMS sync." },
   { cursive: "Lazy", name: "Stream", link: "/lazy-stream", tagline: "Streams become content." },
