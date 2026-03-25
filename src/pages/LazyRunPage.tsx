@@ -483,7 +483,7 @@ export default function LazyRunPage() {
         <div className="max-w-3xl mx-auto">
           <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
             className="font-display text-2xl md:text-4xl font-bold tracking-tight mb-8">
-            Nine engines compounding simultaneously.
+            Eighteen engines compounding simultaneously.
           </motion.h2>
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.1 }}
             className="font-body text-base md:text-lg text-foreground/45 leading-relaxed">
