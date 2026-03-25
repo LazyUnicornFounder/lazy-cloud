@@ -345,7 +345,7 @@ const dashboardFeatures = [
   { icon: Clock, title: "Smart scheduling", desc: "Engines are staggered automatically so they never compete for resources or API limits." },
 ];
 
-function CopyPromptButton({ label = "Copy the Lovable Prompt" }: { label?: string }) {
+function CopyPromptButton({ label = "COPY THE LOVABLE PROMPT" }: { label?: string }) {
   const [copied, setCopied] = useState(false);
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(LAZY_RUN_PROMPT);
@@ -379,7 +379,7 @@ export default function LazyRunPage() {
         <div className="max-w-3xl mx-auto">
           <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.5 }}>
             <span className="inline-block font-display text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 border border-foreground/20 text-foreground/50 mb-6">
-              Includes all Lazy engines
+              INCLUDES ALL LAZY ENGINES
             </span>
           </motion.div>
           <motion.h1
@@ -405,7 +405,7 @@ export default function LazyRunPage() {
               onClick={() => document.getElementById("what-it-installs")?.scrollIntoView({ behavior: "smooth" })}
               className="inline-flex items-center justify-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-colors"
             >
-              See What It Installs <ChevronDown size={14} />
+              SEE WHAT IT INSTALLS <ChevronDown size={14} />
             </button>
           </motion.div>
         </div>
