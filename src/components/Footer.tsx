@@ -62,6 +62,8 @@ const resources = [
   { name: "Pricing", href: "/pricing" },
   { name: "Blog", href: "/blog" },
   { name: "Autonomy", href: "/autonomy" },
+  { name: "Changelog", href: "/changelog" },
+  { name: "Upgrade Guide", href: "/upgrade-guide" },
   { name: "About", href: "/about" },
 ];
 
