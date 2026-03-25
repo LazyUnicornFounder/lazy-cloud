@@ -267,6 +267,9 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a href="/lazy-run" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
               Lazy Run
             </a>
+            <a href="/lazy-admin" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
+              Lazy Admin
+            </a>
 
             {categories.map((cat) => (
               <CategoryDropdown key={cat.label} label={cat.label} items={cat.items} />
@@ -278,19 +281,15 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a href="/pricing" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
               Pricing
             </a>
-            <a
-              href="/blog"
-              className={`font-body text-[11px] tracking-[0.15em] uppercase font-bold transition-colors ${
-                activePage === "blog" ? "text-foreground" : "text-foreground/50 hover:text-foreground"
-              }`}
-            >
-              Blog
-            </a>
-            <a href="/about" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
-              About
-            </a>
-
-            
+            <SimpleDropdown
+              label="Resources"
+              children={[
+                { label: "Blog", href: "/blog" },
+                { label: "Changelog", href: "/changelog" },
+                { label: "Upgrade Guide", href: "/upgrade-guide" },
+                { label: "About", href: "/about" },
+              ]}
+            />
 
             {socialIcons}
           </div>
