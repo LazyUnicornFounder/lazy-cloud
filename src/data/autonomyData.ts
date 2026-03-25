@@ -110,6 +110,7 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "It publishes citation-rich content from live trends. Coming soon.",
           "It tracks your citation rate and optimises for it. Coming soon.",
         ],
+      },
     ],
   },
   {
