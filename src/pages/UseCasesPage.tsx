@@ -182,7 +182,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Supabase",
-    category: "Lazy Dev",
+    category: "Lazy Channels",
     description: "Authenticate users and store data — the backbone of every Lovable project, now with autonomous milestone monitoring.",
     unlocks: [
       "Publish a celebration post automatically when you hit 100, 500, or 1,000 users.",
@@ -197,7 +197,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Contentful",
-    category: "Lazy Content",
+    category: "Lazy Channels",
     description: "Sync content between your Lovable site and Contentful in both directions — automatically, continuously.",
     unlocks: [
       "Pull published Contentful entries into your Lovable site automatically.",
