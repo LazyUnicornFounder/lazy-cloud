@@ -508,7 +508,7 @@ export default function LazyRunPage() {
               <ul className="font-body text-sm text-muted-foreground space-y-2 flex-1">
                 <li>✓ Lazy Run setup prompt</li>
                 <li>✓ Self-hosted in your existing Lovable project</li>
-                <li>✓ Installs all nine engines</li>
+                <li>✓ Installs all eighteen engines</li>
                 <li>✓ Bring your own API keys for each service</li>
               </ul>
               <div className="mt-6"><CopyPromptButton label="Get the Prompt" /></div>
