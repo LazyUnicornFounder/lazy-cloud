@@ -68,7 +68,7 @@ function RotatingHeadline() {
         className="whitespace-nowrap invisible fixed pointer-events-none"
         style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.4rem, 3vw, 2.2rem)", top: -9999, left: -9999 }}
       />
-      Lovable<span className="mx-1">❤️</span>
+      Lovable<span className="ml-1 mr-0">❤️</span>
       <motion.span
         className="inline-flex justify-center relative"
         style={{ height: "1.2em", verticalAlign: "text-bottom", overflow: "clip" }}
