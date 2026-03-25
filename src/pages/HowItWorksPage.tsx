@@ -8,6 +8,14 @@ const fade = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }
 
 const engineGroups = [
   {
+    label: "Lazy Unicorn",
+    description: "Unified runtime and dashboard for the entire stack.",
+    engines: [
+      { name: "Lazy Run", tagline: "One prompt installs and orchestrates every engine.", href: "/lazy-run" },
+      { name: "Lazy Admin", tagline: "One dashboard for every engine. 60 seconds a day.", href: "/lazy-admin" },
+    ],
+  },
+  {
     label: "Lazy Content",
     description: "Autonomous content creation, SEO, and AI citation.",
     engines: [
@@ -59,14 +67,6 @@ const engineGroups = [
     description: "Autonomous pentesting and vulnerability monitoring.",
     engines: [
       { name: "Lazy Security", tagline: "Autonomous pentesting and vulnerability monitoring via Aikido.", href: "/lazy-security" },
-    ],
-  },
-  {
-    label: "Lazy Unicorn",
-    description: "Unified runtime and dashboard for the entire stack.",
-    engines: [
-      { name: "Lazy Run", tagline: "One prompt installs and orchestrates every engine.", href: "/lazy-run" },
-      { name: "Lazy Admin", tagline: "One dashboard for every engine. 60 seconds a day.", href: "/lazy-admin" },
     ],
   },
 ];
