@@ -72,7 +72,7 @@ export default function LazyAdminPage() {
                 <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               </div>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
-                <span>One dashboard. Every engine. 60 seconds a day.</span>
+                <span>One dashboard to manage your entire Lazy stack.</span>
               </h1>
               <p className="font-body text-foreground/50 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
                 Lazy Admin is the unified control panel for your entire Lazy Stack. Paste one prompt. It detects every engine you have installed, builds a dashboard around them, and shows you everything your autonomous business did overnight — in one place, in under a minute.
