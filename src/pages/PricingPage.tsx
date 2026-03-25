@@ -141,6 +141,13 @@ const products: Product[] = [
     free: ["Setup prompt included", "Automated Aikido pentesting", "Continuous vulnerability monitoring", "Security score tracking", "Audit-ready report generation"],
     pro: { price: "$19", features: ["Hosted version", "Automated report delivery before meetings", "Multi-project security dashboard", "Slack and Telegram alerts included"], comingSoon: true },
   },
+  {
+    name: "Lazy Admin",
+    tagline: "Unified dashboard for every engine",
+    link: "/lazy-admin",
+    free: ["Setup prompt included", "Auto-detects installed engines", "Master status indicator", "Unified activity feed", "Per-engine deep dives"],
+    pro: { price: "$9", features: ["Hosted version", "Multi-project support", "Team access with roles", "Weekly email digest", "Mobile app"], comingSoon: true },
+  },
 ];
 
 const PricingPage = () => {
