@@ -81,9 +81,14 @@ export default function Footer() {
             <p className="mt-4 font-body text-xs text-foreground/30 leading-relaxed max-w-[200px]">
               The autonomous layer for Lovable. One prompt, everything runs itself.
             </p>
-            <Link to="/lazy-run" className="inline-block mt-5 font-body text-[10px] tracking-[0.15em] uppercase font-semibold text-foreground/40 hover:text-foreground transition-colors">
-              Lazy Run →
-            </Link>
+            <div className="flex flex-col gap-1 mt-5">
+              <Link to="/lazy-run" className="inline-block font-body text-[10px] tracking-[0.15em] uppercase font-semibold text-foreground/40 hover:text-foreground transition-colors">
+                Lazy Run →
+              </Link>
+              <Link to="/lazy-admin" className="inline-block font-body text-[10px] tracking-[0.15em] uppercase font-semibold text-foreground/40 hover:text-foreground transition-colors">
+                Lazy Admin →
+              </Link>
+            </div>
             <div className="flex items-center gap-3 mt-4">
               <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="text-foreground/20 hover:text-foreground/50 transition-colors" aria-label="Follow on X">
                 <XLogo />
