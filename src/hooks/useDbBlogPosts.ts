@@ -25,7 +25,7 @@ function dbToFrontend(db: DbBlogPost): BlogPost {
     title: db.title,
     date: `${monthNames[d.getMonth()]} ${d.getFullYear()}`,
     readTime: db.read_time,
-    thumbnail: db.thumbnail || unicornBg,
+    thumbnail: unicornBg,
     excerpt: db.excerpt,
     content: db.content,
   };
