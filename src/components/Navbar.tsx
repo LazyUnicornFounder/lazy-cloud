@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, ReactNode } from "react";
 import { Menu, X as XIcon, Linkedin, ChevronDown } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
-import ThemeToggle from "@/components/ThemeToggle";
 
 interface NavLink {
   label: string;
@@ -299,7 +298,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
               ]}
             />
 
-            <ThemeToggle />
             {socialIcons}
           </div>
         </div>
@@ -393,7 +391,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
 
               <div className="flex items-center gap-3 pt-2 border-t border-border">
-                <ThemeToggle />
+                
                 {socialIcons}
               </div>
             </div>
