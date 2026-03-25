@@ -292,18 +292,33 @@ const Index = () => {
               Integrations
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              {["Stripe", "Twilio", "ElevenLabs", "Twitch", "GitHub", "GitLab", "Linear", "Slack", "Telegram", "Supabase", "Contentful", "Firecrawl", "Perplexity"].map((name, i) => (
-                <motion.span
-                  key={name}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 + i * 0.06, duration: 0.4 }}
-                  whileHover={{ scale: 1.1, opacity: 1 }}
-                  className="text-[10px] tracking-[0.1em] uppercase font-medium px-3 py-1.5 border transition-colors duration-200 cursor-default"
-                  style={{ color: "#f0ead6", opacity: 0.4, borderColor: "rgba(240,234,214,0.12)" }}
-                >
-                  {name}
-                </motion.span>
+              {[
+                { name: "Stripe", href: "/lazy-pay" },
+                { name: "Twilio", href: "/lazy-sms" },
+                { name: "ElevenLabs", href: "/lazy-voice" },
+                { name: "Twitch", href: "/lazy-stream" },
+                { name: "GitHub", href: "/lazy-github" },
+                { name: "GitLab", href: "/lazy-gitlab" },
+                { name: "Linear", href: "/lazy-linear" },
+                { name: "Slack", href: "/lazy-alert" },
+                { name: "Telegram", href: "/lazy-telegram" },
+                { name: "Supabase", href: "/lazy-supabase" },
+                { name: "Contentful", href: "/lazy-contentful" },
+                { name: "Firecrawl", href: "/lazy-crawl" },
+                { name: "Perplexity", href: "/lazy-perplexity" },
+              ].map((item, i) => (
+                <Link key={item.name} to={item.href}>
+                  <motion.span
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 + i * 0.06, duration: 0.4 }}
+                    whileHover={{ scale: 1.1, opacity: 1 }}
+                    className="inline-block text-[10px] tracking-[0.1em] uppercase font-medium px-3 py-1.5 border transition-colors duration-200 cursor-pointer hover:border-[rgba(240,234,214,0.35)]"
+                    style={{ color: "#f0ead6", opacity: 0.4, borderColor: "rgba(240,234,214,0.12)" }}
+                  >
+                    {item.name}
+                  </motion.span>
+                </Link>
               ))}
             </div>
           </div>
