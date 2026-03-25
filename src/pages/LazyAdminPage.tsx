@@ -67,7 +67,10 @@ export default function LazyAdminPage() {
         <section className="pt-36 pb-20 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div {...fade}>
-              <span className="font-body text-[10px] tracking-[0.2em] uppercase text-[#c8a961]/60 mb-6 block">Works with all Lazy engines</span>
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <span className="font-body text-[10px] tracking-[0.2em] uppercase text-[#c8a961]/60">Works with all Lazy engines</span>
+                <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+              </div>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
                 <span>One dashboard. Every engine. 60 seconds a day.</span>
               </h1>

@@ -441,9 +441,12 @@ export default function LazyRunPage() {
       <section className="pt-32 md:pt-44 pb-20 md:pb-28 px-6">
         <div className="max-w-3xl mx-auto">
           <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.5 }}>
-            <span className="inline-block font-display text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 border border-foreground/20 text-foreground/50 mb-6">
-              INCLUDES ALL LAZY ENGINES
-            </span>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="inline-block font-display text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 border border-foreground/20 text-foreground/50">
+                INCLUDES ALL LAZY ENGINES
+              </span>
+              <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+            </div>
           </motion.div>
           <motion.h1
             variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.1 }}
