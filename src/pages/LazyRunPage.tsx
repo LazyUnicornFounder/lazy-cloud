@@ -393,7 +393,7 @@ const engines = [
 ];
 
 const faqs = [
-  { q: "Do I need all seventeen engines?", a: "No. The setup screen lets you choose which engines to activate. You can start with two or three and add more later without reinstalling." },
+  { q: "Do I need all twenty engines?", a: "No. The setup screen lets you choose which engines to activate. You can start with two or three and add more later without reinstalling." },
   { q: "Does it replace the individual Lazy prompts?", a: "Yes. If you install Lazy Run you do not need to paste the individual prompts. Lazy Run includes all of them." },
   { q: "What API keys do I need?", a: "Only the ones for the engines you activate. Content engines like Lazy Blogger, Lazy SEO, and Lazy GEO use Lovable's built-in AI — no API key required. Lazy Pay needs Stripe. Lazy SMS needs Twilio. Lazy Voice needs ElevenLabs. Lazy Stream needs Twitch." },
   { q: "Can I still use individual engines if I have them installed?", a: "Yes. Lazy Run is additive. If you already have Lazy Blogger installed it will detect it and manage it alongside the others." },
@@ -432,7 +432,7 @@ export default function LazyRunPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Run — The Autonomous Runtime for Lovable"
-        description="One prompt installs the complete autonomous operations layer into your Lovable project. Seventeen engines. One dashboard. Everything runs itself."
+        description="One prompt installs the complete autonomous operations layer into your Lovable project. Twenty engines. One dashboard. Everything runs itself."
         url="/lazy-run"
       />
       <Navbar />
@@ -515,7 +515,7 @@ export default function LazyRunPage() {
           </div>
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
             className="font-body text-sm text-foreground/30 text-center mt-10 max-w-lg mx-auto">
-            All eighteen engines install in one prompt. All run automatically. All managed from one dashboard.
+            All twenty engines install in one prompt. All run automatically. All managed from one dashboard.
           </motion.p>
         </div>
       </section>
@@ -547,17 +547,17 @@ export default function LazyRunPage() {
         <div className="max-w-3xl mx-auto">
           <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
             className="font-display text-2xl md:text-4xl font-bold tracking-tight mb-8">
-            Eighteen engines compounding simultaneously.
+            Twenty engines compounding simultaneously.
           </motion.h2>
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.1 }}
             className="font-body text-base md:text-lg text-foreground/45 leading-relaxed">
-            Each Lazy engine compounds on its own. Lazy Blogger builds domain authority. Lazy SEO captures keyword traffic. Lazy GEO earns AI citations. Lazy Store grows revenue. Together they compound on each other. The blog posts support the SEO. The SEO drives traffic to the store. The store triggers the SMS sequences. The SMS drives repeat purchases. The payments data improves the copy. Lazy Run coordinates the whole system so every engine feeds every other one. One prompt. Eighteen compounding loops. Running forever.
+            Each Lazy engine compounds on its own. Lazy Blogger builds domain authority. Lazy SEO captures keyword traffic. Lazy GEO earns AI citations. Lazy Store grows revenue. Together they compound on each other. The blog posts support the SEO. The SEO drives traffic to the store. The store triggers the SMS sequences. The SMS drives repeat purchases. The payments data improves the copy. Lazy Run coordinates the whole system so every engine feeds every other one. One prompt. Twenty compounding loops. Running forever.
           </motion.p>
         </div>
       </section>
 
       <LazyPricingSection
-        lazyFeatures={["Lazy Run setup prompt", "Self-hosted in your existing Lovable project", "Installs all eighteen engines", "Bring your own API keys for each service"]}
+        lazyFeatures={["Lazy Run setup prompt", "Self-hosted in your existing Lovable project", "Installs all twenty engines", "Bring your own API keys for each service"]}
         proFeatures={["Hosted version", "All API costs included", "Priority processing", "Weekly performance email", "Dedicated support"]}
         proPrice="$99"
         ctaButton={<CopyPromptButton label="Get the Prompt" />}
