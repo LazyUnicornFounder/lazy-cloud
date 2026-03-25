@@ -107,6 +107,13 @@ const products: Product[] = [
     pro: { price: "$29", features: ["Hosted version", "Multi-space support", "Advanced content type mapping", "Scheduled sync windows"], comingSoon: true },
   },
   {
+    name: "Lazy Crawl",
+    tagline: "Autonomous web intelligence engine",
+    link: "/lazy-crawl",
+    free: ["Setup prompt included", "Competitor website monitoring", "Trend extraction & keyword discovery", "Lead discovery from directories", "Bring your own Firecrawl API key"],
+    pro: { price: "$19", features: ["Hosted version", "Firecrawl API costs included", "Daily competitor reports", "Advanced change detection", "Priority processing"], comingSoon: true },
+  },
+  {
     name: "Lazy Perplexity",
     tagline: "Autonomous research & citation engine",
     link: "/lazy-perplexity",
