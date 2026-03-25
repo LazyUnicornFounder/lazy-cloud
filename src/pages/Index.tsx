@@ -367,6 +367,7 @@ const Index = () => {
             const col = (i + 2) % 2;
             const bg = (row + col) % 2 === 0 ? bgEven : bgOdd;
             const isComingSoon = product.name === "Coming Soon";
+            const isLastAlone = isComingSoon && (products.length + 2) % 2 !== 0;
 
             const content = (
               <motion.div
@@ -374,7 +375,7 @@ const Index = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="aspect-square flex flex-col items-center justify-center gap-6 transition-all duration-300 hover:brightness-[1.15] cursor-pointer"
+                className={`${isLastAlone ? "aspect-auto py-24" : "aspect-square"} flex flex-col items-center justify-center gap-6 transition-all duration-300 hover:brightness-[1.15] cursor-pointer`}
                 style={{ backgroundColor: bg }}
               >
                 {sketches[product.name]}
@@ -395,7 +396,7 @@ const Index = () => {
               </motion.div>
             );
 
-            if (isComingSoon) return <div key={i}>{content}</div>;
+            if (isComingSoon) return <div key={i} className={isLastAlone ? "md:col-span-2" : ""}>{content}</div>;
 
             return (
               <Link key={i} to={product.link} className="block">
