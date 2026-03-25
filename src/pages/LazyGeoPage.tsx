@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import { motion } from "framer-motion";
 import { Brain, TrendingUp, Zap, Eye, Copy, Check } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -117,24 +118,14 @@ const LazyGeoPage = () => {
 
         <LazyPricingSection lazyFeatures={["Lazy GEO setup prompt", "Self-hosted in your Lovable project", "AI citation monitoring", "No API keys needed"]} proFeatures={["Hosted version", "Multi-model citation tracking", "Competitor citation analysis", "Priority content generation"]} ctaButton={<CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} className="w-full justify-center" />} />
 
-        <section className="max-w-2xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">Questions</motion.h2>
-          <div className="space-y-0 border border-border">
-            {[
-              { q: "How is GEO different from SEO?", a: "SEO gets you ranked in Google search results. GEO gets your brand cited in AI-generated answers. Both drive traffic, but GEO positions you as the authoritative source AI engines reference." },
-              { q: "Which AI engines does this target?", a: "Content is structured to be cited by ChatGPT, Claude, Perplexity, Gemini, and any AI assistant that synthesises web content into answers." },
-              { q: "How does citation monitoring work?", a: "Every week, Lazy GEO uses AI to simulate whether your brand would be cited in response to each discovered query. It tracks citation rates over time." },
-              { q: "Does it work with any Lovable site?", a: "Yes. Paste the prompt, answer a few questions about your business, and it runs autonomously inside your project." },
-              { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
-              { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
-            ].map((faq, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.05 }} className="border-b last:border-b-0 border-border bg-card p-5">
-                <h3 className="font-display text-sm font-bold text-foreground mb-1">{faq.q}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        <LazyFaqSection faqs={[
+          { q: "How is GEO different from SEO?", a: "SEO gets you ranked in Google search results. GEO gets your brand cited in AI-generated answers. Both drive traffic, but GEO positions you as the authoritative source AI engines reference." },
+          { q: "Which AI engines does this target?", a: "Content is structured to be cited by ChatGPT, Claude, Perplexity, Gemini, and any AI assistant that synthesises web content into answers." },
+          { q: "How does citation monitoring work?", a: "Every week, Lazy GEO uses AI to simulate whether your brand would be cited in response to each discovered query. It tracks citation rates over time." },
+          { q: "Does it work with any Lovable site?", a: "Yes. Paste the prompt, answer a few questions about your business, and it runs autonomously inside your project." },
+          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+          { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
+        ]} />
 
         <section className="max-w-3xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">

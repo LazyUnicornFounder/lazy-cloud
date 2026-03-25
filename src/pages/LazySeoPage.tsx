@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import { motion } from "framer-motion";
 import { Search, TrendingUp, Zap, BarChart3, Copy, Check } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -105,24 +106,14 @@ const LazySeoPage = () => {
 
         <LazyPricingSection lazyFeatures={["Lazy SEO setup prompt", "Self-hosted in your Lovable project", "Autonomous keyword discovery", "No API keys needed"]} proFeatures={["Hosted version", "Google Search Console integration", "Advanced ranking analytics", "Multi-site support"]} ctaButton={<CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} className="w-full justify-center" />} />
 
-        <section className="max-w-2xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">Questions</motion.h2>
-          <div className="space-y-0 border border-border">
-            {[
-              { q: "How does it find keywords?", a: "Lazy SEO uses AI to analyse your business description, target keywords, and competitor URLs to identify keyword gaps you should be ranking for." },
-              { q: "What kind of content does it write?", a: "Long-form, SEO-optimised articles (1000–1500 words) with proper headings, internal links, and natural keyword placement." },
-              { q: "Can I control what gets published?", a: "Yes. Use the admin dashboard to pause, resume, or manually trigger posts. You can also edit settings anytime." },
-              { q: "Does it work with any Lovable site?", a: "Yes. Lazy SEO runs as part of your Lovable project with no external tools or API keys needed." },
-              { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
-              { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
-            ].map((faq, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.05 }} className="border-b last:border-b-0 border-border bg-card p-5">
-                <h3 className="font-display text-sm font-bold text-foreground mb-1">{faq.q}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        <LazyFaqSection faqs={[
+          { q: "How does it find keywords?", a: "Lazy SEO uses AI to analyse your business description, target keywords, and competitor URLs to identify keyword gaps you should be ranking for." },
+          { q: "What kind of content does it write?", a: "Long-form, SEO-optimised articles (1000–1500 words) with proper headings, internal links, and natural keyword placement." },
+          { q: "Can I control what gets published?", a: "Yes. Use the admin dashboard to pause, resume, or manually trigger posts. You can also edit settings anytime." },
+          { q: "Does it work with any Lovable site?", a: "Yes. Lazy SEO runs as part of your Lovable project with no external tools or API keys needed." },
+          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+          { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
+        ]} />
 
         <section className="max-w-3xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
