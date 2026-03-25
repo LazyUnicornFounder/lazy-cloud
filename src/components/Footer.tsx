@@ -69,7 +69,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-8 gap-10 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-9 gap-10 md:gap-6">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="inline-block">
@@ -81,14 +81,6 @@ export default function Footer() {
             <p className="mt-4 font-body text-xs text-foreground/30 leading-relaxed max-w-[200px]">
               The autonomous layer for Lovable. One prompt, everything runs itself.
             </p>
-            <div className="flex flex-col gap-1 mt-5">
-              <Link to="/lazy-run" className="inline-block font-body text-[10px] tracking-[0.15em] uppercase font-semibold text-foreground/40 hover:text-foreground transition-colors">
-                Lazy Run →
-              </Link>
-              <Link to="/lazy-admin" className="inline-block font-body text-[10px] tracking-[0.15em] uppercase font-semibold text-foreground/40 hover:text-foreground transition-colors">
-                Lazy Admin →
-              </Link>
-            </div>
             <div className="flex items-center gap-3 mt-4">
               <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="text-foreground/20 hover:text-foreground/50 transition-colors" aria-label="Follow on X">
                 <XLogo />
@@ -97,6 +89,35 @@ export default function Footer() {
                 <Linkedin size={12} />
               </a>
             </div>
+          </div>
+
+          {/* Get started — prominent left column */}
+          <div className="col-span-1 md:col-span-1">
+            <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4">
+              Get Started
+            </p>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/how-it-works" className="font-body text-xs text-foreground/50 hover:text-foreground transition-colors font-semibold">
+                  How It Works
+                </Link>
+              </li>
+              <li>
+                <Link to="/use-cases" className="font-body text-xs text-foreground/50 hover:text-foreground transition-colors font-semibold">
+                  Use Cases
+                </Link>
+              </li>
+              <li>
+                <Link to="/lazy-run" className="font-body text-xs text-foreground/40 hover:text-foreground transition-colors">
+                  Lazy Run
+                </Link>
+              </li>
+              <li>
+                <Link to="/lazy-admin" className="font-body text-xs text-foreground/40 hover:text-foreground transition-colors">
+                  Lazy Admin
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Engine categories */}
