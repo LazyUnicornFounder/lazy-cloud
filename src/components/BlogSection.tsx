@@ -91,7 +91,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "That discipline is what makes this interesting as an investment. Not just a directory — a directory that is actively becoming a demonstration of the most important idea in entrepreneurship right now.",
 
-      "Interested in the round? I'm talking to angels who move fast and think long. If this resonates — if you see the same shift I see — reach out on <a href=\"https://x.com/SaadSahawneh\" target=\"_blank\" rel=\"noopener noreferrer\">𝕏</a> or <a href=\"https://www.linkedin.com/in/saadsahawneh\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a>.",
+      "Interested in the round? I'm talking to angels who move fast and think long. If this resonates — if you see the same shift I see — reach out on <a href=\"https://x.com/SaadSahawneh\" target=\"_blank\" rel=\"noopener noreferrer\">𝕏</a> or <a href=\"https://www.linkedin.com/company/lazy-unicorn/\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a>.",
 
       "Written by the founder of Lazy Unicorn. Yes, with AI help. That's the point.",
     ],
