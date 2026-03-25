@@ -5,7 +5,7 @@ import {
   FileText, Search, Globe, ShoppingCart, Mic, CreditCard,
   MessageSquare, Video, Code, ChevronDown, Zap, Activity,
   Clock, ArrowRight, Radar, Compass, Layers, BarChart3,
-  Database, Bell, Send, Shield
+  Database, Bell, Send, Shield, LayoutDashboard
 } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
