@@ -387,6 +387,7 @@ export default function LazyRunPage() {
             className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6"
           >
             The autonomous half of Lovable.
+            {" "}
             <br />
             In one prompt.
           </motion.h1>
