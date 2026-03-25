@@ -1,0 +1,1 @@
+INSERT INTO prompt_versions (product, version, prompt_text, is_current) SELECT product, version, prompt_text, true FROM (VALUES ('placeholder', 'v0', 'test')) AS t(product, version, prompt_text) WHERE false;
