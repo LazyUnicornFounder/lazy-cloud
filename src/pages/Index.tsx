@@ -264,9 +264,9 @@ const Index = () => {
 
           {/* Headline */}
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(3rem, 7vw, 5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-            The autonomous🤖
+            Make your Lovable❤️
             <br />
-            half of Lovable❤️
+            website autonomous🤖.
           </h1>
           <p className="tracking-[0.2em] uppercase" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.7rem, 1.2vw, 0.9rem)", color: "#f0ead6", opacity: 0.45, letterSpacing: "0.2em" }}>
             One prompt, everything runs itself.
