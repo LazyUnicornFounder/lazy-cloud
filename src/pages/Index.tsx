@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 
@@ -27,6 +27,8 @@ const rotatingWords = [
 
 function RotatingHeadline() {
   const [index, setIndex] = useState(0);
+  const [width, setWidth] = useState<number | "auto">("auto");
+  const measRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,24 +39,47 @@ function RotatingHeadline() {
 
   const current = rotatingWords[index];
 
+  const onAnimStart = useCallback(() => {
+    // Measure after React renders the new word
+    requestAnimationFrame(() => {
+      if (measRef.current) {
+        setWidth(measRef.current.scrollWidth);
+      }
+    });
+  }, []);
+
+  // Initial measurement
+  useEffect(() => {
+    if (measRef.current) {
+      setWidth(measRef.current.scrollWidth);
+    }
+  }, []);
+
   return (
     <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.4rem, 3vw, 2.2rem)", color: "#f0ead6", opacity: 0.7 }} className="mb-2">
       Lovable<span className="mx-1">❤️</span>
-      <span className="inline-block w-[150px] md:w-[190px] text-center relative" style={{ height: "1.3em", verticalAlign: "bottom" }}>
+      <motion.span
+        className="inline-flex justify-center relative overflow-hidden"
+        style={{ height: "1.3em", verticalAlign: "bottom" }}
+        animate={{ width: typeof width === "number" ? width + 8 : "auto" }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      >
         <AnimatePresence mode="wait">
           <motion.span
             key={current.word}
+            ref={measRef}
             initial={{ y: 16, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -16, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 flex items-center justify-center gap-1"
+            onAnimationStart={onAnimStart}
+            className="absolute inset-0 flex items-center justify-center gap-1 whitespace-nowrap"
             style={{ color: "#c8a961" }}
           >
             {current.word}<span>{current.emoji}</span>
           </motion.span>
         </AnimatePresence>
-      </span>
+      </motion.span>
       on autopilot<span className="ml-1">🤖</span>
     </p>
   );
