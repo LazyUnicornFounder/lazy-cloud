@@ -92,7 +92,7 @@ export default function LazyAdminPage() {
         <section className="py-20 px-6 border-t border-border">
           <div className="max-w-2xl mx-auto">
             <motion.div {...fade}>
-              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">Nine engines. Nine dashboards. Nobody has time for that.</h2>
+              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">Twenty engines. Twenty dashboards. Nobody has time for that.</h2>
               <p className="font-body text-foreground/50 leading-relaxed">
                 Every Lazy engine ships with its own setup page. That is intentional — each engine installs independently into your project. But checking nine separate dashboards every morning is not autonomous. It is the opposite of lazy. Lazy Admin solves that by pulling everything into one place. One URL. One sidebar. One morning check.
               </p>
