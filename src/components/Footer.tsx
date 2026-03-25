@@ -98,12 +98,12 @@ export default function Footer() {
             </p>
             <ul className="space-y-2">
               <li>
-                <Link to="/how-it-works" className="font-body text-xs text-foreground/50 hover:text-foreground transition-colors font-semibold">
+                <Link to="/how-it-works" className="font-body text-xs text-foreground/25 hover:text-foreground/50 transition-colors">
                   How It Works
                 </Link>
               </li>
               <li>
-                <Link to="/use-cases" className="font-body text-xs text-foreground/50 hover:text-foreground transition-colors font-semibold">
+                <Link to="/use-cases" className="font-body text-xs text-foreground/25 hover:text-foreground/50 transition-colors">
                   Use Cases
                 </Link>
               </li>
@@ -131,8 +131,8 @@ export default function Footer() {
 
           {/* Engine categories */}
           {engineCategories.map((cat) => (
-            <div key={cat.label}>
-              <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4">
+            <div key={cat.label} className="min-w-0">
+              <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4 max-w-[60px]">
                 {cat.label}
               </p>
               <ul className="space-y-2">
