@@ -69,7 +69,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-9 gap-10 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-10 gap-10 md:gap-6">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="inline-block">
@@ -107,13 +107,22 @@ export default function Footer() {
                   Use Cases
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Lazy Unicorn */}
+          <div className="col-span-1 md:col-span-1">
+            <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4">
+              Lazy Unicorn
+            </p>
+            <ul className="space-y-2">
               <li>
-                <Link to="/lazy-run" className="font-body text-xs text-foreground/40 hover:text-foreground transition-colors">
+                <Link to="/lazy-run" className="font-body text-xs text-foreground/25 hover:text-foreground/50 transition-colors">
                   Lazy Run
                 </Link>
               </li>
               <li>
-                <Link to="/lazy-admin" className="font-body text-xs text-foreground/40 hover:text-foreground transition-colors">
+                <Link to="/lazy-admin" className="font-body text-xs text-foreground/25 hover:text-foreground/50 transition-colors">
                   Lazy Admin
                 </Link>
               </li>
