@@ -405,7 +405,7 @@ export default function LazyRunPage() {
               onClick={() => document.getElementById("what-it-installs")?.scrollIntoView({ behavior: "smooth" })}
               className="inline-flex items-center justify-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-colors"
             >
-              See What It Installs <ChevronDown size={14} />
+              SEE WHAT IT INSTALLS <ChevronDown size={14} />
             </button>
           </motion.div>
         </div>
