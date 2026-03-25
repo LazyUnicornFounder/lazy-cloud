@@ -40,7 +40,7 @@ function RotatingHeadline() {
   return (
     <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.4rem, 3vw, 2.2rem)", color: "#f0ead6", opacity: 0.7 }} className="mb-2">
       Lovable<span className="mx-1">❤️</span>
-      <span className="inline-block w-[130px] md:w-[170px] text-center relative" style={{ height: "1.3em", verticalAlign: "bottom" }}>
+      <span className="inline-block w-[150px] md:w-[190px] text-center relative" style={{ height: "1.3em", verticalAlign: "bottom" }}>
         <AnimatePresence mode="wait">
           <motion.span
             key={current.word}
