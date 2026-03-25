@@ -6,6 +6,8 @@ import {
   Shield, Eye, ChevronDown, Check, Copy, Settings, Bell,
   BarChart3, Layers
 } from "lucide-react";
+import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
