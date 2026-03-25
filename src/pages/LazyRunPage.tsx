@@ -451,7 +451,7 @@ export default function LazyRunPage() {
           </div>
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
             className="font-body text-sm text-foreground/30 text-center mt-10 max-w-lg mx-auto">
-            All nine engines install in one prompt. All run automatically. All managed from one dashboard.
+            All eighteen engines install in one prompt. All run automatically. All managed from one dashboard.
           </motion.p>
         </div>
       </section>
