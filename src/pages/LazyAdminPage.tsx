@@ -92,9 +92,9 @@ export default function LazyAdminPage() {
         <section className="py-20 px-6 border-t border-border">
           <div className="max-w-2xl mx-auto">
             <motion.div {...fade}>
-              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">Nine engines. Nine dashboards. Nobody has time for that.</h2>
+              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">Twenty engines. Twenty dashboards. Nobody has time for that.</h2>
               <p className="font-body text-foreground/50 leading-relaxed">
-                Every Lazy engine ships with its own setup page. That is intentional — each engine installs independently into your project. But checking nine separate dashboards every morning is not autonomous. It is the opposite of lazy. Lazy Admin solves that by pulling everything into one place. One URL. One sidebar. One morning check.
+                Every Lazy engine ships with its own setup page. That is intentional — each engine installs independently into your project. But checking twenty separate dashboards every morning is not autonomous. It is the opposite of lazy. Lazy Admin solves that by pulling everything into one place. One URL. One sidebar. One morning check.
               </p>
             </motion.div>
           </div>
@@ -222,7 +222,7 @@ export default function LazyAdminPage() {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-6">Every engine. One dashboard. One minute a day.</h2>
             <p className="font-body text-foreground/50 mb-10 max-w-lg mx-auto">
-              You built an autonomous business. Lazy Admin makes sure you can check on it without spending your morning opening nineteen tabs.
+              You built an autonomous business. Lazy Admin makes sure you can check on it without spending your morning opening twenty tabs.
             </p>
             <button
               onClick={handleCopy}
