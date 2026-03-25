@@ -87,7 +87,7 @@ const integrations: Integration[] = [
       "Feed real current data into your blog posts instead of AI guesswork.",
     ],
     engine: "Lazy Crawl",
-    engineHref: "/",
+    engineHref: "/lazy-crawl",
     icon: <Globe size={20} />,
   },
   {
