@@ -296,7 +296,7 @@ const LazyStreamPage = () => {
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", color: "#2a1a0a", lineHeight: 1.15 }} className="font-bold tracking-tight">
-              Watch it work.
+              Automate your Twitch Business on Lovable
             </h2>
             <p className="mt-3 font-body text-sm md:text-base max-w-xl mx-auto" style={{ color: "#2a1a0a", opacity: 0.5 }}>
               From live stream to published content — no human in the loop.
