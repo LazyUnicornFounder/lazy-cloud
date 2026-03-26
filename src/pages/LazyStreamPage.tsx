@@ -578,7 +578,7 @@ const LazyStreamPage = () => {
             className="text-base md:text-lg max-w-2xl leading-relaxed mb-12 text-center md:text-left"
             style={{ color: "#f0ead6", opacity: 0.45 }}
           >
-            Lazy Stream detects when your Twitch stream ends and automatically publishes a recap article, an SEO post, and a highlights page — before you have even eaten dinner.
+            Paste one prompt into your Lovable project. Lazy Stream detects when your Twitch stream ends and automatically publishes a recap article, an SEO post, and a highlights page — before you have even eaten dinner.
           </motion.p>
 
           {/* Buttons */}
