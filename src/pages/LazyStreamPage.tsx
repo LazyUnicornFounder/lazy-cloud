@@ -767,7 +767,7 @@ const LazyStreamPage = () => {
       {/* ═══ OTHER ENGINES ═══ */}
       <section className="py-20 px-6" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-3xl mx-auto">
-          <ProductPromoBanner excludeProduct="geo" glass={false} />
+          <ProductPromoBanner glass={false} />
         </div>
       </section>
 
