@@ -578,8 +578,37 @@ const LazyStreamPage = () => {
             className="text-base md:text-lg max-w-2xl leading-relaxed mb-12 text-center md:text-left"
             style={{ color: "#f0ead6", opacity: 0.45 }}
           >
-            Paste one prompt into your Lovable project. Lazy Stream detects when your Twitch stream ends and automatically publishes a recap article, an SEO post, and a highlights page — before you have even eaten dinner.
+            Paste one prompt into your Lovable project. Lazy Stream detects when your Twitch stream ends and automatically publishes a recap article, an SEO post, a GEO citation page, and a highlights reel — before you have even eaten dinner.
           </motion.p>
+
+          {/* Product tags */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex flex-wrap gap-2 mb-12 justify-center md:justify-start"
+          >
+            {[
+              { label: "Lazy Blogger", href: "/lazy-blogger" },
+              { label: "Lazy SEO", href: "/lazy-seo" },
+              { label: "Lazy GEO", href: "/lazy-geo" },
+              { label: "Lazy Voice", href: "/lazy-voice" },
+              { label: "Lazy Alert", href: "/lazy-alert" },
+              { label: "Lazy SMS", href: "/lazy-sms" },
+            ].map((tag, i) => (
+              <motion.a
+                key={tag.label}
+                href={tag.href}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + i * 0.06, duration: 0.3 }}
+                className="text-[10px] tracking-[0.12em] uppercase font-semibold px-3 py-1.5 border transition-colors hover:border-[rgba(240,234,214,0.35)]"
+                style={{ color: "#f0ead6", opacity: 0.45, borderColor: "rgba(240,234,214,0.12)" }}
+              >
+                {tag.label}
+              </motion.a>
+            ))}
+          </motion.div>
 
           {/* Buttons */}
           <motion.div
