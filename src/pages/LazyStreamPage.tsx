@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
+import unicornBg from "@/assets/unicorn-beach.png";
 
 const SETUP_PROMPT = `[Lazy Stream Prompt — v0.0.4 — LazyUnicorn.ai]
 
