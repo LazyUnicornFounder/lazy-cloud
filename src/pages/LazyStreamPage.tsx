@@ -270,49 +270,101 @@ const LazyStreamPage = () => {
       />
       <Navbar />
 
-      {/* TV Frame Section */}
-      <section className="relative px-6 md:px-12 pt-32 pb-20 md:pb-28" style={{ backgroundColor: "#111110" }}>
-        <div className="max-w-5xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-10">
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }} className="font-bold tracking-tight">
+      {/* TV Frame Section — Mid-Century Modern */}
+      <section className="relative px-6 md:px-12 pt-32 pb-20 md:pb-28 overflow-hidden" style={{ backgroundColor: "#c4956a" }}>
+        {/* Mid-century geometric wallpaper pattern */}
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.08 }}>
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="mcm" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                <circle cx="40" cy="40" r="18" fill="none" stroke="#3a2a1a" strokeWidth="1.5" />
+                <line x1="0" y1="40" x2="22" y2="40" stroke="#3a2a1a" strokeWidth="1" />
+                <line x1="58" y1="40" x2="80" y2="40" stroke="#3a2a1a" strokeWidth="1" />
+                <line x1="40" y1="0" x2="40" y2="22" stroke="#3a2a1a" strokeWidth="1" />
+                <line x1="40" y1="58" x2="40" y2="80" stroke="#3a2a1a" strokeWidth="1" />
+                
+                <rect x="36" y="36" width="8" height="8" rx="1" fill="#3a2a1a" opacity="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#mcm)" />
+          </svg>
+        </div>
+
+        {/* Subtle warm gradient overlay */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 30%, rgba(210,170,120,0.3) 0%, transparent 70%)" }} />
+
+        <div className="max-w-5xl mx-auto relative z-10">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", color: "#2a1a0a", lineHeight: 1.15 }} className="font-bold tracking-tight">
               Watch it work.
             </h2>
-            <p className="mt-3 font-body text-sm md:text-base max-w-xl mx-auto" style={{ color: "#f0ead6", opacity: 0.4 }}>
+            <p className="mt-3 font-body text-sm md:text-base max-w-xl mx-auto" style={{ color: "#2a1a0a", opacity: 0.5 }}>
               From live stream to published content — no human in the loop.
             </p>
           </motion.div>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }} className="relative mx-auto" style={{ maxWidth: 960 }}>
-            <div className="relative rounded-lg overflow-hidden" style={{ background: "linear-gradient(145deg, #2a2a28, #1a1a18)", padding: "18px 18px 48px 18px", boxShadow: "0 30px 80px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.04)" }}>
-              <div className="flex items-center justify-between px-3 mb-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#c8a961", opacity: 0.6 }} />
-                  <span className="font-body text-[9px] tracking-[0.2em] uppercase" style={{ color: "#f0ead6", opacity: 0.2 }}>Lazy Stream</span>
+
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }} className="relative mx-auto" style={{ maxWidth: 800 }}>
+            {/* Retro TV — chunky wooden cabinet style */}
+            <div className="relative" style={{ borderRadius: 20, background: "linear-gradient(165deg, #5c3d2e, #3a2415 40%, #2e1c10 100%)", padding: "28px 32px 70px 32px", boxShadow: "0 40px 100px -20px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.08), inset 0 -2px 0 rgba(0,0,0,0.3)" }}>
+              {/* Wood grain texture overlay */}
+              <div className="absolute inset-0 pointer-events-none" style={{ borderRadius: 20, opacity: 0.06, background: "repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.15) 3px, rgba(0,0,0,0.15) 4px)" }} />
+
+              {/* Brand badge on top of TV */}
+              <div className="flex items-center justify-center gap-3 mb-5">
+                <div className="h-px flex-1" style={{ backgroundColor: "rgba(200,169,97,0.25)" }} />
+                <div className="flex items-center gap-2.5 px-4">
+                  <span style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.3rem", color: "#c8a961" }}>Lazy</span>
+                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "1rem", color: "#c8a961", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>Stream</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-red-500/50" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/50" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-green-500/50" />
-                </div>
+                <div className="h-px flex-1" style={{ backgroundColor: "rgba(200,169,97,0.25)" }} />
               </div>
-              <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 9", backgroundColor: "#0a0a08", border: "1px solid rgba(255,255,255,0.04)" }}>
+
+              {/* Screen with rounded corners — vintage CRT look */}
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4 / 3", backgroundColor: "#0a0a08", borderRadius: 16, border: "4px solid #1a1008", boxShadow: "inset 0 0 40px rgba(0,0,0,0.8), inset 0 0 4px rgba(200,169,97,0.05)" }}>
+                {/* Screen content placeholder */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center px-6">
-                    <Tv size={48} className="mx-auto mb-4" style={{ color: "#f0ead6", opacity: 0.12 }} />
-                    <p className="font-body text-[11px] tracking-[0.15em] uppercase" style={{ color: "#f0ead6", opacity: 0.2 }}>Video coming soon</p>
+                    <Tv size={56} className="mx-auto mb-5" style={{ color: "#f0ead6", opacity: 0.1 }} />
+                    <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#c8a961", opacity: 0.3 }}>Coming soon</p>
                   </div>
                 </div>
-                <div className="absolute inset-0 pointer-events-none" style={{ background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)" }} />
+
+                {/* CRT scanlines */}
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,0.08) 1px, rgba(0,0,0,0.08) 3px)" }} />
+                {/* Vignette */}
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%)" }} />
+                {/* Screen curvature highlight */}
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 35% 25%, rgba(255,255,255,0.03) 0%, transparent 50%)" }} />
               </div>
-              <div className="flex items-center justify-center mt-0">
-                <div className="h-1 rounded-full" style={{ width: 80, backgroundColor: "rgba(240,234,214,0.06)" }} />
+
+              {/* Below-screen control panel */}
+              <div className="flex items-center justify-between mt-6 px-4">
+                {/* Left: brand emblem */}
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#c8a961", boxShadow: "0 0 6px rgba(200,169,97,0.4)" }} />
+                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#c8a961", opacity: 0.7 }}>LazyUnicorn.ai</span>
+                </div>
+                {/* Right: retro dials */}
+                <div className="flex items-center gap-4">
+                  {["VOL", "CH"].map((label) => (
+                    <div key={label} className="flex flex-col items-center gap-1">
+                      <div className="w-6 h-6 rounded-full" style={{ background: "linear-gradient(145deg, #4a3425, #2e1c10)", border: "1.5px solid rgba(200,169,97,0.2)", boxShadow: "inset 0 1px 2px rgba(0,0,0,0.4)" }} />
+                      <span style={{ fontSize: 7, letterSpacing: "0.15em", textTransform: "uppercase", color: "#c8a961", opacity: 0.4 }}>{label}</span>
+                    </div>
+                  ))}
+                  {/* Power indicator */}
+                  <div className="flex flex-col items-center gap-1">
+                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#2d5a1e", boxShadow: "0 0 8px rgba(45,90,30,0.5), inset 0 1px 2px rgba(255,255,255,0.1)" }} />
+                    <span style={{ fontSize: 7, letterSpacing: "0.15em", textTransform: "uppercase", color: "#c8a961", opacity: 0.4 }}>PWR</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="flex justify-center gap-40 -mt-1">
-              <div style={{ width: 3, height: 24, backgroundColor: "#2a2a28", borderRadius: "0 0 2px 2px" }} />
-              <div style={{ width: 3, height: 24, backgroundColor: "#2a2a28", borderRadius: "0 0 2px 2px" }} />
-            </div>
-            <div className="flex justify-center -mt-0.5">
-              <div style={{ width: 200, height: 3, backgroundColor: "#2a2a28", borderRadius: 2 }} />
+
+            {/* Tapered legs — mid-century style */}
+            <div className="flex justify-center gap-[70%] -mt-1 relative z-0">
+              <div style={{ width: 6, height: 40, background: "linear-gradient(180deg, #3a2415, #2e1c10)", borderRadius: "0 0 3px 3px", transform: "rotate(-6deg)", transformOrigin: "top center" }} />
+              <div style={{ width: 6, height: 40, background: "linear-gradient(180deg, #3a2415, #2e1c10)", borderRadius: "0 0 3px 3px", transform: "rotate(6deg)", transformOrigin: "top center" }} />
             </div>
           </motion.div>
         </div>
