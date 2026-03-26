@@ -265,10 +265,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <span>Unicorn</span>
           </a>
           <div className="flex items-center gap-5">
-            <a href="/lazy-launch" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors flex items-center gap-1.5">
-              Lazy Launch
-              <span className="text-[8px] tracking-[0.1em] uppercase bg-[#c8a961]/15 text-[#c8a961] px-1.5 py-0.5 rounded font-bold">Free</span>
-            </a>
             <a href="/how-it-works" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
               How It Works
             </a>
@@ -327,10 +323,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
           {open && (
             <div className="mt-0 w-full bg-background border border-t-0 border-border px-5 py-4 flex flex-col gap-3 max-h-[80vh] overflow-y-auto">
-              <a href="/lazy-launch" onClick={() => setOpen(false)} className="font-body text-[13px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground transition-colors font-semibold flex items-center gap-1.5">
-                Lazy Launch
-                <span className="text-[8px] tracking-[0.1em] uppercase bg-[#c8a961]/15 text-[#c8a961] px-1.5 py-0.5 rounded font-bold">Free</span>
-              </a>
               <a href="/how-it-works" onClick={() => setOpen(false)} className="font-body text-[13px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground transition-colors font-semibold">
                 How It Works
               </a>
