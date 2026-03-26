@@ -43,6 +43,7 @@ import LazyAdminPage from "./pages/LazyAdminPage.tsx";
 import ChangelogPage from "./pages/ChangelogPage.tsx";
 import UpgradeGuidePage from "./pages/UpgradeGuidePage.tsx";
 import HowItWorksPage from "./pages/HowItWorksPage.tsx";
+import LazyLaunchPage from "./pages/LazyLaunchPage.tsx";
 import UseCasesPage from "./pages/UseCasesPage.tsx";
 import PublicLayout from "./components/PublicLayout.tsx";
 
@@ -132,6 +133,7 @@ const App = () => (
               <Route path="/upgrade-guide" element={<UpgradeGuidePage />} />
               <Route path="/how-it-works" element={<HowItWorksPage />} />
               <Route path="/use-cases" element={<UseCasesPage />} />
+              <Route path="/lazy-launch" element={<LazyLaunchPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
