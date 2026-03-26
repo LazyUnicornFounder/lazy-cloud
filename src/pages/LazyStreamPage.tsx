@@ -1,11 +1,15 @@
-import { useState, useCallback, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Copy, Check } from "lucide-react";
+import { useState, useCallback, useEffect } from "react";
+import LazyPricingSection from "@/components/LazyPricingSection";
+import LazyFaqSection from "@/components/LazyFaqSection";
+import { motion } from "framer-motion";
+import { Copy, Check, Tv, Radio, FileText, Zap } from "lucide-react";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
-import ProductPromoBanner from "@/components/ProductPromoBanner";
+import { Link } from "react-router-dom";
+
+const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const SETUP_PROMPT = `[Lazy Stream Prompt — v0.0.4 — LazyUnicorn.ai]
 
@@ -92,292 +96,14 @@ function_name (text),
 error_message (text),
 created_at (timestamptz, default now())`;
 
-const faqs = [
-  { q: "Do I need a Twitch affiliate or partner account?", a: "No. Lazy Stream works with any Twitch account. You need a free Twitch developer account to get API credentials." },
-  { q: "How long does transcription take?", a: "Twitch VODs typically become available within a few minutes of the stream ending. Transcription and content generation usually completes within 15 to 30 minutes." },
-  { q: "What if I stream for 8 hours?", a: "Lazy Stream processes the full VOD but focuses the recap and SEO article on the most engaged segments. Long streams produce richer content." },
-  { q: "Does it post to social media automatically?", a: "Not in the current version. Content publishes to your Lovable site. Social posting is coming in the Pro version." },
-  { q: "What games and content types does it work with?", a: "Everything. Lazy Stream works with any Twitch content — gaming, just chatting, music, creative. The AI adapts the recap style to the content type." },
-  { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
+const steps = [
+  "Click the button above to copy the Lovable prompt.",
+  "Paste it into your Lovable project chat.",
+  "Connect your Twitch Client ID and Client Secret.",
+  "Lazy Stream monitors your channel and publishes content automatically after every stream.",
 ];
 
-/* ── Palette ── */
-const C = {
-  bg: "#1a0533",
-  pink: "#ff2d9b",
-  cyan: "#00f5ff",
-  lime: "#39ff14",
-  yellow: "#ffed00",
-  white: "#ffffff",
-};
-
-/* ── Chat messages ── */
-const chatMsgs = [
-  "PogChamp", "LUL", "KEKW", "GG", "let's go", "clip it", "POG",
-  "hype", "W", "based", "no way", "actual clip", "this is insane",
-  "🔥🔥🔥", "GOAT", "sheeeesh", "MASSIVE", "LETS GOOO",
-];
-
-/* ── Floating emojis ── */
-const floatingEmoji = ["📺", "🎮", "✨", "🔴", "💜", "⚡", "🎯", "👾"];
-
-/* ── Floating Particles ── */
-function Particles() {
-  const particles = useRef(
-    Array.from({ length: 30 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: 2 + Math.random() * 3,
-      color: [C.pink, C.cyan, C.lime][i % 3],
-      duration: 15 + Math.random() * 20,
-      delay: Math.random() * 10,
-    }))
-  ).current;
-
-  return (
-    <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
-      {particles.map((p) => (
-        <div
-          key={p.id}
-          className="absolute rounded-full"
-          style={{
-            width: p.size,
-            height: p.size,
-            backgroundColor: p.color,
-            opacity: 0.15,
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            animation: `drift ${p.duration}s ease-in-out ${p.delay}s infinite alternate`,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-/* ── Scanline overlay ── */
-function Scanlines() {
-  return (
-    <div
-      className="fixed inset-0 pointer-events-none z-[2]"
-      style={{
-        background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px)",
-      }}
-    />
-  );
-}
-
-/* ── Floating Emoji ── */
-function FloatingEmojis() {
-  const [emojis, setEmojis] = useState<{ id: number; emoji: string; x: number }[]>([]);
-  const counterRef = useRef(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const id = counterRef.current++;
-      const emoji = floatingEmoji[id % floatingEmoji.length];
-      const x = 10 + Math.random() * 80;
-      setEmojis((prev) => [...prev.slice(-12), { id, emoji, x }]);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
-      <AnimatePresence>
-        {emojis.map((e) => (
-          <motion.div
-            key={e.id}
-            initial={{ opacity: 0.8, y: "100%", x: `${e.x}vw` }}
-            animate={{ opacity: 0, y: "-20%", x: `${e.x + (Math.random() - 0.5) * 10}vw` }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 6, ease: "easeOut" }}
-            className="absolute text-3xl"
-            style={{ left: 0, bottom: 0 }}
-          >
-            {e.emoji}
-          </motion.div>
-        ))}
-      </AnimatePresence>
-    </div>
-  );
-}
-
-/* ── Chat Panel ── */
-function ChatPanel() {
-  const [messages, setMessages] = useState<{ id: number; user: string; msg: string; color: string }[]>([]);
-  const counterRef = useRef(0);
-
-  useEffect(() => {
-    const colors = [C.pink, C.cyan, C.lime, C.yellow, "#ff6b6b", "#a29bfe", "#fd79a8"];
-    const users = ["xQcFan", "poggers99", "clipQueen", "neonVibes", "ttvJoey", "lurk_lord", "hypeBot", "streamSniper"];
-    const interval = setInterval(() => {
-      const id = counterRef.current++;
-      setMessages((prev) => [
-        ...prev.slice(-8),
-        {
-          id,
-          user: users[id % users.length],
-          msg: chatMsgs[Math.floor(Math.random() * chatMsgs.length)],
-          color: colors[id % colors.length],
-        },
-      ]);
-    }, 1200);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="absolute right-0 top-0 bottom-0 w-[35%] flex flex-col justify-end p-2 overflow-hidden" style={{ backgroundColor: "rgba(0,0,0,0.5)", borderLeft: "1px solid rgba(255,255,255,0.1)" }}>
-      <div className="space-y-1">
-        {messages.map((m) => (
-          <motion.div
-            key={m.id}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-[8px] md:text-[10px] leading-tight"
-          >
-            <span style={{ color: m.color }} className="font-bold">{m.user}: </span>
-            <span style={{ color: "rgba(255,255,255,0.8)" }}>{m.msg}</span>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ── Viewer Count ── */
-function ViewerCount() {
-  const [count, setCount] = useState(847);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((c) => c + Math.floor(Math.random() * 3) + 1);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-  return (
-    <div className="absolute top-2 left-2 flex items-center gap-1.5 z-10">
-      <div className="flex items-center gap-1 px-1.5 py-0.5 rounded" style={{ backgroundColor: "rgba(0,0,0,0.6)" }}>
-        <span className="text-[8px] md:text-[10px] font-bold" style={{ color: C.white }}>👁 {count.toLocaleString()}</span>
-      </div>
-    </div>
-  );
-}
-
-/* ── Live Badge ── */
-function LiveBadge() {
-  return (
-    <div className="absolute top-2 right-[37%] md:right-[37%] flex items-center gap-1 z-10 px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(255,0,0,0.8)", animation: "pulse-live 2s ease-in-out infinite" }}>
-      <div className="w-1.5 h-1.5 rounded-full bg-white" style={{ animation: "pulse-dot 1.5s ease-in-out infinite" }} />
-      <span className="text-[8px] md:text-[10px] font-bold text-white tracking-wider">LIVE</span>
-    </div>
-  );
-}
-
-/* ── Streamer Silhouette ── */
-function StreamerScene() {
-  return (
-    <div className="absolute inset-0 w-[65%]" style={{ background: "linear-gradient(135deg, #2d1b69, #1a0533)" }}>
-      {/* Desk */}
-      <div className="absolute bottom-0 left-0 right-0 h-[30%]" style={{ backgroundColor: "#2a1a4e" }} />
-      {/* Monitor glow */}
-      <div className="absolute bottom-[30%] left-[15%] w-[35%] h-[35%] rounded" style={{ backgroundColor: "#3d2a6e", boxShadow: `0 0 30px ${C.cyan}33` }} />
-      {/* Streamer silhouette */}
-      <svg viewBox="0 0 100 100" className="absolute bottom-[15%] left-[20%] w-[30%] h-[55%]" fill="#1a0a30">
-        {/* Head */}
-        <circle cx="50" cy="25" r="12" />
-        {/* Body */}
-        <path d="M35 35 Q50 32 65 35 L68 70 L32 70 Z" />
-        {/* Headset */}
-        <path d="M36 20 Q36 8 50 8 Q64 8 64 20" fill="none" stroke={C.pink} strokeWidth="2.5" />
-        <circle cx="36" cy="22" r="4" fill={C.pink} />
-        <circle cx="64" cy="22" r="4" fill={C.pink} />
-        {/* Mic */}
-        <line x1="36" y1="26" x2="42" y2="32" stroke={C.cyan} strokeWidth="1.5" />
-      </svg>
-      {/* Keyboard glow */}
-      <div className="absolute bottom-[32%] left-[35%] w-[20%] h-[4%] rounded-sm" style={{ backgroundColor: C.lime, opacity: 0.15, boxShadow: `0 0 10px ${C.lime}` }} />
-    </div>
-  );
-}
-
-/* ── Retro CRT TV ── */
-function RetroTV() {
-  return (
-    <div className="relative mx-auto" style={{ maxWidth: 580 }}>
-      {/* Antenna */}
-      <div className="flex justify-center -mb-1 relative z-10">
-        <div className="relative">
-          <svg width="120" height="60" viewBox="0 0 120 60">
-            <line x1="60" y1="60" x2="30" y2="5" stroke="#555" strokeWidth="3" />
-            <line x1="60" y1="60" x2="90" y2="5" stroke="#555" strokeWidth="3" />
-            <circle cx="30" cy="5" r="3" fill="#888" />
-            <circle cx="90" cy="5" r="3" fill="#888" />
-          </svg>
-          {/* Unicorn charm */}
-          <span className="absolute -top-1 -right-2 text-lg" style={{ animation: "swing 3s ease-in-out infinite" }}>🦄</span>
-        </div>
-      </div>
-
-      {/* TV body */}
-      <div
-        className="relative rounded-2xl overflow-hidden"
-        style={{
-          background: "linear-gradient(145deg, #3a3a3a, #222, #1a1a1a)",
-          padding: "20px 24px 50px 24px",
-          boxShadow: `0 20px 60px rgba(0,0,0,0.6), 0 0 30px ${C.pink}15, inset 0 1px 0 rgba(255,255,255,0.1)`,
-        }}
-      >
-        {/* Screen */}
-        <div
-          className="relative w-full overflow-hidden"
-          style={{
-            aspectRatio: "4 / 3",
-            borderRadius: 12,
-            backgroundColor: "#0a0a1a",
-            border: "4px solid #111",
-            boxShadow: `inset 0 0 40px rgba(0,0,0,0.8), 0 0 8px ${C.cyan}22`,
-          }}
-        >
-          <StreamerScene />
-          <ChatPanel />
-          <ViewerCount />
-          <LiveBadge />
-          {/* CRT scanlines on screen */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,0.1) 1px, rgba(0,0,0,0.1) 3px)" }} />
-          {/* Vignette */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)" }} />
-          {/* Screen glare */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.04) 0%, transparent 50%)" }} />
-        </div>
-
-        {/* Controls below screen */}
-        <div className="flex items-center justify-between mt-5 px-2">
-          {/* Brand */}
-          <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: C.pink, fontFamily: "'Bebas Neue', sans-serif", fontSize: 14 }}>
-            LAZY STREAM
-          </span>
-          {/* Dials */}
-          <div className="flex items-center gap-3">
-            {[C.pink, C.cyan].map((color, i) => (
-              <div key={i} className="w-6 h-6 rounded-full" style={{ background: `radial-gradient(circle at 35% 35%, ${color}44, #222)`, border: `2px solid ${color}44`, boxShadow: `0 0 6px ${color}33` }} />
-            ))}
-            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: C.lime, boxShadow: `0 0 8px ${C.lime}88`, animation: "pulse-dot 2s ease-in-out infinite" }} />
-          </div>
-        </div>
-      </div>
-
-      {/* TV legs */}
-      <div className="flex justify-center gap-[65%] -mt-1">
-        <div style={{ width: 5, height: 30, background: "#333", borderRadius: "0 0 3px 3px", transform: "rotate(-8deg)", transformOrigin: "top center" }} />
-        <div style={{ width: 5, height: 30, background: "#333", borderRadius: "0 0 3px 3px", transform: "rotate(8deg)", transformOrigin: "top center" }} />
-      </div>
-    </div>
-  );
-}
-
-/* ── CopyPromptButton ── */
-function CopyPromptButton({ className = "", variant = "pink" }: { className?: string; variant?: "pink" | "gold" }) {
+function CopyPromptButton({ className = "" }: { className?: string }) {
   const [copied, setCopied] = useState(false);
   const trackEvent = useTrackEvent();
 
@@ -386,489 +112,263 @@ function CopyPromptButton({ className = "", variant = "pink" }: { className?: st
     setCopied(true);
     trackEvent("copy_prompt", { product: "lazy-stream" });
     toast.success("Copied! Paste this into your Lovable project chat.");
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 2500);
   }, [trackEvent]);
-
-  const bg = variant === "gold"
-    ? `linear-gradient(135deg, ${C.yellow}, #ffaa00)`
-    : `linear-gradient(135deg, ${C.pink}, ${C.cyan})`;
 
   return (
     <button
       onClick={handleCopy}
-      className={`inline-flex items-center gap-2 px-8 py-3 font-bold text-sm tracking-wide transition-transform hover:scale-105 active:scale-95 ${className}`}
-      style={{ background: bg, color: "#1a0533", borderRadius: 8, fontFamily: "'Inter', sans-serif" }}
+      className={`inline-flex items-center gap-2 bg-foreground text-background font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity ${className}`}
     >
-      {copied ? <><Check size={16} /> Copied ✓</> : <><Copy size={16} /> Add to my Lovable project</>}
+      {copied ? <><Check size={16} /> Copied!</> : <><Copy size={16} /> Copy the Lovable Prompt</>}
     </button>
   );
 }
 
-/* ── Channel Card ── */
-function ChannelCard({ channel, emoji, title, body, color, rotation }: { channel: string; emoji: string; title: string; body: string; color: string; rotation: number }) {
-  return (
-    <motion.div
-      variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="p-6 md:p-8 relative"
-      style={{
-        border: `1px solid rgba(240,234,214,0.08)`,
-        backgroundColor: "#111110",
-        transform: `rotate(${rotation}deg)`,
-      }}
-    >
-      <span className="absolute top-3 right-4 font-bold tracking-[0.15em]" style={{ color, fontFamily: "'Playfair Display', serif", fontSize: 14, opacity: 0.6 }}>CH {channel}</span>
-      <p className="text-2xl mb-2">{emoji}</p>
-      <h3 className="font-bold mb-2" style={{ color: "#f0ead6", fontFamily: "'Playfair Display', serif", fontSize: 20 }}>{title}</h3>
-      <p className="text-sm leading-relaxed" style={{ color: "#f0ead6", opacity: 0.4 }}>{body}</p>
-    </motion.div>
-  );
-}
-
-/* ── Output Preview Card ── */
-function OutputCard({ title, preview, badge, color, badgeIcon }: { title: string; preview: string; badge: string; color: string; badgeIcon: string }) {
-  return (
-    <motion.div
-      variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="flex-1 min-w-[260px] overflow-hidden"
-      style={{ border: "1px solid rgba(240,234,214,0.08)", backgroundColor: "#111110" }}
-    >
-      <div className="px-4 py-2 flex items-center justify-between" style={{ borderBottom: "1px solid rgba(240,234,214,0.06)" }}>
-        <span className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color, fontFamily: "'Playfair Display', serif" }}>{badge}</span>
-        <span>{badgeIcon}</span>
-      </div>
-      <div className="p-5">
-        <h4 className="font-bold text-sm mb-2" style={{ color: "#f0ead6", fontFamily: "'Playfair Display', serif" }}>{title}</h4>
-        <p className="text-xs leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>{preview}</p>
-        <p className="text-[10px] mt-3" style={{ color: "#f0ead6", opacity: 0.2 }}>Published 12 min ago</p>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ── Neon border cycling card ── */
-function TwitchConnectionCard() {
-  return (
-    <div className="max-w-md mx-auto mt-10 p-5" style={{ backgroundColor: "#111110", border: "1px solid rgba(240,234,214,0.08)" }}>
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 flex items-center justify-center" style={{ backgroundColor: "#9146ff" }}>
-          <span className="text-white font-bold text-xs font-mono">Twitch</span>
-        </div>
-        <div className="text-left">
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-bold" style={{ color: "#f0ead6", fontFamily: "'Playfair Display', serif" }}>Connected</span>
-            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: C.lime, boxShadow: `0 0 6px ${C.lime}`, animation: "pulse-dot 2s ease-in-out infinite" }} />
-          </div>
-          <p className="text-[11px]" style={{ color: "#f0ead6", opacity: 0.3 }}>Last checked: 2 minutes ago</p>
-        </div>
-      </div>
-      <div className="space-y-2 text-xs" style={{ color: "#f0ead6", opacity: 0.4 }}>
-        <div className="flex justify-between"><span>Next check</span><span style={{ color: C.cyan }}>3 minutes</span></div>
-        <div className="flex justify-between"><span>Stream status</span><span style={{ opacity: 0.5 }}>Offline — last stream 4h ago</span></div>
-      </div>
-    </div>
-  );
-}
-
-/* ── Big Number ── */
-function BigNumber({ value, label, delay }: { value: string; label: string; delay: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      className="text-center p-6"
-    >
-      <p className="font-bold" style={{ fontSize: "clamp(60px, 12vw, 120px)", color: "#f0ead6", fontFamily: "'Playfair Display', serif", lineHeight: 1 }}>{value}</p>
-      <p className="text-sm font-bold mt-2 uppercase tracking-[0.12em]" style={{ color: "#f0ead6", opacity: 0.4 }}>{label}</p>
-    </motion.div>
-  );
-}
-
-/* ═══════════════════════════════ PAGE ═══════════════════════════════ */
-
 const LazyStreamPage = () => {
+  const trackEvent = useTrackEvent();
+
+  useEffect(() => {
+    trackEvent("lazy_stream_page_view");
+  }, [trackEvent]);
+
   return (
-    <div className="min-h-screen relative" style={{ backgroundColor: C.bg, color: C.white, fontFamily: "'Inter', sans-serif" }}>
-      {/* Google Fonts */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
-
-        @keyframes drift {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(20px, -30px); }
-        }
-        @keyframes swing {
-          0%, 100% { transform: rotate(-8deg); }
-          50% { transform: rotate(8deg); }
-        }
-        @keyframes pulse-live {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.6; }
-        }
-        @keyframes pulse-dot {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(0.8); }
-        }
-        @property --border-angle {
-          syntax: '<angle>';
-          inherits: false;
-          initial-value: 0deg;
-        }
-        @keyframes border-rotate {
-          to { --border-angle: 360deg; }
-        }
-      `}</style>
-
+    <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Stream — Autonomous Twitch Content Engine for Lovable"
-        description="One prompt turns every Twitch stream into a blog post, SEO article, and highlight reel — automatically."
+        description="One prompt turns every Twitch stream into a recap article, SEO post, GEO citation page, and highlights reel — automatically."
         url="/lazy-stream"
         keywords="Twitch content automation, stream to blog, VOD transcription, Twitch SEO, autonomous content, Lovable, Lazy Stream"
       />
       <Navbar />
-      <Particles />
-      <Scanlines />
 
-      {/* ═══ HERO ═══ */}
-      <section className="relative px-6 md:px-12 pt-32 pb-20 md:pb-28 overflow-hidden" style={{ background: `linear-gradient(180deg, #0a0a08 0%, ${C.bg} 100%)` }}>
-        <FloatingEmojis />
+      <main className="relative z-10 pb-32">
+        {/* Hero */}
+        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+          <div className="max-w-4xl mx-auto">
+            <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
+              <div className="flex items-center gap-3 mb-6">
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
+                <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+              </div>
+              <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+                Lazy Stream
+              </h1>
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/45 max-w-xl leading-relaxed">
+                Paste one prompt into your Lovable project. Lazy Stream detects when your Twitch stream ends and automatically publishes a recap article, an SEO post, a GEO citation page, and a highlights reel — before you have even eaten dinner.
+              </p>
 
-        <div className="max-w-5xl mx-auto relative z-10">
-          {/* Intro label */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-3 mb-6 justify-center md:justify-start"
-          >
-            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
-            <span className="text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1" style={{ backgroundColor: C.pink, color: "#fff", fontFamily: "'Playfair Display', serif" }}>BETA</span>
-          </motion.div>
+              {/* Works with */}
+              <div className="mt-8 mb-10">
+                <p className="font-body text-[10px] tracking-[0.2em] uppercase font-semibold text-foreground/25 mb-3">
+                  Works with
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { label: "Lazy Blogger", href: "/lazy-blogger" },
+                    { label: "Lazy SEO", href: "/lazy-seo" },
+                    { label: "Lazy GEO", href: "/lazy-geo" },
+                    { label: "Lazy Voice", href: "/lazy-voice" },
+                    { label: "Lazy Alert", href: "/lazy-alert" },
+                    { label: "Lazy SMS", href: "/lazy-sms" },
+                  ].map((tag) => (
+                    <Link
+                      key={tag.label}
+                      to={tag.href}
+                      className="font-body text-[10px] tracking-[0.12em] uppercase font-semibold px-3 py-1.5 border border-border text-foreground/45 hover:text-foreground hover:border-foreground/30 transition-colors"
+                    >
+                      {tag.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="font-bold mb-6 text-center md:text-left"
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(2.5rem, 6vw, 5rem)",
-              lineHeight: 1.05,
-              color: "#f0ead6",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            <span style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", opacity: 0.5 }}>Lazy</span>{" "}
-            Stream
-            <br />
-            <span style={{ fontSize: "clamp(1.2rem, 2.5vw, 2rem)", opacity: 0.5 }}>Launch your Autonomous Twitch Business on</span>{" "}
-            <span style={{ color: C.pink }}>Lovable</span>
-          </motion.h1>
-
-          {/* Body text directly under headline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-base md:text-lg max-w-2xl leading-relaxed mb-12 text-center md:text-left"
-            style={{ color: "#f0ead6", opacity: 0.45 }}
-          >
-            Paste one prompt into your Lovable project. Lazy Stream detects when your Twitch stream ends and automatically publishes a recap article, an SEO post, a GEO citation page, and a highlights reel — before you have even eaten dinner.
-          </motion.p>
-
-          {/* Works with label + tags */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-12 text-center md:text-left"
-          >
-            <p className="text-[10px] tracking-[0.2em] uppercase font-semibold mb-3" style={{ color: "#f0ead6", opacity: 0.25 }}>
-              Works with
-            </p>
-            <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-              {[
-                { label: "Lazy Blogger", href: "/lazy-blogger" },
-                { label: "Lazy SEO", href: "/lazy-seo" },
-                { label: "Lazy GEO", href: "/lazy-geo" },
-                { label: "Lazy Voice", href: "/lazy-voice" },
-                { label: "Lazy Alert", href: "/lazy-alert" },
-                { label: "Lazy SMS", href: "/lazy-sms" },
-              ].map((tag, i) => (
-                <motion.a
-                  key={tag.label}
-                  href={tag.href}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.06, duration: 0.3 }}
-                  className="text-[10px] tracking-[0.12em] uppercase font-semibold px-3 py-1.5 border transition-colors hover:border-[rgba(240,234,214,0.35)]"
-                  style={{ color: "#f0ead6", opacity: 0.45, borderColor: "rgba(240,234,214,0.12)" }}
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <CopyPromptButton />
+                <button
+                  onClick={(e) => { e.preventDefault(); document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }); }}
+                  className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
                 >
-                  {tag.label}
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center md:items-start gap-4 mb-16"
-          >
-            <CopyPromptButton />
-            <button
-              onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold transition-colors"
-              style={{ border: "1px solid rgba(240,234,214,0.15)", color: "#f0ead6", opacity: 0.5 }}
-            >
-              See How It Works
-            </button>
-          </motion.div>
-
-          {/* TV */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <RetroTV />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══ HOW IT WORKS ═══ */}
-      <section id="how-it-works" className="relative py-24 md:py-32 px-6" style={{ backgroundColor: "#111110" }}>
-        <div className="max-w-5xl mx-auto">
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>How it works</p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-bold mt-2 mb-16"
-            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}
-          >
-            Stream. Sleep. Wake up to articles.
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
-            <ChannelCard channel="03" emoji="🎮" title="You go live" body="Stream whatever you stream. Lazy Stream watches your Twitch status silently in the background. You do not need to do anything differently." color={C.pink} rotation={0} />
-            <ChannelCard channel="07" emoji="📡" title="Stream ends. Engines fire." body="The moment your stream goes offline Lazy Stream fetches your top clips, generates a transcript summary, and starts writing. Within 30 minutes three pieces of content are queued." color={C.cyan} rotation={0} />
-            <ChannelCard channel="11" emoji="📰" title="Content goes live" body="A stream recap, an SEO article targeting your game or topic, and a highlights page all publish to your site automatically. Your viewers find them on Google. New viewers discover you." color={C.lime} rotation={0} />
+                  See How It Works
+                </button>
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══ WHAT GETS PUBLISHED ═══ */}
-      <section className="relative py-24 md:py-32 px-6 overflow-hidden" style={{ backgroundColor: "#0a0a08" }}>
-        <div className="max-w-5xl mx-auto">
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>What it publishes</p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-bold mt-2 mb-14"
-            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}
-          >
-            One stream. Three pieces of content. <span style={{ color: C.pink }}>Zero effort.</span>
+        {/* How It Works */}
+        <section id="how-it-works" className="max-w-2xl mx-auto px-6 mb-20">
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
+            How it works
           </motion.h2>
-
-          <div className="flex flex-col md:flex-row gap-px bg-border">
-            <OutputCard
-              title="I spent 4 hours in the Dark Zone and here is what happened"
-              preview="The raid started badly. Two squad wipes in the first hour. But by hour three we had figured out the extraction route and..."
-              badge="Stream Recap"
-              badgeIcon="📝"
-              color={C.pink}
-            />
-            <OutputCard
-              title="Best strategies for Dark Zone survival in 2026 — a streamer's guide"
-              preview="Whether you are solo or in a squad, the Dark Zone rewards preparation. Here are the strategies that actually work in the current meta..."
-              badge="SEO Article"
-              badgeIcon="🔍"
-              color={C.cyan}
-            />
-            <OutputCard
-              title="Stream Highlights — June 14"
-              preview="Top clips from today's stream including the clutch extraction, the 1v4 squad wipe, and the moment chat lost its mind..."
-              badge="Highlights"
-              badgeIcon="🎬"
-              color={C.lime}
-            />
+          <div className="space-y-4">
+            {steps.map((step, i) => (
+              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className="flex items-start gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-foreground text-background font-display text-sm font-bold flex items-center justify-center mt-0.5">
+                  {i + 1}
+                </span>
+                <p className="font-body text-sm text-foreground/60 leading-relaxed pt-1">{step}</p>
+              </motion.div>
+            ))}
           </div>
+        </section>
 
-          <p className="text-center mt-10 text-[11px] tracking-[0.12em] uppercase" style={{ color: "#f0ead6", opacity: 0.25 }}>
+        {/* What You Get */}
+        <section className="max-w-3xl mx-auto px-6 mb-20">
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
+            What you get
+          </motion.h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border border-border">
+            {[
+              { icon: Radio, title: "Stream detection", desc: "Monitors your Twitch channel every 5 minutes. When you go offline, engines fire automatically." },
+              { icon: FileText, title: "3 content pieces", desc: "A stream recap, an SEO article, and a highlights page — published within 30 minutes." },
+              { icon: Zap, title: "Zero effort", desc: "No writing. No editing. No scheduling. Stream as normal and content appears on your site." },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                transition={{ delay: i * 0.08 }}
+                className="border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-border bg-card p-6 text-center"
+              >
+                <item.icon size={18} className="text-foreground/40 mx-auto mb-3" />
+                <h3 className="font-display text-sm font-bold text-foreground mb-1">{item.title}</h3>
+                <p className="font-body text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* What gets published */}
+        <section className="max-w-3xl mx-auto px-6 mb-20">
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
+            One stream. Three pieces of content.
+          </motion.h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border border-border">
+            {[
+              { badge: "📝 Recap", title: "I spent 4 hours in the Dark Zone and here is what happened", desc: "The raid started badly. Two squad wipes in the first hour. But by hour three we had figured out the extraction route..." },
+              { badge: "🔍 SEO Article", title: "Best strategies for Dark Zone survival in 2026", desc: "Whether you are solo or in a squad, the Dark Zone rewards preparation. Here are the strategies that work in the current meta..." },
+              { badge: "🎬 Highlights", title: "Stream Highlights — June 14", desc: "Top clips from today's stream including the clutch extraction, the 1v4 squad wipe, and the moment chat lost its mind..." },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                transition={{ delay: i * 0.08 }}
+                className="border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-border bg-card p-6"
+              >
+                <p className="font-display text-[10px] tracking-[0.15em] uppercase font-bold text-foreground/40 mb-3">{item.badge}</p>
+                <h3 className="font-display text-sm font-bold text-foreground mb-2">{item.title}</h3>
+                <p className="font-body text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                <p className="font-body text-[10px] text-foreground/20 mt-3">Published 12 min ago</p>
+              </motion.div>
+            ))}
+          </div>
+          <p className="text-center mt-6 font-body text-[11px] tracking-[0.1em] uppercase text-foreground/25">
             3 content pieces per stream · Published in under 30 minutes · 100% automated
           </p>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══ THE NUMBERS ═══ */}
-      <section className="py-20 px-6" style={{ backgroundColor: "#111110" }}>
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
-          <BigNumber value="0" label="Minutes you spend writing recaps" delay={0} />
-          <BigNumber value="3" label="Content pieces per stream" delay={0.1} />
-          <BigNumber value="30" label="Minutes from stream end to published" delay={0.2} />
-          <BigNumber value="∞" label="Streams that can be processed" delay={0.3} />
-        </div>
-      </section>
-
-      {/* ═══ TWITCH CONNECTION ═══ */}
-      <section className="py-24 md:py-32 px-6 relative" style={{ backgroundColor: "#0a0a08" }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Connection</p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-bold mt-2 mb-6"
-            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}
-          >
-            Works with your existing Twitch account.
-          </motion.h2>
-          <p className="text-sm leading-relaxed max-w-xl mx-auto" style={{ color: "#f0ead6", opacity: 0.4 }}>
-            Lazy Stream connects to Twitch using your Client ID and Client Secret. It monitors your stream status every 5 minutes. When you go offline it fires automatically. No manual trigger. No app to open. No webhook to configure.
-          </p>
-          <TwitchConnectionCard />
-        </div>
-      </section>
-
-      {/* ═══ PRICING ═══ */}
-      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "#111110" }}>
-        <div className="max-w-lg mx-auto text-center">
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Pricing</p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-bold mt-2 mb-10"
-            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}
-          >
-            Start turning streams into content.
-          </motion.h2>
-
-          <div className="p-8 text-left" style={{ border: "1px solid rgba(240,234,214,0.08)", backgroundColor: "#0a0a08" }}>
-            <p className="font-bold text-xl mb-1" style={{ fontFamily: "'Playfair Display', serif", color: "#f0ead6" }}>Free</p>
-            <p className="text-[10px] uppercase tracking-[0.15em] mb-6" style={{ color: C.pink, opacity: 0.7 }}>Included with any Lazy Stack install</p>
-            <ul className="space-y-3 mb-8">
-              {[
-                "Stream detection & monitoring",
-                "Automatic recap writing",
-                "SEO article generation",
-                "Highlights page creation",
-                "Self-improving content templates",
-              ].map((f) => (
-                <li key={f} className="flex items-start gap-2 text-sm" style={{ color: "#f0ead6", opacity: 0.5 }}>
-                  <span style={{ color: C.lime, opacity: 0.7 }}>✓</span> {f}
-                </li>
-              ))}
-            </ul>
-            <CopyPromptButton className="w-full justify-center" />
-            <p className="text-[11px] text-center mt-4" style={{ color: "#f0ead6", opacity: 0.2 }}>
-              Paste into your existing Lovable project. Works alongside any other Lazy engine.
+        {/* Twitch Connection */}
+        <section className="max-w-2xl mx-auto px-6 mb-20">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-8">
+            <h2 className="font-display text-xl font-extrabold tracking-tight mb-4">Works with your existing Twitch account</h2>
+            <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6">
+              Lazy Stream connects to Twitch using your Client ID and Client Secret. It monitors your stream status every 5 minutes. When you go offline it fires automatically. No manual trigger. No app to open. No webhook to configure.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ FAQ ═══ */}
-      <section className="py-20 px-6" style={{ backgroundColor: "#0a0a08" }}>
-        <div className="max-w-3xl mx-auto">
-          <p className="text-center" style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>FAQ</p>
-          <h2 className="text-center font-bold mt-2 mb-12" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.2rem)", color: "#f0ead6" }}>
-            Frequently asked
-          </h2>
-          <div className="space-y-px">
-            {faqs.map((faq, i) => (
-              <details key={i} className="group p-5" style={{ backgroundColor: "#111110", borderBottom: "1px solid rgba(240,234,214,0.05)" }}>
-                <summary className="cursor-pointer font-bold text-sm list-none flex items-center justify-between" style={{ color: "#f0ead6", fontFamily: "'Playfair Display', serif" }}>
-                  {faq.q}
-                  <span className="text-lg" style={{ color: "#f0ead6", opacity: 0.2 }}>+</span>
-                </summary>
-                <p className="mt-3 text-sm leading-relaxed" style={{ color: "#f0ead6", opacity: 0.4 }}>{faq.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ WORKS WITH ═══ */}
-      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "#0a0a08" }}>
-        <div className="max-w-5xl mx-auto">
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Better together</p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-bold mt-2 mb-4"
-            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}
-          >
-            Every stream compounds with the <span style={{ color: "#c8a961" }}>Lazy Stack.</span>
-          </motion.h2>
-          <p className="text-sm leading-relaxed max-w-2xl mb-14" style={{ color: "#f0ead6", opacity: 0.4 }}>
-            Lazy Stream doesn't work alone. Each engine in the stack amplifies your stream content further — turning one broadcast into a dozen touchpoints.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
-            {[
-              { emoji: "✍️", name: "Lazy Blogger", href: "/lazy-blogger", desc: "Stream recaps automatically feed into your blog queue. Every stream becomes a published post — indexed, shareable, evergreen." },
-              { emoji: "🔍", name: "Lazy SEO", href: "/lazy-seo", desc: "SEO articles target the game, topic, or niche you streamed about. You rank for searches your viewers are already making." },
-              { emoji: "🌐", name: "Lazy GEO", href: "/lazy-geo", desc: "Citation-optimized versions of your stream content get picked up by ChatGPT, Claude, and Perplexity when people ask about your niche." },
-              { emoji: "🎙️", name: "Lazy Voice", href: "/lazy-voice", desc: "Every stream recap is narrated into a podcast episode automatically. Your content reaches listeners who never open Twitch." },
-              { emoji: "🔔", name: "Lazy Alert", href: "/lazy-alert", desc: "Get a Slack notification the moment your stream content publishes. Know what went live without checking your site." },
-              { emoji: "📱", name: "Lazy SMS", href: "/lazy-sms", desc: "Text your subscribers when new stream content drops. Drive them back to your site while the stream is still fresh." },
-              { emoji: "🛒", name: "Lazy Store", href: "/lazy-store", desc: "Products or merch mentioned during your stream get promoted automatically in recap articles and highlights pages." },
-              { emoji: "💬", name: "Lazy Telegram", href: "/lazy-telegram", desc: "Push stream recaps and highlights directly to your Telegram channel. Your community gets content where they already hang out." },
-            ].map((item, i) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.4 }}
-                className="p-6 md:p-8 block group transition-colors duration-200"
-                style={{ backgroundColor: "#111110" }}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-xl">{item.emoji}</span>
-                  <h3 className="font-bold text-sm" style={{ fontFamily: "'Playfair Display', serif", color: "#f0ead6" }}>{item.name}</h3>
+            <div className="border border-border bg-background p-5">
+              <div className="flex items-center gap-3 mb-4">
+                <Tv size={18} className="text-foreground/40" />
+                <div>
+                  <p className="font-display text-sm font-bold text-foreground">Connected</p>
+                  <p className="font-body text-[11px] text-foreground/30">Last checked: 2 minutes ago</p>
                 </div>
-                <p className="text-[13px] leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>{item.desc}</p>
-                <span className="inline-block mt-4 text-[10px] tracking-[0.15em] uppercase font-semibold transition-opacity group-hover:opacity-70" style={{ color: "#c8a961", opacity: 0.4 }}>
-                  Learn more →
-                </span>
-              </motion.a>
+              </div>
+              <div className="space-y-2 font-body text-xs text-foreground/40">
+                <div className="flex justify-between"><span>Next check</span><span className="text-foreground/60">3 minutes</span></div>
+                <div className="flex justify-between"><span>Stream status</span><span className="text-foreground/30">Offline — last stream 4h ago</span></div>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Better together */}
+        <section className="max-w-3xl mx-auto px-6 mb-20">
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-3">
+            Better together
+          </motion.h2>
+          <p className="font-body text-sm text-muted-foreground text-center max-w-xl mx-auto leading-relaxed mb-8">
+            Lazy Stream works on its own, but it compounds with the rest of the Lazy Stack — turning one broadcast into a dozen touchpoints.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-border">
+            {[
+              { emoji: "✍️", name: "Lazy Blogger", href: "/lazy-blogger", desc: "Stream recaps feed into your blog queue. Every stream becomes a published post — indexed, shareable, evergreen." },
+              { emoji: "🔍", name: "Lazy SEO", href: "/lazy-seo", desc: "SEO articles target the game or topic you streamed about. You rank for searches your viewers are already making." },
+              { emoji: "🌐", name: "Lazy GEO", href: "/lazy-geo", desc: "Citation-optimized stream content gets picked up by ChatGPT, Claude, and Perplexity when people ask about your niche." },
+              { emoji: "🎙️", name: "Lazy Voice", href: "/lazy-voice", desc: "Every stream recap is narrated into a podcast episode automatically. Reach listeners who never open Twitch." },
+              { emoji: "🔔", name: "Lazy Alert", href: "/lazy-alert", desc: "Get a Slack notification the moment your stream content publishes." },
+              { emoji: "📱", name: "Lazy SMS", href: "/lazy-sms", desc: "Text your subscribers when new stream content drops. Drive them back while the stream is still fresh." },
+              { emoji: "🛒", name: "Lazy Store", href: "/lazy-store", desc: "Products or merch mentioned during your stream get promoted automatically in recap articles." },
+              { emoji: "💬", name: "Lazy Telegram", href: "/lazy-telegram", desc: "Push stream recaps and highlights directly to your Telegram channel." },
+            ].map((item, i) => (
+              <motion.div
+                key={item.name}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                transition={{ delay: i * 0.06 }}
+              >
+                <Link
+                  to={item.href}
+                  className="block p-6 border-b sm:even:border-l border-border bg-card hover:bg-accent/5 transition-colors group"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-lg">{item.emoji}</span>
+                    <h3 className="font-display text-sm font-bold text-foreground">{item.name}</h3>
+                  </div>
+                  <p className="font-body text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                  <span className="inline-block mt-3 font-body text-[10px] tracking-[0.15em] uppercase font-semibold text-foreground/20 group-hover:text-foreground/50 transition-colors">
+                    Learn more →
+                  </span>
+                </Link>
+              </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══ BOTTOM CTA ═══ */}
-      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "#111110" }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-7xl md:text-8xl mb-6">📺</p>
-          <h2 className="font-bold mb-6" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}>
-            Your streams deserve an audience beyond Twitch.
-          </h2>
-          <p className="text-sm leading-relaxed max-w-xl mx-auto mb-10" style={{ color: "#f0ead6", opacity: 0.4 }}>
-            Every stream you do is an SEO opportunity, a blog post, and a highlights reel sitting unwritten. Lazy Stream writes them for you.
-          </p>
-          <CopyPromptButton />
-          <p className="mt-8" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.15, letterSpacing: "0.15em", textTransform: "uppercase" }}>
-            Made for Lovable
-          </p>
-        </div>
-      </section>
+        <LazyPricingSection
+          lazyFeatures={["Lazy Stream setup prompt", "Self-hosted in your Lovable project", "Stream detection & recap writing", "SEO article + highlights page", "No API keys needed"]}
+          proFeatures={["Hosted version", "Multi-platform stream support", "Advanced analytics dashboard", "Priority content generation"]}
+          ctaButton={<CopyPromptButton className="w-full justify-center" />}
+        />
+
+        <LazyFaqSection faqs={[
+          { q: "Do I need a Twitch affiliate or partner account?", a: "No. Lazy Stream works with any Twitch account. You need a free Twitch developer account to get API credentials." },
+          { q: "How long does transcription take?", a: "Twitch VODs typically become available within a few minutes of the stream ending. Transcription and content generation usually completes within 15 to 30 minutes." },
+          { q: "What if I stream for 8 hours?", a: "Lazy Stream processes the full VOD but focuses the recap and SEO article on the most engaged segments. Long streams produce richer content." },
+          { q: "Does it post to social media automatically?", a: "Not in the current version. Content publishes to your Lovable site. Social posting is coming in the Pro version." },
+          { q: "What games and content types does it work with?", a: "Everything. Lazy Stream works with any Twitch content — gaming, just chatting, music, creative. The AI adapts the recap style to the content type." },
+          { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
+        ]} />
+
+        {/* Bottom CTA */}
+        <section className="max-w-3xl mx-auto px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">
+              Your streams deserve an audience beyond Twitch.
+            </h2>
+            <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">
+              Every stream you do is an SEO opportunity, a blog post, and a highlights reel sitting unwritten. Lazy Stream writes them for you.
+            </p>
+            <CopyPromptButton />
+          </motion.div>
+        </section>
+      </main>
     </div>
   );
 };
