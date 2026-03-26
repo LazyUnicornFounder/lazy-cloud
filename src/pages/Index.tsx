@@ -407,35 +407,6 @@ const Index = () => {
       </motion.div>
       </header>
 
-      {/* Lazy Shop Banner */}
-      <section className="relative z-10 px-6 py-10" style={{ backgroundColor: "#111110" }}>
-        <Link to="/lazy-shop" className="block max-w-3xl mx-auto group">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-between gap-4 border px-6 py-5 transition-all duration-300 group-hover:brightness-[1.15]"
-            style={{ borderColor: "rgba(200,169,97,0.2)", backgroundColor: "rgba(200,169,97,0.03)" }}
-          >
-            <div className="flex items-center gap-4">
-              <span className="text-[10px] tracking-[0.15em] uppercase font-extrabold px-2 py-0.5" style={{ fontFamily: "'Playfair Display', serif", backgroundColor: "#c8a961", color: "#0a0a08" }}>New</span>
-              <div>
-                <p className="text-sm font-bold" style={{ fontFamily: "'Playfair Display', serif", color: "#f0ead6" }}>
-                  <span style={{ fontFamily: "'Dancing Script', cursive", marginRight: 6 }}>Lazy</span>Shop
-                </p>
-                <p className="text-xs mt-0.5" style={{ color: "#f0ead6", opacity: 0.4 }}>
-                  Lovable builds it. Shopify runs it. Lazy Unicorn automates it.
-                </p>
-              </div>
-            </div>
-            <span className="text-[10px] tracking-[0.15em] uppercase font-semibold whitespace-nowrap" style={{ fontFamily: "'Playfair Display', serif", color: "#c8a961", opacity: 0.7 }}>
-              Learn more →
-            </span>
-          </motion.div>
-        </Link>
-      </section>
-
       {/* Three Steps */}
       <section className="relative z-10 py-24 px-6" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-3xl mx-auto text-center">
