@@ -2498,7 +2498,7 @@ function getPostTags(post: BlogPost): string[] {
 }
 
 const BlogSection = () => {
-  const { posts: dbPosts } = useDbBlogPosts();
+  const { posts: dbPosts, loading: dbLoading } = useDbBlogPosts();
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
   // Merge: DB posts (newest first), then static posts
