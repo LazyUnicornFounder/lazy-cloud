@@ -265,6 +265,10 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <span>Unicorn</span>
           </a>
           <div className="flex items-center gap-5">
+            <a href="/lazy-launch" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors flex items-center gap-1.5">
+              Lazy Launch
+              <span className="text-[8px] tracking-[0.1em] uppercase bg-[#c8a961]/15 text-[#c8a961] px-1.5 py-0.5 rounded font-bold">Free</span>
+            </a>
             <a href="/how-it-works" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
               How It Works
             </a>
