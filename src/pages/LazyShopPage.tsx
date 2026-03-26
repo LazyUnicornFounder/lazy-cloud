@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback, useState } from "react";
-import { motion } from "framer-motion";
-import { Copy, Check, Search, FileText, DollarSign, Megaphone, TrendingUp, BookOpen, Package, Download, ShoppingCart, RefreshCw, Truck, BarChart3, Zap } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Copy, Check, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
@@ -8,24 +9,15 @@ import { useTrackEvent } from "@/hooks/useTrackEvent";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import LazyFaqSection from "@/components/LazyFaqSection";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+const PLACEHOLDER_PROMPT = `You are building Lazy Shop — an autonomous dropshipping engine for Lovable. This prompt sets up the full system.`;
 
-function CopyPromptButton({
-  className = "",
-  onCopy,
-  promptText,
-  variant = "primary",
-}: {
-  className?: string;
-  onCopy: () => void;
-  promptText: string;
-  variant?: "primary" | "ghost";
-}) {
+const cream = "#f0ead6";
+const gold = "#c8a961";
+const bgDark = "#0a0a08";
+const bgAlt = "#111110";
+
+function CopyPromptButton({ className = "", onCopy, promptText }: { className?: string; onCopy: () => void; promptText: string }) {
   const [copied, setCopied] = useState(false);
-
   const handleCopy = useCallback(async () => {
     await navigator.clipboard.writeText(promptText);
     setCopied(true);
@@ -34,82 +26,125 @@ function CopyPromptButton({
     setTimeout(() => setCopied(false), 2500);
   }, [onCopy, promptText]);
 
-  const base =
-    variant === "primary"
-      ? "bg-primary text-primary-foreground"
-      : "border border-border text-foreground hover:bg-muted";
-
   return (
     <button
       onClick={handleCopy}
-      className={`inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity ${base} ${className}`}
+      className={`inline-flex items-center gap-2 text-sm tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity active:scale-[0.97] ${className}`}
+      style={{ fontFamily: "'Playfair Display', serif", backgroundColor: cream, color: bgDark, borderRadius: 0 }}
     >
-      {copied ? (
-        <><Check size={16} /> Copied to clipboard ✓</>
-      ) : (
-        <><Copy size={16} /> Copy the Lovable Prompt</>
-      )}
+      {copied ? <><Check size={16} /> Copied ✓</> : <><Copy size={16} /> Copy the Prompt</>}
     </button>
   );
 }
 
-const PLACEHOLDER_PROMPT = `You are building Lazy Shop — an autonomous dropshipping engine for Lovable. This prompt sets up the full system.`;
+/* ── SVG Icons ── */
+const ShopIcon = () => (
+  <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke={cream} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M35 45 L40 25 L80 25 L85 45" />
+    <rect x="35" y="45" width="50" height="50" rx="3" />
+    <path d="M50 70 L50 95" />
+    <path d="M70 70 L70 95" />
+    <rect x="50" y="70" width="20" height="25" rx="1" />
+    <path d="M42 45 Q47 35 52 45" />
+    <path d="M52 45 Q57 35 62 45" />
+    <path d="M62 45 Q67 35 72 45" />
+    <path d="M72 45 Q77 35 82 45" />
+  </svg>
+);
+
+const LovableIcon = () => (
+  <svg width="80" height="80" viewBox="0 0 120 120" fill="none" stroke={cream} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="30" y="30" width="60" height="60" rx="8" />
+    <path d="M50 55 Q50 45 60 45 Q70 45 70 55 Q70 65 60 75 Q50 65 50 55Z" />
+  </svg>
+);
+
+const ShopifyIcon = () => (
+  <svg width="80" height="80" viewBox="0 0 120 120" fill="none" stroke={cream} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M70 25 L75 30 L85 28 L75 95 L55 100 L40 30 L55 27 Q58 25 62 28 Q66 30 70 25Z" />
+    <path d="M58 45 L63 42 L68 50 L72 48" />
+    <line x1="70" y1="30" x2="65" y2="95" strokeDasharray="3 3" opacity="0.3" />
+  </svg>
+);
+
+const UnicornIcon = () => (
+  <svg width="80" height="80" viewBox="0 0 120 120" fill="none" stroke={cream} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="60" cy="60" r="28" />
+    <path d="M60 32 L60 18" />
+    <path d="M55 20 L60 12 L65 20" />
+    <path d="M45 50 Q50 42 55 50" />
+    <circle cx="48" cy="55" r="2" fill={cream} stroke="none" />
+    <circle cx="72" cy="55" r="2" fill={cream} stroke="none" />
+    <path d="M55 68 Q60 74 65 68" />
+    <path d="M88 60 Q95 55 92 48" strokeDasharray="2 2" />
+  </svg>
+);
+
+const rotatingWords = [
+  { word: "products", emoji: "📦" },
+  { word: "listings", emoji: "✍️" },
+  { word: "pricing", emoji: "💰" },
+  { word: "fulfilment", emoji: "🚚" },
+  { word: "SEO", emoji: "🔍" },
+  { word: "conversions", emoji: "📈" },
+];
+
+function RotatingWord() {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => setIndex((p) => (p + 1) % rotatingWords.length), 2000);
+    return () => clearInterval(interval);
+  }, []);
+  const current = rotatingWords[index];
+  return (
+    <span className="inline-flex relative overflow-clip" style={{ width: "10ch", height: "1.2em", verticalAlign: "text-bottom" }}>
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={current.word}
+          initial={{ y: 16, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -16, opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute inset-0 flex items-center justify-center gap-1 whitespace-nowrap"
+          style={{ color: gold }}
+        >
+          {current.word} {current.emoji}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
+
+const threeActors = [
+  { Icon: LovableIcon, label: "Lovable", role: "Builds your store", desc: "Creates the storefront, product pages, and entire frontend from a single prompt.", bg: bgDark },
+  { Icon: ShopifyIcon, label: "Shopify", role: "Runs your store", desc: "Handles checkout, payments, inventory tracking, and order management.", bg: bgAlt },
+  { Icon: UnicornIcon, label: "Lazy Unicorn", role: "Automates your store", desc: "Finds products, writes listings, sets prices, and optimises conversions — forever.", bg: bgDark },
+];
 
 const steps = [
-  "Copy the setup prompt from this page.",
-  "Paste it into your existing Lovable project chat.",
-  "Connect your Shopify store and choose a supplier.",
-  "Your shop goes live and starts selling autonomously.",
+  { step: "1", title: "Copy the prompt", desc: "One click copies everything. The prompt contains the full engine." },
+  { step: "2", title: "Paste into Lovable", desc: "Open your project, paste the prompt. Lovable installs the engine automatically." },
+  { step: "3", title: "Connect Shopify", desc: "Link your Shopify store and pick a supplier. Five questions, then you're done." },
+  { step: "4", title: "It runs itself", desc: "Products found, listed, priced, promoted, and optimised — on autopilot." },
 ];
 
 const features = [
-  { icon: Search, title: "Product Discovery", desc: "Finds trending products from supplier catalogues daily and adds them to your Shopify store automatically." },
-  { icon: FileText, title: "Listing Writer", desc: "Writes SEO-optimised product titles, descriptions, and pages for every new product in your brand voice." },
-  { icon: DollarSign, title: "Pricing Engine", desc: "Monitors competitor prices and adjusts yours automatically to stay competitive and profitable." },
-  { icon: Truck, title: "Order Routing", desc: "Routes orders to your supplier for fulfilment automatically — you never touch inventory." },
-  { icon: Megaphone, title: "Promotion Engine", desc: "Identifies slow-moving products and creates discount offers and homepage banners automatically." },
-  { icon: TrendingUp, title: "Conversion Optimiser", desc: "Monitors which product pages convert, rewrites underperforming ones, and improves the store week over week." },
+  { title: "Product Discovery", desc: "Finds trending products from supplier catalogues daily." },
+  { title: "AI Listing Writer", desc: "SEO-optimised titles, descriptions, and pages — in your brand voice." },
+  { title: "Dynamic Pricing", desc: "Monitors competitors and adjusts prices automatically." },
+  { title: "Order Routing", desc: "Routes orders to suppliers for fulfilment. You never touch inventory." },
+  { title: "Promotion Engine", desc: "Creates discounts and banners for slow-moving products." },
+  { title: "Conversion Optimiser", desc: "Rewrites underperforming pages weekly. The store gets better without you." },
 ];
 
 const loopSteps = [
   "Lovable builds the storefront",
-  "Shopify handles checkout & payments",
+  "Shopify handles checkout",
   "Supplier ships the product",
-  "Lazy Unicorn optimises everything",
-  "Better listings, better prices",
+  "Lazy Unicorn optimises",
+  "Better listings & prices",
   "More sales, repeat",
 ];
-
-function SelfImprovingLoop() {
-  return (
-    <div className="relative w-full max-w-lg mx-auto aspect-square flex items-center justify-center">
-      {loopSteps.map((step, i) => {
-        const angle = (i / loopSteps.length) * 360 - 90;
-        const rad = (angle * Math.PI) / 180;
-        const r = 42;
-        const x = 50 + r * Math.cos(rad);
-        const y = 50 + r * Math.sin(rad);
-        return (
-          <motion.div
-            key={step}
-            initial={{ opacity: 0, scale: 0.7 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.12 }}
-            className="absolute w-28 text-center"
-            style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%,-50%)" }}
-          >
-            <span className="inline-flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground font-display text-xs font-bold mb-1">
-              {i + 1}
-            </span>
-            <p className="font-body text-xs text-foreground/80 leading-tight">{step}</p>
-          </motion.div>
-        );
-      })}
-      <RefreshCw size={32} className="text-primary/40 animate-spin" style={{ animationDuration: "12s" }} />
-    </div>
-  );
-}
 
 const faqs = [
   { q: "Do I need products to start?", a: "No. The product discovery engine finds trending products from your supplier's catalogue automatically." },
@@ -117,52 +152,19 @@ const faqs = [
   { q: "Do I need a Shopify account?", a: "Yes. Shopify handles checkout, payments, and order management. Lazy Shop handles everything else." },
   { q: "Does it handle fulfilment?", a: "Orders are routed to your supplier automatically. They ship directly to your customer." },
   { q: "Will the listings sound generic?", a: "You set the brand voice, niche, and tone in setup. Every listing is written in your brand voice." },
-  { q: "How does it improve over time?", a: "The conversion optimiser detects underperforming pages weekly and rewrites them automatically. Pricing adjusts to market changes daily." },
-  { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project." },
-];
-
-const threeActors = [
-  {
-    icon: Zap,
-    label: "Lovable",
-    role: "Builds your store",
-    desc: "Lovable creates the storefront, product pages, and entire frontend from a single prompt.",
-    color: "text-primary",
-  },
-  {
-    icon: ShoppingCart,
-    label: "Shopify",
-    role: "Runs your store",
-    desc: "Shopify handles checkout, payments, inventory tracking, and order management.",
-    color: "text-primary",
-  },
-  {
-    icon: RefreshCw,
-    label: "Lazy Unicorn",
-    role: "Automates your store",
-    desc: "Lazy Unicorn finds the products, writes the listings, sets the prices, and optimises conversions — forever.",
-    color: "text-primary",
-  },
+  { q: "How does it improve over time?", a: "The conversion optimiser detects underperforming pages weekly and rewrites them automatically." },
 ];
 
 const LazyShopPage = () => {
   const trackEvent = useTrackEvent();
-  const howItWorksRef = useRef<HTMLElement>(null);
+  const howRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    trackEvent("lazy_shop_page_view");
-  }, [trackEvent]);
-
-  const handlePromptCopy = useCallback(() => {
-    trackEvent("lazy_shop_prompt_copy");
-  }, [trackEvent]);
-
-  const scrollToHow = () => {
-    howItWorksRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  useEffect(() => { trackEvent("lazy_shop_page_view"); }, [trackEvent]);
+  const handleCopy = useCallback(() => { trackEvent("lazy_shop_prompt_copy"); }, [trackEvent]);
+  const scrollToHow = () => howRef.current?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen text-foreground relative" style={{ backgroundColor: bgDark }}>
       <SEO
         title="Lazy Shop — Autonomous Dropshipping Engine for Lovable"
         description="Lovable builds your store. Shopify runs your store. Lazy Unicorn automates your store. One prompt installs a fully autonomous dropshipping business."
@@ -170,217 +172,267 @@ const LazyShopPage = () => {
       />
       <Navbar />
 
-      <main className="relative z-10 pb-32">
-        {/* ── Hero ── */}
-        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
-          <div className="max-w-4xl mx-auto">
-            <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
-              <div className="flex items-center gap-3 mb-6">
-                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>
-                  Introducing
-                </p>
-                <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">
-                  BETA
-                </span>
-              </div>
-              <div className="flex items-center gap-4 flex-wrap mb-2">
-                <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-                  Lazy Shop
-                </h1>
-                <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30 border border-border px-3 py-1">
-                  Powered by Shopify
-                </span>
-              </div>
+      {/* ── Hero ── */}
+      <header className="relative z-10" style={{ backgroundColor: bgDark }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="min-h-screen flex flex-col items-center justify-center gap-6 px-6 pt-32 pb-16 text-center"
+        >
+          {/* Rotating sub-headline */}
+          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.9rem, 2.8vw, 2.2rem)", color: cream, opacity: 0.7 }} className="mb-2 whitespace-nowrap">
+            Automate your <RotatingWord /> on autopilot🤖
+          </p>
 
-              {/* Three-part headline */}
-              <div className="mt-8 space-y-1">
-                <p className="font-display text-lg md:text-2xl font-bold tracking-tight text-foreground/90">
-                  Lovable builds your store.
-                </p>
-                <p className="font-display text-lg md:text-2xl font-bold tracking-tight text-foreground/60">
-                  Shopify runs your store.
-                </p>
-                <p className="font-display text-lg md:text-2xl font-bold tracking-tight" style={{ color: "#c8a961" }}>
-                  Lazy Unicorn automates your store.
-                </p>
-              </div>
-
-              <p className="mt-6 font-body text-base md:text-lg text-foreground/45 max-w-xl leading-relaxed">
-                One prompt installs a fully autonomous dropshipping business into your Lovable project. Product sourcing, listing creation, pricing, fulfilment routing, and conversion optimisation — all on autopilot.
-              </p>
-              <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
-                <CopyPromptButton onCopy={handlePromptCopy} promptText={PLACEHOLDER_PROMPT} />
-                <button
-                  onClick={scrollToHow}
-                  className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
-                >
-                  See How It Works
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ── Three Actors ── */}
-        <section className="max-w-4xl mx-auto px-6 py-24">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-12">
-            Three tools. One autonomous business.
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {threeActors.map((actor, i) => (
-              <motion.div
-                key={actor.label}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.1 }}
-                className="border border-border bg-card p-8 text-center"
-              >
-                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <actor.icon size={22} className={actor.color} />
-                </div>
-                <h3 className="font-display text-base font-bold text-foreground mb-1">{actor.label}</h3>
-                <p className="font-body text-sm font-semibold text-foreground/70 mb-3">{actor.role}</p>
-                <p className="font-body text-xs text-muted-foreground leading-relaxed">{actor.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── How It Works ── */}
-        <section ref={howItWorksRef} className="max-w-4xl mx-auto px-6 mb-24">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-10">
-            One prompt. Then your shop runs itself.
-          </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.08 }}
-                className="border border-border bg-card p-5 text-center"
-              >
-                <span className="inline-flex items-center justify-center w-9 h-9 bg-primary text-primary-foreground font-display text-sm font-bold mb-3">
-                  {i + 1}
-                </span>
-                <p className="font-body text-sm text-foreground/80 leading-relaxed">{step}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── What It Does ── */}
-        <section className="max-w-4xl mx-auto px-6 mb-24">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-10">
-            Everything a dropshipping business needs — automated.
-          </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {features.map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.06 }}
-                className="border border-border bg-card p-6"
-              >
-                <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
-                  <item.icon size={18} className="text-primary" />
-                </div>
-                <h3 className="font-display text-sm font-bold text-foreground mb-1">{item.title}</h3>
-                <p className="font-body text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Self-Improving Loop ── */}
-        <section className="max-w-3xl mx-auto px-6 mb-24">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-10">
-            The shop that gets better every week without you.
-          </motion.h2>
-          <SelfImprovingLoop />
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="font-body text-sm text-muted-foreground text-center max-w-xl mx-auto mt-8 leading-relaxed"
-          >
-            Most stores plateau. Lazy Shop compounds. Every week it knows more about what converts in your niche and applies that knowledge to everything it publishes next.
-          </motion.p>
-        </section>
-
-        {/* ── The Stack ── */}
-        <section className="max-w-4xl mx-auto px-6 mb-24">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-10">
-            Your full dropshipping stack.
-          </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[
-              { icon: Package, title: "Supplier Sourcing", desc: "Connect CJ Dropshipping, Printful, Spocket, or any supplier with an API. Products sync automatically." },
-              { icon: BarChart3, title: "Analytics & Insights", desc: "See which products sell, which listings convert, and where traffic comes from — all in your admin dashboard." },
-              { icon: BookOpen, title: "SEO Content Engine", desc: "Publishes buying guides and product comparisons targeting the keywords shoppers search before buying." },
-            ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.08 }}
-                className="border border-border bg-card p-6 text-center"
-              >
-                <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                  <item.icon size={18} className="text-primary" />
-                </div>
-                <h3 className="font-display text-sm font-bold text-foreground mb-1">{item.title}</h3>
-                <p className="font-body text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── PRICING ── */}
-        <LazyPricingSection
-          lazyFeatures={[
-            "Lazy Shop setup prompt",
-            "Self-hosted in your Lovable project",
-            "Product discovery & AI listings",
-            "Automated order routing",
-          ]}
-          proFeatures={[
-            "Hosted version",
-            "Multi-store management",
-            "Advanced conversion analytics",
-            "Automatic inventory sync",
-          ]}
-          ctaButton={<CopyPromptButton onCopy={handlePromptCopy} promptText={PLACEHOLDER_PROMPT} className="w-full justify-center" />}
-        />
-
-        <LazyFaqSection faqs={faqs} />
-
-        {/* ── Bottom CTA ── */}
-        <section className="max-w-3xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">
-              The autonomous dropshipping business.
-            </h2>
-            <p className="font-body text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed mb-8">
-              Lovable builds it. Shopify runs it. Lazy Unicorn automates it. One prompt installs everything into your existing Lovable project.
+          {/* Main title */}
+          <ShopIcon />
+          <div className="text-center">
+            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(2rem, 5vw, 3.5rem)", color: cream, lineHeight: 1.1 }}>
+              Lazy
             </p>
-            <CopyPromptButton onCopy={handlePromptCopy} promptText={PLACEHOLDER_PROMPT} />
-            <p className="font-body text-xs text-muted-foreground mt-4 max-w-md mx-auto">
-              Paste it into your Lovable project chat, connect Shopify, pick a supplier, and your shop starts selling today.
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(3rem, 7vw, 5rem)", color: cream, lineHeight: 1.1 }}>
+              Shop
+            </p>
+          </div>
+
+          {/* Three-line statement */}
+          <div className="space-y-1 mt-4">
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1rem, 2.2vw, 1.6rem)", color: cream, opacity: 0.9 }}>
+              Lovable builds your store.
+            </p>
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1rem, 2.2vw, 1.6rem)", color: cream, opacity: 0.55 }}>
+              Shopify runs your store.
+            </p>
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1rem, 2.2vw, 1.6rem)", color: gold }}>
+              Lazy Unicorn automates your store.
+            </p>
+          </div>
+
+          <p className="tracking-[0.2em] uppercase mt-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.7rem, 1.2vw, 0.9rem)", color: cream, opacity: 0.25 }}>
+            One prompt, everything runs itself.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
+            <CopyPromptButton onCopy={handleCopy} promptText={PLACEHOLDER_PROMPT} />
+            <button
+              onClick={scrollToHow}
+              className="text-sm tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity border"
+              style={{ fontFamily: "'Playfair Display', serif", color: cream, opacity: 0.4, borderColor: "rgba(240,234,214,0.12)", borderRadius: 0 }}
+            >
+              See How It Works
+            </button>
+          </div>
+
+          {/* Integration pills */}
+          <div className="mt-8">
+            <p className="text-[10px] tracking-[0.2em] uppercase font-semibold mb-4" style={{ color: cream, opacity: 0.25 }}>
+              Powered by
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["Shopify", "Stripe", "CJ Dropshipping", "Printful", "Spocket"].map((name, i) => (
+                <motion.span
+                  key={name}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 + i * 0.08, duration: 0.4 }}
+                  className="inline-block text-[10px] tracking-[0.1em] uppercase font-medium px-3 py-1.5 border"
+                  style={{ color: cream, opacity: 0.4, borderColor: "rgba(240,234,214,0.12)" }}
+                >
+                  {name}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+
+          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: cream, opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "2rem" }}>
+            Made for Lovable
+          </p>
+        </motion.div>
+      </header>
+
+      {/* ── Three Actors — checkerboard tiles ── */}
+      <section className="relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {threeActors.map((actor, i) => (
+            <motion.div
+              key={actor.label}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="aspect-square flex flex-col items-center justify-center gap-5 px-8"
+              style={{ backgroundColor: i % 2 === 0 ? bgDark : bgAlt }}
+            >
+              <actor.Icon />
+              <div className="text-center">
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.8rem", color: cream, lineHeight: 1.1 }}>
+                  {actor.label === "Lazy Unicorn" ? "Lazy" : ""}
+                </p>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.8rem", color: cream, lineHeight: 1.1 }}>
+                  {actor.label === "Lazy Unicorn" ? "Unicorn" : actor.label}
+                </p>
+              </div>
+              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: gold, opacity: 0.8 }}>
+                {actor.role}
+              </p>
+              <p className="text-center max-w-[220px]" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.75rem", color: cream, opacity: 0.35, lineHeight: 1.6 }}>
+                {actor.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── How It Works ── */}
+      <section ref={howRef} className="relative z-10 py-24 px-6" style={{ backgroundColor: bgDark }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: cream, fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-4">
+              Copy. Paste. <span style={{ color: gold }}>Sell.</span>
+            </h2>
+            <p className="text-sm leading-relaxed max-w-xl mx-auto mb-14" style={{ color: cream, opacity: 0.4 }}>
+              Lazy Shop is a single prompt. Paste it into your Lovable project and it builds the entire dropshipping system — tables, functions, UI, and a schedule that runs without you.
             </p>
           </motion.div>
-        </section>
-      </main>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((s, i) => (
+              <motion.div
+                key={s.step}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12, duration: 0.45 }}
+                className="border p-6 text-left"
+                style={{ borderColor: "rgba(240,234,214,0.08)" }}
+              >
+                <span style={{ fontFamily: "'Playfair Display', serif", color: gold, opacity: 0.25, fontSize: "2rem" }} className="font-bold block mb-3">{s.step}</span>
+                <h3 className="text-xs tracking-[0.12em] uppercase font-bold mb-2" style={{ fontFamily: "'Playfair Display', serif", color: cream }}>{s.title}</h3>
+                <p className="text-[13px] leading-relaxed" style={{ color: cream, opacity: 0.35 }}>{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Features — checkerboard grid ── */}
+      <section className="relative z-10">
+        <div className="max-w-3xl mx-auto text-center py-16 px-6">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ fontFamily: "'Playfair Display', serif", color: cream, fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-4">
+            Everything a dropshipping business needs — <span style={{ color: gold }}>automated.</span>
+          </motion.h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {features.map((f, i) => {
+            const row = Math.floor(i / 2);
+            const col = i % 2;
+            const bg = (row + col) % 2 === 0 ? bgDark : bgAlt;
+            return (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.06 }}
+                className="flex flex-col items-center justify-center gap-4 py-20 px-8 text-center"
+                style={{ backgroundColor: bg }}
+              >
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: cream, opacity: 0.5 }}>
+                  {f.title}
+                </p>
+                <p className="max-w-[280px]" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: cream, opacity: 0.4, lineHeight: 1.6 }}>
+                  {f.desc}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── Self-Improving Loop ── */}
+      <section className="relative z-10 py-24 px-6" style={{ backgroundColor: bgDark }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ fontFamily: "'Playfair Display', serif", color: cream, fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-16">
+            The shop that gets <span style={{ color: gold }}>better every week</span> without you.
+          </motion.h2>
+          <div className="relative w-full max-w-lg mx-auto aspect-square flex items-center justify-center">
+            {loopSteps.map((step, i) => {
+              const angle = (i / loopSteps.length) * 360 - 90;
+              const rad = (angle * Math.PI) / 180;
+              const r = 42;
+              const x = 50 + r * Math.cos(rad);
+              const y = 50 + r * Math.sin(rad);
+              return (
+                <motion.div
+                  key={step}
+                  initial={{ opacity: 0, scale: 0.7 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12 }}
+                  className="absolute w-28 text-center"
+                  style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%,-50%)" }}
+                >
+                  <span
+                    className="inline-flex items-center justify-center w-8 h-8 text-xs font-bold mb-1"
+                    style={{ fontFamily: "'Playfair Display', serif", backgroundColor: cream, color: bgDark }}
+                  >
+                    {i + 1}
+                  </span>
+                  <p className="text-xs leading-tight" style={{ color: cream, opacity: 0.6 }}>{step}</p>
+                </motion.div>
+              );
+            })}
+            <RefreshCw size={32} className="animate-spin" style={{ color: gold, opacity: 0.3, animationDuration: "12s" }} />
+          </div>
+          <p className="text-sm leading-relaxed max-w-xl mx-auto mt-8" style={{ color: cream, opacity: 0.35 }}>
+            Most stores plateau. Lazy Shop compounds. Every week it knows more about what converts in your niche and applies that knowledge to everything it publishes next.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Pricing ── */}
+      <LazyPricingSection
+        lazyFeatures={[
+          "Lazy Shop setup prompt",
+          "Self-hosted in your Lovable project",
+          "Product discovery & AI listings",
+          "Automated order routing",
+        ]}
+        proFeatures={[
+          "Hosted version",
+          "Multi-store management",
+          "Advanced conversion analytics",
+          "Automatic inventory sync",
+        ]}
+        ctaButton={<CopyPromptButton onCopy={handleCopy} promptText={PLACEHOLDER_PROMPT} className="w-full justify-center" />}
+      />
+
+      <LazyFaqSection faqs={faqs} />
+
+      {/* ── Bottom CTA ── */}
+      <section className="relative z-10 py-24 px-6" style={{ backgroundColor: bgDark }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <ShopIcon />
+          <div className="mt-6">
+            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: cream, lineHeight: 1.1 }}>Lazy</p>
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", color: cream, lineHeight: 1.1 }}>Shop</p>
+          </div>
+          <p className="mt-6 max-w-lg mx-auto leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", color: cream, opacity: 0.4 }}>
+            Lovable builds it. Shopify runs it. Lazy Unicorn automates it. One prompt installs everything into your existing Lovable project.
+          </p>
+          <div className="mt-8">
+            <CopyPromptButton onCopy={handleCopy} promptText={PLACEHOLDER_PROMPT} />
+          </div>
+          <p className="mt-4" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: cream, opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+            Made for Lovable
+          </p>
+        </motion.div>
+      </section>
     </div>
   );
 };
