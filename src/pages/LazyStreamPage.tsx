@@ -261,6 +261,7 @@ function CopyPromptButton({ className = "" }: { className?: string }) {
 }
 
 const LazyStreamPage = () => {
+  const audioRef = useRef<HTMLAudioElement>(null);
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
