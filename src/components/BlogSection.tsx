@@ -2498,7 +2498,7 @@ function getPostTags(post: BlogPost): string[] {
 }
 
 const BlogSection = () => {
-  const { posts: dbPosts } = useDbBlogPosts();
+  const { posts: dbPosts, loading: dbLoading } = useDbBlogPosts();
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
   // Merge: DB posts (newest first), then static posts
@@ -2561,6 +2561,20 @@ const BlogSection = () => {
               ))}
             </div>
 
+            {dbLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div key={i} className="flex flex-col h-full rounded-3xl border border-primary/20 overflow-hidden animate-pulse">
+                    <div className="h-44 bg-muted" />
+                    <div className="px-8 py-6 space-y-3">
+                      <div className="h-3 w-24 bg-muted rounded" />
+                      <div className="h-5 w-3/4 bg-muted rounded" />
+                      <div className="h-4 w-full bg-muted rounded" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredPosts.map((post, i) => (
                 <motion.div
@@ -2612,6 +2626,7 @@ const BlogSection = () => {
                 </motion.div>
               ))}
             </div>
+            )}
 
             {filteredPosts.length === 0 && (
               <p className="font-body text-sm text-foreground/40 text-center py-12">
