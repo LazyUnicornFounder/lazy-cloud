@@ -270,8 +270,56 @@ const LazyStreamPage = () => {
       />
       <Navbar />
 
+      {/* TV Frame Section */}
+      <section className="relative px-6 md:px-12 pt-32 pb-20 md:pb-28" style={{ backgroundColor: "#111110" }}>
+        <div className="max-w-5xl mx-auto">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-10">
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }} className="font-bold tracking-tight">
+              Watch it work.
+            </h2>
+            <p className="mt-3 font-body text-sm md:text-base max-w-xl mx-auto" style={{ color: "#f0ead6", opacity: 0.4 }}>
+              From live stream to published content — no human in the loop.
+            </p>
+          </motion.div>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }} className="relative mx-auto" style={{ maxWidth: 960 }}>
+            <div className="relative rounded-lg overflow-hidden" style={{ background: "linear-gradient(145deg, #2a2a28, #1a1a18)", padding: "18px 18px 48px 18px", boxShadow: "0 30px 80px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.04)" }}>
+              <div className="flex items-center justify-between px-3 mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#c8a961", opacity: 0.6 }} />
+                  <span className="font-body text-[9px] tracking-[0.2em] uppercase" style={{ color: "#f0ead6", opacity: 0.2 }}>Lazy Stream</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-red-500/50" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/50" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500/50" />
+                </div>
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 9", backgroundColor: "#0a0a08", border: "1px solid rgba(255,255,255,0.04)" }}>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center px-6">
+                    <Tv size={48} className="mx-auto mb-4" style={{ color: "#f0ead6", opacity: 0.12 }} />
+                    <p className="font-body text-[11px] tracking-[0.15em] uppercase" style={{ color: "#f0ead6", opacity: 0.2 }}>Video coming soon</p>
+                  </div>
+                </div>
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)" }} />
+              </div>
+              <div className="flex items-center justify-center mt-0">
+                <div className="h-1 rounded-full" style={{ width: 80, backgroundColor: "rgba(240,234,214,0.06)" }} />
+              </div>
+            </div>
+            <div className="flex justify-center gap-40 -mt-1">
+              <div style={{ width: 3, height: 24, backgroundColor: "#2a2a28", borderRadius: "0 0 2px 2px" }} />
+              <div style={{ width: 3, height: 24, backgroundColor: "#2a2a28", borderRadius: "0 0 2px 2px" }} />
+            </div>
+            <div className="flex justify-center -mt-0.5">
+              <div style={{ width: 200, height: 3, backgroundColor: "#2a2a28", borderRadius: 2 }} />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Hero */}
-      <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="relative px-6 md:px-12 py-24 md:py-32" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
             <div className="flex items-center gap-3 mb-6">
@@ -297,108 +345,6 @@ const LazyStreamPage = () => {
               >
                 See How It Works
               </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* TV Frame Section */}
-      <section className="relative px-6 md:px-12 py-20 md:py-28" style={{ backgroundColor: "#111110" }}>
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-10"
-          >
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }} className="font-bold tracking-tight">
-              Watch it work.
-            </h2>
-            <p className="mt-3 font-body text-sm md:text-base max-w-xl mx-auto" style={{ color: "#f0ead6", opacity: 0.4 }}>
-              From live stream to published content — no human in the loop.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="relative mx-auto"
-            style={{ maxWidth: 960 }}
-          >
-            {/* TV outer shell */}
-            <div
-              className="relative rounded-lg overflow-hidden"
-              style={{
-                background: "linear-gradient(145deg, #2a2a28, #1a1a18)",
-                padding: "18px 18px 48px 18px",
-                boxShadow: "0 30px 80px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.04)",
-              }}
-            >
-              {/* Top bezel details */}
-              <div className="flex items-center justify-between px-3 mb-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#c8a961", opacity: 0.6 }} />
-                  <span className="font-body text-[9px] tracking-[0.2em] uppercase" style={{ color: "#f0ead6", opacity: 0.2 }}>
-                    Lazy Stream
-                  </span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-red-500/50" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/50" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-green-500/50" />
-                </div>
-              </div>
-
-              {/* Screen area — replace the placeholder with your <video> */}
-              <div
-                className="relative w-full overflow-hidden"
-                style={{
-                  aspectRatio: "16 / 9",
-                  backgroundColor: "#0a0a08",
-                  border: "1px solid rgba(255,255,255,0.04)",
-                }}
-              >
-                {/* ── Replace this placeholder with your video ── */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center px-6">
-                    <Tv size={48} className="mx-auto mb-4" style={{ color: "#f0ead6", opacity: 0.12 }} />
-                    <p className="font-body text-[11px] tracking-[0.15em] uppercase" style={{ color: "#f0ead6", opacity: 0.2 }}>
-                      Video coming soon
-                    </p>
-                  </div>
-                </div>
-                {/* ── End placeholder ── */}
-
-                {/* Scanline overlay for CRT effect */}
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)",
-                  }}
-                />
-              </div>
-
-              {/* Bottom bezel — stand hint */}
-              <div className="flex items-center justify-center mt-0">
-                <div
-                  className="h-1 rounded-full"
-                  style={{ width: 80, backgroundColor: "rgba(240,234,214,0.06)" }}
-                />
-              </div>
-            </div>
-
-            {/* TV stand legs */}
-            <div className="flex justify-center gap-40 -mt-1">
-              <div style={{ width: 3, height: 24, backgroundColor: "#2a2a28", borderRadius: "0 0 2px 2px" }} />
-              <div style={{ width: 3, height: 24, backgroundColor: "#2a2a28", borderRadius: "0 0 2px 2px" }} />
-            </div>
-            <div className="flex justify-center -mt-0.5">
-              <div style={{ width: 200, height: 3, backgroundColor: "#2a2a28", borderRadius: 2 }} />
             </div>
           </motion.div>
         </div>
