@@ -10,7 +10,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
     <>
       {children}
       {!isAdmin && <Footer />}
-      {!isAdmin && <VoiceAgentWidget />}
+      {/* <VoiceAgentWidget /> */}
     </>
   );
 }
