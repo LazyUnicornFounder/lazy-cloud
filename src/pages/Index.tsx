@@ -408,6 +408,34 @@ const Index = () => {
       </motion.div>
       </header>
 
+      {/* Manifesto */}
+      <section className="relative z-10 py-24 md:py-32 px-6" style={{ backgroundColor: "#0a0a08" }}>
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-2xl mx-auto"
+        >
+          <h2
+            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15, letterSpacing: "-0.01em" }}
+            className="mb-10"
+          >
+            Here's to the lazy ones.
+          </h2>
+          <div className="space-y-6 font-body text-sm md:text-base leading-relaxed" style={{ color: "rgba(240,234,214,0.45)" }}>
+            <p>The ones who automate. The ones who sleep while their sites publish. The ones who push one prompt and walk away. The ones who see a task and ask — <em style={{ color: "rgba(240,234,214,0.65)" }}>does this have to be me?</em></p>
+            <p>They're not actually lazy. The ones who move fast enough to make the work disappear. The ones who build systems instead of doing things twice. The ones who think the most valuable thing you can do is stop doing things manually.</p>
+            <p>You can quote them, disagree with them, try to outwork them. The only thing you can't do is ignore what they've built.</p>
+            <p style={{ color: "rgba(240,234,214,0.65)" }}>Because while you were doing it yourself, they shipped.</p>
+            <p>They turn streams into articles. Commits into changelogs. Payments into optimised revenue. Customers into conversations. Posts into podcasts. Sites into businesses.</p>
+            <p>Some see a blank text editor. The lazy ones see twenty engines that will never need one.</p>
+            <p>And the sites they run on Lovable — the ones that publish four posts before sunrise, that text customers before you've had coffee, that pentest themselves while you sleep, that get cited by ChatGPT without you asking — they change things.</p>
+            <p style={{ color: "#f0ead6", fontWeight: 600 }}>Because the people who are lazy enough to think they don't have to do everything manually, are the ones who actually do everything.</p>
+          </div>
+        </motion.div>
+      </section>
+
       {/* Product Grid */}
       <section id="engines" className="relative z-10 scroll-mt-20">
         <div className="grid grid-cols-1 md:grid-cols-2">
