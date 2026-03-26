@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
+import ProductPromoBanner from "@/components/ProductPromoBanner";
 
 const SETUP_PROMPT = `[Lazy Stream Prompt — v0.0.4 — LazyUnicorn.ai]
 
@@ -760,6 +761,13 @@ const LazyStreamPage = () => {
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══ OTHER ENGINES ═══ */}
+      <section className="py-20 px-6" style={{ backgroundColor: "#0a0a08" }}>
+        <div className="max-w-3xl mx-auto">
+          <ProductPromoBanner glass={false} />
         </div>
       </section>
 
