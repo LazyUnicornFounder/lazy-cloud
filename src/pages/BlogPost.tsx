@@ -8,9 +8,26 @@ import BlogAudioPlayer from "@/components/BlogAudioPlayer";
 
 const BlogPost = () => {
   const { slug } = useParams();
-  const { posts: dbPosts } = useDbBlogPosts();
+  const { posts: dbPosts, loading } = useDbBlogPosts();
   const allPosts = [...staticBlogPosts, ...dbPosts];
   const post = allPosts.find((p) => p.slug === slug);
+
+  if (loading && !post) {
+    return (
+      <div className="min-h-screen bg-background text-foreground">
+        <Navbar activePage="blog" />
+        <div className="pt-32 px-4 sm:px-8 md:px-12 pb-20">
+          <div className="max-w-2xl border border-border bg-card px-8 py-10 animate-pulse space-y-4">
+            <div className="h-4 w-24 bg-muted rounded" />
+            <div className="h-8 w-3/4 bg-muted rounded" />
+            <div className="h-4 w-full bg-muted rounded" />
+            <div className="h-4 w-full bg-muted rounded" />
+            <div className="h-4 w-2/3 bg-muted rounded" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!post) {
     return (
