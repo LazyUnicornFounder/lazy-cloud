@@ -275,7 +275,7 @@ const LazyStreamPage = () => {
 
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }} className="font-bold tracking-tight">
+            <h2 style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(4rem, 10vw, 8rem)", lineHeight: 1.05, background: "linear-gradient(135deg, #ff6b6b, #fdcb6e, #00cec9, #a29bfe, #fd79a8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }} className="font-bold">
               Automate your Twitch Business on Lovable
             </h2>
             <p className="mt-3 font-body text-sm md:text-base max-w-xl mx-auto" style={{ color: "#f0ead6", opacity: 0.4 }}>
@@ -283,7 +283,7 @@ const LazyStreamPage = () => {
             </p>
           </motion.div>
 
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }} className="relative mx-auto" style={{ maxWidth: 800 }}>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }} className="relative mx-auto" style={{ maxWidth: 500 }}>
             {/* Retro TV — bright colorful frame */}
             <div className="relative" style={{ borderRadius: 24, background: "linear-gradient(165deg, #ff6b6b, #e84393 30%, #6c5ce7 60%, #0984e3 100%)", padding: "6px", boxShadow: "0 40px 100px -20px rgba(0,0,0,0.5), 0 0 40px rgba(108,92,231,0.15)" }}>
               <div className="relative" style={{ borderRadius: 20, background: "linear-gradient(165deg, #fdcb6e, #e17055 40%, #d63031 100%)", padding: "28px 32px 70px 32px" }}>
