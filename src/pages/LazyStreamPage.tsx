@@ -539,44 +539,46 @@ const LazyStreamPage = () => {
       <Scanlines />
 
       {/* ═══ HERO ═══ */}
-      <section className="relative px-6 md:px-12 pt-32 pb-20 md:pb-28 overflow-hidden" style={{ background: `linear-gradient(180deg, ${C.bg} 0%, #2a0845 100%)` }}>
+      <section className="relative px-6 md:px-12 pt-32 pb-20 md:pb-28 overflow-hidden" style={{ background: `linear-gradient(180deg, #0a0a08 0%, ${C.bg} 100%)` }}>
         <FloatingEmojis />
 
         <div className="max-w-5xl mx-auto relative z-10">
+          {/* Intro label */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-3 mb-6 justify-center md:justify-start"
+          >
+            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
+            <span className="text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1" style={{ backgroundColor: C.pink, color: "#fff", fontFamily: "'Playfair Display', serif" }}>BETA</span>
+          </motion.div>
+
           {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-center font-bold mb-8"
+            className="font-bold mb-6 text-center md:text-left"
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "clamp(2.5rem, 8vw, 6rem)",
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(2.5rem, 6vw, 5rem)",
               lineHeight: 1.05,
-              background: `linear-gradient(135deg, ${C.pink}, ${C.cyan})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
+              color: "#f0ead6",
+              letterSpacing: "-0.01em",
             }}
           >
-            Every stream becomes content.
+            Launch your Autonomous<br />
+            Twitch Business on <span style={{ color: C.pink }}>Lovable</span>
           </motion.h1>
 
-          {/* TV */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <RetroTV />
-          </motion.div>
-
-          {/* Subheadline */}
+          {/* Body text directly under headline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center mt-10 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.7)" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-base md:text-lg max-w-2xl leading-relaxed mb-12 text-center md:text-left"
+            style={{ color: "#f0ead6", opacity: 0.45 }}
           >
             Lazy Stream detects when your Twitch stream ends and automatically publishes a recap article, an SEO post, and a highlights page — before you have even eaten dinner.
           </motion.p>
@@ -585,17 +587,26 @@ const LazyStreamPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex flex-col sm:flex-row items-center md:items-start gap-4 mb-16"
           >
             <CopyPromptButton />
             <button
               onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-8 py-3 text-sm font-bold tracking-wide rounded-lg transition-transform hover:scale-105"
-              style={{ border: `2px solid ${C.white}`, color: C.white, background: "transparent" }}
+              className="inline-flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold transition-colors"
+              style={{ border: "1px solid rgba(240,234,214,0.15)", color: "#f0ead6", opacity: 0.5 }}
             >
-              See how it works
+              See How It Works
             </button>
+          </motion.div>
+
+          {/* TV */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <RetroTV />
           </motion.div>
         </div>
       </section>
