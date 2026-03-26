@@ -407,56 +407,6 @@ const Index = () => {
       </motion.div>
       </header>
 
-      {/* Twitch Stream Section */}
-      <section className="relative z-10 py-24 px-6" style={{ backgroundColor: "#0a0a08" }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.2rem", color: "#f0ead6", opacity: 0.35 }} className="mb-3">
-              For Twitch streamers
-            </p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#f0ead6", fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-4">
-              Every stream becomes <span style={{ color: "#c8a961" }}>content.</span>
-            </h2>
-            <p className="text-sm leading-relaxed max-w-xl mx-auto mb-14" style={{ color: "#f0ead6", opacity: 0.4 }}>
-              Lazy Stream watches your Twitch channel. When you go offline, it automatically publishes a recap article, an SEO post, and a highlights page — before you've even eaten dinner.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
-            {[
-              { icon: "🎮", title: "You go live", desc: "Stream whatever you stream. Lazy Stream monitors your Twitch status silently in the background." },
-              { icon: "📡", title: "Stream ends. Engines fire.", desc: "The moment you go offline, Lazy Stream fetches clips, generates a transcript summary, and starts writing." },
-              { icon: "📰", title: "Content goes live", desc: "A stream recap, an SEO article, and a highlights page publish to your site automatically." },
-            ].map((s, i) => (
-              <motion.div
-                key={s.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12, duration: 0.45 }}
-                className="p-8 text-left"
-                style={{ backgroundColor: "#111110" }}
-              >
-                <span className="text-2xl block mb-4">{s.icon}</span>
-                <h3 className="text-xs tracking-[0.12em] uppercase font-bold mb-2" style={{ fontFamily: "'Playfair Display', serif", color: "#f0ead6" }}>{s.title}</h3>
-                <p className="text-[13px] leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>{s.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-          <Link
-            to="/lazy-stream"
-            className="mt-8 inline-block text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border transition-colors duration-200 hover:opacity-80"
-            style={{ fontFamily: "'Playfair Display', serif", color: "#f0ead6", borderColor: "rgba(240,234,214,0.15)" }}
-          >
-            Learn more →
-          </Link>
-        </div>
-      </section>
-
       {/* Product Grid */}
       <section id="engines" className="relative z-10 scroll-mt-20">
         <div className="grid grid-cols-1 md:grid-cols-2">
