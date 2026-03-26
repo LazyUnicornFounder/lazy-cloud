@@ -180,31 +180,17 @@ const LazyShopPage = () => {
           transition={{ duration: 0.8 }}
           className="min-h-screen flex flex-col items-center justify-center gap-6 px-6 pt-32 pb-16 text-center"
         >
-          {/* Rotating sub-headline */}
-          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.9rem, 2.8vw, 2.2rem)", color: cream, opacity: 0.7 }} className="mb-2 whitespace-nowrap">
-            Automate your <RotatingWord /> on autopilot🤖
-          </p>
-
-          {/* Main title */}
           <ShopIcon />
-          <div className="text-center">
-            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(2rem, 5vw, 3.5rem)", color: cream, lineHeight: 1.1 }}>
-              Lazy
-            </p>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(3rem, 7vw, 5rem)", color: cream, lineHeight: 1.1 }}>
-              Shop
-            </p>
-          </div>
 
-          {/* Three-line statement */}
-          <div className="space-y-1 mt-4">
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1rem, 2.2vw, 1.6rem)", color: cream, opacity: 0.9 }}>
+          {/* Main headline */}
+          <div className="space-y-2 mt-4">
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: cream, lineHeight: 1.15 }}>
               Lovable builds your store.
             </p>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1rem, 2.2vw, 1.6rem)", color: cream, opacity: 0.55 }}>
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: cream, opacity: 0.55, lineHeight: 1.15 }}>
               Shopify runs your store.
             </p>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1rem, 2.2vw, 1.6rem)", color: gold }}>
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: gold, lineHeight: 1.15 }}>
               Lazy Unicorn automates your store.
             </p>
           </div>
