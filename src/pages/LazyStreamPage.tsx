@@ -413,17 +413,15 @@ function ChannelCard({ channel, emoji, title, body, color, rotation }: { channel
       viewport={{ once: true }}
       className="p-6 md:p-8 relative"
       style={{
-        border: `2px solid ${color}`,
-        borderRadius: 12,
-        backgroundColor: "rgba(26,5,51,0.8)",
+        border: `1px solid rgba(240,234,214,0.08)`,
+        backgroundColor: "#111110",
         transform: `rotate(${rotation}deg)`,
-        boxShadow: `0 0 20px ${color}22`,
       }}
     >
-      <span className="absolute top-3 right-4 font-bold text-xs tracking-wider" style={{ color, fontFamily: "'Bebas Neue', sans-serif", fontSize: 18 }}>CH {channel}</span>
+      <span className="absolute top-3 right-4 font-bold tracking-[0.15em]" style={{ color, fontFamily: "'Playfair Display', serif", fontSize: 14, opacity: 0.6 }}>CH {channel}</span>
       <p className="text-2xl mb-2">{emoji}</p>
-      <h3 className="text-lg font-bold mb-2" style={{ color: C.white, fontFamily: "'Bebas Neue', sans-serif", fontSize: 22, letterSpacing: "0.05em" }}>{title}</h3>
-      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "'Inter', sans-serif" }}>{body}</p>
+      <h3 className="font-bold mb-2" style={{ color: "#f0ead6", fontFamily: "'Playfair Display', serif", fontSize: 20 }}>{title}</h3>
+      <p className="text-sm leading-relaxed" style={{ color: "#f0ead6", opacity: 0.4 }}>{body}</p>
     </motion.div>
   );
 }
@@ -436,18 +434,17 @@ function OutputCard({ title, preview, badge, color, badgeIcon }: { title: string
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="flex-1 min-w-[260px] rounded-xl overflow-hidden"
-      style={{ border: `2px solid ${color}`, backgroundColor: "rgba(0,0,0,0.6)" }}
+      className="flex-1 min-w-[260px] overflow-hidden"
+      style={{ border: "1px solid rgba(240,234,214,0.08)", backgroundColor: "#111110" }}
     >
-      {/* Phone-like header */}
-      <div className="px-4 py-2 flex items-center justify-between" style={{ backgroundColor: "rgba(255,255,255,0.05)" }}>
-        <span className="text-[10px] font-bold tracking-wider uppercase" style={{ color }}>{badge}</span>
+      <div className="px-4 py-2 flex items-center justify-between" style={{ borderBottom: "1px solid rgba(240,234,214,0.06)" }}>
+        <span className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color, fontFamily: "'Playfair Display', serif" }}>{badge}</span>
         <span>{badgeIcon}</span>
       </div>
       <div className="p-5">
-        <h4 className="font-bold text-sm mb-2" style={{ color: C.white, fontFamily: "'Inter', sans-serif" }}>{title}</h4>
-        <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{preview}</p>
-        <p className="text-[10px] mt-3" style={{ color: "rgba(255,255,255,0.25)" }}>Published 12 min ago</p>
+        <h4 className="font-bold text-sm mb-2" style={{ color: "#f0ead6", fontFamily: "'Playfair Display', serif" }}>{title}</h4>
+        <p className="text-xs leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>{preview}</p>
+        <p className="text-[10px] mt-3" style={{ color: "#f0ead6", opacity: 0.2 }}>Published 12 min ago</p>
       </div>
     </motion.div>
   );
@@ -456,22 +453,22 @@ function OutputCard({ title, preview, badge, color, badgeIcon }: { title: string
 /* ── Neon border cycling card ── */
 function TwitchConnectionCard() {
   return (
-    <div className="max-w-md mx-auto mt-10 p-5 rounded-xl" style={{ backgroundColor: "rgba(0,0,0,0.4)", border: "2px solid", borderImage: "linear-gradient(var(--border-angle), #ff2d9b, #00f5ff, #39ff14, #ff2d9b) 1", animation: "border-rotate 4s linear infinite" }}>
+    <div className="max-w-md mx-auto mt-10 p-5" style={{ backgroundColor: "#111110", border: "1px solid rgba(240,234,214,0.08)" }}>
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded flex items-center justify-center" style={{ backgroundColor: "#9146ff" }}>
+        <div className="w-10 h-10 flex items-center justify-center" style={{ backgroundColor: "#9146ff" }}>
           <span className="text-white font-bold text-xs font-mono">Twitch</span>
         </div>
-        <div>
+        <div className="text-left">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-bold" style={{ color: C.white }}>Connected</span>
+            <span className="text-sm font-bold" style={{ color: "#f0ead6", fontFamily: "'Playfair Display', serif" }}>Connected</span>
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: C.lime, boxShadow: `0 0 6px ${C.lime}`, animation: "pulse-dot 2s ease-in-out infinite" }} />
           </div>
-          <p className="text-[11px]" style={{ color: "rgba(255,255,255,0.4)" }}>Last checked: 2 minutes ago</p>
+          <p className="text-[11px]" style={{ color: "#f0ead6", opacity: 0.3 }}>Last checked: 2 minutes ago</p>
         </div>
       </div>
-      <div className="space-y-2 text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+      <div className="space-y-2 text-xs" style={{ color: "#f0ead6", opacity: 0.4 }}>
         <div className="flex justify-between"><span>Next check</span><span style={{ color: C.cyan }}>3 minutes</span></div>
-        <div className="flex justify-between"><span>Stream status</span><span style={{ color: "rgba(255,255,255,0.3)" }}>Offline — last stream 4h ago</span></div>
+        <div className="flex justify-between"><span>Stream status</span><span style={{ opacity: 0.5 }}>Offline — last stream 4h ago</span></div>
       </div>
     </div>
   );
@@ -487,8 +484,8 @@ function BigNumber({ value, label, delay }: { value: string; label: string; dela
       transition={{ duration: 0.5, delay }}
       className="text-center p-6"
     >
-      <p className="font-bold" style={{ fontSize: "clamp(60px, 12vw, 120px)", color: "#1a0533", fontFamily: "'Bebas Neue', sans-serif", lineHeight: 1 }}>{value}</p>
-      <p className="text-sm font-bold mt-2 uppercase tracking-wider" style={{ color: "rgba(26,5,51,0.7)", fontFamily: "'Inter', sans-serif" }}>{label}</p>
+      <p className="font-bold" style={{ fontSize: "clamp(60px, 12vw, 120px)", color: "#f0ead6", fontFamily: "'Playfair Display', serif", lineHeight: 1 }}>{value}</p>
+      <p className="text-sm font-bold mt-2 uppercase tracking-[0.12em]" style={{ color: "#f0ead6", opacity: 0.4 }}>{label}</p>
     </motion.div>
   );
 }
