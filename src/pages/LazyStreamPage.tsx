@@ -282,7 +282,7 @@ const LazyStreamPage = () => {
                 <line x1="58" y1="40" x2="80" y2="40" stroke="#3a2a1a" strokeWidth="1" />
                 <line x1="40" y1="0" x2="40" y2="22" stroke="#3a2a1a" strokeWidth="1" />
                 <line x1="40" y1="58" x2="40" y2="80" stroke="#3a2a1a" strokeWidth="1" />
-                <diamond />
+                
                 <rect x="36" y="36" width="8" height="8" rx="1" fill="#3a2a1a" opacity="0.5" />
               </pattern>
             </defs>
