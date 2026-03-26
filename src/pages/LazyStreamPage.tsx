@@ -287,17 +287,17 @@ const LazyStreamPage = () => {
 
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }} className="relative mx-auto" style={{ maxWidth: 500 }}>
             {/* Retro TV — bright colorful frame */}
-            <div className="relative" style={{ borderRadius: 24, background: "linear-gradient(165deg, #ff6b6b, #e84393 30%, #6c5ce7 60%, #0984e3 100%)", padding: "6px", boxShadow: "0 40px 100px -20px rgba(0,0,0,0.5), 0 0 40px rgba(108,92,231,0.15)" }}>
-              <div className="relative" style={{ borderRadius: 20, background: "linear-gradient(165deg, #fdcb6e, #e17055 40%, #d63031 100%)", padding: "28px 32px 70px 32px" }}>
+            <div className="relative" style={{ borderRadius: 24, background: "linear-gradient(165deg, #ffe066, #ffcc00 30%, #ff9f43 60%, #fdcb6e 100%)", padding: "6px", boxShadow: "0 40px 100px -20px rgba(0,0,0,0.3), 0 0 50px rgba(255,204,0,0.2)" }}>
+              <div className="relative" style={{ borderRadius: 20, background: "linear-gradient(165deg, #ffeaa7, #fdcb6e 40%, #f9ca24 100%)", padding: "28px 32px 70px 32px" }}>
 
                 {/* Brand badge on top of TV */}
                 <div className="flex items-center justify-center gap-3 mb-5">
-                  <div className="h-px flex-1" style={{ backgroundColor: "rgba(255,255,255,0.25)" }} />
+                  <div className="h-px flex-1" style={{ backgroundColor: "rgba(120,80,0,0.2)" }} />
                   <div className="flex items-center gap-2.5 px-4">
-                    <span style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.4rem", color: "#fff" }}>Lazy</span>
-                    <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", color: "#fff", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>Stream</span>
+                    <span style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.4rem", color: "#6b4400" }}>Lazy</span>
+                    <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", color: "#6b4400", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>Stream</span>
                   </div>
-                  <div className="h-px flex-1" style={{ backgroundColor: "rgba(255,255,255,0.25)" }} />
+                  <div className="h-px flex-1" style={{ backgroundColor: "rgba(120,80,0,0.2)" }} />
                 </div>
 
                 {/* Screen with rounded corners — vintage CRT look */}
@@ -317,19 +317,19 @@ const LazyStreamPage = () => {
                 {/* Below-screen control panel */}
                 <div className="flex items-center justify-between mt-6 px-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: "#00cec9", boxShadow: "0 0 8px rgba(0,206,201,0.5)" }} />
-                    <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#fff", opacity: 0.8 }}>LazyUnicorn.ai</span>
+                    <div className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: "#ff9f43", boxShadow: "0 0 8px rgba(255,159,67,0.5)" }} />
+                    <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#6b4400", opacity: 0.8 }}>LazyUnicorn.ai</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    {[{ label: "VOL", color: "#a29bfe" }, { label: "CH", color: "#fd79a8" }].map(({ label, color }) => (
+                    {[{ label: "VOL", color: "#ff6b6b" }, { label: "CH", color: "#ff9f43" }].map(({ label, color }) => (
                       <div key={label} className="flex flex-col items-center gap-1">
-                        <div className="w-7 h-7 rounded-full" style={{ background: `linear-gradient(145deg, ${color}, ${color}88)`, border: "2px solid rgba(255,255,255,0.2)", boxShadow: `inset 0 1px 2px rgba(255,255,255,0.2), 0 2px 6px ${color}44` }} />
-                        <span style={{ fontSize: 7, letterSpacing: "0.15em", textTransform: "uppercase", color: "#fff", opacity: 0.5 }}>{label}</span>
+                        <div className="w-7 h-7 rounded-full" style={{ background: `linear-gradient(145deg, ${color}, ${color}88)`, border: "2px solid rgba(255,255,255,0.4)", boxShadow: `inset 0 1px 2px rgba(255,255,255,0.3), 0 2px 6px ${color}44` }} />
+                        <span style={{ fontSize: 7, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6b4400", opacity: 0.5 }}>{label}</span>
                       </div>
                     ))}
                     <div className="flex flex-col items-center gap-1">
                       <div className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: "#00b894", boxShadow: "0 0 10px rgba(0,184,148,0.6), inset 0 1px 2px rgba(255,255,255,0.2)" }} />
-                      <span style={{ fontSize: 7, letterSpacing: "0.15em", textTransform: "uppercase", color: "#fff", opacity: 0.5 }}>PWR</span>
+                      <span style={{ fontSize: 7, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6b4400", opacity: 0.5 }}>PWR</span>
                     </div>
                   </div>
                 </div>
@@ -338,8 +338,8 @@ const LazyStreamPage = () => {
 
             {/* Tapered legs — colorful */}
             <div className="flex justify-center gap-[70%] -mt-1 relative z-0">
-              <div style={{ width: 6, height: 40, background: "linear-gradient(180deg, #e17055, #d63031)", borderRadius: "0 0 3px 3px", transform: "rotate(-6deg)", transformOrigin: "top center" }} />
-              <div style={{ width: 6, height: 40, background: "linear-gradient(180deg, #e17055, #d63031)", borderRadius: "0 0 3px 3px", transform: "rotate(6deg)", transformOrigin: "top center" }} />
+              <div style={{ width: 6, height: 40, background: "linear-gradient(180deg, #f9ca24, #f0932b)", borderRadius: "0 0 3px 3px", transform: "rotate(-6deg)", transformOrigin: "top center" }} />
+              <div style={{ width: 6, height: 40, background: "linear-gradient(180deg, #f9ca24, #f0932b)", borderRadius: "0 0 3px 3px", transform: "rotate(6deg)", transformOrigin: "top center" }} />
             </div>
           </motion.div>
         </div>
