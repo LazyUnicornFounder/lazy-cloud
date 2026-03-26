@@ -764,10 +764,55 @@ const LazyStreamPage = () => {
         </div>
       </section>
 
-      {/* ═══ OTHER ENGINES ═══ */}
-      <section className="py-20 px-6" style={{ backgroundColor: "#0a0a08" }}>
-        <div className="max-w-3xl mx-auto">
-          <ProductPromoBanner glass={false} />
+      {/* ═══ WORKS WITH ═══ */}
+      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "#0a0a08" }}>
+        <div className="max-w-5xl mx-auto">
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Better together</p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-bold mt-2 mb-4"
+            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}
+          >
+            Every stream compounds with the <span style={{ color: "#c8a961" }}>Lazy Stack.</span>
+          </motion.h2>
+          <p className="text-sm leading-relaxed max-w-2xl mb-14" style={{ color: "#f0ead6", opacity: 0.4 }}>
+            Lazy Stream doesn't work alone. Each engine in the stack amplifies your stream content further — turning one broadcast into a dozen touchpoints.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
+            {[
+              { emoji: "✍️", name: "Lazy Blogger", href: "/lazy-blogger", desc: "Stream recaps automatically feed into your blog queue. Every stream becomes a published post — indexed, shareable, evergreen." },
+              { emoji: "🔍", name: "Lazy SEO", href: "/lazy-seo", desc: "SEO articles target the game, topic, or niche you streamed about. You rank for searches your viewers are already making." },
+              { emoji: "🌐", name: "Lazy GEO", href: "/lazy-geo", desc: "Citation-optimized versions of your stream content get picked up by ChatGPT, Claude, and Perplexity when people ask about your niche." },
+              { emoji: "🎙️", name: "Lazy Voice", href: "/lazy-voice", desc: "Every stream recap is narrated into a podcast episode automatically. Your content reaches listeners who never open Twitch." },
+              { emoji: "🔔", name: "Lazy Alert", href: "/lazy-alert", desc: "Get a Slack notification the moment your stream content publishes. Know what went live without checking your site." },
+              { emoji: "📱", name: "Lazy SMS", href: "/lazy-sms", desc: "Text your subscribers when new stream content drops. Drive them back to your site while the stream is still fresh." },
+              { emoji: "🛒", name: "Lazy Store", href: "/lazy-store", desc: "Products or merch mentioned during your stream get promoted automatically in recap articles and highlights pages." },
+              { emoji: "💬", name: "Lazy Telegram", href: "/lazy-telegram", desc: "Push stream recaps and highlights directly to your Telegram channel. Your community gets content where they already hang out." },
+            ].map((item, i) => (
+              <motion.a
+                key={item.name}
+                href={item.href}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, duration: 0.4 }}
+                className="p-6 md:p-8 block group transition-colors duration-200"
+                style={{ backgroundColor: "#111110" }}
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-xl">{item.emoji}</span>
+                  <h3 className="font-bold text-sm" style={{ fontFamily: "'Playfair Display', serif", color: "#f0ead6" }}>{item.name}</h3>
+                </div>
+                <p className="text-[13px] leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>{item.desc}</p>
+                <span className="inline-block mt-4 text-[10px] tracking-[0.15em] uppercase font-semibold transition-opacity group-hover:opacity-70" style={{ color: "#c8a961", opacity: 0.4 }}>
+                  Learn more →
+                </span>
+              </motion.a>
+            ))}
+          </div>
         </div>
       </section>
 
