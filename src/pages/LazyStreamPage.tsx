@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import LazyFaqSection from "@/components/LazyFaqSection";
@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
+import unicornBg from "@/assets/unicorn-beach.png";
 
 const SETUP_PROMPT = `[Lazy Stream Prompt — v0.0.4 — LazyUnicorn.ai]
 
@@ -300,12 +301,10 @@ const LazyStreamPage = () => {
 
                 {/* Screen with rounded corners — vintage CRT look */}
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4 / 3", backgroundColor: "#0a0a08", borderRadius: 16, border: "5px solid #2d3436", boxShadow: "inset 0 0 40px rgba(0,0,0,0.8), 0 4px 12px rgba(0,0,0,0.3)" }}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center px-6">
-                      <Tv size={56} className="mx-auto mb-5" style={{ color: "#f0ead6", opacity: 0.1 }} />
-                      <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#fdcb6e", opacity: 0.3 }}>Coming soon</p>
-                    </div>
-                  </div>
+                  {/* Unicorn background */}
+                  <img src={unicornBg} alt="Lazy Unicorn" className="absolute inset-0 w-full h-full object-cover" />
+                  {/* Audio element */}
+                  <audio ref={audioRef} src="/audio/faah.webm" />
                   {/* CRT scanlines */}
                   <div className="absolute inset-0 pointer-events-none" style={{ background: "repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,0.08) 1px, rgba(0,0,0,0.08) 3px)" }} />
                   {/* Vignette */}
