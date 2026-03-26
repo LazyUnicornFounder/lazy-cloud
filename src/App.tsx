@@ -17,6 +17,7 @@ import LazySeoSetup from "./pages/LazySeoSetup.tsx";
 import LazySeoDashboard from "./pages/LazySeoDashboard.tsx";
 import LazyGeoPage from "./pages/LazyGeoPage.tsx";
 import LazyStorePage from "./pages/LazyStorePage.tsx";
+import LazyShopPage from "./pages/LazyShopPage.tsx";
 import LazyVoicePage from "./pages/LazyVoicePage.tsx";
 import LazyVoiceSetup from "./pages/LazyVoiceSetup.tsx";
 import LazyVoiceDashboard from "./pages/LazyVoiceDashboard.tsx";
@@ -106,6 +107,7 @@ const App = () => (
               <Route path="/lazy-seo-dashboard" element={<LazySeoDashboard />} />
               <Route path="/lazy-geo" element={<LazyGeoPage />} />
               <Route path="/lazy-store" element={<LazyStorePage />} />
+              <Route path="/lazy-shop" element={<LazyShopPage />} />
               <Route path="/lazy-voice" element={<LazyVoicePage />} />
               <Route path="/lazy-voice-setup" element={<LazyVoiceSetup />} />
               <Route path="/lazy-voice-dashboard" element={<LazyVoiceDashboard />} />
