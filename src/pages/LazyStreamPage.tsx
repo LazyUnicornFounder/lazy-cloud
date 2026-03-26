@@ -566,8 +566,11 @@ const LazyStreamPage = () => {
               letterSpacing: "-0.01em",
             }}
           >
-            Launch your Autonomous<br />
-            Twitch Business on <span style={{ color: C.pink }}>Lovable</span>
+            <span style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", opacity: 0.5 }}>Lazy</span>{" "}
+            Stream
+            <br />
+            <span style={{ fontSize: "clamp(1.2rem, 2.5vw, 2rem)", opacity: 0.5 }}>Launch your Autonomous Twitch Business on</span>{" "}
+            <span style={{ color: C.pink }}>Lovable</span>
           </motion.h1>
 
           {/* Body text directly under headline */}
