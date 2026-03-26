@@ -609,46 +609,42 @@ const LazyStreamPage = () => {
       </section>
 
       {/* ═══ HOW IT WORKS ═══ */}
-      <section id="how-it-works" className="relative py-24 md:py-32 px-6" style={{ background: `linear-gradient(180deg, ${C.bg}, ${C.bg} 80%, rgba(57,255,20,0.08) 100%)` }}>
+      <section id="how-it-works" className="relative py-24 md:py-32 px-6" style={{ backgroundColor: "#111110" }}>
         <div className="max-w-5xl mx-auto">
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>How it works</p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center font-bold mb-16"
-            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", color: C.white }}
+            className="font-bold mt-2 mb-16"
+            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}
           >
             Stream. Sleep. Wake up to articles.
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <ChannelCard channel="03" emoji="🎮" title="You go live" body="Stream whatever you stream. Lazy Stream watches your Twitch status silently in the background. You do not need to do anything differently." color={C.pink} rotation={-2} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
+            <ChannelCard channel="03" emoji="🎮" title="You go live" body="Stream whatever you stream. Lazy Stream watches your Twitch status silently in the background. You do not need to do anything differently." color={C.pink} rotation={0} />
             <ChannelCard channel="07" emoji="📡" title="Stream ends. Engines fire." body="The moment your stream goes offline Lazy Stream fetches your top clips, generates a transcript summary, and starts writing. Within 30 minutes three pieces of content are queued." color={C.cyan} rotation={0} />
-            <ChannelCard channel="11" emoji="📰" title="Content goes live" body="A stream recap, an SEO article targeting your game or topic, and a highlights page all publish to your site automatically. Your viewers find them on Google. New viewers discover you." color={C.lime} rotation={2} />
+            <ChannelCard channel="11" emoji="📰" title="Content goes live" body="A stream recap, an SEO article targeting your game or topic, and a highlights page all publish to your site automatically. Your viewers find them on Google. New viewers discover you." color={C.lime} rotation={0} />
           </div>
         </div>
       </section>
 
       {/* ═══ WHAT GETS PUBLISHED ═══ */}
-      <section className="relative py-24 md:py-32 px-6 overflow-hidden" style={{ background: `linear-gradient(135deg, #0a0015 0%, ${C.pink}22 100%)` }}>
+      <section className="relative py-24 md:py-32 px-6 overflow-hidden" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-5xl mx-auto">
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>What it publishes</p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center font-bold mb-4"
-            style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "clamp(2rem, 5vw, 3.5rem)",
-              background: `linear-gradient(135deg, ${C.pink}, ${C.yellow})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
+            className="font-bold mt-2 mb-14"
+            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}
           >
-            One stream. Three pieces of content. Zero effort.
+            One stream. Three pieces of content. <span style={{ color: C.pink }}>Zero effort.</span>
           </motion.h2>
 
-          <div className="flex flex-col md:flex-row gap-5 mt-14">
+          <div className="flex flex-col md:flex-row gap-px bg-border">
             <OutputCard
               title="I spent 4 hours in the Dark Zone and here is what happened"
               preview="The raid started badly. Two squad wipes in the first hour. But by hour three we had figured out the extraction route and..."
@@ -672,15 +668,15 @@ const LazyStreamPage = () => {
             />
           </div>
 
-          <p className="text-center mt-10 text-sm" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <p className="text-center mt-10 text-[11px] tracking-[0.12em] uppercase" style={{ color: "#f0ead6", opacity: 0.25 }}>
             3 content pieces per stream · Published in under 30 minutes · 100% automated
           </p>
         </div>
       </section>
 
       {/* ═══ THE NUMBERS ═══ */}
-      <section className="py-20 px-6" style={{ background: `linear-gradient(135deg, ${C.cyan}, ${C.lime})` }}>
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+      <section className="py-20 px-6" style={{ backgroundColor: "#111110" }}>
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
           <BigNumber value="0" label="Minutes you spend writing recaps" delay={0} />
           <BigNumber value="3" label="Content pieces per stream" delay={0.1} />
           <BigNumber value="30" label="Minutes from stream end to published" delay={0.2} />
@@ -689,18 +685,19 @@ const LazyStreamPage = () => {
       </section>
 
       {/* ═══ TWITCH CONNECTION ═══ */}
-      <section className="py-24 md:py-32 px-6 relative" style={{ background: C.bg, backgroundImage: `radial-gradient(${C.pink}08 1px, transparent 1px)`, backgroundSize: "20px 20px" }}>
+      <section className="py-24 md:py-32 px-6 relative" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-3xl mx-auto text-center">
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Connection</p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-bold mb-6"
-            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2rem, 5vw, 3rem)", color: C.white }}
+            className="font-bold mt-2 mb-6"
+            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}
           >
             Works with your existing Twitch account.
           </motion.h2>
-          <p className="text-sm leading-relaxed max-w-xl mx-auto" style={{ color: "rgba(255,255,255,0.6)" }}>
+          <p className="text-sm leading-relaxed max-w-xl mx-auto" style={{ color: "#f0ead6", opacity: 0.4 }}>
             Lazy Stream connects to Twitch using your Client ID and Client Secret. It monitors your stream status every 5 minutes. When you go offline it fires automatically. No manual trigger. No app to open. No webhook to configure.
           </p>
           <TwitchConnectionCard />
@@ -708,21 +705,22 @@ const LazyStreamPage = () => {
       </section>
 
       {/* ═══ PRICING ═══ */}
-      <section className="py-24 md:py-32 px-6" style={{ background: `linear-gradient(180deg, #12022a, ${C.bg})` }}>
+      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "#111110" }}>
         <div className="max-w-lg mx-auto text-center">
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Pricing</p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-bold mb-10"
-            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2rem, 5vw, 3rem)", color: C.white }}
+            className="font-bold mt-2 mb-10"
+            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}
           >
             Start turning streams into content.
           </motion.h2>
 
-          <div className="p-8 rounded-xl text-left" style={{ border: `2px solid ${C.pink}`, backgroundColor: "rgba(255,45,155,0.05)" }}>
-            <p className="font-bold text-2xl mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif", color: C.white }}>Free</p>
-            <p className="text-xs uppercase tracking-wider mb-6" style={{ color: C.pink }}>Included with any Lazy Stack install</p>
+          <div className="p-8 text-left" style={{ border: "1px solid rgba(240,234,214,0.08)", backgroundColor: "#0a0a08" }}>
+            <p className="font-bold text-xl mb-1" style={{ fontFamily: "'Playfair Display', serif", color: "#f0ead6" }}>Free</p>
+            <p className="text-[10px] uppercase tracking-[0.15em] mb-6" style={{ color: C.pink, opacity: 0.7 }}>Included with any Lazy Stack install</p>
             <ul className="space-y-3 mb-8">
               {[
                 "Stream detection & monitoring",
@@ -731,13 +729,13 @@ const LazyStreamPage = () => {
                 "Highlights page creation",
                 "Self-improving content templates",
               ].map((f) => (
-                <li key={f} className="flex items-start gap-2 text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
-                  <span style={{ color: C.lime }}>✓</span> {f}
+                <li key={f} className="flex items-start gap-2 text-sm" style={{ color: "#f0ead6", opacity: 0.5 }}>
+                  <span style={{ color: C.lime, opacity: 0.7 }}>✓</span> {f}
                 </li>
               ))}
             </ul>
-            <CopyPromptButton className="w-full justify-center" variant="gold" />
-            <p className="text-[11px] text-center mt-4" style={{ color: "rgba(255,255,255,0.3)" }}>
+            <CopyPromptButton className="w-full justify-center" />
+            <p className="text-[11px] text-center mt-4" style={{ color: "#f0ead6", opacity: 0.2 }}>
               Paste into your existing Lovable project. Works alongside any other Lazy engine.
             </p>
           </div>
@@ -745,19 +743,20 @@ const LazyStreamPage = () => {
       </section>
 
       {/* ═══ FAQ ═══ */}
-      <section className="py-20 px-6" style={{ backgroundColor: C.bg }}>
+      <section className="py-20 px-6" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-center font-bold mb-12" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.5rem)", color: C.white }}>
+          <p className="text-center" style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>FAQ</p>
+          <h2 className="text-center font-bold mt-2 mb-12" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.2rem)", color: "#f0ead6" }}>
             Frequently asked
           </h2>
-          <div className="space-y-4">
+          <div className="space-y-px">
             {faqs.map((faq, i) => (
-              <details key={i} className="group rounded-lg p-5" style={{ backgroundColor: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
-                <summary className="cursor-pointer font-bold text-sm list-none flex items-center justify-between" style={{ color: C.white }}>
+              <details key={i} className="group p-5" style={{ backgroundColor: "#111110", borderBottom: "1px solid rgba(240,234,214,0.05)" }}>
+                <summary className="cursor-pointer font-bold text-sm list-none flex items-center justify-between" style={{ color: "#f0ead6", fontFamily: "'Playfair Display', serif" }}>
                   {faq.q}
-                  <span className="text-lg" style={{ color: C.pink }}>+</span>
+                  <span className="text-lg" style={{ color: "#f0ead6", opacity: 0.2 }}>+</span>
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{faq.a}</p>
+                <p className="mt-3 text-sm leading-relaxed" style={{ color: "#f0ead6", opacity: 0.4 }}>{faq.a}</p>
               </details>
             ))}
           </div>
@@ -765,16 +764,19 @@ const LazyStreamPage = () => {
       </section>
 
       {/* ═══ BOTTOM CTA ═══ */}
-      <section className="py-24 md:py-32 px-6" style={{ background: `linear-gradient(135deg, ${C.pink}, #6c2bd9)` }}>
+      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "#111110" }}>
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-7xl md:text-8xl mb-6">📺</p>
-          <h2 className="font-bold mb-6" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", color: C.white, lineHeight: 1.1 }}>
+          <h2 className="font-bold mb-6" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15 }}>
             Your streams deserve an audience beyond Twitch.
           </h2>
-          <p className="text-base leading-relaxed max-w-xl mx-auto mb-10" style={{ color: "rgba(255,255,255,0.8)" }}>
+          <p className="text-sm leading-relaxed max-w-xl mx-auto mb-10" style={{ color: "#f0ead6", opacity: 0.4 }}>
             Every stream you do is an SEO opportunity, a blog post, and a highlights reel sitting unwritten. Lazy Stream writes them for you.
           </p>
-          <CopyPromptButton variant="gold" />
+          <CopyPromptButton />
+          <p className="mt-8" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.15, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+            Made for Lovable
+          </p>
         </div>
       </section>
     </div>
