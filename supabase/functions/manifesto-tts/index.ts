@@ -40,82 +40,115 @@ serve(async (req) => {
     const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Check if we already have the audio cached in storage
-    const { data: existingFile } = await supabase.storage
+    const results: Record<string, string> = {};
+
+    // Check if narration already cached
+    const { data: narrationFile } = await supabase.storage
       .from("audio")
-      .createSignedUrl("manifesto.mp3", 3600);
+      .list("", { search: "manifesto.mp3" });
 
-    if (existingFile?.signedUrl) {
-      return new Response(JSON.stringify({ audioUrl: existingFile.signedUrl }), {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
+    const narrationExists = narrationFile && narrationFile.length > 0;
 
-    // Generate TTS using ElevenLabs - George voice, warm and authoritative
-    const voiceId = "JBFqnCBsd6RMkjVDRZzb"; // George
-    const response = await fetch(
-      `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`,
-      {
-        method: "POST",
-        headers: {
-          "xi-api-key": ELEVENLABS_API_KEY,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          text: MANIFESTO_TEXT,
-          model_id: "eleven_multilingual_v2",
-          voice_settings: {
-            stability: 0.6,
-            similarity_boost: 0.75,
-            style: 0.4,
-            use_speaker_boost: true,
-            speed: 0.9,
+    // Check if music already cached
+    const { data: musicFile } = await supabase.storage
+      .from("audio")
+      .list("", { search: "manifesto-music.mp3" });
+
+    const musicExists = musicFile && musicFile.length > 0;
+
+    // Generate narration if needed
+    if (!narrationExists) {
+      console.log("Generating narration...");
+      const voiceId = "JBFqnCBsd6RMkjVDRZzb"; // George
+      const response = await fetch(
+        `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`,
+        {
+          method: "POST",
+          headers: {
+            "xi-api-key": ELEVENLABS_API_KEY,
+            "Content-Type": "application/json",
           },
-        }),
+          body: JSON.stringify({
+            text: MANIFESTO_TEXT,
+            model_id: "eleven_multilingual_v2",
+            voice_settings: {
+              stability: 0.6,
+              similarity_boost: 0.75,
+              style: 0.4,
+              use_speaker_boost: true,
+              speed: 0.9,
+            },
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("ElevenLabs TTS error:", response.status, errorText);
+        throw new Error(`ElevenLabs TTS error: ${response.status}`);
       }
-    );
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("ElevenLabs API error:", response.status, errorText);
-      throw new Error(`ElevenLabs API error: ${response.status}`);
+      const audioBuffer = await response.arrayBuffer();
+      const { error: uploadError } = await supabase.storage
+        .from("audio")
+        .upload("manifesto.mp3", audioBuffer, {
+          contentType: "audio/mpeg",
+          upsert: true,
+        });
+
+      if (uploadError) console.error("Narration upload error:", uploadError);
     }
 
-    const audioBuffer = await response.arrayBuffer();
+    // Generate classical background music if needed
+    if (!musicExists) {
+      console.log("Generating classical background music...");
+      const musicResponse = await fetch(
+        "https://api.elevenlabs.io/v1/music",
+        {
+          method: "POST",
+          headers: {
+            "xi-api-key": ELEVENLABS_API_KEY,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            prompt: "Gentle, contemplative solo piano. Minimalist classical composition in the style of Erik Satie Gymnopédies. Slow tempo, soft dynamics, melancholic yet hopeful. Clean recording, no reverb. Suitable as quiet background music behind a spoken word narration.",
+            duration_seconds: 120,
+          }),
+        }
+      );
 
-    // Ensure the audio bucket exists
-    const { error: bucketError } = await supabase.storage.createBucket("audio", {
-      public: true,
-      fileSizeLimit: 10485760, // 10MB
-    });
-    // Ignore "already exists" errors
-    if (bucketError && !bucketError.message.includes("already exists")) {
-      console.error("Bucket creation error:", bucketError);
+      if (!musicResponse.ok) {
+        const errorText = await musicResponse.text();
+        console.error("ElevenLabs music error:", musicResponse.status, errorText);
+        throw new Error(`ElevenLabs music error: ${musicResponse.status}`);
+      }
+
+      const musicBuffer = await musicResponse.arrayBuffer();
+      const { error: musicUploadError } = await supabase.storage
+        .from("audio")
+        .upload("manifesto-music.mp3", musicBuffer, {
+          contentType: "audio/mpeg",
+          upsert: true,
+        });
+
+      if (musicUploadError) console.error("Music upload error:", musicUploadError);
     }
 
-    // Upload to storage for caching
-    const { error: uploadError } = await supabase.storage
-      .from("audio")
-      .upload("manifesto.mp3", audioBuffer, {
-        contentType: "audio/mpeg",
-        upsert: true,
-      });
-
-    if (uploadError) {
-      console.error("Upload error:", uploadError);
-    }
-
-    // Get public URL
-    const { data: publicUrl } = supabase.storage
+    // Return public URLs
+    const { data: narrationUrl } = supabase.storage
       .from("audio")
       .getPublicUrl("manifesto.mp3");
 
-    return new Response(
-      JSON.stringify({ audioUrl: publicUrl.publicUrl }),
-      {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
-    );
+    const { data: musicUrl } = supabase.storage
+      .from("audio")
+      .getPublicUrl("manifesto-music.mp3");
+
+    results.narrationUrl = narrationUrl.publicUrl;
+    results.musicUrl = musicUrl.publicUrl;
+
+    return new Response(JSON.stringify(results), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   } catch (error) {
     console.error("Manifesto TTS error:", error);
     const message = error instanceof Error ? error.message : "Unknown error";
