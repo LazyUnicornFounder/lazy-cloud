@@ -36,7 +36,7 @@ export default function AutopilotHeadline({ product }: AutopilotHeadlineProps) {
     <p
       className="mb-4"
       style={{
-        fontFamily: "'Playfair Display', serif",
+        fontFamily: "'Space Grotesk', sans-serif",
         fontSize: "clamp(0.8rem, 2vw, 1.3rem)",
         color: "#f0ead6",
         opacity: 0.5,

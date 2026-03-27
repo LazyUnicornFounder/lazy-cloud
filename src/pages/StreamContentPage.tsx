@@ -66,7 +66,7 @@ const StreamContentPage = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <div className="mb-8">
             <span className="font-body text-[13px] uppercase tracking-[0.2em] px-2 py-1 border border-border text-foreground/55">{typeLabel}</span>
-            <h1 className="mt-4" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
+            <h1 className="mt-4" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
               {content.title}
             </h1>
             <p className="font-body text-sm text-foreground/55 mt-2">{new Date(content.published_at).toLocaleDateString()}</p>

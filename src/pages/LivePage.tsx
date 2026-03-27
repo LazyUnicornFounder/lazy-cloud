@@ -39,7 +39,7 @@ const LivePage = () => {
             <div className="inline-block px-4 py-1 border border-red-500/40 mb-6">
               <span className="font-body text-sm text-red-400 uppercase tracking-wider">● Live Now</span>
             </div>
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 4vw, 3rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+            <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 4vw, 3rem)", color: "#f0ead6", lineHeight: 1.1 }}>
               {latestSession.title}
             </h1>
             <p className="font-body text-sm text-foreground/65 mt-3">{latestSession.game_name || "Streaming now"}</p>
@@ -55,7 +55,7 @@ const LivePage = () => {
         ) : (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
             <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Offline</p>
-            <h1 className="mt-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
+            <h1 className="mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
               Not streaming right now.
             </h1>
             {latestSession && (

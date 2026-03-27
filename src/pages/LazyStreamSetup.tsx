@@ -97,7 +97,7 @@ const LazyStreamSetup = () => {
       <main className="pt-32 pb-20 px-6 md:px-12 max-w-2xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Setup</p>
-          <h1 className="mt-2 mb-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
+          <h1 className="mt-2 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
             Activate Lazy Stream
           </h1>
           <p className="font-body text-sm text-foreground/40 mb-10">Connect your Twitch channel. Everything else runs automatically.</p>

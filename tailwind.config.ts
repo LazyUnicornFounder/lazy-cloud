@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
+        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
         body: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {

@@ -69,13 +69,13 @@ function RotatingHeadline() {
   }, [current, ready]);
 
   return (
-    <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.9rem, 2.8vw, 2.2rem)", color: "#f0ead6", opacity: 0.7 }} className="mb-2 whitespace-nowrap">
+    <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.9rem, 2.8vw, 2.2rem)", color: "#f0ead6", opacity: 0.7 }} className="mb-2 whitespace-nowrap">
       {/* Hidden measurer */}
       <span
         ref={hiddenRef}
         aria-hidden="true"
         className="whitespace-nowrap invisible fixed pointer-events-none"
-        style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.9rem, 2.8vw, 2.2rem)", top: -9999, left: -9999 }}
+        style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.9rem, 2.8vw, 2.2rem)", top: -9999, left: -9999 }}
       />
       Lovable<span className="ml-1 mr-0">❤️</span>
       <motion.span
@@ -377,12 +377,12 @@ const Index = () => {
           className="min-h-screen flex flex-col items-center justify-center gap-6 px-6 pt-32 pb-16 text-center"
         >
           <RotatingHeadline />
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(3rem, 7vw, 5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+          <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(3rem, 7vw, 5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
             Launch your Autonomous
             <br />
             Business on Lovable.
           </h1>
-          <p className="tracking-[0.2em] uppercase" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1rem, 1.8vw, 1.3rem)", color: "#f0ead6", opacity: 0.45, letterSpacing: "0.2em" }}>
+          <p className="tracking-[0.2em] uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1rem, 1.8vw, 1.3rem)", color: "#f0ead6", opacity: 0.45, letterSpacing: "0.2em" }}>
             One prompt, everything runs itself.
           </p>
 
@@ -392,7 +392,7 @@ const Index = () => {
           <Link
             to="/lazy-run"
             className="mt-6 inline-block text-sm tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity active:scale-[0.97]"
-            style={{ fontFamily: "'Playfair Display', serif", backgroundColor: "#f0ead6", color: "#0a0a08", borderRadius: 0 }}
+            style={{ fontFamily: "'Space Grotesk', sans-serif", backgroundColor: "#f0ead6", color: "#0a0a08", borderRadius: 0 }}
           >
             Get the Free Prompt
           </Link>
@@ -450,7 +450,7 @@ const Index = () => {
           className="max-w-2xl mx-auto"
         >
           <h2
-            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15, letterSpacing: "-0.01em" }}
+            style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.15, letterSpacing: "-0.01em" }}
             className="mb-10"
           >
             Here's to the lazy ones.
@@ -494,14 +494,14 @@ const Index = () => {
                 <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
                   Lazy
                 </p>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
                   Run
                 </p>
               </div>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
                 Every engine. One prompt.
               </p>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
                 Made for Lovable
               </p>
             </motion.div>
@@ -522,14 +522,14 @@ const Index = () => {
                 <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
                   Lazy
                 </p>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
                   Admin
                 </p>
               </div>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
                 One dashboard to manage your entire Lazy stack.
               </p>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
                 Made for Lovable
               </p>
             </motion.div>
@@ -550,14 +550,14 @@ const Index = () => {
                 <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
                   Lazy
                 </p>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
                   Design
                 </p>
               </div>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
                 21st.dev upgrades on autopilot.
               </p>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
                 Made for Lovable
               </p>
             </motion.div>
@@ -587,14 +587,14 @@ const Index = () => {
                   <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
                     {product.cursive}
                   </p>
-                  <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
                     {product.name}
                   </p>
                 </div>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
                   {product.tagline}
                 </p>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1.5rem" }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1.5rem" }}>
                   Made for Lovable
                 </p>
               </motion.div>

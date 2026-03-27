@@ -189,7 +189,7 @@ const PricingPage = () => {
             <motion.p variants={fadeUp} transition={{ duration: 0.6 }} style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: "#f0ead6", opacity: 0.5 }}>
               Pricing
             </motion.p>
-            <motion.h1 variants={fadeUp} transition={{ duration: 0.8 }} className="mt-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4vw, 3.2rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+            <motion.h1 variants={fadeUp} transition={{ duration: 0.8 }} className="mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 3.2rem)", color: "#f0ead6", lineHeight: 1.1 }}>
               Every engine is free to install.
             </motion.h1>
             <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="mt-4 font-body text-sm text-foreground/50 max-w-xl mx-auto leading-relaxed">
@@ -282,7 +282,7 @@ const PricingPage = () => {
           <p className="font-body text-sm text-foreground/65 leading-relaxed">
             All engines are self-hosted in your own Lovable project. You own the code, the data, and the content. Pro tiers will offer a fully managed hosted experience — no API keys, no setup, just results.
           </p>
-          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>
+          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>
             Made for Lovable
           </p>
         </section>

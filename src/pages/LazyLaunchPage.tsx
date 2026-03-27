@@ -48,7 +48,7 @@ const LazyLaunchPage = () => {
             <div className="inline-flex items-center gap-2 border border-[#f0ead6]/20 px-4 py-1.5 text-xs uppercase tracking-[0.2em] mb-6">
               <Sparkles className="w-3.5 h-3.5" />Free
             </div>
-            <h1 className="font-display text-4xl md:text-5xl font-bold mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h1 className="font-display text-4xl md:text-5xl font-bold mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Describe it. We automate it.
             </h1>
             <p className="text-[#f0ead6]/50 text-base" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
