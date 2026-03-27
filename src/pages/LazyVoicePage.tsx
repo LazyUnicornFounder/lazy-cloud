@@ -1,14 +1,13 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import LazyFaqSection from "@/components/LazyFaqSection";
 import { motion } from "framer-motion";
-import { Copy, Check, Mic, Headphones, Rss, Radio, Volume2, Play } from "lucide-react";
+import { Copy, Check, Mic, Headphones, Rss } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
 import { useCurrentPrompt } from "@/hooks/usePrompt";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
 import AutopilotHeadline from "@/components/AutopilotHeadline";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
