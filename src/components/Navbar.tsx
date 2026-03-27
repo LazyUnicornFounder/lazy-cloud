@@ -319,9 +319,9 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
               ]}
             />
           </div>
-          <div className="flex items-center gap-3 absolute right-0">
-            {socialIcons}
-          </div>
+          <a href="https://github.com/LazyUnicornFounder/LazyUnicorn" target="_blank" rel="noopener noreferrer" className="text-foreground/45 hover:text-foreground transition-colors" aria-label="View prompts on GitHub">
+            <Github size={14} />
+          </a>
         </div>
       ) : (
         <>
