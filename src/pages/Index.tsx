@@ -430,7 +430,7 @@ const Index = () => {
                 { name: "Slack", href: "/lazy-alert" },
                 { name: "Telegram", href: "/lazy-telegram" },
                 { name: "Supabase", href: "/lazy-supabase" },
-                { name: "Shopify", href: "/lazy-shop" },
+                
                 { name: "Contentful", href: "/lazy-contentful" },
                 { name: "Firecrawl", href: "/lazy-crawl" },
                 { name: "Perplexity", href: "/lazy-perplexity" },

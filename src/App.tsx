@@ -17,7 +17,7 @@ import LazySeoSetup from "./pages/LazySeoSetup.tsx";
 import LazySeoDashboard from "./pages/LazySeoDashboard.tsx";
 import LazyGeoPage from "./pages/LazyGeoPage.tsx";
 import LazyStorePage from "./pages/LazyStorePage.tsx";
-import LazyShopPage from "./pages/LazyShopPage.tsx";
+
 import LazyVoicePage from "./pages/LazyVoicePage.tsx";
 import LazyVoiceSetup from "./pages/LazyVoiceSetup.tsx";
 import LazyVoiceDashboard from "./pages/LazyVoiceDashboard.tsx";
@@ -44,7 +44,7 @@ import LazyMailPage from "./pages/LazyMailPage.tsx";
 import LazyDesignPage from "./pages/LazyDesignPage.tsx";
 import LazyAuthPage from "./pages/LazyAuthPage.tsx";
 import LazyAdminPage from "./pages/LazyAdminPage.tsx";
-import LazyLaunchPage from "./pages/LazyLaunchPage.tsx";
+
 import ChangelogPage from "./pages/ChangelogPage.tsx";
 import UpgradeGuidePage from "./pages/UpgradeGuidePage.tsx";
 import HowItWorksPage from "./pages/HowItWorksPage.tsx";
@@ -116,7 +116,7 @@ const App = () => (
               <Route path="/lazy-seo-dashboard" element={<LazySeoDashboard />} />
               <Route path="/lazy-geo" element={<LazyGeoPage />} />
               <Route path="/lazy-store" element={<LazyStorePage />} />
-              <Route path="/lazy-shop" element={<LazyShopPage />} />
+              
               <Route path="/lazy-voice" element={<LazyVoicePage />} />
               <Route path="/lazy-voice-setup" element={<LazyVoiceSetup />} />
               <Route path="/lazy-voice-dashboard" element={<LazyVoiceDashboard />} />
@@ -136,7 +136,7 @@ const App = () => (
               <Route path="/lazy-perplexity" element={<LazyPerplexityPage />} />
               <Route path="/lazy-crawl" element={<LazyCrawlPage />} />
               <Route path="/lazy-admin" element={<LazyAdminPage />} />
-              <Route path="/lazy-launch" element={<LazyLaunchPage />} />
+              
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/autonomy" element={<AutonomyPage />} />
               <Route path="/lazy-security" element={<LazySecurityPage />} />

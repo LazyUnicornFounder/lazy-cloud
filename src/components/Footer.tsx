@@ -127,8 +127,6 @@ export default function Footer() {
                 { name: "Changelog", href: "/changelog" },
                 { name: "Upgrade Guide", href: "/upgrade-guide" },
                 { name: "About", href: "/about" },
-                { name: "Lazy Launch", href: "/lazy-launch" },
-                { name: "Lazy Shop", href: "/lazy-shop" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link to={item.href} className="font-body text-sm text-foreground/65 hover:text-foreground/50 transition-colors">

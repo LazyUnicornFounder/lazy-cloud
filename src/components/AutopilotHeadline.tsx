@@ -22,7 +22,7 @@ const PRODUCT_WORDS: Record<string, { word: string; emoji: string }> = {
   "lazy-telegram": { word: "Telegram", emoji: "✈️" },
   "lazy-security": { word: "security", emoji: "🛡️" },
   "lazy-auth": { word: "auth", emoji: "🔐" },
-  "lazy-shop": { word: "stores", emoji: "🛒" },
+  
 };
 
 interface AutopilotHeadlineProps {

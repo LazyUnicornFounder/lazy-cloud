@@ -26,7 +26,7 @@ const PRODUCT_PAGES = [
   "/lazy-voice", "/lazy-stream",
   "/lazy-github", "/lazy-gitlab", "/lazy-linear", "/lazy-design", "/lazy-auth",
   "/lazy-alert", "/lazy-telegram", "/lazy-supabase", "/lazy-security",
-  "/lazy-launch",
+  
 ];
 
 function urlEntry(loc: string, lastmod: string, changefreq: string, priority: string) {
