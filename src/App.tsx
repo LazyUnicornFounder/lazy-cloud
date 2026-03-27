@@ -105,6 +105,7 @@ const App = () => (
               <Route path="auth" element={<AdminPlaceholderPage name="Lazy Auth" />} />
               <Route path="design" element={<AdminPlaceholderPage name="Lazy Design" />} />
               <Route path="mail" element={<AdminPlaceholderPage name="Lazy Mail" />} />
+              <Route path="granola" element={<AdminGranolaPage />} />
                 <Route path="prompts" element={<AdminPromptsPage />} />
                 <Route path="changelog" element={<AdminChangelogPage />} />
                 <Route path="settings" element={<AdminSettingsPage />} />
@@ -139,6 +140,8 @@ const App = () => (
               <Route path="/lazy-perplexity" element={<LazyPerplexityPage />} />
               <Route path="/lazy-crawl" element={<LazyCrawlPage />} />
               <Route path="/lazy-admin" element={<LazyAdminPage />} />
+              <Route path="/lazy-granola" element={<LazyGranolaPage />} />
+              <Route path="/lazy-granola-setup" element={<LazyGranolaSetup />} />
               
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/autonomy" element={<AutonomyPage />} />
