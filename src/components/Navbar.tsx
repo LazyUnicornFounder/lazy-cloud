@@ -160,10 +160,10 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
       </button>
       {open && (
         <div
-          className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 p-6"
-          style={{ width: 920 }}
+          className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 p-9"
+          style={{ width: 1380 }}
         >
-          <div className="flex gap-8">
+          <div className="flex gap-12">
             {/* Column 1: Lazy Unicorn + Lazy Design + Lazy Commerce */}
             <div className="flex-1 min-w-0">
               {[productCategories[0], productCategories[1], productCategories[3]].map(renderCategory)}
