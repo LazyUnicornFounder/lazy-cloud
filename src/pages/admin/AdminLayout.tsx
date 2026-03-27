@@ -27,11 +27,13 @@ const navGroups: NavGroup[] = [
     { label: "GEO", path: "/admin/geo", icon: Brain, engine: "geo" },
     { label: "Crawl", path: "/admin/crawl", icon: Radar, engine: "crawl" },
     { label: "Perplexity", path: "/admin/perplexity", icon: Compass, engine: "perplexity" },
+    { label: "Contentful", path: "/admin/contentful", icon: DbIcon, engine: "contentful" },
   ]},
   { label: "Lazy Commerce", items: [
     { label: "Store", path: "/admin/store", icon: ShoppingCart, engine: "store" },
     { label: "Pay", path: "/admin/pay", icon: CreditCard, engine: "pay" },
     { label: "SMS", path: "/admin/sms", icon: MessageSquare, engine: "sms" },
+    { label: "Mail", path: "/admin/mail", icon: Mail, engine: "mail" },
   ]},
   { label: "Lazy Media", items: [
     { label: "Voice", path: "/admin/voice", icon: Mic, engine: "voice" },
@@ -41,20 +43,14 @@ const navGroups: NavGroup[] = [
     { label: "GitHub", path: "/admin/code", icon: Code, engine: "code" },
     { label: "GitLab", path: "/admin/gitlab", icon: GitBranch, engine: "gitlab" },
     { label: "Linear", path: "/admin/linear", icon: CheckCircle, engine: "linear" },
-  ]},
-  { label: "Lazy Channels", items: [
-    { label: "Mail", path: "/admin/mail", icon: Mail, engine: "mail" },
-    { label: "Alert", path: "/admin/alert", icon: Bell, engine: "alert" },
-    { label: "Telegram", path: "/admin/telegram", icon: Send, engine: "telegram" },
-    { label: "Contentful", path: "/admin/contentful", icon: DbIcon, engine: "contentful" },
-    { label: "Supabase", path: "/admin/supabase-monitor", icon: DbIcon, engine: "supabase_monitor" },
-  ]},
-  { label: "Lazy Shield", items: [
-    { label: "Security", path: "/admin/security", icon: Shield, engine: "security" },
+    { label: "Design", path: "/admin/design", icon: LayoutDashboard, engine: "design" },
     { label: "Auth", path: "/admin/auth", icon: Shield, engine: "auth" },
   ]},
-  { label: "Lazy Design", items: [
-    { label: "Design", path: "/admin/design", icon: LayoutDashboard, engine: "design" },
+  { label: "Lazy Ops", items: [
+    { label: "Alert", path: "/admin/alert", icon: Bell, engine: "alert" },
+    { label: "Telegram", path: "/admin/telegram", icon: Send, engine: "telegram" },
+    { label: "Supabase", path: "/admin/supabase-monitor", icon: DbIcon, engine: "supabase_monitor" },
+    { label: "Security", path: "/admin/security", icon: Shield, engine: "security" },
   ]},
   { label: "", items: [
     { label: "Changelog", path: "/admin/changelog", icon: PenTool, engine: null },

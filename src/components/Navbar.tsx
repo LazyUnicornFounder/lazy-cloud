@@ -49,12 +49,6 @@ const productCategories = [
     ],
   },
   {
-    label: "Lazy Design",
-    items: [
-      { label: "Lazy Design", href: "/lazy-design", tagline: "UI upgrades on autopilot.", icon: icons.admin },
-    ],
-  },
-  {
     label: "Lazy Content",
     items: [
       { label: "Lazy Blogger", href: "/lazy-blogger", tagline: "Your blog writes itself.", icon: icons.blogger },
@@ -62,6 +56,7 @@ const productCategories = [
       { label: "Lazy GEO", href: "/lazy-geo", tagline: "Get cited by every AI.", icon: icons.geo },
       { label: "Lazy Crawl", href: "/lazy-crawl", tagline: "The web, distilled for you.", icon: icons.perplexity },
       { label: "Lazy Perplexity", href: "/lazy-perplexity", tagline: "Research that writes itself.", icon: icons.perplexity },
+      { label: "Lazy Contentful", href: "/lazy-contentful", tagline: "Two-way CMS sync.", icon: icons.contentful },
     ],
   },
   {
@@ -70,6 +65,7 @@ const productCategories = [
       { label: "Lazy Store", href: "/lazy-store", tagline: "A store that never sleeps.", icon: icons.store },
       { label: "Lazy Pay", href: "/lazy-pay", tagline: "Payments that optimise.", icon: icons.pay },
       { label: "Lazy SMS", href: "/lazy-sms", tagline: "Texts that actually convert.", icon: icons.sms },
+      { label: "Lazy Mail", href: "/lazy-mail", tagline: "Emails send themselves.", icon: icons.mail },
     ],
   },
   {
@@ -85,23 +81,17 @@ const productCategories = [
       { label: "Lazy GitHub", href: "/lazy-github", tagline: "Commits become changelogs.", icon: icons.code },
       { label: "Lazy GitLab", href: "/lazy-gitlab", tagline: "GitLab on autopilot.", icon: icons.gitlab },
       { label: "Lazy Linear", href: "/lazy-linear", tagline: "Issues become content.", icon: icons.linear },
+      { label: "Lazy Design", href: "/lazy-design", tagline: "UI upgrades on autopilot.", icon: icons.admin },
+      { label: "Lazy Auth", href: "/lazy-auth", tagline: "Login that builds itself.", icon: icons.auth },
     ],
   },
   {
-    label: "Lazy Channels",
+    label: "Lazy Ops",
     items: [
-      { label: "Lazy Mail", href: "/lazy-mail", tagline: "Emails send themselves.", icon: icons.mail },
       { label: "Lazy Alert", href: "/lazy-alert", tagline: "Your biz, piped to Slack.", icon: icons.alert },
       { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Updates, zero effort.", icon: icons.telegram },
-      { label: "Lazy Contentful", href: "/lazy-contentful", tagline: "Two-way CMS sync.", icon: icons.contentful },
       { label: "Lazy Supabase", href: "/lazy-supabase", tagline: "Your database tells stories.", icon: icons.supabase },
-    ],
-  },
-  {
-    label: "Lazy Shield",
-    items: [
       { label: "Lazy Security", href: "/lazy-security", tagline: "Autonomous pentesting.", icon: icons.security },
-      { label: "Lazy Auth", href: "/lazy-auth", tagline: "Login that builds itself.", icon: icons.auth },
     ],
   },
 ];
