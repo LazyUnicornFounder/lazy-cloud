@@ -1,9 +1,22 @@
 import { useState, useEffect, useCallback } from "react";
-import { Copy, Check, ChevronDown, ChevronRight, Pencil, History, Save, X } from "lucide-react";
+import { Copy, Check, ChevronDown, ChevronRight, Pencil, History, Save, X, Github } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { savePromptVersion, type PromptVersion } from "@/hooks/usePrompt";
 import { frequencyTiers } from "@/components/lazy-blogger/frequencyData";
+
+async function syncToGitHub(product: string, version: string, promptText: string, allPrompts?: { product: string; version: string; prompt_text: string }[]) {
+  try {
+    const { data, error } = await supabase.functions.invoke("sync-prompts-github", {
+      body: { product, version, prompt_text: promptText, all_prompts: allPrompts || [] },
+    });
+    if (error) throw error;
+    return { success: true };
+  } catch (err) {
+    console.error("GitHub sync failed:", err);
+    return { success: false, error: err };
+  }
+}
 
 const PRODUCTS = [
   // Unicorn
@@ -74,11 +87,13 @@ function PromptEditor({
   product,
   current,
   history,
+  allVersions,
   onSaved,
 }: {
   product: typeof PRODUCTS[number];
   current: PromptVersion | null;
   history: PromptVersion[];
+  allVersions: PromptVersion[];
   onSaved: () => void;
 }) {
   const [editing, setEditing] = useState(false);
@@ -105,6 +120,18 @@ function PromptEditor({
     toast.success(`${product.label} prompt updated to ${newVersion}`);
     setEditing(false);
     onSaved();
+
+    // Auto-sync to GitHub
+    const currentPrompts = allVersions
+      .filter(v => v.is_current && v.product !== product.key)
+      .map(v => ({ product: v.product, version: v.version, prompt_text: v.prompt_text }));
+    currentPrompts.push({ product: product.key, version: newVersion, prompt_text: updatedText });
+    const syncResult = await syncToGitHub(product.key, newVersion, updatedText, currentPrompts);
+    if (syncResult.success) {
+      toast.success("Synced to GitHub ✓");
+    } else {
+      toast.error("GitHub sync failed — prompt saved locally");
+    }
   };
 
   // For blogger, show frequency variants
@@ -237,6 +264,7 @@ const AdminPrompts = () => {
             product={product}
             current={current}
             history={productVersions}
+            allVersions={allVersions}
             onSaved={fetchAll}
           />
         );
