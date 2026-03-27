@@ -40,6 +40,58 @@ export interface EngineCategory {
 
 export const ENGINE_CATEGORIES: EngineCategory[] = [
   {
+    label: "Lazy Unicorn",
+    engines: [
+      {
+        name: "Lazy Run",
+        description: "Installs all twenty-two engines in one prompt",
+        currentLevel: 4,
+        link: "/lazy-run",
+        levels: [
+          "You install each tool manually. Days per integration.",
+          "Copy-paste guides speed things up. Still hours per engine.",
+          "You batch-install a few engines at a time.",
+          "One prompt. Twenty-two engines. Everything wired in minutes.",
+          "It detects what you're missing and suggests engines automatically. Coming soon.",
+          "It benchmarks your stack against similar businesses and optimises. Coming soon.",
+        ],
+      },
+      {
+        name: "Lazy Admin",
+        description: "Unified dashboard for every engine in your stack",
+        currentLevel: 3,
+        link: "/lazy-admin",
+        levels: [
+          "You check each engine in its own dashboard. Tab hell.",
+          "Bookmarks help. You still context-switch constantly.",
+          "Weekly check-in across dashboards. Things fall through cracks.",
+          "One dashboard. Every engine. Status, errors, and actions in sixty seconds.",
+          "It surfaces only what needs attention. Coming soon.",
+          "It learns your review patterns and pre-prioritises. Coming soon.",
+        ],
+      },
+    ],
+  },
+  {
+    label: "Lazy Design",
+    engines: [
+      {
+        name: "Lazy Design",
+        description: "Upgrades your site with 21st.dev components matched to your brand",
+        currentLevel: 3,
+        link: "/lazy-design",
+        levels: [
+          "You browse component libraries manually. Hours per section.",
+          "You find components but still adapt and integrate them yourself.",
+          "You batch-upgrade pages on a schedule. Still manual.",
+          "New pages detected. Component suggestions generated automatically.",
+          "It applies upgrades matched to your brand without asking. Coming soon.",
+          "It learns which component styles convert best and optimises. Coming soon.",
+        ],
+      },
+    ],
+  },
+  {
     label: "Lazy Content",
     engines: [
       {
@@ -95,6 +147,53 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "Competitor changes detected. Intelligence fed to your engines automatically.",
           "It publishes content from what it discovers. Coming soon.",
           "It learns which intelligence drives traffic. Coming soon.",
+        ],
+      },
+      {
+        name: "Lazy Contentful",
+        description: "Two-way content sync with Contentful",
+        currentLevel: 3,
+        link: "/lazy-contentful",
+        levels: [
+          "You copy content between systems by hand.",
+          "CSV export/import. Always behind.",
+          "Nightly sync job. One-directional and fragile.",
+          "Two-way sync. Every post appears in both systems automatically.",
+          "It adapts content format per Contentful content type. Coming soon.",
+          "It prioritises what syncs based on performance. Coming soon.",
+        ],
+      },
+    ],
+  },
+  {
+    label: "Lazy Media",
+    engines: [
+      {
+        name: "Lazy Voice",
+        description: "Narrates every post into a podcast episode automatically",
+        currentLevel: 3,
+        link: "/lazy-voice",
+        levels: [
+          "You record every episode yourself.",
+          "Text-to-speech helps. You still review and upload.",
+          "Batch-generate audio on a schedule.",
+          "Every new post gets narrated and added to your RSS feed automatically.",
+          "It tells your blog to write more of what people listen to. Coming soon.",
+          "It rewrites narration scripts to reduce listener drop-off. Coming soon.",
+        ],
+      },
+      {
+        name: "Lazy Stream",
+        description: "Turns every Twitch stream into indexed content",
+        currentLevel: 4,
+        link: "/lazy-stream",
+        levels: [
+          "You write recaps and clip highlights manually. Nobody does this.",
+          "Transcription tools help. Still hours per stream.",
+          "You batch-process last week's streams on Sunday.",
+          "Stream ends. Content pipeline fires.",
+          "Stream ends. Recap, SEO article, and highlights post publish while you eat dinner.",
+          "It learns which stream topics drive traffic and adjusts templates. Coming soon.",
         ],
       },
       {
@@ -161,39 +260,6 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
     ],
   },
   {
-    label: "Lazy Media",
-    engines: [
-      {
-        name: "Lazy Voice",
-        description: "Narrates every post into a podcast episode automatically",
-        currentLevel: 3,
-        link: "/lazy-voice",
-        levels: [
-          "You record every episode yourself.",
-          "Text-to-speech helps. You still review and upload.",
-          "Batch-generate audio on a schedule.",
-          "Every new post gets narrated and added to your RSS feed automatically.",
-          "It tells your blog to write more of what people listen to. Coming soon.",
-          "It rewrites narration scripts to reduce listener drop-off. Coming soon.",
-        ],
-      },
-      {
-        name: "Lazy Stream",
-        description: "Turns every Twitch stream into indexed content",
-        currentLevel: 4,
-        link: "/lazy-stream",
-        levels: [
-          "You write recaps and clip highlights manually. Nobody does this.",
-          "Transcription tools help. Still hours per stream.",
-          "You batch-process last week's streams on Sunday.",
-          "Stream ends. Content pipeline fires.",
-          "Stream ends. Recap, SEO article, and highlights post publish while you eat dinner.",
-          "It learns which stream topics drive traffic and adjusts templates. Coming soon.",
-        ],
-      },
-    ],
-  },
-  {
     label: "Lazy Dev",
     engines: [
       {
@@ -225,6 +291,20 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
         ],
       },
       {
+        name: "Lazy Supabase",
+        description: "Narrates your database growth story automatically",
+        currentLevel: 3,
+        link: "/lazy-supabase",
+        levels: [
+          "You notice milestones days later. Maybe tweet about it.",
+          "Basic error alerts. You get paged when it's down.",
+          "Weekly metrics email. You read it sometimes.",
+          "Hit 1,000 users? Celebration post publishes itself. Error spike? You're alerted.",
+          "It feeds growth patterns into your content strategy. Coming soon.",
+          "It detects anomalies before they become problems. Coming soon.",
+        ],
+      },
+      {
         name: "Lazy Linear",
         description: "Turns Linear cycles into product update content",
         currentLevel: 3,
@@ -243,6 +323,20 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
   {
     label: "Lazy Channels",
     engines: [
+      {
+        name: "Lazy Mail",
+        description: "Subscriber capture, welcome sequences, and AI newsletters via Resend",
+        currentLevel: 3,
+        link: "/lazy-mail",
+        levels: [
+          "You write and send every email manually. Subscribers? What subscribers.",
+          "Mailchimp helps. You still write every newsletter.",
+          "Drip sequences exist. You wrote them once and forgot.",
+          "New post publishes → newsletter written and sent automatically. Subject lines rewrite themselves.",
+          "It segments audiences and personalises content per reader. Coming soon.",
+          "It predicts churn and re-engages subscribers before they leave. Coming soon.",
+        ],
+      },
       {
         name: "Lazy Alert",
         description: "Every engine event reported to Slack in real time",
@@ -271,48 +365,6 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "It alerts you before problems compound. Coming soon.",
         ],
       },
-      {
-        name: "Lazy Contentful",
-        description: "Two-way content sync with Contentful",
-        currentLevel: 3,
-        link: "/lazy-contentful",
-        levels: [
-          "You copy content between systems by hand.",
-          "CSV export/import. Always behind.",
-          "Nightly sync job. One-directional and fragile.",
-          "Two-way sync. Every post appears in both systems automatically.",
-          "It adapts content format per Contentful content type. Coming soon.",
-          "It prioritises what syncs based on performance. Coming soon.",
-        ],
-      },
-      {
-        name: "Lazy Supabase",
-        description: "Narrates your database growth story automatically",
-        currentLevel: 3,
-        link: "/lazy-supabase",
-        levels: [
-          "You notice milestones days later. Maybe tweet about it.",
-          "Basic error alerts. You get paged when it's down.",
-          "Weekly metrics email. You read it sometimes.",
-          "Hit 1,000 users? Celebration post publishes itself. Error spike? You're alerted.",
-          "It feeds growth patterns into your content strategy. Coming soon.",
-          "It detects anomalies before they become problems. Coming soon.",
-        ],
-      },
-      {
-        name: "Lazy Mail",
-        description: "Subscriber capture, welcome sequences, and AI newsletters via Resend",
-        currentLevel: 3,
-        link: "/lazy-mail",
-        levels: [
-          "You write and send every email manually. Subscribers? What subscribers.",
-          "Mailchimp helps. You still write every newsletter.",
-          "Drip sequences exist. You wrote them once and forgot.",
-          "New post publishes → newsletter written and sent automatically. Subject lines rewrite themselves.",
-          "It segments audiences and personalises content per reader. Coming soon.",
-          "It predicts churn and re-engages subscribers before they leave. Coming soon.",
-        ],
-      },
     ],
   },
   {
@@ -330,25 +382,6 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "Every deploy triggers a scan. Critical findings alert you instantly.",
           "It writes fix PRs for vulnerabilities automatically. Coming soon.",
           "It learns your attack surface and prioritises what matters. Coming soon.",
-        ],
-      },
-    ],
-  },
-  {
-    label: "Lazy Design",
-    engines: [
-      {
-        name: "Lazy Design",
-        description: "Upgrades your site with 21st.dev components matched to your brand",
-        currentLevel: 3,
-        link: "/lazy-design",
-        levels: [
-          "You browse component libraries manually. Hours per section.",
-          "You find components but still adapt and integrate them yourself.",
-          "You batch-upgrade pages on a schedule. Still manual.",
-          "New pages detected. Component suggestions generated automatically.",
-          "It applies upgrades matched to your brand without asking. Coming soon.",
-          "It learns which component styles convert best and optimises. Coming soon.",
         ],
       },
     ],
