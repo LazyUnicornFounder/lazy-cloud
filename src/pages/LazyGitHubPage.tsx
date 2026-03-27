@@ -299,7 +299,7 @@ const LazyGitHubPage = () => {
             <AutopilotHeadline product="lazy-github" />
 
             <div className="flex items-center gap-4 flex-wrap">
-              <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+              <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
                 Lazy GitHub
               </h1>
               <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">
@@ -343,7 +343,7 @@ const LazyGitHubPage = () => {
       <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-4xl mx-auto">
           <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>What it installs</p>
-          <h2 className="mt-2 mb-12" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
+          <h2 className="mt-2 mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
             Every commit becomes content. Automatically.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
@@ -369,7 +369,7 @@ const LazyGitHubPage = () => {
       <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#111110" }}>
         <div className="max-w-4xl mx-auto">
           <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>The problem</p>
-          <h2 className="mt-2 mb-12" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
+          <h2 className="mt-2 mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
             You ship every day. Your audience sees nothing.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
@@ -391,7 +391,7 @@ const LazyGitHubPage = () => {
       <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-3xl mx-auto">
           <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Roadmap</p>
-          <h2 className="mt-2 mb-8" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
+          <h2 className="mt-2 mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
             A public roadmap that maintains itself.
           </h2>
           <p className="font-body text-sm text-foreground/50 leading-relaxed">
@@ -412,7 +412,7 @@ const LazyGitHubPage = () => {
       {/* Bottom CTA */}
       <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#111110" }}>
         <div className="max-w-3xl mx-auto text-center">
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
             Your commits are content. Lazy GitHub publishes them.
           </h2>
           <p className="mt-6 font-body text-sm text-foreground/50 leading-relaxed max-w-xl mx-auto">
@@ -424,7 +424,7 @@ const LazyGitHubPage = () => {
           <p className="mt-4 font-body text-sm text-foreground/65 max-w-md mx-auto leading-relaxed">
             Open your Lovable project, paste it into the chat, add your GitHub credentials. Your next commit will be published automatically.
           </p>
-          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>
+          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>
             Made for Lovable
           </p>
         </div>

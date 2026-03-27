@@ -338,7 +338,7 @@ export default function LazyAlertPage() {
             <AutopilotHeadline product="lazy-alert" />
 
             <div className="flex items-center gap-4 flex-wrap">
-              <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+              <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
                 Lazy Alert
               </h1>
               <SlackBadge />
@@ -473,7 +473,7 @@ export default function LazyAlertPage() {
       {/* ── BOTTOM CTA ── */}
       <section className="py-20 md:py-28 px-6 md:px-12 border-t border-border">
         <div className="max-w-3xl mx-auto text-center">
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+          <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", color: "#f0ead6", lineHeight: 1.1 }}>
             Your autonomous business.
             <br />
             In your Slack.
@@ -491,7 +491,7 @@ export default function LazyAlertPage() {
             Open your Lovable project, paste it into the chat, add your Slack webhook URL. Your business starts talking to you today.
           </motion.p>
 
-          <p className="mt-16" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+          <p className="mt-16" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase" }}>
             Made for Lovable
           </p>
         </div>

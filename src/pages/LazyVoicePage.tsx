@@ -353,7 +353,7 @@ function ManifestoPlayer() {
             Listen — Narrated by AI
           </p>
           <h3
-            style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.3rem, 2.5vw, 1.8rem)", color: "#f0ead6", lineHeight: 1.2 }}
+            style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.3rem, 2.5vw, 1.8rem)", color: "#f0ead6", lineHeight: 1.2 }}
             className="mb-6"
           >
             Here's to the lazy ones.
@@ -443,7 +443,7 @@ export default function LazyVoicePage() {
               <AutopilotHeadline product="lazy-voice" />
 
               <div className="flex items-center gap-4 flex-wrap">
-                <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+                <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
                   Lazy Voice
                 </h1>
                 <ElevenLabsBadge />

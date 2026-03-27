@@ -31,7 +31,7 @@ function CopyPromptButton({ className = "", onCopy, promptText }: { className?: 
     <button
       onClick={handleCopy}
       className={`inline-flex items-center gap-2 text-sm tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity active:scale-[0.97] ${className}`}
-      style={{ fontFamily: "'Playfair Display', serif", backgroundColor: cream, color: bgDark, borderRadius: 0 }}
+      style={{ fontFamily: "'Space Grotesk', sans-serif", backgroundColor: cream, color: bgDark, borderRadius: 0 }}
     >
       {copied ? <><Check size={16} /> Copied ✓</> : <><Copy size={16} /> Copy the Prompt</>}
     </button>
@@ -186,18 +186,18 @@ const LazyShopPage = () => {
           {/* Main headline */}
           <AutopilotHeadline product="lazy-shop" />
           <div className="space-y-2 mt-4">
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: cream, lineHeight: 1.15 }}>
+            <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: cream, lineHeight: 1.15 }}>
               Lovable builds your store.
             </p>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: cream, opacity: 0.55, lineHeight: 1.15 }}>
+            <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: cream, opacity: 0.55, lineHeight: 1.15 }}>
               Shopify runs your store.
             </p>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: gold, lineHeight: 1.15 }}>
+            <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)", color: gold, lineHeight: 1.15 }}>
               Lazy Unicorn automates your store.
             </p>
           </div>
 
-          <p className="tracking-[0.2em] uppercase mt-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(0.7rem, 1.2vw, 0.9rem)", color: cream, opacity: 0.25 }}>
+          <p className="tracking-[0.2em] uppercase mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1.2vw, 0.9rem)", color: cream, opacity: 0.25 }}>
             One prompt, everything runs itself.
           </p>
 
@@ -206,7 +206,7 @@ const LazyShopPage = () => {
             <button
               onClick={scrollToHow}
               className="text-sm tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity border"
-              style={{ fontFamily: "'Playfair Display', serif", color: cream, opacity: 0.4, borderColor: "rgba(240,234,214,0.12)", borderRadius: 0 }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif", color: cream, opacity: 0.4, borderColor: "rgba(240,234,214,0.12)", borderRadius: 0 }}
             >
               See How It Works
             </button>
@@ -233,7 +233,7 @@ const LazyShopPage = () => {
             </div>
           </div>
 
-          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: cream, opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "2rem" }}>
+          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: cream, opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "2rem" }}>
             Made for Lovable
           </p>
         </motion.div>
@@ -257,14 +257,14 @@ const LazyShopPage = () => {
                 <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.8rem", color: cream, lineHeight: 1.1 }}>
                   {actor.label === "Lazy Unicorn" ? "Lazy" : ""}
                 </p>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.8rem", color: cream, lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.8rem", color: cream, lineHeight: 1.1 }}>
                   {actor.label === "Lazy Unicorn" ? "Unicorn" : actor.label}
                 </p>
               </div>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: gold, opacity: 0.8 }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: gold, opacity: 0.8 }}>
                 {actor.role}
               </p>
-              <p className="text-center max-w-[220px]" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.75rem", color: cream, opacity: 0.35, lineHeight: 1.6 }}>
+              <p className="text-center max-w-[220px]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", color: cream, opacity: 0.35, lineHeight: 1.6 }}>
                 {actor.desc}
               </p>
             </motion.div>
@@ -276,7 +276,7 @@ const LazyShopPage = () => {
       <section ref={howRef} className="relative z-10 py-24 px-6" style={{ backgroundColor: bgDark }}>
         <div className="max-w-3xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", color: cream, fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-4">
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", color: cream, fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-4">
               Copy. Paste. <span style={{ color: gold }}>Sell.</span>
             </h2>
             <p className="text-sm leading-relaxed max-w-xl mx-auto mb-14" style={{ color: cream, opacity: 0.5 }}>
@@ -294,8 +294,8 @@ const LazyShopPage = () => {
                 className="border p-6 text-left"
                 style={{ borderColor: "rgba(240,234,214,0.08)" }}
               >
-                <span style={{ fontFamily: "'Playfair Display', serif", color: gold, opacity: 0.25, fontSize: "2rem" }} className="font-bold block mb-3">{s.step}</span>
-                <h3 className="text-sm tracking-[0.12em] uppercase font-bold mb-2" style={{ fontFamily: "'Playfair Display', serif", color: cream }}>{s.title}</h3>
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", color: gold, opacity: 0.25, fontSize: "2rem" }} className="font-bold block mb-3">{s.step}</span>
+                <h3 className="text-sm tracking-[0.12em] uppercase font-bold mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif", color: cream }}>{s.title}</h3>
                 <p className="text-[13px] leading-relaxed" style={{ color: cream, opacity: 0.35 }}>{s.desc}</p>
               </motion.div>
             ))}
@@ -306,7 +306,7 @@ const LazyShopPage = () => {
       {/* ── Features — checkerboard grid ── */}
       <section className="relative z-10">
         <div className="max-w-3xl mx-auto text-center py-16 px-6">
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ fontFamily: "'Playfair Display', serif", color: cream, fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-4">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ fontFamily: "'Space Grotesk', sans-serif", color: cream, fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-4">
             Everything a dropshipping business needs — <span style={{ color: gold }}>automated.</span>
           </motion.h2>
         </div>
@@ -328,7 +328,7 @@ const LazyShopPage = () => {
                 <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: cream, opacity: 0.5 }}>
                   {f.title}
                 </p>
-                <p className="max-w-[280px]" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: cream, opacity: 0.4, lineHeight: 1.6 }}>
+                <p className="max-w-[280px]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: cream, opacity: 0.4, lineHeight: 1.6 }}>
                   {f.desc}
                 </p>
               </motion.div>
@@ -340,7 +340,7 @@ const LazyShopPage = () => {
       {/* ── Self-Improving Loop ── */}
       <section className="relative z-10 py-24 px-6" style={{ backgroundColor: bgDark }}>
         <div className="max-w-3xl mx-auto text-center">
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ fontFamily: "'Playfair Display', serif", color: cream, fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-16">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ fontFamily: "'Space Grotesk', sans-serif", color: cream, fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-16">
             The shop that gets <span style={{ color: gold }}>better every week</span> without you.
           </motion.h2>
           <div className="relative w-full max-w-lg mx-auto aspect-square flex items-center justify-center">
@@ -362,7 +362,7 @@ const LazyShopPage = () => {
                 >
                   <span
                     className="inline-flex items-center justify-center w-8 h-8 text-sm font-bold mb-1"
-                    style={{ fontFamily: "'Playfair Display', serif", backgroundColor: cream, color: bgDark }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif", backgroundColor: cream, color: bgDark }}
                   >
                     {i + 1}
                   </span>
@@ -408,15 +408,15 @@ const LazyShopPage = () => {
           <ShopIcon />
           <div className="mt-6">
             <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: cream, lineHeight: 1.1 }}>Lazy</p>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", color: cream, lineHeight: 1.1 }}>Shop</p>
+            <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", color: cream, lineHeight: 1.1 }}>Shop</p>
           </div>
-          <p className="mt-6 max-w-lg mx-auto leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", color: cream, opacity: 0.5 }}>
+          <p className="mt-6 max-w-lg mx-auto leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.9rem", color: cream, opacity: 0.5 }}>
             Lovable builds it. Shopify runs it. Lazy Unicorn automates it. One prompt installs everything into your existing Lovable project.
           </p>
           <div className="mt-8">
             <CopyPromptButton onCopy={handleCopy} promptText={PLACEHOLDER_PROMPT} />
           </div>
-          <p className="mt-4" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: cream, opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+          <p className="mt-4" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: cream, opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase" }}>
             Made for Lovable
           </p>
         </motion.div>

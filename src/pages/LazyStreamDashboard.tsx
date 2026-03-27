@@ -101,7 +101,7 @@ const LazyStreamDashboard = () => {
         <div className="flex items-center justify-between mb-8">
           <div>
             <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Dashboard</p>
-            <h1 className="mt-1" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "#f0ead6" }}>Lazy Stream</h1>
+            <h1 className="mt-1" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "#f0ead6" }}>Lazy Stream</h1>
           </div>
           <div className="flex items-center gap-2">
             {isLive && <span className="font-body text-xs px-2 py-1 bg-red-500/20 text-red-400 border border-red-500/30">● LIVE</span>}

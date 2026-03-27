@@ -41,7 +41,7 @@ const StreamsPage = () => {
 
       <main className="pt-32 pb-20 px-6 md:px-12 max-w-4xl mx-auto">
         <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Streams</p>
-        <h1 className="mt-2 mb-10" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
+        <h1 className="mt-2 mb-10" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
           Stream Archive
         </h1>
 
