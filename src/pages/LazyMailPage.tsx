@@ -128,17 +128,19 @@ export default function LazyMailPage() {
         </section>
 
         {/* How it works */}
-        <section className="mt-28 px-6 md:px-12 max-w-4xl mx-auto">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }} style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", color: "#f0ead6", textAlign: "center", marginBottom: "2.5rem" }}>
-            Four steps. Then it runs forever.
-          </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border">
-            {steps.map((s, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.5, delay: i * 0.08 }} className="bg-card p-8">
-                <span className="font-display text-2xl font-bold text-foreground/10">{s.num}</span>
-                <p className="mt-2 font-body text-sm text-foreground/60 leading-relaxed">{s.title}</p>
-              </motion.div>
-            ))}
+        <section id="how-it-works" className="py-20 md:py-28 px-6 border-t border-border">
+          <div className="max-w-5xl mx-auto">
+            <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }} className="font-display text-2xl md:text-3xl font-bold tracking-tight text-center mb-14">
+              Four steps. Then it runs forever.
+            </motion.h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {steps.map((s, i) => (
+                <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.5, delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
+                  <span className="w-10 h-10 bg-primary/10 text-primary font-display font-bold text-sm flex items-center justify-center">{i + 1}</span>
+                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{s.title}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
