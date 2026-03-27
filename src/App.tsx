@@ -42,6 +42,7 @@ import AutonomyPage from "./pages/AutonomyPage.tsx";
 import LazySecurityPage from "./pages/LazySecurityPage.tsx";
 import LazyMailPage from "./pages/LazyMailPage.tsx";
 import LazyDesignPage from "./pages/LazyDesignPage.tsx";
+import LazyAuthPage from "./pages/LazyAuthPage.tsx";
 import LazyAdminPage from "./pages/LazyAdminPage.tsx";
 import LazyLaunchPage from "./pages/LazyLaunchPage.tsx";
 import ChangelogPage from "./pages/ChangelogPage.tsx";
@@ -97,6 +98,7 @@ const App = () => (
                 <Route path="contentful" element={<AdminPlaceholderPage name="Lazy Contentful" />} />
                 <Route path="supabase-monitor" element={<AdminPlaceholderPage name="Lazy Supabase" />} />
               <Route path="security" element={<AdminPlaceholderPage name="Lazy Security" />} />
+              <Route path="auth" element={<AdminPlaceholderPage name="Lazy Auth" />} />
               <Route path="design" element={<AdminPlaceholderPage name="Lazy Design" />} />
               <Route path="mail" element={<AdminPlaceholderPage name="Lazy Mail" />} />
                 <Route path="changelog" element={<AdminChangelogPage />} />
@@ -138,6 +140,7 @@ const App = () => (
               <Route path="/lazy-security" element={<LazySecurityPage />} />
               <Route path="/lazy-mail" element={<LazyMailPage />} />
               <Route path="/lazy-design" element={<LazyDesignPage />} />
+              <Route path="/lazy-auth" element={<LazyAuthPage />} />
               <Route path="/changelog" element={<ChangelogPage />} />
               <Route path="/upgrade-guide" element={<UpgradeGuidePage />} />
               <Route path="/how-it-works" element={<HowItWorksPage />} />

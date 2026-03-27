@@ -19,7 +19,7 @@ Because while you were doing it yourself, they shipped.
 
 They turn streams into articles. Commits into changelogs. Payments into optimised revenue. Customers into conversations. Posts into podcasts. Sites into businesses.
 
-Some see a blank text editor. The lazy ones see twenty-two engines that will never need one.
+Some see a blank text editor. The lazy ones see twenty-three engines that will never need one.
 
 And the sites they run on Lovable — the ones that publish four posts before sunrise, that text customers before you've had coffee, that pentest themselves while you sleep, that get cited by ChatGPT without you asking — they change things.
 

@@ -273,6 +273,22 @@ const integrations: Integration[] = [
     icon: <Palette size={20} />,
     note: "Uses the 21st.dev component library — no API key required",
   },
+  {
+    name: "Google OAuth",
+    category: "Lazy Shield",
+    description: "Add Google Sign-In to your Lovable project with one prompt — no Google Cloud configuration required.",
+    unlocks: [
+      "Add Sign in with Google to your login page with zero OAuth setup.",
+      "Protect any route so only authenticated users can access it.",
+      "Assign roles like admin, moderator, and user to control access.",
+      "Build a user management dashboard that shows signups, last seen, and role.",
+      "Export your entire user list as a CSV with one click.",
+    ],
+    engine: "Lazy Auth",
+    engineHref: "/lazy-auth",
+    icon: <Shield size={20} />,
+    note: "Uses Lovable Cloud for OAuth — no Google Cloud setup needed",
+  },
 ];
 
 export default function UseCasesPage() {

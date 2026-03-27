@@ -163,6 +163,13 @@ const products: Product[] = [
     pro: { price: "$19", features: ["Hosted version", "Automated report delivery before meetings", "Multi-project security dashboard", "Slack and Telegram alerts included"], comingSoon: true },
   },
   {
+    name: "Lazy Auth",
+    tagline: "Autonomous authentication engine",
+    link: "/lazy-auth",
+    free: ["Setup prompt included", "Google Sign-In integration", "Email/password and magic link login", "Protected routes and role-based access", "User management dashboard"],
+    pro: { price: "$19", features: ["Hosted version — zero config", "Multi-tenant support", "Advanced session analytics", "Custom OAuth providers"], comingSoon: true },
+  },
+  {
     name: "Lazy Design",
     tagline: "Autonomous design upgrade engine",
     link: "/lazy-design",

@@ -21,6 +21,7 @@ const PRODUCT_WORDS: Record<string, { word: string; emoji: string }> = {
   "lazy-alert": { word: "alerts", emoji: "🔔" },
   "lazy-telegram": { word: "Telegram", emoji: "✈️" },
   "lazy-security": { word: "security", emoji: "🛡️" },
+  "lazy-auth": { word: "auth", emoji: "🔐" },
   "lazy-shop": { word: "stores", emoji: "🛒" },
 };
 

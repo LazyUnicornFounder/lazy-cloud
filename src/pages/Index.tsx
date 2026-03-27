@@ -32,6 +32,7 @@ const rotatingWords = [
   { word: "alerts", emoji: "🔔" },            // Lazy Alert
   { word: "Telegram", emoji: "✈️" },          // Lazy Telegram
   { word: "security", emoji: "🛡️" },          // Lazy Security
+  { word: "auth", emoji: "🔐" },              // Lazy Auth
 ];
 
 function RotatingHeadline() {
@@ -123,6 +124,7 @@ const products = [
   { cursive: "Lazy", name: "Linear", link: "/lazy-linear", tagline: "Issues become changelogs." },
   { cursive: "Lazy", name: "Supabase", link: "/lazy-supabase", tagline: "Your database tells its story." },
   { cursive: "Lazy", name: "Security", link: "/lazy-security", tagline: "Ship safe, stay safe." },
+  { cursive: "Lazy", name: "Auth", link: "/lazy-auth", tagline: "Login that builds itself." },
   
   { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More engines loading." },
 ];
@@ -289,6 +291,14 @@ const sketches: Record<string, JSX.Element> = {
     <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M60 20 L90 35 L90 60 Q90 85 60 100 Q30 85 30 60 L30 35 Z" />
       <path d="M48 58 L56 66 L74 48" />
+    </svg>
+  ),
+  Auth: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="35" y="50" width="50" height="40" rx="4" />
+      <path d="M45 50 L45 38 Q45 22 60 22 Q75 22 75 38 L75 50" />
+      <circle cx="60" cy="68" r="5" />
+      <line x1="60" y1="73" x2="60" y2="80" />
     </svg>
   ),
   Mail: (
@@ -461,7 +471,7 @@ const Index = () => {
             <p>You can quote them, disagree with them, try to outwork them. The only thing you can't do is ignore what they've built.</p>
             <p style={{ color: "rgba(240,234,214,0.65)" }}>Because while you were doing it yourself, they shipped.</p>
             <p>They turn streams into articles. Commits into changelogs. Payments into optimised revenue. Customers into conversations. Posts into podcasts. Sites into businesses.</p>
-            <p>Some see a blank text editor. The lazy ones see twenty-two engines that will never need one.</p>
+            <p>Some see a blank text editor. The lazy ones see twenty-three engines that will never need one.</p>
             <p>And the sites they run on Lovable — the ones that publish four posts before sunrise, that text customers before you've had coffee, that pentest themselves while you sleep, that get cited by ChatGPT without you asking — they change things.</p>
             <p style={{ color: "#f0ead6", fontWeight: 600 }}>Because the people who are lazy enough to think they don't have to do everything manually, are the ones who actually do everything.</p>
           </div>

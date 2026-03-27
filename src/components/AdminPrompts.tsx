@@ -34,6 +34,7 @@ const PRODUCTS = [
   { key: "lazy-supabase", label: "⚡ Lazy Supabase" },
   // Shield
   { key: "lazy-security", label: "🛡️ Lazy Security" },
+  { key: "lazy-auth", label: "🔐 Lazy Auth" },
   { key: "lazy-design", label: "🎨 Lazy Design" },
 ] as const;
 

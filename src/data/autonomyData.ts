@@ -44,14 +44,14 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
     engines: [
       {
         name: "Lazy Run",
-        description: "Installs all twenty-two engines in one prompt",
+        description: "Installs all twenty-three engines in one prompt",
         currentLevel: 4,
         link: "/lazy-run",
         levels: [
           "You install each tool manually. Days per integration.",
           "Copy-paste guides speed things up. Still hours per engine.",
           "You batch-install a few engines at a time.",
-          "One prompt. Twenty-two engines. Everything wired in minutes.",
+          "One prompt. Twenty-three engines. Everything wired in minutes.",
           "It detects what you're missing and suggests engines automatically. Coming soon.",
           "It benchmarks your stack against similar businesses and optimises. Coming soon.",
         ],
@@ -382,6 +382,20 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "Every deploy triggers a scan. Critical findings alert you instantly.",
           "It writes fix PRs for vulnerabilities automatically. Coming soon.",
           "It learns your attack surface and prioritises what matters. Coming soon.",
+        ],
+      },
+      {
+        name: "Lazy Auth",
+        description: "Google Sign-In, email login, protected routes, and user management in one prompt",
+        currentLevel: 3,
+        link: "/lazy-auth",
+        levels: [
+          "You wire up auth manually. Hours debugging OAuth flows.",
+          "Auth libraries help. You still build every page and guard.",
+          "Templates speed things up. Still days per project.",
+          "One prompt installs login, signup, protected routes, and user management automatically.",
+          "It detects new routes and protects them without asking. Coming soon.",
+          "It analyses login drop-off and rewrites auth flows to convert better. Coming soon.",
         ],
       },
     ],

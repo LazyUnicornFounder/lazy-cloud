@@ -55,6 +55,7 @@ const columns = [
     label: "More",
     items: [
       { name: "Lazy Security", href: "/lazy-security" },
+      { name: "Lazy Auth", href: "/lazy-auth" },
       { name: "Lazy Design", href: "/lazy-design" },
       { name: "Blog", href: "/blog" },
       { name: "Autonomy", href: "/autonomy" },

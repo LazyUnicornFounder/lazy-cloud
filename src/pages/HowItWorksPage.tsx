@@ -65,9 +65,10 @@ const engineGroups = [
   },
   {
     label: "Lazy Shield",
-    description: "Autonomous pentesting and vulnerability monitoring.",
+    description: "Autonomous pentesting, vulnerability monitoring, and authentication.",
     engines: [
       { name: "Lazy Security", tagline: "Autonomous pentesting and vulnerability monitoring via Aikido.", href: "/lazy-security" },
+      { name: "Lazy Auth", tagline: "Google Sign-In, email login, protected routes, and user management in one prompt.", href: "/lazy-auth" },
     ],
   },
   {

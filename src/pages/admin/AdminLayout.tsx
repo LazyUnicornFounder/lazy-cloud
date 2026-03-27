@@ -51,6 +51,7 @@ const navGroups: NavGroup[] = [
   ]},
   { label: "Lazy Shield", items: [
     { label: "Security", path: "/admin/security", icon: Shield, engine: "security" },
+    { label: "Auth", path: "/admin/auth", icon: Shield, engine: "auth" },
   ]},
   { label: "Lazy Design", items: [
     { label: "Design", path: "/admin/design", icon: LayoutDashboard, engine: "design" },
