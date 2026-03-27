@@ -33,6 +33,7 @@ const rotatingWords = [
   { word: "Telegram", emoji: "✈️" },          // Lazy Telegram
   { word: "security", emoji: "🛡️" },          // Lazy Security
   { word: "auth", emoji: "🔐" },              // Lazy Auth
+  { word: "meetings", emoji: "📝" },          // Lazy Granola
 ];
 
 function RotatingHeadline() {
@@ -126,6 +127,7 @@ const products = [
   { cursive: "Lazy", name: "Linear", link: "/lazy-linear", tagline: "Launch autonomous issue content." },
   { cursive: "Lazy", name: "Design", link: "/lazy-design", tagline: "Launch autonomous UI upgrades." },
   { cursive: "Lazy", name: "Auth", link: "/lazy-auth", tagline: "Launch autonomous login flows." },
+  { cursive: "Lazy", name: "Granola", link: "/lazy-granola", tagline: "Launch autonomous meeting content." },
   // Lazy Ops
   { cursive: "Lazy", name: "Alert", link: "/lazy-alert", tagline: "Launch autonomous Slack alerts." },
   { cursive: "Lazy", name: "Telegram", link: "/lazy-telegram", tagline: "Launch autonomous Telegram updates." },
@@ -340,6 +342,17 @@ const sketches: Record<string, JSX.Element> = {
       <line x1="62" y1="68" x2="80" y2="68" />
       <line x1="62" y1="80" x2="88" y2="80" />
       <line x1="62" y1="88" x2="75" y2="88" />
+    </svg>
+  ),
+  Granola: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="30" y="25" width="60" height="70" rx="4" />
+      <line x1="42" y1="40" x2="78" y2="40" />
+      <line x1="42" y1="50" x2="72" y2="50" />
+      <line x1="42" y1="60" x2="75" y2="60" />
+      <line x1="42" y1="70" x2="65" y2="70" />
+      <circle cx="75" cy="75" r="12" />
+      <path d="M72 75 L75 78 L80 72" />
     </svg>
   ),
   "Coming Soon": (

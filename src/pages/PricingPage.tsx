@@ -153,6 +153,13 @@ const products: Product[] = [
     free: ["Setup prompt included", "Google Sign-In integration", "Email/password and magic link login", "Protected routes and role-based access", "User management dashboard"],
     pro: { price: "$19", features: ["Hosted version — zero config", "Multi-tenant support", "Advanced session analytics", "Custom OAuth providers"], comingSoon: true },
   },
+  {
+    name: "Lazy Granola",
+    tagline: "Autonomous meeting-to-content engine",
+    link: "/lazy-granola",
+    free: ["Setup prompt included", "Granola meeting sync", "Auto blog posts from meetings", "Customer intelligence extraction", "Slack summaries & Linear issues"],
+    pro: { price: "$19", features: ["Hosted version — zero config", "Multi-workspace support", "Advanced meeting classification", "Custom output templates"], comingSoon: true },
+  },
   // Lazy Ops
   {
     name: "Lazy Alert",

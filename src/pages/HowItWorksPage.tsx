@@ -53,6 +53,7 @@ const engineGroups = [
       { name: "Lazy Linear", tagline: "Launch autonomous issue content.", href: "/lazy-linear" },
       { name: "Lazy Design", tagline: "Launch autonomous UI upgrades.", href: "/lazy-design" },
       { name: "Lazy Auth", tagline: "Launch autonomous login flows.", href: "/lazy-auth" },
+      { name: "Lazy Granola", tagline: "Launch autonomous meeting content.", href: "/lazy-granola" },
     ],
   },
   {

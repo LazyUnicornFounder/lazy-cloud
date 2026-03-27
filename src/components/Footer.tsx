@@ -49,6 +49,7 @@ const columns = [
       { name: "Lazy Linear", href: "/lazy-linear" },
       { name: "Lazy Design", href: "/lazy-design" },
       { name: "Lazy Auth", href: "/lazy-auth" },
+      { name: "Lazy Granola", href: "/lazy-granola" },
     ],
   },
   {

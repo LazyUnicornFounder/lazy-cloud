@@ -231,6 +231,22 @@ const integrations: Integration[] = [
     icon: <Shield size={20} />,
     note: "Uses Lovable Cloud for OAuth — no Google Cloud setup needed",
   },
+  {
+    name: "Granola",
+    category: "Lazy Dev",
+    description: "Turn every meeting into blog posts, Slack summaries, Linear issues, and customer intelligence automatically.",
+    unlocks: [
+      "Publish a blog post from every customer discovery call automatically.",
+      "Send a Slack summary to your team the moment a meeting ends.",
+      "Create Linear issues from every action item without manual entry.",
+      "Extract customer signals — problems, feature requests, competitors — into a private intelligence feed.",
+      "Generate product update posts from planning sessions and product reviews.",
+    ],
+    engine: "Lazy Granola",
+    engineHref: "/lazy-granola",
+    icon: <FileText size={20} />,
+    note: "Uses the Granola MCP server — free to start",
+  },
   // Lazy Ops
   {
     name: "Slack",
