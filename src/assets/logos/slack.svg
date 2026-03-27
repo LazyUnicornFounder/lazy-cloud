@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Slack pinwheel logo - 4 coloured L-shapes -->
+  <!-- Green arm top-left -->
+  <path d="M100 56 A20 20 0 1 0 100 96 L100 96 L60 96 A20 20 0 1 0 60 56 Z" fill="#2EB67D"/>
+  <!-- Blue arm top-right -->
+  <path d="M200 100 A20 20 0 1 0 160 100 L160 100 L160 60 A20 20 0 1 0 200 60 Z" fill="#36C5F0"/>
+  <!-- Yellow arm bottom-right -->
+  <path d="M156 200 A20 20 0 1 0 156 160 L156 160 L196 160 A20 20 0 1 0 196 200 Z" fill="#ECB22E"/>
+  <!-- Red arm bottom-left -->
+  <path d="M56 156 A20 20 0 1 0 96 156 L96 156 L96 196 A20 20 0 1 0 56 196 Z" fill="#E01E5A"/>
+</svg>
