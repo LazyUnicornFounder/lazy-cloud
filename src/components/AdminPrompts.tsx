@@ -27,6 +27,7 @@ const PRODUCTS = [
   { key: "lazy-gitlab", label: "🦊 Lazy GitLab" },
   { key: "lazy-linear", label: "📋 Lazy Linear" },
   // Channels
+  { key: "lazy-mail", label: "📧 Lazy Mail" },
   { key: "lazy-alert", label: "🔔 Lazy Alert" },
   { key: "lazy-telegram", label: "✈️ Lazy Telegram" },
   { key: "lazy-contentful", label: "📦 Lazy Contentful" },

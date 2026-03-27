@@ -44,6 +44,7 @@ const engineCategories = [
   {
     label: "Lazy Channels",
     items: [
+      { name: "Lazy Mail", href: "/lazy-mail" },
       { name: "Lazy Alert", href: "/lazy-alert" },
       { name: "Lazy Telegram", href: "/lazy-telegram" },
       { name: "Lazy Contentful", href: "/lazy-contentful" },

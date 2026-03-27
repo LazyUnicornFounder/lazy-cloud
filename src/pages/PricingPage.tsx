@@ -121,6 +121,13 @@ const products: Product[] = [
     pro: { price: "$19", features: ["Hosted version", "Multi-team support", "Advanced content formatting", "Custom publishing rules"], comingSoon: true },
   },
   {
+    name: "Lazy Mail",
+    tagline: "Autonomous email engine",
+    link: "/lazy-mail",
+    free: ["Setup prompt included", "Subscriber capture with double opt-in", "AI-written welcome sequences", "Automated newsletter broadcasts", "Self-improving subject lines"],
+    pro: { price: "$19", features: ["Hosted version — zero config", "Multi-list segmentation", "A/B testing on subject lines", "Advanced open & click analytics"], comingSoon: true },
+  },
+  {
     name: "Lazy Alert",
     tagline: "Real-time Slack alerts for every engine",
     link: "/lazy-alert",

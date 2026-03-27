@@ -82,6 +82,7 @@ const productCategories = [
   {
     label: "Lazy Channels",
     items: [
+      { label: "Lazy Mail", href: "/lazy-mail", tagline: "Emails send themselves.", icon: icons.alert },
       { label: "Lazy Alert", href: "/lazy-alert", tagline: "Your business in Slack.", icon: icons.alert },
       { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Your business in Telegram.", icon: icons.telegram },
       { label: "Lazy Contentful", href: "/lazy-contentful", tagline: "Two-way CMS sync.", icon: icons.contentful },
