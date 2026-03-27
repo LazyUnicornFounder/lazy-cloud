@@ -121,6 +121,31 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
     return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
   }, []);
 
+  const renderCategory = (cat: typeof productCategories[number]) => (
+    <div key={cat.label} className="mb-3">
+      <p className="font-body text-[9px] tracking-[0.2em] uppercase text-foreground/20 font-semibold mb-1.5">
+        {cat.label}
+      </p>
+      {cat.items.map((item) => (
+        <a
+          key={item.label}
+          href={item.href}
+          onClick={() => { setOpen(false); onNavigate?.(); }}
+          className="group flex items-center gap-2 px-2 py-1.5 -mx-1 hover:bg-secondary/50 transition-colors"
+        >
+          <span className="text-foreground/20 group-hover:text-foreground/50 transition-colors flex-shrink-0">
+            {item.icon}
+          </span>
+          <div className="min-w-0">
+            <p className="font-display text-[11px] font-bold tracking-[0.06em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight">
+              {item.label}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  );
+
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button
@@ -133,36 +158,25 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
       {open && (
         <div
           className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 p-5"
-          style={{ width: 720 }}
+          style={{ width: 780 }}
         >
-          <div className="grid grid-cols-3 gap-x-6 gap-y-1">
-            {productCategories.map((cat) => (
-              <div key={cat.label}>
-                <p className="font-body text-[9px] tracking-[0.2em] uppercase text-foreground/20 font-semibold mb-1.5 mt-2 first:mt-0">
-                  {cat.label}
-                </p>
-                {cat.items.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => { setOpen(false); onNavigate?.(); }}
-                    className="group flex items-center gap-2.5 px-2 py-1.5 -mx-1 hover:bg-secondary/50 transition-colors"
-                  >
-                    <span className="text-foreground/20 group-hover:text-foreground/50 transition-colors flex-shrink-0">
-                      {item.icon}
-                    </span>
-                    <div className="min-w-0">
-                      <p className="font-display text-[11px] font-bold tracking-[0.06em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight">
-                        {item.label}
-                      </p>
-                      <p className="font-body text-[9px] text-foreground/25 group-hover:text-foreground/40 transition-colors leading-snug">
-                        {item.tagline}
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            ))}
+          <div className="flex gap-6">
+            {/* Column 1: Lazy Unicorn + Lazy Design + Lazy Commerce */}
+            <div className="flex-1 min-w-0">
+              {[productCategories[0], productCategories[1], productCategories[3]].map(renderCategory)}
+            </div>
+            {/* Column 2: Lazy Content */}
+            <div className="flex-1 min-w-0">
+              {[productCategories[2]].map(renderCategory)}
+            </div>
+            {/* Column 3: Lazy Media + Lazy Dev */}
+            <div className="flex-1 min-w-0">
+              {[productCategories[4], productCategories[5]].map(renderCategory)}
+            </div>
+            {/* Column 4: Lazy Channels + Lazy Shield */}
+            <div className="flex-1 min-w-0">
+              {[productCategories[6], productCategories[7]].map(renderCategory)}
+            </div>
           </div>
         </div>
       )}
