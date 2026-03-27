@@ -447,10 +447,10 @@ export default function LazyRunPage() {
         <div className="max-w-3xl mx-auto">
           <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.5 }}>
             <div className="flex items-center gap-3 mb-6">
-              <span className="inline-block font-display text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 border border-foreground/20 text-foreground/50">
+              <span className="inline-block font-display text-[12px] font-bold tracking-[0.2em] uppercase px-3 py-1 border border-foreground/20 text-foreground/50">
                 INCLUDES ALL LAZY ENGINES
               </span>
-              <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+              <span className="bg-foreground text-background text-[12px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
             </div>
           </motion.div>
           <AutopilotHeadline product="lazy-run" />
@@ -513,14 +513,14 @@ export default function LazyRunPage() {
                 transition={{ delay: i * 0.05 }}
                 className="border border-border p-6 bg-card hover:border-foreground/20 transition-colors group"
               >
-                <e.icon size={20} className="text-foreground/30 mb-3 group-hover:text-foreground/60 transition-colors" />
+                <e.icon size={20} className="text-foreground/45 mb-3 group-hover:text-foreground/60 transition-colors" />
                 <h3 className="font-display text-sm font-bold mb-1">{e.name}</h3>
                 <p className="font-body text-xs text-foreground/40 leading-relaxed">{e.desc}</p>
               </motion.a>
             ))}
           </div>
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            className="font-body text-sm text-foreground/30 text-center mt-10 max-w-lg mx-auto">
+            className="font-body text-sm text-foreground/45 text-center mt-10 max-w-lg mx-auto">
             All twenty-two engines install in one prompt. All run automatically. All managed from one dashboard.
           </motion.p>
         </div>
@@ -539,7 +539,7 @@ export default function LazyRunPage() {
                 transition={{ delay: i * 0.1 }}
                 className="border border-border p-6 bg-card"
               >
-                <f.icon size={20} className="text-foreground/30 mb-3" />
+                <f.icon size={20} className="text-foreground/45 mb-3" />
                 <h3 className="font-display text-sm font-bold mb-2">{f.title}</h3>
                 <p className="font-body text-xs text-foreground/40 leading-relaxed">{f.desc}</p>
               </motion.div>
@@ -588,7 +588,7 @@ export default function LazyRunPage() {
             <CopyPromptButton text={promptText} />
           </motion.div>
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.3 }}
-            className="font-body text-xs text-foreground/25 mt-6 max-w-md mx-auto">
+            className="font-body text-xs text-foreground/40 mt-6 max-w-md mx-auto">
             Open your Lovable project, paste it into the chat, choose your engines, add your API keys. Your site starts running itself today.
           </motion.p>
         </div>
@@ -596,7 +596,7 @@ export default function LazyRunPage() {
 
       {/* Footer */}
       <footer className="py-10 px-6 border-t border-border text-center">
-        <p className="font-display text-[10px] tracking-[0.15em] uppercase text-foreground/20">
+        <p className="font-display text-[12px] tracking-[0.15em] uppercase text-foreground/35">
           Lazy Unicorn — Autonomous growth engines for Lovable
         </p>
       </footer>

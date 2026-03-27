@@ -123,7 +123,7 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
 
   const renderCategory = (cat: typeof productCategories[number]) => (
     <div key={cat.label} className="mb-3">
-      <p className="font-body text-[9px] tracking-[0.2em] uppercase text-foreground/20 font-semibold mb-1.5">
+      <p className="font-body text-[11px] tracking-[0.2em] uppercase text-foreground/35 font-semibold mb-1.5">
         {cat.label}
       </p>
       {cat.items.map((item) => (
@@ -133,7 +133,7 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
           onClick={() => { setOpen(false); onNavigate?.(); }}
           className="group flex items-center gap-2 px-2 py-1.5 -mx-1 hover:bg-secondary/50 transition-colors"
         >
-          <span className="text-foreground/20 group-hover:text-foreground/50 transition-colors flex-shrink-0">
+          <span className="text-foreground/35 group-hover:text-foreground/50 transition-colors flex-shrink-0">
             {item.icon}
           </span>
           <div className="min-w-0">
@@ -262,10 +262,10 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
   const socialIcons = (
     <>
-      <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="text-foreground/30 hover:text-foreground transition-colors" aria-label="Follow on X">
+      <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="text-foreground/45 hover:text-foreground transition-colors" aria-label="Follow on X">
         <XLogo />
       </a>
-      <a href="https://www.linkedin.com/company/lazy-unicorn/" target="_blank" rel="noopener noreferrer" className="text-foreground/30 hover:text-foreground transition-colors" aria-label="Follow on LinkedIn">
+      <a href="https://www.linkedin.com/company/lazy-unicorn/" target="_blank" rel="noopener noreferrer" className="text-foreground/45 hover:text-foreground transition-colors" aria-label="Follow on LinkedIn">
         <Linkedin size={14} />
       </a>
     </>
@@ -284,7 +284,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
           <a
             href={brandHref}
             onClick={handleBrandClick}
-            className="font-display text-[10px] font-semibold tracking-[0.15em] uppercase text-foreground hover:text-foreground/70 transition-colors cursor-pointer leading-tight flex flex-col absolute left-0"
+            className="font-display text-[12px] font-semibold tracking-[0.15em] uppercase text-foreground hover:text-foreground/70 transition-colors cursor-pointer leading-tight flex flex-col absolute left-0"
           >
             <span>Lazy</span>
             <span>Unicorn</span>
@@ -318,7 +318,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a
               href="/"
               onClick={() => setOpen(false)}
-              className="font-display text-[9px] font-semibold tracking-[0.15em] uppercase text-foreground hover:text-foreground/70 transition-colors leading-tight flex flex-col"
+              className="font-display text-[11px] font-semibold tracking-[0.15em] uppercase text-foreground hover:text-foreground/70 transition-colors leading-tight flex flex-col"
             >
               <span>Lazy</span>
               <span>Unicorn</span>

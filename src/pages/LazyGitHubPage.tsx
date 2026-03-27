@@ -293,8 +293,8 @@ const LazyGitHubPage = () => {
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
             <div className="flex items-center gap-3 mb-6">
-              <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
-              <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+              <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
+              <span className="bg-foreground text-background text-[12px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
             </div>
             <AutopilotHeadline product="lazy-github" />
 
@@ -302,7 +302,7 @@ const LazyGitHubPage = () => {
               <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
                 Lazy GitHub
               </h1>
-              <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30 border border-border px-3 py-1">
+              <span className="inline-flex items-center gap-1.5 font-body text-[12px] tracking-[0.12em] uppercase text-foreground/45 border border-border px-3 py-1">
                 Powered by GitHub
               </span>
             </div>
@@ -342,7 +342,7 @@ const LazyGitHubPage = () => {
       {/* What it installs */}
       <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-4xl mx-auto">
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>What it installs</p>
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>What it installs</p>
           <h2 className="mt-2 mb-12" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
             Every commit becomes content. Automatically.
           </h2>
@@ -356,7 +356,7 @@ const LazyGitHubPage = () => {
                 transition={{ duration: 0.5, delay: i * 0.06 }}
                 className="bg-card p-8"
               >
-                <f.icon size={20} className="text-foreground/30 mb-4" />
+                <f.icon size={20} className="text-foreground/45 mb-4" />
                 <h3 className="font-display text-lg font-bold text-foreground mb-2">{f.title}</h3>
                 <p className="font-body text-sm text-foreground/40 leading-relaxed">{f.desc}</p>
               </motion.div>
@@ -368,7 +368,7 @@ const LazyGitHubPage = () => {
       {/* The developer content problem */}
       <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#111110" }}>
         <div className="max-w-4xl mx-auto">
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>The problem</p>
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>The problem</p>
           <h2 className="mt-2 mb-12" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
             You ship every day. Your audience sees nothing.
           </h2>
@@ -390,7 +390,7 @@ const LazyGitHubPage = () => {
       {/* Roadmap section */}
       <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-3xl mx-auto">
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Roadmap</p>
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Roadmap</p>
           <h2 className="mt-2 mb-8" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
             A public roadmap that maintains itself.
           </h2>
@@ -421,10 +421,10 @@ const LazyGitHubPage = () => {
           <div className="mt-8">
             <CopyPromptButton text={promptText} />
           </div>
-          <p className="mt-4 font-body text-xs text-foreground/25 max-w-md mx-auto leading-relaxed">
+          <p className="mt-4 font-body text-xs text-foreground/40 max-w-md mx-auto leading-relaxed">
             Open your Lovable project, paste it into the chat, add your GitHub credentials. Your next commit will be published automatically.
           </p>
-          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>
+          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>
             Made for Lovable
           </p>
         </div>

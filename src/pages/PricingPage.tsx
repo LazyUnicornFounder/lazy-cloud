@@ -186,7 +186,7 @@ const PricingPage = () => {
         {/* Hero */}
         <section className="px-6 md:px-12 max-w-4xl mx-auto text-center mb-20">
           <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
-            <motion.p variants={fadeUp} transition={{ duration: 0.6 }} style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: "#f0ead6", opacity: 0.4 }}>
+            <motion.p variants={fadeUp} transition={{ duration: 0.6 }} style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: "#f0ead6", opacity: 0.5 }}>
               Pricing
             </motion.p>
             <motion.h1 variants={fadeUp} transition={{ duration: 0.8 }} className="mt-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4vw, 3.2rem)", color: "#f0ead6", lineHeight: 1.1 }}>
@@ -216,7 +216,7 @@ const PricingPage = () => {
                       {product.name}
                     </h2>
                   </Link>
-                  <p className="font-body text-xs text-foreground/30 uppercase tracking-wider mt-1">{product.tagline}</p>
+                  <p className="font-body text-xs text-foreground/45 uppercase tracking-wider mt-1">{product.tagline}</p>
                 </div>
 
                 {/* Two-column pricing */}
@@ -230,7 +230,7 @@ const PricingPage = () => {
                     <ul className="space-y-2.5 flex-1">
                       {product.free.map((f, i) => (
                         <li key={i} className="font-body text-sm text-foreground/40 flex items-start gap-2">
-                          <Check size={14} className="text-foreground/25 mt-0.5 shrink-0" />
+                          <Check size={14} className="text-foreground/40 mt-0.5 shrink-0" />
                           {f}
                         </li>
                       ))}
@@ -246,27 +246,27 @@ const PricingPage = () => {
                   {/* Pro */}
                   <div className="bg-card p-8 flex flex-col relative">
                     {product.pro.comingSoon && (
-                      <span className="absolute top-4 right-4 font-body text-[10px] tracking-[0.15em] uppercase px-2 py-0.5 border border-yellow-600/30 text-yellow-600/60">
+                      <span className="absolute top-4 right-4 font-body text-[12px] tracking-[0.15em] uppercase px-2 py-0.5 border border-yellow-600/30 text-yellow-600/60">
                         Coming Soon
                       </span>
                     )}
                     <div className="mb-6">
                       <h3 className="font-display text-base font-bold text-foreground">Pro</h3>
                       <p className="font-display text-3xl font-bold text-foreground mt-1">
-                        {product.pro.price}<span className="text-sm font-normal text-foreground/30">/mo</span>
+                        {product.pro.price}<span className="text-sm font-normal text-foreground/45">/mo</span>
                       </p>
                     </div>
                     <ul className="space-y-2.5 flex-1">
                       {product.pro.features.map((f, i) => (
                         <li key={i} className="font-body text-sm text-foreground/40 flex items-start gap-2">
-                          <Check size={14} className="text-foreground/25 mt-0.5 shrink-0" />
+                          <Check size={14} className="text-foreground/40 mt-0.5 shrink-0" />
                           {f}
                         </li>
                       ))}
                     </ul>
                     <button
                       disabled
-                      className="mt-6 w-full font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/25 cursor-not-allowed"
+                      className="mt-6 w-full font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/40 cursor-not-allowed"
                     >
                       Coming Soon
                     </button>
@@ -282,7 +282,7 @@ const PricingPage = () => {
           <p className="font-body text-sm text-foreground/40 leading-relaxed">
             All engines are self-hosted in your own Lovable project. You own the code, the data, and the content. Pro tiers will offer a fully managed hosted experience — no API keys, no setup, just results.
           </p>
-          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>
+          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>
             Made for Lovable
           </p>
         </section>

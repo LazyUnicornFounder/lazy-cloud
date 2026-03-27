@@ -161,11 +161,11 @@ export default function LazyVoiceDashboard() {
                 <table className="w-full text-left">
                   <thead>
                     <tr className="border-b border-border">
-                      <th className="px-6 py-3 font-display text-[10px] uppercase tracking-wider text-muted-foreground">Title</th>
-                      <th className="px-6 py-3 font-display text-[10px] uppercase tracking-wider text-muted-foreground">Date</th>
-                      <th className="px-6 py-3 font-display text-[10px] uppercase tracking-wider text-muted-foreground">Duration</th>
-                      <th className="px-6 py-3 font-display text-[10px] uppercase tracking-wider text-muted-foreground">Status</th>
-                      <th className="px-6 py-3 font-display text-[10px] uppercase tracking-wider text-muted-foreground">Link</th>
+                      <th className="px-6 py-3 font-display text-[12px] uppercase tracking-wider text-muted-foreground">Title</th>
+                      <th className="px-6 py-3 font-display text-[12px] uppercase tracking-wider text-muted-foreground">Date</th>
+                      <th className="px-6 py-3 font-display text-[12px] uppercase tracking-wider text-muted-foreground">Duration</th>
+                      <th className="px-6 py-3 font-display text-[12px] uppercase tracking-wider text-muted-foreground">Status</th>
+                      <th className="px-6 py-3 font-display text-[12px] uppercase tracking-wider text-muted-foreground">Link</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -179,7 +179,7 @@ export default function LazyVoiceDashboard() {
                           {ep.duration_seconds ? `${Math.floor(ep.duration_seconds / 60)}:${String(ep.duration_seconds % 60).padStart(2, "0")}` : "—"}
                         </td>
                         <td className="px-6 py-3">
-                          <span className={`font-body text-[10px] uppercase tracking-wider font-bold ${ep.status === "published" ? "text-green-400" : "text-muted-foreground"}`}>
+                          <span className={`font-body text-[12px] uppercase tracking-wider font-bold ${ep.status === "published" ? "text-green-400" : "text-muted-foreground"}`}>
                             {ep.status}
                           </span>
                         </td>
@@ -207,7 +207,7 @@ export default function LazyVoiceDashboard() {
                 {errors.map((err) => (
                   <div key={err.id} className="px-6 py-3">
                     <p className="font-body text-xs text-destructive">{err.error_message}</p>
-                    <p className="font-body text-[10px] text-muted-foreground mt-1">
+                    <p className="font-body text-[12px] text-muted-foreground mt-1">
                       {err.post_slug && `Post: ${err.post_slug} · `}
                       {new Date(err.created_at).toLocaleString()}
                     </p>

@@ -82,19 +82,19 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="inline-block">
-              <p className="font-display text-[10px] font-semibold tracking-[0.15em] uppercase text-foreground leading-tight">
+              <p className="font-display text-[12px] font-semibold tracking-[0.15em] uppercase text-foreground leading-tight">
                 <span className="block">Lazy</span>
                 <span className="block">Unicorn</span>
               </p>
             </Link>
-            <p className="mt-4 font-body text-xs text-foreground/30 leading-relaxed max-w-[200px]">
+            <p className="mt-4 font-body text-xs text-foreground/45 leading-relaxed max-w-[200px]">
               The autonomous layer for Lovable. One prompt, everything runs itself.
             </p>
             <div className="flex items-center gap-3 mt-4">
-              <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="text-foreground/20 hover:text-foreground/50 transition-colors" aria-label="Follow on X">
+              <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="text-foreground/35 hover:text-foreground/50 transition-colors" aria-label="Follow on X">
                 <XLogo />
               </a>
-              <a href="https://www.linkedin.com/company/lazy-unicorn/" target="_blank" rel="noopener noreferrer" className="text-foreground/20 hover:text-foreground/50 transition-colors" aria-label="Follow on LinkedIn">
+              <a href="https://www.linkedin.com/company/lazy-unicorn/" target="_blank" rel="noopener noreferrer" className="text-foreground/35 hover:text-foreground/50 transition-colors" aria-label="Follow on LinkedIn">
                 <Linkedin size={12} />
               </a>
             </div>
@@ -102,17 +102,17 @@ export default function Footer() {
 
           {/* Get started — prominent left column */}
           <div className="col-span-1 md:col-span-1">
-            <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4 max-w-[60px]">
+            <p className="font-body text-[12px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4 max-w-[60px]">
               Get Started
             </p>
             <ul className="space-y-2">
               <li>
-                <Link to="/how-it-works" className="font-body text-xs text-foreground/25 hover:text-foreground/50 transition-colors">
+                <Link to="/how-it-works" className="font-body text-xs text-foreground/40 hover:text-foreground/50 transition-colors">
                   How It Works
                 </Link>
               </li>
               <li>
-                <Link to="/use-cases" className="font-body text-xs text-foreground/25 hover:text-foreground/50 transition-colors">
+                <Link to="/use-cases" className="font-body text-xs text-foreground/40 hover:text-foreground/50 transition-colors">
                   Use Cases
                 </Link>
               </li>
@@ -121,17 +121,17 @@ export default function Footer() {
 
           {/* Lazy Unicorn */}
           <div className="col-span-1 md:col-span-1">
-            <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4">
+            <p className="font-body text-[12px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4">
               Lazy Unicorn
             </p>
             <ul className="space-y-2">
               <li>
-                <Link to="/lazy-run" className="font-body text-xs text-foreground/25 hover:text-foreground/50 transition-colors">
+                <Link to="/lazy-run" className="font-body text-xs text-foreground/40 hover:text-foreground/50 transition-colors">
                   Lazy Run
                 </Link>
               </li>
               <li>
-                <Link to="/lazy-admin" className="font-body text-xs text-foreground/25 hover:text-foreground/50 transition-colors">
+                <Link to="/lazy-admin" className="font-body text-xs text-foreground/40 hover:text-foreground/50 transition-colors">
                   Lazy Admin
                 </Link>
               </li>
@@ -141,13 +141,13 @@ export default function Footer() {
           {/* Engine categories */}
           {engineCategories.map((cat) => (
             <div key={cat.label} className="min-w-0">
-              <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4 max-w-[60px]">
+              <p className="font-body text-[12px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4 max-w-[60px]">
                 {cat.label}
               </p>
               <ul className="space-y-2">
                 {cat.items.map((e) => (
                   <li key={e.name}>
-                    <Link to={e.href} className="font-body text-xs text-foreground/25 hover:text-foreground/50 transition-colors">
+                    <Link to={e.href} className="font-body text-xs text-foreground/40 hover:text-foreground/50 transition-colors">
                       {e.name}
                     </Link>
                   </li>
@@ -158,13 +158,13 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4">
+            <p className="font-body text-[12px] tracking-[0.2em] uppercase text-foreground/40 font-semibold mb-4">
               Resources
             </p>
             <ul className="space-y-2">
               {resources.map((r) => (
                 <li key={r.name}>
-                  <Link to={r.href} className="font-body text-xs text-foreground/25 hover:text-foreground/50 transition-colors">
+                  <Link to={r.href} className="font-body text-xs text-foreground/40 hover:text-foreground/50 transition-colors">
                     {r.name}
                   </Link>
                 </li>
@@ -175,10 +175,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-body text-[10px] text-foreground/15 tracking-wider">
+          <p className="font-body text-[12px] text-foreground/15 tracking-wider">
             © {new Date().getFullYear()} Lazy Unicorn. All rights reserved.
           </p>
-          <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="font-body text-[10px] text-foreground/15 tracking-wider hover:text-foreground/30 transition-colors">
+          <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="font-body text-[12px] text-foreground/15 tracking-wider hover:text-foreground/65 transition-colors">
             Built for Lovable
           </a>
         </div>

@@ -312,7 +312,7 @@ export default function UseCasesPage() {
           initial="hidden"
           animate="show"
           transition={{ delay: 0.2 }}
-          className="mt-4 font-body text-xs text-foreground/30 max-w-2xl mx-auto"
+          className="mt-4 font-body text-xs text-foreground/45 max-w-2xl mx-auto"
         >
           All integrations on this page are official Lovable shared connectors. Each one installs into your existing Lovable project with one Lazy prompt.
         </motion.p>
@@ -353,10 +353,10 @@ export default function UseCasesPage() {
               {/* Top row */}
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <span className="text-foreground/30">{item.icon}</span>
+                  <span className="text-foreground/45">{item.icon}</span>
                   <h2 className="font-display text-lg font-bold">{item.name}</h2>
                 </div>
-                <Badge variant="outline" className="text-[10px] tracking-[0.15em] uppercase shrink-0">
+                <Badge variant="outline" className="text-[12px] tracking-[0.15em] uppercase shrink-0">
                   {item.category}
                 </Badge>
               </div>
@@ -366,7 +366,7 @@ export default function UseCasesPage() {
 
               {/* Unlocks */}
               <div>
-                <p className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/30 font-semibold mb-3">
+                <p className="font-body text-[12px] tracking-[0.2em] uppercase text-foreground/45 font-semibold mb-3">
                   What it unlocks
                 </p>
                 <ul className="space-y-2">
@@ -381,7 +381,7 @@ export default function UseCasesPage() {
 
               {/* Note */}
               {item.note && (
-                <p className="font-body text-[10px] text-foreground/25 italic">{item.note}</p>
+                <p className="font-body text-[12px] text-foreground/40 italic">{item.note}</p>
               )}
 
               {/* Engine badge */}
@@ -390,7 +390,7 @@ export default function UseCasesPage() {
                   to={item.engineHref}
                   className="inline-flex items-center gap-2 font-body text-xs tracking-[0.1em] uppercase font-semibold text-foreground/40 hover:text-foreground transition-colors"
                 >
-                  <span className="text-[10px] text-foreground/20">Lazy engine →</span>
+                  <span className="text-[12px] text-foreground/35">Lazy engine →</span>
                   {item.engine}
                 </Link>
               </div>

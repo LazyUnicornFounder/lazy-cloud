@@ -93,7 +93,7 @@ export default function HowItWorksPage() {
         <section className="pt-36 pb-16 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div {...fade}>
-              <span className="font-body text-[10px] tracking-[0.2em] uppercase text-[#c8a961]/60 mb-6 block">
+              <span className="font-body text-[12px] tracking-[0.2em] uppercase text-[#c8a961]/60 mb-6 block">
                 The autonomous layer for Lovable
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
@@ -102,7 +102,7 @@ export default function HowItWorksPage() {
               <p className="font-body text-foreground/50 text-lg max-w-2xl mx-auto leading-relaxed mb-6">
                 Every engine is a self-contained prompt you paste into your Lovable project. Each one installs its own database tables, edge functions, and UI — then runs itself autonomously.
               </p>
-              <p className="font-body text-foreground/30 text-sm max-w-xl mx-auto leading-relaxed">
+              <p className="font-body text-foreground/45 text-sm max-w-xl mx-auto leading-relaxed">
                 Integrates with <strong className="text-foreground/50">Stripe</strong>, <strong className="text-foreground/50">Twilio</strong>, <strong className="text-foreground/50">ElevenLabs</strong>, <strong className="text-foreground/50">Twitch</strong>, <strong className="text-foreground/50">GitHub</strong>, <strong className="text-foreground/50">GitLab</strong>, <strong className="text-foreground/50">Linear</strong>, <strong className="text-foreground/50">Slack</strong>, <strong className="text-foreground/50">Telegram</strong>, <strong className="text-foreground/50">Supabase</strong>, <strong className="text-foreground/50">Contentful</strong>, <strong className="text-foreground/50">Firecrawl</strong>, <strong className="text-foreground/50">Perplexity</strong>, <strong className="text-foreground/50">Resend</strong>, and <strong className="text-foreground/50">21st.dev</strong>.
               </p>
             </motion.div>
@@ -136,7 +136,7 @@ export default function HowItWorksPage() {
           <section key={group.label} className="py-16 px-6 border-t border-border">
             <div className="max-w-4xl mx-auto">
               <motion.div {...fade}>
-                <p className="font-body text-[10px] tracking-[0.2em] uppercase text-[#c8a961]/60 mb-2">{group.label}</p>
+                <p className="font-body text-[12px] tracking-[0.2em] uppercase text-[#c8a961]/60 mb-2">{group.label}</p>
                 <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-2">{group.label}</h2>
                 <p className="font-body text-foreground/40 text-sm mb-8">{group.description}</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -171,7 +171,7 @@ export default function HowItWorksPage() {
                   to="/upgrade-guide"
                   className="group border border-border p-6 hover:border-foreground/20 transition-colors flex items-start gap-4"
                 >
-                  <BookOpen size={20} className="text-foreground/20 group-hover:text-foreground/50 transition-colors flex-shrink-0 mt-0.5" />
+                  <BookOpen size={20} className="text-foreground/35 group-hover:text-foreground/50 transition-colors flex-shrink-0 mt-0.5" />
                   <div>
                     <h3 className="font-display text-sm font-bold tracking-[0.08em] uppercase mb-1 group-hover:text-[#c8a961] transition-colors">Upgrade Guide</h3>
                     <p className="font-body text-[13px] text-foreground/40 leading-relaxed">Step-by-step instructions for upgrading every engine to the latest prompt version.</p>
@@ -181,7 +181,7 @@ export default function HowItWorksPage() {
                   to="/changelog"
                   className="group border border-border p-6 hover:border-foreground/20 transition-colors flex items-start gap-4"
                 >
-                  <FileText size={20} className="text-foreground/20 group-hover:text-foreground/50 transition-colors flex-shrink-0 mt-0.5" />
+                  <FileText size={20} className="text-foreground/35 group-hover:text-foreground/50 transition-colors flex-shrink-0 mt-0.5" />
                   <div>
                     <h3 className="font-display text-sm font-bold tracking-[0.08em] uppercase mb-1 group-hover:text-[#c8a961] transition-colors">Changelog</h3>
                     <p className="font-body text-[13px] text-foreground/40 leading-relaxed">Every prompt release, version history, and what changed across all engines.</p>

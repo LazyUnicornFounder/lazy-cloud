@@ -212,7 +212,7 @@ If /admin does not yet exist on this project add a simple placeholder at /admin 
 Do not add any Lazy Alert pages to public navigation. All pages are admin-only.`;
 
 const SlackBadge = () => (
-  <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30 border border-border px-3 py-1">
+  <span className="inline-flex items-center gap-1.5 font-body text-[12px] tracking-[0.12em] uppercase text-foreground/45 border border-border px-3 py-1">
     Powered by Slack
   </span>
 );
@@ -250,7 +250,7 @@ function SlackMessage({ avatar, name, time, children }: { avatar: string; name: 
       <div className="flex-1 min-w-0">
         <div className="flex items-baseline gap-2 mb-1">
           <span className="font-display text-sm font-bold text-foreground">{name}</span>
-          <span className="font-body text-[10px] text-foreground/20">{time}</span>
+          <span className="font-body text-[12px] text-foreground/35">{time}</span>
         </div>
         <div className="font-body text-sm text-foreground/60 leading-relaxed">{children}</div>
       </div>
@@ -332,8 +332,8 @@ export default function LazyAlertPage() {
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
             <div className="flex items-center gap-3 mb-6">
-              <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
-              <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+              <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
+              <span className="bg-foreground text-background text-[12px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
             </div>
             <AutopilotHeadline product="lazy-alert" />
 
@@ -389,7 +389,7 @@ export default function LazyAlertPage() {
               <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.04 }}>
                 <div className="mb-2">
                   <p className="font-display text-sm font-bold text-foreground">{card.engine}</p>
-                  <p className="font-body text-xs text-foreground/30">{card.trigger}</p>
+                  <p className="font-body text-xs text-foreground/45">{card.trigger}</p>
                 </div>
                 <SlackMessage avatar={card.avatar} name="Lazy Unicorn" time="just now">
                   {card.example}
@@ -421,7 +421,7 @@ export default function LazyAlertPage() {
                 <p>🌐 <strong className="text-foreground/70">Citation rate:</strong> 68% across 12 queries</p>
                 <p>💬 <strong className="text-foreground/70">SMS replies:</strong> 7 (3 positive, 4 neutral)</p>
                 <p>⚠️ <strong className="text-foreground/70">Errors:</strong> 1 (Lazy SEO — rate limit)</p>
-                <p className="pt-1 text-foreground/30 text-xs">All engines running normally.</p>
+                <p className="pt-1 text-foreground/45 text-xs">All engines running normally.</p>
               </div>
             </SlackMessage>
           </motion.div>
@@ -443,7 +443,7 @@ export default function LazyAlertPage() {
             {slashCommands.map((cmd) => (
               <div key={cmd} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
                 <code className="text-foreground/70 shrink-0">{cmd}</code>
-                <span className="text-foreground/30 text-xs">— {slashDescriptions[cmd]}</span>
+                <span className="text-foreground/45 text-xs">— {slashDescriptions[cmd]}</span>
               </div>
             ))}
           </motion.div>
@@ -487,11 +487,11 @@ export default function LazyAlertPage() {
             <CopyPromptButton text={promptText} />
           </motion.div>
 
-          <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-4 font-body text-xs text-foreground/25 max-w-md mx-auto">
+          <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-4 font-body text-xs text-foreground/40 max-w-md mx-auto">
             Open your Lovable project, paste it into the chat, add your Slack webhook URL. Your business starts talking to you today.
           </motion.p>
 
-          <p className="mt-16" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+          <p className="mt-16" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase" }}>
             Made for Lovable
           </p>
         </div>

@@ -86,7 +86,7 @@ const LazyStreamDashboard = () => {
 
   const StatCard = ({ icon: Icon, label, value }: { icon: any; label: string; value: string | number }) => (
     <div className="border border-border bg-card p-6">
-      <Icon size={18} className="text-foreground/30 mb-2" />
+      <Icon size={18} className="text-foreground/45 mb-2" />
       <p className="font-display text-2xl font-bold text-foreground">{value}</p>
       <p className="font-body text-xs text-foreground/40 uppercase tracking-wider mt-1">{label}</p>
     </div>
@@ -100,12 +100,12 @@ const LazyStreamDashboard = () => {
       <main className="pt-32 pb-20 px-6 md:px-12 max-w-5xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Dashboard</p>
+            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Dashboard</p>
             <h1 className="mt-1" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "#f0ead6" }}>Lazy Stream</h1>
           </div>
           <div className="flex items-center gap-2">
             {isLive && <span className="font-body text-xs px-2 py-1 bg-red-500/20 text-red-400 border border-red-500/30">● LIVE</span>}
-            <span className={`font-body text-xs px-2 py-1 border ${settings?.is_running ? "border-green-500/30 text-green-400" : "border-foreground/20 text-foreground/30"}`}>
+            <span className={`font-body text-xs px-2 py-1 border ${settings?.is_running ? "border-green-500/30 text-green-400" : "border-foreground/20 text-foreground/45"}`}>
               {settings?.is_running ? "Running" : "Paused"}
             </span>
           </div>
@@ -143,12 +143,12 @@ const LazyStreamDashboard = () => {
         <div className="border border-border bg-card p-6 mb-8">
           <h2 className="font-display text-lg font-bold text-foreground mb-4">Streams</h2>
           {sessions.length === 0 ? (
-            <p className="font-body text-sm text-foreground/30">No streams recorded yet. Go live on Twitch to get started.</p>
+            <p className="font-body text-sm text-foreground/45">No streams recorded yet. Go live on Twitch to get started.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead><tr className="border-b border-border">
-                  {["Title", "Game", "Date", "Duration", "Status"].map(h => <th key={h} className="font-body text-[10px] uppercase tracking-wider text-foreground/30 pb-2 pr-4">{h}</th>)}
+                  {["Title", "Game", "Date", "Duration", "Status"].map(h => <th key={h} className="font-body text-[12px] uppercase tracking-wider text-foreground/45 pb-2 pr-4">{h}</th>)}
                 </tr></thead>
                 <tbody>
                   {sessions.map((s: any) => (
@@ -158,7 +158,7 @@ const LazyStreamDashboard = () => {
                       <td className="font-body text-sm text-foreground/40 py-2 pr-4">{new Date(s.started_at || s.created_at).toLocaleDateString()}</td>
                       <td className="font-body text-sm text-foreground/40 py-2 pr-4">{s.duration_minutes ? `${s.duration_minutes}m` : "—"}</td>
                       <td className="py-2">
-                        <span className={`font-body text-xs px-2 py-0.5 border ${s.status === "live" ? "border-red-500/30 text-red-400" : s.status === "processed" ? "border-green-500/30 text-green-400" : "border-foreground/20 text-foreground/30"}`}>
+                        <span className={`font-body text-xs px-2 py-0.5 border ${s.status === "live" ? "border-red-500/30 text-red-400" : s.status === "processed" ? "border-green-500/30 text-green-400" : "border-foreground/20 text-foreground/45"}`}>
                           {s.status}
                         </span>
                       </td>
@@ -174,12 +174,12 @@ const LazyStreamDashboard = () => {
         <div className="border border-border bg-card p-6 mb-8">
           <h2 className="font-display text-lg font-bold text-foreground mb-4">Content</h2>
           {content.length === 0 ? (
-            <p className="font-body text-sm text-foreground/30">No content published yet.</p>
+            <p className="font-body text-sm text-foreground/45">No content published yet.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead><tr className="border-b border-border">
-                  {["Title", "Type", "Published", "Views"].map(h => <th key={h} className="font-body text-[10px] uppercase tracking-wider text-foreground/30 pb-2 pr-4">{h}</th>)}
+                  {["Title", "Type", "Published", "Views"].map(h => <th key={h} className="font-body text-[12px] uppercase tracking-wider text-foreground/45 pb-2 pr-4">{h}</th>)}
                 </tr></thead>
                 <tbody>
                   {content.map((c: any) => (
@@ -200,12 +200,12 @@ const LazyStreamDashboard = () => {
         <div className="border border-border bg-card p-6 mb-8">
           <h2 className="font-display text-lg font-bold text-foreground mb-4">Clips</h2>
           {clips.length === 0 ? (
-            <p className="font-body text-sm text-foreground/30">No clips saved yet.</p>
+            <p className="font-body text-sm text-foreground/45">No clips saved yet.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead><tr className="border-b border-border">
-                  {["Title", "Views", "Duration", ""].map(h => <th key={h} className="font-body text-[10px] uppercase tracking-wider text-foreground/30 pb-2 pr-4">{h}</th>)}
+                  {["Title", "Views", "Duration", ""].map(h => <th key={h} className="font-body text-[12px] uppercase tracking-wider text-foreground/45 pb-2 pr-4">{h}</th>)}
                 </tr></thead>
                 <tbody>
                   {clips.map((c: any) => (
@@ -229,7 +229,7 @@ const LazyStreamDashboard = () => {
             <div className="space-y-2">
               {errors.map((e: any) => (
                 <div key={e.id} className="border-b border-border/50 pb-2">
-                  <p className="font-body text-xs text-foreground/30">{e.function_name} — {new Date(e.created_at).toLocaleString()}</p>
+                  <p className="font-body text-xs text-foreground/45">{e.function_name} — {new Date(e.created_at).toLocaleString()}</p>
                   <p className="font-body text-sm text-destructive/70">{e.error_message}</p>
                 </div>
               ))}

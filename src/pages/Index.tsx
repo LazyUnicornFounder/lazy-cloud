@@ -399,7 +399,7 @@ const Index = () => {
 
           {/* Integrations */}
           <div className="mt-8">
-            <p className="text-[10px] tracking-[0.2em] uppercase font-semibold mb-4" style={{ color: "#f0ead6", opacity: 0.25 }}>
+            <p className="text-[12px] tracking-[0.2em] uppercase font-semibold mb-4" style={{ color: "#f0ead6", opacity: 0.5 }}>
               Integrations
             </p>
             <div className="flex flex-wrap justify-center gap-2">
@@ -427,7 +427,7 @@ const Index = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1 + i * 0.06, duration: 0.4 }}
                     whileHover={{ scale: 1.1, opacity: 1 }}
-                    className="inline-block text-[10px] tracking-[0.1em] uppercase font-medium px-3 py-1.5 border transition-colors duration-200 cursor-pointer hover:border-[rgba(240,234,214,0.35)]"
+                    className="inline-block text-[12px] tracking-[0.1em] uppercase font-medium px-3 py-1.5 border transition-colors duration-200 cursor-pointer hover:border-[rgba(240,234,214,0.35)]"
                     style={{ color: "#f0ead6", opacity: 0.4, borderColor: "rgba(240,234,214,0.12)" }}
                   >
                     {item.name}
@@ -501,7 +501,7 @@ const Index = () => {
               <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
                 Every engine. One prompt.
               </p>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
+              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
                 Made for Lovable
               </p>
             </motion.div>
@@ -529,7 +529,7 @@ const Index = () => {
               <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
                 One dashboard to manage your entire Lazy stack.
               </p>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
+              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
                 Made for Lovable
               </p>
             </motion.div>
@@ -557,7 +557,7 @@ const Index = () => {
               <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
                 21st.dev upgrades on autopilot.
               </p>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
+              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
                 Made for Lovable
               </p>
             </motion.div>
@@ -594,7 +594,7 @@ const Index = () => {
                 <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
                   {product.tagline}
                 </p>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1.5rem" }}>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1.5rem" }}>
                   Made for Lovable
                 </p>
               </motion.div>

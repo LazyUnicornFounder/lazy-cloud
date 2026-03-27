@@ -73,8 +73,8 @@ export default function LazyAdminPage() {
           <div className="max-w-3xl mx-auto text-center">
             <motion.div {...fade}>
               <div className="flex items-center justify-center gap-3 mb-6">
-                <span className="font-body text-[10px] tracking-[0.2em] uppercase text-[#c8a961]/60">Works with all Lazy engines</span>
-                <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+                <span className="font-body text-[12px] tracking-[0.2em] uppercase text-[#c8a961]/60">Works with all Lazy engines</span>
+                <span className="bg-foreground text-background text-[12px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               </div>
               <AutopilotHeadline product="lazy-admin" />
 
@@ -127,7 +127,7 @@ export default function LazyAdminPage() {
                   </div>
                 ))}
               </div>
-              <p className="font-body text-foreground/30 text-sm text-center mt-4">No configuration. No setup questions.</p>
+              <p className="font-body text-foreground/45 text-sm text-center mt-4">No configuration. No setup questions.</p>
             </motion.div>
           </div>
         </section>
@@ -164,7 +164,7 @@ export default function LazyAdminPage() {
                   { time: "30–60 seconds", text: "Read the activity feed. See what published overnight. Check the error log. If clean, close the tab. If not, click the engine with the red dot and fix it." },
                 ].map((col, i) => (
                   <div key={i} className="border border-border p-5">
-                    <p className="font-display text-[10px] tracking-[0.15em] uppercase text-[#c8a961]/60 mb-3">{col.time}</p>
+                    <p className="font-display text-[12px] tracking-[0.15em] uppercase text-[#c8a961]/60 mb-3">{col.time}</p>
                     <p className="font-body text-sm text-foreground/60 leading-relaxed">{col.text}</p>
                   </div>
                 ))}
@@ -184,7 +184,7 @@ export default function LazyAdminPage() {
               <div className="space-y-6">
                 {engineGroups.map(g => (
                   <div key={g.label}>
-                    <p className="font-body text-[10px] tracking-[0.15em] uppercase text-foreground/30 mb-2">{g.label}</p>
+                    <p className="font-body text-[12px] tracking-[0.15em] uppercase text-foreground/45 mb-2">{g.label}</p>
                     <div className="flex flex-wrap justify-center gap-2">
                       {g.engines.map(e => (
                         <span key={e} className={`font-body text-[11px] tracking-[0.1em] px-3 py-1 border border-border ${g.color}`}>Lazy {e}</span>
@@ -193,7 +193,7 @@ export default function LazyAdminPage() {
                   </div>
                 ))}
               </div>
-              <p className="font-body text-foreground/30 text-sm mt-8">Install any combination. Lazy Admin detects what is there and builds the right dashboard automatically.</p>
+              <p className="font-body text-foreground/45 text-sm mt-8">Install any combination. Lazy Admin detects what is there and builds the right dashboard automatically.</p>
             </motion.div>
           </div>
         </section>
@@ -227,7 +227,7 @@ export default function LazyAdminPage() {
             >
               {copied ? <><Check size={14} /> Copied ✓</> : <><Copy size={14} /> Copy the Lovable Prompt</>}
             </button>
-            <p className="font-body text-foreground/20 text-xs mt-4 max-w-md mx-auto">Open your Lovable project, paste it into the chat. The dashboard builds itself around whatever engines you have installed.</p>
+            <p className="font-body text-foreground/35 text-xs mt-4 max-w-md mx-auto">Open your Lovable project, paste it into the chat. The dashboard builds itself around whatever engines you have installed.</p>
           </div>
         </section>
       </main>

@@ -28,10 +28,10 @@ const ValuationBreakdown = () => (
           className="flex items-center justify-between py-1.5 border-b border-dashed border-foreground/10 last:border-b-0"
         >
           <div>
-            <p className="font-display text-[10px] font-bold tracking-wide uppercase text-foreground/70">
+            <p className="font-display text-[12px] font-bold tracking-wide uppercase text-foreground/70">
               {m.label}
             </p>
-            <p className="font-body text-[9px] text-foreground/40">{m.note}</p>
+            <p className="font-body text-[11px] text-foreground/40">{m.note}</p>
           </div>
           <span className="font-display text-sm font-extrabold text-primary shrink-0 ml-3">
             {m.value}
@@ -41,13 +41,13 @@ const ValuationBreakdown = () => (
     </div>
 
     <div className="mt-4 p-2.5 rounded-xl border border-primary/20 bg-primary/5">
-      <p className="font-display text-[9px] tracking-[0.15em] uppercase text-primary/60 mb-0.5">
+      <p className="font-display text-[11px] tracking-[0.15em] uppercase text-primary/60 mb-0.5">
         Current Stage
       </p>
       <p className="font-display text-xl font-extrabold text-primary">
         Pre-revenue
       </p>
-      <p className="font-body text-[10px] text-foreground/40 mt-0.5">
+      <p className="font-body text-[12px] text-foreground/40 mt-0.5">
         Every feature adds equity.
       </p>
     </div>

@@ -96,7 +96,7 @@ const LazyStreamSetup = () => {
 
       <main className="pt-32 pb-20 px-6 md:px-12 max-w-2xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Setup</p>
+          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Setup</p>
           <h1 className="mt-2 mb-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
             Activate Lazy Stream
           </h1>
@@ -111,9 +111,9 @@ const LazyStreamSetup = () => {
                   value={(form as any)[key]}
                   onChange={(e) => handleChange(key, e.target.value)}
                   placeholder={placeholder}
-                  className="w-full font-body text-sm bg-card border border-border px-3 py-2.5 text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground/30 transition-all"
+                  className="w-full font-body text-sm bg-card border border-border px-3 py-2.5 text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-foreground/30 transition-all"
                 />
-                {hint && <p className="font-body text-xs text-foreground/20 mt-1">{hint}</p>}
+                {hint && <p className="font-body text-xs text-foreground/35 mt-1">{hint}</p>}
               </div>
             ))}
 
