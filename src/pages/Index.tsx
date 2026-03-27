@@ -402,7 +402,7 @@ const Index = () => {
             <p className="text-[14px] tracking-[0.2em] uppercase font-semibold mb-4" style={{ color: "#f0ead6", opacity: 0.5 }}>
               Integrations
             </p>
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap justify-center gap-2 max-w-[640px] mx-auto">
               {[
                 { name: "Stripe", href: "/lazy-pay" },
                 { name: "Twilio", href: "/lazy-sms" },
