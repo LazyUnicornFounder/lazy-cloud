@@ -433,23 +433,27 @@ const Index = () => {
             </p>
             <div className="flex justify-center gap-1.5 overflow-x-auto no-scrollbar max-w-full mx-auto px-2">
               {[
+                // Content
+                { name: "Firecrawl", href: "/lazy-crawl" },
+                { name: "Perplexity", href: "/lazy-perplexity" },
+                { name: "Contentful", href: "/lazy-contentful" },
+                // Commerce
                 { name: "Stripe", href: "/lazy-pay" },
                 { name: "Twilio", href: "/lazy-sms" },
+                { name: "Resend", href: "/lazy-mail" },
+                // Media
                 { name: "ElevenLabs", href: "/lazy-voice" },
                 { name: "Twitch", href: "/lazy-stream" },
+                // Dev
                 { name: "GitHub", href: "/lazy-github" },
                 { name: "GitLab", href: "/lazy-gitlab" },
                 { name: "Linear", href: "/lazy-linear" },
+                { name: "21st.dev", href: "/lazy-design" },
+                { name: "Granola", href: "/lazy-granola" },
+                // Ops
                 { name: "Slack", href: "/lazy-alert" },
                 { name: "Telegram", href: "/lazy-telegram" },
                 { name: "Supabase", href: "/lazy-supabase" },
-                
-                { name: "Contentful", href: "/lazy-contentful" },
-                { name: "Firecrawl", href: "/lazy-crawl" },
-                { name: "Perplexity", href: "/lazy-perplexity" },
-                { name: "Resend", href: "/lazy-mail" },
-                { name: "21st.dev", href: "/lazy-design" },
-                { name: "Granola", href: "/lazy-granola" },
               ].map((item, i) => (
                 <Link key={item.name} to={item.href}>
                   <motion.span
