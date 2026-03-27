@@ -564,7 +564,7 @@ const Index = () => {
             const col = (i + 3) % 2;
             const bg = (row + col) % 2 === 0 ? bgEven : bgOdd;
             const isComingSoon = product.name === "Coming Soon";
-            const isLastAlone = isComingSoon && (products.length + 2) % 2 !== 0;
+            const isLastAlone = isComingSoon && (products.length + 3) % 2 !== 0;
 
             const content = (
               <motion.div
