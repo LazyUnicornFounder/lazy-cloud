@@ -116,7 +116,6 @@ const products = [
   { cursive: "Lazy", name: "Linear", link: "/lazy-linear", tagline: "Issues become changelogs." },
   { cursive: "Lazy", name: "Supabase", link: "/lazy-supabase", tagline: "Your database tells its story." },
   { cursive: "Lazy", name: "Security", link: "/lazy-security", tagline: "Ship safe, stay safe." },
-  { cursive: "Lazy", name: "Design", link: "/lazy-design", tagline: "21st.dev upgrades on autopilot." },
   
   { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More engines loading." },
 ];
@@ -529,15 +528,43 @@ const Index = () => {
             </motion.div>
           </Link>
 
+          {/* Lazy Design */}
+          <Link to="/lazy-design" className="block">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.16 }}
+              className="aspect-square flex flex-col items-center justify-center gap-6 transition-all duration-300 hover:brightness-[1.15] cursor-pointer"
+              style={{ backgroundColor: "#0a0a08" }}
+            >
+              {sketches["Design"]}
+              <div className="text-center">
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                  Lazy
+                </p>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                  Design
+                </p>
+              </div>
+              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
+                21st.dev upgrades on autopilot.
+              </p>
+              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.2, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
+                Made for Lovable
+              </p>
+            </motion.div>
+          </Link>
+
           {products.map((product, i) => {
             const bgEven = "#0a0a08";
             const bgOdd = "#111110";
-            // Offset by 2 since Lazy Run + Lazy Admin take the first row
-            const row = Math.floor((i + 2) / 2);
-            const col = (i + 2) % 2;
+            // Offset by 3 since Lazy Run + Lazy Admin + Lazy Design take the first rows
+            const row = Math.floor((i + 3) / 2);
+            const col = (i + 3) % 2;
             const bg = (row + col) % 2 === 0 ? bgEven : bgOdd;
             const isComingSoon = product.name === "Coming Soon";
-            const isLastAlone = isComingSoon && (products.length + 2) % 2 !== 0;
+            const isLastAlone = isComingSoon && (products.length + 3) % 2 !== 0;
 
             const content = (
               <motion.div
