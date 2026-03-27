@@ -1,14 +1,7 @@
 import { useState, useEffect, useRef, ReactNode } from "react";
-import { Menu, X as XIcon, Linkedin, ChevronDown } from "lucide-react";
+import { Menu, X as XIcon, Linkedin, ChevronDown, ChevronRight } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
-
-interface NavLink {
-  label: string;
-  href: string;
-  highlight?: boolean;
-  children?: { label: string; href: string; tagline?: string; icon?: ReactNode }[];
-}
 
 interface NavbarProps {
   activePage?: "home" | "blog" | "guide" | "autonomy";
@@ -39,76 +32,23 @@ const icons = {
   alert: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="28" y="30" width="64" height="50" rx="5"/><path d="M28 40 L60 62 L92 40"/><circle cx="85" cy="35" r="10" fill="currentColor" stroke="none"/></svg>,
   telegram: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M25 55 L95 30 L75 90 L55 65 Z"/><line x1="95" y1="30" x2="55" y2="65"/></svg>,
   security: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M60 20 L90 35 L90 65 Q90 90 60 100 Q30 90 30 65 L30 35 Z"/><path d="M48 58 L56 66 L72 50"/></svg>,
+  run: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="50,30 85,60 50,90"/></svg>,
+  admin: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="25" y="25" width="70" height="70" rx="5"/><line x1="25" y1="45" x2="95" y2="45"/><line x1="55" y1="45" x2="55" y2="95"/></svg>,
+  launch: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M60 25 L60 75"/><path d="M45 40 L60 25 L75 40"/><path d="M35 95 L85 95"/></svg>,
 };
 
-/* ── Category dropdown component ── */
-function CategoryDropdown({
-  label,
-  items,
-  onNavigate,
-}: {
-  label: string;
-  items: { label: string; href: string; tagline: string; icon: ReactNode }[];
-  onNavigate?: () => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const handleEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setOpen(true);
-  };
-  const handleLeave = () => {
-    timeoutRef.current = setTimeout(() => setOpen(false), 200);
-  };
-
-  useEffect(() => {
-    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
-  }, []);
-
-  return (
-    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <button
-        onClick={() => setOpen(!open)}
-        className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors flex items-center gap-1"
-      >
-        {label}
-        <ChevronDown size={11} className={`transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
-      {open && (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 p-4 min-w-[280px]">
-          <div className="space-y-1">
-            {items.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => { setOpen(false); onNavigate?.(); }}
-                className="group flex items-center gap-3 px-3 py-2.5 -mx-1 hover:bg-secondary/50 transition-colors rounded-sm"
-              >
-                <span className="text-foreground/20 group-hover:text-foreground/50 transition-colors flex-shrink-0">
-                  {item.icon}
-                </span>
-                <div className="min-w-0">
-                  <p className="font-display text-[13px] font-bold tracking-[0.06em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight">
-                    {item.label}
-                  </p>
-                  <p className="font-body text-[11px] text-foreground/30 group-hover:text-foreground/45 transition-colors leading-snug mt-0.5">
-                    {item.tagline}
-                  </p>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ── Category data ── */
-const categories: { label: string; items: { label: string; href: string; tagline: string; icon: ReactNode }[] }[] = [
+/* ── All products organised by category ── */
+const productCategories = [
   {
-    label: "Lazy Content",
+    label: "Unicorn",
+    items: [
+      { label: "Lazy Run", href: "/lazy-run", tagline: "All 20 engines. One prompt.", icon: icons.run },
+      { label: "Lazy Admin", href: "/lazy-admin", tagline: "Your autonomous dashboard.", icon: icons.admin },
+      { label: "Lazy Launch", href: "/lazy-launch", tagline: "Idea → landing page prompt.", icon: icons.launch },
+    ],
+  },
+  {
+    label: "Content",
     items: [
       { label: "Lazy Blogger", href: "/lazy-blogger", tagline: "Your blog writes itself.", icon: icons.blogger },
       { label: "Lazy SEO", href: "/lazy-seo", tagline: "Rankings on autopilot.", icon: icons.seo },
@@ -118,7 +58,7 @@ const categories: { label: string; items: { label: string; href: string; tagline
     ],
   },
   {
-    label: "Lazy Commerce",
+    label: "Commerce",
     items: [
       { label: "Lazy Store", href: "/lazy-store", tagline: "A store that runs itself.", icon: icons.store },
       { label: "Lazy Pay", href: "/lazy-pay", tagline: "Payments that optimise.", icon: icons.pay },
@@ -126,14 +66,14 @@ const categories: { label: string; items: { label: string; href: string; tagline
     ],
   },
   {
-    label: "Lazy Media",
+    label: "Media",
     items: [
       { label: "Lazy Voice", href: "/lazy-voice", tagline: "Every post, narrated.", icon: icons.voice },
       { label: "Lazy Stream", href: "/lazy-stream", tagline: "Streams become content.", icon: icons.stream },
     ],
   },
   {
-    label: "Lazy Dev",
+    label: "Dev",
     items: [
       { label: "Lazy GitHub", href: "/lazy-github", tagline: "Commits become changelogs.", icon: icons.code },
       { label: "Lazy GitLab", href: "/lazy-gitlab", tagline: "GitLab commits → content.", icon: icons.gitlab },
@@ -141,7 +81,7 @@ const categories: { label: string; items: { label: string; href: string; tagline
     ],
   },
   {
-    label: "Lazy Channels",
+    label: "Channels",
     items: [
       { label: "Lazy Alert", href: "/lazy-alert", tagline: "Your business in Slack.", icon: icons.alert },
       { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Your business in Telegram.", icon: icons.telegram },
@@ -150,12 +90,98 @@ const categories: { label: string; items: { label: string; href: string; tagline
     ],
   },
   {
-    label: "Lazy Shield",
+    label: "Shield",
     items: [
       { label: "Lazy Security", href: "/lazy-security", tagline: "Autonomous pentesting.", icon: icons.security },
     ],
   },
 ];
+
+/* ── Mega dropdown with left categories + right products ── */
+function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
+  const [open, setOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState(0);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpen(true);
+  };
+  const handleLeave = () => {
+    timeoutRef.current = setTimeout(() => setOpen(false), 250);
+  };
+
+  useEffect(() => {
+    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
+  }, []);
+
+  const activeCat = productCategories[activeCategory];
+
+  return (
+    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+      <button
+        onClick={() => setOpen(!open)}
+        className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors flex items-center gap-1"
+      >
+        Products
+        <ChevronDown size={11} className={`transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <div
+          className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 flex"
+          style={{ minWidth: 560 }}
+        >
+          {/* Left: categories */}
+          <div className="w-[180px] border-r border-border py-3">
+            {productCategories.map((cat, i) => (
+              <button
+                key={cat.label}
+                onMouseEnter={() => setActiveCategory(i)}
+                className={`w-full flex items-center justify-between px-4 py-2.5 text-left font-body text-[11px] tracking-[0.12em] uppercase transition-colors ${
+                  activeCategory === i
+                    ? "text-foreground bg-secondary/50 font-bold"
+                    : "text-foreground/40 hover:text-foreground/70"
+                }`}
+              >
+                {cat.label}
+                <ChevronRight size={10} className={activeCategory === i ? "opacity-60" : "opacity-0"} />
+              </button>
+            ))}
+          </div>
+
+          {/* Right: products */}
+          <div className="flex-1 p-4 min-w-[360px]">
+            <p className="font-body text-[9px] tracking-[0.2em] uppercase text-foreground/20 font-semibold mb-3">
+              {activeCat.label}
+            </p>
+            <div className="space-y-1">
+              {activeCat.items.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => { setOpen(false); onNavigate?.(); }}
+                  className="group flex items-center gap-3 px-3 py-2.5 -mx-1 hover:bg-secondary/50 transition-colors"
+                >
+                  <span className="text-foreground/20 group-hover:text-foreground/50 transition-colors flex-shrink-0">
+                    {item.icon}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-display text-[13px] font-bold tracking-[0.06em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight">
+                      {item.label}
+                    </p>
+                    <p className="font-body text-[11px] text-foreground/30 group-hover:text-foreground/45 transition-colors leading-snug mt-0.5">
+                      {item.tagline}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 /* ── Simple dropdown for Resources ── */
 function SimpleDropdown({
@@ -221,7 +247,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
   }, []);
 
   const isHome = location.pathname === "/";
-
   const brandHref = isHome ? "#top" : "/";
   const handleBrandClick = isHome && !isMobile
     ? (e: React.MouseEvent) => {
@@ -229,7 +254,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     : undefined;
-
 
   const toggleMobileDropdown = (label: string) => {
     setMobileDropdowns(prev => ({ ...prev, [label]: !prev[label] }));
@@ -271,19 +295,9 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a href="/use-cases" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
               Use Cases
             </a>
-            <SimpleDropdown
-              label="Lazy Unicorn"
-              children={[
-                { label: "Lazy Run", href: "/lazy-run" },
-                { label: "Lazy Admin", href: "/lazy-admin" },
-              ]}
-            />
 
-            {categories.map((cat) => (
-              <CategoryDropdown key={cat.label} label={cat.label} items={cat.items} />
-            ))}
+            <MegaDropdown />
 
-            
             <a href="/pricing" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
               Pricing
             </a>
@@ -329,26 +343,9 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
               <a href="/use-cases" onClick={() => setOpen(false)} className="font-body text-[13px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground transition-colors font-semibold">
                 Use Cases
               </a>
-            <div>
-                <button
-                  onClick={() => toggleMobileDropdown("Lazy Unicorn")}
-                  className="font-body text-[13px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground transition-colors flex items-center gap-1 w-full font-semibold"
-                >
-                  Lazy Unicorn
-                  <ChevronDown size={12} className={`transition-transform ${mobileDropdowns["Lazy Unicorn"] ? "rotate-180" : ""}`} />
-                </button>
-                {mobileDropdowns["Lazy Unicorn"] && (
-                  <div className="mt-2 space-y-1 pl-2">
-                    {[{ label: "Lazy Run", href: "/lazy-run" }, { label: "Lazy Admin", href: "/lazy-admin" }].map((item) => (
-                      <a key={item.label} href={item.href} onClick={() => setOpen(false)} className="block py-2 font-body text-[12px] tracking-[0.1em] uppercase text-foreground/35 hover:text-foreground transition-colors">
-                        {item.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
 
-              {categories.map((cat) => (
+              {/* Mobile: collapsible product categories */}
+              {productCategories.map((cat) => (
                 <div key={cat.label}>
                   <button
                     onClick={() => toggleMobileDropdown(cat.label)}
@@ -377,18 +374,16 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
               {[
                 { label: "Pricing", href: "/pricing" },
-                { label: "Pricing", href: "/pricing" },
                 { label: "Autonomy", href: "/autonomy" },
                 { label: "Blog", href: "/blog" },
                 { label: "Changelog", href: "/changelog" },
                 { label: "Upgrade Guide", href: "/upgrade-guide" },
                 { label: "About", href: "/about" },
               ].map((item) => (
-                <a key={item.label} href={item.href} onClick={() => setOpen(false)} className="font-body text-[13px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground transition-colors font-semibold">
+                <a key={item.label + item.href} href={item.href} onClick={() => setOpen(false)} className="font-body text-[13px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground transition-colors font-semibold">
                   {item.label}
                 </a>
               ))}
-
 
               <div className="flex items-center gap-3 pt-2 border-t border-border">
                 {socialIcons}
