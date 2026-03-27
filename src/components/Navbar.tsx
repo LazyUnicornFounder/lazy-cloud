@@ -40,15 +40,20 @@ const icons = {
 /* ── All products organised by category ── */
 const productCategories = [
   {
-    label: "Unicorn",
+    label: "Lazy Launch",
     items: [
-      { label: "Lazy Run", href: "/lazy-run", tagline: "All 20 engines. One prompt.", icon: icons.run },
-      { label: "Lazy Admin", href: "/lazy-admin", tagline: "Your autonomous dashboard.", icon: icons.admin },
       { label: "Lazy Launch", href: "/lazy-launch", tagline: "Idea → landing page prompt.", icon: icons.launch },
     ],
   },
   {
-    label: "Content",
+    label: "Lazy Unicorn",
+    items: [
+      { label: "Lazy Run", href: "/lazy-run", tagline: "All 20 engines. One prompt.", icon: icons.run },
+      { label: "Lazy Admin", href: "/lazy-admin", tagline: "Your autonomous dashboard.", icon: icons.admin },
+    ],
+  },
+  {
+    label: "Lazy Content",
     items: [
       { label: "Lazy Blogger", href: "/lazy-blogger", tagline: "Your blog writes itself.", icon: icons.blogger },
       { label: "Lazy SEO", href: "/lazy-seo", tagline: "Rankings on autopilot.", icon: icons.seo },
@@ -58,7 +63,7 @@ const productCategories = [
     ],
   },
   {
-    label: "Commerce",
+    label: "Lazy Commerce",
     items: [
       { label: "Lazy Store", href: "/lazy-store", tagline: "A store that runs itself.", icon: icons.store },
       { label: "Lazy Pay", href: "/lazy-pay", tagline: "Payments that optimise.", icon: icons.pay },
@@ -66,14 +71,14 @@ const productCategories = [
     ],
   },
   {
-    label: "Media",
+    label: "Lazy Media",
     items: [
       { label: "Lazy Voice", href: "/lazy-voice", tagline: "Every post, narrated.", icon: icons.voice },
       { label: "Lazy Stream", href: "/lazy-stream", tagline: "Streams become content.", icon: icons.stream },
     ],
   },
   {
-    label: "Dev",
+    label: "Lazy Dev",
     items: [
       { label: "Lazy GitHub", href: "/lazy-github", tagline: "Commits become changelogs.", icon: icons.code },
       { label: "Lazy GitLab", href: "/lazy-gitlab", tagline: "GitLab commits → content.", icon: icons.gitlab },
@@ -81,7 +86,7 @@ const productCategories = [
     ],
   },
   {
-    label: "Channels",
+    label: "Lazy Channels",
     items: [
       { label: "Lazy Alert", href: "/lazy-alert", tagline: "Your business in Slack.", icon: icons.alert },
       { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Your business in Telegram.", icon: icons.telegram },
@@ -90,7 +95,7 @@ const productCategories = [
     ],
   },
   {
-    label: "Shield",
+    label: "Lazy Shield",
     items: [
       { label: "Lazy Security", href: "/lazy-security", tagline: "Autonomous pentesting.", icon: icons.security },
     ],
