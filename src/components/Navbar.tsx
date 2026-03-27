@@ -166,7 +166,7 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
               {item.icon}
             </span>
             <div className="min-w-0 flex-1">
-              <p className="font-body text-[14px] font-black tracking-[0.04em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight">
+              <p className="font-body text-[14px] font-black tracking-[0.04em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight whitespace-nowrap">
                 {item.label}
               </p>
               <p className="font-body text-[13px] font-normal text-foreground/40 group-hover:text-foreground/55 transition-colors leading-tight mt-1 whitespace-nowrap">
