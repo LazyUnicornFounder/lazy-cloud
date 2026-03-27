@@ -292,7 +292,7 @@ export default function LazySmsPage() {
                 SMS confirmations, drip sequences, and abandoned checkout recovery — running automatically. Lazy SMS handles the entire Twilio integration with no code required.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
-                <CopyPromptButton onCopy={handleCopy} />
+                <CopyPromptButton text={promptText} onCopy={handleCopy} />
                 <button onClick={scrollToHowItWorks} className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors">
                   See How It Works
                 </button>
@@ -396,7 +396,7 @@ export default function LazySmsPage() {
             "A/B testing",
             "Campaign analytics",
           ]}
-          ctaButton={<CopyPromptButton onCopy={handleCopy} className="w-full justify-center" />}
+          ctaButton={<CopyPromptButton text={promptText} onCopy={handleCopy} className="w-full justify-center" />}
         />
 
         <LazyFaqSection faqs={faqs} />
@@ -411,7 +411,7 @@ export default function LazySmsPage() {
               Email open rates are 20%. SMS open rates are 98%. One prompt installs the entire Twilio integration — confirmations, sequences, recovery, two-way messaging, and self-improving copy.
             </motion.p>
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.2 }} className="flex flex-col items-center gap-3">
-              <CopyPromptButton onCopy={handleCopy} />
+              <CopyPromptButton text={promptText} onCopy={handleCopy} />
               <p className="font-body text-xs text-muted-foreground/60 max-w-sm">
                 Open your Lovable project, paste it into the chat, add your Twilio credentials. Your site starts texting customers within minutes.
               </p>

@@ -465,7 +465,7 @@ export default function LazyRunPage() {
             variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.3 }}
             className="flex flex-wrap gap-4"
           >
-            <CopyPromptButton />
+            <CopyPromptButton text={promptText} />
             <button
               onClick={() => document.getElementById("what-it-installs")?.scrollIntoView({ behavior: "smooth" })}
               className="inline-flex items-center justify-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-colors"
@@ -561,7 +561,7 @@ export default function LazyRunPage() {
         lazyFeatures={["Lazy Run setup prompt", "Self-hosted in your existing Lovable project", "Installs all twenty engines", "Bring your own API keys for each service"]}
         proFeatures={["Hosted version", "All API costs included", "Priority processing", "Weekly performance email", "Dedicated support"]}
         proPrice="$99"
-        ctaButton={<CopyPromptButton label="Get the Prompt" />}
+        ctaButton={<CopyPromptButton text={promptText} label="Get the Prompt" />}
       />
 
       <LazyFaqSection faqs={faqs} />
@@ -580,7 +580,7 @@ export default function LazyRunPage() {
             One prompt installs the complete autonomous operations layer — publishing, SEO, GEO, payments, SMS, audio, e-commerce, streams, and code — all managed from one dashboard, all running without you.
           </motion.p>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.2 }}>
-            <CopyPromptButton />
+            <CopyPromptButton text={promptText} />
           </motion.div>
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.3 }}
             className="font-body text-xs text-foreground/25 mt-6 max-w-md mx-auto">

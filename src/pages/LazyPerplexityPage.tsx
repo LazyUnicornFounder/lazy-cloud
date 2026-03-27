@@ -215,7 +215,7 @@ const LazyPerplexityPage = () => {
                 Lazy Perplexity uses the Perplexity API to research your niche with live web data, feed current intelligence into your blog and SEO engines, and test whether your brand appears when people ask AI questions about your industry.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
-                <CopyPromptButton onCopy={handlePromptCopy} />
+                <CopyPromptButton text={promptText} onCopy={handlePromptCopy} />
                 <button
                   onClick={(e) => { e.preventDefault(); document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }); }}
                   className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
@@ -263,7 +263,7 @@ const LazyPerplexityPage = () => {
           </div>
         </section>
 
-        <LazyPricingSection lazyFeatures={["Lazy Perplexity setup prompt", "Self-hosted in your Lovable project", "Real-time research integration", "Bring your own Perplexity API key"]} proFeatures={["Hosted version", "Daily citation monitoring", "Competitive citation tracking", "Advanced research scheduling"]} ctaButton={<CopyPromptButton onCopy={handlePromptCopy} className="w-full justify-center" />} />
+        <LazyPricingSection lazyFeatures={["Lazy Perplexity setup prompt", "Self-hosted in your Lovable project", "Real-time research integration", "Bring your own Perplexity API key"]} proFeatures={["Hosted version", "Daily citation monitoring", "Competitive citation tracking", "Advanced research scheduling"]} ctaButton={<CopyPromptButton text={promptText} onCopy={handlePromptCopy} className="w-full justify-center" />} />
 
         <LazyFaqSection faqs={[
           { q: "How much does the Perplexity API cost?", a: "Perplexity API starts at $5 for 5 million tokens. Most sites use less than $10/month." },
@@ -280,7 +280,7 @@ const LazyPerplexityPage = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">Real research. Real citations. Better content.</h2>
             <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">Every post backed by live web research. Every citation tested against real AI responses.</p>
-            <CopyPromptButton onCopy={handlePromptCopy} />
+            <CopyPromptButton text={promptText} onCopy={handlePromptCopy} />
             <p className="font-body text-xs text-foreground/20 mt-4">Open your Lovable project, paste it into the chat, add your API key. Done.</p>
           </motion.div>
         </section>

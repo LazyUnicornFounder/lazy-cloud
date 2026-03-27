@@ -342,7 +342,7 @@ export default function LazyAlertPage() {
               Lazy Alert connects every Lazy engine to your Slack workspace. Payments, posts, citations, customer replies, errors, and live events — all delivered as Slack messages the moment they happen. One prompt. Your business in your pocket.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
-              <CopyPromptButton />
+              <CopyPromptButton text={promptText} />
               <button
                 onClick={() => document.getElementById("events")?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
@@ -460,7 +460,7 @@ export default function LazyAlertPage() {
           "Multiple channel routing by event type",
         ]}
         proPrice="$9"
-        ctaButton={<CopyPromptButton />}
+        ctaButton={<CopyPromptButton text={promptText} />}
       />
 
       <LazyFaqSection faqs={faqs} />
@@ -479,7 +479,7 @@ export default function LazyAlertPage() {
           </motion.p>
 
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-10">
-            <CopyPromptButton />
+            <CopyPromptButton text={promptText} />
           </motion.div>
 
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-4 font-body text-xs text-foreground/25 max-w-md mx-auto">

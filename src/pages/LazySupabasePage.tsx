@@ -200,7 +200,7 @@ const LazySupabasePage = () => {
                 Lazy Supabase monitors your database for user signups, milestone events, and system health — turning every significant moment into a product update, blog post, or Slack alert without you writing a word.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
-                <CopyPromptButton onCopy={handlePromptCopy} />
+                <CopyPromptButton text={promptText} onCopy={handlePromptCopy} />
                 <button
                   onClick={(e) => { e.preventDefault(); document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }); }}
                   className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
@@ -248,7 +248,7 @@ const LazySupabasePage = () => {
           </div>
         </section>
 
-        <LazyPricingSection lazyFeatures={["Lazy Supabase setup prompt", "Self-hosted in your Lovable project", "Database milestone monitoring", "Uses your existing Supabase project"]} proFeatures={["Hosted version", "Multi-project monitoring", "Advanced growth analytics", "Custom milestone thresholds"]} ctaButton={<CopyPromptButton onCopy={handlePromptCopy} className="w-full justify-center" />} />
+        <LazyPricingSection lazyFeatures={["Lazy Supabase setup prompt", "Self-hosted in your Lovable project", "Database milestone monitoring", "Uses your existing Supabase project"]} proFeatures={["Hosted version", "Multi-project monitoring", "Advanced growth analytics", "Custom milestone thresholds"]} ctaButton={<CopyPromptButton text={promptText} onCopy={handlePromptCopy} className="w-full justify-center" />} />
 
         <LazyFaqSection faqs={[
           { q: "Does it need access to my data?", a: "It uses your service role key to count rows and monitor metrics. It never reads the content of your data." },
@@ -265,7 +265,7 @@ const LazySupabasePage = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">Your database is growing. Let it tell its own story.</h2>
             <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">Every milestone, every spike, every significant moment in your database — published automatically.</p>
-            <CopyPromptButton onCopy={handlePromptCopy} />
+            <CopyPromptButton text={promptText} onCopy={handlePromptCopy} />
             <p className="font-body text-xs text-foreground/20 mt-4">Open your Lovable project, paste it into the chat, add your API key. Done.</p>
           </motion.div>
         </section>

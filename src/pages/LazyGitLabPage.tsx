@@ -194,7 +194,7 @@ const LazyGitLabPage = () => {
                 Lazy GitLab monitors your GitLab repository, reads your commits and merge requests, and publishes plain-English changelogs, release notes, SEO developer posts, and a public roadmap to your Lovable site — every time you push.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
-                <CopyPromptButton onCopy={handlePromptCopy} />
+                <CopyPromptButton text={promptText} onCopy={handlePromptCopy} />
                 <button
                   onClick={(e) => { e.preventDefault(); document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }); }}
                   className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
@@ -242,7 +242,7 @@ const LazyGitLabPage = () => {
           </div>
         </section>
 
-        <LazyPricingSection lazyFeatures={["Lazy GitLab setup prompt", "Self-hosted in your Lovable project", "Autonomous changelog generation", "No API keys beyond GitLab token"]} proFeatures={["Hosted version", "Multi-repo support", "Advanced changelog formatting", "Custom templates"]} ctaButton={<CopyPromptButton onCopy={handlePromptCopy} className="w-full justify-center" />} />
+        <LazyPricingSection lazyFeatures={["Lazy GitLab setup prompt", "Self-hosted in your Lovable project", "Autonomous changelog generation", "No API keys beyond GitLab token"]} proFeatures={["Hosted version", "Multi-repo support", "Advanced changelog formatting", "Custom templates"]} ctaButton={<CopyPromptButton text={promptText} onCopy={handlePromptCopy} className="w-full justify-center" />} />
 
         <LazyFaqSection faqs={[
           { q: "Do I need a GitLab paid account?", a: "No. Lazy GitLab works with any GitLab account including free tier." },
@@ -259,7 +259,7 @@ const LazyGitLabPage = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">Your commits are content. Lazy GitLab publishes them.</h2>
             <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">Every commit, merge request, and release is a story your users want to hear. Lazy GitLab writes it for you.</p>
-            <CopyPromptButton onCopy={handlePromptCopy} />
+            <CopyPromptButton text={promptText} onCopy={handlePromptCopy} />
             <p className="font-body text-xs text-foreground/20 mt-4">Open your Lovable project, paste it into the chat, add your API key. Done.</p>
           </motion.div>
         </section>

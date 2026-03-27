@@ -243,7 +243,7 @@ const LazyStreamPage = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row items-start gap-4">
-                <CopyPromptButton />
+                <CopyPromptButton text={promptText} />
                 <button
                   onClick={(e) => { e.preventDefault(); document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }); }}
                   className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
@@ -403,7 +403,7 @@ const LazyStreamPage = () => {
         <LazyPricingSection
           lazyFeatures={["Lazy Stream setup prompt", "Self-hosted in your Lovable project", "Stream detection & recap writing", "SEO article + highlights page", "No API keys needed"]}
           proFeatures={["Hosted version", "Multi-platform stream support", "Advanced analytics dashboard", "Priority content generation"]}
-          ctaButton={<CopyPromptButton className="w-full justify-center" />}
+          ctaButton={<CopyPromptButton text={promptText} className="w-full justify-center" />}
         />
 
         <LazyFaqSection faqs={[
@@ -424,7 +424,7 @@ const LazyStreamPage = () => {
             <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">
               Every stream you do is an SEO opportunity, a blog post, and a highlights reel sitting unwritten. Lazy Stream writes them for you.
             </p>
-            <CopyPromptButton />
+            <CopyPromptButton text={promptText} />
           </motion.div>
         </section>
       </main>

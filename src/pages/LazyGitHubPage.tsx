@@ -305,7 +305,7 @@ const LazyGitHubPage = () => {
               Lazy GitHub monitors your GitHub repository, reads your commits and releases, and publishes plain-English changelogs, release notes, SEO developer posts, and a public roadmap to your Lovable site — every time you push.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
-              <CopyPromptButton />
+              <CopyPromptButton text={promptText} />
               <button
                 onClick={(e) => { e.preventDefault(); document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }); }}
                 className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
@@ -399,7 +399,7 @@ const LazyGitHubPage = () => {
         lazyFeatures={["Lazy GitHub setup prompt", "Self-hosted in your existing Lovable project", "Works with any public or private GitHub repository", "Bring your own GitHub account"]}
         proFeatures={["Hosted version", "Automatic contributor attribution", "Multi-repository support", "Advanced SEO targeting"]}
         proPrice="$19"
-        ctaButton={<CopyPromptButton className="w-full justify-center" />}
+        ctaButton={<CopyPromptButton text={promptText} className="w-full justify-center" />}
       />
 
       <LazyFaqSection faqs={faqs} />
@@ -414,7 +414,7 @@ const LazyGitHubPage = () => {
             Every feature you ship, every bug you fix, every release you tag is a changelog entry, a blog post, and an SEO article waiting to be written. One prompt installs the entire pipeline into your existing Lovable project.
           </p>
           <div className="mt-8">
-            <CopyPromptButton />
+            <CopyPromptButton text={promptText} />
           </div>
           <p className="mt-4 font-body text-xs text-foreground/25 max-w-md mx-auto leading-relaxed">
             Open your Lovable project, paste it into the chat, add your GitHub credentials. Your next commit will be published automatically.
