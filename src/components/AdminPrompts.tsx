@@ -6,26 +6,33 @@ import { savePromptVersion, type PromptVersion } from "@/hooks/usePrompt";
 import { frequencyTiers } from "@/components/lazy-blogger/frequencyData";
 
 const PRODUCTS = [
+  // Unicorn
+  { key: "lazy-run", label: "🚀 Lazy Run" },
+  { key: "lazy-admin", label: "📊 Lazy Admin" },
+  // Content
   { key: "lazy-blogger", label: "🤖 Lazy Blogger" },
   { key: "lazy-seo", label: "🔍 Lazy SEO" },
   { key: "lazy-geo", label: "🧠 Lazy GEO" },
   { key: "lazy-crawl", label: "🕷️ Lazy Crawl" },
   { key: "lazy-perplexity", label: "🔬 Lazy Perplexity" },
+  // Commerce
   { key: "lazy-store", label: "🏪 Lazy Store" },
   { key: "lazy-pay", label: "💳 Lazy Pay" },
   { key: "lazy-sms", label: "💬 Lazy SMS" },
+  // Media
   { key: "lazy-voice", label: "🎙️ Lazy Voice" },
   { key: "lazy-stream", label: "🎮 Lazy Stream" },
+  // Dev
   { key: "lazy-code", label: "🐙 Lazy GitHub" },
   { key: "lazy-gitlab", label: "🦊 Lazy GitLab" },
   { key: "lazy-linear", label: "📋 Lazy Linear" },
+  // Channels
   { key: "lazy-alert", label: "🔔 Lazy Alert" },
   { key: "lazy-telegram", label: "✈️ Lazy Telegram" },
   { key: "lazy-contentful", label: "📦 Lazy Contentful" },
   { key: "lazy-supabase", label: "⚡ Lazy Supabase" },
+  // Shield
   { key: "lazy-security", label: "🛡️ Lazy Security" },
-  { key: "lazy-run", label: "🚀 Lazy Run" },
-  { key: "lazy-admin", label: "📊 Lazy Admin" },
 ] as const;
 
 /* ── Helpers ── */
