@@ -115,7 +115,7 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
 
   const renderCategory = (cat: typeof productCategories[number]) => (
     <div key={cat.label} className="mb-6">
-      <p className="font-body text-[14px] tracking-[0.2em] uppercase text-foreground/50 font-semibold mb-3">
+      <p className="font-display text-[15px] tracking-[0.2em] uppercase text-foreground/80 font-extrabold mb-3">
         {cat.label}
       </p>
       {cat.items.map((item) => (
