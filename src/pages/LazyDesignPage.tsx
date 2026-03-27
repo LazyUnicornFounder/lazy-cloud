@@ -89,6 +89,10 @@ export default function LazyDesignPage() {
         description="One prompt upgrades your Lovable site with pre-built 21st.dev components — hero, navigation, testimonials, and more — matched to your brand automatically."
         url="/lazy-design"
         keywords="autonomous design, 21st.dev integration, Lovable design engine, UI component upgrades, design automation"
+        faq={faqs.map(f => ({ question: f.q, answer: f.a }))}
+        softwareApp={{ name: "Lazy Design", description: "Autonomous design upgrade engine that improves your Lovable site with pre-built 21st.dev components.", category: "DesignApplication" }}
+        howToSteps={steps.map(s => ({ name: s.title, text: s.title }))}
+        howToName="How to use Lazy Design"
       />
       <Navbar />
 
