@@ -6,7 +6,7 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
-const NEW_TITLE = "Launch your Autonomous Business on Lovable.";
+const NEW_TITLE = "Launch your autonomous business on Lovable.";
 const NEW_DESCRIPTION = "The autonomous layer for Lovable. One prompt installs the engine you need — blog posts, SEO, GEO, payments, voice, stores, streams, and more. Everything runs itself.";
 
 const rotatingWords = [
