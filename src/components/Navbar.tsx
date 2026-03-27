@@ -281,16 +281,16 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
       }`}
     >
       {!isMobile ? (
-        <div className="flex items-center w-full py-3">
+        <div className="flex items-center w-full py-3 relative">
           <a
             href={brandHref}
             onClick={handleBrandClick}
-            className="font-display text-[10px] font-semibold tracking-[0.15em] uppercase text-foreground hover:text-foreground/70 transition-colors cursor-pointer leading-tight flex flex-col mr-auto"
+            className="font-display text-[10px] font-semibold tracking-[0.15em] uppercase text-foreground hover:text-foreground/70 transition-colors cursor-pointer leading-tight flex flex-col absolute left-0"
           >
             <span>Lazy</span>
             <span>Unicorn</span>
           </a>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 mx-auto">
             <a href="/how-it-works" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
               How It Works
             </a>
