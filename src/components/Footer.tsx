@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin } from "lucide-react";
+import { Linkedin, Github } from "lucide-react";
 
 const XLogo = () => (
   <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
@@ -83,6 +83,9 @@ export default function Footer() {
               The autonomous layer for Lovable. One prompt, everything runs itself.
             </p>
             <div className="flex items-center gap-3 mt-4">
+              <a href="https://github.com/LazyUnicornFounder/LazyUnicorn" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-foreground/50 transition-colors" aria-label="View prompts on GitHub">
+                <Github size={12} />
+              </a>
               <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-foreground/50 transition-colors" aria-label="Follow on X">
                 <XLogo />
               </a>
