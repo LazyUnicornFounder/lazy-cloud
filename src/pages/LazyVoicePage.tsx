@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import LazyFaqSection from "@/components/LazyFaqSection";
 import { motion } from "framer-motion";
@@ -8,7 +8,6 @@ import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
 import { useCurrentPrompt } from "@/hooks/usePrompt";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
 import AutopilotHeadline from "@/components/AutopilotHeadline";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
@@ -238,180 +237,6 @@ const faqs = [
   { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
 ];
 
-/* ── Manifesto Audio Player ── */
-function ManifestoPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [audioReady, setAudioReady] = useState(false);
-  const narrationRef = useRef<HTMLAudioElement | null>(null);
-  const musicRef = useRef<HTMLAudioElement | null>(null);
-  const trackEvent = useTrackEvent();
-
-  // Pre-load audio on mount
-  useEffect(() => {
-    const preload = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/manifesto-tts`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-              Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-            },
-          }
-        );
-        const data = await response.json();
-        if (data.error) throw new Error(data.error);
-
-        // Create narration audio
-        const narration = new Audio(data.narrationUrl);
-        narration.preload = "auto";
-        narrationRef.current = narration;
-
-        narration.addEventListener("timeupdate", () => {
-          setProgress(narration.currentTime);
-          setDuration(narration.duration || 0);
-        });
-        narration.addEventListener("ended", () => {
-          setIsPlaying(false);
-          if (musicRef.current) {
-            musicRef.current.pause();
-          }
-        });
-        narration.addEventListener("loadedmetadata", () => setDuration(narration.duration));
-        narration.addEventListener("canplaythrough", () => setAudioReady(true), { once: true });
-
-        // Create music audio (plays quietly behind narration)
-        if (data.musicUrl) {
-          const music = new Audio(data.musicUrl);
-          music.preload = "auto";
-          music.volume = 0.12; // Quiet background
-          music.loop = true;
-          musicRef.current = music;
-        }
-      } catch (err) {
-        console.error("Failed to load manifesto audio:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    preload();
-
-    return () => {
-      narrationRef.current?.pause();
-      musicRef.current?.pause();
-    };
-  }, []);
-
-  const togglePlay = useCallback(async () => {
-    if (!narrationRef.current) return;
-
-    if (isPlaying) {
-      narrationRef.current.pause();
-      musicRef.current?.pause();
-      setIsPlaying(false);
-    } else {
-      // Start music first (fades in), then narration
-      if (musicRef.current) {
-        musicRef.current.volume = 0;
-        musicRef.current.play().catch(() => {});
-        // Fade in music over 2 seconds
-        let vol = 0;
-        const fadeIn = setInterval(() => {
-          vol += 0.006;
-          if (vol >= 0.12) {
-            vol = 0.12;
-            clearInterval(fadeIn);
-          }
-          if (musicRef.current) musicRef.current.volume = vol;
-        }, 50);
-      }
-      // Slight delay before narration starts
-      setTimeout(() => {
-        narrationRef.current?.play().catch(() => {});
-      }, 800);
-      setIsPlaying(true);
-      trackEvent("manifesto_audio_play");
-    }
-  }, [isPlaying, trackEvent]);
-
-  const formatTime = (s: number) => {
-    const m = Math.floor(s / 60);
-    const sec = Math.floor(s % 60);
-    return `${m}:${sec.toString().padStart(2, "0")}`;
-  };
-
-  return (
-    <section className="py-16 px-6 border-t border-border" style={{ backgroundColor: "#0a0a08" }}>
-      <div className="max-w-2xl mx-auto">
-        <motion.div
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-          className="border border-border bg-card p-8"
-        >
-          <p className="font-display text-[14px] tracking-[0.15em] uppercase font-bold text-foreground/70 mb-4">
-            Listen — Narrated by AI
-          </p>
-          <h3
-            style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.3rem, 2.5vw, 1.8rem)", color: "#f0ead6", lineHeight: 1.2 }}
-            className="mb-6"
-          >
-            Here's to the lazy ones.
-          </h3>
-
-          <div className="flex items-center gap-4">
-            <button
-              onClick={togglePlay}
-              disabled={isLoading && !audioReady}
-              className="flex-shrink-0 w-12 h-12 bg-foreground text-background flex items-center justify-center hover:opacity-90 transition-opacity disabled:opacity-50"
-            >
-              {isLoading && !audioReady ? (
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }}>
-                  <Radio size={18} />
-                </motion.div>
-              ) : isPlaying ? (
-                <Volume2 size={18} />
-              ) : (
-                <Play size={18} />
-              )}
-            </button>
-
-            <div className="flex-1 min-w-0">
-              {duration > 0 ? (
-                <>
-                  <div className="w-full h-1 bg-border overflow-hidden mb-2">
-                    <div
-                      className="h-full bg-foreground/60 transition-all duration-300"
-                      style={{ width: `${(progress / duration) * 100}%` }}
-                    />
-                  </div>
-                  <div className="flex justify-between font-body text-[14px] text-foreground/65">
-                    <span>{formatTime(progress)}</span>
-                    <span>{formatTime(duration)}</span>
-                  </div>
-                </>
-              ) : (
-                <p className="font-body text-sm text-foreground/70">
-                  {isLoading ? "Preparing audio..." : audioReady ? "Ready to play" : "Press play to hear the Lazy Unicorn manifesto"}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <p className="mt-4 font-body text-[14px] text-foreground/60">
-            Generated with ElevenLabs · George voice · Classical piano accompaniment · Lazy Voice engine
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
 export default function LazyVoicePage() {
   const trackEvent = useTrackEvent();
   const { prompt: dbPrompt } = useCurrentPrompt("lazy-voice");
@@ -469,8 +294,6 @@ export default function LazyVoicePage() {
           </div>
         </section>
 
-        {/* ── MANIFESTO AUDIO ── */}
-        <ManifestoPlayer />
 
         {/* ── HOW IT WORKS ── */}
         <section id="how-it-works" className="py-20 md:py-28 px-6 border-t border-border">
