@@ -63,19 +63,20 @@ serve(async (req) => {
     if (!settings) return new Response(JSON.stringify({ error: "No GEO settings" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     if (!settings.is_running) return new Response(JSON.stringify({ message: "GEO paused" }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
-    // Find next query without content, filtered by product if specified
-    let queriesQuery = supabase.from("geo_queries").select("*").eq("has_content", false).order("priority", { ascending: false });
-    if (targetProduct) {
-      queriesQuery = queriesQuery.eq("product", targetProduct);
-    }
-    const { data: allQueries } = await queriesQuery.limit(1);
-    const nextQuery = allQueries?.[0];
+    // Find next query without content, filtered by product (fallback to general)
+    const findQuery = async (product: string | null) => {
+      let q = supabase.from("geo_queries").select("*").eq("has_content", false).order("priority", { ascending: false });
+      if (product) q = q.eq("product", product);
+      const { data } = await q.limit(1);
+      return data?.[0];
+    };
+
+    let nextQuery = targetProduct ? await findQuery(targetProduct) : null;
+    if (!nextQuery) nextQuery = await findQuery("general");
+    if (!nextQuery) nextQuery = await findQuery(null);
 
     if (!nextQuery) {
-      if (!targetProduct) {
-        await supabase.functions.invoke("lazy-geo-discover");
-      }
-      return new Response(JSON.stringify({ message: `No queries available${targetProduct ? ` for ${targetProduct}` : ""}, triggered discovery` }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
+      return new Response(JSON.stringify({ message: `No queries available, triggered discovery` }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
 
     const productInfo = targetProduct ? PRODUCT_INFO[targetProduct] : null;

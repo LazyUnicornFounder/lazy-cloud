@@ -80,19 +80,23 @@ serve(async (req) => {
       });
     }
 
-    // Find next keyword without a post, filtered by product if specified
+    // Find next keyword without a post, filtered by product if specified (fallback to general)
     const { data: existingPosts } = await supabase.from("seo_posts").select("target_keyword");
     const usedKeywords = new Set((existingPosts || []).map((p: any) => p.target_keyword?.toLowerCase()));
 
-    let keywordsQuery = supabase.from("seo_keywords").select("*").order("last_checked", { ascending: true });
-    if (targetProduct) {
-      keywordsQuery = keywordsQuery.eq("product", targetProduct);
-    }
-    const { data: allKeywords } = await keywordsQuery;
-    const nextKeyword = (allKeywords || []).find((kw: any) => !usedKeywords.has(kw.keyword?.toLowerCase()));
+    const findKeyword = async (product: string | null) => {
+      let q = supabase.from("seo_keywords").select("*").order("last_checked", { ascending: true });
+      if (product) q = q.eq("product", product);
+      const { data } = await q;
+      return (data || []).find((kw: any) => !usedKeywords.has(kw.keyword?.toLowerCase()));
+    };
+
+    let nextKeyword = targetProduct ? await findKeyword(targetProduct) : null;
+    if (!nextKeyword) nextKeyword = await findKeyword("general");
+    if (!nextKeyword) nextKeyword = await findKeyword(null);
 
     if (!nextKeyword) {
-      return new Response(JSON.stringify({ message: `No available keywords${targetProduct ? ` for ${targetProduct}` : ""}. Run analysis first.` }), {
+      return new Response(JSON.stringify({ message: `No available keywords. Run analysis first.` }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
