@@ -54,7 +54,7 @@ export default function LazyLaunchPage() {
         url="/lazy-launch"
         description="Describe your business idea and get a production-ready Lovable prompt for a stunning landing page in the Lazy Unicorn style."
       />
-      <Navbar activePage="lazy-launch" />
+      <Navbar activePage="home" />
 
       {/* Hero */}
       <header className="relative z-10" style={{ backgroundColor: "#0a0a08" }}>

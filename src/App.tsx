@@ -41,6 +41,7 @@ import PricingPage from "./pages/PricingPage.tsx";
 import AutonomyPage from "./pages/AutonomyPage.tsx";
 import LazySecurityPage from "./pages/LazySecurityPage.tsx";
 import LazyAdminPage from "./pages/LazyAdminPage.tsx";
+import LazyLaunchPage from "./pages/LazyLaunchPage.tsx";
 import ChangelogPage from "./pages/ChangelogPage.tsx";
 import UpgradeGuidePage from "./pages/UpgradeGuidePage.tsx";
 import HowItWorksPage from "./pages/HowItWorksPage.tsx";
