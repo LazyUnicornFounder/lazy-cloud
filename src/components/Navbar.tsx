@@ -153,7 +153,7 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button
         onClick={() => setOpen(!open)}
-        className="font-body text-[12px] tracking-[0.12em] uppercase font-bold text-foreground/60 hover:text-foreground transition-colors flex items-center gap-1"
+        className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors flex items-center gap-1"
       >
         Products
         <ChevronDown size={11} className={`transition-transform ${open ? "rotate-180" : ""}`} />
