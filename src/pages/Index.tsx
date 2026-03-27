@@ -6,6 +6,22 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
+import logoStripe from "@/assets/logos/stripe.svg";
+import logoTwilio from "@/assets/logos/twilio.svg";
+import logoElevenlabs from "@/assets/logos/elevenlabs.svg";
+import logoTwitch from "@/assets/logos/twitch.svg";
+import logoGithub from "@/assets/logos/github.svg";
+import logoGitlab from "@/assets/logos/gitlab.svg";
+import logoLinear from "@/assets/logos/linear.svg";
+import logoSlack from "@/assets/logos/slack.svg";
+import logoTelegram from "@/assets/logos/telegram.svg";
+import logoSupabase from "@/assets/logos/supabase.svg";
+import logoContentful from "@/assets/logos/contentful.svg";
+import logoFirecrawl from "@/assets/logos/firecrawl.svg";
+import logoPerplexity from "@/assets/logos/perplexity.svg";
+import logoResend from "@/assets/logos/resend.svg";
+import logo21stdev from "@/assets/logos/21st.dev.svg";
+
 const NEW_TITLE = "Launch your autonomous business on Lovable.";
 const NEW_DESCRIPTION = "The autonomous layer for Lovable. One prompt installs the engine you need — blog posts, SEO, GEO, payments, voice, stores, streams, and more. Everything runs itself.";
 
@@ -415,39 +431,37 @@ const Index = () => {
 
           {/* Integrations */}
           <div className="mt-8">
-            <p className="text-[14px] tracking-[0.2em] uppercase font-semibold mb-4" style={{ color: "#f0ead6", opacity: 0.5 }}>
+            <p className="text-[14px] tracking-[0.2em] uppercase font-semibold mb-5" style={{ color: "#f0ead6", opacity: 0.5 }}>
               Integrations
             </p>
-            <div className="flex justify-center gap-1.5 overflow-x-auto no-scrollbar max-w-full mx-auto px-2">
+            <div className="flex justify-center items-center gap-5 flex-wrap max-w-2xl mx-auto px-2">
               {[
-                { name: "Stripe", href: "/lazy-pay" },
-                { name: "Twilio", href: "/lazy-sms" },
-                { name: "ElevenLabs", href: "/lazy-voice" },
-                { name: "Twitch", href: "/lazy-stream" },
-                { name: "GitHub", href: "/lazy-github" },
-                { name: "GitLab", href: "/lazy-gitlab" },
-                { name: "Linear", href: "/lazy-linear" },
-                { name: "Slack", href: "/lazy-alert" },
-                { name: "Telegram", href: "/lazy-telegram" },
-                { name: "Supabase", href: "/lazy-supabase" },
-                
-                { name: "Contentful", href: "/lazy-contentful" },
-                { name: "Firecrawl", href: "/lazy-crawl" },
-                { name: "Perplexity", href: "/lazy-perplexity" },
-                { name: "Resend", href: "/lazy-mail" },
-                { name: "21st.dev", href: "/lazy-design" },
+                { name: "Stripe", href: "/lazy-pay", logo: logoStripe },
+                { name: "Twilio", href: "/lazy-sms", logo: logoTwilio },
+                { name: "ElevenLabs", href: "/lazy-voice", logo: logoElevenlabs },
+                { name: "Twitch", href: "/lazy-stream", logo: logoTwitch },
+                { name: "GitHub", href: "/lazy-github", logo: logoGithub },
+                { name: "GitLab", href: "/lazy-gitlab", logo: logoGitlab },
+                { name: "Linear", href: "/lazy-linear", logo: logoLinear },
+                { name: "Slack", href: "/lazy-alert", logo: logoSlack },
+                { name: "Telegram", href: "/lazy-telegram", logo: logoTelegram },
+                { name: "Supabase", href: "/lazy-supabase", logo: logoSupabase },
+                { name: "Contentful", href: "/lazy-contentful", logo: logoContentful },
+                { name: "Firecrawl", href: "/lazy-crawl", logo: logoFirecrawl },
+                { name: "Perplexity", href: "/lazy-perplexity", logo: logoPerplexity },
+                { name: "Resend", href: "/lazy-mail", logo: logoResend },
+                { name: "21st.dev", href: "/lazy-design", logo: logo21stdev },
               ].map((item, i) => (
-                <Link key={item.name} to={item.href}>
-                  <motion.span
+                <Link key={item.name} to={item.href} title={item.name}>
+                  <motion.img
+                    src={item.logo}
+                    alt={item.name}
                     initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: 0.4, y: 0 }}
                     transition={{ delay: 1 + i * 0.06, duration: 0.4 }}
-                    whileHover={{ scale: 1.1, opacity: 1 }}
-                    className="inline-block text-[11px] tracking-[0.08em] uppercase font-medium px-2 py-1 border transition-colors duration-200 cursor-pointer hover:border-[rgba(240,234,214,0.35)] whitespace-nowrap shrink-0"
-                    style={{ color: "#f0ead6", opacity: 0.4, borderColor: "rgba(240,234,214,0.12)" }}
-                  >
-                    {item.name}
-                  </motion.span>
+                    whileHover={{ opacity: 1, scale: 1.15 }}
+                    className="h-5 w-auto transition-all duration-200 cursor-pointer brightness-0 invert"
+                  />
                 </Link>
               ))}
             </div>
