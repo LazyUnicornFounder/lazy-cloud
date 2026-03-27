@@ -111,6 +111,33 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
+          {/* Resources */}
+          <div>
+            <p className="font-body text-xs tracking-[0.2em] uppercase text-foreground/50 font-semibold mb-4">
+              Resources
+            </p>
+            <ul className="space-y-2">
+              {[
+                { name: "How It Works", href: "/how-it-works" },
+                { name: "Use Cases", href: "/use-cases" },
+                { name: "Pricing", href: "/pricing" },
+                { name: "Blog", href: "/blog" },
+                { name: "Autonomy", href: "/autonomy" },
+                { name: "Changelog", href: "/changelog" },
+                { name: "Upgrade Guide", href: "/upgrade-guide" },
+                { name: "About", href: "/about" },
+                { name: "Lazy Launch", href: "/lazy-launch" },
+                { name: "Lazy Shop", href: "/lazy-shop" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link to={item.href} className="font-body text-sm text-foreground/65 hover:text-foreground/50 transition-colors">
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Bottom bar */}
