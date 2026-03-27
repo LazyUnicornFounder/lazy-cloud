@@ -9,10 +9,9 @@ const fade = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }
 const engineGroups = [
   {
     label: "Lazy Unicorn",
-    description: "Unified runtime and dashboard for the entire stack.",
+    description: "Unified runtime for the entire stack.",
     engines: [
       { name: "Lazy Run", tagline: "Launch autonomous everything.", href: "/lazy-run" },
-      { name: "Lazy Admin", tagline: "Launch autonomous ops control.", href: "/lazy-admin" },
     ],
   },
   {
@@ -60,6 +59,7 @@ const engineGroups = [
     label: "Lazy Ops",
     description: "Monitoring, alerts, security, and database observability.",
     engines: [
+      { name: "Lazy Admin", tagline: "Launch autonomous ops control.", href: "/lazy-admin" },
       { name: "Lazy Alert", tagline: "Launch autonomous Slack alerts.", href: "/lazy-alert" },
       { name: "Lazy Telegram", tagline: "Launch autonomous Telegram updates.", href: "/lazy-telegram" },
       { name: "Lazy Supabase", tagline: "Launch autonomous database reports.", href: "/lazy-supabase" },

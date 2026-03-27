@@ -45,7 +45,6 @@ const productCategories = [
     label: "Lazy Unicorn",
     items: [
       { label: "Lazy Run", href: "/lazy-run", tagline: "Launch autonomous everything.", icon: icons.run },
-      { label: "Lazy Admin", href: "/lazy-admin", tagline: "Launch autonomous ops control.", icon: icons.admin },
     ],
   },
   {
@@ -88,6 +87,7 @@ const productCategories = [
   {
     label: "Lazy Ops",
     items: [
+      { label: "Lazy Admin", href: "/lazy-admin", tagline: "Launch autonomous ops control.", icon: icons.admin },
       { label: "Lazy Alert", href: "/lazy-alert", tagline: "Launch autonomous Slack alerts.", icon: icons.alert },
       { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Launch autonomous Telegram updates.", icon: icons.telegram },
       { label: "Lazy Supabase", href: "/lazy-supabase", tagline: "Launch autonomous database reports.", icon: icons.supabase },
