@@ -24,6 +24,7 @@ const engineGroups = [
       { name: "Lazy GEO", tagline: "Gets your brand cited by ChatGPT and Perplexity.", href: "/lazy-geo" },
       { name: "Lazy Crawl", tagline: "Monitors competitors and feeds intelligence to your engines.", href: "/lazy-crawl" },
       { name: "Lazy Perplexity", tagline: "Queries Perplexity for trends and feeds your content engines.", href: "/lazy-perplexity" },
+      { name: "Lazy Contentful", tagline: "Two-way content sync with Contentful.", href: "/lazy-contentful" },
     ],
   },
   {
@@ -33,6 +34,7 @@ const engineGroups = [
       { name: "Lazy Store", tagline: "Discovers products, writes listings, optimises conversion.", href: "/lazy-store" },
       { name: "Lazy Pay", tagline: "Full Stripe integration that optimises its own conversion rate.", href: "/lazy-pay" },
       { name: "Lazy SMS", tagline: "Self-improving SMS sequences via Twilio.", href: "/lazy-sms" },
+      { name: "Lazy Mail", tagline: "Subscriber capture, welcome sequences, and AI newsletters via Resend.", href: "/lazy-mail" },
     ],
   },
   {
@@ -50,32 +52,18 @@ const engineGroups = [
       { name: "Lazy GitHub", tagline: "Turns every GitHub commit into a changelog and developer post.", href: "/lazy-github" },
       { name: "Lazy GitLab", tagline: "Turns GitLab activity into public content.", href: "/lazy-gitlab" },
       { name: "Lazy Linear", tagline: "Turns Linear cycles into product update content.", href: "/lazy-linear" },
-    ],
-  },
-  {
-    label: "Lazy Channels",
-    description: "Email automation, real-time notifications, and content distribution.",
-    engines: [
-      { name: "Lazy Mail", tagline: "Subscriber capture, welcome sequences, and AI newsletters via Resend.", href: "/lazy-mail" },
-      { name: "Lazy Alert", tagline: "Every engine event reported to Slack in real time.", href: "/lazy-alert" },
-      { name: "Lazy Telegram", tagline: "Real-time engine reporting via Telegram bot.", href: "/lazy-telegram" },
-      { name: "Lazy Contentful", tagline: "Two-way content sync with Contentful.", href: "/lazy-contentful" },
-      { name: "Lazy Supabase", tagline: "Narrates your database growth story automatically.", href: "/lazy-supabase" },
-    ],
-  },
-  {
-    label: "Lazy Shield",
-    description: "Autonomous pentesting, vulnerability monitoring, and authentication.",
-    engines: [
-      { name: "Lazy Security", tagline: "Autonomous pentesting and vulnerability monitoring via Aikido.", href: "/lazy-security" },
+      { name: "Lazy Design", tagline: "Upgrades your site with 21st.dev components matched to your brand.", href: "/lazy-design" },
       { name: "Lazy Auth", tagline: "Google Sign-In, email login, protected routes, and user management in one prompt.", href: "/lazy-auth" },
     ],
   },
   {
-    label: "Lazy Design",
-    description: "Autonomous UI upgrades matched to your brand.",
+    label: "Lazy Ops",
+    description: "Monitoring, alerts, security, and database observability.",
     engines: [
-      { name: "Lazy Design", tagline: "Upgrades your site with 21st.dev components matched to your brand.", href: "/lazy-design" },
+      { name: "Lazy Alert", tagline: "Every engine event reported to Slack in real time.", href: "/lazy-alert" },
+      { name: "Lazy Telegram", tagline: "Real-time engine reporting via Telegram bot.", href: "/lazy-telegram" },
+      { name: "Lazy Supabase", tagline: "Narrates your database growth story automatically.", href: "/lazy-supabase" },
+      { name: "Lazy Security", tagline: "Autonomous pentesting and vulnerability monitoring via Aikido.", href: "/lazy-security" },
     ],
   },
 ];
