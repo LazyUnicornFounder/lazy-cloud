@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import LazyFaqSection from "@/components/LazyFaqSection";
 import { motion } from "framer-motion";
-import { Copy, Check, Mic, Headphones, Rss } from "lucide-react";
+import { Copy, Check, Mic, Headphones, Rss, Radio, Volume2, Play } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
