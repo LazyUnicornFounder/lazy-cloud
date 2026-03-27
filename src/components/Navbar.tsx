@@ -32,6 +32,7 @@ const icons = {
   alert: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="28" y="30" width="64" height="50" rx="5"/><path d="M28 40 L60 62 L92 40"/><circle cx="85" cy="35" r="10" fill="currentColor" stroke="none"/></svg>,
   telegram: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M25 55 L95 30 L75 90 L55 65 Z"/><line x1="95" y1="30" x2="55" y2="65"/></svg>,
   security: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M60 20 L90 35 L90 65 Q90 90 60 100 Q30 90 30 65 L30 35 Z"/><path d="M48 58 L56 66 L72 50"/></svg>,
+  mail: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="25" y="35" width="70" height="50" rx="3"/><path d="M25 40 L60 65 L95 40"/></svg>,
   run: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="50,30 85,60 50,90"/></svg>,
   admin: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="25" y="25" width="70" height="70" rx="5"/><line x1="25" y1="45" x2="95" y2="45"/><line x1="55" y1="45" x2="55" y2="95"/></svg>,
   launch: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M60 25 L60 75"/><path d="M45 40 L60 25 L75 40"/><path d="M35 95 L85 95"/></svg>,
@@ -42,7 +43,7 @@ const productCategories = [
   {
     label: "Lazy Unicorn",
     items: [
-      { label: "Lazy Run", href: "/lazy-run", tagline: "All 20 engines. One prompt.", icon: icons.run },
+      { label: "Lazy Run", href: "/lazy-run", tagline: "All 21 engines. One prompt.", icon: icons.run },
       { label: "Lazy Admin", href: "/lazy-admin", tagline: "Your autonomous dashboard.", icon: icons.admin },
     ],
   },
@@ -82,7 +83,7 @@ const productCategories = [
   {
     label: "Lazy Channels",
     items: [
-      { label: "Lazy Mail", href: "/lazy-mail", tagline: "Emails send themselves.", icon: icons.alert },
+      { label: "Lazy Mail", href: "/lazy-mail", tagline: "Emails send themselves.", icon: icons.mail },
       { label: "Lazy Alert", href: "/lazy-alert", tagline: "Your business in Slack.", icon: icons.alert },
       { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Your business in Telegram.", icon: icons.telegram },
       { label: "Lazy Contentful", href: "/lazy-contentful", tagline: "Two-way CMS sync.", icon: icons.contentful },

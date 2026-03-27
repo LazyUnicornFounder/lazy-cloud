@@ -23,6 +23,7 @@ const rotatingWords = [
   { word: "admin", emoji: "⚙️" },
   { word: "video", emoji: "🎥" },
   { word: "SMS", emoji: "📱" },
+  { word: "emails", emoji: "📧" },
 ];
 
 function RotatingHeadline() {
@@ -108,6 +109,7 @@ const products = [
   { cursive: "Lazy", name: "GitHub", link: "/lazy-github", tagline: "Commits become changelogs." },
   { cursive: "Lazy", name: "GitLab", link: "/lazy-gitlab", tagline: "Commits become changelogs." },
   { cursive: "Lazy", name: "SMS", link: "/lazy-sms", tagline: "Texts that convert." },
+  { cursive: "Lazy", name: "Mail", link: "/lazy-mail", tagline: "Emails send themselves." },
   { cursive: "Lazy", name: "Telegram", link: "/lazy-telegram", tagline: "Your business in Telegram." },
   { cursive: "Lazy", name: "Alert", link: "/lazy-alert", tagline: "Your business in your Slack." },
   { cursive: "Lazy", name: "Linear", link: "/lazy-linear", tagline: "Issues become changelogs." },
@@ -281,6 +283,14 @@ const sketches: Record<string, JSX.Element> = {
       <path d="M48 58 L56 66 L74 48" />
     </svg>
   ),
+  Mail: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="25" y="35" width="70" height="50" rx="3" />
+      <path d="M25 40 L60 65 L95 40" />
+      <line x1="25" y1="82" x2="45" y2="62" />
+      <line x1="95" y1="82" x2="75" y2="62" />
+    </svg>
+  ),
   Admin: (
     <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <rect x="25" y="25" width="70" height="70" rx="5" />
@@ -388,6 +398,7 @@ const Index = () => {
                 { name: "Contentful", href: "/lazy-contentful" },
                 { name: "Firecrawl", href: "/lazy-crawl" },
                 { name: "Perplexity", href: "/lazy-perplexity" },
+                { name: "Resend", href: "/lazy-mail" },
               ].map((item, i) => (
                 <Link key={item.name} to={item.href}>
                   <motion.span
@@ -429,7 +440,7 @@ const Index = () => {
             <p>You can quote them, disagree with them, try to outwork them. The only thing you can't do is ignore what they've built.</p>
             <p style={{ color: "rgba(240,234,214,0.65)" }}>Because while you were doing it yourself, they shipped.</p>
             <p>They turn streams into articles. Commits into changelogs. Payments into optimised revenue. Customers into conversations. Posts into podcasts. Sites into businesses.</p>
-            <p>Some see a blank text editor. The lazy ones see twenty engines that will never need one.</p>
+            <p>Some see a blank text editor. The lazy ones see twenty-one engines that will never need one.</p>
             <p>And the sites they run on Lovable — the ones that publish four posts before sunrise, that text customers before you've had coffee, that pentest themselves while you sleep, that get cited by ChatGPT without you asking — they change things.</p>
             <p style={{ color: "#f0ead6", fontWeight: 600 }}>Because the people who are lazy enough to think they don't have to do everything manually, are the ones who actually do everything.</p>
           </div>

@@ -15,7 +15,7 @@ Keep responses SHORT — 2-3 sentences max. You're speaking out loud, so be conv
 
 What you know:
 
-LazyUnicorn.ai is a platform of 20 autonomous engines (called "the Lazy Stack") that turn any Lovable website into a self-running business. Each engine is installed by pasting a single prompt into a Lovable project chat.
+LazyUnicorn.ai is a platform of 21 autonomous engines (called "the Lazy Stack") that turn any Lovable website into a self-running business. Each engine is installed by pasting a single prompt into a Lovable project chat.
 
 The engines:
 - Lazy Run — master orchestrator that installs and coordinates all engines
@@ -28,6 +28,7 @@ The engines:
 - Lazy Pay — Stripe payment integration
 - Lazy SMS — Twilio SMS automation
 - Lazy Alert — Slack notifications
+- Lazy Mail — subscriber capture, welcome sequences, and AI newsletters via Resend
 - Lazy Telegram — Telegram bot integration
 - Lazy GitHub / Lazy GitLab — auto-generates devlogs from commits
 - Lazy Linear — syncs with Linear project management

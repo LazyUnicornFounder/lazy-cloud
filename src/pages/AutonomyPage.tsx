@@ -273,7 +273,7 @@ export default function AutonomyPage() {
             to="/lazy-run"
             className="inline-block text-xs font-mono px-5 py-2 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
           >
-            Install Lazy Run — all twenty engines in one prompt
+            Install Lazy Run — all twenty-one engines in one prompt
           </Link>
         </div>
       </section>

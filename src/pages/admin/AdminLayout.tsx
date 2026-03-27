@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import {
   LayoutDashboard, BarChart3, PenTool, Search, Brain, Radar, Compass,
-  ShoppingCart, CreditCard, MessageSquare, Mic, Tv,
+  ShoppingCart, CreditCard, MessageSquare, Mic, Tv, Mail,
   Code, GitBranch, CheckCircle, Bell, Send, Database as DbIcon,
   Shield, Settings, Menu, X, ChevronDown,
 } from "lucide-react";
@@ -43,7 +43,7 @@ const navGroups: NavGroup[] = [
     { label: "Linear", path: "/admin/linear", icon: CheckCircle, engine: "linear" },
   ]},
   { label: "Lazy Channels", items: [
-    { label: "Mail", path: "/admin/mail", icon: Send, engine: "mail" },
+    { label: "Mail", path: "/admin/mail", icon: Mail, engine: "mail" },
     { label: "Alert", path: "/admin/alert", icon: Bell, engine: "alert" },
     { label: "Telegram", path: "/admin/telegram", icon: Send, engine: "telegram" },
     { label: "Contentful", path: "/admin/contentful", icon: DbIcon, engine: "contentful" },
