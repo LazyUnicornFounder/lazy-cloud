@@ -36,6 +36,7 @@ const icons = {
   run: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="50,30 85,60 50,90"/></svg>,
   admin: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="25" y="25" width="70" height="70" rx="5"/><line x1="25" y1="45" x2="95" y2="45"/><line x1="55" y1="45" x2="55" y2="95"/></svg>,
   launch: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M60 25 L60 75"/><path d="M45 40 L60 25 L75 40"/><path d="M35 95 L85 95"/></svg>,
+  auth: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="35" y="50" width="50" height="40" rx="4"/><path d="M45 50 L45 38 Q45 22 60 22 Q75 22 75 38 L75 50"/><circle cx="60" cy="68" r="5"/></svg>,
 };
 
 /* ── All products organised by category ── */
@@ -43,7 +44,7 @@ const productCategories = [
   {
     label: "Lazy Unicorn",
     items: [
-      { label: "Lazy Run", href: "/lazy-run", tagline: "All 22 engines. One prompt.", icon: icons.run },
+      { label: "Lazy Run", href: "/lazy-run", tagline: "All 23 engines. One prompt.", icon: icons.run },
       { label: "Lazy Admin", href: "/lazy-admin", tagline: "Your autonomous dashboard.", icon: icons.admin },
     ],
   },
@@ -100,6 +101,7 @@ const productCategories = [
     label: "Lazy Shield",
     items: [
       { label: "Lazy Security", href: "/lazy-security", tagline: "Autonomous pentesting.", icon: icons.security },
+      { label: "Lazy Auth", href: "/lazy-auth", tagline: "Login that builds itself.", icon: icons.auth },
     ],
   },
 ];

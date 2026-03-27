@@ -384,6 +384,20 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "It learns your attack surface and prioritises what matters. Coming soon.",
         ],
       },
+      {
+        name: "Lazy Auth",
+        description: "Google Sign-In, email login, protected routes, and user management in one prompt",
+        currentLevel: 3,
+        link: "/lazy-auth",
+        levels: [
+          "You wire up auth manually. Hours debugging OAuth flows.",
+          "Auth libraries help. You still build every page and guard.",
+          "Templates speed things up. Still days per project.",
+          "One prompt installs login, signup, protected routes, and user management automatically.",
+          "It detects new routes and protects them without asking. Coming soon.",
+          "It analyses login drop-off and rewrites auth flows to convert better. Coming soon.",
+        ],
+      },
     ],
   },
 ];
