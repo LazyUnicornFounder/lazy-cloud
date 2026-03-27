@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, ReactNode } from "react";
-import { Menu, X as XIcon, Linkedin, ChevronDown, ChevronRight } from "lucide-react";
+import { Menu, X as XIcon, Linkedin, ChevronDown, ChevronRight, Github } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -267,6 +267,9 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
   const socialIcons = (
     <>
+      <a href="https://github.com/LazyUnicornFounder/LazyUnicorn" target="_blank" rel="noopener noreferrer" className="text-foreground/45 hover:text-foreground transition-colors" aria-label="View prompts on GitHub">
+        <Github size={14} />
+      </a>
       <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="text-foreground/45 hover:text-foreground transition-colors" aria-label="Follow on X">
         <XLogo />
       </a>
