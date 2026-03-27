@@ -156,21 +156,21 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
           style={{ width: 1380 }}
         >
           <div className="flex gap-12">
-            {/* Column 1: Lazy Unicorn + Lazy Design + Lazy Commerce */}
+            {/* Column 1: Lazy Unicorn + Lazy Commerce */}
             <div className="flex-1 min-w-0">
-              {[productCategories[0], productCategories[1], productCategories[3]].map(renderCategory)}
+              {[productCategories[0], productCategories[2]].map(renderCategory)}
             </div>
             {/* Column 2: Lazy Content */}
             <div className="flex-1 min-w-0">
-              {[productCategories[2]].map(renderCategory)}
+              {[productCategories[1]].map(renderCategory)}
             </div>
             {/* Column 3: Lazy Media + Lazy Dev */}
             <div className="flex-1 min-w-0">
-              {[productCategories[4], productCategories[5]].map(renderCategory)}
+              {[productCategories[3], productCategories[4]].map(renderCategory)}
             </div>
-            {/* Column 4: Lazy Dev + Lazy Ops */}
+            {/* Column 4: Lazy Ops */}
             <div className="flex-1 min-w-0">
-              {[productCategories[6], productCategories[7]].map(renderCategory)}
+              {[productCategories[5]].map(renderCategory)}
             </div>
           </div>
         </div>
