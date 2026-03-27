@@ -308,6 +308,229 @@ export type Database = {
         }
         Relationships: []
       }
+      granola_errors: {
+        Row: {
+          created_at: string | null
+          error_message: string | null
+          function_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string | null
+          error_message?: string | null
+          function_name?: string | null
+          id?: string
+        }
+        Update: {
+          created_at?: string | null
+          error_message?: string | null
+          function_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      granola_intelligence: {
+        Row: {
+          actioned: boolean | null
+          content: string | null
+          created_at: string | null
+          id: string
+          intel_type: string | null
+          meeting_date: string | null
+          meeting_id: string | null
+          meeting_title: string | null
+          speaker_context: string | null
+        }
+        Insert: {
+          actioned?: boolean | null
+          content?: string | null
+          created_at?: string | null
+          id?: string
+          intel_type?: string | null
+          meeting_date?: string | null
+          meeting_id?: string | null
+          meeting_title?: string | null
+          speaker_context?: string | null
+        }
+        Update: {
+          actioned?: boolean | null
+          content?: string | null
+          created_at?: string | null
+          id?: string
+          intel_type?: string | null
+          meeting_date?: string | null
+          meeting_id?: string | null
+          meeting_title?: string | null
+          speaker_context?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "granola_intelligence_meeting_id_fkey"
+            columns: ["meeting_id"]
+            isOneToOne: false
+            referencedRelation: "granola_meetings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      granola_meetings: {
+        Row: {
+          action_items: string | null
+          created_at: string | null
+          decisions: string | null
+          duration_minutes: number | null
+          ended_at: string | null
+          enhanced_notes: string | null
+          granola_meeting_id: string | null
+          id: string
+          key_insights: string | null
+          meeting_type: string | null
+          participants: string | null
+          processed: boolean | null
+          processing_status: string | null
+          raw_notes: string | null
+          started_at: string | null
+          title: string | null
+        }
+        Insert: {
+          action_items?: string | null
+          created_at?: string | null
+          decisions?: string | null
+          duration_minutes?: number | null
+          ended_at?: string | null
+          enhanced_notes?: string | null
+          granola_meeting_id?: string | null
+          id?: string
+          key_insights?: string | null
+          meeting_type?: string | null
+          participants?: string | null
+          processed?: boolean | null
+          processing_status?: string | null
+          raw_notes?: string | null
+          started_at?: string | null
+          title?: string | null
+        }
+        Update: {
+          action_items?: string | null
+          created_at?: string | null
+          decisions?: string | null
+          duration_minutes?: number | null
+          ended_at?: string | null
+          enhanced_notes?: string | null
+          granola_meeting_id?: string | null
+          id?: string
+          key_insights?: string | null
+          meeting_type?: string | null
+          participants?: string | null
+          processed?: boolean | null
+          processing_status?: string | null
+          raw_notes?: string | null
+          started_at?: string | null
+          title?: string | null
+        }
+        Relationships: []
+      }
+      granola_outputs: {
+        Row: {
+          content: string | null
+          created_at: string | null
+          external_id: string | null
+          id: string
+          meeting_id: string | null
+          output_type: string | null
+          published: boolean | null
+          published_at: string | null
+          title: string | null
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string | null
+          external_id?: string | null
+          id?: string
+          meeting_id?: string | null
+          output_type?: string | null
+          published?: boolean | null
+          published_at?: string | null
+          title?: string | null
+        }
+        Update: {
+          content?: string | null
+          created_at?: string | null
+          external_id?: string | null
+          id?: string
+          meeting_id?: string | null
+          output_type?: string | null
+          published?: boolean | null
+          published_at?: string | null
+          title?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "granola_outputs_meeting_id_fkey"
+            columns: ["meeting_id"]
+            isOneToOne: false
+            referencedRelation: "granola_meetings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      granola_settings: {
+        Row: {
+          brand_name: string | null
+          create_linear_issues: boolean | null
+          created_at: string | null
+          feed_customer_intelligence: boolean | null
+          id: string
+          is_running: boolean | null
+          meeting_types_to_process: string | null
+          prompt_version: string | null
+          publish_blog_posts: boolean | null
+          publish_product_updates: boolean | null
+          send_slack_summary: boolean | null
+          setup_complete: boolean | null
+          site_url: string | null
+          slack_webhook_url: string | null
+          weekly_digest_day: string | null
+          weekly_digest_enabled: boolean | null
+        }
+        Insert: {
+          brand_name?: string | null
+          create_linear_issues?: boolean | null
+          created_at?: string | null
+          feed_customer_intelligence?: boolean | null
+          id?: string
+          is_running?: boolean | null
+          meeting_types_to_process?: string | null
+          prompt_version?: string | null
+          publish_blog_posts?: boolean | null
+          publish_product_updates?: boolean | null
+          send_slack_summary?: boolean | null
+          setup_complete?: boolean | null
+          site_url?: string | null
+          slack_webhook_url?: string | null
+          weekly_digest_day?: string | null
+          weekly_digest_enabled?: boolean | null
+        }
+        Update: {
+          brand_name?: string | null
+          create_linear_issues?: boolean | null
+          created_at?: string | null
+          feed_customer_intelligence?: boolean | null
+          id?: string
+          is_running?: boolean | null
+          meeting_types_to_process?: string | null
+          prompt_version?: string | null
+          publish_blog_posts?: boolean | null
+          publish_product_updates?: boolean | null
+          send_slack_summary?: boolean | null
+          setup_complete?: boolean | null
+          site_url?: string | null
+          slack_webhook_url?: string | null
+          weekly_digest_day?: string | null
+          weekly_digest_enabled?: boolean | null
+        }
+        Relationships: []
+      }
       prompt_releases: {
         Row: {
           change_type: string
