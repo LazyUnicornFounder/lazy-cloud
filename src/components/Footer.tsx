@@ -9,13 +9,10 @@ const XLogo = () => (
 
 const columns = [
   {
-    label: "Get Started",
+    label: "Unicorn",
     items: [
-      { name: "How It Works", href: "/how-it-works" },
-      { name: "Use Cases", href: "/use-cases" },
       { name: "Lazy Run", href: "/lazy-run" },
       { name: "Lazy Admin", href: "/lazy-admin" },
-      { name: "Pricing", href: "/pricing" },
     ],
   },
   {
@@ -26,51 +23,50 @@ const columns = [
       { name: "Lazy GEO", href: "/lazy-geo" },
       { name: "Lazy Crawl", href: "/lazy-crawl" },
       { name: "Lazy Perplexity", href: "/lazy-perplexity" },
+      { name: "Lazy Contentful", href: "/lazy-contentful" },
     ],
   },
   {
-    label: "Commerce & Media",
+    label: "Commerce",
     items: [
       { name: "Lazy Store", href: "/lazy-store" },
       { name: "Lazy Pay", href: "/lazy-pay" },
       { name: "Lazy SMS", href: "/lazy-sms" },
+      { name: "Lazy Mail", href: "/lazy-mail" },
+    ],
+  },
+  {
+    label: "Media",
+    items: [
       { name: "Lazy Voice", href: "/lazy-voice" },
       { name: "Lazy Stream", href: "/lazy-stream" },
     ],
   },
   {
-    label: "Dev & Channels",
+    label: "Dev",
     items: [
       { name: "Lazy GitHub", href: "/lazy-github" },
       { name: "Lazy GitLab", href: "/lazy-gitlab" },
       { name: "Lazy Linear", href: "/lazy-linear" },
-      { name: "Lazy Mail", href: "/lazy-mail" },
-      { name: "Lazy Alert", href: "/lazy-alert" },
-      { name: "Lazy Telegram", href: "/lazy-telegram" },
-      { name: "Lazy Contentful", href: "/lazy-contentful" },
-      { name: "Lazy Supabase", href: "/lazy-supabase" },
+      { name: "Lazy Design", href: "/lazy-design" },
+      { name: "Lazy Auth", href: "/lazy-auth" },
     ],
   },
   {
-    label: "More",
+    label: "Ops",
     items: [
+      { name: "Lazy Alert", href: "/lazy-alert" },
+      { name: "Lazy Telegram", href: "/lazy-telegram" },
+      { name: "Lazy Supabase", href: "/lazy-supabase" },
       { name: "Lazy Security", href: "/lazy-security" },
-      { name: "Lazy Auth", href: "/lazy-auth" },
-      { name: "Lazy Design", href: "/lazy-design" },
-      { name: "Blog", href: "/blog" },
-      { name: "Autonomy", href: "/autonomy" },
-      { name: "Changelog", href: "/changelog" },
-      { name: "Upgrade Guide", href: "/upgrade-guide" },
-      { name: "About", href: "/about" },
     ],
   },
 ];
-
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-background">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-10 md:gap-8">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-10 md:gap-6">
           {/* Brand */}
           <div className="col-span-2 sm:col-span-3 md:col-span-1">
             <Link to="/" className="inline-block">
