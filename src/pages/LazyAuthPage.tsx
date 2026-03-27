@@ -146,6 +146,7 @@ export default function LazyAuthPage() {
         <div className="max-w-4xl mx-auto">
           <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.7 }}>
             <div className="flex items-center gap-3 mb-6">
+              <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
               <span className="inline-block font-display text-[14px] font-bold tracking-[0.2em] uppercase px-3 py-1 border border-foreground/20 text-foreground/50">
                 LAZY DEV
               </span>
@@ -155,7 +156,7 @@ export default function LazyAuthPage() {
 
             <div className="flex items-center gap-4 flex-wrap">
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-                Login that builds itself.
+                Lazy Auth
               </h1>
             </div>
             <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
