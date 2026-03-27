@@ -319,6 +319,20 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
         ],
       },
       {
+        name: "Lazy Design",
+        description: "Upgrades your site with 21st.dev components matched to your brand",
+        currentLevel: 3,
+        link: "/lazy-design",
+        levels: [
+          "You browse component libraries manually. Hours per section.",
+          "You find components but still adapt and integrate them yourself.",
+          "You batch-upgrade pages on a schedule. Still manual.",
+          "New pages detected. Component suggestions generated automatically.",
+          "It applies upgrades matched to your brand without asking. Coming soon.",
+          "It learns which component styles convert best and optimises. Coming soon.",
+        ],
+      },
+      {
         name: "Lazy Mail",
         description: "Subscriber capture, welcome sequences, and AI newsletters via Resend",
         currentLevel: 3,

@@ -162,6 +162,13 @@ const products: Product[] = [
     free: ["Setup prompt included", "Automated Aikido pentesting", "Continuous vulnerability monitoring", "Security score tracking", "Audit-ready report generation"],
     pro: { price: "$19", features: ["Hosted version", "Automated report delivery before meetings", "Multi-project security dashboard", "Slack and Telegram alerts included"], comingSoon: true },
   },
+  {
+    name: "Lazy Design",
+    tagline: "Autonomous design upgrade engine",
+    link: "/lazy-design",
+    free: ["Setup prompt included", "Page auditing and section detection", "21st.dev component suggestions", "AI fallback prompts", "No API key required"],
+    pro: { price: "$19", features: ["Hosted version — zero config", "Automated weekly design upgrades", "Advanced brand matching", "Multi-project support"], comingSoon: true },
+  },
 ];
 
 const PricingPage = () => {
