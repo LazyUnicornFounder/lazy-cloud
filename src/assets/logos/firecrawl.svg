@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <rect width="256" height="256" rx="32" fill="#FF6B35"/>
+  <path d="M128 40 C128 40 80 90 80 140 C80 166 102 186 128 186 C154 186 176 166 176 140 C176 90 128 40 128 40 Z" fill="#fff" opacity="0.95"/>
+  <path d="M128 80 C128 80 104 110 104 140 C104 153 115 164 128 164 C141 164 152 153 152 140 C152 110 128 80 128 80 Z" fill="#FF6B35"/>
+  <path d="M128 110 C128 110 116 125 116 140 C116 147 121 152 128 152 C135 152 140 147 140 140 C140 125 128 110 128 110 Z" fill="#fff"/>
+  <!-- Spider legs -->
+  <line x1="128" y1="196" x2="72" y2="220" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+  <line x1="128" y1="196" x2="100" y2="230" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+  <line x1="128" y1="196" x2="128" y2="232" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+  <line x1="128" y1="196" x2="156" y2="230" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+  <line x1="128" y1="196" x2="184" y2="220" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+</svg>
