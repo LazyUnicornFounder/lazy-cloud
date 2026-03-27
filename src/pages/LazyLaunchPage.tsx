@@ -82,7 +82,7 @@ const LazyLaunchPage = () => {
 
   return (
     <>
-      <SEO title="Lazy Launch — Free Autonomous Business Prompt Generator" description="Describe your business idea and get a complete Lovable prompt that installs autonomous engines." canonical="https://lazyunicorn.ai/lazy-launch" />
+      <SEO title="Lazy Launch — Free Autonomous Business Prompt Generator" description="Describe your business idea and get a complete Lovable prompt that installs autonomous engines." url="https://lazyunicorn.ai/lazy-launch" />
       <Navbar />
       <main className="min-h-screen bg-[#0a0a08] text-[#f0ead6] pt-24 pb-16">
         <AnimatePresence mode="wait">
