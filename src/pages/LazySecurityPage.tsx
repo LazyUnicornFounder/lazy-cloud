@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import LazyFaqSection from "@/components/LazyFaqSection";
 import { toast } from "sonner";
+import { useCurrentPrompt } from "@/hooks/usePrompt";
 
 const LAZY_SECURITY_PROMPT = `[Lazy Security Prompt — v0.0.5 — LazyUnicorn.ai]
 

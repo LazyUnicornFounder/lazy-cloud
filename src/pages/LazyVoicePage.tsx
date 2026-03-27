@@ -6,6 +6,7 @@ import { Copy, Check, Mic, Headphones, Rss, Radio, Volume2, Play } from "lucide-
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
+import { useCurrentPrompt } from "@/hooks/usePrompt";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 

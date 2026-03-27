@@ -6,6 +6,7 @@ import { AlertTriangle, Brain, Check, Copy, DollarSign, FileText, MessageCircle,
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
+import { useCurrentPrompt } from "@/hooks/usePrompt";
 import { toast } from "sonner";
 import { useState } from "react";
 

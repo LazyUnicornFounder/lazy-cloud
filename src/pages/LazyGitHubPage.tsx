@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
+import { useCurrentPrompt } from "@/hooks/usePrompt";
 
 const SETUP_PROMPT = `[Lazy GitHub Prompt — v0.0.4 — LazyUnicorn.ai]
 

@@ -11,6 +11,7 @@ import LazyFaqSection from "@/components/LazyFaqSection";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import { useCurrentPrompt } from "@/hooks/usePrompt";
 
 const LAZY_ADMIN_PROMPT = `[Lazy Admin Prompt — v0.0.1 — LazyUnicorn.ai]
 

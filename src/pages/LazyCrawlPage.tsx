@@ -6,6 +6,7 @@ import { BarChart3, Check, Copy, Database, Eye, Globe, Search, TrendingUp, Users
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
+import { useCurrentPrompt } from "@/hooks/usePrompt";
 import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };

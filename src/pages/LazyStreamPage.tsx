@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
+import { useCurrentPrompt } from "@/hooks/usePrompt";
 import { Link } from "react-router-dom";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };

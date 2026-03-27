@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import LazyFaqSection from "@/components/LazyFaqSection";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
+import { useCurrentPrompt } from "@/hooks/usePrompt";
 import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
