@@ -92,6 +92,7 @@ function PromptEditor({
   product: typeof PRODUCTS[number];
   current: PromptVersion | null;
   history: PromptVersion[];
+  allVersions: PromptVersion[];
   onSaved: () => void;
 }) {
   const [editing, setEditing] = useState(false);
