@@ -128,7 +128,7 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
           <span className="text-foreground/50 group-hover:text-foreground/70 transition-colors flex-shrink-0">
             {item.icon}
           </span>
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <p className="font-body text-[14px] font-black tracking-[0.04em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight">
               {item.label}
             </p>
@@ -136,6 +136,9 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
               {item.tagline}
             </p>
           </div>
+          <span className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 font-display text-[10px] tracking-[0.15em] uppercase font-bold px-2.5 py-1.5 border border-foreground/20 text-foreground/50 hover:text-foreground hover:border-foreground/40 whitespace-nowrap">
+            Get Prompt →
+          </span>
         </a>
       ))}
     </div>
