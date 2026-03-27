@@ -33,6 +33,7 @@ const rotatingWords = [
   { word: "Telegram", emoji: "✈️" },          // Lazy Telegram
   { word: "security", emoji: "🛡️" },          // Lazy Security
   { word: "auth", emoji: "🔐" },              // Lazy Auth
+  { word: "meetings", emoji: "📝" },          // Lazy Granola
 ];
 
 function RotatingHeadline() {
@@ -126,6 +127,7 @@ const products = [
   { cursive: "Lazy", name: "Linear", link: "/lazy-linear", tagline: "Launch autonomous issue content." },
   { cursive: "Lazy", name: "Design", link: "/lazy-design", tagline: "Launch autonomous UI upgrades." },
   { cursive: "Lazy", name: "Auth", link: "/lazy-auth", tagline: "Launch autonomous login flows." },
+  { cursive: "Lazy", name: "Granola", link: "/lazy-granola", tagline: "Launch autonomous meeting content." },
   // Lazy Ops
   { cursive: "Lazy", name: "Alert", link: "/lazy-alert", tagline: "Launch autonomous Slack alerts." },
   { cursive: "Lazy", name: "Telegram", link: "/lazy-telegram", tagline: "Launch autonomous Telegram updates." },

@@ -62,6 +62,7 @@ const CATEGORIES: { label: string; color: string; engines: EngineDef[] }[] = [
       { key: "linear", label: "Linear", icon: CheckCircle },
       { key: "design", label: "Design", icon: LayoutDashboard },
       { key: "auth", label: "Auth", icon: Shield },
+      { key: "granola", label: "Granola", icon: PenTool, settingsTable: "granola_settings", runField: "is_running", errorTable: "granola_errors", adminPath: "/admin/granola" },
     ],
   },
   {

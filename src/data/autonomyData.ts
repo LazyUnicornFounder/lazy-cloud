@@ -45,6 +45,7 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
       {
         name: "Lazy Run",
         description: "Installs all twenty-three engines in one prompt",
+
         currentLevel: 4,
         link: "/lazy-run",
         levels: [
@@ -325,6 +326,20 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "One prompt installs login, signup, protected routes, and user management automatically.",
           "It detects new routes and protects them without asking. Coming soon.",
           "It analyses login drop-off and rewrites auth flows to convert better. Coming soon.",
+        ],
+      },
+      {
+        name: "Lazy Granola",
+        description: "Turns Granola meeting notes into blog posts, Slack summaries, and customer intelligence",
+        currentLevel: 4,
+        link: "/lazy-granola",
+        levels: [
+          "You take meeting notes but never turn them into content.",
+          "AI summarises meetings. You still copy-paste and publish.",
+          "You batch-process last week's meetings on Friday. Always behind.",
+          "Meeting ends. Blog post, Slack summary, and Linear issues publish automatically.",
+          "It extracts customer intelligence and feeds it into your content engines. Coming soon.",
+          "It learns which meeting insights drive the most engagement. Coming soon.",
         ],
       },
     ],

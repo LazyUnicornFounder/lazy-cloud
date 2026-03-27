@@ -45,6 +45,7 @@ All edge functions must use these exact names. Lazy Run calls them by these name
 | Supabase | supabase-monitor, supabase-publish-milestone, supabase-weekly-report |
 | Security | security-scan, security-poll, security-alert, security-generate-report, security-monitor |
 | Auth | auth-setup, auth-sync-providers, auth-monitor |
+| Granola | granola-sync, granola-process, granola-write-post, granola-write-update, granola-extract-intel, granola-slack-summary, granola-weekly-digest |
 | Run | run-orchestrator, run-weekly-report, run-health-check |
 
 ---
@@ -71,6 +72,7 @@ Required secrets by engine:
 - Supabase monitoring: SUPABASE_SERVICE_ROLE_KEY
 - Security: AIKIDO_API_KEY
 - Auth: none (uses Lovable Cloud auth)
+- Granola: none (uses Granola MCP server)
 
 ---
 
@@ -347,7 +349,7 @@ Log errors to run_errors.
 Install all edge functions for each active engine using these exact function names:
 blog-publish, seo-discover, seo-publish, geo-discover, geo-publish, geo-test, store-discover, store-listings, store-prices, store-promote, store-optimise, store-content, voice-narrate, voice-rss, pay-checkout, pay-webhook, pay-optimise, pay-recover, pay-portal, sms-send, sms-receive, sms-status, sms-sequences-run, sms-optimise, stream-monitor, stream-process, stream-write-content, stream-optimise, github-webhook, code-sync-roadmap, code-write-content, code-optimise, gitlab-webhook, gitlab-sync-roadmap, gitlab-write-content, gitlab-optimise, linear-sync-all, linear-write-content, linear-velocity-report, linear-optimise, crawl-run, crawl-extract, crawl-publish, perplexity-research, perplexity-feed-engines, perplexity-test-citations, perplexity-improve-content, alert-send, alert-monitor, alert-briefing, alert-command, telegram-send, telegram-monitor, telegram-briefing, telegram-command, contentful-pull, contentful-webhook, contentful-push, supabase-monitor, supabase-publish-milestone, supabase-weekly-report, security-scan, security-poll, security-alert, security-generate-report, security-monitor.
 
-Also install: auth-setup, auth-sync-providers, auth-monitor.
+Also install: auth-setup, auth-sync-providers, auth-monitor, granola-sync, granola-process, granola-write-post, granola-write-update, granola-extract-intel, granola-slack-summary, granola-weekly-digest.
 
 Only install functions for active engines.
 
@@ -407,6 +409,7 @@ const engines = [
   { name: "Lazy Linear", desc: "Launch autonomous issue content.", icon: BarChart3, href: "/lazy-linear" },
   { name: "Lazy Design", desc: "Launch autonomous UI upgrades.", icon: Layers, href: "/lazy-design" },
   { name: "Lazy Auth", desc: "Launch autonomous login flows.", icon: Shield, href: "/lazy-auth" },
+  { name: "Lazy Granola", desc: "Launch autonomous meeting content.", icon: Calendar, href: "/lazy-granola" },
   // Ops
   { name: "Lazy Alert", desc: "Launch autonomous Slack alerts.", icon: Bell, href: "/lazy-alert" },
   { name: "Lazy Telegram", desc: "Launch autonomous Telegram updates.", icon: Send, href: "/lazy-telegram" },
@@ -415,7 +418,7 @@ const engines = [
 ];
 
 const faqs = [
-  { q: "Do I need all twenty-one engines?", a: "No. The setup screen lets you choose which engines to activate. You can start with two or three and add more later without reinstalling." },
+  { q: "Do I need all twenty-three engines?", a: "No. The setup screen lets you choose which engines to activate. You can start with two or three and add more later without reinstalling." },
   { q: "Does it replace the individual Lazy prompts?", a: "Yes. If you install Lazy Run you do not need to paste the individual prompts. Lazy Run includes all of them." },
   { q: "What API keys do I need?", a: "Only the ones for the engines you activate. Content engines like Lazy Blogger, Lazy SEO, and Lazy GEO use Lovable's built-in AI — no API key required. Lazy Pay needs Stripe. Lazy SMS needs Twilio. Lazy Voice needs ElevenLabs. Lazy Stream needs Twitch. Lazy Mail needs Resend. Lazy Design needs nothing — it uses 21st.dev and built-in AI." },
   { q: "Can I still use individual engines if I have them installed?", a: "Yes. Lazy Run is additive. If you already have Lazy Blogger installed it will detect it and manage it alongside the others." },
@@ -477,7 +480,7 @@ export default function LazyRunPage() {
             variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.1 }}
             className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6"
           >
-            <span>All 21 engines in the Lazy Stack. One prompt.</span>
+            <span>All 23 engines in the Lazy Stack. One prompt.</span>
           </motion.h1>
           <motion.p
             variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}
