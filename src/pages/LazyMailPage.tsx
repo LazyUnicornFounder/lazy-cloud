@@ -163,66 +163,74 @@ export default function LazyMailPage() {
         </section>
 
         {/* Email lifecycle */}
-        <section className="mt-28 px-6 md:px-12 max-w-3xl mx-auto text-center">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }} style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", color: "#f0ead6", marginBottom: "1.5rem" }}>
-            The full email lifecycle, automated.
-          </motion.h2>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }} className="space-y-4">
-            {[
-              "Visitor lands on your site → subscribe form captures their email",
-              "Double opt-in confirmation email sent automatically",
-              "Welcome sequence triggers on confirmation — AI writes it for your brand",
-              "New blog post publishes → newsletter written and sent to all subscribers",
-              "Open rates drop below 20% → AI rewrites subject lines automatically",
-            ].map((line, i) => (
-              <div key={i} className="flex items-start gap-3 text-left">
-                <Check size={14} className="text-foreground/20 mt-1 shrink-0" />
-                <p className="font-body text-sm text-foreground/50 leading-relaxed">{line}</p>
-              </div>
-            ))}
-          </motion.div>
+        <section className="py-20 md:py-28 px-6 border-t border-border">
+          <div className="max-w-3xl mx-auto">
+            <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }} className="font-display text-2xl md:text-3xl font-bold tracking-tight text-center mb-14">
+              The full email lifecycle, automated.
+            </motion.h2>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }} className="space-y-4">
+              {[
+                "Visitor lands on your site → subscribe form captures their email",
+                "Double opt-in confirmation email sent automatically",
+                "Welcome sequence triggers on confirmation — AI writes it for your brand",
+                "New blog post publishes → newsletter written and sent to all subscribers",
+                "Open rates drop below 20% → AI rewrites subject lines automatically",
+              ].map((line, i) => (
+                <div key={i} className="flex items-start gap-3 text-left">
+                  <Check size={14} className="text-foreground/20 mt-1 shrink-0" />
+                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{line}</p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </section>
 
         {/* Pricing */}
-        <section className="mt-28 px-6 md:px-12 max-w-4xl mx-auto">
-          <LazyPricingSection
-            lazyFeatures={[
-              "Setup prompt included",
-              "Subscriber capture with double opt-in",
-              "AI-written welcome sequences",
-              "Automated newsletter broadcasts",
-              "Self-improving subject lines",
-            ]}
-            proFeatures={[
-              "Hosted version — zero config",
-              "Multi-list segmentation",
-              "A/B testing on subject lines",
-              "Advanced open & click analytics",
-              "Priority Resend API access",
-            ]}
-            proPrice="$19"
-            ctaButton={<CopyPromptButton text={promptText} />}
-          />
+        <section className="py-20 md:py-28 px-6 border-t border-border">
+          <div className="max-w-4xl mx-auto">
+            <LazyPricingSection
+              lazyFeatures={[
+                "Setup prompt included",
+                "Subscriber capture with double opt-in",
+                "AI-written welcome sequences",
+                "Automated newsletter broadcasts",
+                "Self-improving subject lines",
+              ]}
+              proFeatures={[
+                "Hosted version — zero config",
+                "Multi-list segmentation",
+                "A/B testing on subject lines",
+                "Advanced open & click analytics",
+                "Priority Resend API access",
+              ]}
+              proPrice="$19"
+              ctaButton={<CopyPromptButton text={promptText} />}
+            />
+          </div>
         </section>
 
         {/* FAQ */}
-        <section className="mt-28 px-6 md:px-12 max-w-3xl mx-auto">
-          <LazyFaqSection faqs={faqs} />
+        <section className="py-20 md:py-28 px-6 border-t border-border">
+          <div className="max-w-3xl mx-auto">
+            <LazyFaqSection faqs={faqs} />
+          </div>
         </section>
 
         {/* Bottom CTA */}
-        <section className="mt-28 px-6 md:px-12 max-w-3xl mx-auto text-center">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }}>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.4rem", color: "#f0ead6", lineHeight: 1.2 }}>
-              Your blog publishes itself. Now your emails send themselves too.
-            </p>
-            <div className="mt-6">
-              <CopyPromptButton text={promptText} />
-            </div>
-            <p className="mt-4 font-body text-xs text-foreground/25">
-              Works with any Lovable project. Bring your own Resend API key.
-            </p>
-          </motion.div>
+        <section className="py-20 md:py-28 px-6 border-t border-border">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }}>
+              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight">
+                Your blog publishes itself. Now your emails send themselves too.
+              </h2>
+              <div className="mt-8">
+                <CopyPromptButton text={promptText} />
+              </div>
+              <p className="mt-4 font-body text-xs text-muted-foreground">
+                Works with any Lovable project. Bring your own Resend API key.
+              </p>
+            </motion.div>
+          </div>
         </section>
       </main>
     </div>
