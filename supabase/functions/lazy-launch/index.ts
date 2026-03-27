@@ -50,7 +50,7 @@ serve(async (req) => {
       userMessage = ANALYSE_USER(idea.trim());
     } else if (mode === "generate") {
       const { idea, brandName, audience, siteUrl, engines, answers } = body;
-      if (!idea || !brandName || !engines?.length) {
+      if (!idea || !engines?.length) {
         return new Response(JSON.stringify({ error: "Missing required fields." }), {
           status: 400,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
