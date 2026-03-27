@@ -1,9 +1,22 @@
 import { useState, useEffect, useCallback } from "react";
-import { Copy, Check, ChevronDown, ChevronRight, Pencil, History, Save, X } from "lucide-react";
+import { Copy, Check, ChevronDown, ChevronRight, Pencil, History, Save, X, Github } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { savePromptVersion, type PromptVersion } from "@/hooks/usePrompt";
 import { frequencyTiers } from "@/components/lazy-blogger/frequencyData";
+
+async function syncToGitHub(product: string, version: string, promptText: string, allPrompts?: { product: string; version: string; prompt_text: string }[]) {
+  try {
+    const { data, error } = await supabase.functions.invoke("sync-prompts-github", {
+      body: { product, version, prompt_text: promptText, all_prompts: allPrompts || [] },
+    });
+    if (error) throw error;
+    return { success: true };
+  } catch (err) {
+    console.error("GitHub sync failed:", err);
+    return { success: false, error: err };
+  }
+}
 
 const PRODUCTS = [
   // Unicorn
