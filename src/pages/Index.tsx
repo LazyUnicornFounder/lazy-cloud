@@ -449,6 +449,7 @@ const Index = () => {
                 { name: "Perplexity", href: "/lazy-perplexity" },
                 { name: "Resend", href: "/lazy-mail" },
                 { name: "21st.dev", href: "/lazy-design" },
+                { name: "Granola", href: "/lazy-granola" },
               ].map((item, i) => (
                 <Link key={item.name} to={item.href}>
                   <motion.span
