@@ -5,24 +5,24 @@
 @layer base {
   :root {
     --background: 60 11% 3%;
-    --foreground: 45 50% 89%;
+    --foreground: 45 75% 96%;
 
     --card: 60 3% 6%;
-    --card-foreground: 45 50% 89%;
+    --card-foreground: 45 75% 96%;
 
     --popover: 60 3% 6%;
-    --popover-foreground: 45 50% 89%;
+    --popover-foreground: 45 75% 96%;
 
-    --primary: 45 50% 89%;
+    --primary: 45 75% 96%;
     --primary-foreground: 60 11% 3%;
 
     --secondary: 60 3% 10%;
-    --secondary-foreground: 45 30% 75%;
+    --secondary-foreground: 45 45% 86%;
 
     --muted: 60 3% 12%;
-    --muted-foreground: 45 10% 65%;
+    --muted-foreground: 45 28% 82%;
 
-    --accent: 45 50% 89%;
+    --accent: 45 75% 96%;
     --accent-foreground: 60 11% 3%;
 
     --destructive: 0 84% 60%;
@@ -30,7 +30,7 @@
 
     --border: 45 10% 16%;
     --input: 60 3% 12%;
-    --ring: 45 50% 89%;
+    --ring: 45 75% 96%;
 
     --radius: 0rem;
 
@@ -38,13 +38,13 @@
     --font-body: 'Space Grotesk', system-ui, sans-serif;
 
     --sidebar-background: 60 11% 3%;
-    --sidebar-foreground: 45 50% 89%;
-    --sidebar-primary: 45 50% 89%;
+    --sidebar-foreground: 45 75% 96%;
+    --sidebar-primary: 45 75% 96%;
     --sidebar-primary-foreground: 60 11% 3%;
     --sidebar-accent: 60 3% 10%;
-    --sidebar-accent-foreground: 45 50% 89%;
+    --sidebar-accent-foreground: 45 75% 96%;
     --sidebar-border: 45 10% 16%;
-    --sidebar-ring: 45 50% 89%;
+    --sidebar-ring: 45 75% 96%;
   }
 }
 
@@ -55,6 +55,44 @@
 
   body {
     @apply bg-background text-foreground;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .text-foreground\/20,
+  .text-foreground\/25,
+  .text-foreground\/30,
+  .text-foreground\/35 {
+    color: hsl(var(--foreground) / 0.68) !important;
+  }
+
+  .text-foreground\/40,
+  .text-foreground\/45 {
+    color: hsl(var(--foreground) / 0.78) !important;
+  }
+
+  .text-foreground\/50,
+  .text-foreground\/55 {
+    color: hsl(var(--foreground) / 0.85) !important;
+  }
+
+  .text-foreground\/60,
+  .text-foreground\/65,
+  .text-foreground\/70 {
+    color: hsl(var(--foreground) / 0.92) !important;
+  }
+
+  .text-muted-foreground {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  .text-muted-foreground\/60,
+  .text-muted-foreground\/70,
+  .text-muted-foreground\/80 {
+    color: hsl(var(--muted-foreground) / 0.9) !important;
   }
 }
 
