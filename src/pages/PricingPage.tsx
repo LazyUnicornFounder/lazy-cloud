@@ -15,6 +15,7 @@ interface Product {
 }
 
 const products: Product[] = [
+  // Lazy Unicorn
   {
     name: "Lazy Run",
     tagline: "Autonomous operations layer",
@@ -29,6 +30,7 @@ const products: Product[] = [
     free: ["Setup prompt included", "Auto-detects installed engines", "Master status indicator", "Unified activity feed", "Per-engine deep dives"],
     pro: { price: "$9", features: ["Hosted version", "Multi-project support", "Team access with roles", "Weekly email digest", "Mobile app"], comingSoon: true },
   },
+  // Lazy Content
   {
     name: "Lazy Blogger",
     tagline: "Autonomous blog engine",
@@ -65,6 +67,14 @@ const products: Product[] = [
     pro: { price: "$29", features: ["Hosted version", "Daily citation monitoring", "Competitive citation tracking", "Advanced research scheduling"], comingSoon: true },
   },
   {
+    name: "Lazy Contentful",
+    tagline: "Autonomous Contentful bridge",
+    link: "/lazy-contentful",
+    free: ["Setup prompt included", "Two-way content sync", "Webhook real-time updates", "Content type mapping", "Works with free Contentful tier"],
+    pro: { price: "$29", features: ["Hosted version", "Multi-space support", "Advanced content type mapping", "Scheduled sync windows"], comingSoon: true },
+  },
+  // Lazy Commerce
+  {
     name: "Lazy Store",
     tagline: "Autonomous Shopify store engine",
     link: "/lazy-store",
@@ -86,6 +96,14 @@ const products: Product[] = [
     pro: { price: "$19", features: ["Hosted version", "Advanced segmentation", "A/B testing", "Multi-channel messaging", "Compliance automation"], comingSoon: true },
   },
   {
+    name: "Lazy Mail",
+    tagline: "Autonomous email engine",
+    link: "/lazy-mail",
+    free: ["Setup prompt included", "Subscriber capture with double opt-in", "AI-written welcome sequences", "Automated newsletter broadcasts", "Self-improving subject lines"],
+    pro: { price: "$19", features: ["Hosted version — zero config", "Multi-list segmentation", "A/B testing on subject lines", "Advanced open & click analytics"], comingSoon: true },
+  },
+  // Lazy Media
+  {
     name: "Lazy Voice",
     tagline: "Autonomous audio engine",
     link: "/lazy-voice",
@@ -99,6 +117,7 @@ const products: Product[] = [
     free: ["Setup prompt included", "VOD transcription", "Stream recap generation", "Clip extraction", "SEO article writing"],
     pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced stream analytics", "Self-improving content"], comingSoon: true },
   },
+  // Lazy Dev
   {
     name: "Lazy GitHub",
     tagline: "Autonomous GitHub content engine",
@@ -121,12 +140,20 @@ const products: Product[] = [
     pro: { price: "$19", features: ["Hosted version", "Multi-team support", "Advanced content formatting", "Custom publishing rules"], comingSoon: true },
   },
   {
-    name: "Lazy Mail",
-    tagline: "Autonomous email engine",
-    link: "/lazy-mail",
-    free: ["Setup prompt included", "Subscriber capture with double opt-in", "AI-written welcome sequences", "Automated newsletter broadcasts", "Self-improving subject lines"],
-    pro: { price: "$19", features: ["Hosted version — zero config", "Multi-list segmentation", "A/B testing on subject lines", "Advanced open & click analytics"], comingSoon: true },
+    name: "Lazy Design",
+    tagline: "Autonomous design upgrade engine",
+    link: "/lazy-design",
+    free: ["Setup prompt included", "Page auditing and section detection", "21st.dev component suggestions", "AI fallback prompts", "No API key required"],
+    pro: { price: "$19", features: ["Hosted version — zero config", "Automated weekly design upgrades", "Advanced brand matching", "Multi-project support"], comingSoon: true },
   },
+  {
+    name: "Lazy Auth",
+    tagline: "Autonomous authentication engine",
+    link: "/lazy-auth",
+    free: ["Setup prompt included", "Google Sign-In integration", "Email/password and magic link login", "Protected routes and role-based access", "User management dashboard"],
+    pro: { price: "$19", features: ["Hosted version — zero config", "Multi-tenant support", "Advanced session analytics", "Custom OAuth providers"], comingSoon: true },
+  },
+  // Lazy Ops
   {
     name: "Lazy Alert",
     tagline: "Real-time Slack alerts for every engine",
@@ -142,13 +169,6 @@ const products: Product[] = [
     pro: { price: "$9", features: ["Hosted version", "Group chat support", "Multiple recipient routing", "Custom bot branding"], comingSoon: true },
   },
   {
-    name: "Lazy Contentful",
-    tagline: "Autonomous Contentful bridge",
-    link: "/lazy-contentful",
-    free: ["Setup prompt included", "Two-way content sync", "Webhook real-time updates", "Content type mapping", "Works with free Contentful tier"],
-    pro: { price: "$29", features: ["Hosted version", "Multi-space support", "Advanced content type mapping", "Scheduled sync windows"], comingSoon: true },
-  },
-  {
     name: "Lazy Supabase",
     tagline: "Autonomous database monitoring engine",
     link: "/lazy-supabase",
@@ -161,20 +181,6 @@ const products: Product[] = [
     link: "/lazy-security",
     free: ["Setup prompt included", "Automated Aikido pentesting", "Continuous vulnerability monitoring", "Security score tracking", "Audit-ready report generation"],
     pro: { price: "$19", features: ["Hosted version", "Automated report delivery before meetings", "Multi-project security dashboard", "Slack and Telegram alerts included"], comingSoon: true },
-  },
-  {
-    name: "Lazy Auth",
-    tagline: "Autonomous authentication engine",
-    link: "/lazy-auth",
-    free: ["Setup prompt included", "Google Sign-In integration", "Email/password and magic link login", "Protected routes and role-based access", "User management dashboard"],
-    pro: { price: "$19", features: ["Hosted version — zero config", "Multi-tenant support", "Advanced session analytics", "Custom OAuth providers"], comingSoon: true },
-  },
-  {
-    name: "Lazy Design",
-    tagline: "Autonomous design upgrade engine",
-    link: "/lazy-design",
-    free: ["Setup prompt included", "Page auditing and section detection", "21st.dev component suggestions", "AI fallback prompts", "No API key required"],
-    pro: { price: "$19", features: ["Hosted version — zero config", "Automated weekly design upgrades", "Advanced brand matching", "Multi-project support"], comingSoon: true },
   },
 ];
 
