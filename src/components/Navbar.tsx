@@ -310,7 +310,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             />
           </div>
           <a href="https://github.com/LazyUnicornFounder/LazyUnicorn" target="_blank" rel="noopener noreferrer" className="text-foreground/45 hover:text-foreground transition-colors" aria-label="View prompts on GitHub">
-            <Github size={14} />
+            <Github size={20} />
           </a>
         </div>
       ) : (
