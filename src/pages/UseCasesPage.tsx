@@ -242,6 +242,21 @@ const integrations: Integration[] = [
     engineHref: "/lazy-github",
     icon: <Code size={20} />,
   },
+  {
+    name: "Resend",
+    category: "Lazy Channels",
+    description: "Send transactional and marketing emails from your Lovable site with high deliverability and a generous free tier.",
+    unlocks: [
+      "Capture subscribers with a double opt-in flow that handles GDPR automatically.",
+      "Send AI-written welcome sequences the moment someone confirms their subscription.",
+      "Broadcast a newsletter every time you publish a new blog post — no manual work.",
+      "Self-improve subject lines using AI when open rates drop below 20%.",
+      "Manage subscriber lists and unsubscribes without third-party email marketing tools.",
+    ],
+    engine: "Lazy Mail",
+    engineHref: "/lazy-mail",
+    icon: <Send size={20} />,
+  },
 ];
 
 export default function UseCasesPage() {

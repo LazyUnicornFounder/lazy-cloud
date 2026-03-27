@@ -54,8 +54,9 @@ const engineGroups = [
   },
   {
     label: "Lazy Channels",
-    description: "Real-time notifications and content distribution.",
+    description: "Email automation, real-time notifications, and content distribution.",
     engines: [
+      { name: "Lazy Mail", tagline: "Subscriber capture, welcome sequences, and AI newsletters via Resend.", href: "/lazy-mail" },
       { name: "Lazy Alert", tagline: "Every engine event reported to Slack in real time.", href: "/lazy-alert" },
       { name: "Lazy Telegram", tagline: "Real-time engine reporting via Telegram bot.", href: "/lazy-telegram" },
       { name: "Lazy Contentful", tagline: "Two-way content sync with Contentful.", href: "/lazy-contentful" },
