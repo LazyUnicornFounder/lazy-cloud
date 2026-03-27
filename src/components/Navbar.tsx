@@ -115,7 +115,7 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
 
   const renderCategory = (cat: typeof productCategories[number]) => (
     <div key={cat.label} className="mb-6">
-      <p className="font-display text-[15px] tracking-[0.2em] uppercase text-foreground/80 font-extrabold mb-3">
+      <p className="font-display text-[18px] tracking-[0.2em] uppercase text-foreground font-black mb-3">
         {cat.label}
       </p>
       {cat.items.map((item) => (
@@ -129,7 +129,7 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
             {item.icon}
           </span>
           <div className="min-w-0">
-            <p className="font-display text-[16px] font-bold tracking-[0.04em] uppercase text-foreground/70 group-hover:text-foreground transition-colors leading-tight">
+            <p className="font-body text-[14px] font-semibold tracking-[0.04em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight">
               {item.label}
             </p>
             <p className="font-body text-[14px] text-foreground/45 group-hover:text-foreground/60 transition-colors leading-tight mt-1">
