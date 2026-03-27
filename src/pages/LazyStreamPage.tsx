@@ -224,7 +224,7 @@ const LazyStreamPage = () => {
                 Lazy Stream
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-                Paste one prompt into your Lovable project. Lazy Stream detects when your Twitch stream ends and automatically publishes a recap article, an SEO post, a GEO citation page, and a highlights reel — before you have even eaten dinner.
+                Paste one prompt into your <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/90 transition-colors">Lovable</a> project. Lazy Stream detects when your Twitch stream ends and automatically publishes a recap article, an SEO post, a GEO citation page, and a highlights reel — before you have even eaten dinner.
               </p>
 
               {/* Works with */}

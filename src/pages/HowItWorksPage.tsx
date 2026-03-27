@@ -84,10 +84,10 @@ export default function HowItWorksPage() {
           <div className="max-w-3xl mx-auto text-center">
             <motion.div {...fade}>
               <span className="font-body text-[14px] tracking-[0.2em] uppercase text-[#c8a961]/60 mb-6 block">
-                The autonomous layer for Lovable
+                The autonomous layer for <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#c8a961]/90 transition-colors">Lovable</a>
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
-                Lovable gave everyone a website. Lazy Unicorn makes it work while you sleep.
+                <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="hover:text-[#c8a961] transition-colors">Lovable</a> gave everyone a website. Lazy Unicorn makes it work while you sleep.
               </h1>
               <p className="font-body text-foreground/50 text-lg max-w-2xl mx-auto leading-relaxed mb-6">
                 Every engine is a self-contained prompt you paste into your{" "}
