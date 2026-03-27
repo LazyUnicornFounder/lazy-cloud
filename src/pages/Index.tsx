@@ -449,11 +449,13 @@ const Index = () => {
                 { name: "GitLab", href: "/lazy-gitlab" },
                 { name: "Linear", href: "/lazy-linear" },
                 { name: "21st.dev", href: "/lazy-design" },
+                { name: "Google OAuth", href: "/lazy-auth" },
                 { name: "Granola", href: "/lazy-granola" },
                 // Ops
                 { name: "Slack", href: "/lazy-alert" },
                 { name: "Telegram", href: "/lazy-telegram" },
                 { name: "Supabase", href: "/lazy-supabase" },
+                { name: "Aikido", href: "/lazy-security" },
               ].map((item, i) => (
                 <Link key={item.name} to={item.href}>
                   <motion.span

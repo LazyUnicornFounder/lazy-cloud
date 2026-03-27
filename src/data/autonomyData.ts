@@ -122,6 +122,7 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
         name: "Lazy Crawl",
         description: "Monitors competitors and feeds intelligence to your engines",
         currentLevel: 3,
+        link: "/lazy-crawl",
         levels: [
           "You visit competitor sites manually. Monthly if lucky.",
           "You use research tools when you remember to.",
