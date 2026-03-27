@@ -137,7 +137,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Slack",
-    category: "Lazy Channels",
+    category: "Lazy Ops",
     description: "Send alerts, read channels, and post updates from your Lovable site to any Slack workspace.",
     unlocks: [
       "Get an instant Slack message every time a payment comes in.",
@@ -152,7 +152,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Telegram",
-    category: "Lazy Channels",
+    category: "Lazy Ops",
     description: "Send messages and receive commands through bots — connecting your Lovable site to Telegram.",
     unlocks: [
       "Get real-time Telegram messages for every significant engine event.",
@@ -182,7 +182,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Supabase",
-    category: "Lazy Channels",
+    category: "Lazy Ops",
     description: "Authenticate users and store data — the backbone of every Lovable project, now with autonomous milestone monitoring.",
     unlocks: [
       "Publish a celebration post automatically when you hit 100, 500, or 1,000 users.",
@@ -197,7 +197,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Contentful",
-    category: "Lazy Channels",
+    category: "Lazy Content",
     description: "Sync content between your Lovable site and Contentful in both directions — automatically, continuously.",
     unlocks: [
       "Pull published Contentful entries into your Lovable site automatically.",
@@ -212,7 +212,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Aikido",
-    category: "Lazy Shield",
+    category: "Lazy Ops",
     description: "Run penetration tests against your live Lovable app and get audit-ready security reports automatically.",
     unlocks: [
       "Run a full pentest automatically on a configurable schedule — weekly, monthly, or quarterly.",
@@ -244,7 +244,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Resend",
-    category: "Lazy Channels",
+    category: "Lazy Commerce",
     description: "Send transactional and marketing emails from your Lovable site with high deliverability and a generous free tier.",
     unlocks: [
       "Capture subscribers with a double opt-in flow that handles GDPR automatically.",
@@ -259,7 +259,7 @@ const integrations: Integration[] = [
   },
   {
     name: "21st.dev",
-    category: "Lazy Design",
+    category: "Lazy Dev",
     description: "Browse and install pre-built UI components into your Lovable project — heroes, navbars, testimonials, CTAs, and more.",
     unlocks: [
       "Audit every page and detect which sections can be upgraded with a premium component.",
@@ -275,7 +275,7 @@ const integrations: Integration[] = [
   },
   {
     name: "Google OAuth",
-    category: "Lazy Shield",
+    category: "Lazy Dev",
     description: "Add Google Sign-In to your Lovable project with one prompt — no Google Cloud configuration required.",
     unlocks: [
       "Add Sign in with Google to your login page with zero OAuth setup.",
