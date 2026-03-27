@@ -184,9 +184,36 @@ serve(async (req) => {
       throw new Error("GITHUB_PROMPTS_TOKEN is not configured");
     }
 
-    const { product, version, prompt_text, all_prompts } = await req.json();
+    // Parse body — may be empty for cron-triggered calls
+    let product: string | undefined;
+    let version: string | undefined;
+    let prompt_text: string | undefined;
+    let all_prompts: PromptPayload[] | undefined;
 
-    // Push the single prompt file
+    try {
+      const body = await req.json();
+      product = body.product;
+      version = body.version;
+      prompt_text = body.prompt_text;
+      all_prompts = body.all_prompts;
+    } catch {
+      // Empty body — cron mode, will auto-fetch below
+    }
+
+    // If no prompts provided, fetch all current prompts from DB (cron mode)
+    if (!all_prompts || all_prompts.length === 0) {
+      const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+      const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+      const sb = createClient(supabaseUrl, supabaseKey);
+      const { data, error: dbError } = await sb
+        .from("prompt_versions")
+        .select("product, version, prompt_text")
+        .eq("is_current", true);
+      if (dbError) throw new Error(`DB fetch failed: ${dbError.message}`);
+      all_prompts = (data || []) as PromptPayload[];
+    }
+
+    // Push individual prompt file if specified
     if (product && prompt_text) {
       const label = PRODUCT_LABELS[product] || product;
       const category = CATEGORY_MAP[product] || "Other";
@@ -214,8 +241,32 @@ serve(async (req) => {
       );
     }
 
-    // Update README if all_prompts provided
-    if (all_prompts && Array.isArray(all_prompts) && all_prompts.length > 0) {
+    // In cron mode (no specific product), push ALL prompt files
+    if (!product && all_prompts.length > 0) {
+      for (const p of all_prompts) {
+        const label = PRODUCT_LABELS[p.product] || p.product;
+        const category = CATEGORY_MAP[p.product] || "Other";
+        const fileContent = [
+          `# ${label}`,
+          "",
+          `> Category: ${category} · Version: ${p.version}`,
+          "",
+          "## Prompt",
+          "",
+          "````",
+          p.prompt_text,
+          "````",
+          "",
+          `---`,
+          `*Auto-synced from [Lazy Unicorn](https://lazyunicorn.co)*`,
+          "",
+        ].join("\n");
+        await upsertFile(GITHUB_TOKEN, `prompts/${p.product}.md`, fileContent, `Sync ${label} v${p.version}`);
+      }
+    }
+
+    // Always update README
+    if (all_prompts.length > 0) {
       const readme = buildReadme(all_prompts);
       await upsertFile(GITHUB_TOKEN, "README.md", readme, "Update README");
     }
