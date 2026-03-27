@@ -62,6 +62,7 @@ import AdminSettingsPage from "./pages/admin/AdminSettingsPage.tsx";
 import AdminPlaceholderPage from "./pages/admin/AdminPlaceholderPage.tsx";
 import AdminAnalyticsPage from "./pages/admin/AdminAnalyticsPage.tsx";
 import AdminChangelogPage from "./pages/admin/AdminChangelogPage.tsx";
+import AdminPromptsPage from "./pages/admin/AdminPromptsPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -101,6 +102,7 @@ const App = () => (
               <Route path="auth" element={<AdminPlaceholderPage name="Lazy Auth" />} />
               <Route path="design" element={<AdminPlaceholderPage name="Lazy Design" />} />
               <Route path="mail" element={<AdminPlaceholderPage name="Lazy Mail" />} />
+                <Route path="prompts" element={<AdminPromptsPage />} />
                 <Route path="changelog" element={<AdminChangelogPage />} />
                 <Route path="settings" element={<AdminSettingsPage />} />
               </Route>
