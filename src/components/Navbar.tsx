@@ -1,9 +1,7 @@
-import { useState, useEffect, useRef, useCallback, ReactNode } from "react";
+import { useState, useEffect, useRef, ReactNode } from "react";
 import { Menu, X as XIcon, Linkedin, ChevronDown, ChevronRight, Github } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
 
 interface NavbarProps {
   activePage?: "home" | "blog" | "guide" | "autonomy";
