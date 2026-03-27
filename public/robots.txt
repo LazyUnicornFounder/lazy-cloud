@@ -57,4 +57,5 @@ Disallow: /admin
 Disallow: /checkout/
 
 Sitemap: https://www.lazyunicorn.ai/sitemap.xml
+Sitemap: https://khmuaplhyrxvtdlapbqm.supabase.co/functions/v1/dynamic-sitemap
 Host: https://www.lazyunicorn.ai
