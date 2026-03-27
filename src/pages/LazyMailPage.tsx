@@ -181,7 +181,7 @@ export default function LazyMailPage() {
         {/* Pricing */}
         <section className="mt-28 px-6 md:px-12 max-w-4xl mx-auto">
           <LazyPricingSection
-            freeFeatures={[
+            lazyFeatures={[
               "Setup prompt included",
               "Subscriber capture with double opt-in",
               "AI-written welcome sequences",
