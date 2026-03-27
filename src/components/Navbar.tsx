@@ -281,16 +281,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
       }`}
     >
       {!isMobile ? (
-        <div className="flex items-center justify-between w-full py-3">
-          <a
-            href={brandHref}
-            onClick={handleBrandClick}
-            className="font-display text-[10px] font-semibold tracking-[0.15em] uppercase text-foreground hover:text-foreground/70 transition-colors cursor-pointer leading-tight flex flex-col"
-          >
-            <span>Lazy</span>
-            <span>Unicorn</span>
-          </a>
-          <div className="flex items-center gap-5">
+        <div className="flex items-center justify-center w-full py-3 gap-5">
             <a href="/how-it-works" className="font-body text-[11px] tracking-[0.15em] uppercase font-bold text-foreground/50 hover:text-foreground transition-colors">
               How It Works
             </a>
@@ -313,9 +304,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
                 { label: "About", href: "/about" },
               ]}
             />
-
-            {socialIcons}
-          </div>
         </div>
       ) : (
         <>
@@ -387,9 +375,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
                 </a>
               ))}
 
-              <div className="flex items-center gap-3 pt-2 border-t border-border">
-                {socialIcons}
-              </div>
             </div>
           )}
         </>
