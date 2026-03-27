@@ -123,7 +123,7 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
           key={item.label}
           href={item.href}
           onClick={() => { setOpen(false); onNavigate?.(); }}
-          className="group flex items-center gap-4 px-3 py-3.5 -mx-1 hover:bg-secondary/50 transition-colors"
+          className="group flex items-center gap-4 px-3 py-[18px] -mx-1 hover:bg-secondary/50 transition-colors"
         >
           <span className="text-foreground/50 group-hover:text-foreground/70 transition-colors flex-shrink-0">
             {item.icon}
