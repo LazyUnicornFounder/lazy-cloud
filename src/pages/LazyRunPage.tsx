@@ -12,6 +12,7 @@ import Navbar from "@/components/Navbar";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import LazyFaqSection from "@/components/LazyFaqSection";
 import { useCurrentPrompt } from "@/hooks/usePrompt";
+import AutopilotHeadline from "@/components/AutopilotHeadline";
 
 const LAZY_RUN_PROMPT = `[Lazy Run Prompt — v0.0.4 — LazyUnicorn.ai]
 

@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import LazyFaqSection from "@/components/LazyFaqSection";
+import AutopilotHeadline from "@/components/AutopilotHeadline";
 
 const PLACEHOLDER_PROMPT = `You are building Lazy Shop — an autonomous dropshipping engine for Lovable. This prompt sets up the full system.`;
 
