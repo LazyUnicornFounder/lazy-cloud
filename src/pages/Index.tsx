@@ -418,7 +418,7 @@ const Index = () => {
             <p className="text-[14px] tracking-[0.2em] uppercase font-semibold mb-4" style={{ color: "#f0ead6", opacity: 0.5 }}>
               Integrations
             </p>
-            <div className="flex flex-wrap justify-center gap-2 max-w-[640px] mx-auto">
+            <div className="flex justify-center gap-1.5 overflow-x-auto no-scrollbar max-w-full mx-auto px-2">
               {[
                 { name: "Stripe", href: "/lazy-pay" },
                 { name: "Twilio", href: "/lazy-sms" },
@@ -443,7 +443,7 @@ const Index = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1 + i * 0.06, duration: 0.4 }}
                     whileHover={{ scale: 1.1, opacity: 1 }}
-                    className="inline-block text-[14px] tracking-[0.1em] uppercase font-medium px-3 py-1.5 border transition-colors duration-200 cursor-pointer hover:border-[rgba(240,234,214,0.35)]"
+                    className="inline-block text-[11px] tracking-[0.08em] uppercase font-medium px-2 py-1 border transition-colors duration-200 cursor-pointer hover:border-[rgba(240,234,214,0.35)] whitespace-nowrap shrink-0"
                     style={{ color: "#f0ead6", opacity: 0.4, borderColor: "rgba(240,234,214,0.12)" }}
                   >
                     {item.name}
