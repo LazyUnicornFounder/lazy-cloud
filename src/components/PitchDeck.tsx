@@ -49,7 +49,7 @@ const PitchDeck = () => {
             <button
               key={s.id}
               onClick={() => setCurrent(i)}
-              className={`shrink-0 font-body text-[10px] tracking-[0.15em] uppercase px-4 py-2 rounded-t-xl transition-all border border-b-0 ${
+              className={`shrink-0 font-body text-[12px] tracking-[0.15em] uppercase px-4 py-2 rounded-t-xl transition-all border border-b-0 ${
                 i === current
                   ? "bg-card text-primary border-border"
                   : "bg-transparent text-muted-foreground border-transparent hover:text-foreground/60"
@@ -84,7 +84,7 @@ const PitchDeck = () => {
                 href="https://x.com/SaadSahawneh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-[10px] tracking-[0.12em] uppercase text-muted-foreground hover:text-primary transition-colors border border-border rounded-full px-3 py-1.5"
+                className="font-body text-[12px] tracking-[0.12em] uppercase text-muted-foreground hover:text-primary transition-colors border border-border rounded-full px-3 py-1.5"
               >
                 𝕏
               </a>
@@ -92,14 +92,14 @@ const PitchDeck = () => {
                 href="https://www.linkedin.com/company/lazy-unicorn/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-[10px] tracking-[0.12em] uppercase text-muted-foreground hover:text-primary transition-colors border border-border rounded-full px-3 py-1.5"
+                className="font-body text-[12px] tracking-[0.12em] uppercase text-muted-foreground hover:text-primary transition-colors border border-border rounded-full px-3 py-1.5"
               >
                 LinkedIn
               </a>
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground">
+              <span className="font-body text-[12px] tracking-[0.15em] uppercase text-muted-foreground">
                 {slides[current].label} / {String(slides.length).padStart(2, "0")}
               </span>
               <button

@@ -281,8 +281,8 @@ export default function LazySecurityPage() {
           <div className="max-w-4xl mx-auto">
             <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">
-                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
-                <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
+                <span className="bg-foreground text-background text-[12px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               </div>
               <AutopilotHeadline product="lazy-security" />
 
@@ -290,7 +290,7 @@ export default function LazySecurityPage() {
                 <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
                   Lazy Security
                 </h1>
-                <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30 border border-border px-3 py-1">Powered by Aikido</span>
+                <span className="inline-flex items-center gap-1.5 font-body text-[12px] tracking-[0.12em] uppercase text-foreground/45 border border-border px-3 py-1">Powered by Aikido</span>
               </div>
               <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.45 }}>
                 Your Lovable site ships fast. Lazy Security makes sure it ships safe. One prompt connects Aikido pentesting, vulnerability tracking, security score monitoring, and audit-ready reports to your existing project. Security that never sleeps.
@@ -361,7 +361,7 @@ export default function LazySecurityPage() {
                 className="border-b sm:odd:border-r border-border last:border-b-0 bg-card p-6"
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <f.icon size={16} className="text-foreground/30" />
+                  <f.icon size={16} className="text-foreground/45" />
                   <h3 className="font-display text-sm font-bold text-foreground">{f.title}</h3>
                 </div>
                 <p className="font-body text-xs text-muted-foreground leading-relaxed">{f.desc}</p>
@@ -404,12 +404,12 @@ export default function LazySecurityPage() {
           </motion.p>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-8 max-w-md mx-auto space-y-6">
             <div className="text-center space-y-1">
-              <p className="font-display text-[10px] uppercase tracking-widest text-foreground/40">Security Score</p>
+              <p className="font-display text-[12px] uppercase tracking-widest text-foreground/40">Security Score</p>
               <p className="font-display text-5xl font-extrabold text-foreground">87</p>
-              <p className="font-body text-[10px] text-foreground/30">/ 100</p>
+              <p className="font-body text-[12px] text-foreground/45">/ 100</p>
             </div>
             <div className="border-t border-border pt-4 space-y-2">
-              <p className="font-display text-[10px] uppercase tracking-widest text-foreground/40 mb-3">Vulnerability Breakdown</p>
+              <p className="font-display text-[12px] uppercase tracking-widest text-foreground/40 mb-3">Vulnerability Breakdown</p>
               {[
                 { label: "Critical", count: 0, color: "hsl(0 84% 60%)" },
                 { label: "High", count: 1, color: "hsl(25 90% 55%)" },
@@ -426,7 +426,7 @@ export default function LazySecurityPage() {
                 </div>
               ))}
             </div>
-            <div className="border-t border-border pt-4 space-y-1 font-body text-[10px] text-muted-foreground">
+            <div className="border-t border-border pt-4 space-y-1 font-body text-[12px] text-muted-foreground">
               <p>Test date: {new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}</p>
               <p>Methodology: OWASP Top 10, SANS CWE 25, Aikido proprietary</p>
             </div>
@@ -455,7 +455,7 @@ export default function LazySecurityPage() {
               You built it fast. Lazy Security makes sure it stays safe — continuous scanning, automated pentests, instant alerts, and audit-ready reports that close enterprise deals.
             </p>
             <CopyPromptButton text={promptText} />
-            <p className="font-body text-[10px] text-muted-foreground/50 max-w-sm mx-auto mt-4">
+            <p className="font-body text-[12px] text-muted-foreground/50 max-w-sm mx-auto mt-4">
               Open your Lovable project, paste it into the chat, connect your Aikido account. Your first pentest runs automatically within minutes.
             </p>
           </motion.div>

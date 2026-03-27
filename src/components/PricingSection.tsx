@@ -27,7 +27,7 @@ const PricingSection = ({ onSubmitClick }: PricingSectionProps) => {
             transition={{ duration: 0.6 }}
             className="bg-transparent backdrop-blur-xl-3xl rounded-2xl border border-primary/20 p-7 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] flex flex-col"
           >
-            <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-1">
+            <p className="font-body text-[12px] tracking-[0.2em] uppercase text-muted-foreground mb-1">
               Free
             </p>
             <p className="font-display text-4xl font-extrabold text-foreground">
@@ -71,10 +71,10 @@ const PricingSection = ({ onSubmitClick }: PricingSectionProps) => {
             <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
 
             <div className="flex items-center gap-2 mb-1">
-              <p className="font-body text-[10px] tracking-[0.2em] uppercase text-primary">
+              <p className="font-body text-[12px] tracking-[0.2em] uppercase text-primary">
                 Pro
               </p>
-              <span className="inline-flex items-center gap-1 bg-primary/10 text-primary border border-primary/20 rounded-full px-2 py-0.5 font-body text-[9px] tracking-wider uppercase font-semibold">
+              <span className="inline-flex items-center gap-1 bg-primary/10 text-primary border border-primary/20 rounded-full px-2 py-0.5 font-body text-[11px] tracking-wider uppercase font-semibold">
                 <Sparkles size={9} />
                 Popular
               </span>

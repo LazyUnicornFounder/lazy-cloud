@@ -210,8 +210,8 @@ const LazyStreamPage = () => {
           <div className="max-w-4xl mx-auto">
             <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">
-                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
-                <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
+                <span className="bg-foreground text-background text-[12px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               </div>
               <AutopilotHeadline product="lazy-stream" />
 
@@ -224,7 +224,7 @@ const LazyStreamPage = () => {
 
               {/* Works with */}
               <div className="mt-8 mb-10">
-                <p className="font-body text-[10px] tracking-[0.2em] uppercase font-semibold text-foreground/25 mb-3">
+                <p className="font-body text-[12px] tracking-[0.2em] uppercase font-semibold text-foreground/40 mb-3">
                   Works with
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -239,7 +239,7 @@ const LazyStreamPage = () => {
                     <Link
                       key={tag.label}
                       to={tag.href}
-                      className="font-body text-[10px] tracking-[0.12em] uppercase font-semibold px-3 py-1.5 border border-border text-foreground/45 hover:text-foreground hover:border-foreground/30 transition-colors"
+                      className="font-body text-[12px] tracking-[0.12em] uppercase font-semibold px-3 py-1.5 border border-border text-foreground/45 hover:text-foreground hover:border-foreground/30 transition-colors"
                     >
                       {tag.label}
                     </Link>
@@ -325,14 +325,14 @@ const LazyStreamPage = () => {
                 transition={{ delay: i * 0.08 }}
                 className="border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-border bg-card p-6"
               >
-                <p className="font-display text-[10px] tracking-[0.15em] uppercase font-bold text-foreground/40 mb-3">{item.badge}</p>
+                <p className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/40 mb-3">{item.badge}</p>
                 <h3 className="font-display text-sm font-bold text-foreground mb-2">{item.title}</h3>
                 <p className="font-body text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-                <p className="font-body text-[10px] text-foreground/20 mt-3">Published 12 min ago</p>
+                <p className="font-body text-[12px] text-foreground/35 mt-3">Published 12 min ago</p>
               </motion.div>
             ))}
           </div>
-          <p className="text-center mt-6 font-body text-[11px] tracking-[0.1em] uppercase text-foreground/25">
+          <p className="text-center mt-6 font-body text-[11px] tracking-[0.1em] uppercase text-foreground/40">
             3 content pieces per stream · Published in under 30 minutes · 100% automated
           </p>
         </section>
@@ -349,12 +349,12 @@ const LazyStreamPage = () => {
                 <Tv size={18} className="text-foreground/40" />
                 <div>
                   <p className="font-display text-sm font-bold text-foreground">Connected</p>
-                  <p className="font-body text-[11px] text-foreground/30">Last checked: 2 minutes ago</p>
+                  <p className="font-body text-[11px] text-foreground/45">Last checked: 2 minutes ago</p>
                 </div>
               </div>
               <div className="space-y-2 font-body text-xs text-foreground/40">
                 <div className="flex justify-between"><span>Next check</span><span className="text-foreground/60">3 minutes</span></div>
-                <div className="flex justify-between"><span>Stream status</span><span className="text-foreground/30">Offline — last stream 4h ago</span></div>
+                <div className="flex justify-between"><span>Stream status</span><span className="text-foreground/45">Offline — last stream 4h ago</span></div>
               </div>
             </div>
           </motion.div>
@@ -396,7 +396,7 @@ const LazyStreamPage = () => {
                     <h3 className="font-display text-sm font-bold text-foreground">{item.name}</h3>
                   </div>
                   <p className="font-body text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-                  <span className="inline-block mt-3 font-body text-[10px] tracking-[0.15em] uppercase font-semibold text-foreground/20 group-hover:text-foreground/50 transition-colors">
+                  <span className="inline-block mt-3 font-body text-[12px] tracking-[0.15em] uppercase font-semibold text-foreground/35 group-hover:text-foreground/50 transition-colors">
                     Learn more →
                   </span>
                 </Link>

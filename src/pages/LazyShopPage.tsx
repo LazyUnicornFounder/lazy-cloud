@@ -214,7 +214,7 @@ const LazyShopPage = () => {
 
           {/* Integration pills */}
           <div className="mt-8">
-            <p className="text-[10px] tracking-[0.2em] uppercase font-semibold mb-4" style={{ color: cream, opacity: 0.25 }}>
+            <p className="text-[12px] tracking-[0.2em] uppercase font-semibold mb-4" style={{ color: cream, opacity: 0.25 }}>
               Powered by
             </p>
             <div className="flex flex-wrap justify-center gap-2">
@@ -224,7 +224,7 @@ const LazyShopPage = () => {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1 + i * 0.08, duration: 0.4 }}
-                  className="inline-block text-[10px] tracking-[0.1em] uppercase font-medium px-3 py-1.5 border"
+                  className="inline-block text-[12px] tracking-[0.1em] uppercase font-medium px-3 py-1.5 border"
                   style={{ color: cream, opacity: 0.4, borderColor: "rgba(240,234,214,0.12)" }}
                 >
                   {name}
@@ -279,7 +279,7 @@ const LazyShopPage = () => {
             <h2 style={{ fontFamily: "'Playfair Display', serif", color: cream, fontSize: "clamp(2rem, 4.5vw, 3.2rem)", lineHeight: 1.1 }} className="font-bold tracking-tight mb-4">
               Copy. Paste. <span style={{ color: gold }}>Sell.</span>
             </h2>
-            <p className="text-sm leading-relaxed max-w-xl mx-auto mb-14" style={{ color: cream, opacity: 0.4 }}>
+            <p className="text-sm leading-relaxed max-w-xl mx-auto mb-14" style={{ color: cream, opacity: 0.5 }}>
               Lazy Shop is a single prompt. Paste it into your Lovable project and it builds the entire dropshipping system — tables, functions, UI, and a schedule that runs without you.
             </p>
           </motion.div>
@@ -410,7 +410,7 @@ const LazyShopPage = () => {
             <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: cream, lineHeight: 1.1 }}>Lazy</p>
             <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", color: cream, lineHeight: 1.1 }}>Shop</p>
           </div>
-          <p className="mt-6 max-w-lg mx-auto leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", color: cream, opacity: 0.4 }}>
+          <p className="mt-6 max-w-lg mx-auto leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", color: cream, opacity: 0.5 }}>
             Lovable builds it. Shopify runs it. Lazy Unicorn automates it. One prompt installs everything into your existing Lovable project.
           </p>
           <div className="mt-8">

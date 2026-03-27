@@ -82,7 +82,7 @@ const ProductPromoBanner = ({ excludeProduct, glass = true }: ProductPromoBanner
                 <p className="font-body text-xs text-foreground/40 leading-relaxed mb-3">
                   {product.tagline}
                 </p>
-                <span className="font-body text-[10px] tracking-[0.15em] uppercase text-primary/70 group-hover:text-primary transition-colors font-semibold">
+                <span className="font-body text-[12px] tracking-[0.15em] uppercase text-primary/70 group-hover:text-primary transition-colors font-semibold">
                   Learn more →
                 </span>
               </div>

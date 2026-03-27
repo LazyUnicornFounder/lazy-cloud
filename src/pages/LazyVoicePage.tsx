@@ -197,7 +197,7 @@ function CopyPromptButton({
 /* ── ElevenLabs badge ── */
 function ElevenLabsBadge() {
   return (
-    <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30 border border-border px-3 py-1">
+    <span className="inline-flex items-center gap-1.5 font-body text-[12px] tracking-[0.12em] uppercase text-foreground/45 border border-border px-3 py-1">
       Powered by ElevenLabs
     </span>
   );
@@ -349,7 +349,7 @@ function ManifestoPlayer() {
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
           className="border border-border bg-card p-8"
         >
-          <p className="font-display text-[10px] tracking-[0.15em] uppercase font-bold text-foreground/30 mb-4">
+          <p className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/45 mb-4">
             Listen — Narrated by AI
           </p>
           <h3
@@ -385,20 +385,20 @@ function ManifestoPlayer() {
                       style={{ width: `${(progress / duration) * 100}%` }}
                     />
                   </div>
-                  <div className="flex justify-between font-body text-[10px] text-foreground/25">
+                  <div className="flex justify-between font-body text-[12px] text-foreground/40">
                     <span>{formatTime(progress)}</span>
                     <span>{formatTime(duration)}</span>
                   </div>
                 </>
               ) : (
-                <p className="font-body text-xs text-foreground/30">
+                <p className="font-body text-xs text-foreground/45">
                   {isLoading ? "Preparing audio..." : audioReady ? "Ready to play" : "Press play to hear the Lazy Unicorn manifesto"}
                 </p>
               )}
             </div>
           </div>
 
-          <p className="mt-4 font-body text-[10px] text-foreground/20">
+          <p className="mt-4 font-body text-[12px] text-foreground/35">
             Generated with ElevenLabs · George voice · Classical piano accompaniment · Lazy Voice engine
           </p>
         </motion.div>
@@ -437,8 +437,8 @@ export default function LazyVoicePage() {
           <div className="max-w-4xl mx-auto">
             <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">
-                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
-                <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
+                <span className="bg-foreground text-background text-[12px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               </div>
               <AutopilotHeadline product="lazy-voice" />
 

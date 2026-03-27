@@ -152,7 +152,7 @@ function CopyPromptButton({ className = "", onCopy, text }: { className?: string
 
 function ServiceBadge() {
   return (
-    <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30 border border-border px-3 py-1">
+    <span className="inline-flex items-center gap-1.5 font-body text-[12px] tracking-[0.12em] uppercase text-foreground/45 border border-border px-3 py-1">
       Powered by Contentful
     </span>
   );
@@ -177,8 +177,8 @@ const LazyContentfulPage = () => {
           <div className="max-w-4xl mx-auto">
             <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">
-                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
-                <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
+                <span className="bg-foreground text-background text-[12px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               </div>
               <AutopilotHeadline product="lazy-contentful" />
 
@@ -258,7 +258,7 @@ const LazyContentfulPage = () => {
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">Your Contentful CMS. Filling itself.</h2>
             <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">Content flows in both directions — Contentful to Lovable, Lazy engines to Contentful — all on autopilot.</p>
             <CopyPromptButton text={promptText} onCopy={handlePromptCopy} />
-            <p className="font-body text-xs text-foreground/20 mt-4">Open your Lovable project, paste it into the chat, add your API key. Done.</p>
+            <p className="font-body text-xs text-foreground/35 mt-4">Open your Lovable project, paste it into the chat, add your API key. Done.</p>
           </motion.div>
         </section>
       </main>

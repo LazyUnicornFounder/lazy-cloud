@@ -135,7 +135,7 @@ export default function ChangelogPage() {
             <p className="font-body text-foreground/50 text-lg max-w-2xl mb-3">
               Every version of every Lazy prompt. What changed, when it changed, and how to upgrade.
             </p>
-            <p className="font-body text-foreground/30 text-sm mb-4">
+            <p className="font-body text-foreground/45 text-sm mb-4">
               Prompts are updated when Lovable's platform evolves, new integrations are added, or bugs are found. Check here before pasting a prompt you have not used recently.
             </p>
             <a
@@ -153,7 +153,7 @@ export default function ChangelogPage() {
             <h2 className="font-display text-sm tracking-[0.15em] uppercase font-bold text-foreground/60 mb-4">Are you on the latest version?</h2>
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="flex-1">
-                <label className="font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30 mb-1 block">Engine</label>
+                <label className="font-body text-[12px] tracking-[0.12em] uppercase text-foreground/45 mb-1 block">Engine</label>
                 <select
                   value={checkerEngine}
                   onChange={e => { setCheckerEngine(e.target.value); setCheckerResult(null); }}
@@ -164,7 +164,7 @@ export default function ChangelogPage() {
                 </select>
               </div>
               <div className="flex-1">
-                <label className="font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30 mb-1 block">Your current version</label>
+                <label className="font-body text-[12px] tracking-[0.12em] uppercase text-foreground/45 mb-1 block">Your current version</label>
                 <input
                   type="text"
                   value={checkerVersion}
@@ -196,7 +196,7 @@ export default function ChangelogPage() {
                         <div key={u.id} className="flex items-center gap-3 font-body text-sm text-foreground/60">
                           <code className="text-[11px] bg-foreground/5 px-1.5 py-0.5">{u.version}</code>
                           <span>{formatDate(u.release_date)}</span>
-                          <span className={`text-[10px] px-1.5 py-0.5 uppercase tracking-wider ${changeTypeBadge(u.change_type)}`}>{u.change_type}</span>
+                          <span className={`text-[12px] px-1.5 py-0.5 uppercase tracking-wider ${changeTypeBadge(u.change_type)}`}>{u.change_type}</span>
                           <span className="text-foreground/40">{u.summary}</span>
                         </div>
                       ))}
@@ -213,7 +213,7 @@ export default function ChangelogPage() {
               <button
                 key={f}
                 onClick={() => setCategoryFilter(f)}
-                className={`font-body text-[10px] tracking-[0.12em] uppercase px-3 py-1.5 border transition-colors ${
+                className={`font-body text-[12px] tracking-[0.12em] uppercase px-3 py-1.5 border transition-colors ${
                   categoryFilter === f ? "border-[#c8a961] text-[#c8a961] bg-[#c8a961]/10" : "border-border text-foreground/40 hover:text-foreground/60"
                 }`}
               >
@@ -226,7 +226,7 @@ export default function ChangelogPage() {
               <button
                 key={f}
                 onClick={() => setTypeFilter(f)}
-                className={`font-body text-[10px] tracking-[0.12em] uppercase px-3 py-1.5 border transition-colors ${
+                className={`font-body text-[12px] tracking-[0.12em] uppercase px-3 py-1.5 border transition-colors ${
                   typeFilter === f ? "border-foreground/40 text-foreground bg-foreground/5" : "border-border text-foreground/40 hover:text-foreground/60"
                 }`}
               >
@@ -240,7 +240,7 @@ export default function ChangelogPage() {
             <div key={date} className="mb-12">
               <div className="flex items-baseline gap-3 mb-4">
                 <h3 className="font-display text-xl font-bold">{formatDate(date)}</h3>
-                <span className="font-body text-[11px] text-foreground/30">{items.length} release{items.length > 1 ? "s" : ""}</span>
+                <span className="font-body text-[11px] text-foreground/45">{items.length} release{items.length > 1 ? "s" : ""}</span>
               </div>
               <div className="space-y-3">
                 {items.map(r => (
@@ -248,10 +248,10 @@ export default function ChangelogPage() {
                     <div className="flex flex-wrap items-center gap-2 mb-2">
                       <span className="font-display text-sm font-bold">{r.engine_name}</span>
                       <code className="text-[11px] bg-foreground/5 px-1.5 py-0.5 text-foreground/60">{r.version}</code>
-                      <span className={`text-[10px] px-1.5 py-0.5 uppercase tracking-wider ${changeTypeBadge(r.change_type)}`}>{r.change_type}</span>
-                      <span className={`text-[10px] px-1.5 py-0.5 uppercase tracking-wider ${complexityBadge(r.upgrade_complexity)}`}>{r.upgrade_complexity}</span>
+                      <span className={`text-[12px] px-1.5 py-0.5 uppercase tracking-wider ${changeTypeBadge(r.change_type)}`}>{r.change_type}</span>
+                      <span className={`text-[12px] px-1.5 py-0.5 uppercase tracking-wider ${complexityBadge(r.upgrade_complexity)}`}>{r.upgrade_complexity}</span>
                       {r.download_url && (
-                        <a href={r.download_url} target="_blank" rel="noopener noreferrer" className="ml-auto font-body text-[10px] tracking-[0.1em] uppercase text-[#c8a961] hover:text-[#c8a961]/70 transition-colors">
+                        <a href={r.download_url} target="_blank" rel="noopener noreferrer" className="ml-auto font-body text-[12px] tracking-[0.1em] uppercase text-[#c8a961] hover:text-[#c8a961]/70 transition-colors">
                           Get Latest Version →
                         </a>
                       )}
@@ -260,7 +260,7 @@ export default function ChangelogPage() {
                     {r.changes && (
                       <button
                         onClick={() => toggleSet(expandedChanges, r.id, setExpandedChanges)}
-                        className="font-body text-[11px] tracking-[0.1em] uppercase text-foreground/30 hover:text-foreground/50 transition-colors flex items-center gap-1"
+                        className="font-body text-[11px] tracking-[0.1em] uppercase text-foreground/45 hover:text-foreground/50 transition-colors flex items-center gap-1"
                       >
                         <ChevronDown size={12} className={expandedChanges.has(r.id) ? "rotate-180" : ""} />
                         Show all changes
@@ -294,7 +294,7 @@ export default function ChangelogPage() {
           ))}
 
           {grouped.length === 0 && (
-            <p className="font-body text-foreground/30 text-center py-12">No releases match your filters.</p>
+            <p className="font-body text-foreground/45 text-center py-12">No releases match your filters.</p>
           )}
         </div>
       </main>

@@ -52,7 +52,7 @@ export default function UpgradeGuidePage() {
           href={`#${s.id}`}
           onClick={() => setTocOpen(false)}
           className={`block font-body text-[11px] tracking-[0.08em] py-1.5 transition-colors ${
-            activeSection === s.id ? "text-[#c8a961]" : "text-foreground/30 hover:text-foreground/50"
+            activeSection === s.id ? "text-[#c8a961]" : "text-foreground/45 hover:text-foreground/50"
           }`}
         >
           {s.title}
@@ -89,7 +89,7 @@ export default function UpgradeGuidePage() {
             {/* Desktop TOC */}
             <aside className="hidden lg:block w-48 flex-shrink-0">
               <div className="sticky top-32">
-                <p className="font-display text-[10px] tracking-[0.15em] uppercase text-foreground/20 mb-3">On this page</p>
+                <p className="font-display text-[12px] tracking-[0.15em] uppercase text-foreground/35 mb-3">On this page</p>
                 {toc}
               </div>
             </aside>

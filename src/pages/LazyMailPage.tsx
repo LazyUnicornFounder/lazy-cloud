@@ -20,7 +20,7 @@ Add a complete autonomous email engine called Lazy Mail to this project. It conn
 Note: Store the Resend API key as Supabase secret RESEND_API_KEY. Never store in the database.`;
 
 const ResendBadge = () => (
-  <span className="inline-flex items-center gap-1.5 font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30 border border-border px-3 py-1">
+  <span className="inline-flex items-center gap-1.5 font-body text-[12px] tracking-[0.12em] uppercase text-foreground/45 border border-border px-3 py-1">
     Powered by Resend
   </span>
 );
@@ -98,7 +98,7 @@ export default function LazyMailPage() {
           <div className="max-w-4xl mx-auto">
             <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">
-                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
                 <ResendBadge />
               </div>
               <AutopilotHeadline product="lazy-mail" />
@@ -121,7 +121,7 @@ export default function LazyMailPage() {
               {/* Works with tags */}
               <div className="mt-8 flex flex-wrap gap-2">
                 {["Lazy Blogger", "Lazy SEO", "Lazy GEO", "Lazy Alert"].map(tag => (
-                  <span key={tag} className="font-body text-[9px] tracking-[0.2em] uppercase text-foreground/20 border border-border px-3 py-1">
+                  <span key={tag} className="font-body text-[11px] tracking-[0.2em] uppercase text-foreground/35 border border-border px-3 py-1">
                     {tag}
                   </span>
                 ))}
@@ -156,7 +156,7 @@ export default function LazyMailPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {features.map((f, i) => (
                 <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.5, delay: i * 0.08 }} className="border border-border p-6">
-                  <f.icon size={20} className="text-foreground/20 mb-4" />
+                  <f.icon size={20} className="text-foreground/35 mb-4" />
                   <h3 className="font-display text-sm font-bold text-foreground mb-2">{f.title}</h3>
                   <p className="font-body text-xs text-foreground/40 leading-relaxed">{f.desc}</p>
                 </motion.div>
@@ -180,7 +180,7 @@ export default function LazyMailPage() {
                 "Open rates drop below 20% → AI rewrites subject lines automatically",
               ].map((line, i) => (
                 <div key={i} className="flex items-start gap-3 text-left">
-                  <Check size={14} className="text-foreground/20 mt-1 shrink-0" />
+                  <Check size={14} className="text-foreground/35 mt-1 shrink-0" />
                   <p className="font-body text-sm text-muted-foreground leading-relaxed">{line}</p>
                 </div>
               ))}

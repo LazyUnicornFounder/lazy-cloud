@@ -27,7 +27,7 @@ export default function AboutPage() {
             </h1>
 
             <div className="mb-8 py-4 px-5 rounded-xl bg-primary/5 border border-primary/10">
-              <p className="font-display text-[10px] tracking-[0.2em] uppercase text-primary/60 mb-1 font-bold">Mission</p>
+              <p className="font-display text-[12px] tracking-[0.2em] uppercase text-primary/60 mb-1 font-bold">Mission</p>
               <p className="font-display text-lg md:text-xl font-bold text-foreground/90 tracking-tight">
                 Accelerate autonomous capitalism.
               </p>
@@ -62,18 +62,18 @@ export default function AboutPage() {
             </div>
 
             <div className="mt-12 pt-8 border-t border-border">
-              <p className="font-body text-[10px] tracking-[0.15em] uppercase text-foreground/20 mb-3">Founded by</p>
+              <p className="font-body text-[12px] tracking-[0.15em] uppercase text-foreground/35 mb-3">Founded by</p>
               <p className="font-display text-lg font-bold">Saad Sahawneh</p>
               <div className="flex items-center gap-4 mt-3">
-                <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="font-body text-xs text-foreground/30 hover:text-foreground transition-colors">𝕏</a>
-                <a href="https://www.linkedin.com/company/lazy-unicorn/" target="_blank" rel="noopener noreferrer" className="font-body text-xs text-foreground/30 hover:text-foreground transition-colors">LinkedIn</a>
+                <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="font-body text-xs text-foreground/45 hover:text-foreground transition-colors">𝕏</a>
+                <a href="https://www.linkedin.com/company/lazy-unicorn/" target="_blank" rel="noopener noreferrer" className="font-body text-xs text-foreground/45 hover:text-foreground transition-colors">LinkedIn</a>
               </div>
             </div>
 
             <div className="mt-12">
               <Link
                 to="/"
-                className="font-body text-xs tracking-[0.15em] uppercase text-foreground/30 hover:text-foreground transition-colors"
+                className="font-body text-xs tracking-[0.15em] uppercase text-foreground/45 hover:text-foreground transition-colors"
               >
                 ← Back to home
               </Link>
