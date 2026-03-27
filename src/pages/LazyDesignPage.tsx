@@ -102,9 +102,9 @@ export default function LazyDesignPage() {
                 <TwentyFirstBadge />
                 <span className="bg-foreground text-background text-[10px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               </div>
-              <div className="flex items-center gap-4 flex-wrap">
-                <AutopilotHeadline product="lazy-design" />
+              <AutopilotHeadline product="lazy-design" />
 
+              <div className="flex items-center gap-4 flex-wrap">
                 <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
                   Lazy Design
                 </h1>

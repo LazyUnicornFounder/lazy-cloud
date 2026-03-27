@@ -101,9 +101,9 @@ export default function LazyMailPage() {
                 <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Introducing</p>
                 <ResendBadge />
               </div>
-              <div className="flex items-center gap-4 flex-wrap">
-                <AutopilotHeadline product="lazy-mail" />
+              <AutopilotHeadline product="lazy-mail" />
 
+              <div className="flex items-center gap-4 flex-wrap">
                 <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
                   Lazy Mail
                 </h1>
