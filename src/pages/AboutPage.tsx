@@ -71,9 +71,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="mt-12">
-              <BacklinkBadge />
-            </div>
 
             <div className="mt-8">
               <Link
