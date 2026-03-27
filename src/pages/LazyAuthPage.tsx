@@ -108,19 +108,20 @@ const faqs = [
   { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing users and settings are preserved." },
 ];
 
-function CopyPromptButton({ label = "COPY THE LOVABLE PROMPT", text }: { label?: string; text: string }) {
+function CopyPromptButton({ label = "Copy the Lovable Prompt", text }: { label?: string; text: string }) {
   const [copied, setCopied] = useState(false);
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(text);
     setCopied(true);
-    toast.success("Prompt copied to clipboard");
+    toast.success("Prompt copied — paste it into your Lovable project");
     setTimeout(() => setCopied(false), 2000);
   }, [text]);
 
   return (
     <button
       onClick={handleCopy}
-      className="inline-flex items-center justify-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 bg-foreground text-background hover:bg-foreground/90 transition-colors"
+      className="inline-flex items-center justify-center gap-2 font-body text-[13px] tracking-[0.15em] uppercase px-8 py-4 font-semibold transition-opacity hover:opacity-90 active:scale-[0.97]"
+      style={{ backgroundColor: "#f0ead6", color: "#0a0a08" }}
     >
       {copied ? "Copied ✓" : label}
     </button>
@@ -141,49 +142,43 @@ export default function LazyAuthPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 md:pt-44 pb-20 md:pb-28 px-6">
-        <div className="max-w-3xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.5 }}>
+      <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+        <div className="max-w-4xl mx-auto">
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.7 }}>
             <div className="flex items-center gap-3 mb-6">
               <span className="inline-block font-display text-[14px] font-bold tracking-[0.2em] uppercase px-3 py-1 border border-foreground/20 text-foreground/50">
                 LAZY DEV
               </span>
               <span className="bg-foreground text-background text-[14px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
             </div>
-          </motion.div>
-          <AutopilotHeadline product="lazy-auth" />
-          <motion.h1
-            variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.1 }}
-            className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6"
-          >
-            Login that builds itself.
-          </motion.h1>
-          <motion.p
-            variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}
-            className="font-body text-base md:text-lg text-foreground/70 max-w-2xl leading-relaxed mb-10"
-          >
-            One prompt installs Google Sign-In, email/password login, magic links, protected routes, role-based access control, and a user management dashboard. Uses Lovable Cloud — no external auth provider setup required.
-          </motion.p>
-          <motion.div
-            variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.3 }}
-            className="flex flex-wrap gap-4"
-          >
-            <CopyPromptButton text={promptText} />
-            <button
-              onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center justify-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-colors"
-            >
-              SEE WHAT IT INSTALLS <ChevronDown size={14} />
-            </button>
-          </motion.div>
+            <AutopilotHeadline product="lazy-auth" />
 
-          {/* Works with */}
-          <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.4 }} className="mt-10 flex flex-wrap gap-2">
-            {["Lazy Admin", "Lazy Security"].map((tag) => (
-              <span key={tag} className="text-[14px] tracking-[0.2em] uppercase font-medium px-3 py-1.5 border border-foreground/10 text-foreground/40">
-                {tag}
-              </span>
-            ))}
+            <div className="flex items-center gap-4 flex-wrap">
+              <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+                Login that builds itself.
+              </h1>
+            </div>
+            <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+              One prompt installs Google Sign-In, email/password login, magic links, protected routes, role-based access control, and a user management dashboard. Uses Lovable Cloud — no external auth provider setup required.
+            </p>
+            <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
+              <CopyPromptButton text={promptText} />
+              <button
+                onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
+                className="inline-flex items-center gap-2 font-body text-[13px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
+              >
+                See What It Installs <ChevronDown size={14} />
+              </button>
+            </div>
+
+            {/* Works with */}
+            <div className="mt-8 flex flex-wrap gap-2">
+              {["Lazy Admin", "Lazy Security"].map((tag) => (
+                <span key={tag} className="font-body text-[13px] tracking-[0.2em] uppercase text-foreground/60 border border-border px-3 py-1">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
