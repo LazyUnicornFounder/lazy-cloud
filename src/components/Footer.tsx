@@ -94,6 +94,9 @@ export default function Footer() {
           {/* Link columns */}
           {columns.map((col) => (
             <div key={col.label}>
+              <p className="font-body text-xs tracking-[0.2em] uppercase text-foreground/50 font-semibold mb-1">
+                Lazy
+              </p>
               <p className="font-body text-xs tracking-[0.2em] uppercase text-foreground/50 font-semibold mb-4">
                 {col.label}
               </p>
