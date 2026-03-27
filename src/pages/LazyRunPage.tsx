@@ -409,14 +409,14 @@ const dashboardFeatures = [
   { icon: Clock, title: "Smart scheduling", desc: "Engines are staggered automatically so they never compete for resources or API limits." },
 ];
 
-function CopyPromptButton({ label = "COPY THE LOVABLE PROMPT" }: { label?: string }) {
+function CopyPromptButton({ label = "COPY THE LOVABLE PROMPT", text }: { label?: string; text: string }) {
   const [copied, setCopied] = useState(false);
   const handleCopy = useCallback(() => {
-    navigator.clipboard.writeText(LAZY_RUN_PROMPT);
+    navigator.clipboard.writeText(text);
     setCopied(true);
     toast.success("Prompt copied to clipboard");
     setTimeout(() => setCopied(false), 2000);
-  }, []);
+  }, [text]);
 
   return (
     <button

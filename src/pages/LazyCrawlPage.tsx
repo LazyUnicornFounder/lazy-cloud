@@ -47,15 +47,15 @@ const steps = [
   "Competitor intelligence flows into your content engines automatically.",
 ];
 
-function CopyPromptButton({ className = "", onCopy }: { className?: string; onCopy: () => void }) {
+function CopyPromptButton({ className = "", onCopy, text }: { className?: string; onCopy: () => void; text: string }) {
   const [copied, setCopied] = useState(false);
   const handleCopy = useCallback(async () => {
-    await navigator.clipboard.writeText(SETUP_PROMPT);
+    await navigator.clipboard.writeText(text);
     setCopied(true);
     onCopy();
     toast.success("Copied! Paste this into your Lovable project chat.");
     setTimeout(() => setCopied(false), 2500);
-  }, [onCopy]);
+  }, [onCopy, text]);
 
   return (
     <button onClick={handleCopy} className={`inline-flex items-center gap-2 bg-foreground text-background font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity ${className}`}>

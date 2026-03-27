@@ -215,14 +215,14 @@ Do not add /lazy-security-setup to public navigation.`;
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-function CopyPromptButton({ className = "" }: { className?: string }) {
+function CopyPromptButton({ className = "", text }: { className?: string; text: string }) {
   const [copied, setCopied] = useState(false);
   const handleCopy = useCallback(() => {
-    navigator.clipboard.writeText(LAZY_SECURITY_PROMPT);
+    navigator.clipboard.writeText(text);
     setCopied(true);
     toast.success("Prompt copied — paste it into your Lovable project");
     setTimeout(() => setCopied(false), 2000);
-  }, []);
+  }, [text]);
   return (
     <button
       onClick={handleCopy}

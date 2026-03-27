@@ -194,15 +194,15 @@ If /admin does not yet exist on this project add a simple placeholder at /admin 
 Do not add any Lazy SMS pages to the public navigation. All pages are admin-only.`;
 
 /* ── Reusable copy button ── */
-function CopyPromptButton({ className = "", onCopy }: { className?: string; onCopy: () => void }) {
+function CopyPromptButton({ className = "", onCopy, text }: { className?: string; onCopy: () => void; text: string }) {
   const [copied, setCopied] = useState(false);
   const handleCopy = useCallback(async () => {
-    await navigator.clipboard.writeText(LAZY_SMS_PROMPT);
+    await navigator.clipboard.writeText(text);
     setCopied(true);
     onCopy();
     toast.success("Copied! Paste this into your Lovable project chat.");
     setTimeout(() => setCopied(false), 2500);
-  }, [onCopy]);
+  }, [onCopy, text]);
 
   return (
     <button

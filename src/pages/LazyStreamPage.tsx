@@ -162,17 +162,17 @@ const steps = [
   "Lazy Stream monitors your channel and publishes content automatically after every stream.",
 ];
 
-function CopyPromptButton({ className = "" }: { className?: string }) {
+function CopyPromptButton({ className = "", text }: { className?: string; text: string }) {
   const [copied, setCopied] = useState(false);
   const trackEvent = useTrackEvent();
 
   const handleCopy = useCallback(async () => {
-    await navigator.clipboard.writeText(SETUP_PROMPT);
+    await navigator.clipboard.writeText(text);
     setCopied(true);
     trackEvent("copy_prompt", { product: "lazy-stream" });
     toast.success("Copied! Paste this into your Lovable project chat.");
     setTimeout(() => setCopied(false), 2500);
-  }, [trackEvent]);
+  }, [trackEvent, text]);
 
   return (
     <button

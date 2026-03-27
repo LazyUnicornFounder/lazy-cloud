@@ -157,20 +157,22 @@ function CopyPromptButton({
   className = "",
   onCopy,
   variant = "primary",
+  text,
 }: {
   className?: string;
   onCopy: () => void;
   variant?: "primary" | "ghost";
+  text: string;
 }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = useCallback(async () => {
-    await navigator.clipboard.writeText(LAZY_VOICE_PROMPT);
+    await navigator.clipboard.writeText(text);
     setCopied(true);
     onCopy();
     toast.success("Copied! Paste this into your Lovable project chat.");
     setTimeout(() => setCopied(false), 2500);
-  }, [onCopy]);
+  }, [onCopy, text]);
 
   const base =
     variant === "primary"

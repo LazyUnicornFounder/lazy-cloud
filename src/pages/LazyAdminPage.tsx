@@ -49,13 +49,15 @@ const faqs = [
 
 export default function LazyAdminPage() {
   const [copied, setCopied] = useState(false);
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-admin");
+  const promptText = dbPrompt?.prompt_text || LAZY_ADMIN_PROMPT;
 
   const handleCopy = useCallback(() => {
-    navigator.clipboard.writeText(LAZY_ADMIN_PROMPT);
+    navigator.clipboard.writeText(promptText);
     setCopied(true);
     toast.success("Prompt copied to clipboard");
     setTimeout(() => setCopied(false), 2000);
-  }, []);
+  }, [promptText]);
 
   const fade = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.5 } };
 

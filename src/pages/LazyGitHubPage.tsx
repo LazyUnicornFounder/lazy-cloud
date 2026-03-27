@@ -252,17 +252,17 @@ const faqs = [
   { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
 ];
 
-function CopyPromptButton({ className = "" }: { className?: string }) {
+function CopyPromptButton({ className = "", text }: { className?: string; text: string }) {
   const [copied, setCopied] = useState(false);
   const trackEvent = useTrackEvent();
 
   const handleCopy = useCallback(async () => {
-    await navigator.clipboard.writeText(SETUP_PROMPT);
+    await navigator.clipboard.writeText(text);
     setCopied(true);
     trackEvent("copy_prompt", { product: "lazy-github" });
     toast.success("Copied! Paste this into your Lovable project chat.");
     setTimeout(() => setCopied(false), 2000);
-  }, [trackEvent]);
+  }, [trackEvent, text]);
 
   return (
     <button

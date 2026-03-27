@@ -216,17 +216,17 @@ const SlackBadge = () => (
   </span>
 );
 
-function CopyPromptButton() {
+function CopyPromptButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
   const trackEvent = useTrackEvent();
 
   const handleCopy = useCallback(() => {
-    navigator.clipboard.writeText(LAZY_ALERT_PROMPT);
+    navigator.clipboard.writeText(text);
     setCopied(true);
     toast.success("Prompt copied — paste it into your Lovable project");
     trackEvent("copy_prompt", { product: "lazy-alert" });
     setTimeout(() => setCopied(false), 2000);
-  }, [trackEvent]);
+  }, [trackEvent, text]);
 
   return (
     <button
