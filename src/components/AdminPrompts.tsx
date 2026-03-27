@@ -28,10 +28,12 @@ const PRODUCTS = [
   { key: "lazy-geo", label: "🧠 Lazy GEO" },
   { key: "lazy-crawl", label: "🕷️ Lazy Crawl" },
   { key: "lazy-perplexity", label: "🔬 Lazy Perplexity" },
+  { key: "lazy-contentful", label: "📦 Lazy Contentful" },
   // Commerce
   { key: "lazy-store", label: "🏪 Lazy Store" },
   { key: "lazy-pay", label: "💳 Lazy Pay" },
   { key: "lazy-sms", label: "💬 Lazy SMS" },
+  { key: "lazy-mail", label: "📧 Lazy Mail" },
   // Media
   { key: "lazy-voice", label: "🎙️ Lazy Voice" },
   { key: "lazy-stream", label: "🎮 Lazy Stream" },
@@ -39,16 +41,13 @@ const PRODUCTS = [
   { key: "lazy-code", label: "🐙 Lazy GitHub" },
   { key: "lazy-gitlab", label: "🦊 Lazy GitLab" },
   { key: "lazy-linear", label: "📋 Lazy Linear" },
-  // Channels
-  { key: "lazy-mail", label: "📧 Lazy Mail" },
+  { key: "lazy-design", label: "🎨 Lazy Design" },
+  { key: "lazy-auth", label: "🔐 Lazy Auth" },
+  // Ops
   { key: "lazy-alert", label: "🔔 Lazy Alert" },
   { key: "lazy-telegram", label: "✈️ Lazy Telegram" },
-  { key: "lazy-contentful", label: "📦 Lazy Contentful" },
   { key: "lazy-supabase", label: "⚡ Lazy Supabase" },
-  // Shield
   { key: "lazy-security", label: "🛡️ Lazy Security" },
-  { key: "lazy-auth", label: "🔐 Lazy Auth" },
-  { key: "lazy-design", label: "🎨 Lazy Design" },
 ] as const;
 
 /* ── Helpers ── */
