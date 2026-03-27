@@ -122,8 +122,8 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
   }, []);
 
   const renderCategory = (cat: typeof productCategories[number]) => (
-    <div key={cat.label} className="mb-5">
-      <p className="font-body text-[12px] tracking-[0.2em] uppercase text-foreground/50 font-semibold mb-2">
+    <div key={cat.label} className="mb-6">
+      <p className="font-body text-[14px] tracking-[0.2em] uppercase text-foreground/50 font-semibold mb-3">
         {cat.label}
       </p>
       {cat.items.map((item) => (
@@ -131,16 +131,16 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
           key={item.label}
           href={item.href}
           onClick={() => { setOpen(false); onNavigate?.(); }}
-          className="group flex items-center gap-3 px-2.5 py-2 -mx-1 hover:bg-secondary/50 transition-colors"
+          className="group flex items-center gap-4 px-3 py-2.5 -mx-1 hover:bg-secondary/50 transition-colors"
         >
           <span className="text-foreground/50 group-hover:text-foreground/70 transition-colors flex-shrink-0">
             {item.icon}
           </span>
           <div className="min-w-0">
-            <p className="font-display text-[14px] font-bold tracking-[0.04em] uppercase text-foreground/70 group-hover:text-foreground transition-colors leading-tight">
+            <p className="font-display text-[16px] font-bold tracking-[0.04em] uppercase text-foreground/70 group-hover:text-foreground transition-colors leading-tight">
               {item.label}
             </p>
-            <p className="font-body text-[12px] text-foreground/45 group-hover:text-foreground/60 transition-colors leading-tight mt-0.5">
+            <p className="font-body text-[14px] text-foreground/45 group-hover:text-foreground/60 transition-colors leading-tight mt-1">
               {item.tagline}
             </p>
           </div>
