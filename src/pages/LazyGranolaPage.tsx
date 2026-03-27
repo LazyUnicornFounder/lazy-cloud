@@ -111,35 +111,32 @@ export default function LazyGranolaPage() {
       />
       <Navbar />
 
-      <main className="min-h-screen" style={{ backgroundColor: "#0a0a08" }}>
+      <main className="min-h-screen bg-background text-foreground">
         {/* ── Hero ── */}
-        <section className="pt-32 pb-20 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.6 }}>
+        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+          <div className="max-w-4xl mx-auto">
+            <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
+              <div className="flex items-center gap-3 mb-6">
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
+                <span className="bg-foreground text-background text-[14px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+              </div>
               <AutopilotHeadline product="lazy-granola" />
-              <h1
-                style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 4.5vw, 3.5rem)", color: "#f0ead6", lineHeight: 1.1 }}
-                className="mb-6"
-              >
-                Every meeting you have is a blog post waiting to be written.
-              </h1>
-              <p className="font-body text-foreground/70 text-lg max-w-3xl mx-auto leading-relaxed mb-10">
-                Lazy Granola connects your Granola meeting notes to the Lazy Stack. The moment a meeting ends — customer call, planning session, product review — it automatically publishes a blog post, creates Linear issues from action items, sends a Slack summary to your team, and feeds customer intelligence into your content engines. You attend the meeting. Lazy Granola does everything after.
-              </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+              <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+                Lazy Granola
+              </h1>
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+                Connect your Granola meeting notes to the Lazy Stack. Every meeting becomes blog posts, Linear issues, Slack summaries, and customer intelligence — on autopilot. No API keys needed.
+              </p>
+              <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
                 <CopyPromptButton text={promptText} onCopy={handleCopy} />
                 <button
-                  onClick={() => document.getElementById("outputs")?.scrollIntoView({ behavior: "smooth" })}
-                  className="inline-flex items-center gap-2 font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 border border-border text-foreground hover:bg-muted transition-colors"
+                  onClick={(e) => { e.preventDefault(); document.getElementById("outputs")?.scrollIntoView({ behavior: "smooth" }); }}
+                  className="inline-flex items-center gap-2 font-body text-[13px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
                 >
                   See What Gets Created
                 </button>
               </div>
-
-              <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">
-                Powered by Granola 📝
-              </span>
             </motion.div>
           </div>
         </section>
