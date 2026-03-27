@@ -388,9 +388,9 @@ const Index = () => {
         >
           <RotatingHeadline />
           <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(3rem, 7vw, 5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-            Launch your Autonomous
+            Launch your autonomous
             <br />
-            Business on Lovable.
+            business on Lovable.
           </h1>
           <p className="tracking-[0.2em] uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1rem, 1.8vw, 1.3rem)", color: "#f0ead6", opacity: 0.45, letterSpacing: "0.2em" }}>
             One prompt, everything runs itself.
