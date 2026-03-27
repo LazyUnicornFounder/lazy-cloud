@@ -62,7 +62,7 @@ const LazyGeoPage = () => {
                 Lazy GEO
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-                Lazy GEO discovers what people ask AI engines, publishes content structured to be cited, and monitors your brand mentions — on autopilot. No API keys needed.
+                Lazy GEO discovers what people ask AI engines, publishes content structured to be cited, and monitors your brand mentions — on autopilot. Runs inside your <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/90 transition-colors">Lovable</a> project. No API keys needed.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
                 <CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} />

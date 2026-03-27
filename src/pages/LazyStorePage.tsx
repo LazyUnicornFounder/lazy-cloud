@@ -400,7 +400,7 @@ const LazyStorePage = () => {
                 <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">Powered by Shopify</span>
               </div>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-                One prompt installs a full Shopify store into your Lovable project. It finds the products, writes the listings, sets the prices, and improves its own conversion rate — automatically, forever.
+                One prompt installs a full Shopify store into your <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/90 transition-colors">Lovable</a> project. It finds the products, writes the listings, sets the prices, and improves its own conversion rate — automatically, forever.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
                 <CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} />
