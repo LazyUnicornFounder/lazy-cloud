@@ -172,6 +172,8 @@ function ServiceBadge() {
 
 const LazySupabasePage = () => {
   const trackEvent = useTrackEvent();
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-supabase");
+  const promptText = dbPrompt?.prompt_text || SETUP_PROMPT;
 
   const handlePromptCopy = useCallback(() => {
     trackEvent("lazy_supabase_prompt_copy");

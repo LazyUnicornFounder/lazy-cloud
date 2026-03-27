@@ -429,6 +429,8 @@ function CopyPromptButton({ label = "COPY THE LOVABLE PROMPT", text }: { label?:
 }
 
 export default function LazyRunPage() {
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-run");
+  const promptText = dbPrompt?.prompt_text || LAZY_RUN_PROMPT;
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO

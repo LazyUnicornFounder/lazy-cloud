@@ -258,6 +258,8 @@ const faqs = [
 
 export default function LazySmsPage() {
   const trackEvent = useTrackEvent();
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-sms");
+  const promptText = dbPrompt?.prompt_text || LAZY_SMS_PROMPT;
   useEffect(() => { trackEvent("page_view", { page: "/lazy-sms" }); }, []);
   const handleCopy = () => trackEvent("copy_prompt", { product: "lazy-sms" });
   const scrollToHowItWorks = (e: React.MouseEvent) => {

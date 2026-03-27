@@ -159,6 +159,8 @@ function ServiceBadge() {
 
 const LazyContentfulPage = () => {
   const trackEvent = useTrackEvent();
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-contentful");
+  const promptText = dbPrompt?.prompt_text || SETUP_PROMPT;
 
   const handlePromptCopy = useCallback(() => {
     trackEvent("lazy_contentful_prompt_copy");

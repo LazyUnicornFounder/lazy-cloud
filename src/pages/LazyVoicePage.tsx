@@ -408,6 +408,8 @@ function ManifestoPlayer() {
 
 export default function LazyVoicePage() {
   const trackEvent = useTrackEvent();
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-voice");
+  const promptText = dbPrompt?.prompt_text || LAZY_VOICE_PROMPT;
 
   useEffect(() => {
     trackEvent("page_view", { page: "/lazy-voice" });

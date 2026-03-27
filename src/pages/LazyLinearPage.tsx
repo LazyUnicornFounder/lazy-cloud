@@ -173,6 +173,8 @@ function ServiceBadge() {
 
 const LazyLinearPage = () => {
   const trackEvent = useTrackEvent();
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-linear");
+  const promptText = dbPrompt?.prompt_text || SETUP_PROMPT;
 
   const handlePromptCopy = useCallback(() => {
     trackEvent("lazy_linear_prompt_copy");

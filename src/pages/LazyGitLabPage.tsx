@@ -166,6 +166,8 @@ function ServiceBadge() {
 
 const LazyGitLabPage = () => {
   const trackEvent = useTrackEvent();
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-gitlab");
+  const promptText = dbPrompt?.prompt_text || SETUP_PROMPT;
 
   const handlePromptCopy = useCallback(() => {
     trackEvent("lazy_gitlab_prompt_copy");

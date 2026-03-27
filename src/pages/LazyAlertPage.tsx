@@ -309,6 +309,8 @@ const steps = [
 
 export default function LazyAlertPage() {
   const trackEvent = useTrackEvent();
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-alert");
+  const promptText = dbPrompt?.prompt_text || LAZY_ALERT_PROMPT;
 
   useEffect(() => {
     trackEvent("page_view", { page: "lazy-alert" });

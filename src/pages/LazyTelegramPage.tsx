@@ -162,6 +162,8 @@ function ServiceBadge() {
 
 const LazyTelegramPage = () => {
   const trackEvent = useTrackEvent();
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-telegram");
+  const promptText = dbPrompt?.prompt_text || SETUP_PROMPT;
 
   const handlePromptCopy = useCallback(() => {
     trackEvent("lazy_telegram_prompt_copy");

@@ -187,6 +187,8 @@ function ServiceBadge() {
 
 const LazyPerplexityPage = () => {
   const trackEvent = useTrackEvent();
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-perplexity");
+  const promptText = dbPrompt?.prompt_text || SETUP_PROMPT;
 
   const handlePromptCopy = useCallback(() => {
     trackEvent("lazy_perplexity_prompt_copy");

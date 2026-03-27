@@ -275,6 +275,8 @@ function CopyPromptButton({ className = "", text }: { className?: string; text: 
 }
 
 const LazyGitHubPage = () => {
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-code");
+  const promptText = dbPrompt?.prompt_text || SETUP_PROMPT;
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO

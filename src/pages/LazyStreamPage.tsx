@@ -186,6 +186,8 @@ function CopyPromptButton({ className = "", text }: { className?: string; text: 
 
 const LazyStreamPage = () => {
   const trackEvent = useTrackEvent();
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-stream");
+  const promptText = dbPrompt?.prompt_text || SETUP_PROMPT;
 
   useEffect(() => {
     trackEvent("lazy_stream_page_view");

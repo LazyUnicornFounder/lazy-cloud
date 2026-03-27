@@ -263,6 +263,8 @@ const faqs = [
 ];
 
 export default function LazySecurityPage() {
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-security");
+  const promptText = dbPrompt?.prompt_text || LAZY_SECURITY_PROMPT;
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO

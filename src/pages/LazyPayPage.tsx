@@ -308,6 +308,8 @@ const faqs = [
 
 export default function LazyPayPage() {
   const trackEvent = useTrackEvent();
+  const { prompt: dbPrompt } = useCurrentPrompt("lazy-pay");
+  const promptText = dbPrompt?.prompt_text || LAZY_PAY_PROMPT;
 
   useEffect(() => {
     trackEvent("page_view", { page: "/lazy-pay" });
