@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef, ReactNode } from "react";
+import { useState, useEffect, useRef, useCallback, ReactNode } from "react";
 import { Menu, X as XIcon, Linkedin, ChevronDown, ChevronRight, Github } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 interface NavbarProps {
   activePage?: "home" | "blog" | "guide" | "autonomy";
@@ -99,11 +101,28 @@ const productCategories = [
 /* ── Mega dropdown — flat grid showing all products ── */
 function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
   const [open, setOpen] = useState(false);
+  const [prompts, setPrompts] = useState<Record<string, string>>({});
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const promptsFetched = useRef(false);
 
   const handleEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setOpen(true);
+    if (!promptsFetched.current) {
+      promptsFetched.current = true;
+      (supabase as any)
+        .from("prompt_versions")
+        .select("product, prompt_text")
+        .eq("is_current", true)
+        .then(({ data }: { data: any[] | null }) => {
+          if (data) {
+            const map: Record<string, string> = {};
+            data.forEach((d: any) => { map[d.product] = d.prompt_text; });
+            setPrompts(map);
+          }
+        });
+    }
   };
   const handleLeave = () => {
     timeoutRef.current = setTimeout(() => setOpen(false), 250);
@@ -113,34 +132,58 @@ function MegaDropdown({ onNavigate }: { onNavigate?: () => void }) {
     return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
   }, []);
 
+  const handleCopyPrompt = useCallback((e: React.MouseEvent, productKey: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const key = productKey.replace("/", "").replace("lazy-", "lazy-");
+    const slug = productKey.startsWith("/") ? productKey.slice(1) : productKey;
+    const text = prompts[slug];
+    if (text) {
+      navigator.clipboard.writeText(text);
+      setCopiedKey(slug);
+      toast.success("Prompt copied to clipboard");
+      setTimeout(() => setCopiedKey(null), 2000);
+    }
+  }, [prompts]);
+
   const renderCategory = (cat: typeof productCategories[number]) => (
     <div key={cat.label} className="mb-6">
       <p className="font-display text-[18px] tracking-[0.2em] uppercase text-foreground font-black mb-3">
         {cat.label}
       </p>
-      {cat.items.map((item) => (
-        <a
-          key={item.label}
-          href={item.href}
-          onClick={() => { setOpen(false); onNavigate?.(); }}
-          className="group flex items-center gap-4 px-3 py-[18px] -mx-1 hover:bg-secondary/50 transition-colors"
-        >
-          <span className="text-foreground/50 group-hover:text-foreground/70 transition-colors flex-shrink-0">
-            {item.icon}
-          </span>
-          <div className="min-w-0 flex-1">
-            <p className="font-body text-[14px] font-black tracking-[0.04em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight">
-              {item.label}
-            </p>
-            <p className="font-body text-[13px] font-normal text-foreground/40 group-hover:text-foreground/55 transition-colors leading-tight mt-1">
-              {item.tagline}
-            </p>
-          </div>
-          <span className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 font-display text-[10px] tracking-[0.15em] uppercase font-bold px-2.5 py-1.5 border border-foreground/20 text-foreground/50 hover:text-foreground hover:border-foreground/40 whitespace-nowrap">
-            Get Prompt →
-          </span>
-        </a>
-      ))}
+      {cat.items.map((item) => {
+        const slug = item.href.slice(1);
+        const hasPrompt = !!prompts[slug];
+        const isCopied = copiedKey === slug;
+        return (
+          <a
+            key={item.label}
+            href={item.href}
+            onClick={() => { setOpen(false); onNavigate?.(); }}
+            className="group flex items-center gap-4 px-3 py-[18px] -mx-1 hover:bg-secondary/50 transition-colors"
+          >
+            <span className="text-foreground/50 group-hover:text-foreground/70 transition-colors flex-shrink-0">
+              {item.icon}
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="font-body text-[14px] font-black tracking-[0.04em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight">
+                {item.label}
+              </p>
+              <p className="font-body text-[13px] font-normal text-foreground/40 group-hover:text-foreground/55 transition-colors leading-tight mt-1">
+                {item.tagline}
+              </p>
+            </div>
+            {hasPrompt && (
+              <button
+                onClick={(e) => handleCopyPrompt(e, item.href)}
+                className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 font-display text-[10px] tracking-[0.15em] uppercase font-bold px-2.5 py-1.5 border border-foreground/20 text-foreground/50 hover:text-foreground hover:border-foreground/40 hover:bg-foreground/5 whitespace-nowrap"
+              >
+                {isCopied ? "Copied ✓" : "Copy Prompt"}
+              </button>
+            )}
+          </a>
+        );
+      })}
     </div>
   );
 
