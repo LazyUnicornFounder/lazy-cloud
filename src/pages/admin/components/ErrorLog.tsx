@@ -27,7 +27,7 @@ export default function ErrorLog({ errors, title = "Recent Errors" }: { errors: 
           {errors.map((err) => (
             <div key={err.id} className="px-4 py-2.5">
               <p className="font-body text-xs text-red-400/60">{err.error_message}</p>
-              <p className="font-body text-[10px] text-[#f0ead6]/15 mt-0.5">
+              <p className="font-body text-[13px] text-[#f0ead6]/68 mt-0.5">
                 {err.function_name && `${err.function_name} · `}{new Date(err.created_at).toLocaleString()}
               </p>
             </div>

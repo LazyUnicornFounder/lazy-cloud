@@ -100,7 +100,7 @@ export default function AdminBloggerPage() {
           { key: "title", label: "Title" },
           { key: "published_at", label: "Published", render: (r) => r.published_at ? new Date(r.published_at).toLocaleDateString() : "—" },
           { key: "read_time", label: "Read Time" },
-          { key: "slug", label: "", render: (r) => <a href={`/blog/${r.slug}`} target="_blank" rel="noopener noreferrer" className="text-[#c8a961] hover:underline text-[10px] uppercase tracking-wider">View</a> },
+          { key: "slug", label: "", render: (r) => <a href={`/blog/${r.slug}`} target="_blank" rel="noopener noreferrer" className="text-[#c8a961] hover:underline text-[13px] uppercase tracking-wider">View</a> },
         ]}
         searchKey="title"
       />
@@ -108,10 +108,10 @@ export default function AdminBloggerPage() {
       {/* System Prompt */}
       {prompt && (
         <div className="mt-8">
-          <p className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/30 mb-3">Current System Prompt</p>
+          <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/75 mb-3">Current System Prompt</p>
           <div className="border border-[#f0ead6]/8 p-4">
-            <p className="font-body text-xs text-[#f0ead6]/40 leading-relaxed whitespace-pre-wrap">{prompt.prompt_text?.substring(0, 500)}…</p>
-            <p className="font-body text-[10px] text-[#f0ead6]/15 mt-2">v{prompt.version} · Edit in Settings → Prompts</p>
+            <p className="font-body text-xs text-[#f0ead6]/82 leading-relaxed whitespace-pre-wrap">{prompt.prompt_text?.substring(0, 500)}…</p>
+            <p className="font-body text-[13px] text-[#f0ead6]/68 mt-2">v{prompt.version} · Edit in Settings → Prompts</p>
           </div>
         </div>
       )}

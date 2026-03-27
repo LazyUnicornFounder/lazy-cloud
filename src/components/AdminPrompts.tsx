@@ -188,8 +188,8 @@ function PromptEditor({
                   <span className={`font-body text-xs font-medium ${v.is_current ? "text-primary" : "text-muted-foreground"}`}>
                     {v.version}
                   </span>
-                  <span className="font-body text-[10px] text-muted-foreground">{formatDate(v.created_at)}</span>
-                  {v.is_current && <span className="font-body text-[10px] px-1.5 py-0.5 rounded-full bg-primary/20 text-primary">current</span>}
+                  <span className="font-body text-[13px] text-muted-foreground">{formatDate(v.created_at)}</span>
+                  {v.is_current && <span className="font-body text-[13px] px-1.5 py-0.5 rounded-full bg-primary/20 text-primary">current</span>}
                 </div>
                 <CopyButton text={v.prompt_text} label="Copy" />
               </div>

@@ -110,9 +110,9 @@ export default function AdminSeoPage() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <TrendingUp size={14} className="text-[#c8a961]" />
-              <p className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/40">Keywords</p>
+              <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/82">Keywords</p>
             </div>
-            <span className="font-body text-[10px] text-[#f0ead6]/20">{keywords.length} tracked</span>
+            <span className="font-body text-[13px] text-[#f0ead6]/68">{keywords.length} tracked</span>
           </div>
           <input
             type="text"
@@ -123,21 +123,21 @@ export default function AdminSeoPage() {
           />
           <div className="space-y-0 max-h-[400px] overflow-y-auto">
             {filteredKeywords.length === 0 ? (
-              <p className="font-body text-xs text-[#f0ead6]/15 py-4 text-center">No keywords yet — click Analyse Keywords</p>
+              <p className="font-body text-xs text-[#f0ead6]/68 py-4 text-center">No keywords yet — click Analyse Keywords</p>
             ) : (
               filteredKeywords.map((kw: any) => {
                 const delta = positionDelta(kw);
                 return (
-                  <div key={kw.id} className="flex items-center justify-between py-2 px-2 border-b border-[#f0ead6]/5 hover:bg-[#f0ead6]/3 transition-colors">
+                  <div key={kw.id} className="flex items-center justify-between py-2 px-2 border-b border-[#f0ead6]/15 hover:bg-[#f0ead6]/8 transition-colors">
                     <div className="flex-1 min-w-0">
-                      <p className="font-body text-xs text-[#f0ead6]/70 truncate">{kw.keyword}</p>
+                      <p className="font-body text-xs text-[#f0ead6]/95 truncate">{kw.keyword}</p>
                       <div className="flex items-center gap-2 mt-0.5">
                         {kw.product && kw.product !== 'general' && (
-                          <span className="font-body text-[9px] px-1.5 py-0.5 border border-[#c8a961]/20 text-[#c8a961]/60 uppercase tracking-wider">{kw.product}</span>
+                          <span className="font-body text-[13px] px-1.5 py-0.5 border border-[#c8a961]/20 text-[#c8a961]/60 uppercase tracking-wider">{kw.product}</span>
                         )}
                       </div>
                       {kw.page_url && (
-                        <a href={kw.page_url} target="_blank" rel="noopener noreferrer" className="font-body text-[10px] text-[#c8a961]/50 hover:text-[#c8a961] truncate block">
+                        <a href={kw.page_url} target="_blank" rel="noopener noreferrer" className="font-body text-[13px] text-[#c8a961]/50 hover:text-[#c8a961] truncate block">
                           {kw.page_url.replace(/^https?:\/\//, '').slice(0, 40)}
                         </a>
                       )}
@@ -147,7 +147,7 @@ export default function AdminSeoPage() {
                         <span className="font-display text-sm font-bold text-[#f0ead6]/80">#{kw.current_position}</span>
                       )}
                       {delta != null && delta !== 0 && (
-                        <span className={`font-body text-[10px] font-bold ${delta > 0 ? "text-emerald-400" : "text-red-400"}`}>
+                        <span className={`font-body text-[13px] font-bold ${delta > 0 ? "text-emerald-400" : "text-red-400"}`}>
                           {delta > 0 ? `↑${delta}` : `↓${Math.abs(delta)}`}
                         </span>
                       )}
@@ -163,22 +163,22 @@ export default function AdminSeoPage() {
         <div className="bg-[#0f0f0d] p-5 lg:col-span-1">
           <div className="flex items-center gap-2 mb-4">
             <FileText size={14} className="text-blue-400/60" />
-            <p className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/40">Published SEO Posts</p>
-            <span className="ml-auto font-body text-[10px] text-[#f0ead6]/20">{published.length}</span>
+            <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/82">Published SEO Posts</p>
+            <span className="ml-auto font-body text-[13px] text-[#f0ead6]/68">{published.length}</span>
           </div>
           <div className="space-y-0 max-h-[400px] overflow-y-auto">
             {published.length === 0 ? (
-              <p className="font-body text-xs text-[#f0ead6]/15 py-4 text-center">No posts published yet</p>
+              <p className="font-body text-xs text-[#f0ead6]/68 py-4 text-center">No posts published yet</p>
             ) : (
               published.map((post: any) => (
-                <div key={post.id} className="flex items-start justify-between py-2.5 px-2 border-b border-[#f0ead6]/5 hover:bg-[#f0ead6]/3 transition-colors">
+                <div key={post.id} className="flex items-start justify-between py-2.5 px-2 border-b border-[#f0ead6]/15 hover:bg-[#f0ead6]/8 transition-colors">
                   <div className="flex-1 min-w-0">
-                    <p className="font-body text-xs text-[#f0ead6]/60 truncate">{post.title}</p>
+                    <p className="font-body text-xs text-[#f0ead6]/92 truncate">{post.title}</p>
                     <div className="flex items-center gap-2 mt-1">
                       {post.target_keyword && (
-                        <span className="font-body text-[10px] px-1.5 py-0.5 border border-blue-400/20 text-blue-400/60">{post.target_keyword}</span>
+                        <span className="font-body text-[13px] px-1.5 py-0.5 border border-blue-400/20 text-blue-400/60">{post.target_keyword}</span>
                       )}
-                      <span className="font-body text-[10px] text-[#f0ead6]/15">{new Date(post.published_at).toLocaleDateString()}</span>
+                      <span className="font-body text-[13px] text-[#f0ead6]/68">{new Date(post.published_at).toLocaleDateString()}</span>
                     </div>
                   </div>
                   <a href={`/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="shrink-0 ml-2 text-[#c8a961]/50 hover:text-[#c8a961]">
@@ -194,22 +194,22 @@ export default function AdminSeoPage() {
         <div className="bg-[#0f0f0d] p-5 lg:col-span-1">
           <div className="flex items-center gap-2 mb-4">
             <Clock size={14} className="text-amber-400/60" />
-            <p className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/40">Queued Blog Drafts</p>
-            <span className="ml-auto font-body text-[10px] text-[#f0ead6]/20">{queuedDrafts.length} in queue</span>
+            <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/82">Queued Blog Drafts</p>
+            <span className="ml-auto font-body text-[13px] text-[#f0ead6]/68">{queuedDrafts.length} in queue</span>
           </div>
           <div className="space-y-0 max-h-[400px] overflow-y-auto">
             {queuedDrafts.length === 0 ? (
-              <p className="font-body text-xs text-[#f0ead6]/15 py-4 text-center">No SEO drafts in the blog queue</p>
+              <p className="font-body text-xs text-[#f0ead6]/68 py-4 text-center">No SEO drafts in the blog queue</p>
             ) : (
               queuedDrafts.map((draft: any, i: number) => (
-                <div key={draft.id} className="flex items-start gap-3 py-2.5 px-2 border-b border-[#f0ead6]/5 hover:bg-[#f0ead6]/3 transition-colors">
-                  <span className="font-display text-[10px] font-bold text-[#f0ead6]/20 mt-0.5 shrink-0 w-4 text-right">{i + 1}</span>
+                <div key={draft.id} className="flex items-start gap-3 py-2.5 px-2 border-b border-[#f0ead6]/15 hover:bg-[#f0ead6]/8 transition-colors">
+                  <span className="font-display text-[13px] font-bold text-[#f0ead6]/68 mt-0.5 shrink-0 w-4 text-right">{i + 1}</span>
                   <div className="flex-1 min-w-0">
-                    <p className="font-body text-xs text-[#f0ead6]/60 truncate">{draft.title}</p>
+                    <p className="font-body text-xs text-[#f0ead6]/92 truncate">{draft.title}</p>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="font-body text-[10px] px-1.5 py-0.5 border border-blue-400/20 text-blue-400/50">SEO</span>
-                      <span className="font-body text-[10px] text-[#f0ead6]/15">{new Date(draft.created_at).toLocaleDateString()}</span>
-                      <span className="font-body text-[10px] text-amber-400/40">{draft.read_time}</span>
+                      <span className="font-body text-[13px] px-1.5 py-0.5 border border-blue-400/20 text-blue-400/50">SEO</span>
+                      <span className="font-body text-[13px] text-[#f0ead6]/68">{new Date(draft.created_at).toLocaleDateString()}</span>
+                      <span className="font-body text-[13px] text-amber-400/40">{draft.read_time}</span>
                     </div>
                   </div>
                 </div>

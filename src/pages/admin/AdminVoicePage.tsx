@@ -63,7 +63,7 @@ export default function AdminVoicePage() {
         data={episodes}
         columns={[
           { key: "post_title", label: "Title" },
-          { key: "status", label: "Status", render: (r) => <span className={r.status === "published" ? "text-emerald-400" : "text-[#f0ead6]/30"}>{r.status}</span> },
+          { key: "status", label: "Status", render: (r) => <span className={r.status === "published" ? "text-emerald-400" : "text-[#f0ead6]/75"}>{r.status}</span> },
           { key: "duration_seconds", label: "Duration", render: (r) => r.duration_seconds ? `${Math.round(r.duration_seconds / 60)}m` : "—" },
           { key: "published_at", label: "Published", render: (r) => r.published_at ? new Date(r.published_at).toLocaleDateString() : "—" },
         ]}

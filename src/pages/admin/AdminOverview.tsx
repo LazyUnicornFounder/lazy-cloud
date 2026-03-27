@@ -9,7 +9,7 @@ const db = supabase as any;
 function StatCard({ label, value }: { label: string; value: string | number }) {
   return (
     <div className="border border-[#f0ead6]/8 p-4">
-      <p className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/30">{label}</p>
+      <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/75">{label}</p>
       <p className="font-display text-2xl font-bold text-[#f0ead6] mt-1">{value}</p>
     </div>
   );
@@ -118,14 +118,14 @@ export default function AdminOverview() {
 
       {/* Quick Actions */}
       <div className="mt-8">
-        <p className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/30 mb-3">Quick Actions</p>
+        <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/75 mb-3">Quick Actions</p>
         <div className="flex flex-wrap gap-2">
           {quickActions.map((a) => (
             <button
               key={a.key}
               onClick={() => triggerAction(a.fn, a.key)}
               disabled={!!runningAction}
-              className="inline-flex items-center gap-2 border border-[#f0ead6]/10 px-4 py-2 font-body text-xs text-[#f0ead6]/60 hover:text-[#f0ead6] hover:border-[#f0ead6]/30 transition-colors disabled:opacity-40"
+              className="inline-flex items-center gap-2 border border-[#f0ead6]/10 px-4 py-2 font-body text-xs text-[#f0ead6]/92 hover:text-[#f0ead6] hover:border-[#f0ead6]/30 transition-colors disabled:opacity-40"
             >
               {runningAction === a.key ? <Loader2 size={12} className="animate-spin" /> : <Zap size={12} />}
               {a.label} — Publish Now
@@ -136,17 +136,17 @@ export default function AdminOverview() {
 
       {/* Activity Feed */}
       <div className="mt-8">
-        <p className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/30 mb-3">Activity Feed — Last 7 Days</p>
+        <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/75 mb-3">Activity Feed — Last 7 Days</p>
         <div className="border border-[#f0ead6]/8 divide-y divide-[#f0ead6]/5 max-h-[500px] overflow-y-auto">
           {activity.length === 0 ? (
-            <p className="p-4 font-body text-xs text-[#f0ead6]/20">No activity yet.</p>
+            <p className="p-4 font-body text-xs text-[#f0ead6]/68">No activity yet.</p>
           ) : (
             activity.map((item, i) => (
               <div key={i} className="flex items-start gap-3 px-4 py-3">
                 <span className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${dotColor[item.type]}`} />
                 <div className="flex-1 min-w-0">
-                  <p className="font-body text-xs text-[#f0ead6]/70 truncate">{item.action}</p>
-                  <p className="font-body text-[10px] text-[#f0ead6]/25 mt-0.5">{item.engine} · {new Date(item.time).toLocaleString()}</p>
+                  <p className="font-body text-xs text-[#f0ead6]/95 truncate">{item.action}</p>
+                  <p className="font-body text-[13px] text-[#f0ead6]/72 mt-0.5">{item.engine} · {new Date(item.time).toLocaleString()}</p>
                 </div>
               </div>
             ))

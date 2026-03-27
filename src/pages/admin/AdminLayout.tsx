@@ -133,7 +133,7 @@ export default function AdminLayout() {
     return (
       <div className="min-h-screen bg-[#0a0a08] flex items-center justify-center">
         <form onSubmit={handleLogin} className="w-full max-w-xs">
-          <p className="font-display text-sm tracking-[0.2em] uppercase text-[#f0ead6]/40 mb-6 text-center">Admin Access</p>
+          <p className="font-display text-sm tracking-[0.2em] uppercase text-[#f0ead6]/82 mb-6 text-center">Admin Access</p>
           <input
             type="password"
             value={password}
@@ -159,24 +159,24 @@ export default function AdminLayout() {
       {/* Sidebar */}
       <aside className={`fixed inset-y-0 left-0 z-50 w-56 bg-[#0a0a08] border-r border-[#f0ead6]/8 flex flex-col transition-transform duration-200 md:translate-x-0 ${mobileOpen ? "translate-x-0" : "-translate-x-full"}`}>
         <div className="px-5 pt-6 pb-4 border-b border-[#f0ead6]/8">
-          <Link to="/" className="font-display text-[10px] font-semibold tracking-[0.15em] uppercase text-[#f0ead6] hover:text-[#f0ead6]/70 transition-colors leading-tight flex flex-col">
+          <Link to="/" className="font-display text-[13px] font-semibold tracking-[0.15em] uppercase text-[#f0ead6] hover:text-[#f0ead6]/95 transition-colors leading-tight flex flex-col">
             <span>Lazy</span>
             <span>Unicorn</span>
           </Link>
-          <p className="font-body text-[9px] tracking-[0.15em] uppercase text-[#f0ead6]/20 mt-2">Mission Control</p>
+          <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/68 mt-2">Mission Control</p>
         </div>
 
         {/* Master status */}
         <div className="px-5 py-3 border-b border-[#f0ead6]/8 flex items-center gap-2">
           <span className={`w-2.5 h-2.5 rounded-full ${masterColor}`} />
-          <span className="font-body text-[10px] tracking-[0.08em] text-[#f0ead6]/40">{masterLabel}</span>
+          <span className="font-body text-[13px] tracking-[0.08em] text-[#f0ead6]/82">{masterLabel}</span>
         </div>
 
         <nav className="flex-1 py-2 overflow-y-auto">
           {navGroups.map((group, gi) => (
             <div key={gi}>
               {group.label && (
-                <p className="px-5 pt-4 pb-1 font-body text-[9px] tracking-[0.15em] uppercase text-[#f0ead6]/15">{group.label}</p>
+                <p className="px-5 pt-4 pb-1 font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/68">{group.label}</p>
               )}
               {group.items.map((item) => {
                 const active = isActive(item.path);
@@ -185,10 +185,10 @@ export default function AdminLayout() {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`flex items-center gap-3 px-5 py-2 font-body text-[11px] tracking-[0.08em] transition-colors relative ${
+                    className={`flex items-center gap-3 px-5 py-2 font-body text-[14px] tracking-[0.08em] transition-colors relative ${
                       active
                         ? "text-[#c8a961] bg-[#c8a961]/8 border-l-2 border-[#c8a961]"
-                        : "text-[#f0ead6]/40 hover:text-[#f0ead6]/70 hover:bg-[#f0ead6]/3 border-l-2 border-transparent"
+                        : "text-[#f0ead6]/82 hover:text-[#f0ead6]/95 hover:bg-[#f0ead6]/8 border-l-2 border-transparent"
                     }`}
                   >
                     <item.icon size={13} />
@@ -208,7 +208,7 @@ export default function AdminLayout() {
         <div className="px-5 py-4 border-t border-[#f0ead6]/8">
           <button
             onClick={() => { sessionStorage.removeItem("admin_pw"); setAuthenticated(false); }}
-            className="font-body text-[10px] tracking-[0.1em] uppercase text-[#f0ead6]/20 hover:text-[#f0ead6]/50 transition-colors"
+            className="font-body text-[13px] tracking-[0.1em] uppercase text-[#f0ead6]/68 hover:text-[#f0ead6]/88 transition-colors"
           >
             Logout
           </button>
@@ -219,9 +219,9 @@ export default function AdminLayout() {
       <div className="fixed top-0 left-0 right-0 z-40 md:hidden bg-[#0a0a08] border-b border-[#f0ead6]/8 px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className={`w-2 h-2 rounded-full ${masterColor}`} />
-          <p className="font-display text-[10px] font-semibold tracking-[0.15em] uppercase text-[#f0ead6]">Admin</p>
+          <p className="font-display text-[13px] font-semibold tracking-[0.15em] uppercase text-[#f0ead6]">Admin</p>
         </div>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="text-[#f0ead6]/50">
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="text-[#f0ead6]/88">
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>

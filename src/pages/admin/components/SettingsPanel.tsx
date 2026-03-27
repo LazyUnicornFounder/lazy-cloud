@@ -37,7 +37,7 @@ export default function SettingsPanel({ title = "Settings", fields, values, onSa
     <div className="mt-8 border border-[#f0ead6]/8">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center gap-2 px-4 py-3 font-body text-xs text-[#f0ead6]/40 hover:text-[#f0ead6]/70 transition-colors"
+        className="w-full flex items-center gap-2 px-4 py-3 font-body text-xs text-[#f0ead6]/82 hover:text-[#f0ead6]/95 transition-colors"
       >
         {open ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
         {title}
@@ -46,7 +46,7 @@ export default function SettingsPanel({ title = "Settings", fields, values, onSa
         <div className="px-4 pb-4 space-y-4">
           {fields.map((f) => (
             <div key={f.key}>
-              <label className="block font-body text-[10px] tracking-[0.12em] uppercase text-[#f0ead6]/25 mb-1">{f.label}</label>
+              <label className="block font-body text-[13px] tracking-[0.12em] uppercase text-[#f0ead6]/72 mb-1">{f.label}</label>
               {f.type === "textarea" ? (
                 <textarea
                   value={form[f.key] ?? ""}
@@ -64,7 +64,7 @@ export default function SettingsPanel({ title = "Settings", fields, values, onSa
                   className="w-full bg-transparent border border-[#f0ead6]/8 text-[#f0ead6] px-3 py-2 font-body text-xs focus:outline-none focus:border-[#f0ead6]/20"
                 />
               )}
-              {f.hint && <p className="font-body text-[10px] text-[#f0ead6]/15 mt-1">{f.hint}</p>}
+              {f.hint && <p className="font-body text-[13px] text-[#f0ead6]/68 mt-1">{f.hint}</p>}
             </div>
           ))}
           <button

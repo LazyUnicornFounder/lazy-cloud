@@ -8,9 +8,9 @@ export default function AdminSettingsPage() {
 
       {/* Site Settings */}
       <div className="mb-8">
-        <p className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/30 mb-3">Site Settings</p>
+        <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/75 mb-3">Site Settings</p>
         <div className="border border-[#f0ead6]/8 p-5 space-y-4">
-          <p className="font-body text-xs text-[#f0ead6]/40">
+          <p className="font-body text-xs text-[#f0ead6]/82">
             Site-wide defaults are configured per engine. Visit each engine's settings panel to update.
           </p>
         </div>
@@ -18,7 +18,7 @@ export default function AdminSettingsPage() {
 
       {/* API Keys Info */}
       <div className="mb-8">
-        <p className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/30 mb-3">API Keys</p>
+        <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/75 mb-3">API Keys</p>
         <div className="border border-[#f0ead6]/8 divide-y divide-[#f0ead6]/5">
           {[
             { name: "Lovable AI", hint: "Built-in. No key required.", status: "active" },
@@ -38,10 +38,10 @@ export default function AdminSettingsPage() {
           ].map((key) => (
             <div key={key.name} className="flex items-center justify-between px-5 py-3">
               <div>
-                <p className="font-body text-xs text-[#f0ead6]/70">{key.name}</p>
-                <p className="font-body text-[10px] text-[#f0ead6]/20 mt-0.5">{key.hint}</p>
+                <p className="font-body text-xs text-[#f0ead6]/95">{key.name}</p>
+                <p className="font-body text-[13px] text-[#f0ead6]/68 mt-0.5">{key.hint}</p>
               </div>
-              <span className={`font-body text-[10px] tracking-wider uppercase ${key.status === "active" ? "text-emerald-500" : "text-[#f0ead6]/20"}`}>
+              <span className={`font-body text-[13px] tracking-wider uppercase ${key.status === "active" ? "text-emerald-500" : "text-[#f0ead6]/68"}`}>
                 {key.status === "active" ? "Active" : "Per Engine"}
               </span>
             </div>
@@ -51,7 +51,7 @@ export default function AdminSettingsPage() {
 
       {/* Schedule Overview */}
       <div>
-        <p className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/30 mb-3">Publishing Schedule</p>
+        <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/75 mb-3">Publishing Schedule</p>
         <div className="border border-[#f0ead6]/8 p-5">
           <div className="space-y-3">
             {[
@@ -76,8 +76,8 @@ export default function AdminSettingsPage() {
             ].map((item) => (
               <div key={item.engine} className="flex items-center gap-3">
                 <span className={`w-2 h-2 rounded-full ${item.color} flex-shrink-0`} />
-                <span className="font-body text-xs text-[#f0ead6]/60 w-32">{item.engine}</span>
-                <span className="font-body text-xs text-[#f0ead6]/25">{item.schedule}</span>
+                <span className="font-body text-xs text-[#f0ead6]/92 w-32">{item.engine}</span>
+                <span className="font-body text-xs text-[#f0ead6]/72">{item.schedule}</span>
               </div>
             ))}
           </div>

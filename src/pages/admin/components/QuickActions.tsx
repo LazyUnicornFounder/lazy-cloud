@@ -35,7 +35,7 @@ export default function QuickActions({ actions, queryKeys }: { actions: Action[]
           key={a.fnName}
           onClick={() => run(a)}
           disabled={!!running}
-          className="inline-flex items-center gap-2 border border-[#f0ead6]/10 px-4 py-2.5 font-body text-xs text-[#f0ead6]/60 hover:text-[#f0ead6] hover:border-[#f0ead6]/30 transition-colors disabled:opacity-40"
+          className="inline-flex items-center gap-2 border border-[#f0ead6]/10 px-4 py-2.5 font-body text-xs text-[#f0ead6]/92 hover:text-[#f0ead6] hover:border-[#f0ead6]/30 transition-colors disabled:opacity-40"
         >
           {running === a.fnName ? <Loader2 size={12} className="animate-spin" /> : <a.icon size={12} />}
           {a.label}

@@ -85,7 +85,7 @@ export default function AdminStreamPage() {
           { key: "game_name", label: "Game" },
           { key: "started_at", label: "Date", render: (r) => r.started_at ? new Date(r.started_at).toLocaleDateString() : "—" },
           { key: "duration_minutes", label: "Duration", render: (r) => r.duration_minutes ? `${r.duration_minutes}m` : "—" },
-          { key: "status", label: "Status", render: (r) => <span className={r.status === "live" ? "text-emerald-400" : r.status === "processed" ? "text-[#c8a961]" : "text-[#f0ead6]/30"}>{r.status}</span> },
+          { key: "status", label: "Status", render: (r) => <span className={r.status === "live" ? "text-emerald-400" : r.status === "processed" ? "text-[#c8a961]" : "text-[#f0ead6]/75"}>{r.status}</span> },
         ]}
       />
 
@@ -107,7 +107,7 @@ export default function AdminStreamPage() {
         columns={[
           { key: "title", label: "Title" },
           { key: "view_count", label: "Views" },
-          { key: "clip_url", label: "", render: (r) => r.clip_url ? <a href={r.clip_url} target="_blank" rel="noopener noreferrer" className="text-[#c8a961] hover:underline text-[10px] uppercase tracking-wider">Watch</a> : "—" },
+          { key: "clip_url", label: "", render: (r) => r.clip_url ? <a href={r.clip_url} target="_blank" rel="noopener noreferrer" className="text-[#c8a961] hover:underline text-[13px] uppercase tracking-wider">Watch</a> : "—" },
         ]}
       />
 

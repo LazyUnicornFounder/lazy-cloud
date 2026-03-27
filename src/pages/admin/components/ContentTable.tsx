@@ -29,7 +29,7 @@ export default function ContentTable({ title, data, columns, searchKey, emptyMes
   return (
     <div className="mt-8">
       <div className="flex items-center justify-between mb-3">
-        <p className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/30">{title}</p>
+        <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/75">{title}</p>
         {searchKey && (
           <input
             type="text"
@@ -45,7 +45,7 @@ export default function ContentTable({ title, data, columns, searchKey, emptyMes
           <thead>
             <tr className="border-b border-[#f0ead6]/8">
               {columns.map((col) => (
-                <th key={col.key} className="text-left px-4 py-2.5 font-body text-[10px] tracking-[0.12em] uppercase text-[#f0ead6]/25 font-normal">
+                <th key={col.key} className="text-left px-4 py-2.5 font-body text-[13px] tracking-[0.12em] uppercase text-[#f0ead6]/72 font-normal">
                   {col.label}
                 </th>
               ))}
@@ -53,12 +53,12 @@ export default function ContentTable({ title, data, columns, searchKey, emptyMes
           </thead>
           <tbody className="divide-y divide-[#f0ead6]/5">
             {paged.length === 0 ? (
-              <tr><td colSpan={columns.length} className="px-4 py-6 text-center font-body text-xs text-[#f0ead6]/20">{emptyMessage}</td></tr>
+              <tr><td colSpan={columns.length} className="px-4 py-6 text-center font-body text-xs text-[#f0ead6]/68">{emptyMessage}</td></tr>
             ) : (
               paged.map((row, i) => (
-                <tr key={row.id || i} className="hover:bg-[#f0ead6]/3 transition-colors">
+                <tr key={row.id || i} className="hover:bg-[#f0ead6]/8 transition-colors">
                   {columns.map((col) => (
-                    <td key={col.key} className="px-4 py-2.5 font-body text-xs text-[#f0ead6]/60">
+                    <td key={col.key} className="px-4 py-2.5 font-body text-xs text-[#f0ead6]/92">
                       {col.render ? col.render(row) : String(row[col.key] ?? "—")}
                     </td>
                   ))}
@@ -70,9 +70,9 @@ export default function ContentTable({ title, data, columns, searchKey, emptyMes
       </div>
       {totalPages > 1 && (
         <div className="flex items-center gap-2 mt-3">
-          <button disabled={page === 0} onClick={() => setPage(page - 1)} className="font-body text-xs text-[#f0ead6]/30 hover:text-[#f0ead6] disabled:opacity-30">← Prev</button>
-          <span className="font-body text-[10px] text-[#f0ead6]/20">{page + 1} / {totalPages}</span>
-          <button disabled={page >= totalPages - 1} onClick={() => setPage(page + 1)} className="font-body text-xs text-[#f0ead6]/30 hover:text-[#f0ead6] disabled:opacity-30">Next →</button>
+          <button disabled={page === 0} onClick={() => setPage(page - 1)} className="font-body text-xs text-[#f0ead6]/75 hover:text-[#f0ead6] disabled:opacity-30">← Prev</button>
+          <span className="font-body text-[13px] text-[#f0ead6]/68">{page + 1} / {totalPages}</span>
+          <button disabled={page >= totalPages - 1} onClick={() => setPage(page + 1)} className="font-body text-xs text-[#f0ead6]/75 hover:text-[#f0ead6] disabled:opacity-30">Next →</button>
         </div>
       )}
     </div>

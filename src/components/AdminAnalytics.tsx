@@ -352,19 +352,19 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
           {/* Summary cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <div className="border border-border rounded-xl bg-card p-4 text-center">
-              <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Total Visitors</p>
+              <p className="font-body text-[13px] text-muted-foreground uppercase tracking-wider">Total Visitors</p>
               <p className="font-display text-2xl font-bold text-foreground mt-1">{stats.total}</p>
             </div>
             <div className="border border-border rounded-xl bg-card p-4 text-center">
-              <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Today</p>
+              <p className="font-body text-[13px] text-muted-foreground uppercase tracking-wider">Today</p>
               <p className="font-display text-2xl font-bold text-primary mt-1">{stats.today}</p>
             </div>
             <div className="border border-border rounded-xl bg-card p-4 text-center">
-              <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Product Views</p>
+              <p className="font-body text-[13px] text-muted-foreground uppercase tracking-wider">Product Views</p>
               <p className="font-display text-2xl font-bold text-foreground mt-1">{productSummary.totalViews}</p>
             </div>
             <div className="border border-border rounded-xl bg-card p-4 text-center">
-              <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Prompt Copies</p>
+              <p className="font-body text-[13px] text-muted-foreground uppercase tracking-wider">Prompt Copies</p>
               <p className="font-display text-2xl font-bold text-primary mt-1">{productSummary.totalCopies}</p>
             </div>
           </div>
@@ -397,13 +397,13 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
                   <div className="flex items-center gap-4 flex-shrink-0">
                     <div className="text-right">
                       <span className="font-display text-sm font-bold text-foreground">{p.pageVisits}</span>
-                      <span className="font-body text-[10px] text-muted-foreground ml-1">views</span>
+                      <span className="font-body text-[13px] text-muted-foreground ml-1">views</span>
                     </div>
                     <div className="text-right">
                       <span className="font-display text-sm font-bold text-primary">{p.promptCopies}</span>
-                      <span className="font-body text-[10px] text-muted-foreground ml-1">copies</span>
+                      <span className="font-body text-[13px] text-muted-foreground ml-1">copies</span>
                     </div>
-                    <span className="font-body text-[10px] text-muted-foreground w-12 text-right">{p.conversionRate}%</span>
+                    <span className="font-body text-[13px] text-muted-foreground w-12 text-right">{p.conversionRate}%</span>
                   </div>
                 </div>
               ))}
@@ -419,15 +419,15 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
             <div className="grid grid-cols-3 gap-3 mb-4">
               <div className="text-center p-3 rounded-lg bg-background/50 border border-border/50">
                 <p className="font-display text-2xl font-bold text-foreground">{blogStats.totalPublished}</p>
-                <p className="font-body text-[10px] text-muted-foreground">Published</p>
+                <p className="font-body text-[13px] text-muted-foreground">Published</p>
               </div>
               <div className="text-center p-3 rounded-lg bg-background/50 border border-border/50">
                 <p className="font-display text-2xl font-bold text-primary">{blogStats.publishedToday}</p>
-                <p className="font-body text-[10px] text-muted-foreground">Today</p>
+                <p className="font-body text-[13px] text-muted-foreground">Today</p>
               </div>
               <div className="text-center p-3 rounded-lg bg-background/50 border border-border/50">
                 <p className="font-display text-2xl font-bold text-muted-foreground">{blogStats.totalDrafts}</p>
-                <p className="font-body text-[10px] text-muted-foreground">Drafts</p>
+                <p className="font-body text-[13px] text-muted-foreground">Drafts</p>
               </div>
             </div>
             <div className="w-full h-36">
@@ -451,15 +451,15 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
           {/* Product summary cards */}
           <div className="grid grid-cols-3 gap-3">
             <div className="border border-border rounded-xl bg-card p-4 text-center">
-              <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Total Product Views</p>
+              <p className="font-body text-[13px] text-muted-foreground uppercase tracking-wider">Total Product Views</p>
               <p className="font-display text-2xl font-bold text-foreground mt-1">{productSummary.totalViews}</p>
             </div>
             <div className="border border-border rounded-xl bg-card p-4 text-center">
-              <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Total Copies</p>
+              <p className="font-body text-[13px] text-muted-foreground uppercase tracking-wider">Total Copies</p>
               <p className="font-display text-2xl font-bold text-primary mt-1">{productSummary.totalCopies}</p>
             </div>
             <div className="border border-border rounded-xl bg-card p-4 text-center">
-              <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Avg Conversion</p>
+              <p className="font-body text-[13px] text-muted-foreground uppercase tracking-wider">Avg Conversion</p>
               <p className="font-display text-2xl font-bold text-foreground mt-1">
                 {productSummary.totalViews > 0 ? ((productSummary.totalCopies / productSummary.totalViews) * 100).toFixed(1) : "0.0"}%
               </p>
@@ -481,7 +481,7 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
                       <h3 className="font-display text-sm font-bold text-foreground">{product.label}</h3>
                     </div>
                     {!hasData && (
-                      <span className="font-body text-[10px] text-muted-foreground tracking-wider uppercase">No data yet</span>
+                      <span className="font-body text-[13px] text-muted-foreground tracking-wider uppercase">No data yet</span>
                     )}
                   </div>
 
@@ -491,15 +491,15 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
                       <div className="grid grid-cols-3 gap-3 mb-4">
                         <div className="text-center p-2 rounded-lg bg-background/50 border border-border/50">
                           <p className="font-display text-xl font-bold text-foreground">{product.pageVisits}</p>
-                          <p className="font-body text-[10px] text-muted-foreground">Page Views</p>
+                          <p className="font-body text-[13px] text-muted-foreground">Page Views</p>
                         </div>
                         <div className="text-center p-2 rounded-lg bg-background/50 border border-border/50">
                           <p className="font-display text-xl font-bold text-primary">{product.promptCopies}</p>
-                          <p className="font-body text-[10px] text-muted-foreground">Prompt Copies</p>
+                          <p className="font-body text-[13px] text-muted-foreground">Prompt Copies</p>
                         </div>
                         <div className="text-center p-2 rounded-lg bg-background/50 border border-border/50">
                           <p className="font-display text-xl font-bold text-foreground">{product.conversionRate}%</p>
-                          <p className="font-body text-[10px] text-muted-foreground">Conversion</p>
+                          <p className="font-body text-[13px] text-muted-foreground">Conversion</p>
                         </div>
                       </div>
 
@@ -533,11 +533,11 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
           {/* Summary */}
           <div className="grid grid-cols-2 gap-3">
             <div className="border border-border rounded-xl bg-card p-4 text-center">
-              <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Total Visitors</p>
+              <p className="font-body text-[13px] text-muted-foreground uppercase tracking-wider">Total Visitors</p>
               <p className="font-display text-2xl font-bold text-foreground mt-1">{stats.total}</p>
             </div>
             <div className="border border-border rounded-xl bg-card p-4 text-center">
-              <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">Today</p>
+              <p className="font-body text-[13px] text-muted-foreground uppercase tracking-wider">Today</p>
               <p className="font-display text-2xl font-bold text-primary mt-1">{stats.today}</p>
             </div>
           </div>

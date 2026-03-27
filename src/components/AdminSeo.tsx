@@ -67,10 +67,10 @@ function EditableField({ label, value, onSave, prose = false }: { label: string;
       <p className="font-display text-2xl font-bold text-foreground">{items.length}</p>
       <div className="flex flex-wrap gap-1 mt-1.5">
         {items.slice(0, 5).map((item, i) => (
-          <span key={i} className="font-body text-[10px] px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground truncate max-w-[140px]">{item}</span>
+          <span key={i} className="font-body text-[13px] px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground truncate max-w-[140px]">{item}</span>
         ))}
         {items.length > 5 && (
-          <span className="font-body text-[10px] px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground">+{items.length - 5}</span>
+          <span className="font-body text-[13px] px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground">+{items.length - 5}</span>
         )}
       </div>
     </div>
