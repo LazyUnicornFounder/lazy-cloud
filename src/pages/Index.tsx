@@ -461,13 +461,22 @@ const Index = () => {
           {/* Body */}
 
           {/* CTA */}
-          <Link
-            to="/lazy-run"
-            className="mt-6 inline-block text-sm tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity active:scale-[0.97]"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", backgroundColor: "#f0ead6", color: "#0a0a08", borderRadius: 0 }}
-          >
-            Get the Free Prompt
-          </Link>
+          <div className="mt-6 flex flex-col sm:flex-row items-center gap-3">
+            <Link
+              to="/lazy-engines"
+              className="text-sm tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity active:scale-[0.97]"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", backgroundColor: "#f0ead6", color: "#0a0a08", borderRadius: 0 }}
+            >
+              Explore Engines
+            </Link>
+            <Link
+              to="/lazy-agents"
+              className="text-sm tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity active:scale-[0.97]"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", backgroundColor: "transparent", color: "#f0ead6", borderRadius: 0, border: "1px solid rgba(240,234,214,0.25)" }}
+            >
+              Explore Agents
+            </Link>
+          </div>
 
           {/* Integrations marquee */}
           <div className="mt-10 overflow-hidden">
@@ -640,6 +649,69 @@ const Index = () => {
               </Link>
             );
           })}
+        </div>
+      </section>
+
+      {/* Agents block */}
+      <section className="relative z-10 border-t border-border" style={{ backgroundColor: "#0a0a08" }}>
+        <div className="max-w-4xl mx-auto px-6 py-24 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="font-display text-[11px] tracking-[0.25em] uppercase font-bold mb-4" style={{ color: "#c8a961" }}>
+              Lazy Agents
+            </p>
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "#f0ead6", lineHeight: 1.1, fontWeight: 800 }}>
+              Engines run your business.<br />Agents run your engines.
+            </h2>
+            <p className="mt-6 font-body text-base text-foreground/50 max-w-xl mx-auto leading-relaxed">
+              Four autonomous agents monitor your stack for errors, improve underperforming prompts, write new engines from a brief, and generate your weekly content strategy — all without manual input.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-border mt-12">
+            {[
+              { emoji: "👁️", name: "Lazy Watch", tagline: "Monitors every engine error table hourly and opens GitHub issues automatically.", href: "/lazy-watch" },
+              { emoji: "🔧", name: "Lazy Fix", tagline: "Reads performance data weekly and opens PRs with targeted prompt improvements.", href: "/lazy-fix" },
+              { emoji: "🏗️", name: "Lazy Build", tagline: "Writes complete new engine prompts from a one-paragraph brief.", href: "/lazy-build" },
+              { emoji: "📊", name: "Lazy Intel", tagline: "Reads all your data every Monday and fills your SEO and GEO queues.", href: "/lazy-intel" },
+            ].map((agent, i) => (
+              <motion.div
+                key={agent.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+              >
+                <Link
+                  to={agent.href}
+                  className="group flex flex-col items-start p-8 hover:bg-card transition-colors border-b sm:odd:border-r last:border-b-0 sm:[&:nth-child(3)]:border-b-0 border-border text-left"
+                >
+                  <span className="text-2xl mb-3">{agent.emoji}</span>
+                  <h3 className="font-display text-lg font-bold text-foreground mb-1 group-hover:text-[#c8a961] transition-colors">{agent.name}</h3>
+                  <p className="font-body text-sm text-foreground/50 leading-relaxed">{agent.tagline}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-10"
+          >
+            <Link
+              to="/lazy-agents"
+              className="inline-flex items-center gap-2 font-display text-xs tracking-[0.15em] uppercase font-bold px-6 py-3 border border-border text-foreground/60 hover:text-foreground hover:border-foreground/30 transition-colors"
+            >
+              View all agents →
+            </Link>
+          </motion.div>
         </div>
       </section>
 
