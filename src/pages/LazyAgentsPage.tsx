@@ -37,7 +37,7 @@ export default function LazyAgentsPage() {
 
       <main className="relative z-10 pb-32">
         {/* Hero */}
-        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+        <section className="relative px-6 md:px-12 pt-32 pb-32 md:pb-40" style={{ backgroundColor: "#0a0a08" }}>
           <div className="max-w-4xl mx-auto text-center">
             <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
               <p className="font-display text-[11px] tracking-[0.25em] uppercase text-foreground/40 font-bold mb-6">Lazy Agents</p>
