@@ -29,6 +29,10 @@ const PRODUCTS = [
   "lazy-design",
   "lazy-drop",
   "lazy-print",
+  "lazy-auth",
+  "lazy-crawl",
+  "lazy-run",
+  "lazy-admin",
 ];
 
 // Each product gets SEO then GEO, so total slots = products * 2
