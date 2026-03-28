@@ -86,6 +86,13 @@ const PRODUCTS = [
   { key: "lazy-admin", label: "Lazy Admin", path: "/lazy-admin", color: "hsl(220, 40%, 50%)" },
 ];
 
+const AGENTS = [
+  { key: "lazy-watch", label: "Lazy Watch", path: "/lazy-watch", color: "hsl(0, 65%, 50%)" },
+  { key: "lazy-fix", label: "Lazy Fix", path: "/lazy-fix", color: "hsl(120, 50%, 45%)" },
+  { key: "lazy-build", label: "Lazy Build", path: "/lazy-build", color: "hsl(35, 80%, 50%)" },
+  { key: "lazy-intel", label: "Lazy Intel", path: "/lazy-intel", color: "hsl(210, 70%, 55%)" },
+];
+
 const tooltipStyle = {
   backgroundColor: "hsl(var(--card))",
   border: "1px solid hsl(var(--border))",
@@ -277,6 +284,30 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
     }).sort((a, b) => b.promptCopies - a.promptCopies);
   }, [visitors, events]);
 
+  /* ── Agent stats ── */
+  const agentStats = useMemo(() => {
+    return AGENTS.map((agent) => {
+      const pageVisits = visitors.filter((v) => v.page === agent.path).length;
+      const agentKey = agent.key.replace("-", "_");
+
+      const pageViewEvents = events.filter((e) => {
+        if (e.event_name === `${agentKey}_page_view`) return true;
+        if (e.event_name === "page_view" && (e.event_data as any)?.page === agent.path) return true;
+        return false;
+      }).length;
+
+      const promptCopies = events.filter((e) => {
+        if (e.event_name === `${agentKey}_prompt_copy`) return true;
+        if (e.event_name === "copy_prompt" && (e.event_data as any)?.product === agent.key) return true;
+        return false;
+      }).length;
+
+      const totalViews = Math.max(pageVisits, pageViewEvents);
+
+      return { ...agent, pageVisits: totalViews, promptCopies };
+    }).sort((a, b) => b.promptCopies - a.promptCopies);
+  }, [visitors, events]);
+
   /* ── Blog stats ── */
   const blogStats = useMemo(() => {
     const published = blogPosts.filter((p) => p.status === "published");
@@ -410,6 +441,33 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
               ))}
               {productStats.every((p) => p.pageVisits === 0 && p.promptCopies === 0) && (
                 <p className="font-body text-xs text-muted-foreground">No product data yet</p>
+              )}
+            </div>
+          </div>
+
+          {/* Agents leaderboard */}
+          <div className="border border-border rounded-xl bg-card p-4">
+            <h3 className="font-display font-bold text-foreground mb-3">Agents Leaderboard</h3>
+            <div className="space-y-2">
+              {agentStats.map((a, i) => (
+                <div key={a.key} className="flex items-center gap-3">
+                  <span className="font-display text-xs font-bold text-foreground/20 w-5 text-right">{i + 1}</span>
+                  <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: a.color }} />
+                  <span className="font-body text-sm text-foreground/70 flex-1 min-w-0 truncate">{a.label}</span>
+                  <div className="flex items-center gap-4 flex-shrink-0">
+                    <div className="text-right">
+                      <span className="font-display text-sm font-bold text-foreground">{a.pageVisits}</span>
+                      <span className="font-body text-[13px] text-muted-foreground ml-1">views</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="font-display text-sm font-bold text-primary">{a.promptCopies}</span>
+                      <span className="font-body text-[13px] text-muted-foreground ml-1">copies</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {agentStats.every((a) => a.pageVisits === 0 && a.promptCopies === 0) && (
+                <p className="font-body text-xs text-muted-foreground">No agent data yet</p>
               )}
             </div>
           </div>
