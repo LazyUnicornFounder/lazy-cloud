@@ -31,11 +31,6 @@ const categories: Category[] = [
         free: ["Setup prompt included", "All 25 engines in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
         pro: { price: "$99", features: ["Hosted version — zero config", "Auto-scaling engine execution", "Priority AI model access", "Dedicated support", "Custom engine configuration"], comingSoon: true },
       },
-      {
-        name: "Lazy Admin", tagline: "Unified dashboard for every engine", link: "/lazy-admin",
-        free: ["Setup prompt included", "Auto-detects installed engines", "Master status indicator", "Unified activity feed", "Per-engine deep dives"],
-        pro: { price: "$9", features: ["Hosted version", "Multi-project support", "Team access with roles", "Weekly email digest", "Mobile app"], comingSoon: true },
-      },
     ],
   },
   {
