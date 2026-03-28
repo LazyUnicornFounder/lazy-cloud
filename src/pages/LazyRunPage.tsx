@@ -59,6 +59,8 @@ Reference in edge functions via Deno.env.get().
 
 Required secrets by engine:
 - Blogger/SEO/GEO/Store: none (uses built-in Lovable AI)
+- Drop: AUTODS_API_KEY
+- Print: PRINTFUL_API_KEY
 - Voice: ELEVENLABS_API_KEY
 - Pay: STRIPE_SECRET_KEY, STRIPE_PUBLISHABLE_KEY, STRIPE_WEBHOOK_SECRET
 - SMS: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
