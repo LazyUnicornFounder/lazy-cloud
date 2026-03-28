@@ -43,7 +43,7 @@ function CopyPromptButton({ text }: { text: string }) {
   }, [text]);
 
   return (
-    <button onClick={handleCopy} className="inline-flex items-center gap-2 font-body text-[13px] tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity" style={{ backgroundColor: "#c8a961", color: "#0a0a08" }}>
+    <button onClick={handleCopy} className="inline-flex items-center gap-2 font-body text-[13px] tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity bg-primary text-primary-foreground">
       {copied ? <><Check size={14} /> Copied ✓</> : <><Copy size={14} /> Copy the Lovable Prompt</>}
     </button>
   );
