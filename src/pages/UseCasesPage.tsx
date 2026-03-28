@@ -524,10 +524,6 @@ export default function UseCasesPage() {
           </div>
         </section>
       )}
-            </motion.div>
-          ))}
-        </div>
-      </section>
 
       {/* Bottom CTA */}
       <section className="border-t border-border bg-card">
