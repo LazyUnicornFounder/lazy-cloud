@@ -19,22 +19,25 @@ const PRODUCT_LABELS: Record<string, string> = {
   "lazy-geo": "Lazy GEO",
   "lazy-crawl": "Lazy Crawl",
   "lazy-perplexity": "Lazy Perplexity",
+  "lazy-contentful": "Lazy Contentful",
   "lazy-store": "Lazy Store",
+  "lazy-drop": "Lazy Drop",
+  "lazy-print": "Lazy Print",
   "lazy-pay": "Lazy Pay",
   "lazy-sms": "Lazy SMS",
+  "lazy-mail": "Lazy Mail",
   "lazy-voice": "Lazy Voice",
   "lazy-stream": "Lazy Stream",
   "lazy-code": "Lazy GitHub",
   "lazy-gitlab": "Lazy GitLab",
   "lazy-linear": "Lazy Linear",
-  "lazy-mail": "Lazy Mail",
+  "lazy-design": "Lazy Design",
+  "lazy-auth": "Lazy Auth",
   "lazy-alert": "Lazy Alert",
   "lazy-telegram": "Lazy Telegram",
-  "lazy-contentful": "Lazy Contentful",
   "lazy-supabase": "Lazy Supabase",
   "lazy-security": "Lazy Security",
-  "lazy-auth": "Lazy Auth",
-  "lazy-design": "Lazy Design",
+  "lazy-granola": "Lazy Granola",
 };
 
 const CATEGORY_MAP: Record<string, string> = {
@@ -47,6 +50,8 @@ const CATEGORY_MAP: Record<string, string> = {
   "lazy-perplexity": "✍️ Content",
   "lazy-contentful": "✍️ Content",
   "lazy-store": "🛒 Commerce",
+  "lazy-drop": "🛒 Commerce",
+  "lazy-print": "🛒 Commerce",
   "lazy-pay": "🛒 Commerce",
   "lazy-sms": "🛒 Commerce",
   "lazy-mail": "🛒 Commerce",
@@ -61,7 +66,18 @@ const CATEGORY_MAP: Record<string, string> = {
   "lazy-telegram": "⚙️ Ops",
   "lazy-supabase": "⚙️ Ops",
   "lazy-security": "⚙️ Ops",
+  "lazy-granola": "⚙️ Ops",
 };
+
+// Canonical order matching the platform
+const CANONICAL_ORDER = [
+  "lazy-run", "lazy-admin",
+  "lazy-blogger", "lazy-seo", "lazy-geo", "lazy-crawl", "lazy-perplexity", "lazy-contentful",
+  "lazy-store", "lazy-drop", "lazy-print", "lazy-pay", "lazy-sms", "lazy-mail",
+  "lazy-voice", "lazy-stream",
+  "lazy-code", "lazy-gitlab", "lazy-linear", "lazy-design", "lazy-auth",
+  "lazy-alert", "lazy-telegram", "lazy-supabase", "lazy-security", "lazy-granola",
+];
 
 interface PromptPayload {
   product: string;
@@ -148,6 +164,8 @@ function buildReadme(prompts: PromptPayload[]) {
     "| Lazy GitLab | GitLab token | [gitlab.com/-/user_settings/personal_access_tokens](https://gitlab.com/-/user_settings/personal_access_tokens) |",
     "| Lazy Contentful | Contentful API key | [contentful.com](https://app.contentful.com) |",
     "| Lazy Store | Shopify credentials | [shopify.dev](https://shopify.dev) |",
+    "| Lazy Drop | AutoDS API key | [autods.com](https://autods.com) |",
+    "| Lazy Print | Printful API key | [printful.com](https://printful.com) |",
     "",
     "> **Tip:** The prompt itself will walk you through setup — just paste it and follow the instructions.",
     "",
@@ -157,11 +175,11 @@ function buildReadme(prompts: PromptPayload[]) {
     "| ------ | -------- | ------ |",
   ];
 
-  // Sort by category
+  // Sort by canonical order
   const sorted = [...prompts].sort((a, b) => {
-    const catA = CATEGORY_MAP[a.product] || "Other";
-    const catB = CATEGORY_MAP[b.product] || "Other";
-    return catA.localeCompare(catB);
+    const idxA = CANONICAL_ORDER.indexOf(a.product);
+    const idxB = CANONICAL_ORDER.indexOf(b.product);
+    return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
   });
 
   for (const p of sorted) {
