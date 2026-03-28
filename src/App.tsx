@@ -55,6 +55,9 @@ import LazyWatchPage from "./pages/LazyWatchPage.tsx";
 import LazyFixPage from "./pages/LazyFixPage.tsx";
 import LazyBuildPage from "./pages/LazyBuildPage.tsx";
 import LazyIntelPage from "./pages/LazyIntelPage.tsx";
+import LazyRepurposePage from "./pages/LazyRepurposePage.tsx";
+import LazyTrendPage from "./pages/LazyTrendPage.tsx";
+import LazyChurnPage from "./pages/LazyChurnPage.tsx";
 
 import ChangelogPage from "./pages/ChangelogPage.tsx";
 import UpgradeGuidePage from "./pages/UpgradeGuidePage.tsx";
@@ -160,6 +163,9 @@ const App = () => (
               <Route path="/lazy-fix" element={<LazyFixPage />} />
               <Route path="/lazy-build" element={<LazyBuildPage />} />
               <Route path="/lazy-intel" element={<LazyIntelPage />} />
+              <Route path="/lazy-repurpose" element={<LazyRepurposePage />} />
+              <Route path="/lazy-trend" element={<LazyTrendPage />} />
+              <Route path="/lazy-churn" element={<LazyChurnPage />} />
               
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/autonomy" element={<AutonomyPage />} />

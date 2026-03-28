@@ -30,6 +30,9 @@ const PRODUCT_WORDS: Record<string, { word: string; emoji: string; tagline: stri
   "lazy-fix": { word: "prompts", emoji: "🔧", tagline: "Launch autonomous prompt improvement." },
   "lazy-build": { word: "engines", emoji: "🏗️", tagline: "Launch autonomous engine writing." },
   "lazy-intel": { word: "strategy", emoji: "📊", tagline: "Launch autonomous content strategy." },
+  "lazy-repurpose": { word: "repurposing", emoji: "🔄", tagline: "Launch autonomous content repurposing." },
+  "lazy-trend": { word: "trends", emoji: "🔥", tagline: "Launch autonomous trend detection." },
+  "lazy-churn": { word: "retention", emoji: "💰", tagline: "Launch autonomous churn prevention." },
 };
 
 interface AutopilotHeadlineProps {

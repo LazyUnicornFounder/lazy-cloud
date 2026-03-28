@@ -51,6 +51,14 @@ const PRODUCTS = [
   { key: "lazy-telegram", label: "✈️ Lazy Telegram" },
   { key: "lazy-supabase", label: "⚡ Lazy Supabase" },
   { key: "lazy-security", label: "🛡️ Lazy Security" },
+  // Agents
+  { key: "lazy-watch", label: "👁️ Lazy Watch" },
+  { key: "lazy-fix", label: "🔧 Lazy Fix" },
+  { key: "lazy-build", label: "🏗️ Lazy Build" },
+  { key: "lazy-intel", label: "📊 Lazy Intel" },
+  { key: "lazy-repurpose", label: "🔄 Lazy Repurpose" },
+  { key: "lazy-trend", label: "🔥 Lazy Trend" },
+  { key: "lazy-churn", label: "💰 Lazy Churn" },
 ] as const;
 
 /* ── Helpers ── */

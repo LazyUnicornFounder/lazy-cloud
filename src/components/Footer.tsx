@@ -72,6 +72,9 @@ const columns = [
       { name: "Lazy Fix", href: "/lazy-fix" },
       { name: "Lazy Build", href: "/lazy-build" },
       { name: "Lazy Intel", href: "/lazy-intel" },
+      { name: "Lazy Repurpose", href: "/lazy-repurpose" },
+      { name: "Lazy Trend", href: "/lazy-trend" },
+      { name: "Lazy Churn", href: "/lazy-churn" },
     ],
   },
 ];

@@ -109,6 +109,9 @@ const agentItems: CategoryItem[] = [
   { label: "Lazy Fix", href: "/lazy-fix", tagline: "Autonomous prompt improvement", icon: icons.code },
   { label: "Lazy Build", href: "/lazy-build", tagline: "Autonomous engine writing", icon: icons.admin },
   { label: "Lazy Intel", href: "/lazy-intel", tagline: "Autonomous content strategy", icon: icons.seo },
+  { label: "Lazy Repurpose", href: "/lazy-repurpose", tagline: "Autonomous content repurposing", icon: icons.contentful },
+  { label: "Lazy Trend", href: "/lazy-trend", tagline: "Autonomous trend detection", icon: icons.perplexity },
+  { label: "Lazy Churn", href: "/lazy-churn", tagline: "Autonomous churn prevention", icon: icons.pay },
 ];
 
 /* ── Shared dropdown category renderer ── */
