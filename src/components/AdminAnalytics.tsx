@@ -235,7 +235,8 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
       }).length;
 
       const totalViews = Math.max(pageVisits, pageViewEvents);
-      const conversionRate = totalViews > 0 ? ((promptCopies / totalViews) * 100).toFixed(1) : "0.0";
+      const rawRate = totalViews > 0 ? (promptCopies / totalViews) * 100 : 0;
+      const conversionRate = Math.min(rawRate, 100).toFixed(1);
 
       // Daily trend (last 14 days)
       const dailyMap: Record<string, { views: number; copies: number }> = {};
@@ -273,7 +274,7 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
         conversionRate,
         dailyTrend,
       };
-    }).sort((a, b) => b.pageVisits - a.pageVisits);
+    }).sort((a, b) => b.promptCopies - a.promptCopies);
   }, [visitors, events]);
 
   /* ── Blog stats ── */
