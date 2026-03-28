@@ -72,22 +72,32 @@ export default function LazyPrintPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6 md:px-12 max-w-4xl mx-auto text-center">
-        <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
-          <AutopilotHeadline product="lazy-print" />
-          <motion.h1 variants={fadeUp} transition={{ duration: 0.8 }} className="mt-4" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#f0ead6", lineHeight: 1.1, fontWeight: 700 }}>
-            Upload your design. Sell merch. Ship nothing
-          </motion.h1>
-          <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="mt-4 font-body text-foreground/50 max-w-2xl mx-auto leading-relaxed">
-            Lazy Print connects <a href="https://printful.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/70">Printful</a> to your Lovable site. Upload your designs, choose your products, and your store starts selling t-shirts, hoodies, mugs, posters, phone cases, and more — all printed and shipped directly to your customers. Zero inventory. Pure profit.
-          </motion.p>
-          <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <CopyPromptButton text={promptText} />
+      <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+        <div className="max-w-4xl mx-auto">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
+            <div className="flex items-center gap-3 mb-6">
+              <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
+              <span className="bg-foreground text-background text-[14px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
+            </div>
+            <AutopilotHeadline product="lazy-print" />
+
+            <div className="flex items-center gap-4 flex-wrap">
+              <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+                Lazy Print
+              </h1>
+              <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">Powered by Printful</span>
+            </div>
+            <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+              One prompt connects <a href="https://printful.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/90 transition-colors">Printful</a> to your <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/90 transition-colors">Lovable</a> site. Upload your designs, choose your products, and your store starts selling t-shirts, hoodies, mugs, posters, and more — all printed and shipped directly to your customers. Zero inventory. Pure profit.
+            </p>
+            <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
+              <CopyPromptButton text={promptText} />
+            </div>
+            <p className="mt-6 font-body text-[12px] text-foreground/30 tracking-wider uppercase">
+              475+ products · Global fulfillment · No inventory ever
+            </p>
           </motion.div>
-          <motion.p variants={fadeUp} transition={{ duration: 0.4 }} className="mt-6 font-body text-[12px] text-foreground/30 tracking-wider uppercase">
-            475+ products · Global fulfillment · No inventory ever
-          </motion.p>
-        </motion.div>
+        </div>
       </section>
 
       {/* Problem */}
