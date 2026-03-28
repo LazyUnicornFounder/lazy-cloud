@@ -499,17 +499,17 @@ const Index = () => {
                 <path d="M35 88 Q60 95 85 88" strokeDasharray="3 3" />
               </svg>
               <div className="text-center">
-                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "3.25rem", color: "#f0ead6", lineHeight: 1.1 }}>
                   Lazy
                 </p>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "3.25rem", color: "#f0ead6", lineHeight: 1.1 }}>
                   Run
                 </p>
               </div>
-              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.1rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
                 Autonomous everything
               </p>
-              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
                 Made for Lovable
               </p>
             </motion.div>
@@ -527,17 +527,17 @@ const Index = () => {
             >
               {sketches["Admin"]}
               <div className="text-center">
-                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "3.25rem", color: "#f0ead6", lineHeight: 1.1 }}>
                   Lazy
                 </p>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "3.25rem", color: "#f0ead6", lineHeight: 1.1 }}>
                   Admin
                 </p>
               </div>
-              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.1rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
                 Autonomous ops control
               </p>
-              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1rem" }}>
                 Made for Lovable
               </p>
             </motion.div>
@@ -564,17 +564,17 @@ const Index = () => {
               >
                 {sketches[product.name]}
                 <div className="text-center">
-                  <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                  <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "3.25rem", color: "#f0ead6", lineHeight: 1.1 }}>
                     {product.cursive}
                   </p>
-                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "2.5rem", color: "#f0ead6", lineHeight: 1.1 }}>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "3.25rem", color: "#f0ead6", lineHeight: 1.1 }}>
                     {product.name}
                   </p>
                 </div>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.1rem", color: "#f0ead6", opacity: 0.4, marginTop: "0.5rem" }}>
                   {product.tagline}
                 </p>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1.5rem" }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "1.5rem" }}>
                   Made for Lovable
                 </p>
               </motion.div>
