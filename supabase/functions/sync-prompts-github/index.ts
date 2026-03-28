@@ -164,6 +164,8 @@ function buildReadme(prompts: PromptPayload[]) {
     "| Lazy GitLab | GitLab token | [gitlab.com/-/user_settings/personal_access_tokens](https://gitlab.com/-/user_settings/personal_access_tokens) |",
     "| Lazy Contentful | Contentful API key | [contentful.com](https://app.contentful.com) |",
     "| Lazy Store | Shopify credentials | [shopify.dev](https://shopify.dev) |",
+    "| Lazy Drop | AutoDS API key | [autods.com](https://autods.com) |",
+    "| Lazy Print | Printful API key | [printful.com](https://printful.com) |",
     "",
     "> **Tip:** The prompt itself will walk you through setup — just paste it and follow the instructions.",
     "",
@@ -173,11 +175,11 @@ function buildReadme(prompts: PromptPayload[]) {
     "| ------ | -------- | ------ |",
   ];
 
-  // Sort by category
+  // Sort by canonical order
   const sorted = [...prompts].sort((a, b) => {
-    const catA = CATEGORY_MAP[a.product] || "Other";
-    const catB = CATEGORY_MAP[b.product] || "Other";
-    return catA.localeCompare(catB);
+    const idxA = CANONICAL_ORDER.indexOf(a.product);
+    const idxB = CANONICAL_ORDER.indexOf(b.product);
+    return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
   });
 
   for (const p of sorted) {
