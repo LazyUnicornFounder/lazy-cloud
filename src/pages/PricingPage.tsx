@@ -82,6 +82,20 @@ const products: Product[] = [
     pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced pricing algorithms", "Automated ad campaigns", "Revenue analytics"], comingSoon: true },
   },
   {
+    name: "Lazy Drop",
+    tagline: "Autonomous dropshipping engine",
+    link: "/lazy-drop",
+    free: ["Setup prompt included", "AutoDS integration", "Product discovery & import", "AI-written listings", "Hourly price monitoring", "Automatic fulfilment"],
+    pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced product analytics", "Priority AI model access"], comingSoon: true },
+  },
+  {
+    name: "Lazy Print",
+    tagline: "Autonomous print-on-demand engine",
+    link: "/lazy-print",
+    free: ["Setup prompt included", "Printful integration", "Product catalogue sync", "AI-written descriptions", "Automatic mockup generation", "Order fulfilment"],
+    pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Bulk design upload", "Advanced product analytics"], comingSoon: true },
+  },
+  {
     name: "Lazy Pay",
     tagline: "Autonomous payments engine",
     link: "/lazy-pay",

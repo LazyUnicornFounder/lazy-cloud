@@ -31,6 +31,8 @@ const engineGroups = [
     description: "Autonomous storefronts, payments, and conversion optimisation.",
     engines: [
       { name: "Lazy Store", tagline: "Autonomous storefronts", href: "/lazy-store" },
+      { name: "Lazy Drop", tagline: "Autonomous dropshipping", href: "/lazy-drop" },
+      { name: "Lazy Print", tagline: "Autonomous print-on-demand", href: "/lazy-print" },
       { name: "Lazy Pay", tagline: "Autonomous payments", href: "/lazy-pay" },
       { name: "Lazy SMS", tagline: "Autonomous text campaigns", href: "/lazy-sms" },
       { name: "Lazy Mail", tagline: "Autonomous email flows", href: "/lazy-mail" },
@@ -95,7 +97,7 @@ export default function HowItWorksPage() {
                 project. Each one installs its own database tables, edge functions, and UI — then runs itself autonomously.
               </p>
               <p className="font-body text-foreground/70 text-sm max-w-xl mx-auto leading-relaxed">
-                Integrates with <strong className="text-foreground/50">Stripe</strong>, <strong className="text-foreground/50">Twilio</strong>, <strong className="text-foreground/50">Resend</strong>, <strong className="text-foreground/50">ElevenLabs</strong>, <strong className="text-foreground/50">Twitch</strong>, <strong className="text-foreground/50">GitHub</strong>, <strong className="text-foreground/50">GitLab</strong>, <strong className="text-foreground/50">Linear</strong>, <strong className="text-foreground/50">21st.dev</strong>, <strong className="text-foreground/50">Google OAuth</strong>, <strong className="text-foreground/50">Granola</strong>, <strong className="text-foreground/50">Slack</strong>, <strong className="text-foreground/50">Telegram</strong>, <strong className="text-foreground/50">Supabase</strong>, <strong className="text-foreground/50">Aikido</strong>, <strong className="text-foreground/50">Contentful</strong>, <strong className="text-foreground/50">Firecrawl</strong>, and <strong className="text-foreground/50">Perplexity</strong>.
+                Integrates with <strong className="text-foreground/50">Stripe</strong>, <strong className="text-foreground/50">AutoDS</strong>, <strong className="text-foreground/50">Printful</strong>, <strong className="text-foreground/50">Twilio</strong>, <strong className="text-foreground/50">Resend</strong>, <strong className="text-foreground/50">ElevenLabs</strong>, <strong className="text-foreground/50">Twitch</strong>, <strong className="text-foreground/50">GitHub</strong>, <strong className="text-foreground/50">GitLab</strong>, <strong className="text-foreground/50">Linear</strong>, <strong className="text-foreground/50">21st.dev</strong>, <strong className="text-foreground/50">Google OAuth</strong>, <strong className="text-foreground/50">Granola</strong>, <strong className="text-foreground/50">Slack</strong>, <strong className="text-foreground/50">Telegram</strong>, <strong className="text-foreground/50">Supabase</strong>, <strong className="text-foreground/50">Aikido</strong>, <strong className="text-foreground/50">Contentful</strong>, <strong className="text-foreground/50">Firecrawl</strong>, and <strong className="text-foreground/50">Perplexity</strong>.
               </p>
             </motion.div>
           </div>
