@@ -42,7 +42,7 @@ const PRODUCT_LABELS: Record<string, string> = {
 
 const CATEGORY_MAP: Record<string, string> = {
   "lazy-run": "🚀 Unicorn",
-  "lazy-admin": "🚀 Unicorn",
+  "lazy-admin": "⚙️ Ops",
   "lazy-blogger": "✍️ Content",
   "lazy-seo": "✍️ Content",
   "lazy-geo": "✍️ Content",
@@ -71,12 +71,12 @@ const CATEGORY_MAP: Record<string, string> = {
 
 // Canonical order matching the platform
 const CANONICAL_ORDER = [
-  "lazy-run", "lazy-admin",
+  "lazy-run",
   "lazy-blogger", "lazy-seo", "lazy-geo", "lazy-crawl", "lazy-perplexity", "lazy-contentful",
   "lazy-store", "lazy-drop", "lazy-print", "lazy-pay", "lazy-sms", "lazy-mail",
   "lazy-voice", "lazy-stream",
   "lazy-code", "lazy-gitlab", "lazy-linear", "lazy-design", "lazy-auth",
-  "lazy-alert", "lazy-telegram", "lazy-supabase", "lazy-security", "lazy-granola",
+  "lazy-admin", "lazy-alert", "lazy-telegram", "lazy-supabase", "lazy-security", "lazy-granola",
 ];
 
 interface PromptPayload {

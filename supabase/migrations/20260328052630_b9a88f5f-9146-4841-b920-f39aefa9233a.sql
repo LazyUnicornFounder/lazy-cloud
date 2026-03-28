@@ -1,0 +1,1 @@
+UPDATE prompt_versions SET is_current = false WHERE product = 'lazy-stream' AND version = 'v0.0.3' AND is_current = true;
