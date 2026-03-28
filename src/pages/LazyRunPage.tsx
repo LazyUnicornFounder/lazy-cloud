@@ -389,32 +389,32 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const engines = [
   // Content
-  { name: "Lazy Blogger", desc: "Launch autonomous blog posts.", icon: FileText, href: "/lazy-blogger" },
-  { name: "Lazy SEO", desc: "Launch autonomous SEO content.", icon: Search, href: "/lazy-seo" },
-  { name: "Lazy GEO", desc: "Launch autonomous AI citations.", icon: Globe, href: "/lazy-geo" },
-  { name: "Lazy Crawl", desc: "Launch autonomous web research.", icon: Radar, href: "/lazy-crawl" },
-  { name: "Lazy Perplexity", desc: "Launch autonomous deep research.", icon: Compass, href: "/lazy-perplexity" },
-  { name: "Lazy Contentful", desc: "Launch autonomous CMS sync.", icon: Layers, href: "/lazy-contentful" },
+  { name: "Lazy Blogger", desc: "Autonomous blog posts", icon: FileText, href: "/lazy-blogger" },
+  { name: "Lazy SEO", desc: "Autonomous SEO content", icon: Search, href: "/lazy-seo" },
+  { name: "Lazy GEO", desc: "Autonomous AI citations", icon: Globe, href: "/lazy-geo" },
+  { name: "Lazy Crawl", desc: "Autonomous web research", icon: Radar, href: "/lazy-crawl" },
+  { name: "Lazy Perplexity", desc: "Autonomous deep research", icon: Compass, href: "/lazy-perplexity" },
+  { name: "Lazy Contentful", desc: "Autonomous CMS sync", icon: Layers, href: "/lazy-contentful" },
   // Commerce
-  { name: "Lazy Store", desc: "Launch autonomous storefronts.", icon: ShoppingCart, href: "/lazy-store" },
-  { name: "Lazy Pay", desc: "Launch autonomous payments.", icon: CreditCard, href: "/lazy-pay" },
-  { name: "Lazy SMS", desc: "Launch autonomous text campaigns.", icon: MessageSquare, href: "/lazy-sms" },
-  { name: "Lazy Mail", desc: "Launch autonomous email flows.", icon: MessageSquare, href: "/lazy-mail" },
+  { name: "Lazy Store", desc: "Autonomous storefronts", icon: ShoppingCart, href: "/lazy-store" },
+  { name: "Lazy Pay", desc: "Autonomous payments", icon: CreditCard, href: "/lazy-pay" },
+  { name: "Lazy SMS", desc: "Autonomous text campaigns", icon: MessageSquare, href: "/lazy-sms" },
+  { name: "Lazy Mail", desc: "Autonomous email flows", icon: MessageSquare, href: "/lazy-mail" },
   // Media
-  { name: "Lazy Voice", desc: "Launch autonomous podcasts.", icon: Mic, href: "/lazy-voice" },
-  { name: "Lazy Stream", desc: "Launch autonomous stream content.", icon: Video, href: "/lazy-stream" },
+  { name: "Lazy Voice", desc: "Autonomous podcasts", icon: Mic, href: "/lazy-voice" },
+  { name: "Lazy Stream", desc: "Autonomous stream content", icon: Video, href: "/lazy-stream" },
   // Dev
-  { name: "Lazy GitHub", desc: "Launch autonomous changelogs.", icon: Code, href: "/lazy-github" },
-  { name: "Lazy GitLab", desc: "Launch autonomous GitLab docs.", icon: Code, href: "/lazy-gitlab" },
-  { name: "Lazy Linear", desc: "Launch autonomous issue content.", icon: BarChart3, href: "/lazy-linear" },
-  { name: "Lazy Design", desc: "Launch autonomous UI upgrades.", icon: Layers, href: "/lazy-design" },
-  { name: "Lazy Auth", desc: "Launch autonomous login flows.", icon: Shield, href: "/lazy-auth" },
-  { name: "Lazy Granola", desc: "Launch autonomous meeting content.", icon: Calendar, href: "/lazy-granola" },
+  { name: "Lazy GitHub", desc: "Autonomous changelogs", icon: Code, href: "/lazy-github" },
+  { name: "Lazy GitLab", desc: "Autonomous GitLab docs", icon: Code, href: "/lazy-gitlab" },
+  { name: "Lazy Linear", desc: "Autonomous issue content", icon: BarChart3, href: "/lazy-linear" },
+  { name: "Lazy Design", desc: "Autonomous UI upgrades", icon: Layers, href: "/lazy-design" },
+  { name: "Lazy Auth", desc: "Autonomous login flows", icon: Shield, href: "/lazy-auth" },
+  { name: "Lazy Granola", desc: "Autonomous meeting content", icon: Calendar, href: "/lazy-granola" },
   // Ops
-  { name: "Lazy Alert", desc: "Launch autonomous Slack alerts.", icon: Bell, href: "/lazy-alert" },
-  { name: "Lazy Telegram", desc: "Launch autonomous Telegram updates.", icon: Send, href: "/lazy-telegram" },
-  { name: "Lazy Supabase", desc: "Launch autonomous database reports.", icon: Database, href: "/lazy-supabase" },
-  { name: "Lazy Security", desc: "Launch autonomous pentesting.", icon: Shield, href: "/lazy-security" },
+  { name: "Lazy Alert", desc: "Autonomous Slack alerts", icon: Bell, href: "/lazy-alert" },
+  { name: "Lazy Telegram", desc: "Autonomous Telegram updates", icon: Send, href: "/lazy-telegram" },
+  { name: "Lazy Supabase", desc: "Autonomous database reports", icon: Database, href: "/lazy-supabase" },
+  { name: "Lazy Security", desc: "Autonomous pentesting", icon: Shield, href: "/lazy-security" },
 ];
 
 const faqs = [
