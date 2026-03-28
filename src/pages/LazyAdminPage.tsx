@@ -36,14 +36,14 @@ const features = [
 
 const engineGroups = [
   { label: "Lazy Content", color: "text-[#c8a961]", engines: ["Blogger", "SEO", "GEO", "Crawl", "Perplexity", "Contentful"] },
-  { label: "Lazy Commerce", color: "text-emerald-400", engines: ["Store", "Pay", "SMS", "Mail"] },
+  { label: "Lazy Commerce", color: "text-emerald-400", engines: ["Store", "Drop", "Print", "Pay", "SMS", "Mail"] },
   { label: "Lazy Media", color: "text-blue-400", engines: ["Voice", "Stream"] },
   { label: "Lazy Dev", color: "text-purple-400", engines: ["GitHub", "GitLab", "Linear", "Design", "Auth"] },
   { label: "Lazy Ops", color: "text-foreground/50", engines: ["Alert", "Telegram", "Supabase", "Security"] },
 ];
 
 const faqs = [
-  { q: "Do I need all the Lazy engines installed first?", a: "No. Lazy Admin works with any combination. Install one engine and Lazy Admin shows one panel. Install all twenty-three and it shows everything. It detects what is there." },
+  { q: "Do I need all the Lazy engines installed first?", a: "No. Lazy Admin works with any combination. Install one engine and Lazy Admin shows one panel. Install all twenty-five and it shows everything. It detects what is there." },
   { q: "Does it replace the individual setup pages?", a: "No. Each engine still has its own /lazy-[engine]-setup page for configuration. Lazy Admin is for monitoring and control, not initial setup." },
   { q: "Can I trigger engine runs from the dashboard?", a: "Yes. Every engine panel has a Run Now button that calls that engine's primary function immediately without leaving the dashboard." },
   { q: "Does it work if I do not use Lazy Run?", a: "Yes. Lazy Admin works independently of Lazy Run. Lazy Run provides the run_activity and run_performance tables that power some charts, but the dashboard detects and works without them." },
@@ -109,9 +109,9 @@ export default function LazyAdminPage() {
         <section className="py-20 px-6 border-t border-border">
           <div className="max-w-2xl mx-auto">
             <motion.div {...fade}>
-              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">Twenty-three engines. Twenty-three dashboards. Nobody has time for that.</h2>
+              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">Twenty-five engines. Twenty-five dashboards. Nobody has time for that.</h2>
               <p className="font-body text-foreground/50 leading-relaxed">
-                Every Lazy engine ships with its own setup page. That is intentional — each engine installs independently into your project. But checking twenty-three separate dashboards every morning is not autonomous. It is the opposite of lazy. Lazy Admin solves that by pulling everything into one place. One URL. One sidebar. One morning check.
+                Every Lazy engine ships with its own setup page. That is intentional — each engine installs independently into your project. But checking twenty-five separate dashboards every morning is not autonomous. It is the opposite of lazy. Lazy Admin solves that by pulling everything into one place. One URL. One sidebar. One morning check.
               </p>
             </motion.div>
           </div>

@@ -31,6 +31,8 @@ const PRODUCTS = [
   { key: "lazy-contentful", label: "📦 Lazy Contentful" },
   // Commerce
   { key: "lazy-store", label: "🏪 Lazy Store" },
+  { key: "lazy-drop", label: "📦 Lazy Drop" },
+  { key: "lazy-print", label: "👕 Lazy Print" },
   { key: "lazy-pay", label: "💳 Lazy Pay" },
   { key: "lazy-sms", label: "💬 Lazy SMS" },
   { key: "lazy-mail", label: "📧 Lazy Mail" },

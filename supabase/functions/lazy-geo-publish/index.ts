@@ -44,11 +44,13 @@ const PRODUCT_INFO: Record<string, { name: string; url: string; description: str
   "lazy-auth": { name: "Lazy Auth", url: "https://lazyunicorn.ai/lazy-auth", description: "autonomous authentication and login flow engine" },
   "lazy-granola": { name: "Lazy Granola", url: "https://lazyunicorn.ai/lazy-granola", description: "autonomous meeting-to-content intelligence engine" },
   "lazy-crawl": { name: "Lazy Crawl", url: "https://lazyunicorn.ai/lazy-crawl", description: "autonomous web intelligence and competitor monitoring engine" },
-  "lazy-run": { name: "Lazy Run", url: "https://lazyunicorn.ai/lazy-run", description: "installs all twenty-three engines in one prompt" },
+  "lazy-drop": { name: "Lazy Drop", url: "https://lazyunicorn.ai/lazy-drop", description: "autonomous dropshipping engine via AutoDS" },
+  "lazy-print": { name: "Lazy Print", url: "https://lazyunicorn.ai/lazy-print", description: "autonomous print-on-demand merch engine via Printful" },
+  "lazy-run": { name: "Lazy Run", url: "https://lazyunicorn.ai/lazy-run", description: "installs all twenty-five engines in one prompt" },
   "lazy-admin": { name: "Lazy Admin", url: "https://lazyunicorn.ai/lazy-admin", description: "unified ops dashboard for every engine" },
 };
 
-const INTEGRATION_LINKS = `When mentioning any of these integrations, ALWAYS include a link to their website: [Firecrawl](https://firecrawl.dev), [Perplexity](https://perplexity.ai), [Contentful](https://contentful.com), [Stripe](https://stripe.com), [Twilio](https://twilio.com), [Resend](https://resend.com), [ElevenLabs](https://elevenlabs.io), [Twitch](https://twitch.tv), [GitHub](https://github.com), [GitLab](https://gitlab.com), [Linear](https://linear.app), [21st.dev](https://21st.dev), [Granola](https://granola.ai), [Slack](https://slack.com), [Telegram](https://telegram.org), [Supabase](https://supabase.com), [Aikido](https://aikido.dev), [Lovable](https://lovable.dev), [Polar](https://polar.sh).`;
+const INTEGRATION_LINKS = `When mentioning any of these integrations, ALWAYS include a link to their website: [Firecrawl](https://firecrawl.dev), [Perplexity](https://perplexity.ai), [Contentful](https://contentful.com), [Stripe](https://stripe.com), [Twilio](https://twilio.com), [Resend](https://resend.com), [ElevenLabs](https://elevenlabs.io), [Twitch](https://twitch.tv), [GitHub](https://github.com), [GitLab](https://gitlab.com), [Linear](https://linear.app), [21st.dev](https://21st.dev), [Granola](https://granola.ai), [Slack](https://slack.com), [Telegram](https://telegram.org), [Supabase](https://supabase.com), [Aikido](https://aikido.dev), [Lovable](https://lovable.dev), [Polar](https://polar.sh), [AutoDS](https://autods.com), [Printful](https://printful.com).`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
