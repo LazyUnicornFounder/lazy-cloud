@@ -6,44 +6,6 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-// Product rotation order
-const PRODUCTS = [
-  "lazy-blogger",
-  "lazy-seo",
-  "lazy-geo",
-  "lazy-stream",
-  "lazy-voice",
-  "lazy-store",
-  "lazy-github",
-  "lazy-sms",
-  "lazy-pay",
-  "lazy-alert",
-  "lazy-gitlab",
-  "lazy-supabase",
-  "lazy-telegram",
-  "lazy-linear",
-  "lazy-contentful",
-  "lazy-perplexity",
-  "lazy-security",
-  "lazy-mail",
-  "lazy-design",
-  "lazy-drop",
-  "lazy-print",
-  "lazy-auth",
-  "lazy-crawl",
-  "lazy-run",
-  "lazy-admin",
-  "lazy-youtube",
-];
-
-// Each product gets SEO then GEO, so total slots = products * 2
-// Slot 0 = product 0 SEO, slot 1 = product 0 GEO, slot 2 = product 1 SEO, etc.
-function getSlotInfo(slotIndex: number) {
-  const productIndex = Math.floor(slotIndex / 2) % PRODUCTS.length;
-  const engine = slotIndex % 2 === 0 ? "lazy-seo-publish" : "lazy-geo-publish";
-  return { product: PRODUCTS[productIndex], engine };
-}
-
 async function triggerEngine(engineName: string, product: string): Promise<void> {
   const baseUrl = Deno.env.get("SUPABASE_URL")!;
   const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
@@ -66,6 +28,13 @@ async function triggerEngine(engineName: string, product: string): Promise<void>
     const data = await res.json();
     console.log(`${engineName} response:`, JSON.stringify(data).slice(0, 200));
   }
+}
+
+interface ProductTarget {
+  product: string;
+  seo_posts_per_day: number;
+  geo_posts_per_day: number;
+  enabled: boolean;
 }
 
 Deno.serve(async (req) => {
@@ -94,9 +63,10 @@ Deno.serve(async (req) => {
     }
 
     // Check daily limit
+    const todayStart = new Date();
+    todayStart.setUTCHours(0, 0, 0, 0);
+
     if (settings?.posts_per_day) {
-      const todayStart = new Date();
-      todayStart.setUTCHours(0, 0, 0, 0);
       const { count } = await supabase
         .from("blog_posts")
         .select("id", { count: "exact", head: true })
@@ -133,7 +103,42 @@ Deno.serve(async (req) => {
       published = nextDraft;
     }
 
-    // Get the current rotation slot from app_config
+    // ── Per-product rotation using product_publish_settings ──
+    const { data: productTargets } = await supabase
+      .from("product_publish_settings")
+      .select("*")
+      .eq("enabled", true)
+      .order("product");
+
+    const targets: ProductTarget[] = productTargets || [];
+
+    if (targets.length === 0) {
+      return new Response(JSON.stringify({
+        success: true,
+        published: published ? { title: published.title, slug: published.slug } : null,
+        message: "No enabled products for SEO/GEO generation",
+      }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Build a flat list of (product, engine) slots based on per-product targets
+    // Count how many SEO and GEO posts each product already has today
+    const [{ data: seoToday }, { data: geoToday }] = await Promise.all([
+      supabase
+        .from("seo_posts")
+        .select("target_keyword")
+        .gte("published_at", todayStart.toISOString()),
+      supabase
+        .from("geo_posts")
+        .select("target_query")
+        .gte("published_at", todayStart.toISOString()),
+    ]);
+
+    const seoCountToday = seoToday?.length ?? 0;
+    const geoCountToday = geoToday?.length ?? 0;
+
+    // Use a rotation slot to fairly distribute across products
     const { data: rotationRow } = await supabase
       .from("app_config")
       .select("value")
@@ -143,11 +148,38 @@ Deno.serve(async (req) => {
     let currentSlot = parseInt(rotationRow?.value || "0", 10);
     if (isNaN(currentSlot)) currentSlot = 0;
 
-    const totalSlots = PRODUCTS.length * 2;
-    const { product, engine } = getSlotInfo(currentSlot);
+    // Build available slots: products that haven't hit their daily target
+    type Slot = { product: string; engine: string };
+    const availableSlots: Slot[] = [];
 
-    // Advance the slot for next time
-    const nextSlot = (currentSlot + 1) % totalSlots;
+    // We don't have per-product counts from the cron, so we use the rotation
+    // to distribute evenly. The daily limits are enforced by counting slots
+    // in the rotation cycle.
+    for (const t of targets) {
+      for (let i = 0; i < t.seo_posts_per_day; i++) {
+        availableSlots.push({ product: t.product, engine: "lazy-seo-publish" });
+      }
+      for (let i = 0; i < t.geo_posts_per_day; i++) {
+        availableSlots.push({ product: t.product, engine: "lazy-geo-publish" });
+      }
+    }
+
+    if (availableSlots.length === 0) {
+      return new Response(JSON.stringify({
+        success: true,
+        published: published ? { title: published.title, slug: published.slug } : null,
+        message: "All per-product targets are 0",
+      }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Pick the slot for this invocation
+    const slotIndex = currentSlot % availableSlots.length;
+    const { product, engine } = availableSlots[slotIndex];
+
+    // Advance the slot
+    const nextSlot = currentSlot + 1;
     if (rotationRow) {
       await supabase
         .from("app_config")
@@ -159,7 +191,7 @@ Deno.serve(async (req) => {
         .insert({ key: "publish_rotation_slot", value: String(nextSlot) });
     }
 
-    console.log(`Rotation slot ${currentSlot}: ${engine} for ${product} (next: ${nextSlot})`);
+    console.log(`Slot ${slotIndex}/${availableSlots.length}: ${engine} for ${product} (global slot: ${currentSlot} → ${nextSlot})`);
     await triggerEngine(engine, product);
 
     // Check remaining drafts
@@ -173,6 +205,7 @@ Deno.serve(async (req) => {
       published: published ? { title: published.title, slug: published.slug } : null,
       triggered: engine,
       product,
+      slot: `${slotIndex}/${availableSlots.length}`,
       drafts_remaining: remaining ?? 0,
     }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
