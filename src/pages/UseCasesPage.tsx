@@ -397,6 +397,51 @@ const integrations: Integration[] = [
   },
 ];
 
+function IntegrationCard({ item, index }: { item: Integration; index: number }) {
+  return (
+    <motion.div
+      variants={fade}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ delay: index * 0.05 }}
+      className="border border-border bg-card p-6 flex flex-col gap-4"
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span className="text-foreground/70">{item.icon}</span>
+          <h2 className="font-display text-lg font-bold">{item.name}</h2>
+        </div>
+        <Badge variant="outline" className="text-[14px] tracking-[0.15em] uppercase shrink-0">
+          {item.category}
+        </Badge>
+      </div>
+      <p className="font-body text-sm text-foreground/50 leading-relaxed">{item.description}</p>
+      <div>
+        <p className="font-body text-[14px] tracking-[0.2em] uppercase text-foreground/70 font-semibold mb-3">What it unlocks</p>
+        <ul className="space-y-2">
+          {item.unlocks.map((u, j) => (
+            <li key={j} className="flex items-start gap-2">
+              <Zap size={12} className="text-accent mt-0.5 shrink-0" />
+              <span className="font-body text-sm text-foreground/65 leading-relaxed">{u}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {item.note && <p className="font-body text-[14px] text-foreground/65 italic">{item.note}</p>}
+      <div className="mt-auto pt-3 border-t border-border">
+        <Link
+          to={item.engineHref}
+          className="inline-flex items-center gap-2 font-body text-sm tracking-[0.1em] uppercase font-semibold text-foreground/65 hover:text-foreground transition-colors"
+        >
+          <span className="text-[14px] text-foreground/60">Lazy engine →</span>
+          {item.engine}
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function UseCasesPage() {
   const [active, setActive] = useState<Category>("All");
 
