@@ -74,6 +74,7 @@ const productCategories = [
     items: [
       { label: "Lazy Voice", href: "/lazy-voice", tagline: "Autonomous podcasts", icon: icons.voice },
       { label: "Lazy Stream", href: "/lazy-stream", tagline: "Autonomous stream content", icon: icons.stream },
+      { label: "Lazy YouTube", href: "/lazy-youtube", tagline: "Autonomous video content", icon: icons.stream },
     ],
   },
   {

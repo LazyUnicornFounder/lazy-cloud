@@ -63,6 +63,7 @@ const categories: Category[] = [
     products: [
       { name: "Lazy Voice", tagline: "Autonomous audio engine", link: "/lazy-voice", free: ["Setup prompt included", "Blog-to-podcast conversion", "AI voice narration", "RSS feed generation"], pro: { price: "$19", features: ["Hosted version", "Custom voice cloning", "Multi-language narration", "Listener analytics"], comingSoon: true } },
       { name: "Lazy Stream", tagline: "Autonomous Twitch engine", link: "/lazy-stream", free: ["Setup prompt included", "VOD transcription", "Stream recap generation", "SEO article writing"], pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced analytics"], comingSoon: true } },
+      { name: "Lazy YouTube", tagline: "Autonomous YouTube engine", link: "/lazy-youtube", free: ["Setup prompt included", "Video-to-transcript publishing", "SEO + GEO article generation", "Auto chapter markers"], pro: { price: "$19", features: ["Hosted version", "Comment intelligence extraction", "Multi-channel support", "Advanced analytics"], comingSoon: true } },
     ],
   },
   {

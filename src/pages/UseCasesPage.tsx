@@ -153,6 +153,22 @@ const integrations: Integration[] = [
     engineHref: "/lazy-stream",
     icon: <Tv size={20} />,
   },
+  {
+    name: "YouTube",
+    category: "Lazy Media",
+    description: "Turn every YouTube video into a transcript, SEO article, GEO article, summary, and chapter markers — published automatically.",
+    unlocks: [
+      "Publish a full transcript from every video as a searchable article on your site.",
+      "Generate a long-form SEO article from every video's content targeting your niche keywords.",
+      "Create GEO-optimised content so AI engines cite your videos in their answers.",
+      "Auto-generate chapter markers and update your YouTube video description.",
+      "Extract comment intelligence — questions become SEO keyword targets automatically.",
+    ],
+    engine: "Lazy YouTube",
+    engineHref: "/lazy-youtube",
+    icon: <Tv size={20} />,
+    note: "Uses YouTube Data API + Supadata — both free to start",
+  },
   // Lazy Dev
   {
     name: "GitHub",

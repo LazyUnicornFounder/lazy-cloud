@@ -41,6 +41,7 @@ const columns = [
     items: [
       { name: "Lazy Voice", href: "/lazy-voice" },
       { name: "Lazy Stream", href: "/lazy-stream" },
+      { name: "Lazy YouTube", href: "/lazy-youtube" },
     ],
   },
   {

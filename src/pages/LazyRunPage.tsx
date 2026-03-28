@@ -423,6 +423,7 @@ const engines = [
   // Media
   { name: "Lazy Voice", desc: "Autonomous podcasts", icon: Mic, href: "/lazy-voice" },
   { name: "Lazy Stream", desc: "Autonomous stream content", icon: Video, href: "/lazy-stream" },
+  { name: "Lazy YouTube", desc: "Autonomous video content", icon: Video, href: "/lazy-youtube" },
   // Dev
   { name: "Lazy GitHub", desc: "Autonomous changelogs", icon: Code, href: "/lazy-github" },
   { name: "Lazy GitLab", desc: "Autonomous GitLab docs", icon: Code, href: "/lazy-gitlab" },

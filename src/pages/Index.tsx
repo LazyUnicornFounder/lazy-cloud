@@ -36,6 +36,7 @@ const rotatingWords = [
   { word: "security", emoji: "🛡️" },          // Lazy Security
   { word: "auth", emoji: "🔐" },              // Lazy Auth
   { word: "meetings", emoji: "📝" },          // Lazy Granola
+  { word: "videos", emoji: "📺" },            // Lazy YouTube
 ];
 
 function RotatingHeadline() {
@@ -127,6 +128,7 @@ const products = [
   // Lazy Media
   { cursive: "Lazy", name: "Voice", link: "/lazy-voice", tagline: "Autonomous podcasts" },
   { cursive: "Lazy", name: "Stream", link: "/lazy-stream", tagline: "Autonomous stream content" },
+  { cursive: "Lazy", name: "YouTube", link: "/lazy-youtube", tagline: "Autonomous video content" },
   // Lazy Dev
   { cursive: "Lazy", name: "GitHub", link: "/lazy-github", tagline: "Autonomous changelogs" },
   { cursive: "Lazy", name: "GitLab", link: "/lazy-gitlab", tagline: "Autonomous GitLab docs" },
@@ -390,6 +392,12 @@ const sketches: Record<string, JSX.Element> = {
       <path d="M72 75 L75 78 L80 72" />
     </svg>
   ),
+  YouTube: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="20" y="30" width="80" height="60" rx="12" />
+      <path d="M52 48 L52 82 L78 65 Z" fill="#f0ead6" stroke="none" />
+    </svg>
+  ),
   "Coming Soon": (
     <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="60" cy="55" r="25" />
@@ -489,6 +497,8 @@ const Index = () => {
                       { name: "Resend", href: "/lazy-mail" },
                       { name: "ElevenLabs", href: "/lazy-voice" },
                       { name: "Twitch", href: "/lazy-stream" },
+                      { name: "YouTube", href: "/lazy-youtube" },
+                      { name: "Supadata", href: "/lazy-youtube" },
                       { name: "GitHub", href: "/lazy-github" },
                       { name: "GitLab", href: "/lazy-gitlab" },
                       { name: "Linear", href: "/lazy-linear" },

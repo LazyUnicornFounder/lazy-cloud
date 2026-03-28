@@ -254,6 +254,20 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "It learns which stream topics drive traffic and adjusts templates. Coming soon.",
         ],
       },
+      {
+        name: "Lazy YouTube",
+        description: "Turns every YouTube video into transcripts, articles, and chapter markers",
+        currentLevel: 4,
+        link: "/lazy-youtube",
+        levels: [
+          "You watch your own videos and write blog posts manually. Most never get written.",
+          "AI helps summarise. You still edit, format, and publish everything.",
+          "You batch-process last month's videos on a weekend. Always behind.",
+          "Video uploads. Transcript, SEO article, GEO article, summary, and chapters publish automatically.",
+          "Comment questions become SEO targets. High-performing topics feed back into Lazy Blogger. Your YouTube and site strategies align.",
+          "It learns which video topics drive the most site traffic and recommends future content. Coming soon.",
+        ],
+      },
     ],
   },
   {

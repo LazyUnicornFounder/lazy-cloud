@@ -39,6 +39,7 @@ const PRODUCTS = [
   // Media
   { key: "lazy-voice", label: "🎙️ Lazy Voice" },
   { key: "lazy-stream", label: "🎮 Lazy Stream" },
+  { key: "lazy-youtube", label: "📺 Lazy YouTube" },
   // Dev
   { key: "lazy-code", label: "🐙 Lazy GitHub" },
   { key: "lazy-gitlab", label: "🦊 Lazy GitLab" },
