@@ -48,6 +48,7 @@ const PRODUCT_INFO: Record<string, { name: string; url: string; description: str
   "lazy-print": { name: "Lazy Print", url: "https://lazyunicorn.ai/lazy-print", description: "autonomous print-on-demand merch engine via Printful" },
   "lazy-run": { name: "Lazy Run", url: "https://lazyunicorn.ai/lazy-run", description: "installs all twenty-five engines in one prompt" },
   "lazy-admin": { name: "Lazy Admin", url: "https://lazyunicorn.ai/lazy-admin", description: "unified ops dashboard for every engine" },
+  "lazy-youtube": { name: "Lazy YouTube", url: "https://lazyunicorn.ai/lazy-youtube", description: "autonomous YouTube content engine that turns every video into transcripts, SEO articles, GEO articles, summaries, and chapter markers" },
 };
 
 const INTEGRATION_LINKS = `When mentioning any of these integrations, ALWAYS include a link to their website: [Firecrawl](https://firecrawl.dev), [Perplexity](https://perplexity.ai), [Contentful](https://contentful.com), [Stripe](https://stripe.com), [Twilio](https://twilio.com), [Resend](https://resend.com), [ElevenLabs](https://elevenlabs.io), [Twitch](https://twitch.tv), [GitHub](https://github.com), [GitLab](https://gitlab.com), [Linear](https://linear.app), [21st.dev](https://21st.dev), [Granola](https://granola.ai), [Slack](https://slack.com), [Telegram](https://telegram.org), [Supabase](https://supabase.com), [Aikido](https://aikido.dev), [Lovable](https://lovable.dev), [Polar](https://polar.sh), [AutoDS](https://autods.com), [Printful](https://printful.com).`;
