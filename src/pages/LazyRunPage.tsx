@@ -46,6 +46,8 @@ All edge functions must use these exact names. Lazy Run calls them by these name
 | Security | security-scan, security-poll, security-alert, security-generate-report, security-monitor |
 | Auth | auth-setup, auth-sync-providers, auth-monitor |
 | Granola | granola-sync, granola-process, granola-write-post, granola-write-update, granola-extract-intel, granola-slack-summary, granola-weekly-digest |
+| Drop | drop-discover, drop-import, drop-prices, drop-stock, drop-fulfil, drop-optimise |
+| Print | print-discover, print-design, print-sync, print-fulfil, print-optimise |
 | Run | run-orchestrator, run-weekly-report, run-health-check |
 
 ---
@@ -397,6 +399,8 @@ const engines = [
   { name: "Lazy Contentful", desc: "Autonomous CMS sync", icon: Layers, href: "/lazy-contentful" },
   // Commerce
   { name: "Lazy Store", desc: "Autonomous storefronts", icon: ShoppingCart, href: "/lazy-store" },
+  { name: "Lazy Drop", desc: "Autonomous dropshipping", icon: ShoppingCart, href: "/lazy-drop" },
+  { name: "Lazy Print", desc: "Autonomous merch", icon: Layers, href: "/lazy-print" },
   { name: "Lazy Pay", desc: "Autonomous payments", icon: CreditCard, href: "/lazy-pay" },
   { name: "Lazy SMS", desc: "Autonomous text campaigns", icon: MessageSquare, href: "/lazy-sms" },
   { name: "Lazy Mail", desc: "Autonomous email flows", icon: MessageSquare, href: "/lazy-mail" },
@@ -418,7 +422,7 @@ const engines = [
 ];
 
 const faqs = [
-  { q: "Do I need all twenty-three engines?", a: "No. The setup screen lets you choose which engines to activate. You can start with two or three and add more later without reinstalling." },
+  { q: "Do I need all twenty-five engines?", a: "No. The setup screen lets you choose which engines to activate. You can start with two or three and add more later without reinstalling." },
   { q: "Does it replace the individual Lazy prompts?", a: "Yes. If you install Lazy Run you do not need to paste the individual prompts. Lazy Run includes all of them." },
   { q: "What API keys do I need?", a: "Only the ones for the engines you activate. Content engines like Lazy Blogger, Lazy SEO, and Lazy GEO use Lovable's built-in AI — no API key required. Lazy Pay needs Stripe. Lazy SMS needs Twilio. Lazy Voice needs ElevenLabs. Lazy Stream needs Twitch. Lazy Mail needs Resend. Lazy Design needs nothing — it uses 21st.dev and built-in AI." },
   { q: "Can I still use individual engines if I have them installed?", a: "Yes. Lazy Run is additive. If you already have Lazy Blogger installed it will detect it and manage it alongside the others." },
@@ -459,7 +463,7 @@ export default function LazyRunPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Run — The Autonomous Runtime for Lovable"
-        description="One prompt installs the complete autonomous operations layer into your Lovable project. Twenty-three engines. One dashboard. Everything runs itself."
+        description="One prompt installs the complete autonomous operations layer into your Lovable project. Twenty-five engines. One dashboard. Everything runs itself."
         url="/lazy-run"
       />
       <Navbar />
@@ -480,7 +484,7 @@ export default function LazyRunPage() {
             variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.1 }}
             className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6"
           >
-            <span>All 23 engines in the Lazy Stack. One prompt.</span>
+            <span>All 25 engines in the Lazy Stack. One prompt.</span>
           </motion.h1>
           <motion.p
             variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}

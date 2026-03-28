@@ -310,6 +310,42 @@ const integrations: Integration[] = [
     icon: <Shield size={20} />,
     note: "Powered by Aikido — available via Lazy Security",
   },
+  // Lazy Commerce — AutoDS
+  {
+    name: "AutoDS",
+    category: "Lazy Commerce",
+    description: "Connect to 800M+ products from 25+ global suppliers. Automate product discovery, pricing, and fulfilment for your Lovable store.",
+    unlocks: [
+      "Discover trending products in your niche automatically every day.",
+      "Import products with AI-written listings — no copy-paste from suppliers.",
+      "Monitor supplier prices hourly and adjust your sell price to maintain target margins.",
+      "Fulfil every customer order automatically via AutoDS without manual work.",
+      "Pause out-of-stock products automatically and re-activate when stock returns.",
+      "Get weekly optimisation reports identifying worst performers.",
+    ],
+    engine: "Lazy Drop",
+    engineHref: "/lazy-drop",
+    icon: <Globe size={20} />,
+    note: "Requires an AutoDS account — plans from $26.90/month",
+  },
+  // Lazy Commerce — Printful
+  {
+    name: "Printful",
+    category: "Lazy Commerce",
+    description: "Design, list, and sell custom merch with zero inventory. Printful prints and ships every order on demand.",
+    unlocks: [
+      "Generate branded merch designs from your site's colour palette and logo automatically.",
+      "Sync your Printful catalogue to your Lovable storefront in real time.",
+      "Fulfil every order via Printful — print, pack, and ship without touching a product.",
+      "Monitor profit margins and get weekly performance reports.",
+      "Launch seasonal collections automatically based on trending topics in your niche.",
+      "Show a public merch store page on your site with one prompt.",
+    ],
+    engine: "Lazy Print",
+    engineHref: "/lazy-print",
+    icon: <CreditCard size={20} />,
+    note: "Requires a Printful account — free to start, pay per order",
+  },
 ];
 
 export default function UseCasesPage() {

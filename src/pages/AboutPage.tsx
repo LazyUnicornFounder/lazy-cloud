@@ -104,7 +104,7 @@ export default function AboutPage() {
               They turn streams into articles. Commits into changelogs. Payments into optimised revenue. Customers into conversations. Posts into podcasts. Sites into businesses.
             </p>
             <p>
-              Some see a blank text editor. The lazy ones see twenty-three engines that will never need one.
+              Some see a blank text editor. The lazy ones see twenty-five engines that will never need one.
             </p>
             <p>
               And the sites they run on Lovable — the ones that publish four posts before sunrise, that text customers before you've had coffee, that pentest themselves while you sleep, that get cited by ChatGPT without you asking — they change things.
