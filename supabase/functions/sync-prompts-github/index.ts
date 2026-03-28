@@ -39,6 +39,13 @@ const PRODUCT_LABELS: Record<string, string> = {
   "lazy-supabase": "Lazy Supabase",
   "lazy-security": "Lazy Security",
   "lazy-granola": "Lazy Granola",
+  "lazy-watch": "Lazy Watch",
+  "lazy-fix": "Lazy Fix",
+  "lazy-build": "Lazy Build",
+  "lazy-intel": "Lazy Intel",
+  "lazy-repurpose": "Lazy Repurpose",
+  "lazy-trend": "Lazy Trend",
+  "lazy-churn": "Lazy Churn",
 };
 
 const CATEGORY_MAP: Record<string, string> = {
@@ -64,11 +71,18 @@ const CATEGORY_MAP: Record<string, string> = {
   "lazy-linear": "🛠️ Dev",
   "lazy-design": "🛠️ Dev",
   "lazy-auth": "🛠️ Dev",
+  "lazy-granola": "🛠️ Dev",
   "lazy-alert": "⚙️ Ops",
   "lazy-telegram": "⚙️ Ops",
   "lazy-supabase": "⚙️ Ops",
   "lazy-security": "⚙️ Ops",
-  "lazy-granola": "⚙️ Ops",
+  "lazy-watch": "🤖 Agents",
+  "lazy-fix": "🤖 Agents",
+  "lazy-build": "🤖 Agents",
+  "lazy-intel": "🤖 Agents",
+  "lazy-repurpose": "🤖 Agents",
+  "lazy-trend": "🤖 Agents",
+  "lazy-churn": "🤖 Agents",
 };
 
 // Canonical order matching the platform
@@ -77,8 +91,9 @@ const CANONICAL_ORDER = [
   "lazy-blogger", "lazy-seo", "lazy-geo", "lazy-crawl", "lazy-perplexity", "lazy-contentful",
   "lazy-store", "lazy-drop", "lazy-print", "lazy-pay", "lazy-sms", "lazy-mail",
   "lazy-voice", "lazy-stream", "lazy-youtube",
-  "lazy-code", "lazy-gitlab", "lazy-linear", "lazy-design", "lazy-auth",
-  "lazy-admin", "lazy-alert", "lazy-telegram", "lazy-supabase", "lazy-security", "lazy-granola",
+  "lazy-code", "lazy-gitlab", "lazy-linear", "lazy-design", "lazy-auth", "lazy-granola",
+  "lazy-admin", "lazy-alert", "lazy-telegram", "lazy-supabase", "lazy-security",
+  "lazy-watch", "lazy-fix", "lazy-build", "lazy-intel", "lazy-repurpose", "lazy-trend", "lazy-churn",
 ];
 
 interface PromptPayload {
