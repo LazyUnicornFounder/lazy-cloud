@@ -12,9 +12,9 @@ import { Badge } from "@/components/ui/badge";
 
 const fade = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
-type Category = "All" | "Lazy Content" | "Lazy Commerce" | "Lazy Media" | "Lazy Dev" | "Lazy Ops";
+type Category = "All" | "Lazy Content" | "Lazy Commerce" | "Lazy Media" | "Lazy Dev" | "Lazy Ops" | "Lazy Agents";
 
-const filters: Category[] = ["All", "Lazy Content", "Lazy Commerce", "Lazy Media", "Lazy Dev", "Lazy Ops"];
+const filters: Category[] = ["All", "Lazy Content", "Lazy Commerce", "Lazy Media", "Lazy Dev", "Lazy Ops", "Lazy Agents"];
 
 interface Integration {
   name: string;
@@ -361,6 +361,37 @@ const integrations: Integration[] = [
     engineHref: "/lazy-print",
     icon: <CreditCard size={20} />,
     note: "Requires a Printful account — free to start, pay per order",
+  },
+  // Lazy Agents
+  {
+    name: "GitHub (Agents)",
+    category: "Lazy Agents",
+    description: "Lazy Agents use your GitHub repo to open issues for errors and PRs for prompt improvements — all autonomously.",
+    unlocks: [
+      "Lazy Watch opens a GitHub issue every time an engine error is detected.",
+      "Lazy Fix opens a pull request with targeted prompt improvements weekly.",
+      "Lazy Build commits a complete new engine prompt from a one-paragraph brief.",
+      "All agent activity is tracked and auditable via your repo.",
+    ],
+    engine: "Lazy Agents",
+    engineHref: "/lazy-agents",
+    icon: <Code size={20} />,
+    note: "Requires GITHUB_TOKEN with repo scope",
+  },
+  {
+    name: "Anthropic (Agents)",
+    category: "Lazy Agents",
+    description: "Lazy Agents use Claude to reason about errors, performance data, and content strategy — powering autonomous decisions.",
+    unlocks: [
+      "Lazy Watch diagnoses root causes from error logs using Claude.",
+      "Lazy Fix analyses performance trends and writes precise prompt edits.",
+      "Lazy Intel generates weekly content strategy briefs from all your data.",
+      "Lazy Build drafts complete engine prompts with database schemas and edge functions.",
+    ],
+    engine: "Lazy Agents",
+    engineHref: "/lazy-agents",
+    icon: <Zap size={20} />,
+    note: "Uses Anthropic API — requires ANTHROPIC_API_KEY",
   },
 ];
 

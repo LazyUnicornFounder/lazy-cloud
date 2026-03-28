@@ -11,6 +11,7 @@ const sections = [
   { id: "breaking", title: "Breaking upgrades" },
   { id: "upgrading-lazy-run", title: "Upgrading Lazy Run" },
   { id: "upgrading-admin", title: "Upgrading the admin dashboard" },
+  { id: "upgrading-agents", title: "Upgrading Lazy Agents" },
   { id: "common-issues", title: "Common issues after upgrading" },
   { id: "staying-up-to-date", title: "Staying up to date" },
   { id: "getting-help", title: "Getting help" },
@@ -192,6 +193,17 @@ export default function UpgradeGuidePage() {
                     <p>If you previously had /lazy-blogger-dashboard and now also have /admin/blogger, the old page is harmless but redundant. Open Lovable chat and type: <em>"Please remove the old /lazy-blogger-dashboard page — it has been replaced by /admin/blogger."</em></p>
                   </div>
                 </div>
+              </Section>
+
+              <Section id="upgrading-agents" title="Upgrading Lazy Agents">
+                <p>Lazy Agents (Watch, Fix, Build, and Intel) are upgraded the same way as engines — copy the latest prompt and paste it into Lovable. Because agents interact with your GitHub repo and AI models, pay attention to these specifics:</p>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li><strong>GITHUB_TOKEN scope</strong> — newer agent versions may require additional GitHub token permissions (e.g. <code>issues:write</code> or <code>pull_requests:write</code>). Check the changelog for scope changes.</li>
+                  <li><strong>Agent settings table</strong> — agent upgrades may add new columns to the <code>agent_settings</code> table. Lovable handles migrations automatically, but verify your settings are preserved after upgrading.</li>
+                  <li><strong>Edge function names</strong> — agent functions follow the <code>agent-*</code> naming convention. If you customised any agent edge functions, back up your changes before upgrading.</li>
+                  <li><strong>Run history</strong> — agent run logs in <code>agent_runs</code> are preserved across upgrades. You will not lose historical data.</li>
+                </ul>
+                <p>After upgrading, visit <code>/admin/agents</code> to verify all four agents show their updated version and are running correctly.</p>
               </Section>
 
               <Section id="staying-up-to-date" title="Staying up to date">

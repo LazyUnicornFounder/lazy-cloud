@@ -89,6 +89,16 @@ const categories: Category[] = [
       { name: "Lazy Security", tagline: "Autonomous security engine", link: "/lazy-security", free: ["Setup prompt included", "Automated Aikido pentesting", "Vulnerability monitoring", "Audit-ready reports"], pro: { price: "$19", features: ["Hosted version", "Automated report delivery", "Multi-project dashboard", "Alert integrations"], comingSoon: true } },
     ],
   },
+  {
+    key: "agents",
+    label: "Agents",
+    products: [
+      { name: "Lazy Watch", tagline: "Autonomous error monitoring", link: "/lazy-watch", free: ["Setup prompt included", "Hourly error table scanning", "Root cause diagnosis via AI", "Auto GitHub issue creation"], pro: { price: "$19", features: ["Hosted version", "Custom alert thresholds", "Multi-project monitoring", "Slack/Telegram alerts"], comingSoon: true } },
+      { name: "Lazy Fix", tagline: "Autonomous prompt improvement", link: "/lazy-fix", free: ["Setup prompt included", "Weekly performance analysis", "Targeted prompt edits", "Auto GitHub PR creation"], pro: { price: "$19", features: ["Hosted version", "Daily improvement cycles", "A/B testing prompts", "Performance dashboards"], comingSoon: true } },
+      { name: "Lazy Build", tagline: "Autonomous engine writer", link: "/lazy-build", free: ["Setup prompt included", "One-paragraph brief to engine", "Database schema generation", "Edge function scaffolding"], pro: { price: "$29", features: ["Hosted version", "Multi-engine generation", "Custom templates", "Priority AI model access"], comingSoon: true } },
+      { name: "Lazy Intel", tagline: "Autonomous content strategist", link: "/lazy-intel", free: ["Setup prompt included", "Weekly strategy briefs", "SEO keyword generation", "GEO query generation"], pro: { price: "$19", features: ["Hosted version", "Daily intelligence cycles", "Competitor analysis", "Custom data sources"], comingSoon: true } },
+    ],
+  },
 ];
 
 const PricingPage = () => {

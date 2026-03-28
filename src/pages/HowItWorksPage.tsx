@@ -72,6 +72,17 @@ const engineGroups = [
   },
 ];
 
+const agentGroup = {
+  label: "Lazy Agents",
+  description: "Four autonomous agents that monitor, fix, build, and strategise across your entire engine stack.",
+  agents: [
+    { name: "Lazy Watch", tagline: "Monitors every engine error table and opens GitHub issues", href: "/lazy-watch" },
+    { name: "Lazy Fix", tagline: "Reads performance data and opens PRs with prompt improvements", href: "/lazy-fix" },
+    { name: "Lazy Build", tagline: "Writes complete new engine prompts from a brief", href: "/lazy-build" },
+    { name: "Lazy Intel", tagline: "Reads all your data and fills your SEO and GEO queues", href: "/lazy-intel" },
+  ],
+};
+
 export default function HowItWorksPage() {
   return (
     <>
@@ -155,6 +166,35 @@ export default function HowItWorksPage() {
             </div>
           </section>
         ))}
+
+        {/* Agents */}
+        <section className="py-16 px-6 border-t border-border">
+          <div className="max-w-4xl mx-auto">
+            <motion.div {...fade}>
+              <p className="font-body text-[14px] tracking-[0.2em] uppercase text-[#c8a961]/60 mb-2">{agentGroup.label}</p>
+              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-2">{agentGroup.label}</h2>
+              <p className="font-body text-foreground/65 text-sm mb-3">{agentGroup.description}</p>
+              <p className="font-body text-foreground/40 text-xs mb-8">Engines run your business. Agents run your engines.</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {agentGroup.agents.map((agent) => (
+                  <Link
+                    key={agent.name}
+                    to={agent.href}
+                    className="group border border-border p-5 flex items-start justify-between gap-4 hover:border-foreground/20 transition-colors"
+                  >
+                    <div className="min-w-0">
+                      <h3 className="font-display text-sm font-bold tracking-[0.06em] uppercase mb-1 group-hover:text-[#c8a961] transition-colors">
+                        {agent.name}
+                      </h3>
+                      <p className="font-body text-[13px] text-foreground/65 leading-relaxed">{agent.tagline}</p>
+                    </div>
+                    <ArrowRight size={14} className="text-foreground/15 group-hover:text-foreground/50 transition-colors flex-shrink-0 mt-1" />
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
         {/* Resources */}
         <section className="py-20 px-6 border-t border-border">

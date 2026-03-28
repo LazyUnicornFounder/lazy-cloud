@@ -29,6 +29,7 @@ const ENGINE_CATEGORIES: Record<string, string[]> = {
   "Lazy Media": ["Lazy Voice", "Lazy Stream"],
   "Lazy Dev": ["Lazy GitHub", "Lazy GitLab", "Lazy Linear", "Lazy Design", "Lazy Auth", "Lazy Granola"],
   "Lazy Ops": ["Lazy Alert", "Lazy Telegram", "Lazy Supabase", "Lazy Security"],
+  "Lazy Agents": ["Lazy Watch", "Lazy Fix", "Lazy Build", "Lazy Intel"],
 };
 
 const CATEGORY_FILTERS = ["All Engines", ...Object.keys(ENGINE_CATEGORIES)];
