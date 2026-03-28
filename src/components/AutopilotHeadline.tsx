@@ -26,6 +26,10 @@ const PRODUCT_WORDS: Record<string, { word: string; emoji: string; tagline: stri
   "lazy-drop": { word: "dropshipping", emoji: "📦", tagline: "Launch autonomous dropshipping." },
   "lazy-print": { word: "merch", emoji: "🖨️", tagline: "Launch autonomous print-on-demand." },
   "lazy-youtube": { word: "YouTube", emoji: "📺", tagline: "Launch autonomous video content." },
+  "lazy-watch": { word: "monitoring", emoji: "👁️", tagline: "Launch autonomous error monitoring." },
+  "lazy-fix": { word: "prompts", emoji: "🔧", tagline: "Launch autonomous prompt improvement." },
+  "lazy-build": { word: "engines", emoji: "🏗️", tagline: "Launch autonomous engine writing." },
+  "lazy-intel": { word: "strategy", emoji: "📊", tagline: "Launch autonomous content strategy." },
 };
 
 interface AutopilotHeadlineProps {

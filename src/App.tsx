@@ -49,6 +49,11 @@ import LazyAdminPage from "./pages/LazyAdminPage.tsx";
 import LazyGranolaPage from "./pages/LazyGranolaPage.tsx";
 import LazyGranolaSetup from "./pages/LazyGranolaSetup.tsx";
 import LazyYouTubePage from "./pages/LazyYouTubePage.tsx";
+import LazyAgentsPage from "./pages/LazyAgentsPage.tsx";
+import LazyWatchPage from "./pages/LazyWatchPage.tsx";
+import LazyFixPage from "./pages/LazyFixPage.tsx";
+import LazyBuildPage from "./pages/LazyBuildPage.tsx";
+import LazyIntelPage from "./pages/LazyIntelPage.tsx";
 
 import ChangelogPage from "./pages/ChangelogPage.tsx";
 import UpgradeGuidePage from "./pages/UpgradeGuidePage.tsx";
@@ -148,6 +153,11 @@ const App = () => (
               <Route path="/lazy-granola" element={<LazyGranolaPage />} />
               <Route path="/lazy-granola-setup" element={<LazyGranolaSetup />} />
               <Route path="/lazy-youtube" element={<LazyYouTubePage />} />
+              <Route path="/lazy-agents" element={<LazyAgentsPage />} />
+              <Route path="/lazy-watch" element={<LazyWatchPage />} />
+              <Route path="/lazy-fix" element={<LazyFixPage />} />
+              <Route path="/lazy-build" element={<LazyBuildPage />} />
+              <Route path="/lazy-intel" element={<LazyIntelPage />} />
               
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/autonomy" element={<AutonomyPage />} />
