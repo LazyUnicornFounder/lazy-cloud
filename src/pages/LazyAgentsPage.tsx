@@ -13,6 +13,9 @@ const agents = [
   { emoji: "🔧", name: "Lazy Fix", tagline: "Your prompts improve while you sleep.", desc: "Reads performance data every Sunday and opens PRs with targeted prompt improvements.", href: "/lazy-fix", icon: Wrench },
   { emoji: "🏗️", name: "Lazy Build", tagline: "Describe it. Claude builds it.", desc: "Writes complete new engine prompts from a one-paragraph brief and opens a draft GitHub PR.", href: "/lazy-build", icon: HardHat },
   { emoji: "📊", name: "Lazy Intel", tagline: "Your strategy writes itself.", desc: "Reads all your engine data every Monday and fills your SEO and GEO queues automatically.", href: "/lazy-intel", icon: BarChart3 },
+  { emoji: "🔄", name: "Lazy Repurpose", tagline: "One post. Five formats. Zero writing.", desc: "Every Sunday, turns your top blog posts into Twitter threads, LinkedIn posts, newsletter sections, and video scripts.", href: "/lazy-repurpose", icon: Bot },
+  { emoji: "🔥", name: "Lazy Trend", tagline: "Be first on every trending topic.", desc: "Scans Perplexity, Firecrawl, and competitors every 6 hours. Queues SEO keywords and GEO articles on trending topics.", href: "/lazy-trend", icon: BarChart3 },
+  { emoji: "💰", name: "Lazy Churn", tagline: "The cheapest customer is the one you keep.", desc: "Monitors Stripe subscribers daily. Sends personalised re-engagement SMS and email before cancellation happens.", href: "/lazy-churn", icon: Eye },
 ];
 
 const prerequisites = [
@@ -45,7 +48,7 @@ export default function LazyAgentsPage() {
                 Engines run your Lovable business.<br />Agents run your engines.
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
-                The Lazy Stack automates your content, commerce, and operations. The Lazy Agents automate the stack itself — monitoring for errors, improving prompts, writing new engines, and generating your weekly strategy. Your business runs. Your stack improves. You do less every week.
+                Seven autonomous agents that monitor, fix, build, strategise, repurpose, detect trends, and prevent churn across your entire engine stack. Your business runs. Your stack improves. You do less every week.
               </p>
             </motion.div>
           </div>

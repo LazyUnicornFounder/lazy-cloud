@@ -37,6 +37,9 @@ const rotatingWords = [
   { word: "auth", emoji: "🔐" },              // Lazy Auth
   { word: "meetings", emoji: "📝" },          // Lazy Granola
   { word: "videos", emoji: "📺" },            // Lazy YouTube
+  { word: "repurposing", emoji: "🔄" },       // Lazy Repurpose
+  { word: "trends", emoji: "🔥" },            // Lazy Trend
+  { word: "retention", emoji: "💰" },         // Lazy Churn
 ];
 
 function RotatingHeadline() {
@@ -669,7 +672,7 @@ const Index = () => {
             Agents run your engines.
           </h2>
           <p className="mt-6 mx-auto max-w-2xl" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.9rem, 1.3vw, 1.1rem)", color: "#f0ead6", opacity: 0.45, lineHeight: 1.7 }}>
-            Four autonomous agents that monitor, fix, build, and strategise across your entire engine stack — so every engine keeps improving without you.
+            Seven autonomous agents that monitor, fix, build, strategise, repurpose, detect trends, and prevent churn — so every engine keeps improving without you.
           </p>
           <Link
             to="/lazy-agents"
@@ -719,6 +722,32 @@ const Index = () => {
                 <rect x="62" y="50" width="10" height="30" rx="1" />
                 <rect x="77" y="38" width="10" height="42" rx="1" />
                 <path d="M32 52 L47 42 L62 47 L87 35" strokeDasharray="3 3" />
+              </svg>
+            )},
+            { cursive: "Lazy", name: "Repurpose", tagline: "Autonomous content repurposing", link: "/lazy-repurpose", sketch: (
+              <svg width="80" height="80" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M40 40 L80 40 L80 60 L90 50 L70 30" />
+                <path d="M80 80 L40 80 L40 60 L30 70 L50 90" />
+                <rect x="45" y="50" width="30" height="20" rx="2" />
+                <line x1="50" y1="57" x2="70" y2="57" />
+                <line x1="50" y1="63" x2="65" y2="63" />
+              </svg>
+            )},
+            { cursive: "Lazy", name: "Trend", tagline: "Autonomous trend detection", link: "/lazy-trend", sketch: (
+              <svg width="80" height="80" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M25 85 L45 65 L60 72 L80 40 L95 35" />
+                <circle cx="95" cy="35" r="5" fill="#f0ead6" stroke="none" />
+                <path d="M85 40 L95 35 L90 25" />
+                <line x1="25" y1="90" x2="95" y2="90" />
+                <line x1="25" y1="30" x2="25" y2="90" />
+              </svg>
+            )},
+            { cursive: "Lazy", name: "Churn", tagline: "Autonomous churn prevention", link: "/lazy-churn", sketch: (
+              <svg width="80" height="80" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="60" cy="45" r="15" />
+                <path d="M60 30 L60 45 L70 45" />
+                <path d="M35 75 Q35 65 60 60 Q85 65 85 75 L85 90 L35 90 Z" />
+                <path d="M48 80 L55 87 L72 72" />
               </svg>
             )},
           ].map((agent, i) => {

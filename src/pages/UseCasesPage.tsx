@@ -575,7 +575,7 @@ export default function UseCasesPage() {
               Agents run your engines.
             </h3>
             <p className="font-body text-foreground/50 text-base max-w-2xl mx-auto leading-relaxed">
-              Four autonomous agents that monitor, fix, build, and strategise across your entire engine stack.
+              Seven autonomous agents that monitor, fix, build, strategise, repurpose, detect trends, and prevent churn across your entire engine stack.
             </p>
           </motion.div>
         </section>
