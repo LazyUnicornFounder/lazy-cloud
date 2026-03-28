@@ -42,8 +42,11 @@ export default function LazyAgentsPage() {
             <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
               <p className="font-display text-[11px] tracking-[0.25em] uppercase text-foreground/40 font-bold mb-6">Lazy Agents</p>
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1, letterSpacing: "-0.02em" }}>
-                Engines run your business.<br />Agents run your engines.
+                Engines run your Lovable business.
               </h1>
+              <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1, letterSpacing: "-0.02em", marginTop: "0.1em" }}>
+                Agents run your engines.
+              </h2>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
                 The Lazy Stack automates your content, commerce, and operations. The Lazy Agents automate the stack itself — monitoring for errors, improving prompts, writing new engines, and generating your weekly strategy. Your business runs. Your stack improves. You do less every week.
               </p>
