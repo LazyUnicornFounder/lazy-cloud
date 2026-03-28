@@ -74,12 +74,15 @@ const engineGroups = [
 
 const agentGroup = {
   label: "Lazy Agents",
-  description: "Four autonomous agents that monitor, fix, build, and strategise across your entire engine stack.",
+  description: "Seven autonomous agents that monitor, fix, build, strategise, repurpose, detect trends, and prevent churn across your entire engine stack.",
   agents: [
     { name: "Lazy Watch", tagline: "Monitors every engine error table and opens GitHub issues", href: "/lazy-watch" },
     { name: "Lazy Fix", tagline: "Reads performance data and opens PRs with prompt improvements", href: "/lazy-fix" },
     { name: "Lazy Build", tagline: "Writes complete new engine prompts from a brief", href: "/lazy-build" },
     { name: "Lazy Intel", tagline: "Reads all your data and fills your SEO and GEO queues", href: "/lazy-intel" },
+    { name: "Lazy Repurpose", tagline: "Turns top posts into Twitter threads, LinkedIn posts, newsletters, and video scripts", href: "/lazy-repurpose" },
+    { name: "Lazy Trend", tagline: "Scans for trending topics every 6 hours and queues urgent content", href: "/lazy-trend" },
+    { name: "Lazy Churn", tagline: "Monitors subscribers daily and sends re-engagement before cancellation", href: "/lazy-churn" },
   ],
 };
 
@@ -195,7 +198,7 @@ export default function HowItWorksPage() {
                 Agents run your engines.
               </h3>
               <p className="font-body text-foreground/50 text-base max-w-2xl mx-auto leading-relaxed">
-                Four autonomous agents that monitor, fix, build, and strategise across your entire engine stack — so every engine keeps improving without you.
+                Seven autonomous agents that monitor, fix, build, strategise, repurpose, detect trends, and prevent churn — so every engine keeps improving without you.
               </p>
             </motion.div>
           </div>
