@@ -50,6 +50,7 @@ import LazyGranolaPage from "./pages/LazyGranolaPage.tsx";
 import LazyGranolaSetup from "./pages/LazyGranolaSetup.tsx";
 import LazyYouTubePage from "./pages/LazyYouTubePage.tsx";
 import LazyAgentsPage from "./pages/LazyAgentsPage.tsx";
+import LazyEnginesPage from "./pages/LazyEnginesPage.tsx";
 import LazyWatchPage from "./pages/LazyWatchPage.tsx";
 import LazyFixPage from "./pages/LazyFixPage.tsx";
 import LazyBuildPage from "./pages/LazyBuildPage.tsx";
