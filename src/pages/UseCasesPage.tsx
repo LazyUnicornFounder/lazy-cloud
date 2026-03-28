@@ -14,6 +14,8 @@ const fade = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transiti
 
 type Category = "All" | "Lazy Content" | "Lazy Commerce" | "Lazy Media" | "Lazy Dev" | "Lazy Ops" | "Lazy Agents";
 
+type SectionType = "engines" | "agents" | "all";
+
 const filters: Category[] = ["All", "Lazy Content", "Lazy Commerce", "Lazy Media", "Lazy Dev", "Lazy Ops", "Lazy Agents"];
 
 interface Integration {
@@ -395,10 +397,61 @@ const integrations: Integration[] = [
   },
 ];
 
+function IntegrationCard({ item, index }: { item: Integration; index: number }) {
+  return (
+    <motion.div
+      variants={fade}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ delay: index * 0.05 }}
+      className="border border-border bg-card p-6 flex flex-col gap-4"
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span className="text-foreground/70">{item.icon}</span>
+          <h2 className="font-display text-lg font-bold">{item.name}</h2>
+        </div>
+        <Badge variant="outline" className="text-[14px] tracking-[0.15em] uppercase shrink-0">
+          {item.category}
+        </Badge>
+      </div>
+      <p className="font-body text-sm text-foreground/50 leading-relaxed">{item.description}</p>
+      <div>
+        <p className="font-body text-[14px] tracking-[0.2em] uppercase text-foreground/70 font-semibold mb-3">What it unlocks</p>
+        <ul className="space-y-2">
+          {item.unlocks.map((u, j) => (
+            <li key={j} className="flex items-start gap-2">
+              <Zap size={12} className="text-accent mt-0.5 shrink-0" />
+              <span className="font-body text-sm text-foreground/65 leading-relaxed">{u}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {item.note && <p className="font-body text-[14px] text-foreground/65 italic">{item.note}</p>}
+      <div className="mt-auto pt-3 border-t border-border">
+        <Link
+          to={item.engineHref}
+          className="inline-flex items-center gap-2 font-body text-sm tracking-[0.1em] uppercase font-semibold text-foreground/65 hover:text-foreground transition-colors"
+        >
+          <span className="text-[14px] text-foreground/60">Lazy engine →</span>
+          {item.engine}
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function UseCasesPage() {
   const [active, setActive] = useState<Category>("All");
 
   const filtered = active === "All" ? integrations : integrations.filter((i) => i.category === active);
+
+  const engineItems = filtered.filter((i) => i.category !== "Lazy Agents");
+  const agentItems = filtered.filter((i) => i.category === "Lazy Agents");
+
+  const showEngines = engineItems.length > 0;
+  const showAgents = agentItems.length > 0;
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -461,67 +514,61 @@ export default function UseCasesPage() {
         </div>
       </section>
 
-      {/* Cards */}
-      <section className="px-6 md:px-12 max-w-5xl mx-auto pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filtered.map((item, i) => (
-            <motion.div
-              key={item.name}
-              variants={fade}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ delay: i * 0.05 }}
-              className="border border-border bg-card p-6 flex flex-col gap-4"
-            >
-              {/* Top row */}
-              <div className="flex items-start justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-foreground/70">{item.icon}</span>
-                  <h2 className="font-display text-lg font-bold">{item.name}</h2>
-                </div>
-                <Badge variant="outline" className="text-[14px] tracking-[0.15em] uppercase shrink-0">
-                  {item.category}
-                </Badge>
-              </div>
+      {/* Engines Section Header */}
+      {showEngines && (
+        <section className="px-6 md:px-12 max-w-5xl mx-auto pt-8 pb-12 text-center">
+          <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1]">
+              27 engines run your Lovable business.
+            </h2>
+            <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-[1.1]">
+              One prompt each.
+            </h3>
+            <p className="font-body text-foreground/50 text-base max-w-2xl mx-auto leading-relaxed">
+              Each engine connects your Lovable site to a real service. Here is what each connection makes possible.
+            </p>
+          </motion.div>
+        </section>
+      )}
 
-              {/* Description */}
-              <p className="font-body text-sm text-foreground/50 leading-relaxed">{item.description}</p>
+      {/* Engine Cards */}
+      {showEngines && (
+        <section className="px-6 md:px-12 max-w-5xl mx-auto pb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {engineItems.map((item, i) => (
+              <IntegrationCard key={item.name} item={item} index={i} />
+            ))}
+          </div>
+        </section>
+      )}
 
-              {/* Unlocks */}
-              <div>
-                <p className="font-body text-[14px] tracking-[0.2em] uppercase text-foreground/70 font-semibold mb-3">
-                  What it unlocks
-                </p>
-                <ul className="space-y-2">
-                  {item.unlocks.map((u, j) => (
-                    <li key={j} className="flex items-start gap-2">
-                      <Zap size={12} className="text-accent mt-0.5 shrink-0" />
-                      <span className="font-body text-sm text-foreground/65 leading-relaxed">{u}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+      {/* Agents Section Header */}
+      {showAgents && (
+        <section className="px-6 md:px-12 max-w-5xl mx-auto pt-8 pb-12 text-center border-t border-border">
+          <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1] mt-12">
+              Engines run your Lovable business.
+            </h2>
+            <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-[1.1]">
+              Agents run your engines.
+            </h3>
+            <p className="font-body text-foreground/50 text-base max-w-2xl mx-auto leading-relaxed">
+              Four autonomous agents that monitor, fix, build, and strategise across your entire engine stack.
+            </p>
+          </motion.div>
+        </section>
+      )}
 
-              {/* Note */}
-              {item.note && (
-                <p className="font-body text-[14px] text-foreground/65 italic">{item.note}</p>
-              )}
-
-              {/* Engine badge */}
-              <div className="mt-auto pt-3 border-t border-border">
-                <Link
-                  to={item.engineHref}
-                  className="inline-flex items-center gap-2 font-body text-sm tracking-[0.1em] uppercase font-semibold text-foreground/65 hover:text-foreground transition-colors"
-                >
-                  <span className="text-[14px] text-foreground/60">Lazy engine →</span>
-                  {item.engine}
-                </Link>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      {/* Agent Cards */}
+      {showAgents && (
+        <section className="px-6 md:px-12 max-w-5xl mx-auto pb-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {agentItems.map((item, i) => (
+              <IntegrationCard key={item.name} item={item} index={i} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Bottom CTA */}
       <section className="border-t border-border bg-card">

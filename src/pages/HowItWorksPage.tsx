@@ -137,6 +137,23 @@ export default function HowItWorksPage() {
           </div>
         </section>
 
+        {/* Engines Section Header */}
+        <section className="py-20 px-6 border-t border-border">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div {...fade}>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1]">
+                27 engines run your Lovable business.
+              </h2>
+              <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-[1.1]">
+                One prompt each.
+              </h3>
+              <p className="font-body text-foreground/50 text-base max-w-2xl mx-auto leading-relaxed">
+                Each engine is a self-contained prompt you paste into your Lovable project. It installs its own tables, edge functions, and UI — then runs itself autonomously.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Engine Groups */}
         {engineGroups.map((group, gi) => (
           <section key={group.label} className="py-16 px-6 border-t border-border">
@@ -167,14 +184,30 @@ export default function HowItWorksPage() {
           </section>
         ))}
 
-        {/* Agents */}
+        {/* Agents Section Header */}
+        <section className="py-20 px-6 border-t border-border">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div {...fade}>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1]">
+                Engines run your Lovable business.
+              </h2>
+              <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-[1.1]">
+                Agents run your engines.
+              </h3>
+              <p className="font-body text-foreground/50 text-base max-w-2xl mx-auto leading-relaxed">
+                Four autonomous agents that monitor, fix, build, and strategise across your entire engine stack — so every engine keeps improving without you.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Agent Cards */}
         <section className="py-16 px-6 border-t border-border">
           <div className="max-w-4xl mx-auto">
             <motion.div {...fade}>
               <p className="font-body text-[14px] tracking-[0.2em] uppercase text-[#c8a961]/60 mb-2">{agentGroup.label}</p>
               <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-2">{agentGroup.label}</h2>
-              <p className="font-body text-foreground/65 text-sm mb-3">{agentGroup.description}</p>
-              <p className="font-body text-foreground/40 text-xs mb-8">Engines run your business. Agents run your engines.</p>
+              <p className="font-body text-foreground/65 text-sm mb-8">{agentGroup.description}</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {agentGroup.agents.map((agent) => (
                   <Link
