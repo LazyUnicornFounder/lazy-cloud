@@ -67,6 +67,14 @@ const CATEGORIES: { label: string; color: string; engines: EngineDef[] }[] = [
     ],
   },
   {
+    label: "Agents", color: "text-cyan-400",
+    engines: [
+      { key: "repurpose", label: "Repurpose", icon: RefreshCw },
+      { key: "trend", label: "Trend", icon: Radar },
+      { key: "churn", label: "Churn", icon: CreditCard },
+    ],
+  },
+  {
     label: "Ops", color: "text-red-400",
     engines: [
       { key: "alert", label: "Alert", icon: Bell },

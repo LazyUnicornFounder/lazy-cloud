@@ -91,6 +91,9 @@ const AGENTS = [
   { key: "lazy-fix", label: "Lazy Fix", path: "/lazy-fix", color: "hsl(120, 50%, 45%)" },
   { key: "lazy-build", label: "Lazy Build", path: "/lazy-build", color: "hsl(35, 80%, 50%)" },
   { key: "lazy-intel", label: "Lazy Intel", path: "/lazy-intel", color: "hsl(210, 70%, 55%)" },
+  { key: "lazy-repurpose", label: "Lazy Repurpose", path: "/lazy-repurpose", color: "hsl(170, 60%, 45%)" },
+  { key: "lazy-trend", label: "Lazy Trend", path: "/lazy-trend", color: "hsl(15, 80%, 55%)" },
+  { key: "lazy-churn", label: "Lazy Churn", path: "/lazy-churn", color: "hsl(300, 50%, 50%)" },
 ];
 
 const tooltipStyle = {
