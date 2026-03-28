@@ -466,38 +466,35 @@ const Index = () => {
                 {[...Array(2)].map((_, dupeIdx) => (
                   <div key={dupeIdx} className="flex gap-8 items-center shrink-0">
                     {[
-                      { name: "Firecrawl", href: "/lazy-crawl", desc: "Autonomous web intelligence" },
-                      { name: "Perplexity", href: "/lazy-perplexity", desc: "Autonomous research" },
-                      { name: "Contentful", href: "/lazy-contentful", desc: "Autonomous CMS bridge" },
-                      { name: "Shopify", href: "/lazy-store", desc: "Autonomous storefronts" },
-                      { name: "AutoDS", href: "/lazy-drop", desc: "Autonomous dropshipping" },
-                      { name: "Printful", href: "/lazy-print", desc: "Autonomous merch" },
-                      { name: "Stripe", href: "/lazy-pay", desc: "Autonomous payments" },
-                      { name: "Twilio", href: "/lazy-sms", desc: "Autonomous SMS" },
-                      { name: "Resend", href: "/lazy-mail", desc: "Autonomous email" },
-                      { name: "ElevenLabs", href: "/lazy-voice", desc: "Autonomous audio" },
-                      { name: "Twitch", href: "/lazy-stream", desc: "Autonomous streaming" },
-                      { name: "GitHub", href: "/lazy-github", desc: "Autonomous changelogs" },
-                      { name: "GitLab", href: "/lazy-gitlab", desc: "Autonomous changelogs" },
-                      { name: "Linear", href: "/lazy-linear", desc: "Autonomous roadmaps" },
-                      { name: "21st.dev", href: "/lazy-design", desc: "Autonomous design" },
-                      { name: "Google OAuth", href: "/lazy-auth", desc: "Autonomous auth" },
-                      { name: "Granola", href: "/lazy-granola", desc: "Autonomous meetings" },
-                      { name: "Slack", href: "/lazy-alert", desc: "Autonomous alerts" },
-                      { name: "Telegram", href: "/lazy-telegram", desc: "Autonomous alerts" },
-                      { name: "Supabase", href: "/lazy-supabase", desc: "Autonomous monitoring" },
-                      { name: "Aikido", href: "/lazy-security", desc: "Autonomous security" },
+                      { name: "Firecrawl", href: "/lazy-crawl" },
+                      { name: "Perplexity", href: "/lazy-perplexity" },
+                      { name: "Contentful", href: "/lazy-contentful" },
+                      { name: "Shopify", href: "/lazy-store" },
+                      { name: "AutoDS", href: "/lazy-drop" },
+                      { name: "Printful", href: "/lazy-print" },
+                      { name: "Stripe", href: "/lazy-pay" },
+                      { name: "Twilio", href: "/lazy-sms" },
+                      { name: "Resend", href: "/lazy-mail" },
+                      { name: "ElevenLabs", href: "/lazy-voice" },
+                      { name: "Twitch", href: "/lazy-stream" },
+                      { name: "GitHub", href: "/lazy-github" },
+                      { name: "GitLab", href: "/lazy-gitlab" },
+                      { name: "Linear", href: "/lazy-linear" },
+                      { name: "21st.dev", href: "/lazy-design" },
+                      { name: "Google OAuth", href: "/lazy-auth" },
+                      { name: "Granola", href: "/lazy-granola" },
+                      { name: "Slack", href: "/lazy-alert" },
+                      { name: "Telegram", href: "/lazy-telegram" },
+                      { name: "Supabase", href: "/lazy-supabase" },
+                      { name: "Aikido", href: "/lazy-security" },
                     ].map((item) => (
                       <Link
                         key={`${dupeIdx}-${item.name}`}
                         to={item.href}
-                        className="relative group text-[13px] tracking-[0.1em] uppercase font-medium shrink-0 transition-opacity duration-200 hover:opacity-80"
+                        className="text-[13px] tracking-[0.1em] uppercase font-medium shrink-0 transition-opacity duration-200 hover:opacity-80"
                         style={{ color: "#f0ead6", opacity: 0.35 }}
                       >
                         {item.name}
-                        <span className="absolute left-1/2 -translate-x-1/2 -top-9 px-3 py-1.5 rounded bg-card border border-border text-[11px] tracking-[0.08em] normal-case font-normal text-foreground/70 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-                          {item.desc}
-                        </span>
                       </Link>
                     ))}
                   </div>
