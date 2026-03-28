@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Copy, Check, ChevronDown, ChevronRight, Pencil, History, Save, X, Github } from "lucide-react";
+import { Copy, Check, ChevronDown, ChevronRight, Pencil, History, Save, X, Github, Download } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { savePromptVersion, type PromptVersion } from "@/hooks/usePrompt";
@@ -250,6 +250,7 @@ const AdminPrompts = () => {
   useEffect(() => { fetchAll(); }, [fetchAll]);
 
   const [syncing, setSyncing] = useState(false);
+  const [pulling, setPulling] = useState(false);
 
   const handlePushAll = async () => {
     setSyncing(true);
@@ -270,6 +271,26 @@ const AdminPrompts = () => {
     }
   };
 
+  const handlePullFromGitHub = async () => {
+    setPulling(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("pull-prompts-github");
+      if (error) throw error;
+      const result = data as { success: boolean; updated: number; unchanged: number; error?: string };
+      if (!result.success) throw new Error(result.error || "Pull failed");
+      if (result.updated > 0) {
+        toast.success(`Synced ${result.updated} prompt(s) from GitHub`);
+        fetchAll();
+      } else {
+        toast.info("All prompts already up to date");
+      }
+    } catch (err) {
+      console.error("Pull from GitHub failed:", err);
+      toast.error("Failed to pull from GitHub");
+    }
+    setPulling(false);
+  };
+
   if (loading) return <p className="font-body text-sm text-muted-foreground py-8 text-center">Loading prompts…</p>;
 
   return (
@@ -278,14 +299,24 @@ const AdminPrompts = () => {
         <p className="font-body text-sm text-muted-foreground">
           Current prompts shipped on each product page. Edit here → changes go live instantly. Full version history tracked.
         </p>
-        <button
-          onClick={handlePushAll}
-          disabled={syncing}
-          className="inline-flex items-center gap-2 font-body text-xs px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 shrink-0"
-        >
-          <Github size={14} />
-          {syncing ? "Pushing…" : "Push All to GitHub"}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handlePullFromGitHub}
+            disabled={pulling || syncing}
+            className="inline-flex items-center gap-2 font-body text-xs px-4 py-2 rounded-lg bg-muted text-foreground hover:bg-muted/80 transition-colors disabled:opacity-50 shrink-0"
+          >
+            <Download size={14} />
+            {pulling ? "Pulling…" : "Sync from GitHub"}
+          </button>
+          <button
+            onClick={handlePushAll}
+            disabled={syncing || pulling}
+            className="inline-flex items-center gap-2 font-body text-xs px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 shrink-0"
+          >
+            <Github size={14} />
+            {syncing ? "Pushing…" : "Push All to GitHub"}
+          </button>
+        </div>
       </div>
 
       {PRODUCTS.map((product) => {
