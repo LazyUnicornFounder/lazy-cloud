@@ -262,9 +262,19 @@ const AdminPrompts = () => {
 
   const handlePushAll = async () => {
     setSyncing(true);
-    const currentPrompts = allVersions
-      .filter(v => v.is_current)
-      .map(v => ({ product: v.product, version: v.version, prompt_text: v.prompt_text }));
+    const currentPrompts = Array.from(
+      allVersions
+        .filter(v => v.is_current)
+        .reduce((map, prompt) => {
+          const existing = map.get(prompt.product);
+          if (!existing || new Date(prompt.created_at).getTime() > new Date(existing.created_at).getTime()) {
+            map.set(prompt.product, prompt);
+          }
+          return map;
+        }, new Map<string, PromptVersion>())
+        .values()
+    ).map(v => ({ product: v.product, version: v.version, prompt_text: v.prompt_text }));
+
     if (currentPrompts.length === 0) {
       toast.error("No prompts to sync");
       setSyncing(false);

@@ -102,6 +102,41 @@ interface PromptPayload {
   prompt_text: string;
 }
 
+function dedupePrompts(prompts: PromptPayload[]) {
+  const latestByProduct = new Map<string, PromptPayload>();
+
+  for (const prompt of prompts) {
+    const existing = latestByProduct.get(prompt.product);
+    if (!existing) {
+      latestByProduct.set(prompt.product, prompt);
+      continue;
+    }
+
+    const existingVersion = existing.version.split(".").map(Number);
+    const nextVersion = prompt.version.split(".").map(Number);
+    const maxLength = Math.max(existingVersion.length, nextVersion.length);
+
+    let shouldReplace = false;
+    for (let i = 0; i < maxLength; i += 1) {
+      const currentPart = nextVersion[i] ?? 0;
+      const existingPart = existingVersion[i] ?? 0;
+      if (currentPart > existingPart) {
+        shouldReplace = true;
+        break;
+      }
+      if (currentPart < existingPart) {
+        break;
+      }
+    }
+
+    if (shouldReplace || prompt.prompt_text.length > existing.prompt_text.length) {
+      latestByProduct.set(prompt.product, prompt);
+    }
+  }
+
+  return Array.from(latestByProduct.values());
+}
+
 async function githubRequest(path: string, token: string, options: RequestInit = {}) {
   const res = await fetch(`${GITHUB_API}${path}`, {
     ...options,
@@ -263,7 +298,9 @@ serve(async (req) => {
         .select("product, version, prompt_text")
         .eq("is_current", true);
       if (dbError) throw new Error(`DB fetch failed: ${dbError.message}`);
-      all_prompts = (data || []) as PromptPayload[];
+      all_prompts = dedupePrompts((data || []) as PromptPayload[]);
+    } else {
+      all_prompts = dedupePrompts(all_prompts);
     }
 
     // Push individual prompt file if specified
