@@ -531,6 +531,33 @@ export type Database = {
         }
         Relationships: []
       }
+      product_publish_settings: {
+        Row: {
+          created_at: string
+          enabled: boolean
+          geo_posts_per_day: number
+          id: string
+          product: string
+          seo_posts_per_day: number
+        }
+        Insert: {
+          created_at?: string
+          enabled?: boolean
+          geo_posts_per_day?: number
+          id?: string
+          product: string
+          seo_posts_per_day?: number
+        }
+        Update: {
+          created_at?: string
+          enabled?: boolean
+          geo_posts_per_day?: number
+          id?: string
+          product?: string
+          seo_posts_per_day?: number
+        }
+        Relationships: []
+      }
       prompt_releases: {
         Row: {
           change_type: string
