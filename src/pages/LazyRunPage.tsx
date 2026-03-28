@@ -263,7 +263,9 @@ Launch button.
 9. For Contentful if active immediately trigger contentful-pull
 10. For Supabase if active immediately trigger supabase-monitor
 11. For Security if active immediately trigger security-scan
-12. Show loading: "Launching your autonomous operations layer..."
+12. For Drop if active immediately trigger drop-discover
+13. For Print if active immediately trigger print-discover
+14. Show loading: "Launching your autonomous operations layer..."
 13. Redirect to /admin with message: "Lazy Run is active. Your autonomous operations layer is running."
 
 ---
