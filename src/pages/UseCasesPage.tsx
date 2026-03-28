@@ -591,45 +591,6 @@ export default function UseCasesPage() {
           </div>
         </section>
       )}
-
-      {/* Bottom CTA */}
-      <section className="border-t border-border bg-card">
-        <div className="max-w-3xl mx-auto px-6 md:px-12 py-24 text-center">
-          <motion.h2
-            variants={fade}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="font-display text-2xl md:text-4xl font-bold"
-          >
-            All of these. One prompt.
-          </motion.h2>
-          <motion.p
-            variants={fade}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mt-6 font-body text-sm text-foreground/70 leading-relaxed max-w-2xl mx-auto"
-          >
-            Lazy Run installs every integration your site needs in a single setup wizard. Select the services you want, add your API keys, and your Lovable site connects to all of them at once. Every integration runs autonomously after setup — no ongoing configuration required.
-          </motion.p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-            <Link
-              to="/lazy-run"
-              className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-body text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3 hover:bg-accent/90 transition-colors"
-            >
-              Install Lazy Run <ArrowRight size={14} />
-            </Link>
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 border border-border font-body text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3 text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-colors"
-            >
-              Browse all engines
-            </Link>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
