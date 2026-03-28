@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -14,198 +15,89 @@ interface Product {
   pro: { price: string; features: string[]; comingSoon?: boolean };
 }
 
-const products: Product[] = [
-  // Lazy Unicorn
+interface Category {
+  key: string;
+  label: string;
+  products: Product[];
+}
+
+const categories: Category[] = [
   {
-    name: "Lazy Run",
-    tagline: "Autonomous operations layer",
-    link: "/lazy-run",
-    free: ["Setup prompt included", "All engines in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
-    pro: { price: "$99", features: ["Hosted version — zero config", "Auto-scaling engine execution", "Priority AI model access", "Dedicated support", "Custom engine configuration"], comingSoon: true },
+    key: "unicorn",
+    label: "🚀 Unicorn",
+    products: [
+      {
+        name: "Lazy Run", tagline: "Autonomous operations layer", link: "/lazy-run",
+        free: ["Setup prompt included", "All 25 engines in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
+        pro: { price: "$99", features: ["Hosted version — zero config", "Auto-scaling engine execution", "Priority AI model access", "Dedicated support", "Custom engine configuration"], comingSoon: true },
+      },
+      {
+        name: "Lazy Admin", tagline: "Unified dashboard for every engine", link: "/lazy-admin",
+        free: ["Setup prompt included", "Auto-detects installed engines", "Master status indicator", "Unified activity feed", "Per-engine deep dives"],
+        pro: { price: "$9", features: ["Hosted version", "Multi-project support", "Team access with roles", "Weekly email digest", "Mobile app"], comingSoon: true },
+      },
+    ],
   },
   {
-    name: "Lazy Admin",
-    tagline: "Unified dashboard for every engine",
-    link: "/lazy-admin",
-    free: ["Setup prompt included", "Auto-detects installed engines", "Master status indicator", "Unified activity feed", "Per-engine deep dives"],
-    pro: { price: "$9", features: ["Hosted version", "Multi-project support", "Team access with roles", "Weekly email digest", "Mobile app"], comingSoon: true },
-  },
-  // Lazy Content
-  {
-    name: "Lazy Blogger",
-    tagline: "Autonomous blog engine",
-    link: "/lazy-blogger",
-    free: ["Setup prompt included", "Self-hosted in your Lovable project", "Unlimited AI-generated posts", "Custom tone, topics & frequency", "Auto-publish on schedule"],
-    pro: { price: "$19", features: ["Hosted version — no setup needed", "Multi-site publishing", "Social media cross-posting", "Advanced analytics dashboard", "Priority AI model access"], comingSoon: true },
+    key: "content",
+    label: "✍️ Content",
+    products: [
+      { name: "Lazy Blogger", tagline: "Autonomous blog engine", link: "/lazy-blogger", free: ["Setup prompt included", "Unlimited AI-generated posts", "Custom tone, topics & frequency", "Auto-publish on schedule"], pro: { price: "$19", features: ["Hosted version — no setup needed", "Multi-site publishing", "Social media cross-posting", "Advanced analytics dashboard"], comingSoon: true } },
+      { name: "Lazy SEO", tagline: "Autonomous SEO engine", link: "/lazy-seo", free: ["Setup prompt included", "Keyword discovery & tracking", "SEO-optimised article generation", "Auto-publish to your blog"], pro: { price: "$19", features: ["Hosted version", "Backlink monitoring", "Competitor keyword tracking", "Weekly SEO reports"], comingSoon: true } },
+      { name: "Lazy GEO", tagline: "Autonomous GEO engine", link: "/lazy-geo", free: ["Setup prompt included", "AI citation tracking", "Citation-ready content generation", "Brand mention detection"], pro: { price: "$19", features: ["Hosted version", "Real-time citation alerts", "Competitor citation tracking", "Monthly GEO reports"], comingSoon: true } },
+      { name: "Lazy Crawl", tagline: "Autonomous web intelligence", link: "/lazy-crawl", free: ["Setup prompt included", "Competitor website monitoring", "Trend & keyword extraction", "Lead discovery from directories"], pro: { price: "$19", features: ["Hosted version", "Firecrawl API costs included", "Daily competitor reports", "Advanced change detection"], comingSoon: true } },
+      { name: "Lazy Perplexity", tagline: "Autonomous research engine", link: "/lazy-perplexity", free: ["Setup prompt included", "Real-time niche research", "Citation-rich content generation", "Brand visibility testing"], pro: { price: "$29", features: ["Hosted version", "Daily citation monitoring", "Competitive citation tracking", "Advanced scheduling"], comingSoon: true } },
+      { name: "Lazy Contentful", tagline: "Autonomous Contentful bridge", link: "/lazy-contentful", free: ["Setup prompt included", "Two-way content sync", "Webhook real-time updates", "Content type mapping"], pro: { price: "$29", features: ["Hosted version", "Multi-space support", "Advanced content type mapping", "Scheduled sync windows"], comingSoon: true } },
+    ],
   },
   {
-    name: "Lazy SEO",
-    tagline: "Autonomous SEO engine",
-    link: "/lazy-seo",
-    free: ["Setup prompt included", "Keyword discovery & tracking", "SEO-optimised article generation", "Google Search Console integration", "Auto-publish to your blog"],
-    pro: { price: "$19", features: ["Hosted version", "Backlink monitoring", "Competitor keyword tracking", "Content gap analysis", "Weekly SEO reports"], comingSoon: true },
+    key: "commerce",
+    label: "🛒 Commerce",
+    products: [
+      { name: "Lazy Store", tagline: "Autonomous Shopify engine", link: "/lazy-store", free: ["Setup prompt included", "Shopify integration", "Product discovery & listing", "Conversion optimisation"], pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced pricing algorithms", "Revenue analytics"], comingSoon: true } },
+      { name: "Lazy Drop", tagline: "Autonomous dropshipping", link: "/lazy-drop", free: ["Setup prompt included", "AutoDS integration", "Product discovery & import", "Automatic fulfilment"], pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced product analytics", "Priority AI model access"], comingSoon: true } },
+      { name: "Lazy Print", tagline: "Autonomous print-on-demand", link: "/lazy-print", free: ["Setup prompt included", "Printful integration", "AI-written descriptions", "Order fulfilment"], pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Bulk design upload", "Advanced analytics"], comingSoon: true } },
+      { name: "Lazy Pay", tagline: "Autonomous payments engine", link: "/lazy-pay", free: ["Setup prompt included", "Polar integration", "Checkout & subscriptions", "Payment webhooks"], pro: { price: "$19", features: ["Hosted version", "Multi-gateway support", "Revenue dashboards", "Automated dunning"], comingSoon: true } },
+      { name: "Lazy SMS", tagline: "Autonomous SMS engine", link: "/lazy-sms", free: ["Setup prompt included", "Twilio integration", "Automated SMS campaigns", "Conversion tracking"], pro: { price: "$19", features: ["Hosted version", "Advanced segmentation", "A/B testing", "Compliance automation"], comingSoon: true } },
+      { name: "Lazy Mail", tagline: "Autonomous email engine", link: "/lazy-mail", free: ["Setup prompt included", "Subscriber capture", "AI-written welcome sequences", "Self-improving subject lines"], pro: { price: "$19", features: ["Hosted version — zero config", "Multi-list segmentation", "A/B testing", "Advanced analytics"], comingSoon: true } },
+    ],
   },
   {
-    name: "Lazy GEO",
-    tagline: "Autonomous GEO engine",
-    link: "/lazy-geo",
-    free: ["Setup prompt included", "AI citation tracking", "Citation-ready content generation", "Multi-engine monitoring", "Brand mention detection"],
-    pro: { price: "$19", features: ["Hosted version", "Real-time citation alerts", "Competitor citation tracking", "Citation influence scoring", "Monthly GEO reports"], comingSoon: true },
+    key: "media",
+    label: "🎙️ Media",
+    products: [
+      { name: "Lazy Voice", tagline: "Autonomous audio engine", link: "/lazy-voice", free: ["Setup prompt included", "Blog-to-podcast conversion", "AI voice narration", "RSS feed generation"], pro: { price: "$19", features: ["Hosted version", "Custom voice cloning", "Multi-language narration", "Listener analytics"], comingSoon: true } },
+      { name: "Lazy Stream", tagline: "Autonomous Twitch engine", link: "/lazy-stream", free: ["Setup prompt included", "VOD transcription", "Stream recap generation", "SEO article writing"], pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced analytics"], comingSoon: true } },
+    ],
   },
   {
-    name: "Lazy Crawl",
-    tagline: "Autonomous web intelligence engine",
-    link: "/lazy-crawl",
-    free: ["Setup prompt included", "Competitor website monitoring", "Trend extraction & keyword discovery", "Lead discovery from directories", "Bring your own Firecrawl API key"],
-    pro: { price: "$19", features: ["Hosted version", "Firecrawl API costs included", "Daily competitor reports", "Advanced change detection", "Priority processing"], comingSoon: true },
+    key: "dev",
+    label: "🛠️ Dev",
+    products: [
+      { name: "Lazy GitHub", tagline: "Autonomous GitHub engine", link: "/lazy-github", free: ["Setup prompt included", "Commit-to-changelog generation", "Release notes automation", "Developer blog publishing"], pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced formatting", "API docs generation"], comingSoon: true } },
+      { name: "Lazy GitLab", tagline: "Autonomous GitLab engine", link: "/lazy-gitlab", free: ["Setup prompt included", "Changelog generation", "Release notes automation", "Developer blog publishing"], pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced formatting", "Custom templates"], comingSoon: true } },
+      { name: "Lazy Linear", tagline: "Autonomous Linear engine", link: "/lazy-linear", free: ["Setup prompt included", "Changelog from cycles", "Public roadmap publishing", "Product blog posts"], pro: { price: "$19", features: ["Hosted version", "Multi-team support", "Advanced formatting", "Custom publishing rules"], comingSoon: true } },
+      { name: "Lazy Design", tagline: "Autonomous design engine", link: "/lazy-design", free: ["Setup prompt included", "Page auditing", "21st.dev component suggestions", "AI fallback prompts"], pro: { price: "$19", features: ["Hosted version — zero config", "Automated weekly upgrades", "Advanced brand matching", "Multi-project support"], comingSoon: true } },
+      { name: "Lazy Auth", tagline: "Autonomous auth engine", link: "/lazy-auth", free: ["Setup prompt included", "Google Sign-In", "Email/password & magic link", "Protected routes & roles"], pro: { price: "$19", features: ["Hosted version — zero config", "Multi-tenant support", "Advanced session analytics", "Custom OAuth providers"], comingSoon: true } },
+      { name: "Lazy Granola", tagline: "Autonomous meeting engine", link: "/lazy-granola", free: ["Setup prompt included", "Granola meeting sync", "Auto blog posts from meetings", "Customer intelligence extraction"], pro: { price: "$19", features: ["Hosted version — zero config", "Multi-workspace support", "Advanced classification", "Custom output templates"], comingSoon: true } },
+    ],
   },
   {
-    name: "Lazy Perplexity",
-    tagline: "Autonomous research & citation engine",
-    link: "/lazy-perplexity",
-    free: ["Setup prompt included", "Real-time niche research", "Citation-rich content generation", "Brand visibility testing", "Bring your own Perplexity API key"],
-    pro: { price: "$29", features: ["Hosted version", "Daily citation monitoring", "Competitive citation tracking", "Advanced research scheduling"], comingSoon: true },
-  },
-  {
-    name: "Lazy Contentful",
-    tagline: "Autonomous Contentful bridge",
-    link: "/lazy-contentful",
-    free: ["Setup prompt included", "Two-way content sync", "Webhook real-time updates", "Content type mapping", "Works with free Contentful tier"],
-    pro: { price: "$29", features: ["Hosted version", "Multi-space support", "Advanced content type mapping", "Scheduled sync windows"], comingSoon: true },
-  },
-  // Lazy Commerce
-  {
-    name: "Lazy Store",
-    tagline: "Autonomous Shopify store engine",
-    link: "/lazy-store",
-    free: ["Setup prompt included", "Shopify integration", "Product discovery & listing", "Price monitoring", "Conversion optimisation"],
-    pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced pricing algorithms", "Automated ad campaigns", "Revenue analytics"], comingSoon: true },
-  },
-  {
-    name: "Lazy Drop",
-    tagline: "Autonomous dropshipping engine",
-    link: "/lazy-drop",
-    free: ["Setup prompt included", "AutoDS integration", "Product discovery & import", "AI-written listings", "Hourly price monitoring", "Automatic fulfilment"],
-    pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced product analytics", "Priority AI model access"], comingSoon: true },
-  },
-  {
-    name: "Lazy Print",
-    tagline: "Autonomous print-on-demand engine",
-    link: "/lazy-print",
-    free: ["Setup prompt included", "Printful integration", "Product catalogue sync", "AI-written descriptions", "Automatic mockup generation", "Order fulfilment"],
-    pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Bulk design upload", "Advanced product analytics"], comingSoon: true },
-  },
-  {
-    name: "Lazy Pay",
-    tagline: "Autonomous payments engine",
-    link: "/lazy-pay",
-    free: ["Setup prompt included", "Polar integration", "Checkout flow generation", "Subscription management", "Payment webhooks"],
-    pro: { price: "$19", features: ["Hosted version", "Multi-gateway support", "Revenue dashboards", "Churn prediction", "Automated dunning"], comingSoon: true },
-  },
-  {
-    name: "Lazy SMS",
-    tagline: "Autonomous SMS engine",
-    link: "/lazy-sms",
-    free: ["Setup prompt included", "Twilio integration", "Automated SMS campaigns", "Contact management", "Conversion tracking"],
-    pro: { price: "$19", features: ["Hosted version", "Advanced segmentation", "A/B testing", "Multi-channel messaging", "Compliance automation"], comingSoon: true },
-  },
-  {
-    name: "Lazy Mail",
-    tagline: "Autonomous email engine",
-    link: "/lazy-mail",
-    free: ["Setup prompt included", "Subscriber capture with double opt-in", "AI-written welcome sequences", "Automated newsletter broadcasts", "Self-improving subject lines"],
-    pro: { price: "$19", features: ["Hosted version — zero config", "Multi-list segmentation", "A/B testing on subject lines", "Advanced open & click analytics"], comingSoon: true },
-  },
-  // Lazy Media
-  {
-    name: "Lazy Voice",
-    tagline: "Autonomous audio engine",
-    link: "/lazy-voice",
-    free: ["Setup prompt included", "Blog-to-podcast conversion", "AI voice narration", "RSS feed generation", "Auto-publish episodes"],
-    pro: { price: "$19", features: ["Hosted version", "Custom voice cloning", "Multi-language narration", "Spotify & Apple distribution", "Listener analytics"], comingSoon: true },
-  },
-  {
-    name: "Lazy Stream",
-    tagline: "Autonomous Twitch content engine",
-    link: "/lazy-stream",
-    free: ["Setup prompt included", "VOD transcription", "Stream recap generation", "Clip extraction", "SEO article writing"],
-    pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced stream analytics", "Self-improving content"], comingSoon: true },
-  },
-  // Lazy Dev
-  {
-    name: "Lazy GitHub",
-    tagline: "Autonomous GitHub content engine",
-    link: "/lazy-github",
-    free: ["Setup prompt included", "Commit-to-changelog generation", "Release notes automation", "Developer blog publishing", "GitHub webhook integration"],
-    pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced changelog formatting", "API documentation generation", "Custom templates"], comingSoon: true },
-  },
-  {
-    name: "Lazy GitLab",
-    tagline: "Autonomous GitLab content engine",
-    link: "/lazy-gitlab",
-    free: ["Setup prompt included", "Changelog generation", "Release notes automation", "Developer blog publishing", "GitLab webhook integration"],
-    pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced changelog formatting", "Custom templates"], comingSoon: true },
-  },
-  {
-    name: "Lazy Linear",
-    tagline: "Autonomous Linear content engine",
-    link: "/lazy-linear",
-    free: ["Setup prompt included", "Changelog generation from cycles", "Public roadmap publishing", "Product blog posts", "Works with any Linear plan"],
-    pro: { price: "$19", features: ["Hosted version", "Multi-team support", "Advanced content formatting", "Custom publishing rules"], comingSoon: true },
-  },
-  {
-    name: "Lazy Design",
-    tagline: "Autonomous design upgrade engine",
-    link: "/lazy-design",
-    free: ["Setup prompt included", "Page auditing and section detection", "21st.dev component suggestions", "AI fallback prompts", "No API key required"],
-    pro: { price: "$19", features: ["Hosted version — zero config", "Automated weekly design upgrades", "Advanced brand matching", "Multi-project support"], comingSoon: true },
-  },
-  {
-    name: "Lazy Auth",
-    tagline: "Autonomous authentication engine",
-    link: "/lazy-auth",
-    free: ["Setup prompt included", "Google Sign-In integration", "Email/password and magic link login", "Protected routes and role-based access", "User management dashboard"],
-    pro: { price: "$19", features: ["Hosted version — zero config", "Multi-tenant support", "Advanced session analytics", "Custom OAuth providers"], comingSoon: true },
-  },
-  {
-    name: "Lazy Granola",
-    tagline: "Autonomous meeting-to-content engine",
-    link: "/lazy-granola",
-    free: ["Setup prompt included", "Granola meeting sync", "Auto blog posts from meetings", "Customer intelligence extraction", "Slack summaries & Linear issues"],
-    pro: { price: "$19", features: ["Hosted version — zero config", "Multi-workspace support", "Advanced meeting classification", "Custom output templates"], comingSoon: true },
-  },
-  // Lazy Ops
-  {
-    name: "Lazy Alert",
-    tagline: "Real-time Slack alerts for every engine",
-    link: "/lazy-alert",
-    free: ["Setup prompt included", "Real-time event alerts to Slack", "Daily morning briefing", "Slash commands for engine control", "Bring your own Slack workspace"],
-    pro: { price: "$9", features: ["Hosted version", "Custom Slack bot with branded avatar", "Advanced filtering", "Multiple channel routing by event type"], comingSoon: true },
-  },
-  {
-    name: "Lazy Telegram",
-    tagline: "Autonomous Telegram alerts",
-    link: "/lazy-telegram",
-    free: ["Setup prompt included", "Real-time event alerts", "Daily morning briefing", "Bot commands for engine control", "Telegram bots are free"],
-    pro: { price: "$9", features: ["Hosted version", "Group chat support", "Multiple recipient routing", "Custom bot branding"], comingSoon: true },
-  },
-  {
-    name: "Lazy Supabase",
-    tagline: "Autonomous database monitoring engine",
-    link: "/lazy-supabase",
-    free: ["Setup prompt included", "User milestone detection", "Edge function error monitoring", "Row milestone tracking", "Weekly growth reports"],
-    pro: { price: "$19", features: ["Hosted version", "Multi-project monitoring", "Advanced growth analytics", "Custom milestone thresholds"], comingSoon: true },
-  },
-  {
-    name: "Lazy Security",
-    tagline: "Autonomous security monitoring engine",
-    link: "/lazy-security",
-    free: ["Setup prompt included", "Automated Aikido pentesting", "Continuous vulnerability monitoring", "Security score tracking", "Audit-ready report generation"],
-    pro: { price: "$19", features: ["Hosted version", "Automated report delivery before meetings", "Multi-project security dashboard", "Slack and Telegram alerts included"], comingSoon: true },
+    key: "ops",
+    label: "⚙️ Ops",
+    products: [
+      { name: "Lazy Alert", tagline: "Real-time Slack alerts", link: "/lazy-alert", free: ["Setup prompt included", "Real-time event alerts", "Daily morning briefing", "Slash commands"], pro: { price: "$9", features: ["Hosted version", "Custom branded bot", "Advanced filtering", "Multi-channel routing"], comingSoon: true } },
+      { name: "Lazy Telegram", tagline: "Autonomous Telegram alerts", link: "/lazy-telegram", free: ["Setup prompt included", "Real-time event alerts", "Daily morning briefing", "Bot commands"], pro: { price: "$9", features: ["Hosted version", "Group chat support", "Multiple recipient routing", "Custom bot branding"], comingSoon: true } },
+      { name: "Lazy Supabase", tagline: "Autonomous database monitoring", link: "/lazy-supabase", free: ["Setup prompt included", "User milestone detection", "Edge function monitoring", "Weekly growth reports"], pro: { price: "$19", features: ["Hosted version", "Multi-project monitoring", "Advanced analytics", "Custom thresholds"], comingSoon: true } },
+      { name: "Lazy Security", tagline: "Autonomous security engine", link: "/lazy-security", free: ["Setup prompt included", "Automated Aikido pentesting", "Vulnerability monitoring", "Audit-ready reports"], pro: { price: "$19", features: ["Hosted version", "Automated report delivery", "Multi-project dashboard", "Alert integrations"], comingSoon: true } },
+    ],
   },
 ];
 
 const PricingPage = () => {
+  const [activeTab, setActiveTab] = useState("unicorn");
+  const activeCategory = categories.find(c => c.key === activeTab)!;
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
@@ -218,7 +110,7 @@ const PricingPage = () => {
 
       <main className="pt-32 pb-20">
         {/* Hero */}
-        <section className="px-6 md:px-12 max-w-4xl mx-auto text-center mb-20">
+        <section className="px-6 md:px-12 max-w-4xl mx-auto text-center mb-16">
           <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
             <motion.p variants={fadeUp} transition={{ duration: 0.6 }} style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: "#f0ead6", opacity: 0.5 }}>
               Pricing
@@ -227,93 +119,110 @@ const PricingPage = () => {
               Every engine is free to install.
             </motion.h1>
             <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="mt-4 font-body text-sm text-foreground/50 max-w-xl mx-auto leading-relaxed">
-              Copy the prompt. Paste it into your Lovable project. The engine installs itself. You bring your own API keys — we never touch your data. Pro tiers are coming soon for teams who want a hosted, zero-config experience.
+              Copy the prompt. Paste it into your Lovable project. The engine installs itself. Pro tiers are coming soon for teams who want a hosted, zero-config experience.
             </motion.p>
           </motion.div>
         </section>
 
-        {/* Product pricing cards */}
+        {/* Category tabs */}
         <section className="px-6 md:px-12 max-w-5xl mx-auto">
-          <div className="space-y-16">
-            {products.map((product, idx) => (
-              <motion.div
-                key={product.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.04 }}
+          <div className="flex flex-wrap gap-2 mb-10 justify-center">
+            {categories.map(cat => (
+              <button
+                key={cat.key}
+                onClick={() => setActiveTab(cat.key)}
+                className={`font-body text-sm px-4 py-2 rounded-lg transition-all ${
+                  activeTab === cat.key
+                    ? "bg-foreground text-background font-semibold"
+                    : "bg-card border border-border text-foreground/60 hover:text-foreground hover:border-foreground/30"
+                }`}
               >
-                {/* Product header */}
-                <div className="mb-6">
-                  <Link to={product.link} className="group inline-block">
-                    <h2 className="font-display text-xl font-bold text-foreground group-hover:text-foreground/80 transition-colors">
-                      {product.name}
-                    </h2>
-                  </Link>
-                  <p className="font-body text-sm text-foreground/70 uppercase tracking-wider mt-1">{product.tagline}</p>
-                </div>
-
-                {/* Two-column pricing */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
-                  {/* Free */}
-                  <div className="bg-card p-8 flex flex-col">
-                    <div className="mb-6">
-                      <h3 className="font-display text-base font-bold text-foreground">Free</h3>
-                      <p className="font-display text-3xl font-bold text-foreground mt-1">$0</p>
-                    </div>
-                    <ul className="space-y-2.5 flex-1">
-                      {product.free.map((f, i) => (
-                        <li key={i} className="font-body text-sm text-foreground/65 flex items-start gap-2">
-                          <Check size={14} className="text-foreground/65 mt-0.5 shrink-0" />
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                    <Link
-                      to={product.link}
-                      className="mt-6 w-full inline-flex items-center justify-center font-body text-[13px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold bg-foreground text-background hover:opacity-90 transition-opacity"
-                    >
-                      Get the Prompt
-                    </Link>
-                  </div>
-
-                  {/* Pro */}
-                  <div className="bg-card p-8 flex flex-col relative">
-                    {product.pro.comingSoon && (
-                      <span className="absolute top-4 right-4 font-body text-[14px] tracking-[0.15em] uppercase px-2 py-0.5 border border-yellow-600/30 text-yellow-600/60">
-                        Coming Soon
-                      </span>
-                    )}
-                    <div className="mb-6">
-                      <h3 className="font-display text-base font-bold text-foreground">Pro</h3>
-                      <p className="font-display text-3xl font-bold text-foreground mt-1">
-                        {product.pro.price}<span className="text-sm font-normal text-foreground/70">/mo</span>
-                      </p>
-                    </div>
-                    <ul className="space-y-2.5 flex-1">
-                      {product.pro.features.map((f, i) => (
-                        <li key={i} className="font-body text-sm text-foreground/65 flex items-start gap-2">
-                          <Check size={14} className="text-foreground/65 mt-0.5 shrink-0" />
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                    <button
-                      disabled
-                      className="mt-6 w-full font-body text-[13px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/65 cursor-not-allowed"
-                    >
-                      Coming Soon
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
+                {cat.label}
+                <span className="ml-1.5 text-xs opacity-60">({cat.products.length})</span>
+              </button>
             ))}
           </div>
+
+          {/* Product cards grid */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            >
+              {activeCategory.products.map((product) => (
+                <div key={product.name} className="border border-border rounded-xl bg-card overflow-hidden flex flex-col">
+                  {/* Card header */}
+                  <div className="px-6 pt-6 pb-4 border-b border-border">
+                    <Link to={product.link} className="group">
+                      <h2 className="font-display text-lg font-bold text-foreground group-hover:text-foreground/80 transition-colors">
+                        {product.name}
+                      </h2>
+                    </Link>
+                    <p className="font-body text-xs text-foreground/50 uppercase tracking-wider mt-0.5">{product.tagline}</p>
+                  </div>
+
+                  {/* Two tiers side by side */}
+                  <div className="grid grid-cols-2 divide-x divide-border flex-1">
+                    {/* Free */}
+                    <div className="p-5 flex flex-col">
+                      <p className="font-display text-xl font-bold text-foreground">$0</p>
+                      <p className="font-body text-[11px] text-foreground/40 uppercase tracking-wider mb-3">Free</p>
+                      <ul className="space-y-1.5 flex-1">
+                        {product.free.map((f, i) => (
+                          <li key={i} className="font-body text-xs text-foreground/60 flex items-start gap-1.5">
+                            <Check size={11} className="text-foreground/40 mt-0.5 shrink-0" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                      <Link
+                        to={product.link}
+                        className="mt-4 w-full inline-flex items-center justify-center font-body text-[11px] tracking-[0.12em] uppercase px-4 py-2 font-semibold bg-foreground text-background hover:opacity-90 transition-opacity rounded"
+                      >
+                        Get Prompt
+                      </Link>
+                    </div>
+
+                    {/* Pro */}
+                    <div className="p-5 flex flex-col relative">
+                      {product.pro.comingSoon && (
+                        <span className="absolute top-2 right-2 font-body text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border border-yellow-600/30 text-yellow-600/50 rounded">
+                          Soon
+                        </span>
+                      )}
+                      <p className="font-display text-xl font-bold text-foreground">
+                        {product.pro.price}<span className="text-xs font-normal text-foreground/50">/mo</span>
+                      </p>
+                      <p className="font-body text-[11px] text-foreground/40 uppercase tracking-wider mb-3">Pro</p>
+                      <ul className="space-y-1.5 flex-1">
+                        {product.pro.features.map((f, i) => (
+                          <li key={i} className="font-body text-xs text-foreground/60 flex items-start gap-1.5">
+                            <Check size={11} className="text-foreground/40 mt-0.5 shrink-0" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                      <button
+                        disabled
+                        className="mt-4 w-full font-body text-[11px] tracking-[0.12em] uppercase px-4 py-2 font-semibold border border-border text-foreground/40 cursor-not-allowed rounded"
+                      >
+                        Coming Soon
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </section>
 
         {/* Bottom */}
-        <section className="mt-24 px-6 md:px-12 max-w-3xl mx-auto text-center">
-          <p className="font-body text-sm text-foreground/65 leading-relaxed">
+        <section className="mt-20 px-6 md:px-12 max-w-3xl mx-auto text-center">
+          <p className="font-body text-sm text-foreground/50 leading-relaxed">
             All engines are self-hosted in your own Lovable project. You own the code, the data, and the content. Pro tiers will offer a fully managed hosted experience — no API keys, no setup, just results.
           </p>
           <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>
