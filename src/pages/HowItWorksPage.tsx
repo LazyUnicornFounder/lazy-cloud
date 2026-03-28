@@ -95,7 +95,7 @@ export default function HowItWorksPage() {
         url="/how-it-works"
       />
       <Navbar />
-      <main className="min-h-screen bg-background text-foreground">
+      <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
         {/* Hero */}
         <section className="pt-36 pb-16 px-6">
           <div className="max-w-3xl mx-auto text-center">
