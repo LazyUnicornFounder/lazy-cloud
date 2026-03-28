@@ -25,6 +25,7 @@ const PRODUCT_WORDS: Record<string, { word: string; emoji: string; tagline: stri
   "lazy-granola": { word: "meetings", emoji: "📝", tagline: "Launch autonomous meeting content." },
   "lazy-drop": { word: "dropshipping", emoji: "📦", tagline: "Launch autonomous dropshipping." },
   "lazy-print": { word: "merch", emoji: "🖨️", tagline: "Launch autonomous print-on-demand." },
+  "lazy-youtube": { word: "YouTube", emoji: "📺", tagline: "Launch autonomous video content." },
 };
 
 interface AutopilotHeadlineProps {
