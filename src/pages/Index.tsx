@@ -108,6 +108,11 @@ function RotatingHeadline() {
 }
 
 const products = [
+  // Lazy Unicorn
+  { cursive: "Lazy", name: "Run", link: "/lazy-run", tagline: "Autonomous everything" },
+  // Lazy Admin & Design (featured)
+  { cursive: "Lazy", name: "Admin", link: "/lazy-admin", tagline: "Autonomous dashboards" },
+  { cursive: "Lazy", name: "Design", link: "/lazy-design", tagline: "Autonomous UI upgrades" },
   // Lazy Content
   { cursive: "Lazy", name: "Blogger", link: "/lazy-blogger", tagline: "Autonomous blog posts" },
   { cursive: "Lazy", name: "SEO", link: "/lazy-seo", tagline: "Autonomous SEO content" },
@@ -129,7 +134,6 @@ const products = [
   { cursive: "Lazy", name: "GitHub", link: "/lazy-github", tagline: "Autonomous changelogs" },
   { cursive: "Lazy", name: "GitLab", link: "/lazy-gitlab", tagline: "Autonomous GitLab docs" },
   { cursive: "Lazy", name: "Linear", link: "/lazy-linear", tagline: "Autonomous issue content" },
-  { cursive: "Lazy", name: "Design", link: "/lazy-design", tagline: "Autonomous UI upgrades" },
   { cursive: "Lazy", name: "Auth", link: "/lazy-auth", tagline: "Autonomous login flows" },
   { cursive: "Lazy", name: "Granola", link: "/lazy-granola", tagline: "Autonomous meeting content" },
   // Lazy Ops
@@ -138,7 +142,7 @@ const products = [
   { cursive: "Lazy", name: "Supabase", link: "/lazy-supabase", tagline: "Autonomous database reports" },
   { cursive: "Lazy", name: "Security", link: "/lazy-security", tagline: "Autonomous pentesting" },
 
-  { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More engines loading." },
+  { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More engines loading" },
 ];
 
 /* ── Sketch SVG icons ── */
