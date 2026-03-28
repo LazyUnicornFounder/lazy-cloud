@@ -455,7 +455,10 @@ const Index = () => {
             business on Lovable.
           </h1>
           <p className="max-w-2xl" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.95rem, 1.4vw, 1.15rem)", color: "#f0ead6", opacity: 0.45, lineHeight: 1.6 }}>
-            Your Lovable site. Fully agentic. Autonomous engines publish your content, process your payments, and monitor your stack. Agents improve the engines. You just build.
+            Your Lovable site. Fully agentic. Autonomous engines publish your content, process your payments, and monitor your stack. Agents improve the engines.
+          </p>
+          <p className="mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.95rem, 1.4vw, 1.15rem)", color: "#f0ead6", opacity: 0.65, lineHeight: 1.6, fontWeight: 600 }}>
+            You just build.
           </p>
 
           {/* Body */}
