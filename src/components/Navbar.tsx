@@ -212,6 +212,11 @@ function AgentsDropdown() {
       </button>
       {open && (
         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 p-9" style={{ width: 340 }}>
+          <div className="mb-4 pb-4 border-b border-border/50">
+            <a href="/lazy-agents" onClick={close} className="font-body text-[12px] tracking-[0.12em] uppercase text-foreground/40 hover:text-foreground transition-colors font-semibold">
+              View all agents →
+            </a>
+          </div>
           {agentItems.map((item) => (
             <a
               key={item.label}
@@ -232,10 +237,7 @@ function AgentsDropdown() {
               </div>
             </a>
           ))}
-          <div className="mt-4 pt-4 border-t border-border/50 flex items-center justify-between">
-            <a href="/lazy-agents" onClick={close} className="font-body text-[12px] tracking-[0.12em] uppercase text-foreground/40 hover:text-foreground transition-colors font-semibold">
-              View all agents →
-            </a>
+          <div className="mt-4 pt-4 border-t border-border/50 flex items-center justify-end">
             <span className="font-body text-[11px] tracking-[0.08em] text-foreground/25">Made for Lovable ❤️</span>
           </div>
         </div>
