@@ -24,7 +24,7 @@ interface Category {
 const categories: Category[] = [
   {
     key: "unicorn",
-    label: "🚀 Unicorn",
+    label: "Unicorn",
     products: [
       {
         name: "Lazy Run", tagline: "Autonomous operations layer", link: "/lazy-run",
@@ -35,7 +35,7 @@ const categories: Category[] = [
   },
   {
     key: "content",
-    label: "✍️ Content",
+    label: "Content",
     products: [
       { name: "Lazy Blogger", tagline: "Autonomous blog engine", link: "/lazy-blogger", free: ["Setup prompt included", "Unlimited AI-generated posts", "Custom tone, topics & frequency", "Auto-publish on schedule"], pro: { price: "$19", features: ["Hosted version — no setup needed", "Multi-site publishing", "Social media cross-posting", "Advanced analytics dashboard"], comingSoon: true } },
       { name: "Lazy SEO", tagline: "Autonomous SEO engine", link: "/lazy-seo", free: ["Setup prompt included", "Keyword discovery & tracking", "SEO-optimised article generation", "Auto-publish to your blog"], pro: { price: "$19", features: ["Hosted version", "Backlink monitoring", "Competitor keyword tracking", "Weekly SEO reports"], comingSoon: true } },
@@ -47,7 +47,7 @@ const categories: Category[] = [
   },
   {
     key: "commerce",
-    label: "🛒 Commerce",
+    label: "Commerce",
     products: [
       { name: "Lazy Store", tagline: "Autonomous Shopify engine", link: "/lazy-store", free: ["Setup prompt included", "Shopify integration", "Product discovery & listing", "Conversion optimisation"], pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced pricing algorithms", "Revenue analytics"], comingSoon: true } },
       { name: "Lazy Drop", tagline: "Autonomous dropshipping", link: "/lazy-drop", free: ["Setup prompt included", "AutoDS integration", "Product discovery & import", "Automatic fulfilment"], pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced product analytics", "Priority AI model access"], comingSoon: true } },
@@ -59,7 +59,7 @@ const categories: Category[] = [
   },
   {
     key: "media",
-    label: "🎙️ Media",
+    label: "Media",
     products: [
       { name: "Lazy Voice", tagline: "Autonomous audio engine", link: "/lazy-voice", free: ["Setup prompt included", "Blog-to-podcast conversion", "AI voice narration", "RSS feed generation"], pro: { price: "$19", features: ["Hosted version", "Custom voice cloning", "Multi-language narration", "Listener analytics"], comingSoon: true } },
       { name: "Lazy Stream", tagline: "Autonomous Twitch engine", link: "/lazy-stream", free: ["Setup prompt included", "VOD transcription", "Stream recap generation", "SEO article writing"], pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced analytics"], comingSoon: true } },
@@ -67,7 +67,7 @@ const categories: Category[] = [
   },
   {
     key: "dev",
-    label: "🛠️ Dev",
+    label: "Dev",
     products: [
       { name: "Lazy GitHub", tagline: "Autonomous GitHub engine", link: "/lazy-github", free: ["Setup prompt included", "Commit-to-changelog generation", "Release notes automation", "Developer blog publishing"], pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced formatting", "API docs generation"], comingSoon: true } },
       { name: "Lazy GitLab", tagline: "Autonomous GitLab engine", link: "/lazy-gitlab", free: ["Setup prompt included", "Changelog generation", "Release notes automation", "Developer blog publishing"], pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced formatting", "Custom templates"], comingSoon: true } },
@@ -79,7 +79,7 @@ const categories: Category[] = [
   },
   {
     key: "ops",
-    label: "⚙️ Ops",
+    label: "Ops",
     products: [
       { name: "Lazy Admin", tagline: "Unified dashboard for every engine", link: "/lazy-admin", free: ["Setup prompt included", "Auto-detects installed engines", "Master status indicator", "Unified activity feed", "Per-engine deep dives"], pro: { price: "$9", features: ["Hosted version", "Multi-project support", "Team access with roles", "Weekly email digest", "Mobile app"], comingSoon: true } },
       { name: "Lazy Alert", tagline: "Real-time Slack alerts", link: "/lazy-alert", free: ["Setup prompt included", "Real-time event alerts", "Daily morning briefing", "Slash commands"], pro: { price: "$9", features: ["Hosted version", "Custom branded bot", "Advanced filtering", "Multi-channel routing"], comingSoon: true } },
