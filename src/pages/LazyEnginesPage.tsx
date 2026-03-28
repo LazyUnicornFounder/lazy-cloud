@@ -109,12 +109,9 @@ export default function LazyEnginesPage() {
           <div className="max-w-4xl mx-auto text-center">
             <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
               <p className="font-display text-[11px] tracking-[0.25em] uppercase text-foreground/40 font-bold mb-6">Lazy Engines</p>
-              <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1, letterSpacing: "-0.02em" }}>
-                Engines run your Lovable business.
+              <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 3.2rem)", color: "#f0ead6", lineHeight: 1.15, letterSpacing: "-0.02em" }}>
+                Engines run your Lovable business.<br />Agents run your engines.
               </h1>
-              <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 5vw, 4rem)", color: "#f0ead6", lineHeight: 1, letterSpacing: "-0.02em", marginTop: "0.1em" }}>
-                Agents run your engines.
-              </h2>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
                 Every engine is a self-contained prompt you paste into your Lovable project. Each one installs its own database tables, edge functions, and UI — then runs itself autonomously. Pick the ones you need or install everything with Lazy Run.
               </p>
