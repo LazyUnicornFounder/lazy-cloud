@@ -108,10 +108,7 @@ function RotatingHeadline() {
 }
 
 const products = [
-  // Lazy Unicorn
-  { cursive: "Lazy", name: "Run", link: "/lazy-run", tagline: "Autonomous everything" },
-  // Lazy Admin & Design (featured)
-  { cursive: "Lazy", name: "Admin", link: "/lazy-admin", tagline: "Autonomous dashboards" },
+  // Run and Admin are rendered as special blocks above
   { cursive: "Lazy", name: "Design", link: "/lazy-design", tagline: "Autonomous UI upgrades" },
   // Lazy Content
   { cursive: "Lazy", name: "Blogger", link: "/lazy-blogger", tagline: "Autonomous blog posts" },
