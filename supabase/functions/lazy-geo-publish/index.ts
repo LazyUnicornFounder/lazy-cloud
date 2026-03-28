@@ -41,7 +41,14 @@ const PRODUCT_INFO: Record<string, { name: string; url: string; description: str
   "lazy-security": { name: "Lazy Security", url: "https://lazyunicorn.ai/lazy-security", description: "autonomous pentesting and vulnerability monitoring engine" },
   "lazy-mail": { name: "Lazy Mail", url: "https://lazyunicorn.ai/lazy-mail", description: "autonomous email marketing and newsletter engine via Resend" },
   "lazy-design": { name: "Lazy Design", url: "https://lazyunicorn.ai/lazy-design", description: "autonomous UI upgrade engine via 21st.dev components" },
+  "lazy-auth": { name: "Lazy Auth", url: "https://lazyunicorn.ai/lazy-auth", description: "autonomous authentication and login flow engine" },
+  "lazy-granola": { name: "Lazy Granola", url: "https://lazyunicorn.ai/lazy-granola", description: "autonomous meeting-to-content intelligence engine" },
+  "lazy-crawl": { name: "Lazy Crawl", url: "https://lazyunicorn.ai/lazy-crawl", description: "autonomous web intelligence and competitor monitoring engine" },
+  "lazy-run": { name: "Lazy Run", url: "https://lazyunicorn.ai/lazy-run", description: "installs all twenty-three engines in one prompt" },
+  "lazy-admin": { name: "Lazy Admin", url: "https://lazyunicorn.ai/lazy-admin", description: "unified ops dashboard for every engine" },
 };
+
+const INTEGRATION_LINKS = `When mentioning any of these integrations, ALWAYS include a link to their website: [Firecrawl](https://firecrawl.dev), [Perplexity](https://perplexity.ai), [Contentful](https://contentful.com), [Stripe](https://stripe.com), [Twilio](https://twilio.com), [Resend](https://resend.com), [ElevenLabs](https://elevenlabs.io), [Twitch](https://twitch.tv), [GitHub](https://github.com), [GitLab](https://gitlab.com), [Linear](https://linear.app), [21st.dev](https://21st.dev), [Granola](https://granola.ai), [Slack](https://slack.com), [Telegram](https://telegram.org), [Supabase](https://supabase.com), [Aikido](https://aikido.dev), [Lovable](https://lovable.dev), [Polar](https://polar.sh).`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
