@@ -7,7 +7,8 @@ import unicornBg from "@/assets/unicorn-beach.png";
 const BlogTicker = () => {
   const { posts: dbPosts } = useDbBlogPosts();
   const allPosts = [...dbPosts, ...staticBlogPosts];
-  const items = [...allPosts, ...allPosts];
+  // Triple the items to ensure no gap during loop
+  const items = [...allPosts, ...allPosts, ...allPosts];
 
   if (allPosts.length === 0) return null;
 
@@ -15,14 +16,16 @@ const BlogTicker = () => {
     <div className="w-full overflow-hidden" style={{ borderTop: "1px solid rgba(240,234,214,0.08)", borderBottom: "1px solid rgba(240,234,214,0.08)" }}>
       <motion.div
         className="flex gap-6 py-3 px-4"
-        animate={{ x: [0, -(allPosts.length * 280)] }}
+        animate={{ x: ["0%", "-33.333%"] }}
         transition={{
           x: {
-            duration: allPosts.length * 6,
+            duration: allPosts.length * 4,
             repeat: Infinity,
             ease: "linear",
+            repeatType: "loop",
           },
         }}
+        style={{ width: "fit-content" }}
       >
         {items.map((post, i) => (
           <Link
