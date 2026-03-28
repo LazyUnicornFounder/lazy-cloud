@@ -52,6 +52,7 @@ const CATEGORIES: { label: string; color: string; engines: EngineDef[] }[] = [
     engines: [
       { key: "voice", label: "Voice", icon: Mic, settingsTable: "voice_settings", runField: "is_running", errorTable: "voice_errors", adminPath: "/admin/voice" },
       { key: "stream", label: "Stream", icon: Tv, settingsTable: "stream_settings", runField: "is_running", errorTable: "stream_errors", adminPath: "/admin/stream" },
+      { key: "youtube", label: "YouTube", icon: Tv },
     ],
   },
   {
