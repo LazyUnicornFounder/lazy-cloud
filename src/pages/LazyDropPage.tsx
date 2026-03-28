@@ -51,7 +51,7 @@ function CopyPromptButton({ text }: { text: string }) {
 
 export default function LazyDropPage() {
   const { prompt } = useCurrentPrompt("lazy-drop");
-  const promptText = prompt || FALLBACK_PROMPT;
+  const promptText = prompt?.prompt_text || FALLBACK_PROMPT;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -66,7 +66,7 @@ export default function LazyDropPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 px-6 md:px-12 max-w-4xl mx-auto text-center">
         <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
-          <AutopilotHeadline word="dropshipping" emoji="📦" />
+          <AutopilotHeadline product="lazy-drop" />
           <motion.h1 variants={fadeUp} transition={{ duration: 0.8 }} className="mt-4" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#f0ead6", lineHeight: 1.1, fontWeight: 700 }}>
             800 million products. Zero manual work
           </motion.h1>
@@ -134,7 +134,7 @@ export default function LazyDropPage() {
       <section className="py-20 px-6 md:px-12 border-t border-border">
         <div className="max-w-4xl mx-auto">
           <LazyPricingSection
-            freeFeatures={["Setup prompt included", "AutoDS integration", "Product discovery & import", "AI-written listings", "Hourly price monitoring", "Automatic fulfilment"]}
+            lazyFeatures={["Setup prompt included", "AutoDS integration", "Product discovery & import", "AI-written listings", "Hourly price monitoring", "Automatic fulfilment"]}
             proFeatures={["Hosted version — zero config", "Multi-store management", "Advanced product analytics", "Priority AI model access"]}
             proPrice="$29"
             ctaButton={<CopyPromptButton text={promptText} />}

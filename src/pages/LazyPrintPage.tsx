@@ -59,7 +59,7 @@ function CopyPromptButton({ text }: { text: string }) {
 
 export default function LazyPrintPage() {
   const { prompt } = useCurrentPrompt("lazy-print");
-  const promptText = prompt || FALLBACK_PROMPT;
+  const promptText = prompt?.prompt_text || FALLBACK_PROMPT;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -74,7 +74,7 @@ export default function LazyPrintPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 px-6 md:px-12 max-w-4xl mx-auto text-center">
         <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
-          <AutopilotHeadline word="merch" emoji="🖨️" />
+          <AutopilotHeadline product="lazy-print" />
           <motion.h1 variants={fadeUp} transition={{ duration: 0.8 }} className="mt-4" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#f0ead6", lineHeight: 1.1, fontWeight: 700 }}>
             Upload your design. Sell merch. Ship nothing
           </motion.h1>
@@ -171,7 +171,7 @@ export default function LazyPrintPage() {
       <section className="py-20 px-6 md:px-12 border-t border-border">
         <div className="max-w-4xl mx-auto">
           <LazyPricingSection
-            freeFeatures={["Setup prompt included", "Printful integration", "Product catalogue sync", "AI-written descriptions", "Automatic mockup generation", "Order fulfilment"]}
+            lazyFeatures={["Setup prompt included", "Printful integration", "Product catalogue sync", "AI-written descriptions", "Automatic mockup generation", "Order fulfilment"]}
             proFeatures={["Hosted version — zero config", "Multi-store management", "Advanced product analytics", "Bulk design upload"]}
             proPrice="$29"
             ctaButton={<CopyPromptButton text={promptText} />}
