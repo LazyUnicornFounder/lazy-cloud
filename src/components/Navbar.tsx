@@ -42,8 +42,8 @@ const icons = {
 type CategoryItem = { label: string; href: string; tagline: string; icon: ReactNode };
 type Category = { label: string; items: CategoryItem[] };
 
-/* ── Engine categories ── */
-const engineCategories: Category[] = [
+/* ── Agent categories (everything is an agent now) ── */
+const agentCategories: Category[] = [
   {
     label: "Lazy Unicorn",
     items: [
@@ -101,17 +101,18 @@ const engineCategories: Category[] = [
       { label: "Lazy Security", href: "/lazy-security", tagline: "Autonomous pentesting", icon: icons.security },
     ],
   },
-];
-
-/* ── Agent categories ── */
-const agentItems: CategoryItem[] = [
-  { label: "Lazy Watch", href: "/lazy-watch", tagline: "Autonomous error monitoring", icon: icons.security },
-  { label: "Lazy Fix", href: "/lazy-fix", tagline: "Autonomous prompt improvement", icon: icons.code },
-  { label: "Lazy Build", href: "/lazy-build", tagline: "Autonomous engine writing", icon: icons.admin },
-  { label: "Lazy Intel", href: "/lazy-intel", tagline: "Autonomous content strategy", icon: icons.seo },
-  { label: "Lazy Repurpose", href: "/lazy-repurpose", tagline: "Autonomous content repurposing", icon: icons.contentful },
-  { label: "Lazy Trend", href: "/lazy-trend", tagline: "Autonomous trend detection", icon: icons.perplexity },
-  { label: "Lazy Churn", href: "/lazy-churn", tagline: "Autonomous churn prevention", icon: icons.pay },
+  {
+    label: "Lazy Autonomous",
+    items: [
+      { label: "Lazy Watch", href: "/lazy-watch", tagline: "Autonomous error monitoring", icon: icons.security },
+      { label: "Lazy Fix", href: "/lazy-fix", tagline: "Autonomous prompt improvement", icon: icons.code },
+      { label: "Lazy Build", href: "/lazy-build", tagline: "Autonomous agent writing", icon: icons.admin },
+      { label: "Lazy Intel", href: "/lazy-intel", tagline: "Autonomous content strategy", icon: icons.seo },
+      { label: "Lazy Repurpose", href: "/lazy-repurpose", tagline: "Autonomous content repurposing", icon: icons.contentful },
+      { label: "Lazy Trend", href: "/lazy-trend", tagline: "Autonomous trend detection", icon: icons.perplexity },
+      { label: "Lazy Churn", href: "/lazy-churn", tagline: "Autonomous churn prevention", icon: icons.pay },
+    ],
+  },
 ];
 
 /* ── Shared dropdown category renderer ── */
@@ -145,57 +146,7 @@ function renderCategoryBlock(cat: Category, onClose: () => void) {
   );
 }
 
-/* ── Engines mega dropdown ── */
-function EnginesDropdown() {
-  const [open, setOpen] = useState(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const handleEnter = () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); setOpen(true); };
-  const handleLeave = () => { timeoutRef.current = setTimeout(() => setOpen(false), 250); };
-  useEffect(() => () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); }, []);
-  const close = () => setOpen(false);
-
-  return (
-    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <button
-        onClick={() => setOpen(!open)}
-        className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors flex items-center gap-1"
-      >
-        Engines
-        <ChevronDown size={11} className={`transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
-      {open && (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 p-9" style={{ width: 1380 }}>
-          <div className="mb-6 pb-5 border-b border-border/50">
-            <a href="/lazy-engines" onClick={close} className="font-body text-[12px] tracking-[0.12em] uppercase text-foreground/40 hover:text-foreground transition-colors font-semibold">
-              View all engines →
-            </a>
-          </div>
-          <div className="flex gap-12">
-            <div className="flex-1 min-w-0">
-              {[engineCategories[0], engineCategories[2]].map(c => renderCategoryBlock(c, close))}
-            </div>
-            <div className="flex-1 min-w-0">
-              {[engineCategories[1]].map(c => renderCategoryBlock(c, close))}
-            </div>
-            <div className="flex-1 min-w-0">
-              {[engineCategories[3], engineCategories[4]].map(c => renderCategoryBlock(c, close))}
-            </div>
-            <div className="flex-1 min-w-0">
-              {[engineCategories[5]].map(c => renderCategoryBlock(c, close))}
-            </div>
-          </div>
-          <div className="mt-6 pt-5 border-t border-border/50 flex items-center justify-end">
-            <span className="font-body text-[12px] tracking-[0.15em] uppercase text-foreground/30 font-semibold">
-              Made for Lovable ❤️
-            </span>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ── Agents dropdown ── */
+/* ── Agents mega dropdown ── */
 function AgentsDropdown() {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -214,34 +165,30 @@ function AgentsDropdown() {
         <ChevronDown size={11} className={`transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 p-9" style={{ width: 340 }}>
-          <div className="mb-4 pb-4 border-b border-border/50">
+        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 p-9" style={{ width: 1380 }}>
+          <div className="mb-6 pb-5 border-b border-border/50">
             <a href="/lazy-agents" onClick={close} className="font-body text-[12px] tracking-[0.12em] uppercase text-foreground/40 hover:text-foreground transition-colors font-semibold">
               View all agents →
             </a>
           </div>
-          {agentItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={close}
-              className="group flex items-center gap-4 px-3 py-[18px] -mx-1 hover:bg-secondary/50 transition-colors"
-            >
-              <span className="text-foreground/50 group-hover:text-foreground/70 transition-colors flex-shrink-0">
-                {item.icon}
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="font-body text-[14px] font-black tracking-[0.04em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight whitespace-nowrap">
-                  {item.label}
-                </p>
-                <p className="font-body text-[13px] font-normal text-foreground/40 group-hover:text-foreground/55 transition-colors leading-tight mt-1 whitespace-nowrap">
-                  {item.tagline}
-                </p>
-              </div>
-            </a>
-          ))}
-          <div className="mt-4 pt-4 border-t border-border/50 flex items-center justify-end">
-            <span className="font-body text-[11px] tracking-[0.08em] text-foreground/25">Made for Lovable ❤️</span>
+          <div className="flex gap-12">
+            <div className="flex-1 min-w-0">
+              {[agentCategories[0], agentCategories[2]].map(c => renderCategoryBlock(c, close))}
+            </div>
+            <div className="flex-1 min-w-0">
+              {[agentCategories[1]].map(c => renderCategoryBlock(c, close))}
+            </div>
+            <div className="flex-1 min-w-0">
+              {[agentCategories[3], agentCategories[4]].map(c => renderCategoryBlock(c, close))}
+            </div>
+            <div className="flex-1 min-w-0">
+              {[agentCategories[5], agentCategories[6]].map(c => renderCategoryBlock(c, close))}
+            </div>
+          </div>
+          <div className="mt-6 pt-5 border-t border-border/50 flex items-center justify-end">
+            <span className="font-body text-[12px] tracking-[0.15em] uppercase text-foreground/30 font-semibold">
+              Made for Lovable ❤️
+            </span>
           </div>
         </div>
       )}
@@ -299,11 +246,8 @@ function SimpleDropdown({
   );
 }
 
-/* ── All mobile categories combined ── */
-const allMobileCategories: Category[] = [
-  ...engineCategories,
-  { label: "Lazy Agents", items: agentItems },
-];
+/* ── All mobile categories ── */
+const allMobileCategories: Category[] = [...agentCategories];
 
 const Navbar = ({ activePage = "home" }: NavbarProps) => {
   const isMobile = useIsMobile();
@@ -356,7 +300,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a href="/use-cases" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
               Use Cases
             </a>
-            <EnginesDropdown />
             <AgentsDropdown />
             <a href="/pricing" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
               Pricing
