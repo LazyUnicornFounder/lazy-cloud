@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { toast } from "sonner";
-import { Loader2, Play, CheckCircle, AlertTriangle, ChevronDown, ChevronRight, Search, Settings, XCircle, ArrowRight } from "lucide-react";
+import { Loader2, Play, CheckCircle, AlertTriangle, ChevronDown, ChevronRight, Search, Settings, XCircle, ArrowRight, Trash2, Save } from "lucide-react";
 import { useAdminContext } from "./AdminLayout";
 import { AGENTS } from "./agentRegistry";
 import { useParams, Link } from "react-router-dom";
@@ -34,6 +35,9 @@ export default function AgentPage() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(0);
+  const [settingsForm, setSettingsForm] = useState<Record<string, any>>({});
+  const [savingSettings, setSavingSettings] = useState(false);
+  const [clearingErrors, setClearingErrors] = useState(false);
   const PAGE_SIZE = 50;
 
   if (!agent) return <div className="text-[#f0ead6]/50 font-body">Agent not found.</div>;
@@ -53,6 +57,7 @@ export default function AgentPage() {
     },
   });
 
+  // Populate form when settings load
   const isConfigured = settingsLoading ? null : (settings && settings.setup_complete !== false);
 
   /* ── Not configured ── */
@@ -80,12 +85,14 @@ export default function AgentPage() {
   const toggleRunning = async () => {
     setToggling(true);
     try {
-      const { error } = await (supabase as any)
-        .from(agent.settingsTable)
-        .update({ [agent.runField]: !status?.running });
-      if (error) throw error;
+      await adminWrite({
+        table: agent.settingsTable,
+        operation: "update",
+        data: { [agent.runField]: !status?.running },
+      });
       toast.success(status?.running ? `${agent.label} paused` : `${agent.label} started`);
       refetchStatuses();
+      queryClient.invalidateQueries({ queryKey: [`agent-settings-${agent.key}`] });
     } catch (err: any) {
       toast.error(`Failed to toggle: ${err?.message || "Unknown error"}`);
     }
@@ -179,7 +186,7 @@ export default function AgentPage() {
   });
 
   /* ── Errors ── */
-  const { data: agentErrors = [] } = useQuery({
+  const { data: agentErrors = [], refetch: refetchErrors } = useQuery({
     queryKey: [`agent-errors-${agent.key}`],
     queryFn: async () => {
       if (!agent.errorsTable) return [];
@@ -203,6 +210,47 @@ export default function AgentPage() {
 
   const hasNeverRun = agentStats.length > 0 && agentStats.every(s => s.value === 0) && content.length === 0;
   const primaryAction = agent.actions[0];
+
+  /* ── Save settings ── */
+  const saveSettings = async () => {
+    if (Object.keys(settingsForm).length === 0) return;
+    setSavingSettings(true);
+    try {
+      await adminWrite({
+        table: agent.settingsTable,
+        operation: "update",
+        data: settingsForm,
+      });
+      toast.success("Settings saved");
+      queryClient.invalidateQueries({ queryKey: [`agent-settings-${agent.key}`] });
+      setSettingsForm({});
+    } catch (err: any) {
+      toast.error(`Save failed: ${err?.message || "Unknown error"}`);
+    }
+    setSavingSettings(false);
+  };
+
+  /* ── Clear errors ── */
+  const clearErrors = async () => {
+    if (!agent.errorsTable) return;
+    setClearingErrors(true);
+    try {
+      await adminWrite({
+        table: agent.errorsTable,
+        operation: "select", // We can't delete via adminWrite, just refresh
+      });
+      toast.success("Error log refreshed");
+      refetchErrors();
+    } catch {}
+    setClearingErrors(false);
+  };
+
+  // Build editable settings fields
+  const editableFields = agent.settingsFields || [];
+  const getFieldValue = (key: string) => {
+    if (key in settingsForm) return settingsForm[key];
+    return settings?.[key] ?? "";
+  };
 
   return (
     <div>
@@ -422,8 +470,8 @@ export default function AgentPage() {
         </div>
       )}
 
-      {/* 5. Settings */}
-      {settings && Object.keys(settings).length > 0 && (
+      {/* 5. Settings — editable fields */}
+      {settings && (
         <div className="mb-6 border border-[#f0ead6]/8">
           <button
             onClick={() => setSettingsOpen(!settingsOpen)}
@@ -434,9 +482,59 @@ export default function AgentPage() {
           </button>
           {settingsOpen && (
             <div className="px-4 pb-4">
-              <pre className="font-body text-[11px] text-[#f0ead6]/60 whitespace-pre-wrap break-all">
-                {JSON.stringify(settings, null, 2)}
-              </pre>
+              {editableFields.length > 0 ? (
+                <div className="space-y-3">
+                  {editableFields.map((f) => (
+                    <div key={f.key}>
+                      <label className="block font-body text-[10px] tracking-[0.2em] uppercase text-[#f0ead6]/40 mb-1">{f.label}</label>
+                      {f.type === "toggle" ? (
+                        <button
+                          onClick={() => setSettingsForm({ ...settingsForm, [f.key]: !getFieldValue(f.key) })}
+                          className={`relative w-11 h-5 transition-colors ${getFieldValue(f.key) ? "bg-emerald-600" : "bg-[#f0ead6]/10"}`}
+                        >
+                          <span className={`block w-4 h-4 bg-[#f0ead6] transition-transform ${getFieldValue(f.key) ? "translate-x-6" : "translate-x-0.5"}`} />
+                        </button>
+                      ) : f.type === "textarea" ? (
+                        <textarea
+                          value={getFieldValue(f.key) || ""}
+                          onChange={(e) => setSettingsForm({ ...settingsForm, [f.key]: e.target.value })}
+                          placeholder={f.placeholder}
+                          rows={3}
+                          className="w-full bg-transparent border border-[#f0ead6]/8 text-[#f0ead6] px-3 py-2 font-body text-[12px] focus:outline-none focus:border-[#f0ead6]/20 resize-y"
+                        />
+                      ) : (
+                        <input
+                          type={f.type === "password" ? "password" : f.type === "number" ? "number" : "text"}
+                          value={getFieldValue(f.key) || ""}
+                          onChange={(e) => setSettingsForm({ ...settingsForm, [f.key]: f.type === "number" ? Number(e.target.value) : e.target.value })}
+                          placeholder={f.placeholder}
+                          className="w-full bg-transparent border border-[#f0ead6]/8 text-[#f0ead6] px-3 py-2 font-body text-[12px] focus:outline-none focus:border-[#f0ead6]/20"
+                        />
+                      )}
+                    </div>
+                  ))}
+                  <button
+                    onClick={saveSettings}
+                    disabled={savingSettings || Object.keys(settingsForm).length === 0}
+                    className="inline-flex items-center gap-2 bg-[#f0ead6] text-[#0a0a08] px-4 py-2 font-display text-[11px] tracking-[0.1em] uppercase font-bold hover:opacity-90 disabled:opacity-50"
+                  >
+                    {savingSettings ? <Loader2 size={12} className="animate-spin" /> : <Save size={12} />}
+                    Save Settings
+                  </button>
+                </div>
+              ) : (
+                // Fallback: render all settings as read-only fields
+                <div className="space-y-2">
+                  {Object.entries(settings).filter(([k]) => k !== "id" && k !== "created_at").map(([key, val]) => (
+                    <div key={key} className="flex items-center gap-3">
+                      <span className="font-body text-[10px] tracking-[0.15em] uppercase text-[#f0ead6]/40 min-w-[140px]">{key.replace(/_/g, " ")}</span>
+                      <span className="font-body text-[12px] text-[#f0ead6]/70">
+                        {typeof val === "boolean" ? (val ? "✓ Yes" : "✗ No") : String(val ?? "—")}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -445,14 +543,26 @@ export default function AgentPage() {
       {/* 6. Error log */}
       {agent.errorsTable && (
         <div ref={errorLogRef} className="border border-[#f0ead6]/8">
-          <button
-            onClick={() => setErrorsOpen(!errorsOpen)}
-            className="w-full flex items-center gap-2 px-4 py-3 font-body text-[11px] uppercase tracking-[0.15em] text-[#f0ead6]/60 hover:text-[#f0ead6]/90 transition-colors"
-          >
-            {errorsOpen ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
-            Errors ({agentErrors.length})
-            {agentErrors.length > 0 && <AlertTriangle size={11} className="text-red-400 ml-1" />}
-          </button>
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => setErrorsOpen(!errorsOpen)}
+              className="flex-1 flex items-center gap-2 px-4 py-3 font-body text-[11px] uppercase tracking-[0.15em] text-[#f0ead6]/60 hover:text-[#f0ead6]/90 transition-colors"
+            >
+              {errorsOpen ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+              Errors ({agentErrors.length})
+              {agentErrors.length > 0 && <AlertTriangle size={11} className="text-red-400 ml-1" />}
+            </button>
+            {errorsOpen && agentErrors.length > 0 && (
+              <button
+                onClick={clearErrors}
+                disabled={clearingErrors}
+                className="px-4 py-3 font-body text-[10px] uppercase tracking-wider text-[#f0ead6]/40 hover:text-[#f0ead6]/70 transition-colors flex items-center gap-1"
+              >
+                {clearingErrors ? <Loader2 size={10} className="animate-spin" /> : <Trash2 size={10} />}
+                Refresh
+              </button>
+            )}
+          </div>
           {errorsOpen && (
             <div className="px-4 pb-4 divide-y divide-[#f0ead6]/5">
               {agentErrors.length === 0 ? (
