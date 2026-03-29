@@ -32,6 +32,11 @@ const categories: Category[] = [
         pro: { price: "$49", features: ["Hosted version — zero config", "Template library", "Multi-project support", "Priority AI model access", "Custom branding"], comingSoon: true },
       },
       {
+        name: "Lazy Waitlist", tagline: "Autonomous pre-launch capture", link: "/lazy-waitlist",
+        free: ["Setup prompt included", "Viral referral engine", "Welcome & follow-up emails", "Position tracking & sharing", "Admin dashboard"],
+        pro: { price: "$19", features: ["Hosted version — zero config", "Custom email templates", "Advanced analytics", "Slack integration", "Priority support"], comingSoon: true },
+      },
+      {
         name: "Lazy Run", tagline: "Autonomous operations layer", link: "/lazy-run",
         free: ["Setup prompt included", "All 25 agent in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
         pro: { price: "$99", features: ["Hosted version — zero config", "Auto-scaling agent execution", "Priority AI model access", "Dedicated support", "Custom agent configuration"], comingSoon: true },
