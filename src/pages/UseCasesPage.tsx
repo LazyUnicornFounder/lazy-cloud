@@ -46,7 +46,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Crawl",
     agentHref: "/lazy-crawl",
-    icon: <Globe size={20} />,
+    icon: <Radar size={20} />,
   },
   {
     name: "Perplexity",
@@ -61,7 +61,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Perplexity",
     agentHref: "/lazy-perplexity",
-    icon: <Search size={20} />,
+    icon: <Compass size={20} />,
   },
   {
     name: "Contentful",
@@ -76,7 +76,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Contentful",
     agentHref: "/lazy-contentful",
-    icon: <FileText size={20} />,
+    icon: <Layers size={20} />,
   },
   // Lazy Commerce
   {
@@ -123,7 +123,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Mail",
     agentHref: "/lazy-mail",
-    icon: <Send size={20} />,
+    icon: <Mail size={20} />,
   },
   // Lazy Media
   {
@@ -169,7 +169,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy YouTube",
     agentHref: "/lazy-youtube",
-    icon: <MonitorPlay size={20} />,
+    icon: <Youtube size={20} />,
     note: "Uses YouTube Data API + Supadata — both free to start",
   },
   // Lazy Dev
@@ -247,7 +247,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Auth",
     agentHref: "/lazy-auth",
-    icon: <Shield size={20} />,
+    icon: <Lock size={20} />,
     note: "Uses Lovable Cloud for OAuth — no Google Cloud setup needed",
   },
   {
@@ -263,7 +263,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Granola",
     agentHref: "/lazy-granola",
-    icon: <FileText size={20} />,
+    icon: <Calendar size={20} />,
     note: "Uses the Granola MCP server — free to start",
   },
   // Lazy Ops
@@ -344,7 +344,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Drop",
     agentHref: "/lazy-drop",
-    icon: <Globe size={20} />,
+    icon: <Package size={20} />,
     note: "Requires an AutoDS account — plans from $26.90/month",
   },
   // Lazy Commerce — Printful
@@ -362,7 +362,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Print",
     agentHref: "/lazy-print",
-    icon: <CreditCard size={20} />,
+    icon: <Printer size={20} />,
     note: "Requires a Printful account — free to start, pay per order",
   },
   // Ops — Lazy Admin
