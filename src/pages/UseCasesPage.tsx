@@ -495,10 +495,10 @@ export default function UseCasesPage() {
 
   const filtered = active === "All" ? integrations : integrations.filter((i) => i.category === active);
 
-  const agentItems = filtered.filter((i) => i.category !== "Lazy Agents");
+  const nonAgentItems = filtered.filter((i) => i.category !== "Lazy Agents");
   const agentItems = filtered.filter((i) => i.category === "Lazy Agents");
 
-  const showEngines = agentItems.length > 0;
+  const showNonAgents = nonAgentItems.length > 0;
   const showAgents = agentItems.length > 0;
 
   return (
