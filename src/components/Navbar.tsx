@@ -99,11 +99,6 @@ const agentCategories: Category[] = [
       { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Autonomous Telegram updates", icon: icons.telegram },
       { label: "Lazy Supabase", href: "/lazy-supabase", tagline: "Autonomous database reports", icon: icons.supabase },
       { label: "Lazy Security", href: "/lazy-security", tagline: "Autonomous pentesting", icon: icons.security },
-    ],
-  },
-  {
-    label: "Lazy Autonomous",
-    items: [
       { label: "Lazy Watch", href: "/lazy-watch", tagline: "Autonomous error monitoring", icon: icons.security },
       { label: "Lazy Fix", href: "/lazy-fix", tagline: "Autonomous prompt improvement", icon: icons.code },
       { label: "Lazy Build", href: "/lazy-build", tagline: "Autonomous agent writing", icon: icons.admin },
