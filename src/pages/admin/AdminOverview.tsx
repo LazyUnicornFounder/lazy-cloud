@@ -8,7 +8,7 @@ import {
   PenTool, Search, Brain, Radar, Compass, Database as DbIcon,
   ShoppingCart, CreditCard, MessageSquare, Mail, Mic, Tv,
   Code, GitBranch, CheckCircle, Bell, Send, Shield,
-  LayoutDashboard, RefreshCw, ChevronRight,
+  LayoutDashboard, RefreshCw, ChevronRight, Settings2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
