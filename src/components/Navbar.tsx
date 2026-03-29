@@ -95,6 +95,7 @@ const agentCategories: Category[] = [
     label: "Lazy Ops",
     items: [
       { label: "Lazy Admin", href: "/lazy-admin", tagline: "Autonomous ops control", icon: icons.admin },
+      { label: "Lazy Launch", href: "/lazy-launch", tagline: "Launch your Lovable website", icon: icons.launch },
       { label: "Lazy Alert", href: "/lazy-alert", tagline: "Autonomous Slack alerts", icon: icons.alert },
       { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Autonomous Telegram updates", icon: icons.telegram },
       { label: "Lazy Supabase", href: "/lazy-supabase", tagline: "Autonomous database reports", icon: icons.supabase },

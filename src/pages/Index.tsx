@@ -40,6 +40,7 @@ const rotatingWords = [
   { word: "repurposing", emoji: "🔄" },       // Lazy Repurpose
   { word: "trends", emoji: "🔥" },            // Lazy Trend
   { word: "retention", emoji: "💰" },         // Lazy Churn
+  { word: "websites", emoji: "🚀" },           // Lazy Launch
 ];
 
 function RotatingHeadline() {
@@ -143,6 +144,8 @@ const products = [
   { cursive: "Lazy", name: "Telegram", link: "/lazy-telegram", tagline: "Autonomous Telegram updates" },
   { cursive: "Lazy", name: "Supabase", link: "/lazy-supabase", tagline: "Autonomous database reports" },
   { cursive: "Lazy", name: "Security", link: "/lazy-security", tagline: "Autonomous pentesting" },
+  // Lazy Launch
+  { cursive: "Lazy", name: "Launch", link: "/lazy-launch", tagline: "Launch your Lovable website" },
 
   { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More agents loading" },
 ];
@@ -401,6 +404,15 @@ const sketches: Record<string, JSX.Element> = {
       <path d="M52 48 L52 82 L78 65 Z" fill="#f0ead6" stroke="none" />
     </svg>
   ),
+  Launch: (
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M60 20 Q50 50 40 70 L60 60 L80 70 Q70 50 60 20Z" />
+      <path d="M40 70 L30 85" />
+      <path d="M80 70 L90 85" />
+      <path d="M50 80 L60 75 L70 80" />
+      <path d="M45 90 L55 85 L65 90 L75 85" />
+    </svg>
+  ),
   "Coming Soon": (
     <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="60" cy="55" r="25" />
@@ -465,6 +477,13 @@ const Index = () => {
 
           {/* CTA */}
           <div className="mt-6 flex flex-col sm:flex-row items-center gap-3">
+            <Link
+              to="/lazy-launch"
+              className="text-sm tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity active:scale-[0.97]"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", backgroundColor: "#c8a961", color: "#0a0a08", borderRadius: 0 }}
+            >
+              Launch your Lovable website
+            </Link>
             <Link
               to="/lazy-agents"
               className="text-sm tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity active:scale-[0.97]"
