@@ -64,7 +64,7 @@ const valueCards = [
 const plans = [
   {
     name: "Starter",
-    price: "$79",
+    price: "Coming soon",
     bestFor: "Founders running their first autonomous stack.",
     features: [
       "All agents managed — no agent limit",
@@ -77,12 +77,12 @@ const plans = [
       "1 site",
     ],
     popular: false,
-    cta: "Get Started",
+    cta: "Join Waitlist",
     filled: false,
   },
   {
     name: "Growth",
-    price: "$149",
+    price: "Coming soon",
     bestFor: "Founders running a full Lazy Stack.",
     features: [
       "Everything in Starter, plus:",
@@ -95,12 +95,12 @@ const plans = [
       "1 site",
     ],
     popular: true,
-    cta: "Get Started",
+    cta: "Join Waitlist",
     filled: true,
   },
   {
     name: "Agency",
-    price: "$299",
+    price: "Coming soon",
     bestFor: "Agencies building autonomous sites for clients.",
     features: [
       "Everything in Growth, plus:",
@@ -154,7 +154,7 @@ export default function LazyCloudPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Cloud — Fully Managed Autonomous Agent Stack"
-        description="Lazy Cloud runs your entire agent stack — monitoring, updating, managing API keys at volume pricing, and fixing problems before you notice. From $79/month."
+        description="Lazy Cloud runs your entire agent stack — monitoring, updating, managing API keys at volume pricing, and fixing problems before you notice. Pricing coming soon."
         url="/lazy-cloud"
       />
       <Navbar />
@@ -284,7 +284,7 @@ export default function LazyCloudPage() {
                     <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-bold px-2 py-0.5">Most Popular</span>
                   )}
                 </div>
-                <p className="font-display text-3xl font-bold text-foreground mb-1">{plan.price}<span className="text-sm text-muted-foreground font-normal">/month</span></p>
+                <p className="font-display text-2xl font-bold text-primary mb-1">{plan.price}</p>
                 <p className="font-body text-sm text-muted-foreground mb-6">{plan.bestFor}</p>
                 <ul className="space-y-2 mb-8 flex-1">
                   {plan.features.map((f, fi) => (
@@ -363,7 +363,7 @@ export default function LazyCloudPage() {
           </div>
 
           <p className="font-body text-sm text-muted-foreground text-center mt-6 max-w-2xl mx-auto">
-            Self-hosted will always be free and fully functional. Lazy Cloud is for when the 2–4 hours you spend maintaining your stack every month is worth more than $79.
+            Self-hosted will always be free and fully functional. Lazy Cloud is for when the 2–4 hours you spend maintaining your stack every month is worth more than the subscription.
           </p>
         </div>
       </section>
@@ -381,7 +381,7 @@ export default function LazyCloudPage() {
             Stop re-pasting prompts, rotating API keys, checking error logs, and fixing breaking changes. Lazy Cloud handles all of it. Migration included. Cancel anytime.
           </p>
           <a href="#pricing" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity">
-            Start with Lazy Cloud — from $79/month
+            Start with Lazy Cloud — Coming Soon
           </a>
           <p className="font-body text-[11px] text-muted-foreground/50 mt-4">No setup fee. No agent limit. Your data is always yours.</p>
         </motion.div>
