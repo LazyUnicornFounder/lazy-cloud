@@ -61,7 +61,7 @@ export default function LazyVoiceSetup() {
       <Navbar />
       <main className="min-h-screen bg-background text-foreground pt-32 md:pt-44 pb-20 px-6">
         <div className="max-w-lg mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.6 }} className="text-center mb-10">
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.6 }} className="mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-muted/40 text-muted-foreground text-xs font-body tracking-wide mb-4">
               <Volume2 size={14} /> Lazy Voice Setup
             </div>

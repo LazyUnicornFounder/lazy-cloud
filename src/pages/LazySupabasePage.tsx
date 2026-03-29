@@ -229,7 +229,7 @@ const LazySupabasePage = () => {
 
         {/* How it works */}
         <section id="how-it-works" className="max-w-2xl mx-auto px-6 mb-20 pt-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">Your database grows. Lazy Supabase tells the story.</motion.h2>
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">Your database grows. Lazy Supabase tells the story.</motion.h2>
           <div className="space-y-4">
             {steps.map((step, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className="flex items-start gap-4">
@@ -242,7 +242,7 @@ const LazySupabasePage = () => {
 
         {/* What it does */}
         <section className="max-w-4xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">What it does</motion.h2>
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">What it does</motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-border">
             {[
               { icon: Users, title: "User Milestones", desc: "100th user, 1000th user, growth streaks — automatically writes a celebratory post." },
@@ -278,7 +278,7 @@ const LazySupabasePage = () => {
         {/* Bottom CTA */}
         <section className="max-w-3xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">Your database is growing. Let it tell its own story.</h2>
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-4">Your database is growing. Let it tell its own story.</h2>
             <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">Every milestone, every spike, every significant moment in your database — published automatically.</p>
             <CopyPromptButton text={promptText} onCopy={handlePromptCopy} />
             <p className="font-body text-sm text-foreground/60 mt-4">Open your Lovable project, paste it into the chat, add your API key. Done.</p>

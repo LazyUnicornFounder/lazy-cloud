@@ -106,7 +106,7 @@ export default function LazyRepurposePage() {
 
         {/* Problem */}
         <section className="max-w-4xl mx-auto px-6 mt-16 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-10">
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-10">
             Your best content reaches 3% of the people it could.
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border">
@@ -124,7 +124,7 @@ export default function LazyRepurposePage() {
 
         {/* Outputs */}
         <section id="outputs" className="max-w-4xl mx-auto px-6 mb-20 scroll-mt-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-10">
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-10">
             One post. Four formats. Every Sunday.
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-border">
@@ -142,7 +142,7 @@ export default function LazyRepurposePage() {
 
         {/* How it works */}
         <section className="max-w-3xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             How it works
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border">

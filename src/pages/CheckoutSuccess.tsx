@@ -88,7 +88,7 @@ const CheckoutSuccess = () => {
         animate={{ opacity: 1, y: 0 }}
         className="max-w-lg mx-auto"
       >
-        <div className="text-center mb-10">
+        <div className="mb-10">
           <CheckCircle className="text-primary mx-auto mb-4" size={48} />
           <h1 className="font-display text-3xl font-extrabold">You're listed! 🦄</h1>
           <p className="font-body text-muted-foreground mt-2">

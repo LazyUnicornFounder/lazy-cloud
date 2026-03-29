@@ -151,7 +151,7 @@ export default function LazyPrintPage() {
       {/* Economics */}
       <section className="py-20 px-6 md:px-12 border-t border-border">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: "#f0ead6" }}>
+          <h2 className="font-display text-2xl md:text-3xl font-bold mb-10" style={{ color: "#f0ead6" }}>
             How the numbers work
           </h2>
           <div className="border border-border overflow-x-auto">
