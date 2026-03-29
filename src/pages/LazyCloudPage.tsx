@@ -122,9 +122,7 @@ export default function LazyCloudPage() {
       <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
-            <span className="inline-flex items-center gap-2 font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-primary/30 text-primary mb-6">
-              <Cloud size={14} /> Built for Lovable ☁️
-            </span>
+            <p className="font-body text-sm text-muted-foreground mb-6">Made for Lovable</p>
             <h1 className="font-display text-foreground" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
               Your autonomous Lovable site.<br />Fully managed.
             </h1>
