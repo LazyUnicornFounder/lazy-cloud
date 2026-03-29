@@ -533,8 +533,8 @@ const Index = () => {
           <RotatingHeadline />
           <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 6vw, 4.5rem)", color: "#f0ead6", lineHeight: 1.1, fontWeight: 800 }}>
             Launch, build and run<br className="hidden md:inline" />
-            {" "}your Lovable<span style={{ color: "#e25555" }}>❤️</span>website<br className="hidden md:inline" />
-            {" "}or app with autonomous agents<span>🤖</span>.
+            {" "}your Lovable<span style={{ color: "#e25555" }}>❤️</span>website or app<br className="hidden md:inline" />
+            {" "}with autonomous agents<span>🤖</span>.
           </h1>
           <p className="max-w-2xl" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.95rem, 1.4vw, 1.15rem)", color: "#f0ead6", opacity: 0.45, lineHeight: 1.6 }}>
             Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself. Blog posts, SEO, payments, voice, stores, and more.
