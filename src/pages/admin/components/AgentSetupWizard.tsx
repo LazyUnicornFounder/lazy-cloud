@@ -406,6 +406,41 @@ export const AGENT_SETUP_CONFIGS: Record<string, AgentSetupConfig> = {
       { title: "Verify", type: "verify", description: "The agent will start gathering competitive intelligence and surfacing it in the admin feed." },
     ],
   },
+  launch: {
+    key: "launch",
+    label: "Lazy Launch",
+    description: "Autonomous project launcher with setup wizard",
+    category: "Unicorn",
+    steps: [
+      { title: "How it works", type: "info", description: "Lazy Launch is an autonomous project launcher that generates a complete Lovable prompt from a 5-step wizard. It configures your business info, design system, agent selection, and page sections to scaffold a full project in one click." },
+      { title: "Visit Lazy Launch", type: "action", description: "Navigate to the Lazy Launch page and complete the 5-step wizard to generate your project prompt.", link: "/lazy-launch", snippet: "Go to /lazy-launch → Complete wizard → Copy generated prompt → Paste into a new Lovable project" },
+      { title: "Verify", type: "verify", description: "Confirm the generated prompt includes your business details, selected agents, design tokens, and page sections." },
+    ],
+  },
+  waitlist: {
+    key: "waitlist",
+    label: "Lazy Waitlist",
+    description: "Autonomous pre-launch waitlist with viral referrals",
+    category: "Unicorn",
+    steps: [
+      { title: "How it works", type: "info", description: "Lazy Waitlist automates pre-launch email capture with viral referral mechanics, position tracking, and automated email sequences (welcome, follow-up, launch). It includes a public signup page, live counter, countdown, and Slack notifications." },
+      { title: "Configure secrets", type: "secret", description: "Set up the required API keys for email delivery and notifications.", secretName: "RESEND_API_KEY", snippet: "You need a Resend API key for transactional emails. Optionally add a SLACK_WEBHOOK_URL for signup notifications." },
+      { title: "Run setup wizard", type: "action", description: "Go to Admin → Waitlist to configure your waitlist name, description, email templates, referral settings, and page customisation.", link: "/admin/waitlist", snippet: "Admin → Waitlist → Complete setup wizard → Toggle agent on" },
+      { title: "Verify", type: "verify", description: "Visit /waitlist to confirm the public signup page is live. Test a signup and check that the welcome email is sent and the subscriber appears in Admin → Waitlist." },
+    ],
+  },
+  run: {
+    key: "run",
+    label: "Lazy Run",
+    description: "Unified agent orchestration dashboard",
+    category: "Unicorn",
+    steps: [
+      { title: "How it works", type: "info", description: "Lazy Run is the unified orchestration dashboard that monitors and controls all active agents. It provides real-time status, error tracking, bulk start/pause, and publish-all capabilities from a single view." },
+      { title: "Paste the prompt", type: "action", description: "Copy the Lazy Run prompt and paste it into your Lovable project to install the dashboard.", snippet: "Admin → Prompts → 'Lazy Run' → Copy → Paste into Lovable chat" },
+      { title: "Configure agents", type: "info", description: "Once installed, Lazy Run auto-detects which agents are active by checking their settings tables. Start, pause, or publish agents directly from the dashboard." },
+      { title: "Verify", type: "verify", description: "Navigate to /lazy-run and confirm all installed agents appear with correct status indicators." },
+    ],
+  },
 };
 
 /* ── Wizard Component ── */
