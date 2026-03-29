@@ -33,6 +33,7 @@ const PRODUCT_WORDS: Record<string, { word: string; emoji: string; tagline: stri
   "lazy-repurpose": { word: "repurposing", emoji: "🔄", tagline: "Autonomous content repurposing" },
   "lazy-trend": { word: "trends", emoji: "🔥", tagline: "Autonomous trend detection" },
   "lazy-churn": { word: "retention", emoji: "💰", tagline: "Autonomous churn prevention" },
+  "lazy-waitlist": { word: "waitlists", emoji: "📋", tagline: "Autonomous pre-launch capture" },
   "lazy-launch": { word: "websites", emoji: "🚀", tagline: "Launch your Lovable website" },
 };
 
