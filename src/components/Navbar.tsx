@@ -287,9 +287,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a href="/lazy-cloud" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
               Lazy Cloud
             </a>
-            <a href="/lazy-run" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
-              Lazy Run
-            </a>
             <a href="/lazy-admin" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
               Lazy Admin
             </a>
