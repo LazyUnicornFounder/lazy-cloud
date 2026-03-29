@@ -98,7 +98,7 @@ function RotatingHeadline() {
       />
       Lovable<span className="ml-1 mr-0">❤️</span>
       <motion.span
-        className="inline-flex justify-center relative"
+        className="inline-flex justify-start relative"
         style={{ height: "1.2em", verticalAlign: "text-bottom", overflow: "clip" }}
         animate={{ width: width + 10 }}
         transition={ready ? { type: "spring", stiffness: 250, damping: 25 } : { duration: 0 }}
@@ -110,7 +110,7 @@ function RotatingHeadline() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -14, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="absolute inset-0 flex items-center justify-center gap-1 whitespace-nowrap"
+            className="absolute inset-0 flex items-center justify-start gap-1 whitespace-nowrap"
             style={{ color: "#c8a961" }}
           >
             {current.word}<span>{current.emoji}</span>
@@ -287,21 +287,20 @@ const Index = () => {
       </header>
 
       {/* Agents label */}
-      <section className="relative z-10" style={{ backgroundColor: "hsl(var(--background))" }}>
-        <div className="px-6 pt-20 pb-8 text-center max-w-4xl mx-auto">
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)", color: "hsl(var(--foreground))", fontWeight: 800, lineHeight: 1 }}>
-            35 agents run your Lovable business.
+      <section className="relative z-10" style={{ backgroundColor: "#0a0a08" }}>
+        <div className="px-6 md:px-12 pt-20 pb-12 max-w-4xl mx-auto">
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+            35 agents run your<br className="hidden md:inline" /> Lovable business.
           </h2>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)", color: "hsl(var(--foreground))", fontWeight: 800, lineHeight: 1, marginTop: "0.1em" }}>
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em", marginTop: "0.1em" }}>
             One prompt each.
           </h2>
-          <p className="mt-6 mx-auto max-w-2xl" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.9rem, 1.3vw, 1.1rem)", color: "hsl(var(--foreground))", opacity: 0.45, lineHeight: 1.7 }}>
+          <p className="mt-6 max-w-xl font-body text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
             Each agent is a self-contained prompt you paste into your Lovable project. It installs its own tables, edge functions, and UI — then runs itself autonomously.
           </p>
           <Link
             to="/lazy-agents"
-            className="inline-block mt-6 text-sm tracking-[0.15em] uppercase px-8 py-3 font-semibold hover:opacity-80 transition-opacity active:scale-[0.97] bg-primary text-primary-foreground"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            className="inline-flex items-center gap-2 mt-8 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity"
           >
             Explore Agents
           </Link>
