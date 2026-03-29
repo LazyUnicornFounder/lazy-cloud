@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { toast } from "sonner";
 import { Brain, Zap, Settings, ExternalLink, AlertTriangle, TestTube } from "lucide-react";
 
@@ -62,9 +63,9 @@ const AdminGeo = () => {
     setSaving(true);
     const payload = { ...form, posts_per_day: parseInt(form.posts_per_day) };
     if (settings) {
-      await supabase.from("geo_settings").update(payload).eq("id", settings.id);
+      await adminWrite({ table: "geo_settings", operation: "update", data: payload, match: { id: settings.id } });
     } else {
-      await supabase.from("geo_settings").insert(payload);
+      await adminWrite({ table: "geo_settings", operation: "insert", data: payload });
     }
     toast.success("GEO settings saved. Lazy GEO is running.");
     await fetchAll();
@@ -74,7 +75,7 @@ const AdminGeo = () => {
 
   const toggleRunning = async () => {
     if (!settings) return;
-    const { error } = await supabase.from("geo_settings").update({ is_running: !settings.is_running }).eq("id", settings.id);
+    const { error } = await adminWrite({ table: "geo_settings", operation: "update", data: { is_running: !settings.is_running }, match: { id: settings.id } }).catch((e: any) => ({ error: e }));
     if (error) { toast.error("Failed to update"); return; }
     setSettings({ ...settings, is_running: !settings.is_running });
     toast.success(settings.is_running ? "Lazy GEO paused" : "Lazy GEO resumed");

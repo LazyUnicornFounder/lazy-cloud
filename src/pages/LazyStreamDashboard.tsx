@@ -7,6 +7,7 @@ import { Activity, FileText, Film, BarChart3, Play, Pause, Zap, AlertTriangle, S
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 
 const db = supabase as any;
 
@@ -60,7 +61,7 @@ const LazyStreamDashboard = () => {
   const toggleRunning = async () => {
     if (!settings) return;
     setActionLoading("toggle");
-    await db.from("stream_settings").update({ is_running: !settings.is_running }).eq("id", settings.id);
+    await adminWrite({ table: "stream_settings", operation: "update", data: { is_running: !settings.is_running }, match: { id: settings.id } });
     await refetchSettings();
     toast.success(settings.is_running ? "Lazy Stream paused." : "Lazy Stream resumed.");
     setActionLoading(null);

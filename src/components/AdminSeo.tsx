@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { toast } from "sonner";
 import { Search, Zap, Settings, ExternalLink, AlertTriangle, Pencil, Check, X } from "lucide-react";
 
@@ -125,7 +126,7 @@ const AdminSeo = () => {
 
   const updateField = async (field: string, value: string) => {
     if (!settings) return;
-    const { error } = await supabase.from("seo_settings").update({ [field]: value }).eq("id", settings.id);
+    const { error } = await adminWrite({ table: "seo_settings", operation: "update", data: { [field]: value }, match: { id: settings.id } }).catch((e: any) => ({ error: e }));
     if (error) { toast.error("Failed to update"); return; }
     setSettings({ ...settings, [field]: value });
     toast.success("Updated — re-discovering keywords…");
@@ -145,9 +146,9 @@ const AdminSeo = () => {
     e.preventDefault();
     setSaving(true);
     if (settings) {
-      await supabase.from("seo_settings").update(form).eq("id", settings.id);
+      await adminWrite({ table: "seo_settings", operation: "update", data: form, match: { id: settings.id } });
     } else {
-      await supabase.from("seo_settings").insert(form);
+      await adminWrite({ table: "seo_settings", operation: "insert", data: form });
     }
     toast.success("SEO settings saved. Re-discovering keywords…");
     await fetchAll();
@@ -166,7 +167,7 @@ const AdminSeo = () => {
 
   const toggleRunning = async () => {
     if (!settings) return;
-    const { error } = await supabase.from("seo_settings").update({ is_running: !settings.is_running }).eq("id", settings.id);
+    const { error } = await adminWrite({ table: "seo_settings", operation: "update", data: { is_running: !settings.is_running }, match: { id: settings.id } }).catch((e: any) => ({ error: e }));
     if (error) { toast.error("Failed to update"); return; }
     setSettings({ ...settings, is_running: !settings.is_running });
     toast.success(settings.is_running ? "Lazy SEO paused" : "Lazy SEO resumed");

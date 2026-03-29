@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Volume2 } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
-import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
@@ -32,19 +32,19 @@ export default function LazyVoiceSetup() {
     setLoading(true);
     try {
       // Check if settings already exist
-      const { data: existing } = await supabase.from("voice_settings").select("id").limit(1);
+      const { data: existing } = await adminWrite({ table: "voice_settings", operation: "select" });
       if (existing && existing.length > 0) {
-        await supabase.from("voice_settings").update({
+        await adminWrite({ table: "voice_settings", operation: "update", data: {
           ...form,
           setup_complete: true,
           is_running: true,
-        }).eq("id", existing[0].id);
+        }, match: { id: existing[0].id } });
       } else {
-        await supabase.from("voice_settings").insert([{
+        await adminWrite({ table: "voice_settings", operation: "insert", data: {
           ...form,
           setup_complete: true,
           is_running: true,
-        }]);
+        } });
       }
       toast.success("Lazy Voice is running. Every new blog post will be narrated automatically.");
       navigate("/lazy-voice-dashboard");

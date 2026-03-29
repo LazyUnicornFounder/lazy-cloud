@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 
 export interface PromptVersion {
   id: string;
@@ -57,15 +58,18 @@ export function usePromptHistory(product: string) {
 
 /** Save a new prompt version and mark all previous versions as not current */
 export async function savePromptVersion(product: string, promptText: string, version: string) {
-  await db
-    .from("prompt_versions")
-    .update({ is_current: false })
-    .eq("product", product)
-    .eq("is_current", true);
+  await adminWrite({
+    table: "prompt_versions",
+    operation: "update",
+    data: { is_current: false },
+    match: { product, is_current: true },
+  });
 
-  const { error } = await db
-    .from("prompt_versions")
-    .insert({ product, version, prompt_text: promptText, is_current: true });
+  const { error } = await adminWrite({
+    table: "prompt_versions",
+    operation: "insert",
+    data: { product, version, prompt_text: promptText, is_current: true },
+  });
 
   return { error };
 }

@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { useState } from "react";
 import AgentStatusBar from "./components/AgentStatusBar";
 import QuickActions, { Zap } from "./components/QuickActions";
@@ -51,7 +52,7 @@ export default function AdminStreamPage() {
   const toggleRunning = async () => {
     if (!settings) return;
     setToggling(true);
-    await db.from("stream_settings").update({ is_running: !settings.is_running }).eq("id", settings.id);
+    await adminWrite({ table: "stream_settings", operation: "update", data: { is_running: !settings.is_running }, match: { id: settings.id } });
     queryClient.invalidateQueries({ queryKey: ["admin-stream-settings"] });
     queryClient.invalidateQueries({ queryKey: ["admin-agent-status"] });
     setToggling(false);
@@ -124,7 +125,7 @@ export default function AdminStreamPage() {
             { key: "content_niche", label: "Content Niche" },
           ]}
           values={settings}
-          onSave={async (vals) => { await db.from("stream_settings").update(vals).eq("id", settings.id); queryClient.invalidateQueries({ queryKey: ["admin-stream-settings"] }); }}
+          onSave={async (vals) => { await adminWrite({ table: "stream_settings", operation: "update", data: vals, match: { id: settings.id } }); queryClient.invalidateQueries({ queryKey: ["admin-stream-settings"] }); }}
         />
       )}
     </div>

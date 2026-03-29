@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { useState } from "react";
 import { Globe, FileText, Clock, Target, ArrowUpRight, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -82,7 +83,7 @@ export default function AdminGeoPage() {
   const toggleRunning = async () => {
     if (!settings) return;
     setToggling(true);
-    await db.from("geo_settings").update({ is_running: !settings.is_running }).eq("id", settings.id);
+    await adminWrite({ table: "geo_settings", operation: "update", data: { is_running: !settings.is_running }, match: { id: settings.id } });
     queryClient.invalidateQueries({ queryKey: ["admin-geo-settings"] });
     queryClient.invalidateQueries({ queryKey: ["admin-agent-status"] });
     setToggling(false);
@@ -318,7 +319,7 @@ export default function AdminGeoPage() {
             { key: "posts_per_day", label: "Posts per day", type: "number" },
           ]}
           values={settings}
-          onSave={async (vals) => { await db.from("geo_settings").update(vals).eq("id", settings.id); queryClient.invalidateQueries({ queryKey: ["admin-geo-settings"] }); }}
+          onSave={async (vals) => { await adminWrite({ table: "geo_settings", operation: "update", data: vals, match: { id: settings.id } }); queryClient.invalidateQueries({ queryKey: ["admin-geo-settings"] }); }}
         />
       )}
     </div>

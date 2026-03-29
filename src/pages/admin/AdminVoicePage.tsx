@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { useState } from "react";
 import AgentStatusBar from "./components/AgentStatusBar";
 import ContentTable from "./components/ContentTable";
@@ -40,7 +41,7 @@ export default function AdminVoicePage() {
   const toggleRunning = async () => {
     if (!settings) return;
     setToggling(true);
-    await db.from("voice_settings").update({ is_running: !settings.is_running }).eq("id", settings.id);
+    await adminWrite({ table: "voice_settings", operation: "update", data: { is_running: !settings.is_running }, match: { id: settings.id } });
     queryClient.invalidateQueries({ queryKey: ["admin-voice-settings"] });
     queryClient.invalidateQueries({ queryKey: ["admin-agent-status"] });
     setToggling(false);
@@ -83,7 +84,7 @@ export default function AdminVoicePage() {
             { key: "site_url", label: "Site URL" },
           ]}
           values={settings}
-          onSave={async (vals) => { await db.from("voice_settings").update(vals).eq("id", settings.id); queryClient.invalidateQueries({ queryKey: ["admin-voice-settings"] }); }}
+          onSave={async (vals) => { await adminWrite({ table: "voice_settings", operation: "update", data: vals, match: { id: settings.id } }); queryClient.invalidateQueries({ queryKey: ["admin-voice-settings"] }); }}
         />
       )}
     </div>

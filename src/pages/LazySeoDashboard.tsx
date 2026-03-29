@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
@@ -37,7 +38,7 @@ const LazySeoD = () => {
   const toggleRunning = async () => {
     if (!settings) return;
     const newVal = !settings.is_running;
-    const { error } = await supabase.from("seo_settings").update({ is_running: newVal }).eq("id", settings.id);
+    const { error } = await adminWrite({ table: "seo_settings", operation: "update", data: { is_running: newVal }, match: { id: settings.id } }).catch((e: any) => ({ error: e }));
     if (error) { toast.error("Failed to update"); return; }
     setSettings({ ...settings, is_running: newVal });
     toast.success(newVal ? "Lazy SEO resumed" : "Lazy SEO paused");

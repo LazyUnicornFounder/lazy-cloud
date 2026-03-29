@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { useState } from "react";
 import { Search, FileText, Clock, TrendingUp, ArrowUpRight, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -67,7 +68,7 @@ export default function AdminSeoPage() {
   const toggleRunning = async () => {
     if (!settings) return;
     setToggling(true);
-    await db.from("seo_settings").update({ is_running: !settings.is_running }).eq("id", settings.id);
+    await adminWrite({ table: "seo_settings", operation: "update", data: { is_running: !settings.is_running }, match: { id: settings.id } });
     queryClient.invalidateQueries({ queryKey: ["admin-seo-settings"] });
     queryClient.invalidateQueries({ queryKey: ["admin-agent-status"] });
     setToggling(false);
@@ -231,7 +232,7 @@ export default function AdminSeoPage() {
             { key: "publishing_frequency", label: "Posts per day", type: "number" },
           ]}
           values={settings}
-          onSave={async (vals) => { await db.from("seo_settings").update(vals).eq("id", settings.id); queryClient.invalidateQueries({ queryKey: ["admin-seo-settings"] }); }}
+          onSave={async (vals) => { await adminWrite({ table: "seo_settings", operation: "update", data: vals, match: { id: settings.id } }); queryClient.invalidateQueries({ queryKey: ["admin-seo-settings"] }); }}
         />
       )}
     </div>
