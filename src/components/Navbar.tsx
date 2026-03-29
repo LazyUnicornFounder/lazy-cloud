@@ -15,7 +15,7 @@ const XLogo = () => (
 
 /* ── Agent icon map (Lucide, consistent with homepage & lazy-run) ── */
 const iconMap: Record<string, LucideIcon> = {
-  Launch: Rocket, Run: Clock, Blogger: FileText, SEO: Search, GEO: Globe,
+  Launch: Rocket, Waitlist: ListEnd, Run: Clock, Blogger: FileText, SEO: Search, GEO: Globe,
   Crawl: Radar, Perplexity: Compass, Contentful: Layers, Store: ShoppingCart,
   Drop: Package, Print: Printer, Pay: CreditCard, SMS: MessageSquare, Mail: Mail,
   Voice: Mic, Stream: MonitorPlay, YouTube: Youtube, GitHub: Code, GitLab: GitBranch,
