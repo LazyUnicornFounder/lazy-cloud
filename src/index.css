@@ -24,17 +24,17 @@
     --secondary: 280 40% 12%;
     --secondary-foreground: 280 30% 85%;
 
-    --muted: 260 10% 14%;
-    --muted-foreground: 260 10% 65%;
+    --muted: 40 8% 10%;
+    --muted-foreground: 40 15% 55%;
 
     --accent: 270 75% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent-foreground: 40 33% 90%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 40 33% 90%;
 
-    --border: 260 15% 18%;
-    --input: 260 10% 14%;
+    --border: 40 10% 15%;
+    --input: 40 8% 10%;
     --ring: 16 90% 55%;
 
     --radius: 0rem;
@@ -42,13 +42,13 @@
     --font-display: 'Space Grotesk', system-ui, sans-serif;
     --font-body: 'Space Grotesk', system-ui, sans-serif;
 
-    --sidebar-background: 240 10% 4%;
-    --sidebar-foreground: 0 0% 95%;
+    --sidebar-background: 40 20% 3%;
+    --sidebar-foreground: 40 33% 90%;
     --sidebar-primary: 16 90% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 280 40% 12%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 260 15% 18%;
+    --sidebar-primary-foreground: 40 33% 90%;
+    --sidebar-accent: 40 10% 8%;
+    --sidebar-accent-foreground: 40 33% 90%;
+    --sidebar-border: 40 10% 15%;
     --sidebar-ring: 16 90% 55%;
   }
 }
