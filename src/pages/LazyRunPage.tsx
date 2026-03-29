@@ -5,7 +5,10 @@ import {
   FileText, Search, Globe, ShoppingCart, Mic, CreditCard,
   MessageSquare, Video, Code, ChevronDown, Zap, Activity,
   Clock, ArrowRight, Radar, Compass, Layers, BarChart3,
-  Database, Bell, Send, Shield, LayoutDashboard, Calendar
+  Database, Bell, Send, Shield, LayoutDashboard, Calendar,
+  Package, Printer, Mail, MonitorPlay, Youtube, GitBranch,
+  Paintbrush, Lock, Eye, Wrench, Hammer, Brain, RefreshCw,
+  TrendingUp, UserCheck
 } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
@@ -485,21 +488,21 @@ const agents = [
   { name: "Lazy Contentful", desc: "Autonomous CMS sync", icon: Layers, href: "/lazy-contentful" },
   // Commerce
   { name: "Lazy Store", desc: "Autonomous storefronts", icon: ShoppingCart, href: "/lazy-store" },
-  { name: "Lazy Drop", desc: "Autonomous dropshipping", icon: ShoppingCart, href: "/lazy-drop" },
-  { name: "Lazy Print", desc: "Autonomous merch", icon: Layers, href: "/lazy-print" },
+  { name: "Lazy Drop", desc: "Autonomous dropshipping", icon: Package, href: "/lazy-drop" },
+  { name: "Lazy Print", desc: "Autonomous merch", icon: Printer, href: "/lazy-print" },
   { name: "Lazy Pay", desc: "Autonomous payments", icon: CreditCard, href: "/lazy-pay" },
   { name: "Lazy SMS", desc: "Autonomous text campaigns", icon: MessageSquare, href: "/lazy-sms" },
-  { name: "Lazy Mail", desc: "Autonomous email flows", icon: MessageSquare, href: "/lazy-mail" },
+  { name: "Lazy Mail", desc: "Autonomous email flows", icon: Mail, href: "/lazy-mail" },
   // Media
   { name: "Lazy Voice", desc: "Autonomous podcasts", icon: Mic, href: "/lazy-voice" },
-  { name: "Lazy Stream", desc: "Autonomous stream content", icon: Video, href: "/lazy-stream" },
-  { name: "Lazy YouTube", desc: "Autonomous video content", icon: Video, href: "/lazy-youtube" },
+  { name: "Lazy Stream", desc: "Autonomous stream content", icon: MonitorPlay, href: "/lazy-stream" },
+  { name: "Lazy YouTube", desc: "Autonomous video content", icon: Youtube, href: "/lazy-youtube" },
   // Dev
   { name: "Lazy GitHub", desc: "Autonomous changelogs", icon: Code, href: "/lazy-github" },
-  { name: "Lazy GitLab", desc: "Autonomous GitLab docs", icon: Code, href: "/lazy-gitlab" },
+  { name: "Lazy GitLab", desc: "Autonomous GitLab docs", icon: GitBranch, href: "/lazy-gitlab" },
   { name: "Lazy Linear", desc: "Autonomous issue content", icon: BarChart3, href: "/lazy-linear" },
-  { name: "Lazy Design", desc: "Autonomous UI upgrades", icon: Layers, href: "/lazy-design" },
-  { name: "Lazy Auth", desc: "Autonomous login flows", icon: Shield, href: "/lazy-auth" },
+  { name: "Lazy Design", desc: "Autonomous UI upgrades", icon: Paintbrush, href: "/lazy-design" },
+  { name: "Lazy Auth", desc: "Autonomous login flows", icon: Lock, href: "/lazy-auth" },
   { name: "Lazy Granola", desc: "Autonomous meeting content", icon: Calendar, href: "/lazy-granola" },
   // Ops
   { name: "Lazy Admin", desc: "Unified ops dashboard", icon: LayoutDashboard, href: "/lazy-admin" },
@@ -507,13 +510,13 @@ const agents = [
   { name: "Lazy Telegram", desc: "Autonomous Telegram updates", icon: Send, href: "/lazy-telegram" },
   { name: "Lazy Supabase", desc: "Autonomous database reports", icon: Database, href: "/lazy-supabase" },
   { name: "Lazy Security", desc: "Autonomous pentesting", icon: Shield, href: "/lazy-security" },
-  { name: "Lazy Watch", desc: "Autonomous error monitoring", icon: Activity, href: "/lazy-watch" },
-  { name: "Lazy Fix", desc: "Autonomous prompt improvement", icon: Zap, href: "/lazy-fix" },
-  { name: "Lazy Build", desc: "Writes new agent prompts", icon: Code, href: "/lazy-build" },
-  { name: "Lazy Intel", desc: "Autonomous content strategy", icon: Compass, href: "/lazy-intel" },
-  { name: "Lazy Repurpose", desc: "Autonomous content recycling", icon: ArrowRight, href: "/lazy-repurpose" },
-  { name: "Lazy Trend", desc: "Autonomous trend detection", icon: Radar, href: "/lazy-trend" },
-  { name: "Lazy Churn", desc: "Autonomous churn prevention", icon: Activity, href: "/lazy-churn" },
+  { name: "Lazy Watch", desc: "Autonomous error monitoring", icon: Eye, href: "/lazy-watch" },
+  { name: "Lazy Fix", desc: "Autonomous prompt improvement", icon: Wrench, href: "/lazy-fix" },
+  { name: "Lazy Build", desc: "Writes new agent prompts", icon: Hammer, href: "/lazy-build" },
+  { name: "Lazy Intel", desc: "Autonomous content strategy", icon: Brain, href: "/lazy-intel" },
+  { name: "Lazy Repurpose", desc: "Autonomous content recycling", icon: RefreshCw, href: "/lazy-repurpose" },
+  { name: "Lazy Trend", desc: "Autonomous trend detection", icon: TrendingUp, href: "/lazy-trend" },
+  { name: "Lazy Churn", desc: "Autonomous churn prevention", icon: UserCheck, href: "/lazy-churn" },
 ];
 
 const faqs = [
