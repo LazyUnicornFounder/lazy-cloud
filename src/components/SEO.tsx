@@ -42,7 +42,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = "Lazy Unicorn";
-const DEFAULT_TITLE = "Lazy Unicorn — The autonomous operating system for your Lovable business";
+const DEFAULT_TITLE = "Lazy Unicorn — Launch, build and run your Lovable website or app with autonomous agents";
 const DEFAULT_DESCRIPTION = "The autonomous layer for Lovable. One prompt installs the agent you need — blog posts, SEO, GEO, payments, voice, stores, streams, and more. Everything runs itself.";
 const DEFAULT_IMAGE = "https://www.lazyunicorn.ai/og-image.png";
 const BASE_URL = "https://www.lazyunicorn.ai";
