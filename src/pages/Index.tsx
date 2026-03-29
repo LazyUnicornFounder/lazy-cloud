@@ -20,9 +20,10 @@ const NEW_TITLE = "Launch your autonomous business on Lovable.";
 const NEW_DESCRIPTION = "Your site launches. Your waitlist fills. Your blog writes itself. Your store sells. Your newsletters send. Your pages rank. Your payments process. And so much more. All from one prompt — all on autopilot.";
 
 const rotatingWords = [
-  "blogs", "SEO", "GEO", "podcasts", "stores", "payments",
-  "emails", "SMS", "streams", "research", "design", "security",
-  "alerts", "merch", "commits", "databases", "waitlists", "websites",
+  "websites", "apps", "stores", "blogs", "podcasts", "streams",
+  "emails", "security", "SEO", "GEO", "payments", "SMS",
+  "design", "alerts", "merch", "commits", "databases", "waitlists",
+  "research",
 ];
 
 function RotatingHeadline() {
@@ -62,6 +63,12 @@ function RotatingHeadline() {
           </motion.span>
         </AnimatePresence>
       </div>
+      <span
+        className="font-body text-[12px] tracking-[0.2em] uppercase font-semibold"
+        style={{ color: "hsl(var(--foreground))", opacity: 0.3 }}
+      >
+        and much more
+      </span>
     </div>
   );
 }
