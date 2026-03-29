@@ -294,7 +294,7 @@ const LazyGitHubPage = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
             <div className="flex items-center gap-3 mb-6">
@@ -350,7 +350,7 @@ const LazyGitHubPage = () => {
       </section>
 
       {/* What it installs */}
-      <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="py-24 px-6 md:px-12">
         <div className="max-w-4xl mx-auto">
           <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>What it installs</p>
           <h2 className="mt-2 mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
@@ -398,7 +398,7 @@ const LazyGitHubPage = () => {
       </section>
 
       {/* Roadmap section */}
-      <section className="py-24 px-6 md:px-12" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="py-24 px-6 md:px-12">
         <div className="max-w-3xl mx-auto">
           <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Roadmap</p>
           <h2 className="mt-2 mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>

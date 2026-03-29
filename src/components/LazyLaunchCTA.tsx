@@ -6,7 +6,7 @@ export default function LazyLaunchCTA() {
   if (pathname === "/lazy-launch" || pathname.startsWith("/admin")) return null;
 
   return (
-    <section className="border-t border-white/10" style={{ backgroundColor: "#0a0a08" }}>
+    <section className="border-t border-white/10">
       <div className="max-w-4xl mx-auto px-6 md:px-12 py-20 md:py-28">
         <p className="font-body text-[14px] tracking-[0.2em] uppercase mb-6" style={{ color: "#c8a961", opacity: 0.6 }}>
           Lazy Launch

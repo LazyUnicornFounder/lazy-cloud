@@ -283,7 +283,7 @@ export default function LazySmsPage() {
 
       <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
         {/* ── HERO ── */}
-        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
           <div className="max-w-4xl mx-auto">
             <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">

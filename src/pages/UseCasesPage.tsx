@@ -579,7 +579,7 @@ export default function UseCasesPage() {
   const filtered = active === "All" ? integrations : integrations.filter((i) => i.category === active);
 
   return (
-    <main className="min-h-screen" style={{ backgroundColor: "#0a0a08", color: "#f0ead6" }}>
+    <main className="min-h-screen bg-background text-foreground">
       <SEO
         title="Use Cases — What Your Lovable Site Can Do | Lazy Unicorn"
         description="Real use cases for every Lovable integration. See what becomes possible when you connect Stripe, Twilio, ElevenLabs, and more through Lazy agents."
