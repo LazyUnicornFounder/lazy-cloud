@@ -282,6 +282,56 @@ const Index = () => {
                 </Link>
               </div>
             </motion.div>
+
+            {/* Integrations marquee */}
+            <div className="mt-16 overflow-hidden">
+              <p className="text-[10px] tracking-[0.3em] uppercase font-semibold mb-4" style={{ color: "#f0ead6", opacity: 0.2 }}>
+                Integrates with
+              </p>
+              <div className="relative">
+                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0a0a08] to-transparent z-10 pointer-events-none" />
+                <motion.div
+                  className="flex gap-10 items-center whitespace-nowrap"
+                  animate={{ x: ["0%", "-50%"] }}
+                  transition={{ duration: 45, ease: "linear", repeat: Infinity }}
+                >
+                  {[...Array(2)].map((_, dupeIdx) => (
+                    <div key={dupeIdx} className="flex gap-10 items-center shrink-0">
+                      {[
+                        { name: "Firecrawl", href: "/lazy-crawl" },
+                        { name: "Perplexity", href: "/lazy-perplexity" },
+                        { name: "Contentful", href: "/lazy-contentful" },
+                        { name: "Shopify", href: "/lazy-store" },
+                        { name: "AutoDS", href: "/lazy-drop" },
+                        { name: "Printful", href: "/lazy-print" },
+                        { name: "Stripe", href: "/lazy-pay" },
+                        { name: "Twilio", href: "/lazy-sms" },
+                        { name: "Resend", href: "/lazy-mail" },
+                        { name: "ElevenLabs", href: "/lazy-voice" },
+                        { name: "Twitch", href: "/lazy-stream" },
+                        { name: "YouTube", href: "/lazy-youtube" },
+                        { name: "GitHub", href: "/lazy-github" },
+                        { name: "GitLab", href: "/lazy-gitlab" },
+                        { name: "Linear", href: "/lazy-linear" },
+                        { name: "Slack", href: "/lazy-alert" },
+                        { name: "Telegram", href: "/lazy-telegram" },
+                        { name: "Supabase", href: "/lazy-supabase" },
+                        { name: "Aikido", href: "/lazy-security" },
+                      ].map((item) => (
+                        <Link
+                          key={`${dupeIdx}-${item.name}`}
+                          to={item.href}
+                          className="text-[11px] tracking-[0.15em] uppercase font-medium shrink-0 transition-opacity duration-200 hover:opacity-60"
+                          style={{ color: "#f0ead6", opacity: 0.25 }}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+            </div>
           </div>
         </section>
       </header>
