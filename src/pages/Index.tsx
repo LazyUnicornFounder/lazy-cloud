@@ -124,9 +124,6 @@ function RotatingHeadline() {
 }
 
 const products = [
-  // Lazy Unicorn
-  { cursive: "Lazy", name: "Waitlist", link: "/lazy-waitlist", tagline: "Autonomous pre-launch capture" },
-  { cursive: "Lazy", name: "Run", link: "/lazy-run", tagline: "Autonomous everything" },
   // Lazy Content
   { cursive: "Lazy", name: "Blogger", link: "/lazy-blogger", tagline: "Autonomous blog posts" },
   { cursive: "Lazy", name: "SEO", link: "/lazy-seo", tagline: "Autonomous SEO content" },
@@ -386,11 +383,32 @@ const Index = () => {
             </div>
           </Link>
 
+          {/* Lazy Waitlist */}
+          <Link to="/lazy-waitlist" className="block">
+            <div
+              className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
+              style={{ backgroundColor: "#0f0f0b" }}
+            >
+              {(() => { const Icon = iconMap["Waitlist"]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
+              <div className="text-center">
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+                  Lazy
+                </p>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+                  Waitlist
+                </p>
+              </div>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "#f0ead6", opacity: 0.5 }}>
+                 Autonomous pre-launch capture
+              </p>
+            </div>
+          </Link>
+
           {/* Lazy Run */}
           <Link to="/lazy-run" className="block">
             <div
               className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
-              style={{ backgroundColor: "#0f0f0b" }}
+              style={{ backgroundColor: "#0a0a08" }}
             >
               {(() => { const Icon = iconMap["Run"]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
               <div className="text-center">
