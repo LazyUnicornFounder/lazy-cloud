@@ -74,16 +74,14 @@ serve(async (req) => {
       );
       if (fStatus !== 200 || !fData?.content) continue;
 
-      const decoded = decodeURIComponent(escape(atob(fData.content.replace(/\n/g, ""))));
+      const decoded = decodeURIComponent(escape(atob(fData.content.replace(/\n/g, "")))).trim();
 
-      // Extract version from the "> Category: ... · Version: ..." line
+      // Extract version from header if present, otherwise fall back
       const versionMatch = decoded.match(/Version:\s*([\d.]+)/);
       const version = versionMatch ? versionMatch[1] : "0.0.1";
 
-      // Extract prompt text between ```` markers
-      const promptMatch = decoded.match(/````\n([\s\S]*?)\n````/);
-      if (!promptMatch) continue;
-      const promptText = promptMatch[1];
+      // Use full file content as prompt text (raw format)
+      const promptText = decoded;
 
       // Check if this version already exists in DB
       const { data: existing } = await sb
