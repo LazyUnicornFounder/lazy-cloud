@@ -52,7 +52,7 @@ function RotatingHeadline() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -16, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="absolute inset-0 font-body text-[12px] tracking-[0.2em] uppercase font-semibold"
+            className="absolute inset-0 flex items-center font-body text-[12px] tracking-[0.2em] uppercase font-semibold"
             style={{ color: "hsl(var(--primary))" }}
           >
             {rotatingWords[index]}
