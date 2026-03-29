@@ -644,12 +644,8 @@ const Index = () => {
         <div className="grid grid-cols-2 md:grid-cols-4">
           {/* Lazy Launch */}
           <Link to="/lazy-launch" className="block">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:brightness-[1.15] cursor-pointer p-4"
+            <div
+              className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
               style={{ backgroundColor: "#0a0a08" }}
             >
               {sketches["Launch"]}
@@ -664,17 +660,13 @@ const Index = () => {
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "#f0ead6", opacity: 0.4 }}>
                 Launch your Lovable website
               </p>
-            </motion.div>
+            </div>
           </Link>
 
           {/* Lazy Run */}
           <Link to="/lazy-run" className="block">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.08 }}
-              className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:brightness-[1.15] cursor-pointer p-4"
+            <div
+              className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
               style={{ backgroundColor: "#111110" }}
             >
               {sketches["Run"]}
@@ -689,7 +681,7 @@ const Index = () => {
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "#f0ead6", opacity: 0.4 }}>
                 Autonomous everything
               </p>
-            </motion.div>
+            </div>
           </Link>
 
           {products.map((product, i) => {
@@ -702,12 +694,8 @@ const Index = () => {
             const isComingSoon = product.name === "Coming Soon";
 
             const content = (
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: (i % 4) * 0.08 }}
-                className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:brightness-[1.15] cursor-pointer p-4"
+              <div
+                className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
                 style={{ backgroundColor: bg }}
               >
                 {sketches[product.name]}
@@ -722,7 +710,7 @@ const Index = () => {
                 <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "#f0ead6", opacity: 0.4 }}>
                   {product.tagline}
                 </p>
-              </motion.div>
+              </div>
             );
 
             if (isComingSoon) return <div key={i}>{content}</div>;
