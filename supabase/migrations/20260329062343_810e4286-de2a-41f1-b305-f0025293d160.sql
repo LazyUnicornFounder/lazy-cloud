@@ -1,0 +1,1 @@
+UPDATE prompt_releases SET engine_name = 'Lazy GitHub' WHERE engine_name = 'Lazy Code';
