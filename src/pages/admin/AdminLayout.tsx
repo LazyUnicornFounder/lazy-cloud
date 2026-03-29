@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { Loader2, Pause, Play, LayoutDashboard, Settings, Download, ExternalLink, GitBranch, Upload, FileText } from "lucide-react";
+import { Loader2, Pause, Play, LayoutDashboard, Settings, Download, ExternalLink, GitBranch, Upload, FileText, Cloud } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useAgentDetection } from "./hooks/useAgentDetection";
@@ -164,6 +164,13 @@ export default function AdminLayout() {
 
             {/* System */}
             <div className="mt-3">
+              <p className="px-5 font-body text-[10px] tracking-[0.2em] uppercase text-[#f0ead6]/40 mb-1">System</p>
+              <Link
+                to="/admin/cloud-signups"
+                className={`flex items-center gap-2 px-5 py-1.5 font-body text-[13px] tracking-[0.06em] transition-colors ${isActive("/admin/cloud-signups") ? "text-[#c8a961] bg-[#c8a961]/8 border-l-2 border-[#c8a961]" : "text-[#f0ead6]/70 hover:text-[#f0ead6]/95 border-l-2 border-transparent"}`}
+              >
+                <Cloud size={12} /> Cloud Signups
+              </Link>
               <p className="px-5 font-body text-[10px] tracking-[0.2em] uppercase text-[#f0ead6]/40 mb-1">System</p>
               <Link
                 to="/admin/changelog"
