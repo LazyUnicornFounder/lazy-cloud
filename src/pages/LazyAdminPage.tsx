@@ -72,33 +72,33 @@ export default function LazyAdminPage() {
       <Navbar />
       <main className="min-h-screen bg-background text-foreground">
         {/* Hero */}
-        <section className="pt-36 pb-20 px-6">
-          <div className="max-w-3xl mx-auto text-center">
+        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+          <div className="max-w-4xl mx-auto">
             <motion.div {...fade}>
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <span className="font-body text-[14px] tracking-[0.2em] uppercase text-[#c8a961]/60">Works with all Lazy agents</span>
+              <div className="flex items-center gap-3 mb-6">
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
                 <span className="bg-primary text-primary-foreground text-[14px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               </div>
               <AutopilotHeadline product="lazy-admin" />
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
-                <span>Lazy Admin</span>
+              <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+                Lazy Admin
               </h1>
               <div className="flex items-center gap-3 mt-4 mb-4">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Ops</span>
               </div>
-              <p className="font-body text-foreground/50 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 Lazy Admin is the unified control panel for your entire Lazy Stack. Paste one prompt. It detects every agent you have installed, builds a dashboard around them, and shows you everything your autonomous business did overnight — in one place, in under a minute.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
                 <button
                   onClick={handleCopy}
-                  className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-display text-[13px] tracking-[0.15em] uppercase font-bold px-8 py-3.5 hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity"
                 >
-                  {copied ? <><Check size={14} /> Copied ✓</> : <><Copy size={14} /> Copy the Lovable Prompt</>}
+                  {copied ? <><Check size={16} /> Copied!</> : <><Copy size={16} /> Copy the Lovable Prompt</>}
                 </button>
                 <a
                   href="#features"
-                  className="inline-flex items-center justify-center gap-2 border border-border text-foreground/50 font-display text-[13px] tracking-[0.15em] uppercase font-bold px-8 py-3.5 hover:text-foreground hover:border-foreground/30 transition-colors"
+                  className="inline-flex items-center gap-2 font-body text-[13px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border text-foreground/50 hover:text-foreground transition-colors"
                 >
                   See What It Shows
                 </a>
