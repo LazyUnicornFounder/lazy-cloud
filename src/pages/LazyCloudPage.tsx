@@ -284,9 +284,7 @@ export default function LazyCloudPage() {
                     </li>
                   ))}
                 </ul>
-                <button className={`w-full font-display font-bold text-sm tracking-[0.08em] uppercase px-6 py-3 transition-opacity hover:opacity-90 ${plan.filled ? "bg-primary text-primary-foreground" : "border border-primary text-primary"}`}>
-                  {plan.cta}
-                </button>
+                <WaitlistButton plan={plan.name} filled={plan.filled} cta={plan.cta} />
               </motion.div>
             ))}
           </div>
