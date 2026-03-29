@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { toast } from "sonner";
 import { Loader2, Save, CheckCircle, XCircle, Eye, EyeOff } from "lucide-react";
 import { useAdminContext } from "./AdminLayout";
@@ -8,7 +9,6 @@ import { AGENTS, CATEGORY_META, type AgentCategory } from "./agentRegistry";
 
 /* ── Weekly schedule (read-only visual) ── */
 const SCHEDULE: { agent: string; category: AgentCategory; day: number; hour: number }[] = [
-  // Content — gold
   { agent: "Blogger", category: "content", day: 0, hour: 6 },
   { agent: "Blogger", category: "content", day: 1, hour: 6 },
   { agent: "Blogger", category: "content", day: 2, hour: 6 },
@@ -22,14 +22,11 @@ const SCHEDULE: { agent: string; category: AgentCategory; day: number; hour: num
   { agent: "GEO", category: "content", day: 0, hour: 10 },
   { agent: "GEO", category: "content", day: 2, hour: 10 },
   { agent: "GEO", category: "content", day: 4, hour: 10 },
-  // Media — blue
   { agent: "Voice", category: "media", day: 1, hour: 14 },
   { agent: "Voice", category: "media", day: 4, hour: 14 },
   { agent: "Stream", category: "media", day: 6, hour: 20 },
-  // Dev — purple
   { agent: "Fix", category: "dev", day: 6, hour: 23 },
   { agent: "Intel", category: "ops", day: 0, hour: 9 },
-  // Ops — red
   { agent: "Watch", category: "ops", day: 0, hour: 7 },
   { agent: "Watch", category: "ops", day: 3, hour: 7 },
   { agent: "Watch", category: "ops", day: 6, hour: 7 },
@@ -41,8 +38,10 @@ const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const API_KEYS: { label: string; secret: string; agents: string[] }[] = [
   { label: "ElevenLabs", secret: "ELEVENLABS_API_KEY", agents: ["Voice"] },
   { label: "Stripe", secret: "STRIPE_SECRET_KEY", agents: ["Pay"] },
+  { label: "Stripe Webhook", secret: "STRIPE_WEBHOOK_SECRET", agents: ["Pay"] },
   { label: "Twilio", secret: "TWILIO_AUTH_TOKEN", agents: ["SMS"] },
-  { label: "Twitch", secret: "TWITCH_CLIENT_ID", agents: ["Stream"] },
+  { label: "Twitch Client ID", secret: "TWITCH_CLIENT_ID", agents: ["Stream"] },
+  { label: "Twitch Secret", secret: "TWITCH_CLIENT_SECRET", agents: ["Stream"] },
   { label: "GitHub", secret: "GITHUB_PROMPTS_TOKEN", agents: ["GitHub", "Prompts"] },
   { label: "GitLab", secret: "GITLAB_TOKEN", agents: ["GitLab"] },
   { label: "Linear", secret: "LINEAR_API_KEY", agents: ["Linear"] },
@@ -55,6 +54,10 @@ const API_KEYS: { label: string; secret: string; agents: string[] }[] = [
   { label: "Granola", secret: "GRANOLA_API_KEY", agents: ["Granola"] },
   { label: "Slack", secret: "SLACK_WEBHOOK_URL", agents: ["Alert"] },
   { label: "Telegram", secret: "TELEGRAM_BOT_TOKEN", agents: ["Telegram"] },
+  { label: "AutoDS", secret: "AUTODS_API_KEY", agents: ["Drop"] },
+  { label: "Printful", secret: "PRINTFUL_API_KEY", agents: ["Print"] },
+  { label: "Shopify", secret: "SHOPIFY_ACCESS_TOKEN", agents: ["Store"] },
+  { label: "Supabase Service Role", secret: "SUPABASE_SERVICE_ROLE_KEY", agents: ["Supabase"] },
 ];
 
 export default function AdminSettingsPage() {
@@ -140,7 +143,9 @@ export default function AdminSettingsPage() {
                 const u: Record<string, string> = {};
                 if (siteForm.site_url) u.site_url = siteForm.site_url;
                 if (siteForm.brand_name) u.brand_name = siteForm.brand_name;
-                if (Object.keys(u).length > 0) await (supabase as any).from(a.settingsTable).update(u);
+                if (Object.keys(u).length > 0) {
+                  await adminWrite({ table: a.settingsTable, operation: "update", data: u });
+                }
               } catch {}
             }
             toast.success("Settings propagated to all agents");

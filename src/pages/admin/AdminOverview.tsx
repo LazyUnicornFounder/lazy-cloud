@@ -22,7 +22,8 @@ export default function AdminOverview() {
       const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7);
       const todayIso = today.toISOString();
       const weekIso = weekAgo.toISOString();
-      const [blogToday, seoToday, geoToday, blogWeek, seoWeek, geoWeek, installsTotal] = await Promise.all([
+
+      const [blogToday, seoToday, geoToday, blogWeek, seoWeek, geoWeek, installsTotal, revenueToday, securityScore] = await Promise.all([
         (supabase as any).from("blog_posts").select("id", { count: "exact", head: true }).gte("created_at", todayIso).then((r: any) => r.count || 0).catch(() => 0),
         (supabase as any).from("seo_posts").select("id", { count: "exact", head: true }).gte("published_at", todayIso).then((r: any) => r.count || 0).catch(() => 0),
         (supabase as any).from("geo_posts").select("id", { count: "exact", head: true }).gte("published_at", todayIso).then((r: any) => r.count || 0).catch(() => 0),
@@ -30,19 +31,71 @@ export default function AdminOverview() {
         (supabase as any).from("seo_posts").select("id", { count: "exact", head: true }).gte("published_at", weekIso).then((r: any) => r.count || 0).catch(() => 0),
         (supabase as any).from("geo_posts").select("id", { count: "exact", head: true }).gte("published_at", weekIso).then((r: any) => r.count || 0).catch(() => 0),
         (supabase as any).from("installs").select("id", { count: "exact", head: true }).then((r: any) => r.count || 0).catch(() => 0),
+        // Revenue today from pay_transactions
+        (supabase as any).from("pay_transactions").select("amount").eq("status", "succeeded").gte("created_at", todayIso).then((r: any) => {
+          if (!r.data) return 0;
+          return r.data.reduce((sum: number, t: any) => sum + (t.amount || 0), 0);
+        }).catch(() => 0),
+        // Security score from latest scan
+        (supabase as any).from("security_scans").select("score").order("created_at", { ascending: false }).limit(1).single().then((r: any) => r.data?.score ?? null).catch(() => null),
       ]);
+
       return {
         postsToday: blogToday + seoToday + geoToday,
         postsWeek: blogWeek + seoWeek + geoWeek,
         activeAgents: Object.values(statuses).filter((s) => s.running).length,
         errorsToday: Object.values(statuses).reduce((a, s) => a + s.errorsToday, 0),
+        revenueToday,
+        securityScore,
         installsTotal,
       };
     },
     refetchInterval: 60_000,
   });
 
-  /* ── Activity feed — synthetic from content + error tables ── */
+  /* ── Primary metric per agent ── */
+  const { data: agentMetrics = {} } = useQuery({
+    queryKey: ["admin-overview-agent-metrics"],
+    queryFn: async () => {
+      const metrics: Record<string, { metric: string; value: number | string; lastRun: string | null }> = {};
+      await Promise.all(installedAgents.map(async (agent) => {
+        let metric = "—";
+        let value: number | string = "—";
+        let lastRun: string | null = null;
+
+        // Get primary metric from first statsQuery
+        if (agent.statsQueries.length > 0) {
+          const sq = agent.statsQueries[0];
+          try {
+            if (sq.type === "count") {
+              const { count } = await (supabase as any).from(sq.table).select("id", { count: "exact", head: true });
+              metric = sq.label;
+              value = count || 0;
+            } else if (sq.type === "count_today") {
+              const today = new Date(); today.setHours(0, 0, 0, 0);
+              const { count } = await (supabase as any).from(sq.table).select("id", { count: "exact", head: true }).gte("created_at", today.toISOString());
+              metric = sq.label;
+              value = count || 0;
+            }
+          } catch {}
+        }
+
+        // Get last run time from content table
+        if (agent.contentTable) {
+          try {
+            const { data } = await (supabase as any).from(agent.contentTable).select("created_at").order("created_at", { ascending: false }).limit(1).single();
+            if (data) lastRun = data.created_at;
+          } catch {}
+        }
+
+        metrics[agent.key] = { metric, value, lastRun };
+      }));
+      return metrics;
+    },
+    refetchInterval: 60_000,
+  });
+
+  /* ── Activity feed ── */
   const { data: activity = [] } = useQuery({
     queryKey: ["admin-overview-activity"],
     queryFn: async () => {
@@ -50,7 +103,6 @@ export default function AdminOverview() {
       const sinceIso = since.toISOString();
       const items: { agent: string; category: AgentCategory; type: "content" | "error" | "action"; message: string; time: string }[] = [];
 
-      // Content activity
       const contentTables = [
         { table: "blog_posts", agent: "Blogger", cat: "content" as AgentCategory, msgKey: "title" },
         { table: "seo_posts", agent: "SEO", cat: "content" as AgentCategory, msgKey: "title" },
@@ -66,7 +118,6 @@ export default function AdminOverview() {
         } catch {}
       }));
 
-      // Errors
       const errorTables = [
         { table: "blog_errors", agent: "Blogger", cat: "content" as AgentCategory },
         { table: "seo_errors", agent: "SEO", cat: "content" as AgentCategory },
@@ -88,7 +139,7 @@ export default function AdminOverview() {
   });
 
   /* ── Errors (24h) ── */
-  const { data: errors = [] } = useQuery({
+  const { data: errors = [], refetch: refetchErrors } = useQuery({
     queryKey: ["admin-overview-errors"],
     queryFn: async () => {
       const since = new Date(); since.setHours(since.getHours() - 24);
@@ -150,22 +201,28 @@ export default function AdminOverview() {
     { key: "ops", label: "Ops" },
   ];
 
+  const secScoreColor = stats?.securityScore == null ? "#6b7280" : stats.securityScore >= 80 ? "#22c55e" : stats.securityScore >= 60 ? "#c8a961" : "#ef4444";
+
   return (
     <div>
       <h1 className="font-display text-xl font-bold tracking-tight mb-6">Mission Control</h1>
 
       {/* Stats row */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 mb-8">
         {[
           { label: "Posts today", value: stats?.postsToday ?? "—" },
           { label: "Posts this week", value: stats?.postsWeek ?? "—" },
           { label: "Active agents", value: stats?.activeAgents ?? "—" },
           { label: "Errors today", value: stats?.errorsToday ?? "—", red: (stats?.errorsToday ?? 0) > 0 },
+          { label: "Revenue today", value: stats?.revenueToday != null ? `$${stats.revenueToday.toLocaleString()}` : "—" },
+          { label: "Security", value: stats?.securityScore ?? "—", color: secScoreColor },
           { label: "Installs", value: stats?.installsTotal ?? "—" },
         ].map((s) => (
           <div key={s.label} className={`border border-[#f0ead6]/8 p-4 ${s.red ? "border-red-500/30 bg-red-500/5" : ""}`}>
             <p className="font-body text-[10px] tracking-[0.2em] uppercase text-[#f0ead6]/50">{s.label}</p>
-            <p className="font-display text-2xl font-bold mt-1">{statsLoading ? "—" : s.value}</p>
+            <p className="font-display text-2xl font-bold mt-1" style={s.color ? { color: s.color } : undefined}>
+              {statsLoading ? "—" : s.value}
+            </p>
           </div>
         ))}
       </div>
@@ -177,6 +234,7 @@ export default function AdminOverview() {
           const s = statuses[agent.key];
           const dotColor = s ? (s.errorsToday > 0 ? "#ef4444" : s.running ? "#22c55e" : "#6b7280") : "#6b7280";
           const firstAction = agent.actions[0];
+          const m = agentMetrics[agent.key];
           return (
             <div key={agent.key} className="border border-[#f0ead6]/8 p-4 flex flex-col gap-2">
               <div className="flex items-center justify-between">
@@ -188,13 +246,25 @@ export default function AdminOverview() {
                   {CATEGORY_META[agent.category].label}
                 </span>
               </div>
-              <p className="font-body text-[11px] text-[#f0ead6]/50 leading-relaxed">{agent.subtitle}</p>
-              <div className="flex items-center gap-2 mt-auto pt-2">
+              {/* Primary metric + last run */}
+              <div className="flex items-center justify-between">
+                {m && m.value !== "—" ? (
+                  <span className="font-body text-[11px] text-[#f0ead6]/60">
+                    {m.metric}: <span className="font-display text-base font-bold text-[#f0ead6]/90">{m.value}</span>
+                  </span>
+                ) : (
+                  <span className="font-body text-[11px] text-[#f0ead6]/30 italic">No data</span>
+                )}
+                {m?.lastRun && (
+                  <span className="font-body text-[10px] text-[#f0ead6]/30">{timeAgo(m.lastRun)}</span>
+                )}
+              </div>
+              <div className="flex items-center gap-2 mt-auto pt-1">
                 {firstAction && (
                   <button onClick={() => runAction(firstAction.fn, firstAction.label)} disabled={!!runningAction}
                     className="inline-flex items-center gap-1.5 border border-[#f0ead6]/10 px-3 py-1.5 font-body text-[10px] uppercase tracking-wider text-[#f0ead6]/70 hover:text-[#f0ead6] hover:border-[#f0ead6]/30 transition-colors disabled:opacity-40">
                     {runningAction === firstAction.fn ? <Loader2 size={10} className="animate-spin" /> : <Play size={10} />}
-                    {firstAction.label}
+                    Run Now
                   </button>
                 )}
                 <Link to={agent.route} className="ml-auto font-body text-[10px] uppercase tracking-wider text-[#f0ead6]/40 hover:text-[#c8a961] transition-colors">Open →</Link>
@@ -254,7 +324,17 @@ export default function AdminOverview() {
 
         {/* Error log */}
         <div>
-          <h2 className="font-display text-sm font-bold tracking-[0.1em] uppercase text-[#f0ead6]/60 mb-3">Errors (24h)</h2>
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="font-display text-sm font-bold tracking-[0.1em] uppercase text-[#f0ead6]/60">Errors (24h)</h2>
+            {errors.length > 0 && (
+              <button
+                onClick={() => refetchErrors()}
+                className="font-body text-[10px] uppercase tracking-wider text-[#f0ead6]/40 hover:text-[#f0ead6]/70 transition-colors"
+              >
+                Refresh
+              </button>
+            )}
+          </div>
           {errors.length === 0 ? (
             <div className="border border-emerald-500/20 bg-emerald-500/5 p-4 flex items-center gap-2">
               <CheckCircle size={14} className="text-emerald-500" />

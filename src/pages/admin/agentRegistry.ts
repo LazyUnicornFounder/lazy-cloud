@@ -94,6 +94,11 @@ export const AGENTS: AgentConfig[] = [
       { key: "published_at", label: "Date", type: "date" },
     ],
     errorsTable: "blog_errors",
+    settingsFields: [
+      { key: "posts_per_day", label: "Posts per Day", type: "number", placeholder: "5" },
+      { key: "frequency_minutes", label: "Frequency (minutes)", type: "number", placeholder: "15" },
+      { key: "is_publishing", label: "Auto-publish", type: "toggle" },
+    ],
   },
   {
     key: "seo",
@@ -125,6 +130,13 @@ export const AGENTS: AgentConfig[] = [
       { key: "product", label: "Product", type: "badge" },
     ],
     errorsTable: "seo_errors",
+    settingsFields: [
+      { key: "site_url", label: "Site URL", type: "text", placeholder: "https://yoursite.com" },
+      { key: "business_description", label: "Business Description", type: "textarea" },
+      { key: "target_keywords", label: "Target Keywords", type: "textarea", placeholder: "keyword1, keyword2" },
+      { key: "competitors", label: "Competitors", type: "textarea" },
+      { key: "publishing_frequency", label: "Publishing Frequency", type: "text", placeholder: "daily" },
+    ],
   },
   {
     key: "geo",
@@ -157,6 +169,15 @@ export const AGENTS: AgentConfig[] = [
       { key: "query_type", label: "Type", type: "badge" },
     ],
     errorsTable: "geo_errors",
+    settingsFields: [
+      { key: "site_url", label: "Site URL", type: "text" },
+      { key: "brand_name", label: "Brand Name", type: "text" },
+      { key: "business_description", label: "Business Description", type: "textarea" },
+      { key: "target_audience", label: "Target Audience", type: "textarea" },
+      { key: "niche_topics", label: "Niche Topics", type: "textarea" },
+      { key: "competitors", label: "Competitors", type: "textarea" },
+      { key: "posts_per_day", label: "Posts per Day", type: "number" },
+    ],
   },
   {
     key: "crawl",
@@ -243,6 +264,7 @@ export const AGENTS: AgentConfig[] = [
       { label: "Publish Content", fn: "drop-content" },
       { label: "Optimise", fn: "drop-optimise" },
     ],
+    requiredSecrets: ["AUTODS_API_KEY"],
     statsQueries: [],
     contentTable: "drop_products",
     errorsTable: "drop_errors",
@@ -260,6 +282,7 @@ export const AGENTS: AgentConfig[] = [
       { label: "Publish Content", fn: "print-content" },
       { label: "Optimise", fn: "print-optimise" },
     ],
+    requiredSecrets: ["PRINTFUL_API_KEY"],
     statsQueries: [],
     contentTable: "print_products",
     errorsTable: "print_errors",
@@ -338,6 +361,13 @@ export const AGENTS: AgentConfig[] = [
       { key: "created_at", label: "Date", type: "date" },
     ],
     errorsTable: "voice_errors",
+    settingsFields: [
+      { key: "podcast_title", label: "Podcast Title", type: "text" },
+      { key: "podcast_author", label: "Podcast Author", type: "text" },
+      { key: "podcast_description", label: "Podcast Description", type: "textarea" },
+      { key: "voice_id", label: "Voice ID", type: "text" },
+      { key: "site_url", label: "Site URL", type: "text" },
+    ],
   },
   {
     key: "stream",
@@ -365,6 +395,13 @@ export const AGENTS: AgentConfig[] = [
       { key: "published_at", label: "Date", type: "date" },
     ],
     errorsTable: "stream_errors",
+    settingsFields: [
+      { key: "twitch_username", label: "Twitch Username", type: "text" },
+      { key: "business_name", label: "Business Name", type: "text" },
+      { key: "content_niche", label: "Content Niche", type: "text" },
+      { key: "site_url", label: "Site URL", type: "text" },
+      { key: "recap_template_guidance", label: "Recap Template", type: "textarea" },
+    ],
   },
   {
     key: "youtube",
@@ -472,6 +509,7 @@ export const AGENTS: AgentConfig[] = [
       { label: "Sync Now", fn: "granola-sync" },
       { label: "Publish Content", fn: "granola-write-post" },
     ],
+    requiredSecrets: ["GRANOLA_API_KEY"],
     setupRoute: "/lazy-granola-setup",
     statsQueries: [
       { label: "Meetings", table: "granola_meetings", type: "count" },
@@ -491,6 +529,15 @@ export const AGENTS: AgentConfig[] = [
       { key: "created_at", label: "Date", type: "date" },
     ],
     errorsTable: "granola_errors",
+    settingsFields: [
+      { key: "brand_name", label: "Brand Name", type: "text" },
+      { key: "site_url", label: "Site URL", type: "text" },
+      { key: "publish_blog_posts", label: "Auto-publish Blog Posts", type: "toggle" },
+      { key: "publish_product_updates", label: "Auto-publish Updates", type: "toggle" },
+      { key: "send_slack_summary", label: "Send Slack Summary", type: "toggle" },
+      { key: "weekly_digest_enabled", label: "Weekly Digest", type: "toggle" },
+      { key: "weekly_digest_day", label: "Digest Day", type: "text", placeholder: "Monday" },
+    ],
   },
 
   // ── Ops ──
@@ -502,6 +549,7 @@ export const AGENTS: AgentConfig[] = [
     runField: "is_running",
     category: "ops",
     route: "/admin/alert",
+    requiredSecrets: ["SLACK_WEBHOOK_URL"],
     actions: [
       { label: "Send Test", fn: "alert-test" },
       { label: "Briefing Now", fn: "alert-briefing" },
@@ -518,6 +566,7 @@ export const AGENTS: AgentConfig[] = [
     runField: "is_running",
     category: "ops",
     route: "/admin/telegram",
+    requiredSecrets: ["TELEGRAM_BOT_TOKEN"],
     actions: [
       { label: "Send Test", fn: "telegram-test" },
       { label: "Briefing Now", fn: "telegram-briefing" },
@@ -631,7 +680,7 @@ export const AGENTS: AgentConfig[] = [
   {
     key: "trend",
     label: "Trend",
-    subtitle: "Discovers trending topics and seeds content engines.",
+    subtitle: "Discovers trending topics and seeds content agents.",
     settingsTable: "trend_settings",
     runField: "is_running",
     category: "ops",
