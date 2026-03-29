@@ -364,7 +364,7 @@ const Index = () => {
               className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
               style={{ backgroundColor: "hsl(var(--background))" }}
             >
-              {(() => { const Icon = iconMap["Launch"]; return Icon ? <Icon size={48} strokeWidth={1.5} /> : null; })()}
+              {(() => { const Icon = iconMap["Launch"]; return Icon ? <Icon size={24} strokeWidth={1.5} /> : null; })()}
               <div className="text-center">
                 <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "hsl(var(--foreground))", lineHeight: 1.1 }}>
                   Lazy
@@ -385,7 +385,7 @@ const Index = () => {
               className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
               style={{ backgroundColor: "hsl(var(--card))" }}
             >
-              {(() => { const Icon = iconMap["Run"]; return Icon ? <Icon size={48} strokeWidth={1.5} /> : null; })()}
+              {(() => { const Icon = iconMap["Run"]; return Icon ? <Icon size={24} strokeWidth={1.5} /> : null; })()}
               <div className="text-center">
                 <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "hsl(var(--foreground))", lineHeight: 1.1 }}>
                   Lazy
@@ -414,7 +414,7 @@ const Index = () => {
                 className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
                 style={{ backgroundColor: bg }}
               >
-                {(() => { const Icon = iconMap[product.name]; return Icon ? <Icon size={48} strokeWidth={1.5} /> : null; })()}
+                {(() => { const Icon = iconMap[product.name]; return Icon ? <Icon size={24} strokeWidth={1.5} /> : null; })()}
                 <div className="text-center">
                   <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "hsl(var(--foreground))", lineHeight: 1.1 }}>
                     {product.cursive}

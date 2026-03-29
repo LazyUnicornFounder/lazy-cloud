@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, ReactNode } from "react";
-import { Menu, X as XIcon, Linkedin, ChevronDown, ChevronRight, Github } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X as XIcon, Linkedin, ChevronDown, ChevronRight, Github, Rocket, Clock, FileText, Search, Globe, Radar, Compass, Layers, ShoppingCart, Package, Printer, CreditCard, MessageSquare, Mail, Mic, MonitorPlay, Youtube, Code, GitBranch, BarChart3, Paintbrush, Lock, Calendar, LayoutDashboard, Bell, Send, Database, Shield, Eye, Wrench, Hammer, Brain, RefreshCw, TrendingUp, UserCheck, type LucideIcon } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -13,101 +13,91 @@ const XLogo = () => (
   </svg>
 );
 
-/* ── Agent icons ── */
-const icons = {
-  blogger: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="30" y="20" width="50" height="70" rx="3"/><line x1="40" y1="38" x2="70" y2="38"/><line x1="40" y1="48" x2="65" y2="48"/><line x1="40" y1="58" x2="70" y2="58"/><line x1="40" y1="68" x2="55" y2="68"/><path d="M82 90 L90 20 L94 22 L86 92 Z"/></svg>,
-  seo: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="50" cy="55" r="22"/><line x1="66" y1="71" x2="85" y2="90"/><rect x="25" y="70" width="8" height="20" rx="1"/><rect x="38" y="60" width="8" height="30" rx="1"/><rect x="51" y="50" width="8" height="40" rx="1"/></svg>,
-  geo: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M25 75 Q25 30 60 30 Q95 30 95 75 Q95 85 60 95 Q25 85 25 75Z"/><circle cx="60" cy="58" r="12"/><path d="M54 55 L58 62 L66 54"/></svg>,
-  voice: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="50" y="25" width="20" height="40" rx="10"/><path d="M40 55 Q40 80 60 80 Q80 80 80 55"/><line x1="60" y1="80" x2="60" y2="95"/><line x1="48" y1="95" x2="72" y2="95"/></svg>,
-  store: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M35 45 L40 25 L80 25 L85 45"/><rect x="35" y="45" width="50" height="50" rx="3"/></svg>,
-  pay: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="20" y="35" width="80" height="50" rx="5"/><line x1="20" y1="50" x2="100" y2="50"/><circle cx="85" cy="70" r="8"/></svg>,
-  sms: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="38" y="18" width="44" height="84" rx="8"/><line x1="52" y1="24" x2="68" y2="24"/><circle cx="60" cy="92" r="4"/></svg>,
-  stream: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="25" y="30" width="70" height="45" rx="3"/><circle cx="60" cy="52" r="10"/><path d="M56 49 L66 52 L56 55 Z" fill="currentColor" stroke="none"/></svg>,
-  code: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M45 40 L25 60 L45 80"/><path d="M75 40 L95 60 L75 80"/><line x1="65" y1="30" x2="55" y2="90"/></svg>,
-  gitlab: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M60 95 L30 55 L38 25 L48 55 L72 55 L82 25 L90 55 Z"/></svg>,
-  linear: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="60" cy="55" r="28"/><path d="M45 55 L55 65 L75 45"/></svg>,
-  contentful: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="30" y="28" width="60" height="64" rx="5"/><line x1="60" y1="28" x2="60" y2="92"/><path d="M40 50 L55 50"/><path d="M65 50 L80 50"/></svg>,
-  perplexity: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="55" cy="50" r="22"/><line x1="71" y1="66" x2="90" y2="85"/><path d="M48 45 Q55 35 62 45"/><circle cx="55" cy="55" r="3" fill="currentColor" stroke="none"/></svg>,
-  supabase: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M60 90 Q30 80 30 55 Q30 30 60 25 Q90 30 90 55 Q90 80 60 90Z"/><line x1="40" y1="50" x2="80" y2="50"/><line x1="40" y1="60" x2="80" y2="60"/></svg>,
-  alert: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="28" y="30" width="64" height="50" rx="5"/><path d="M28 40 L60 62 L92 40"/><circle cx="85" cy="35" r="10" fill="currentColor" stroke="none"/></svg>,
-  telegram: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M25 55 L95 30 L75 90 L55 65 Z"/><line x1="95" y1="30" x2="55" y2="65"/></svg>,
-  security: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M60 20 L90 35 L90 65 Q90 90 60 100 Q30 90 30 65 L30 35 Z"/><path d="M48 58 L56 66 L72 50"/></svg>,
-  mail: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="25" y="35" width="70" height="50" rx="3"/><path d="M25 40 L60 65 L95 40"/></svg>,
-  run: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="50,30 85,60 50,90"/></svg>,
-  admin: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="25" y="25" width="70" height="70" rx="5"/><line x1="25" y1="45" x2="95" y2="45"/><line x1="55" y1="45" x2="55" y2="95"/></svg>,
-  launch: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M60 25 L60 75"/><path d="M45 40 L60 25 L75 40"/><path d="M35 95 L85 95"/></svg>,
-  auth: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="35" y="50" width="50" height="40" rx="4"/><path d="M45 50 L45 38 Q45 22 60 22 Q75 22 75 38 L75 50"/><circle cx="60" cy="68" r="5"/></svg>,
+/* ── Agent icon map (Lucide, consistent with homepage & lazy-run) ── */
+const iconMap: Record<string, LucideIcon> = {
+  Launch: Rocket, Run: Clock, Blogger: FileText, SEO: Search, GEO: Globe,
+  Crawl: Radar, Perplexity: Compass, Contentful: Layers, Store: ShoppingCart,
+  Drop: Package, Print: Printer, Pay: CreditCard, SMS: MessageSquare, Mail: Mail,
+  Voice: Mic, Stream: MonitorPlay, YouTube: Youtube, GitHub: Code, GitLab: GitBranch,
+  Linear: BarChart3, Design: Paintbrush, Auth: Lock, Granola: Calendar,
+  Admin: LayoutDashboard, Alert: Bell, Telegram: Send, Supabase: Database,
+  Security: Shield, Watch: Eye, Fix: Wrench, Build: Hammer, Intel: Brain,
+  Repurpose: RefreshCw, Trend: TrendingUp, Churn: UserCheck,
 };
 
-type CategoryItem = { label: string; href: string; tagline: string; icon: ReactNode };
+const agentIcon = (name: string) => {
+  const Icon = iconMap[name];
+  return Icon ? <Icon size={16} strokeWidth={1.5} /> : null;
+};
+
+type CategoryItem = { label: string; href: string; tagline: string; iconKey: string };
 type Category = { label: string; items: CategoryItem[] };
 
-/* ── Agent categories (everything is an agent now) ── */
+/* ── Agent categories ── */
 const agentCategories: Category[] = [
   {
     label: "Lazy Unicorn",
     items: [
-      { label: "Lazy Launch", href: "/lazy-launch", tagline: "Launch your Lovable website", icon: icons.launch },
-      { label: "Lazy Run", href: "/lazy-run", tagline: "Autonomous everything", icon: icons.run },
+      { label: "Lazy Launch", href: "/lazy-launch", tagline: "Launch your Lovable website", iconKey: "Launch" },
+      { label: "Lazy Run", href: "/lazy-run", tagline: "Autonomous everything", iconKey: "Run" },
     ],
   },
   {
     label: "Lazy Content",
     items: [
-      { label: "Lazy Blogger", href: "/lazy-blogger", tagline: "Autonomous blog posts", icon: icons.blogger },
-      { label: "Lazy SEO", href: "/lazy-seo", tagline: "Autonomous SEO content", icon: icons.seo },
-      { label: "Lazy GEO", href: "/lazy-geo", tagline: "Autonomous AI citations", icon: icons.geo },
-      { label: "Lazy Crawl", href: "/lazy-crawl", tagline: "Autonomous web research", icon: icons.perplexity },
-      { label: "Lazy Perplexity", href: "/lazy-perplexity", tagline: "Autonomous deep research", icon: icons.perplexity },
-      { label: "Lazy Contentful", href: "/lazy-contentful", tagline: "Autonomous CMS sync", icon: icons.contentful },
+      { label: "Lazy Blogger", href: "/lazy-blogger", tagline: "Autonomous blog posts", iconKey: "Blogger" },
+      { label: "Lazy SEO", href: "/lazy-seo", tagline: "Autonomous SEO content", iconKey: "SEO" },
+      { label: "Lazy GEO", href: "/lazy-geo", tagline: "Autonomous AI citations", iconKey: "GEO" },
+      { label: "Lazy Crawl", href: "/lazy-crawl", tagline: "Autonomous web research", iconKey: "Crawl" },
+      { label: "Lazy Perplexity", href: "/lazy-perplexity", tagline: "Autonomous deep research", iconKey: "Perplexity" },
+      { label: "Lazy Contentful", href: "/lazy-contentful", tagline: "Autonomous CMS sync", iconKey: "Contentful" },
     ],
   },
   {
     label: "Lazy Commerce",
     items: [
-      { label: "Lazy Store", href: "/lazy-store", tagline: "Autonomous storefronts", icon: icons.store },
-      { label: "Lazy Drop", href: "/lazy-drop", tagline: "Autonomous dropshipping", icon: icons.store },
-      { label: "Lazy Print", href: "/lazy-print", tagline: "Autonomous print-on-demand", icon: icons.store },
-      { label: "Lazy Pay", href: "/lazy-pay", tagline: "Autonomous payments", icon: icons.pay },
-      { label: "Lazy SMS", href: "/lazy-sms", tagline: "Autonomous text campaigns", icon: icons.sms },
-      { label: "Lazy Mail", href: "/lazy-mail", tagline: "Autonomous email flows", icon: icons.mail },
+      { label: "Lazy Store", href: "/lazy-store", tagline: "Autonomous storefronts", iconKey: "Store" },
+      { label: "Lazy Drop", href: "/lazy-drop", tagline: "Autonomous dropshipping", iconKey: "Drop" },
+      { label: "Lazy Print", href: "/lazy-print", tagline: "Autonomous print-on-demand", iconKey: "Print" },
+      { label: "Lazy Pay", href: "/lazy-pay", tagline: "Autonomous payments", iconKey: "Pay" },
+      { label: "Lazy SMS", href: "/lazy-sms", tagline: "Autonomous text campaigns", iconKey: "SMS" },
+      { label: "Lazy Mail", href: "/lazy-mail", tagline: "Autonomous email flows", iconKey: "Mail" },
     ],
   },
   {
     label: "Lazy Media",
     items: [
-      { label: "Lazy Voice", href: "/lazy-voice", tagline: "Autonomous podcasts", icon: icons.voice },
-      { label: "Lazy Stream", href: "/lazy-stream", tagline: "Autonomous stream content", icon: icons.stream },
-      { label: "Lazy YouTube", href: "/lazy-youtube", tagline: "Autonomous video content", icon: icons.stream },
+      { label: "Lazy Voice", href: "/lazy-voice", tagline: "Autonomous podcasts", iconKey: "Voice" },
+      { label: "Lazy Stream", href: "/lazy-stream", tagline: "Autonomous stream content", iconKey: "Stream" },
+      { label: "Lazy YouTube", href: "/lazy-youtube", tagline: "Autonomous video content", iconKey: "YouTube" },
     ],
   },
   {
     label: "Lazy Dev",
     items: [
-      { label: "Lazy GitHub", href: "/lazy-github", tagline: "Autonomous changelogs", icon: icons.code },
-      { label: "Lazy GitLab", href: "/lazy-gitlab", tagline: "Autonomous GitLab docs", icon: icons.gitlab },
-      { label: "Lazy Linear", href: "/lazy-linear", tagline: "Autonomous issue content", icon: icons.linear },
-      { label: "Lazy Design", href: "/lazy-design", tagline: "Autonomous UI upgrades", icon: icons.admin },
-      { label: "Lazy Auth", href: "/lazy-auth", tagline: "Autonomous login flows", icon: icons.auth },
-      { label: "Lazy Granola", href: "/lazy-granola", tagline: "Autonomous meeting content", icon: icons.code },
+      { label: "Lazy GitHub", href: "/lazy-github", tagline: "Autonomous changelogs", iconKey: "GitHub" },
+      { label: "Lazy GitLab", href: "/lazy-gitlab", tagline: "Autonomous GitLab docs", iconKey: "GitLab" },
+      { label: "Lazy Linear", href: "/lazy-linear", tagline: "Autonomous issue content", iconKey: "Linear" },
+      { label: "Lazy Design", href: "/lazy-design", tagline: "Autonomous UI upgrades", iconKey: "Design" },
+      { label: "Lazy Auth", href: "/lazy-auth", tagline: "Autonomous login flows", iconKey: "Auth" },
+      { label: "Lazy Granola", href: "/lazy-granola", tagline: "Autonomous meeting content", iconKey: "Granola" },
     ],
   },
   {
     label: "Lazy Ops",
     items: [
-      { label: "Lazy Admin", href: "/lazy-admin", tagline: "Autonomous ops control", icon: icons.admin },
-      { label: "Lazy Launch", href: "/lazy-launch", tagline: "Launch your Lovable website", icon: icons.launch },
-      { label: "Lazy Alert", href: "/lazy-alert", tagline: "Autonomous Slack alerts", icon: icons.alert },
-      { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Autonomous Telegram updates", icon: icons.telegram },
-      { label: "Lazy Supabase", href: "/lazy-supabase", tagline: "Autonomous database reports", icon: icons.supabase },
-      { label: "Lazy Security", href: "/lazy-security", tagline: "Autonomous pentesting", icon: icons.security },
-      { label: "Lazy Watch", href: "/lazy-watch", tagline: "Autonomous error monitoring", icon: icons.security },
-      { label: "Lazy Fix", href: "/lazy-fix", tagline: "Autonomous prompt improvement", icon: icons.code },
-      { label: "Lazy Build", href: "/lazy-build", tagline: "Autonomous agent writing", icon: icons.admin },
-      { label: "Lazy Intel", href: "/lazy-intel", tagline: "Autonomous content strategy", icon: icons.seo },
-      { label: "Lazy Repurpose", href: "/lazy-repurpose", tagline: "Autonomous content repurposing", icon: icons.contentful },
-      { label: "Lazy Trend", href: "/lazy-trend", tagline: "Autonomous trend detection", icon: icons.perplexity },
-      { label: "Lazy Churn", href: "/lazy-churn", tagline: "Autonomous churn prevention", icon: icons.pay },
+      { label: "Lazy Admin", href: "/lazy-admin", tagline: "Autonomous ops control", iconKey: "Admin" },
+      { label: "Lazy Alert", href: "/lazy-alert", tagline: "Autonomous Slack alerts", iconKey: "Alert" },
+      { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Autonomous Telegram updates", iconKey: "Telegram" },
+      { label: "Lazy Supabase", href: "/lazy-supabase", tagline: "Autonomous database reports", iconKey: "Supabase" },
+      { label: "Lazy Security", href: "/lazy-security", tagline: "Autonomous pentesting", iconKey: "Security" },
+      { label: "Lazy Watch", href: "/lazy-watch", tagline: "Autonomous error monitoring", iconKey: "Watch" },
+      { label: "Lazy Fix", href: "/lazy-fix", tagline: "Autonomous prompt improvement", iconKey: "Fix" },
+      { label: "Lazy Build", href: "/lazy-build", tagline: "Autonomous agent writing", iconKey: "Build" },
+      { label: "Lazy Intel", href: "/lazy-intel", tagline: "Autonomous content strategy", iconKey: "Intel" },
+      { label: "Lazy Repurpose", href: "/lazy-repurpose", tagline: "Autonomous content repurposing", iconKey: "Repurpose" },
+      { label: "Lazy Trend", href: "/lazy-trend", tagline: "Autonomous trend detection", iconKey: "Trend" },
+      { label: "Lazy Churn", href: "/lazy-churn", tagline: "Autonomous churn prevention", iconKey: "Churn" },
     ],
   },
 ];
