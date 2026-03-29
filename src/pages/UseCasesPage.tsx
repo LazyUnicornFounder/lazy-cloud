@@ -482,7 +482,7 @@ function IntegrationCard({ item, index }: { item: Integration; index: number }) 
           to={item.engineHref}
           className="inline-flex items-center gap-2 font-body text-sm tracking-[0.1em] uppercase font-semibold text-foreground/65 hover:text-foreground transition-colors"
         >
-          <span className="text-[14px] text-foreground/60">Lazy engine →</span>
+          <span className="text-[14px] text-foreground/60">Lazy agent →</span>
           {item.engine}
         </Link>
       </div>
@@ -505,7 +505,7 @@ export default function UseCasesPage() {
     <main className="min-h-screen bg-background text-foreground">
       <SEO
         title="Use Cases — What Your Lovable Site Can Do | Lazy Unicorn"
-        description="Real use cases for every Lovable integration. See what becomes possible when you connect Stripe, Twilio, ElevenLabs, and more through Lazy engines."
+        description="Real use cases for every Lovable integration. See what becomes possible when you connect Stripe, Twilio, ElevenLabs, and more through Lazy agents."
       />
       <Navbar />
 
@@ -526,7 +526,7 @@ export default function UseCasesPage() {
           transition={{ delay: 0.1 }}
           className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-3xl mx-auto leading-relaxed"
         >
-          Every Lazy engine connects your{" "}
+          Every Lazy agent connects your{" "}
           <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/70 transition-colors">Lovable</a>{" "}
           site to a real service. Here is what each connection makes possible — based on what Lovable's integrations actually support.
         </motion.p>
@@ -562,18 +562,18 @@ export default function UseCasesPage() {
         </div>
       </section>
 
-      {/* Engines Section Header */}
+      {/* Agents Section Header */}
       {showEngines && (
         <section className="px-6 md:px-12 max-w-5xl mx-auto pt-8 pb-12 text-center">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1]">
-              27 engines run your Lovable business.
+              35 agents run your Lovable business.
             </h2>
             <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-[1.1]">
               One prompt each.
             </h3>
             <p className="font-body text-foreground/50 text-base max-w-2xl mx-auto leading-relaxed">
-              Each engine connects your Lovable site to a real service. Here is what each connection makes possible.
+              Each agent connects your Lovable site to a real service. Here is what each connection makes possible.
             </p>
           </motion.div>
         </section>
@@ -605,25 +605,22 @@ export default function UseCasesPage() {
                 Install Lazy Run <ArrowRight size={14} />
               </Link>
               <Link to="/" className="inline-flex items-center gap-2 border border-border font-body text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3 text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-colors">
-                Browse all engines
+                Browse all agents
               </Link>
             </div>
           </div>
         </section>
       )}
 
-      {/* Agents Section Header */}
+      {/* Ops Agents Section Header */}
       {showAgents && (
         <section className="px-6 md:px-12 max-w-5xl mx-auto pt-8 pb-12 text-center border-t border-border">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1] mt-12">
-              Engines run your Lovable business.
+              Lazy Ops agents.
             </h2>
-            <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-[1.1]">
-              Agents run your engines.
-            </h3>
             <p className="font-body text-foreground/50 text-base max-w-2xl mx-auto leading-relaxed">
-              Seven autonomous agents that monitor, fix, build, strategise, repurpose, detect trends, and prevent churn across your entire engine stack.
+              Seven autonomous agents that monitor, fix, build, strategise, repurpose, detect trends, and prevent churn across your entire stack.
             </p>
           </motion.div>
         </section>
