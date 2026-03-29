@@ -100,7 +100,7 @@ function RotatingHeadline() {
       <motion.span
         className="inline-flex justify-start relative"
         style={{ height: "1.2em", verticalAlign: "text-bottom", overflow: "clip" }}
-        animate={{ width: width + 10 }}
+        animate={{ width: width + 2 }}
         transition={ready ? { type: "spring", stiffness: 250, damping: 25 } : { duration: 0 }}
       >
         <AnimatePresence mode="wait">
