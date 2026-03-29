@@ -284,7 +284,7 @@ export default function LazyCloudPage() {
                     <span className="bg-primary text-primary-foreground text-[10px] tracking-[0.15em] uppercase font-bold px-2 py-0.5">Most Popular</span>
                   )}
                 </div>
-                <p className="font-display text-3xl font-bold text-foreground mb-1">{plan.price}<span className="text-sm text-muted-foreground font-normal">/month</span></p>
+                <p className="font-display text-2xl font-bold text-primary mb-1">{plan.price}</p>
                 <p className="font-body text-sm text-muted-foreground mb-6">{plan.bestFor}</p>
                 <ul className="space-y-2 mb-8 flex-1">
                   {plan.features.map((f, fi) => (
