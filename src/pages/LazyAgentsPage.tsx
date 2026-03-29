@@ -21,9 +21,10 @@ interface Category {
 
 const categories: Category[] = [
   {
-    label: "Unicorn",
+    label: "Platform",
     agents: [
-      { emoji: "📋", name: "Lazy Waitlist", tagline: "Autonomous pre-launch waitlist", href: "/lazy-waitlist" },
+      { emoji: "🚀", name: "Lazy Launch", tagline: "Autonomous project launcher", href: "/lazy-launch" },
+      { emoji: "☁️", name: "Lazy Cloud", tagline: "Autonomous cloud hosting", href: "/lazy-cloud" },
       { emoji: "▶️", name: "Lazy Run", tagline: "Autonomous everything", href: "/lazy-run" },
       { emoji: "⚙️", name: "Lazy Admin", tagline: "Autonomous ops control", href: "/lazy-admin" },
     ],

@@ -40,7 +40,7 @@ export interface AgentCategory {
 
 export const AGENT_CATEGORIES: AgentCategory[] = [
   {
-    label: "Lazy Unicorn",
+    label: "Lazy Platform",
     agent: [
       {
         name: "Lazy Waitlist",

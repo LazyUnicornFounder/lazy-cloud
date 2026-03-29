@@ -9,13 +9,13 @@ const XLogo = () => (
 
 const columns = [
   {
-    label: "Unicorn",
+    label: "Platform",
     items: [
       { name: "Lazy Launch", href: "/lazy-launch" },
       { name: "Lazy Cloud", href: "/lazy-cloud" },
-      { name: "Lazy Waitlist", href: "/lazy-waitlist" },
       { name: "Lazy Run", href: "/lazy-run" },
       { name: "Lazy Admin", href: "/lazy-admin" },
+      { name: "Lazy Waitlist", href: "/lazy-waitlist" },
     ],
   },
   {
