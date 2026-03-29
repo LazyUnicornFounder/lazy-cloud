@@ -20,106 +20,49 @@ const NEW_TITLE = "Launch your autonomous business on Lovable.";
 const NEW_DESCRIPTION = "Your site launches. Your waitlist fills. Your blog writes itself. Your store sells. Your newsletters send. Your pages rank. Your payments process. And so much more. All from one prompt — all on autopilot.";
 
 const rotatingWords = [
-  { word: "everything", emoji: "🦄" },       // Lazy Run
-  { word: "dashboards", emoji: "⚙️" },       // Lazy Admin
-  { word: "design", emoji: "🎨" },            // Lazy Design
-  { word: "blogs", emoji: "✍️" },             // Lazy Blogger
-  { word: "SEO", emoji: "🔍" },               // Lazy SEO
-  { word: "GEO", emoji: "🌐" },               // Lazy GEO
-  { word: "crawling", emoji: "🕷️" },          // Lazy Crawl
-  { word: "CMS sync", emoji: "🔄" },          // Lazy Contentful
-  { word: "podcasts", emoji: "🎙️" },          // Lazy Voice
-  { word: "streams", emoji: "🎬" },           // Lazy Stream
-  { word: "research", emoji: "🔮" },          // Lazy Perplexity
-  { word: "stores", emoji: "🛒" },            // Lazy Store
-  { word: "dropshipping", emoji: "📦" },      // Lazy Drop
-  { word: "merch", emoji: "🖨️" },             // Lazy Print
-  { word: "payments", emoji: "💳" },           // Lazy Pay
-  { word: "SMS", emoji: "📱" },               // Lazy SMS
-  { word: "commits", emoji: "👨‍💻" },          // Lazy GitHub
-  { word: "merges", emoji: "🔀" },            // Lazy GitLab
-  { word: "databases", emoji: "🗄️" },         // Lazy Supabase
-  { word: "sprints", emoji: "✅" },            // Lazy Linear
-  { word: "emails", emoji: "📧" },            // Lazy Mail
-  { word: "alerts", emoji: "🔔" },            // Lazy Alert
-  { word: "Telegram", emoji: "✈️" },          // Lazy Telegram
-  { word: "security", emoji: "🛡️" },          // Lazy Security
-  { word: "auth", emoji: "🔐" },              // Lazy Auth
-  { word: "meetings", emoji: "📝" },          // Lazy Granola
-  { word: "videos", emoji: "📺" },            // Lazy YouTube
-  { word: "repurposing", emoji: "🔄" },       // Lazy Repurpose
-  { word: "trends", emoji: "🔥" },            // Lazy Trend
-  { word: "retention", emoji: "💰" },         // Lazy Churn
-  { word: "websites", emoji: "🚀" },           // Lazy Launch
-  { word: "waitlists", emoji: "📋" },          // Lazy Waitlist
+  "blogs", "SEO", "GEO", "podcasts", "stores", "payments",
+  "emails", "SMS", "streams", "research", "design", "security",
+  "alerts", "merch", "commits", "databases", "waitlists", "websites",
 ];
 
 function RotatingHeadline() {
   const [index, setIndex] = useState(0);
-  const [width, setWidth] = useState(200);
-  const [ready, setReady] = useState(false);
-  const hiddenRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % rotatingWords.length);
-    }, 2000);
+    }, 2200);
     return () => clearInterval(interval);
   }, []);
 
-  const current = rotatingWords[index];
-
-  // Measure using a hidden off-screen span
-  useEffect(() => {
-    const measure = () => {
-      if (hiddenRef.current) {
-        hiddenRef.current.textContent = `${current.word} ${current.emoji}`;
-        const w = hiddenRef.current.offsetWidth;
-        if (w > 0) {
-          setWidth(w);
-          setReady(true);
-        }
-      }
-    };
-    measure();
-    // Re-measure after fonts load
-    if (!ready) {
-      document.fonts?.ready?.then(measure);
-    }
-  }, [current, ready]);
-
   return (
-    <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.3rem)", color: "#f0ead6", opacity: 0.7 }} className="flex flex-wrap items-center gap-x-1">
-      {/* Hidden measurer */}
+    <div className="flex items-center gap-3 mb-2">
       <span
-        ref={hiddenRef}
-        aria-hidden="true"
-        className="whitespace-nowrap invisible fixed pointer-events-none"
-        style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.3rem)", top: -9999, left: -9999 }}
-      />
-      Lovable<span className="ml-1 mr-0">❤️</span>
-      <motion.span
-        className="inline-flex justify-start relative"
-        style={{ height: "1.2em", verticalAlign: "text-bottom", overflow: "clip" }}
-        animate={{ width: width + 2 }}
-        transition={ready ? { type: "spring", stiffness: 250, damping: 25 } : { duration: 0 }}
+        className="font-body text-[11px] tracking-[0.25em] uppercase font-semibold"
+        style={{ color: "hsl(var(--foreground))", opacity: 0.25 }}
       >
+        Now automating
+      </span>
+      <span
+        className="h-px flex-shrink-0"
+        style={{ width: 24, background: "hsl(var(--foreground) / 0.12)" }}
+      />
+      <div className="relative h-5 overflow-hidden" style={{ minWidth: 90 }}>
         <AnimatePresence mode="wait">
           <motion.span
-            key={current.word}
-            initial={ready ? { y: 14, opacity: 0 } : false}
+            key={rotatingWords[index]}
+            initial={{ y: 16, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -14, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="absolute inset-0 flex items-center justify-start gap-1 whitespace-nowrap"
-            style={{ color: "#c8a961" }}
+            exit={{ y: -16, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="absolute inset-0 font-body text-[11px] tracking-[0.25em] uppercase font-semibold"
+            style={{ color: "hsl(var(--primary))" }}
           >
-            {current.word}<span>{current.emoji}</span>
+            {rotatingWords[index]}
           </motion.span>
         </AnimatePresence>
-      </motion.span>
-      on autopilot<span className="ml-1">🤖</span>
-    </p>
+      </div>
+    </div>
   );
 }
 
