@@ -84,7 +84,14 @@ export default function ChangelogPage() {
     },
   });
 
-  const agentNames = useMemo(() => [...new Set(releases.map(r => r.agent_name))].sort(), [releases]);
+  const agentNames = useMemo(() => {
+    const ordered = Object.values(AGENT_CATEGORIES).flat();
+    const fromReleases = [...new Set(releases.map(r => r.agent_name))];
+    return [
+      ...ordered.filter(n => fromReleases.includes(n)),
+      ...fromReleases.filter(n => !ordered.includes(n)).sort(),
+    ];
+  }, [releases]);
 
   const filtered = useMemo(() => {
     return releases.filter(r => {
