@@ -12,7 +12,7 @@ import AutopilotHeadline from "@/components/AutopilotHeadline";
 
 const SETUP_PROMPT = `[Lazy GitHub Prompt — v0.0.4 — LazyUnicorn.ai]
 
-Add a complete autonomous GitHub content agents? called Lazy GitHub to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
+Add a complete autonomous GitHub content agent called Lazy GitHub to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
 
 ---
 
@@ -211,7 +211,7 @@ At the bottom of every public page add: "🦄 Powered by Lazy GitHub — autonom
 
 ## 7. Admin
 
-Do not build a standalone dashboard page for this agents?. The dashboard lives at /admin/code as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agents? only needs its setup page, database tables, edge functions, and public pages.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/code as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agent only needs its setup page, database tables, edge functions, and public pages.
 
 If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-github-setup.
 
@@ -385,7 +385,7 @@ const LazyGitHubPage = () => {
             </div>
             <div className="bg-[#111110] p-8">
               <p className="font-body text-sm text-foreground/50 leading-relaxed">
-                Lazy GitHub makes the documentation automatic. Push to GitHub and the content agents? starts. By the time you have opened your next task the changelog is updated, the release notes are written, and a developer blog post targeting your technical keywords is published and indexed. The work you were already doing becomes a compounding public record of your progress.
+                Lazy GitHub makes the documentation automatic. Push to GitHub and the content agent starts. By the time you have opened your next task the changelog is updated, the release notes are written, and a developer blog post targeting your technical keywords is published and indexed. The work you were already doing becomes a compounding public record of your progress.
               </p>
             </div>
           </div>

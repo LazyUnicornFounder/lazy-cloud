@@ -19,14 +19,14 @@ Add an autonomous performance intelligence agent called Lazy Intel to this proje
 Note: Lazy Intel uses no external APIs. It reads your existing Supabase tables from other installed Lazy agents. The more agents installed, the richer the intelligence.`;
 
 const dataSources = [
-  { source: "Blog posts", reads: "Top topics, output velocity", agents?: "Lazy Blogger" },
-  { source: "SEO performance", reads: "Keyword coverage gaps", agents?: "Lazy SEO" },
-  { source: "YouTube comments", reads: "Audience questions", agents?: "Lazy YouTube" },
-  { source: "Customer calls", reads: "Problems mentioned, features requested", agents?: "Lazy Granola" },
-  { source: "Competitor intel", reads: "Competitor topics and keywords", agents?: "Lazy Crawl" },
-  { source: "Perplexity research", reads: "Live web questions", agents?: "Lazy Perplexity" },
-  { source: "GEO coverage", reads: "AI citation gaps", agents?: "Lazy GEO" },
-  { source: "YouTube analytics", reads: "Top video topics", agents?: "Lazy YouTube" },
+  { source: "Blog posts", reads: "Top topics, output velocity", agent: "Lazy Blogger" },
+  { source: "SEO performance", reads: "Keyword coverage gaps", agent: "Lazy SEO" },
+  { source: "YouTube comments", reads: "Audience questions", agent: "Lazy YouTube" },
+  { source: "Customer calls", reads: "Problems mentioned, features requested", agent: "Lazy Granola" },
+  { source: "Competitor intel", reads: "Competitor topics and keywords", agent: "Lazy Crawl" },
+  { source: "Perplexity research", reads: "Live web questions", agent: "Lazy Perplexity" },
+  { source: "GEO coverage", reads: "AI citation gaps", agent: "Lazy GEO" },
+  { source: "YouTube analytics", reads: "Top video topics", agent: "Lazy YouTube" },
 ];
 
 const faqs = [
@@ -61,7 +61,7 @@ export default function LazyIntelPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Intel — Autonomous Content Strategy | Lazy Unicorn" description="Every Monday Lazy Intel reads all your agents? data and generates a weekly content strategy — adding SEO keywords and GEO queries to your queues automatically." url="/lazy-intel" keywords="content strategy, autonomous intelligence, weekly strategy brief, SEO keywords automation, GEO queries" />
+      <SEO title="Lazy Intel — Autonomous Content Strategy | Lazy Unicorn" description="Every Monday Lazy Intel reads all your agent data and generates a weekly content strategy — adding SEO keywords and GEO queries to your queues automatically." url="/lazy-intel" keywords="content strategy, autonomous intelligence, weekly strategy brief, SEO keywords automation, GEO queries" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}
@@ -123,12 +123,12 @@ export default function LazyIntelPage() {
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.04 }} className="border-b sm:odd:border-r last:border-b-0 sm:[&:nth-last-child(2)]:border-b-0 border-border bg-card p-5">
                 <p className="font-display text-sm font-bold text-foreground mb-1">{ds.source}</p>
                 <p className="font-body text-sm text-foreground/50 mb-1">{ds.reads}</p>
-                <p className="font-display text-[10px] tracking-[0.15em] uppercase font-bold text-[#c8a961]">{ds.agents?}</p>
+                <p className="font-display text-[10px] tracking-[0.15em] uppercase font-bold text-[#c8a961]">{ds.agent}</p>
               </motion.div>
             ))}
           </div>
           <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-6 font-body text-sm text-foreground/50">
-            Lazy Intel works with just Lazy Blogger. But with every additional agents? it reads more signals and generates sharper strategy.
+            Lazy Intel works with just Lazy Blogger. But with every additional agent it reads more signals and generates sharper strategy.
           </motion.p>
         </section>
 
@@ -154,11 +154,11 @@ export default function LazyIntelPage() {
               </div>
               <div>
                 <p className="font-display text-xs tracking-[0.1em] uppercase font-bold text-foreground/50 mb-1">🔑 New SEO keywords (5)</p>
-                <p className="font-body text-sm text-foreground/50">lovable autonomous blog, supabase edge function tutorial, no-code SaaS stack, prompt agents?ering for Lovable, build-in-public content strategy</p>
+                <p className="font-body text-sm text-foreground/50">lovable autonomous blog, supabase edge function tutorial, no-code SaaS stack, prompt engineering for Lovable, build-in-public content strategy</p>
               </div>
               <div>
                 <p className="font-display text-xs tracking-[0.1em] uppercase font-bold text-foreground/50 mb-1">🤖 New GEO queries (3)</p>
-                <p className="font-body text-sm text-foreground/50">How to build an autonomous website with Lovable? What is generative agents? optimisation? Best tools for no-code SaaS founders?</p>
+                <p className="font-body text-sm text-foreground/50">How to build an autonomous website with Lovable? What is generative agent optimisation? Best tools for no-code SaaS founders?</p>
               </div>
               <div className="pt-4 border-t border-border">
                 <p className="font-body text-sm text-foreground/60 leading-relaxed italic">

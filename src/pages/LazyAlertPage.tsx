@@ -15,7 +15,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const LAZY_ALERT_PROMPT = `[Lazy Alert Prompt — v0.0.5 — LazyUnicorn.ai]
 
-Add a complete Slack integration called Lazy Alert to this project. It sends real-time Slack notifications for every significant event across every installed Lazy agents?, delivers a daily morning briefing, installs slash commands for controlling agents? from Slack, and alerts on errors — all automatically with no manual input required after setup.
+Add a complete Slack integration called Lazy Alert to this project. It sends real-time Slack notifications for every significant event across every installed Lazy agent, delivers a daily morning briefing, installs slash commands for controlling agent from Slack, and alerts on errors — all automatically with no manual input required after setup.
 
 Note: Store the Slack signing secret as Supabase secret SLACK_SIGNING_SECRET. Never in the database.
 
@@ -50,7 +50,7 @@ Note: Store SLACK_SIGNING_SECRET as Supabase secret.
 
 **alert_log**
 id (uuid, primary key, default gen_random_uuid()),
-agents? (text),
+agent (text),
 event_type (text),
 message (text),
 slack_response (text),
@@ -69,7 +69,7 @@ created_at (timestamptz, default now())
 
 Create a page at /lazy-alert-setup.
 
-Welcome message: "Connect your autonomous business to Slack. Every significant event across every Lazy agents? will send a Slack message automatically."
+Welcome message: "Connect your autonomous business to Slack. Every significant event across every Lazy agent will send a Slack message automatically."
 
 Form fields:
 - Slack Incoming Webhook URL (text) — instructions: go to api.slack.com/apps, create a new app, go to Incoming Webhooks, activate and add a webhook, paste the URL here.
@@ -93,7 +93,7 @@ On submit:
 ## 3. Core send function
 
 Create a Supabase edge function called alert-send handling POST requests.
-Accept: message (text), agents? (text), event_type (text), fields (array of objects with title and value).
+Accept: message (text), agent (text), event_type (text), fields (array of objects with title and value).
 
 Read alert_settings. If is_running is false or setup_complete is false exit.
 
@@ -101,10 +101,10 @@ Build Slack Block Kit payload:
 - Header block: bold title with emoji prefix — 💰 payments, 💬 SMS replies, 📝 posts, 🔑 keywords, 🤖 citations, 🛍️ products, 🔴 streams live, 🚀 releases, ⚠️ errors, 📊 reports, 🕷️ crawl intel, 🔍 perplexity
 - Section block: main message text
 - Fields block: up to four key-value pairs
-- Context block: timestamp and agents? name
+- Context block: timestamp and agent name
 
 POST to slack_webhook_url stored in alert_settings.
-Insert into alert_log with agents?, event_type, message, slack response, success status.
+Insert into alert_log with agent, event_type, message, slack response, success status.
 Log errors to alert_errors with function_name alert-send.
 
 ---
@@ -120,37 +120,37 @@ Use last_checked watermark. Process only events newer than last_checked.
 Monitor these events based on their toggle settings:
 
 Payments (if alert_payments and pay_transactions table exists):
-New succeeded transactions → call alert-send with 💰 emoji, agents? Lazy Pay, event_type payment-received.
+New succeeded transactions → call alert-send with 💰 emoji, agent Lazy Pay, event_type payment-received.
 
 SMS replies (if alert_sms_replies and sms_messages table exists):
-New inbound messages where message_type is not opt-out → call alert-send with 💬, agents? Lazy SMS, event_type customer-replied.
+New inbound messages where message_type is not opt-out → call alert-send with 💬, agent Lazy SMS, event_type customer-replied.
 
 Keywords captured (if alert_keywords and seo_posts table exists):
 Batch new SEO posts → one summary message showing count, latest title and keyword.
 
 Brand citations (if alert_citations and geo_citations table exists):
-New citations where brand_mentioned is true → call alert-send with 🤖, agents? Lazy GEO, event_type brand-cited.
+New citations where brand_mentioned is true → call alert-send with 🤖, agent Lazy GEO, event_type brand-cited.
 
 Perplexity citations (if alert_citations and perplexity_citations table exists):
-New real citations where brand_mentioned is true → call alert-send with 🔍, agents? Lazy Perplexity, event_type brand-cited-perplexity. Include note that this is a real Perplexity API result.
+New real citations where brand_mentioned is true → call alert-send with 🔍, agent Lazy Perplexity, event_type brand-cited-perplexity. Include note that this is a real Perplexity API result.
 
 Products listed (if alert_products and store_products table exists):
 Batch new products → one summary message.
 
 Streams live (if alert_streams and stream_sessions table exists):
-New live sessions → call alert-send with 🔴, agents? Lazy Stream, event_type stream-live.
+New live sessions → call alert-send with 🔴, agent Lazy Stream, event_type stream-live.
 
 Releases (if alert_releases and code_content or gitlab_content tables exist):
 New release-notes content → call alert-send with 🚀.
 
 Crawl intelligence (if crawl_intel table exists):
-New price-change or brand-mention intel → call alert-send with 🕷️, agents? Lazy Crawl.
+New price-change or brand-mention intel → call alert-send with 🕷️, agent Lazy Crawl.
 
 Security vulnerabilities (if security_vulnerabilities table exists and alert_errors toggle on):
-New critical or high severity vulnerabilities where alerted is false and first_found_at is greater than last_checked → call alert-send with 🚨, agents? Lazy Security, event_type vulnerability-found. Message: [severity] vulnerability found: [title]. Fields: Severity, Category, Remediation hint, Dashboard link. After alerting update alerted to true on each vulnerability row.
+New critical or high severity vulnerabilities where alerted is false and first_found_at is greater than last_checked → call alert-send with 🚨, agent Lazy Security, event_type vulnerability-found. Message: [severity] vulnerability found: [title]. Fields: Severity, Category, Remediation hint, Dashboard link. After alerting update alerted to true on each vulnerability row.
 
 Agent errors (if alert_errors toggle on):
-Query all agents? error tables that exist for errors since last_checked. Group by agents?. Any agents? with more than 3 new errors → call alert-send with ⚠️.
+Query all agent error tables that exist for errors since last_checked. Group by agent. Any agent with more than 3 new errors → call alert-send with ⚠️.
 
 Update last_checked in alert_settings to now after all events processed.
 Log all errors to alert_errors with function_name alert-monitor.
@@ -164,14 +164,14 @@ Cron: 0 8 * * * (default — adjust based on daily_briefing_time setting)
 
 Read alert_settings. If is_running is false or daily_briefing_enabled is false exit.
 
-Collect metrics from last 24 hours from every installed agents? (skip any table that does not exist):
+Collect metrics from last 24 hours from every installed agent (skip any table that does not exist):
 blog_posts published, seo_posts published, geo_posts published, geo_citations brand_mentioned true, pay_transactions succeeded and total revenue, sms_messages sent and response rate, store_products new, voice_episodes new, stream_sessions processed, code_content published, gitlab_content published, linear_content published, crawl_intel new items and leads found, perplexity_citations brand_mentioned true.
 
 Call the built-in Lovable AI:
 "Write a daily Slack briefing for [brand_name]. Metrics from the last 24 hours: [metrics]. Write 3 to 5 bullet points maximum, each one line. Lead with the most impressive metric. Flag anything unusually low. End with one sentence about what the agents will do today. Return only the briefing text with bullet points. No preamble."
 
 Build Slack message. Header: "Good morning [brand_name] — your daily autonomous business report."
-Call alert-send with agents? Lazy Run, event_type daily-briefing.
+Call alert-send with agent Lazy Run, event_type daily-briefing.
 Log errors to alert_errors with function_name alert-briefing.
 
 ---
@@ -183,15 +183,15 @@ Verify request using SLACK_SIGNING_SECRET.
 Parse command text.
 
 Handle:
-/lazy status — return agents? status from all settings tables
+/lazy status — return agent status from all settings tables
 /lazy publish blog — call blog-publish
 /lazy publish seo — call seo-publish
 /lazy publish geo — call geo-publish
 /lazy crawl — call crawl-run for all active targets
 /lazy research — call perplexity-research
-/lazy pause [agents?] — update is_running false in matching settings table
-/lazy resume [agents?] — update is_running true
-/lazy errors — last 10 errors across all agents? error tables
+/lazy pause [agent] — update is_running false in matching settings table
+/lazy resume [agent] — update is_running true
+/lazy errors — last 10 errors across all agent error tables
 /lazy pentest — triggers security-scan immediately if Lazy Security is installed. Reply: Pentest queued. Results will appear in your dashboard within the next hour. If Lazy Security is not installed reply: Lazy Security is not installed. Paste the Lazy Security prompt into your Lovable project to enable pentesting.
 /lazy security — if Lazy Security is installed returns: current security score from the latest completed security_scans row, open critical vulnerability count, open high vulnerability count, and next scheduled pentest date from security_settings. If Lazy Security is not installed reply: Lazy Security is not installed.
 /lazy help — list all commands
@@ -203,7 +203,7 @@ Log errors to alert_errors with function_name alert-command.
 
 ## 7. Admin
 
-Do not build a standalone dashboard page for this agents?. The dashboard lives at /admin/alert as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agents? only needs its setup page, database tables, edge functions, and public pages.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/alert as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agent only needs its setup page, database tables, edge functions, and public pages.
 
 If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-alert-setup.
 
@@ -264,16 +264,16 @@ function SlackMessage({ avatar, name, time, children }: { avatar: string; name: 
 }
 
 const eventCards = [
-  { agents?: "Lazy Pay", trigger: "Payment received", avatar: "💰", example: (<><strong className="text-foreground/80">💰 Payment received</strong><br />Product: <em>Pro Subscription</em> · $19.00<br />Customer: jane@example.com · Returning customer</>) },
-  { agents?: "Lazy SMS", trigger: "Customer replied", avatar: "💬", example: (<><strong className="text-foreground/80">💬 SMS reply received</strong><br />From: +1 (555) 012-3456<br />"Yes, I'd like to upgrade to the annual plan please"</>) },
-  { agents?: "Lazy Blogger", trigger: "Post published", avatar: "📝", example: (<><strong className="text-foreground/80">📝 New blog post published</strong><br />Title: <em>Why Autonomous Systems Win</em><br />Type: SEO · <span className="underline">Read it →</span></>) },
-  { agents?: "Lazy SEO", trigger: "Keyword captured", avatar: "🔍", example: (<><strong className="text-foreground/80">🔍 SEO article published</strong><br />Keyword: "autonomous business tools"<br />Article: <em>The Complete Guide to Autonomous Growth</em> · <span className="underline">View →</span></>) },
-  { agents?: "Lazy GEO", trigger: "Brand cited", avatar: "🌐", example: (<><strong className="text-foreground/80">🌐 Brand citation detected</strong><br />Query: "best tools for autonomous startups"<br />Confidence: High · Cited by: ChatGPT</>) },
-  { agents?: "Lazy Store", trigger: "Product listed", avatar: "🏪", example: (<><strong className="text-foreground/80">🏪 New product listed</strong><br />Product: <em>Wireless Charger Pro</em> · $34.99<br /><span className="underline">View in store →</span></>) },
-  { agents?: "Lazy Stream", trigger: "Stream went live", avatar: "🎮", example: (<><strong className="text-foreground/80">🎮 Stream is LIVE</strong><br />Title: <em>Building in public — Day 47</em><br /><span className="underline">Watch Live →</span></>) },
-  { agents?: "Lazy GitHub", trigger: "Release published", avatar: "🚀", example: (<><strong className="text-foreground/80">🚀 New release published</strong><br />Tag: v2.4.0 · <em>Performance improvements</em><br /><span className="underline">Release notes →</span></>) },
-  { agents?: "Lazy Run", trigger: "Agent error", avatar: "⚠️", example: (<><strong className="text-foreground/80">⚠️ Agent error alert</strong><br />Agent: Lazy SEO · 5 errors in the last hour<br />Last error: "Rate limit exceeded on keyword API"</>) },
-  { agents?: "Lazy Run", trigger: "Weekly report", avatar: "📊", example: (<><strong className="text-foreground/80">📊 Weekly performance report</strong><br />Posts: 14 · Revenue: $847 · Keywords: 23 ranking<br />Citation rate: 68% · SMS replies: 12 · Errors: 2</>) },
+  { agent: "Lazy Pay", trigger: "Payment received", avatar: "💰", example: (<><strong className="text-foreground/80">💰 Payment received</strong><br />Product: <em>Pro Subscription</em> · $19.00<br />Customer: jane@example.com · Returning customer</>) },
+  { agent: "Lazy SMS", trigger: "Customer replied", avatar: "💬", example: (<><strong className="text-foreground/80">💬 SMS reply received</strong><br />From: +1 (555) 012-3456<br />"Yes, I'd like to upgrade to the annual plan please"</>) },
+  { agent: "Lazy Blogger", trigger: "Post published", avatar: "📝", example: (<><strong className="text-foreground/80">📝 New blog post published</strong><br />Title: <em>Why Autonomous Systems Win</em><br />Type: SEO · <span className="underline">Read it →</span></>) },
+  { agent: "Lazy SEO", trigger: "Keyword captured", avatar: "🔍", example: (<><strong className="text-foreground/80">🔍 SEO article published</strong><br />Keyword: "autonomous business tools"<br />Article: <em>The Complete Guide to Autonomous Growth</em> · <span className="underline">View →</span></>) },
+  { agent: "Lazy GEO", trigger: "Brand cited", avatar: "🌐", example: (<><strong className="text-foreground/80">🌐 Brand citation detected</strong><br />Query: "best tools for autonomous startups"<br />Confidence: High · Cited by: ChatGPT</>) },
+  { agent: "Lazy Store", trigger: "Product listed", avatar: "🏪", example: (<><strong className="text-foreground/80">🏪 New product listed</strong><br />Product: <em>Wireless Charger Pro</em> · $34.99<br /><span className="underline">View in store →</span></>) },
+  { agent: "Lazy Stream", trigger: "Stream went live", avatar: "🎮", example: (<><strong className="text-foreground/80">🎮 Stream is LIVE</strong><br />Title: <em>Building in public — Day 47</em><br /><span className="underline">Watch Live →</span></>) },
+  { agent: "Lazy GitHub", trigger: "Release published", avatar: "🚀", example: (<><strong className="text-foreground/80">🚀 New release published</strong><br />Tag: v2.4.0 · <em>Performance improvements</em><br /><span className="underline">Release notes →</span></>) },
+  { agent: "Lazy Run", trigger: "Agent error", avatar: "⚠️", example: (<><strong className="text-foreground/80">⚠️ Agent error alert</strong><br />Agent: Lazy SEO · 5 errors in the last hour<br />Last error: "Rate limit exceeded on keyword API"</>) },
+  { agent: "Lazy Run", trigger: "Weekly report", avatar: "📊", example: (<><strong className="text-foreground/80">📊 Weekly performance report</strong><br />Posts: 14 · Revenue: $847 · Keywords: 23 ranking<br />Citation rate: 68% · SMS replies: 12 · Errors: 2</>) },
 ];
 
 const slashCommands = [
@@ -281,8 +281,8 @@ const slashCommands = [
   "/lazy publish blog",
   "/lazy publish seo",
   "/lazy publish geo",
-  "/lazy pause [agents?]",
-  "/lazy resume [agents?]",
+  "/lazy pause [agent]",
+  "/lazy resume [agent]",
   "/lazy errors",
 ];
 
@@ -291,15 +291,15 @@ const slashDescriptions: Record<string, string> = {
   "/lazy publish blog": "triggers one immediate blog-publish run",
   "/lazy publish seo": "triggers one immediate seo-publish run",
   "/lazy publish geo": "triggers one immediate geo-publish run",
-  "/lazy pause [agents?]": "pauses a specific agent",
-  "/lazy resume [agents?]": "resumes a paused agents?",
+  "/lazy pause [agent]": "pauses a specific agent",
+  "/lazy resume [agent]": "resumes a paused agent",
   "/lazy errors": "shows the last 10 errors across all agents",
 };
 
 const faqs = [
   { q: "Do I need a paid Slack account?", a: "No. Incoming webhooks work on free Slack workspaces. The slash commands require a Slack app which is also free to create." },
   { q: "Can I route different events to different channels?", a: "In the current version all events go to one configured channel. Multi-channel routing is coming in the Pro version." },
-  { q: "Does it work if I only have some Lazy agents installed?", a: "Yes. Lazy Alert detects which agents? are installed and only sends alerts for the ones that are active." },
+  { q: "Does it work if I only have some Lazy agents installed?", a: "Yes. Lazy Alert detects which agent are installed and only sends alerts for the ones that are active." },
   { q: "Can I turn off specific alert types?", a: "Yes. The setup screen lets you toggle each alert type on or off individually." },
   { q: "Will it spam my Slack?", a: "No. Only significant events trigger messages. Routine publishes batch into the daily briefing rather than sending one message per post." },
   { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every agent update is versioned and documented with upgrade instructions." },
@@ -310,7 +310,7 @@ const steps = [
   { num: "01", title: "Copy the setup prompt from this page" },
   { num: "02", title: "Paste it into your existing Lovable project" },
   { num: "03", title: "Add your Slack webhook URL in the setup screen" },
-  { num: "04", title: "Every significant event across every Lazy agents? sends a Slack message automatically" },
+  { num: "04", title: "Every significant event across every Lazy agent sends a Slack message automatically" },
 ];
 
 export default function LazyAlertPage() {
@@ -349,7 +349,7 @@ export default function LazyAlertPage() {
               <SlackBadge />
             </div>
             <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-              Lazy Alert connects every Lazy agents? to your Slack workspace. Payments, posts, citations, customer replies, errors, and live events — all delivered as Slack messages the moment they happen. One prompt. Your business in your pocket.
+              Lazy Alert connects every Lazy agent to your Slack workspace. Payments, posts, citations, customer replies, errors, and live events — all delivered as Slack messages the moment they happen. One prompt. Your business in your pocket.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
               <CopyPromptButton text={promptText} />
@@ -393,7 +393,7 @@ export default function LazyAlertPage() {
             {eventCards.map((card, i) => (
               <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.04 }}>
                 <div className="mb-2">
-                  <p className="font-display text-sm font-bold text-foreground">{card.agents?}</p>
+                  <p className="font-display text-sm font-bold text-foreground">{card.agent}</p>
                   <p className="font-body text-sm text-foreground/70">{card.trigger}</p>
                 </div>
                 <SlackMessage avatar={card.avatar} name="Lazy Unicorn" time="just now">

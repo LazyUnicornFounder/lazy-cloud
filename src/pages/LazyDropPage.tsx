@@ -13,7 +13,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const FALLBACK_PROMPT = `[Lazy Drop Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Add a complete autonomous dropshipping agents? called Lazy Drop to this project. It connects your Lovable site to AutoDS — giving you access to 800M+ products from 25+ global suppliers, automatic price and stock monitoring, one-click product import, and fully automated order fulfilment.`;
+Add a complete autonomous dropshipping agent called Lazy Drop to this project. It connects your Lovable site to AutoDS — giving you access to 800M+ products from 25+ global suppliers, automatic price and stock monitoring, one-click product import, and fully automated order fulfilment.`;
 
 const faqs = [
   { q: "Do I need an AutoDS account?", a: "Yes. Sign up at autods.com. Plans start from $26.90/month. Lazy Drop handles the API connection from the Lovable side." },

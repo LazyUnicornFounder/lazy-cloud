@@ -14,7 +14,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const FALLBACK_PROMPT = `[Lazy Watch Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Add an autonomous error monitoring agent called Lazy Watch to this project. It reads every Lazy agents? error table in your Supabase project every hour, diagnoses issues using Claude, opens GitHub issues with full diagnosis and fix recommendations, and pings Slack — all automatically with no manual input required after setup.
+Add an autonomous error monitoring agent called Lazy Watch to this project. It reads every Lazy agent error table in your Supabase project every hour, diagnoses issues using Claude, opens GitHub issues with full diagnosis and fix recommendations, and pings Slack — all automatically with no manual input required after setup.
 
 Required secrets:
 - ANTHROPIC_API_KEY — for Claude diagnosis calls
@@ -30,20 +30,20 @@ Create these Supabase tables with RLS enabled:
 
 watch_settings: id (uuid, primary key, default gen_random_uuid()), github_repo (text), error_threshold (integer, default 3), slack_webhook_url (text), is_running (boolean, default true), setup_complete (boolean, default false), prompt_version (text, nullable), created_at (timestamptz, default now())
 
-watch_runs: id (uuid, primary key, default gen_random_uuid()), status (text — one of running, completed, failed), agents?_checked (integer, default 0), issues_opened (integer, default 0), summary (text), started_at (timestamptz, default now()), completed_at (timestamptz), created_at (timestamptz, default now())
+watch_runs: id (uuid, primary key, default gen_random_uuid()), status (text — one of running, completed, failed), agent_checked (integer, default 0), issues_opened (integer, default 0), summary (text), started_at (timestamptz, default now()), completed_at (timestamptz), created_at (timestamptz, default now())
 
-watch_issues: id (uuid, primary key, default gen_random_uuid()), agents?_name (text), issue_title (text), issue_url (text), severity (text — one of critical, high, medium), error_count (integer), resolved (boolean, default false), created_at (timestamptz, default now())
+watch_issues: id (uuid, primary key, default gen_random_uuid()), agent_name (text), issue_title (text), issue_url (text), severity (text — one of critical, high, medium), error_count (integer), resolved (boolean, default false), created_at (timestamptz, default now())
 
 watch_errors: id (uuid, primary key, default gen_random_uuid()), function_name (text), error_message (text), created_at (timestamptz, default now())`;
 
 const steps = [
-  { icon: "🔍", title: "Scan", desc: "Every hour Lazy Watch queries all 26 Lazy agents? error tables in your Supabase project." },
+  { icon: "🔍", title: "Scan", desc: "Every hour Lazy Watch queries all 26 Lazy agent error tables in your Supabase project." },
   { icon: "🧠", title: "Diagnose", desc: "When errors hit your threshold Claude reads the logs, identifies the root cause, and writes a fix recommendation." },
   { icon: "📋", title: "Issue", desc: "A GitHub issue opens automatically with the full diagnosis, the affected function, numbered fix steps, and @claude tagged to investigate." },
   { icon: "📣", title: "Alert", desc: "A Slack notification fires with the agent name, error count, severity level, and a direct link to the issue." },
 ];
 
-const agents? = [
+const agent = [
   "Lazy Blogger", "Lazy SEO", "Lazy GEO", "Lazy Crawl", "Lazy Perplexity", "Lazy Contentful",
   "Lazy Store", "Lazy Drop", "Lazy Print", "Lazy Pay", "Lazy SMS", "Lazy Mail",
   "Lazy Voice", "Lazy Stream", "Lazy YouTube",
@@ -83,7 +83,7 @@ export default function LazyWatchPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Watch — Autonomous Error Monitor | Lazy Unicorn" description="Monitors every Lazy agents? error table hourly, diagnoses issues with Claude, and opens GitHub issues automatically." url="/lazy-watch" keywords="error monitoring, autonomous monitoring, Lovable error detection, GitHub issues automation" />
+      <SEO title="Lazy Watch — Autonomous Error Monitor | Lazy Unicorn" description="Monitors every Lazy agent error table hourly, diagnoses issues with Claude, and opens GitHub issues automatically." url="/lazy-watch" keywords="error monitoring, autonomous monitoring, Lovable error detection, GitHub issues automation" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}
@@ -99,7 +99,7 @@ export default function LazyWatchPage() {
                 Your stack watches itself.
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-                Lazy Watch reads every Lazy agents? error table every hour. When errors spike it sends them to Claude for diagnosis, opens a GitHub issue with a specific fix recommendation, tags @claude to investigate, and pings your Slack. You find out about broken agents? before your users do.
+                Lazy Watch reads every Lazy agent error table every hour. When errors spike it sends them to Claude for diagnosis, opens a GitHub issue with a specific fix recommendation, tags @claude to investigate, and pings your Slack. You find out about broken agent before your users do.
               </p>
               <div className="flex items-center gap-3 mt-4 mb-8">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Agents 👁️</span>
@@ -117,7 +117,7 @@ export default function LazyWatchPage() {
         {/* Problem */}
         <section className="max-w-3xl mx-auto px-6 mb-20 mt-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
-            A broken agents? is silent until it isn't.
+            A broken agent is silent until it isn't.
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border border-border">
             {[
@@ -164,13 +164,13 @@ export default function LazyWatchPage() {
             ))}
           </div>
           <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-6 font-body text-sm text-foreground/50">
-            Lazy Watch silently skips agents? that aren't installed. No noise, no false alarms — just monitoring the agents you actually use.
+            Lazy Watch silently skips agent that aren't installed. No noise, no false alarms — just monitoring the agents you actually use.
           </motion.p>
         </section>
 
         {/* Pricing */}
         <LazyPricingSection
-          lazyFeatures={["Full prompt — paste and go", "Hourly error monitoring", "Claude-powered diagnosis", "Automatic GitHub issues", "Slack alerts", "26 agents? coverage"]}
+          lazyFeatures={["Full prompt — paste and go", "Hourly error monitoring", "Claude-powered diagnosis", "Automatic GitHub issues", "Slack alerts", "26 agent coverage"]}
           proFeatures={["Everything in Lazy", "Custom diagnosis rules", "Priority severity routing", "Multi-repo support", "Webhook integrations"]}
           ctaButton={<CopyPromptButton text={promptText} className="w-full justify-center" />}
         />

@@ -84,7 +84,7 @@ export default function AdminGeoPage() {
     setToggling(true);
     await db.from("geo_settings").update({ is_running: !settings.is_running }).eq("id", settings.id);
     queryClient.invalidateQueries({ queryKey: ["admin-geo-settings"] });
-    queryClient.invalidateQueries({ queryKey: ["admin-agents?-status"] });
+    queryClient.invalidateQueries({ queryKey: ["admin-agent-status"] });
     setToggling(false);
   };
 

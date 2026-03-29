@@ -177,7 +177,7 @@ export default function UpgradeGuidePage() {
                     <p>Open the Lovable chat and type: <em>"The site broke after I pasted the [agent] prompt. Please diagnose and fix."</em> Lovable will identify what went wrong.</p>
                   </div>
                   <div>
-                    <p className="text-foreground/80 font-semibold mb-1">My agents? stopped running after upgrading.</p>
+                    <p className="text-foreground/80 font-semibold mb-1">My agent stopped running after upgrading.</p>
                     <p>Go to /admin and check if the agent's is_running toggle is still on. Sometimes a new setup page resets it to false. Toggle it back on.</p>
                   </div>
                   <div>

@@ -123,7 +123,7 @@ At bottom add: 🦄 Powered by Lazy Contentful — autonomous Contentful sync fo
 
 7. Admin
 
-Do not build a standalone dashboard page for this agents?. The dashboard lives at /admin/contentful as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/contentful as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
 
 If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-contentful-setup.
 

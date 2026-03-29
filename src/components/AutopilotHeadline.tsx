@@ -28,7 +28,7 @@ const PRODUCT_WORDS: Record<string, { word: string; emoji: string; tagline: stri
   "lazy-youtube": { word: "YouTube", emoji: "📺", tagline: "Launch autonomous video content." },
   "lazy-watch": { word: "monitoring", emoji: "👁️", tagline: "Launch autonomous error monitoring." },
   "lazy-fix": { word: "prompts", emoji: "🔧", tagline: "Launch autonomous prompt improvement." },
-  "lazy-build": { word: "agents?", emoji: "🏗️", tagline: "Launch autonomous agents? writing." },
+  "lazy-build": { word: "agent", emoji: "🏗️", tagline: "Launch autonomous agent writing." },
   "lazy-intel": { word: "strategy", emoji: "📊", tagline: "Launch autonomous content strategy." },
   "lazy-repurpose": { word: "repurposing", emoji: "🔄", tagline: "Launch autonomous content repurposing." },
   "lazy-trend": { word: "trends", emoji: "🔥", tagline: "Launch autonomous trend detection." },

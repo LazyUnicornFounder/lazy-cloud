@@ -144,7 +144,7 @@ export default function LazyAuthPage() {
         description="One prompt installs Google Sign-In, email login, protected routes, role-based access, and user management into your Lovable project."
         url="/lazy-auth"
         faq={faqs.map(f => ({ question: f.q, answer: f.a }))}
-        softwareApp={{ name: "Lazy Auth", description: "Autonomous authentication agents? for Lovable — installs Google Sign-In, email login, protected routes, and role-based access.", category: "SecurityApplication" }}
+        softwareApp={{ name: "Lazy Auth", description: "Autonomous authentication agent for Lovable — installs Google Sign-In, email login, protected routes, and role-based access.", category: "SecurityApplication" }}
         howToSteps={[
           { name: "Copy the prompt", text: "Copy the Lazy Auth prompt from this page." },
           { name: "Paste into Lovable", text: "Paste it into your existing Lovable project." },

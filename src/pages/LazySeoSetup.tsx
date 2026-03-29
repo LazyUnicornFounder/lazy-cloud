@@ -50,7 +50,7 @@ const LazySeoSetup = () => {
             <Rocket className="w-4 h-4" /> Lazy SEO
           </div>
           <h1 className="text-3xl font-bold tracking-tight">Set Up Lazy SEO</h1>
-          <p className="text-muted-foreground">Configure your autonomous SEO agents?. It runs silently in the background.</p>
+          <p className="text-muted-foreground">Configure your autonomous SEO agent. It runs silently in the background.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5 bg-card border border-border rounded-xl p-6">

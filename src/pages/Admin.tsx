@@ -640,7 +640,7 @@ const Admin = () => {
                 </div>
                 {queued.length === 0 ? (
                   <p className="font-body text-sm text-muted-foreground text-center py-4 border border-border/50 rounded-lg bg-card/50">
-                    No queued posts. Waiting for SEO & GEO agents? to generate drafts.
+                    No queued posts. Waiting for SEO & GEO agent to generate drafts.
                   </p>
                 ) : (
                   <div className="space-y-2">
@@ -760,7 +760,7 @@ const Admin = () => {
             </div>
           ))}
           {!loading && blogPosts.length === 0 && (
-            <p className="font-body text-sm text-muted-foreground text-center py-8">No blog posts yet. Posts will appear here once the SEO or GEO agents? generate them.</p>
+            <p className="font-body text-sm text-muted-foreground text-center py-8">No blog posts yet. Posts will appear here once the SEO or GEO agent generate them.</p>
           )}
         </div>
       )}

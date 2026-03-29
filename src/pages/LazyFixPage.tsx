@@ -14,7 +14,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const FALLBACK_PROMPT = `[Lazy Fix Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Add an autonomous prompt improvement agent called Lazy Fix to this project. Every Sunday night it reads your agents? performance data, identifies the two weakest-performing Lazy agents, makes targeted improvements to their prompts, and opens GitHub PRs for you to review Monday morning — all automatically.
+Add an autonomous prompt improvement agent called Lazy Fix to this project. Every Sunday night it reads your agent performance data, identifies the two weakest-performing Lazy agents, makes targeted improvements to their prompts, and opens GitHub PRs for you to review Monday morning — all automatically.
 
 Required secrets:
 - ANTHROPIC_API_KEY — for Claude improvement calls
@@ -24,16 +24,16 @@ Required secrets:
 
 const steps = [
   { icon: "📊", title: "Analyse", desc: "Every Sunday night Lazy Fix reads output counts, error rates, and last activity dates across all your installed agents." },
-  { icon: "🎯", title: "Identify", desc: "Claude selects the two agents? most in need of improvement — high error rate, low output volume, or long inactivity." },
+  { icon: "🎯", title: "Identify", desc: "Claude selects the two agent most in need of improvement — high error rate, low output volume, or long inactivity." },
   { icon: "✍️", title: "Improve", desc: "Lazy Fix fetches the prompt file from GitHub, reads CLAUDE.md for your rules, and writes a targeted improvement to the specific underperforming section — not a rewrite, a precise targeted edit." },
   { icon: "📬", title: "PR", desc: "A GitHub PR opens on a new branch. The diff shows exactly what changed and why. @claude is tagged to audit it before you merge." },
 ];
 
 const improvements = [
-  { agents?: "Lazy Blogger", problem: "Publishing 0 posts this week", fix: "AI prompt template updated with clearer output format instructions" },
-  { agents?: "Lazy GEO", problem: "23 JSON parse errors", fix: "Response parsing logic in geo-generate function made more robust" },
-  { agents?: "Lazy SMS", problem: "0 messages sent in 14 days", fix: "Cron schedule corrected and trigger condition fixed" },
-  { agents?: "Lazy Perplexity", problem: "High error rate", fix: "API error handling improved with retry logic" },
+  { agent: "Lazy Blogger", problem: "Publishing 0 posts this week", fix: "AI prompt template updated with clearer output format instructions" },
+  { agent: "Lazy GEO", problem: "23 JSON parse errors", fix: "Response parsing logic in geo-generate function made more robust" },
+  { agent: "Lazy SMS", problem: "0 messages sent in 14 days", fix: "Cron schedule corrected and trigger condition fixed" },
+  { agent: "Lazy Perplexity", problem: "High error rate", fix: "API error handling improved with retry logic" },
 ];
 
 const faqs = [
@@ -68,7 +68,7 @@ export default function LazyFixPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Fix — Autonomous Prompt Improvement | Lazy Unicorn" description="Every Sunday Lazy Fix reads your agents? performance, identifies underperformers, and opens GitHub PRs with targeted prompt improvements." url="/lazy-fix" keywords="prompt improvement, autonomous fixing, Lovable prompt optimization, self-improving prompts" />
+      <SEO title="Lazy Fix — Autonomous Prompt Improvement | Lazy Unicorn" description="Every Sunday Lazy Fix reads your agent performance, identifies underperformers, and opens GitHub PRs with targeted prompt improvements." url="/lazy-fix" keywords="prompt improvement, autonomous fixing, Lovable prompt optimization, self-improving prompts" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}
@@ -84,7 +84,7 @@ export default function LazyFixPage() {
                 Your prompts get better while you sleep.
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-                Every Sunday at 11pm Lazy Fix reads your agents? performance data — output volume, error rates, last activity dates. It identifies the two weakest agents, writes targeted improvements to their prompts following your SPEC.md rules, and opens GitHub PRs. Monday morning you have two prompts ready to review and merge.
+                Every Sunday at 11pm Lazy Fix reads your agent performance data — output volume, error rates, last activity dates. It identifies the two weakest agents, writes targeted improvements to their prompts following your SPEC.md rules, and opens GitHub PRs. Monday morning you have two prompts ready to review and merge.
               </p>
               <div className="flex items-center gap-3 mt-4 mb-8">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Agents 🔧</span>
@@ -146,7 +146,7 @@ export default function LazyFixPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-border">
             {improvements.map((item, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className="border-b sm:odd:border-r last:border-b-0 sm:[&:nth-child(3)]:border-b-0 border-border bg-card p-6">
-                <p className="font-display text-[11px] tracking-[0.15em] uppercase font-bold text-[#c8a961] mb-2">{item.agents?}</p>
+                <p className="font-display text-[11px] tracking-[0.15em] uppercase font-bold text-[#c8a961] mb-2">{item.agent}</p>
                 <p className="font-body text-sm text-foreground/70 mb-1">{item.problem}</p>
                 <p className="font-body text-sm text-foreground/50">→ {item.fix}</p>
               </motion.div>
@@ -168,7 +168,7 @@ export default function LazyFixPage() {
         <section className="text-center px-6 py-16">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <h2 className="font-display text-xl font-bold mb-4">Stop maintaining prompts manually.</h2>
-            <p className="font-body text-sm text-foreground/50 mb-6 max-w-md mx-auto">Paste one prompt. Every Sunday your weakest agents? get improved. You review the PRs Monday morning.</p>
+            <p className="font-body text-sm text-foreground/50 mb-6 max-w-md mx-auto">Paste one prompt. Every Sunday your weakest agent get improved. You review the PRs Monday morning.</p>
             <CopyPromptButton text={promptText} />
           </motion.div>
         </section>

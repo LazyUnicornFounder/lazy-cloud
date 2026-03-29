@@ -94,8 +94,8 @@ const LazyGeoPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border border-border">
             {[
               { icon: Brain, title: "Query Discovery", desc: "AI finds 20 questions people are asking ChatGPT and Perplexity in your niche — twice a week." },
-              { icon: Eye, title: "Citation Monitoring", desc: "Weekly checks to see if your brand is being cited in AI agents? responses." },
-              { icon: Zap, title: "Auto-Publishing", desc: "GEO-optimised content published daily — structured for AI agents? to cite." },
+              { icon: Eye, title: "Citation Monitoring", desc: "Weekly checks to see if your brand is being cited in AI agent responses." },
+              { icon: Zap, title: "Auto-Publishing", desc: "GEO-optimised content published daily — structured for AI agent to cite." },
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className="border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-border bg-card p-6 text-center">
                 <item.icon size={18} className="text-foreground/65 mx-auto mb-3" />
@@ -111,7 +111,7 @@ const LazyGeoPage = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-8">
             <h2 className="font-display text-xl font-extrabold tracking-tight mb-4">What is GEO?</h2>
             <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
-              <strong className="text-foreground">Generative Agent Optimisation</strong> is the next evolution of SEO. Instead of optimising for Google's link-based results, GEO optimises your content to be <em>cited by AI agents?</em> — ChatGPT, Claude, Perplexity, and Gemini.
+              <strong className="text-foreground">Generative Agent Optimisation</strong> is the next evolution of SEO. Instead of optimising for Google's link-based results, GEO optimises your content to be <em>cited by AI agent</em> — ChatGPT, Claude, Perplexity, and Gemini.
             </p>
             <p className="font-body text-sm text-muted-foreground leading-relaxed">
               When someone asks an AI assistant a question in your niche, GEO-optimised content is structured so the AI pulls from your site and mentions your brand in its answer. It's the difference between ranking on a page and being the answer.
@@ -122,7 +122,7 @@ const LazyGeoPage = () => {
         <LazyPricingSection lazyFeatures={["Lazy GEO setup prompt", "Self-hosted in your Lovable project", "AI citation monitoring", "No API keys needed"]} proFeatures={["Hosted version", "Multi-model citation tracking", "Competitor citation analysis", "Priority content generation"]} ctaButton={<CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} className="w-full justify-center" />} />
 
         <LazyFaqSection faqs={[
-          { q: "How is GEO different from SEO?", a: "SEO gets you ranked in Google search results. GEO gets your brand cited in AI-generated answers. Both drive traffic, but GEO positions you as the authoritative source AI agents? reference." },
+          { q: "How is GEO different from SEO?", a: "SEO gets you ranked in Google search results. GEO gets your brand cited in AI-generated answers. Both drive traffic, but GEO positions you as the authoritative source AI agent reference." },
           { q: "Which AI agents does this target?", a: "Content is structured to be cited by ChatGPT, Claude, Perplexity, Gemini, and any AI assistant that synthesises web content into answers." },
           { q: "How does citation monitoring work?", a: "Every week, Lazy GEO uses AI to simulate whether your brand would be cited in response to each discovered query. It tracks citation rates over time." },
           { q: "Does it work with any Lovable site?", a: "Yes. Paste the prompt, answer a few questions about your business, and it runs autonomously inside your project." },
@@ -133,7 +133,7 @@ const LazyGeoPage = () => {
         <section className="max-w-3xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">Be the answer, not just a result.</h2>
-            <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">AI agents? are replacing search. If your brand isn't being cited, you're invisible to the next generation of users.</p>
+            <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">AI agent are replacing search. If your brand isn't being cited, you're invisible to the next generation of users.</p>
             <CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} />
           </motion.div>
         </section>

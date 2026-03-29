@@ -15,7 +15,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const LAZY_DESIGN_PROMPT = `[Lazy Design Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Add a design upgrade agents? called Lazy Design to this project. It automatically improves the visual design of your Lovable site by fetching pre-built UI components from 21st.dev and upgrading your pages section by section — hero, navigation, testimonials, features, CTA, and footer — without you browsing component libraries or writing design prompts manually.
+Add a design upgrade agent called Lazy Design to this project. It automatically improves the visual design of your Lovable site by fetching pre-built UI components from 21st.dev and upgrading your pages section by section — hero, navigation, testimonials, features, CTA, and footer — without you browsing component libraries or writing design prompts manually.
 
 Note: Lazy Design uses the 21st.dev component library and the built-in Lovable AI. No API keys required.
 
@@ -93,9 +93,9 @@ export default function LazyDesignPage() {
         title="Lazy Design — Autonomous Design Upgrade Agent for Lovable"
         description="One prompt upgrades your Lovable site with pre-built 21st.dev components — hero, navigation, testimonials, and more — matched to your brand automatically."
         url="/lazy-design"
-        keywords="autonomous design, 21st.dev integration, Lovable design agents?, UI component upgrades, design automation"
+        keywords="autonomous design, 21st.dev integration, Lovable design agent, UI component upgrades, design automation"
         faq={faqs.map(f => ({ question: f.q, answer: f.a }))}
-        softwareApp={{ name: "Lazy Design", description: "Autonomous design upgrade agents? that improves your Lovable site with pre-built 21st.dev components.", category: "DesignApplication" }}
+        softwareApp={{ name: "Lazy Design", description: "Autonomous design upgrade agent that improves your Lovable site with pre-built 21st.dev components.", category: "DesignApplication" }}
         howToSteps={steps.map(s => ({ name: s.title, text: s.title }))}
         howToName="How to use Lazy Design"
       />

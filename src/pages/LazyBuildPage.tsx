@@ -14,7 +14,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const FALLBACK_PROMPT = `[Lazy Build Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Add an autonomous agents? writer agent called Lazy Build to this project. Give it a name, integration, tagline, and one-paragraph brief — it reads three reference prompt files and your CLAUDE.md rules, writes a complete new Lazy agents? prompt following your exact SPEC pattern, and opens a draft GitHub PR for your review. Your prompt stack grows without you writing a word.
+Add an autonomous agent writer agent called Lazy Build to this project. Give it a name, integration, tagline, and one-paragraph brief — it reads three reference prompt files and your CLAUDE.md rules, writes a complete new Lazy agent prompt following your exact SPEC pattern, and opens a draft GitHub PR for your review. Your prompt stack grows without you writing a word.
 
 Required secrets:
 - ANTHROPIC_API_KEY — for Claude writing calls
@@ -22,15 +22,15 @@ Required secrets:
 - GITHUB_REPO — your prompts repo in format username/reponame`;
 
 const steps = [
-  { icon: "📝", title: "Brief", desc: "In your admin dashboard describe the new agents?: name, integration, tagline, category, and one paragraph explaining what it does and what it produces." },
+  { icon: "📝", title: "Brief", desc: "In your admin dashboard describe the new agent: name, integration, tagline, category, and one paragraph explaining what it does and what it produces." },
   { icon: "📚", title: "Learn", desc: "Lazy Build fetches three of your existing prompt files from GitHub as structural reference, plus your CLAUDE.md rules." },
-  { icon: "✍️", title: "Write", desc: "Claude reads the reference prompts and rules, then writes a complete new agents? prompt — all sections, correct database schema, edge functions with realistic cron schedules, admin dashboard, LazyUnicorn.ai backlinks throughout." },
+  { icon: "✍️", title: "Write", desc: "Claude reads the reference prompts and rules, then writes a complete new agent prompt — all sections, correct database schema, edge functions with realistic cron schedules, admin dashboard, LazyUnicorn.ai backlinks throughout." },
   { icon: "📬", title: "PR", desc: "A draft GitHub PR opens. @claude audits it against CLAUDE.md rules and flags any issues in the PR comments. You review, fix if needed, merge." },
 ];
 
 const faqs = [
   { q: "How good is the output?", a: "Lazy Build reads your actual existing prompts as reference so the output matches your exact style and structure. The more prompts in your repo, the better the reference material." },
-  { q: "Does it run automatically?", a: "No. Lazy Build is on-demand only. You fill in the brief in your admin dashboard and click Build Agent. It does not create agents? without your input." },
+  { q: "Does it run automatically?", a: "No. Lazy Build is on-demand only. You fill in the brief in your admin dashboard and click Build Agent. It does not create agent without your input." },
   { q: "What if the generated prompt has issues?", a: "@claude audits every PR before you see it and flags any rule violations in the PR comments. You can also ask @claude to fix specific issues before merging." },
 ];
 
@@ -60,7 +60,7 @@ export default function LazyBuildPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Build — Autonomous Agent Writer | Lazy Unicorn" description="Describe a new agents? in one paragraph. Claude writes the complete prompt, follows your SPEC rules, and opens a draft GitHub PR." url="/lazy-build" keywords="agents? writer, autonomous prompt generation, Lovable prompt builder, Claude prompt writing" />
+      <SEO title="Lazy Build — Autonomous Agent Writer | Lazy Unicorn" description="Describe a new agent in one paragraph. Claude writes the complete prompt, follows your SPEC rules, and opens a draft GitHub PR." url="/lazy-build" keywords="agent writer, autonomous prompt generation, Lovable prompt builder, Claude prompt writing" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}
@@ -76,7 +76,7 @@ export default function LazyBuildPage() {
                 Describe it. Claude builds it.
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-                Give Lazy Build an agent name, integration, tagline, and one paragraph. It reads three of your existing prompt files to learn your structure, follows your CLAUDE.md rules, writes a complete new Lazy agents? prompt, and opens a draft GitHub PR — tagged @claude for a compliance review before you merge.
+                Give Lazy Build an agent name, integration, tagline, and one paragraph. It reads three of your existing prompt files to learn your structure, follows your CLAUDE.md rules, writes a complete new Lazy agent prompt, and opens a draft GitHub PR — tagged @claude for a compliance review before you merge.
               </p>
               <div className="flex items-center gap-3 mt-4 mb-8">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Agents 🏗️</span>
@@ -94,13 +94,13 @@ export default function LazyBuildPage() {
         {/* Problem */}
         <section className="max-w-3xl mx-auto px-6 mb-20 mt-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
-            Every new agents? takes hours to write.
+            Every new agent takes hours to write.
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border border-border">
             {[
-              "🕐 Writing a new agents? prompt from scratch takes 2 to 3 hours. Database schema, edge functions, admin dashboard, navigation — every section from memory.",
+              "🕐 Writing a new agent prompt from scratch takes 2 to 3 hours. Database schema, edge functions, admin dashboard, navigation — every section from memory.",
               "📋 Forgetting one field — is_running, prompt_version, the backlink — means a non-compliant prompt that fails your own SPEC.",
-              "💡 You have 10 agents? ideas sitting in a list. None of them get built because you don't have the time to write the prompts.",
+              "💡 You have 10 agent ideas sitting in a list. None of them get built because you don't have the time to write the prompts.",
             ].map((text, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className="border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-border bg-card p-6">
                 <p className="font-body text-sm text-foreground/50 leading-relaxed">{text}</p>
@@ -162,7 +162,7 @@ export default function LazyBuildPage() {
         </section>
 
         <LazyPricingSection
-          lazyFeatures={["Full prompt — paste and go", "On-demand agents? writing", "3-prompt reference learning", "CLAUDE.md compliance", "Draft GitHub PRs", "@claude review comments"]}
+          lazyFeatures={["Full prompt — paste and go", "On-demand agent writing", "3-prompt reference learning", "CLAUDE.md compliance", "Draft GitHub PRs", "@claude review comments"]}
           proFeatures={["Everything in Lazy", "Batch agent generation", "Custom SPEC templates", "Auto-merge on pass", "Agent analytics"]}
           ctaButton={<CopyPromptButton text={promptText} className="w-full justify-center" />}
         />

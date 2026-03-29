@@ -14,7 +14,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const LAZY_VOICE_PROMPT = `[Lazy Voice Prompt — v0.0.4 — LazyUnicorn.ai]
 
-Add an autonomous audio narration agents? called Lazy Voice to this project. It monitors every new post published to blog_posts, seo_posts, and geo_posts, converts each to audio using the ElevenLabs API, stores the audio file, embeds an audio player on every blog post page, and publishes a podcast feed at /listen — all automatically with no manual input required after setup.
+Add an autonomous audio narration agent called Lazy Voice to this project. It monitors every new post published to blog_posts, seo_posts, and geo_posts, converts each to audio using the ElevenLabs API, stores the audio file, embeds an audio player on every blog post page, and publishes a podcast feed at /listen — all automatically with no manual input required after setup.
 
 ---
 
@@ -142,7 +142,7 @@ Create a public page at /listen:
 
 ## 6. Admin
 
-Do not build a standalone dashboard page for this agents?. The dashboard lives at /admin/voice as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agents? only needs its setup page, database tables, edge functions, and public pages.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/voice as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agent only needs its setup page, database tables, edge functions, and public pages.
 
 If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-voice-setup.
 
@@ -222,14 +222,14 @@ const features = [
   { icon: Mic, title: "Your voice", desc: "Clone your own voice in ElevenLabs once, and every post sounds like you narrated it personally." },
   { icon: Headphones, title: "A full podcast feed at /listen", desc: "Every narrated post in one place, presented as a podcast." },
   { icon: Rss, title: "RSS feed", desc: "Automatically submitted to Apple Podcasts, Spotify, and Google Podcasts. Your podcast grows without you recording anything." },
-  { icon: Radio, title: "Works with Lazy Blogger and Lazy SEO", desc: "Monitors both agents? and converts every post they publish automatically." },
+  { icon: Radio, title: "Works with Lazy Blogger and Lazy SEO", desc: "Monitors both agent and converts every post they publish automatically." },
   { icon: Volume2, title: "No editing, no recording, no uploading", desc: "The entire audio workflow runs without you." },
 ];
 
 /* ── FAQ data ── */
 const faqs = [
   { q: "Do I need a paid ElevenLabs account?", a: "The free tier works for basic voices. Voice cloning requires a paid ElevenLabs plan starting at $5/month." },
-  { q: "Does it work without Lazy Blogger or Lazy SEO?", a: "Yes. Lazy Voice monitors your blog_posts table directly, so it works with any content publishing agents? including manually published posts." },
+  { q: "Does it work without Lazy Blogger or Lazy SEO?", a: "Yes. Lazy Voice monitors your blog_posts table directly, so it works with any content publishing agent including manually published posts." },
   { q: "How long does audio generation take?", a: "ElevenLabs typically generates audio within 30 seconds per post. The player appears on the article automatically once the audio is ready." },
   { q: "Will my podcast appear on Spotify automatically?", a: "The RSS feed is generated automatically. Submitting it to Spotify and Apple Podcasts is a one-time manual step that takes five minutes. After that new episodes appear automatically." },
   { q: "Can I use a pre-built ElevenLabs voice instead of my own?", a: "Yes. Choose any ElevenLabs voice in the setup and every post gets narrated in that voice automatically." },

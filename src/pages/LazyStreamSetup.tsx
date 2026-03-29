@@ -91,7 +91,7 @@ const LazyStreamSetup = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Setup — Lazy Stream" description="Configure your autonomous Twitch content agents?." url="/lazy-stream-setup" />
+      <SEO title="Setup — Lazy Stream" description="Configure your autonomous Twitch content agent." url="/lazy-stream-setup" />
       <Navbar />
 
       <main className="pt-32 pb-20 px-6 md:px-12 max-w-2xl mx-auto">

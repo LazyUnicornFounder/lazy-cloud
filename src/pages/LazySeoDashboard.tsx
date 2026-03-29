@@ -72,7 +72,7 @@ const LazySeoD = () => {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold">Lazy SEO Dashboard</h1>
-            <p className="text-muted-foreground text-sm">Autonomous SEO agents? status</p>
+            <p className="text-muted-foreground text-sm">Autonomous SEO agent status</p>
           </div>
           <Link to="/lazy-seo-setup">
             <Button variant="outline" size="sm"><Settings className="w-4 h-4 mr-1" /> Edit Settings</Button>

@@ -11,7 +11,7 @@ import AutopilotHeadline from "@/components/AutopilotHeadline";
 
 const LAZY_SECURITY_PROMPT = `[Lazy Security Prompt — v0.0.5 — LazyUnicorn.ai]
 
-Add a complete autonomous security monitoring agents? called Lazy Security to this project. It connects to Aikido to run automated pentests, tracks vulnerability history, monitors security score over time, generates audit-ready reports, and sends instant alerts for critical findings — all automatically with no manual security work required after setup.
+Add a complete autonomous security monitoring agent called Lazy Security to this project. It connects to Aikido to run automated pentests, tracks vulnerability history, monitors security score over time, generates audit-ready reports, and sends instant alerts for critical findings — all automatically with no manual security work required after setup.
 
 Note: Store the Aikido API key as Supabase secret AIKIDO_API_KEY. Never store in the database.
 
@@ -204,7 +204,7 @@ At the bottom add: "🦄 Security monitored by Lazy Security — autonomous secu
 
 ## 9. Admin
 
-Do not build a standalone dashboard page for this agents?. The dashboard lives at /admin/security as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agents? only needs its setup page, database tables, edge functions, and public pages.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/security as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agent only needs its setup page, database tables, edge functions, and public pages.
 
 If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-security-setup.
 

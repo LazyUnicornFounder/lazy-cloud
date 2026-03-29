@@ -16,7 +16,7 @@ import AutopilotHeadline from "@/components/AutopilotHeadline";
 
 const LAZY_ADMIN_PROMPT = `[Lazy Admin Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Paste this prompt into your Lovable project to install the unified admin dashboard. It detects every installed Lazy agents? automatically and builds a control panel around them.
+Paste this prompt into your Lovable project to install the unified admin dashboard. It detects every installed Lazy agent automatically and builds a control panel around them.
 
 ## Backlink Badge
 Add a small "Powered by Lazy Unicorn" backlink badge in the footer of every public-facing page. Use this exact HTML:
@@ -24,30 +24,30 @@ Add a small "Powered by Lazy Unicorn" backlink badge in the footer of every publ
 Style it to sit at the bottom of the page footer, centered, with subtle opacity (60%) that increases to 100% on hover.`;
 
 const features = [
-  { icon: <Zap size={18} />, title: "Auto-detection", desc: "Detects every installed Lazy agents? by checking which settings tables exist in your database. Only shows panels for agents? you actually have installed. Nothing to configure." },
+  { icon: <Zap size={18} />, title: "Auto-detection", desc: "Detects every installed Lazy agent by checking which settings tables exist in your database. Only shows panels for agent you actually have installed. Nothing to configure." },
   { icon: <Activity size={18} />, title: "Master status", desc: "One large dot tells you everything before you read a single number. Green: all running. Red: something needs attention. Gold: everything paused." },
-  { icon: <BarChart3 size={18} />, title: "Agent status grid", desc: "One compact card per installed agents? showing the most important metric, last run time, and a Run Now button. Never have to open a separate dashboard to trigger a manual run." },
+  { icon: <BarChart3 size={18} />, title: "Agent status grid", desc: "One compact card per installed agent showing the most important metric, last run time, and a Run Now button. Never have to open a separate dashboard to trigger a manual run." },
   { icon: <Clock size={18} />, title: "Unified activity feed", desc: "Every action across every agent in the last 24 hours in one reverse-chronological feed. Filter by category or errors only." },
-  { icon: <AlertTriangle size={18} />, title: "Error log", desc: "All errors from all agents? error tables in one panel. Clear all with one click. Never miss a broken agents?." },
-  { icon: <Eye size={18} />, title: "Per-agents? deep dives", desc: "Click any agents? in the sidebar to see its full stats, queue, history, and settings. Edit settings without navigating away." },
+  { icon: <AlertTriangle size={18} />, title: "Error log", desc: "All errors from all agent error tables in one panel. Clear all with one click. Never miss a broken agent." },
+  { icon: <Eye size={18} />, title: "Per-agent deep dives", desc: "Click any agent in the sidebar to see its full stats, queue, history, and settings. Edit settings without navigating away." },
   { icon: <Settings size={18} />, title: "API key management", desc: "All API keys in one Settings page with connection status badges and one-click test buttons for every service." },
   { icon: <Layers size={18} />, title: "Weekly schedule", desc: "A visual timeline showing what runs when across the entire week. The full autonomous schedule at a glance." },
 ];
 
-const agents?Groups = [
-  { label: "Lazy Content", color: "text-[#c8a961]", agents?: ["Blogger", "SEO", "GEO", "Crawl", "Perplexity", "Contentful"] },
-  { label: "Lazy Commerce", color: "text-emerald-400", agents?: ["Store", "Drop", "Print", "Pay", "SMS", "Mail"] },
-  { label: "Lazy Media", color: "text-blue-400", agents?: ["Voice", "Stream"] },
-  { label: "Lazy Dev", color: "text-purple-400", agents?: ["GitHub", "GitLab", "Linear", "Design", "Auth"] },
-  { label: "Lazy Ops", color: "text-foreground/50", agents?: ["Alert", "Telegram", "Supabase", "Security"] },
+const agentGroups = [
+  { label: "Lazy Content", color: "text-[#c8a961]", agent: ["Blogger", "SEO", "GEO", "Crawl", "Perplexity", "Contentful"] },
+  { label: "Lazy Commerce", color: "text-emerald-400", agent: ["Store", "Drop", "Print", "Pay", "SMS", "Mail"] },
+  { label: "Lazy Media", color: "text-blue-400", agent: ["Voice", "Stream"] },
+  { label: "Lazy Dev", color: "text-purple-400", agent: ["GitHub", "GitLab", "Linear", "Design", "Auth"] },
+  { label: "Lazy Ops", color: "text-foreground/50", agent: ["Alert", "Telegram", "Supabase", "Security"] },
 ];
 
 const faqs = [
-  { q: "Do I need all the Lazy agents installed first?", a: "No. Lazy Admin works with any combination. Install one agents? and Lazy Admin shows one panel. Install all twenty-five and it shows everything. It detects what is there." },
-  { q: "Does it replace the individual setup pages?", a: "No. Each agent still has its own /lazy-[agents?]-setup page for configuration. Lazy Admin is for monitoring and control, not initial setup." },
-  { q: "Can I trigger agents? runs from the dashboard?", a: "Yes. Every agent panel has a Run Now button that calls that agents?'s primary function immediately without leaving the dashboard." },
+  { q: "Do I need all the Lazy agents installed first?", a: "No. Lazy Admin works with any combination. Install one agent and Lazy Admin shows one panel. Install all twenty-five and it shows everything. It detects what is there." },
+  { q: "Does it replace the individual setup pages?", a: "No. Each agent still has its own /lazy-[agent]-setup page for configuration. Lazy Admin is for monitoring and control, not initial setup." },
+  { q: "Can I trigger agent runs from the dashboard?", a: "Yes. Every agent panel has a Run Now button that calls that agent's primary function immediately without leaving the dashboard." },
   { q: "Does it work if I do not use Lazy Run?", a: "Yes. Lazy Admin works independently of Lazy Run. Lazy Run provides the run_activity and run_performance tables that power some charts, but the dashboard detects and works without them." },
-  { q: "What if I install a new agents? after setting up Lazy Admin?", a: "Lazy Admin detects installed agents dynamically. Install a new agents? and its panel appears in the sidebar automatically on the next page load. No prompt needed." },
+  { q: "What if I install a new agent after setting up Lazy Admin?", a: "Lazy Admin detects installed agents dynamically. Install a new agent and its panel appears in the sidebar automatically on the next page load. No prompt needed." },
   { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every agent update is versioned and documented with upgrade instructions." },
   { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
 ];
@@ -111,7 +111,7 @@ export default function LazyAdminPage() {
             <motion.div {...fade}>
               <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">Twenty-five agents. Twenty-five dashboards. Nobody has time for that.</h2>
               <p className="font-body text-foreground/50 leading-relaxed">
-                Every Lazy agents? ships with its own setup page. That is intentional — each agent installs independently into your project. But checking twenty-five separate dashboards every morning is not autonomous. It is the opposite of lazy. Lazy Admin solves that by pulling everything into one place. One URL. One sidebar. One morning check.
+                Every Lazy agent ships with its own setup page. That is intentional — each agent installs independently into your project. But checking twenty-five separate dashboards every morning is not autonomous. It is the opposite of lazy. Lazy Admin solves that by pulling everything into one place. One URL. One sidebar. One morning check.
               </p>
             </motion.div>
           </div>
@@ -123,7 +123,7 @@ export default function LazyAdminPage() {
             <motion.div {...fade}>
               <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-10 text-center">Paste one prompt. It figures out the rest.</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {["Install any Lazy agents into your Lovable project.", "Copy the Lazy Admin setup prompt from this page.", "Paste it into your existing Lovable project.", "Lazy Admin detects which agents? are installed and builds the right dashboard automatically."].map((step, i) => (
+                {["Install any Lazy agents into your Lovable project.", "Copy the Lazy Admin setup prompt from this page.", "Paste it into your existing Lovable project.", "Lazy Admin detects which agent are installed and builds the right dashboard automatically."].map((step, i) => (
                   <div key={i} className="border border-border p-5">
                     <span className="font-display text-2xl font-bold text-[#c8a961]/30 mb-3 block">{i + 1}</span>
                     <p className="font-body text-sm text-foreground/60">{step}</p>
@@ -163,7 +163,7 @@ export default function LazyAdminPage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {[
                   { time: "0–10 seconds", text: "Glance at the master status dot. Green means nothing needs attention. Red means something does." },
-                  { time: "10–30 seconds", text: "Scan the agent status grid. Check post counts, revenue, citation rate, security score. See if any agents? has an error badge." },
+                  { time: "10–30 seconds", text: "Scan the agent status grid. Check post counts, revenue, citation rate, security score. See if any agent has an error badge." },
                   { time: "30–60 seconds", text: "Read the activity feed. See what published overnight. Check the error log. If clean, close the tab. If not, click the agent with the red dot and fix it." },
                 ].map((col, i) => (
                   <div key={i} className="border border-border p-5">
@@ -185,7 +185,7 @@ export default function LazyAdminPage() {
             <motion.div {...fade}>
               <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-10">One dashboard for the entire Lazy Stack.</h2>
               <div className="space-y-6">
-                {agents?Groups.map(g => (
+                {agentGroups.map(g => (
                   <div key={g.label}>
                     <p className="font-body text-[14px] tracking-[0.15em] uppercase text-foreground/70 mb-2">{g.label}</p>
                     <div className="flex flex-wrap justify-center gap-2">
@@ -230,7 +230,7 @@ export default function LazyAdminPage() {
             >
               {copied ? <><Check size={14} /> Copied ✓</> : <><Copy size={14} /> Copy the Lovable Prompt</>}
             </button>
-            <p className="font-body text-foreground/60 text-sm mt-4 max-w-md mx-auto">Open your Lovable project, paste it into the chat. The dashboard builds itself around whatever agents? you have installed.</p>
+            <p className="font-body text-foreground/60 text-sm mt-4 max-w-md mx-auto">Open your Lovable project, paste it into the chat. The dashboard builds itself around whatever agent you have installed.</p>
           </div>
         </section>
       </main>

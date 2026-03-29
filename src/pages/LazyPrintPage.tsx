@@ -13,7 +13,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const FALLBACK_PROMPT = `[Lazy Print Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Add a complete autonomous print-on-demand agents? called Lazy Print to this project. It connects your Lovable site to Printful — giving you access to 475+ customisable products printed and shipped from fulfillment centers globally.`;
+Add a complete autonomous print-on-demand agent called Lazy Print to this project. It connects your Lovable site to Printful — giving you access to 475+ customisable products printed and shipped from fulfillment centers globally.`;
 
 const faqs = [
   { q: "Do I need to buy inventory upfront?", a: "No. Products are only made when a customer places an order. You never hold stock." },

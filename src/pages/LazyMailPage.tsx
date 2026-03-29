@@ -15,7 +15,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const LAZY_MAIL_PROMPT = `[Lazy Mail Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Add a complete autonomous email agents? called Lazy Mail to this project. It connects Resend to your Lovable site and handles subscriber capture, welcome sequences, automated newsletter broadcasts from your blog content, transactional emails, and self-improving open rates — without you writing or sending a single email manually.
+Add a complete autonomous email agent called Lazy Mail to this project. It connects Resend to your Lovable site and handles subscriber capture, welcome sequences, automated newsletter broadcasts from your blog content, transactional emails, and self-improving open rates — without you writing or sending a single email manually.
 
 Note: Store the Resend API key as Supabase secret RESEND_API_KEY. Never store in the database.
 
@@ -93,7 +93,7 @@ export default function LazyMailPage() {
         title="Lazy Mail — Autonomous Email Agent for Lovable"
         description="One prompt adds subscriber capture, welcome sequences, and AI-written newsletters to your Lovable project. Powered by Resend."
         url="/lazy-mail"
-        keywords="autonomous email, Resend integration, Lovable email agents?, newsletter automation, subscriber management"
+        keywords="autonomous email, Resend integration, Lovable email agent, newsletter automation, subscriber management"
       />
       <Navbar />
 

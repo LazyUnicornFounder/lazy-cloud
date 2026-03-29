@@ -18,7 +18,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const FALLBACK_PROMPT = `[Lazy Store Prompt — v0.0.4 — LazyUnicorn.ai]
 
-Add an autonomous e-commerce agents? called Lazy Store to this project. It automatically discovers products, writes listings, monitors pricing, runs promotions, optimises conversion, and publishes SEO content — with no manual input required after setup. Payments are handled by Stripe checkout. All management pages are admin-only.
+Add an autonomous e-commerce agent called Lazy Store to this project. It automatically discovers products, writes listings, monitors pricing, runs promotions, optimises conversion, and publishes SEO content — with no manual input required after setup. Payments are handled by Stripe checkout. All management pages are admin-only.
 
 ---
 
@@ -224,7 +224,7 @@ Show payment success message and link to /store.
 
 ## 6. Admin
 
-Do not build a standalone dashboard page for this agents?. The dashboard lives at /admin/store as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agents? only needs its setup page, database tables, edge functions, and public pages.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/store as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agent only needs its setup page, database tables, edge functions, and public pages.
 
 If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-store-setup.
 
@@ -364,7 +364,7 @@ const LazyStorePage = () => {
   ];
 
   const faqs = [
-    { q: "Do I need products to start?", a: "No. The product discovery agents? finds them for you based on your niche. You can also add your own." },
+    { q: "Do I need products to start?", a: "No. The product discovery agent finds them for you based on your niche. You can also add your own." },
     { q: "Does it actually fulfil orders?", a: "Not yet. Lazy Store manages the store front, listings, pricing, and content. Order fulfilment connects to your existing supplier or digital delivery setup." },
     { q: "Will the listings sound generic?", a: "You set the brand voice, niche, and tone in the five-question setup. The AI writes every listing in your brand voice." },
     { q: "What if a product page is not converting?", a: "The conversion optimiser detects underperforming pages weekly and rewrites them automatically. You do not need to identify or fix them manually." },

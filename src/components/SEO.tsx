@@ -46,7 +46,7 @@ const DEFAULT_TITLE = "Lazy Unicorn — The Autonomous Layer for Lovable";
 const DEFAULT_DESCRIPTION = "The autonomous layer for Lovable. One prompt installs the agent you need — blog posts, SEO, GEO, payments, voice, stores, streams, and more. Everything runs itself.";
 const DEFAULT_IMAGE = "https://www.lazyunicorn.ai/og-image.png";
 const BASE_URL = "https://www.lazyunicorn.ai";
-const DEFAULT_KEYWORDS = "Lazy Unicorn, autonomous layer for Lovable, Lovable plugins, Lazy Blogger, Lazy SEO, Lazy GEO, Lazy Store, Lazy Voice, Lazy Pay, Lazy SMS, Lazy Stream, Lazy GitHub, Lazy Run, Lazy Alert, autonomous blog agents?, AI SEO tool, AI citation agents?, self-growing website, solo founder tools, AI business automation, autonomous marketing, one prompt startup";
+const DEFAULT_KEYWORDS = "Lazy Unicorn, autonomous layer for Lovable, Lovable plugins, Lazy Blogger, Lazy SEO, Lazy GEO, Lazy Store, Lazy Voice, Lazy Pay, Lazy SMS, Lazy Stream, Lazy GitHub, Lazy Run, Lazy Alert, autonomous blog agent, AI SEO tool, AI citation agent, self-growing website, solo founder tools, AI business automation, autonomous marketing, one prompt startup";
 const TWITTER_HANDLE = "@SaadSahawneh";
 
 const SEO = ({

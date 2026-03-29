@@ -15,7 +15,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const SETUP_PROMPT = `[Lazy Stream Prompt — v0.0.3 — LazyUnicorn.ai]
 
-Add a complete autonomous stream-to-content agents? called Lazy Stream to this project. It monitors your Twitch channel, detects when a stream ends, and automatically publishes four pieces of content — a stream recap, an SEO article, a GEO article structured to be cited by AI agents? like ChatGPT and Perplexity, and a highlights page — all within 30 minutes of your stream ending, without you writing a word.
+Add a complete autonomous stream-to-content agent called Lazy Stream to this project. It monitors your Twitch channel, detects when a stream ends, and automatically publishes four pieces of content — a stream recap, an SEO article, a GEO article structured to be cited by AI agent like ChatGPT and Perplexity, and a highlights page — all within 30 minutes of your stream ending, without you writing a word.
 
 Note: Store all Twitch credentials as Supabase secrets. Never store in the database.
 Required secrets: TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET
@@ -56,7 +56,7 @@ Form fields:
 - Twitch Client Secret (password) — copy the Client Secret from the same application. Stored as Supabase secret TWITCH_CLIENT_SECRET.
 - Content tone (select: Conversational — like you are talking to your audience / Editorial — clean journalistic style / Hype — energetic and exclamatory / Technical — detailed and precise)
 - SEO keywords — comma separated topics your streams cover e.g. dark zone pvp, extraction games, FPS tips. Used to target SEO articles.
-- GEO queries — comma separated questions people ask AI agents? about your game or niche e.g. what is the best loadout for dark zone, how do I improve at extraction games, is The Division 2 worth playing in 2026. Used to target GEO articles. Include a Suggest Queries button that calls the built-in Lovable AI using the brand name and SEO keywords to suggest 5 GEO queries and pre-fills the field.
+- GEO queries — comma separated questions people ask AI agent about your game or niche e.g. what is the best loadout for dark zone, how do I improve at extraction games, is The Division 2 worth playing in 2026. Used to target GEO articles. Include a Suggest Queries button that calls the built-in Lovable AI using the brand name and SEO keywords to suggest 5 GEO queries and pre-fills the field.
 - Auto-publish (toggle, default on) — if off content is drafted but not published until approved from the dashboard
 - Slack webhook URL for alerts (optional)
 
@@ -289,7 +289,7 @@ const LazyStreamPage = () => {
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border border-border">
             {[
-              { icon: Radio, title: "Stream detection", desc: "Monitors your Twitch channel every 5 minutes. When you go offline, agents? fire automatically." },
+              { icon: Radio, title: "Stream detection", desc: "Monitors your Twitch channel every 5 minutes. When you go offline, agent fire automatically." },
               { icon: FileText, title: "3 content pieces", desc: "A stream recap, an SEO article, and a highlights page — published within 30 minutes." },
               { icon: Zap, title: "Zero effort", desc: "No writing. No editing. No scheduling. Stream as normal and content appears on your site." },
             ].map((item, i) => (

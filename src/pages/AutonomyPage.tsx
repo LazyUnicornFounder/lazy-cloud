@@ -45,19 +45,19 @@ function LevelScale() {
 }
 
 /* ── Agent Card ── */
-function EngineCard({ agents? }: { agents?: EngineData }) {
-  const [selectedLevel, setSelectedLevel] = useState(agents?.currentLevel);
+function EngineCard({ agent }: { agent: EngineData }) {
+  const [selectedLevel, setSelectedLevel] = useState(agent.currentLevel);
   const trackRef = useRef<HTMLDivElement>(null);
 
   const color = LEVEL_COLORS[selectedLevel];
-  const currentColor = LEVEL_COLORS[agents?.currentLevel];
-  const currentPct = (agents?.currentLevel / 5) * 100;
+  const currentColor = LEVEL_COLORS[agent.currentLevel];
+  const currentPct = (agent.currentLevel / 5) * 100;
 
   // Determine glow intensity for the fixed dot
   const glowClass =
-    agents?.currentLevel === 5
+    agent.currentLevel === 5
       ? "animate-pulse shadow-[0_0_12px_3px]"
-      : agents?.currentLevel === 4
+      : agent.currentLevel === 4
         ? "animate-pulse shadow-[0_0_8px_2px]"
         : "";
 
@@ -67,16 +67,16 @@ function EngineCard({ agents? }: { agents?: EngineData }) {
       <div className="flex items-start justify-between gap-2">
         <div>
           <h3 className="text-lg md:text-xl font-bold text-foreground">
-            {agents?.link ? (
-              <Link to={agents?.link} className="hover:underline">
-                {agents?.name}
+            {agent.link ? (
+              <Link to={agent.link} className="hover:underline">
+                {agent.name}
               </Link>
             ) : (
-              agents?.name
+              agent.name
             )}
           </h3>
           <p className="text-sm text-muted-foreground mt-0.5">
-            {agents?.description}
+            {agent.description}
           </p>
         </div>
         <span
@@ -86,7 +86,7 @@ function EngineCard({ agents? }: { agents?: EngineData }) {
             borderColor: currentColor + "44",
           }}
         >
-          L{agents?.currentLevel}
+          L{agent.currentLevel}
         </span>
       </div>
 
@@ -183,13 +183,13 @@ function EngineCard({ agents? }: { agents?: EngineData }) {
             style={{ color }}
           >
             Level {selectedLevel} — {LEVEL_LABELS[selectedLevel]}
-            {selectedLevel === agents?.currentLevel && " ← today"}
+            {selectedLevel === agent.currentLevel && " ← today"}
           </span>
           <p
             className="text-base md:text-lg leading-relaxed font-medium"
             style={{ color: "hsl(var(--foreground))" }}
           >
-            {agents?.levels[selectedLevel]}
+            {agent.levels[selectedLevel]}
           </p>
         </motion.div>
       </AnimatePresence>
@@ -203,7 +203,7 @@ export default function AutonomyPage() {
     <>
       <SEO
         title="Autonomy Levels — Lazy Unicorn"
-        description="Explore what each Lazy agents? does at every level of autonomy — from fully manual to self-improving."
+        description="Explore what each Lazy agent does at every level of autonomy — from fully manual to self-improving."
       />
       <Navbar />
 
@@ -226,8 +226,8 @@ export default function AutonomyPage() {
           transition={{ delay: 0.1 }}
           className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed"
         >
-          Most tools automate tasks. Lazy Unicorn agents? automate outcomes.
-          Drag the slider on any agents? to see what autonomy looks like at each
+          Most tools automate tasks. Lazy Unicorn agent automate outcomes.
+          Drag the slider on any agent to see what autonomy looks like at each
           level — and where each agent sits today.
         </motion.p>
         <LevelScale />
@@ -241,8 +241,8 @@ export default function AutonomyPage() {
               {cat.label}
             </h2>
             <div className="grid grid-cols-1 gap-6 md:gap-8">
-              {cat.agents.map((agents?) => (
-                <EngineCard key={agents?.name} agents?={agents?} />
+              {cat.agents.map((agent) => (
+                <EngineCard key={agent.name} agent={agent} />
               ))}
             </div>
           </div>
@@ -264,7 +264,7 @@ export default function AutonomyPage() {
           </h2>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-xl mx-auto">
             Most automation tools live at Level 2 — they run on a schedule you
-            set and never change. Lazy Unicorn agents? are generative at minimum
+            set and never change. Lazy Unicorn agent are generative at minimum
             and self-improving at their best. They do not just execute tasks.
             They measure results, rewrite what does not work, and compound over
             time. That is the difference between a tool and an agent.
@@ -273,7 +273,7 @@ export default function AutonomyPage() {
             to="/lazy-run"
             className="inline-block text-sm font-mono px-5 py-2 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
           >
-            Install Lazy Run — all twenty-five agents? in one prompt
+            Install Lazy Run — all twenty-five agent in one prompt
           </Link>
         </div>
       </section>

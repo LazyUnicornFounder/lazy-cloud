@@ -15,13 +15,13 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const SETUP_PROMPT = `[Lazy GitLab Prompt — v0.0.5 — LazyUnicorn.ai]
 
-Add a complete autonomous GitLab content agents? called Lazy GitLab to this project. It monitors a GitLab repository via webhooks, processes commits and merge requests, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup. Mirrors the Lazy GitHub agents? but for GitLab.
+Add a complete autonomous GitLab content agent called Lazy GitLab to this project. It monitors a GitLab repository via webhooks, processes commits and merge requests, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup. Mirrors the Lazy GitHub agent but for GitLab.
 
 ---
 
 MARKETING PAGE PROMPT — paste into LazyUnicorn project:
 
-Add a new page at /lazy-gitlab. It is a marketing and landing page for a product called Lazy GitLab — an autonomous GitLab content agents? that installs into any existing Lovable project with one prompt.
+Add a new page at /lazy-gitlab. It is a marketing and landing page for a product called Lazy GitLab — an autonomous GitLab content agent that installs into any existing Lovable project with one prompt.
 
 Hero section
 Headline: 'One prompt turns every GitLab commit into a changelog, release notes, and a developer blog post — automatically.' Subheading: 'Lazy GitLab monitors your GitLab repository, reads your commits and merge requests, and publishes plain-English changelogs, release notes, SEO developer posts, and a public roadmap to your Lovable site — every time you push.' Primary button: Copy the Lovable Prompt. Secondary button: See How It Works. Badge: Powered by GitLab.
@@ -44,7 +44,7 @@ Navigation: Add Lazy GitLab to the LazyUnicorn navigation.
 
 SETUP PROMPT — paste into user's Lovable project:
 
-Add a complete autonomous GitLab content agents? called Lazy GitLab to this project. It monitors a GitLab repository via webhooks, processes commits, merge requests, and releases, writes plain-English changelogs, release notes, developer blog posts, and SEO articles, and maintains a public roadmap — all automatically.
+Add a complete autonomous GitLab content agent called Lazy GitLab to this project. It monitors a GitLab repository via webhooks, processes commits, merge requests, and releases, writes plain-English changelogs, release notes, developer blog posts, and SEO articles, and maintains a public roadmap — all automatically.
 
 1. Database
 Create these Supabase tables with RLS enabled:
@@ -130,7 +130,7 @@ At the bottom of every page add: 🦄 Powered by Lazy GitLab — autonomous GitL
 
 7. Admin
 
-Do not build a standalone dashboard page for this agents?. The dashboard lives at /admin/gitlab as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/gitlab as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
 
 If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-gitlab-setup.
 

@@ -86,7 +86,7 @@ export default function LazyVoiceDashboard() {
 
   return (
     <>
-      <SEO title="Lazy Voice Dashboard" description="Manage your autonomous audio narration agents?." />
+      <SEO title="Lazy Voice Dashboard" description="Manage your autonomous audio narration agent." />
       <Navbar />
       <main className="min-h-screen bg-background text-foreground pt-32 md:pt-44 pb-20 px-6">
         <div className="max-w-4xl mx-auto">

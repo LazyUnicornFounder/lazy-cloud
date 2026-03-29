@@ -14,7 +14,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const LAZY_PAY_PROMPT = `[Lazy Pay Prompt — v0.0.4 — LazyUnicorn.ai]
 
-Add a complete self-improving Stripe payments agents? called Lazy Pay to this project. It installs one-time payments, subscriptions, webhook handling, a customer portal, confirmation emails, a revenue dashboard, autonomous conversion optimisation, and abandoned checkout recovery — with no manual Stripe integration required after setup.
+Add a complete self-improving Stripe payments agent called Lazy Pay to this project. It installs one-time payments, subscriptions, webhook handling, a customer portal, confirmation emails, a revenue dashboard, autonomous conversion optimisation, and abandoned checkout recovery — with no manual Stripe integration required after setup.
 
 ---
 
@@ -206,7 +206,7 @@ Show email input. On submit call pay-portal and redirect to Stripe customer port
 
 ## 6. Admin
 
-Do not build a standalone dashboard page for this agents?. The dashboard lives at /admin/pay as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agents? only needs its setup page, database tables, edge functions, and public pages.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/pay as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agent only needs its setup page, database tables, edge functions, and public pages.
 
 If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-pay-setup.
 

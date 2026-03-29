@@ -14,7 +14,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const SETUP_PROMPT = `[Lazy Crawl Prompt — v0.0.5 — LazyUnicorn.ai]
 
-Add a complete autonomous web intelligence agents? called Lazy Crawl to this project. It uses the Firecrawl API to monitor competitor websites, extract trending topics, discover keyword opportunities, find leads from public directories, and feed real current data into your content agents — all automatically.
+Add a complete autonomous web intelligence agent called Lazy Crawl to this project. It uses the Firecrawl API to monitor competitor websites, extract trending topics, discover keyword opportunities, find leads from public directories, and feed real current data into your content agents — all automatically.
 
 ---
 
@@ -27,7 +27,7 @@ crawl_targets: id (uuid, primary key, default gen_random_uuid()), url (text), cr
 
 crawl_results: id (uuid, primary key, default gen_random_uuid()), target_id (uuid, references crawl_targets), url (text), content (text), extracted_data (jsonb), crawled_at (timestamptz, default now())
 
-crawl_intel: id (uuid, primary key, default gen_random_uuid()), intel_type (text), title (text), summary (text), source_url (text), relevance_score (numeric), fed_to_agents? (text), created_at (timestamptz, default now())
+crawl_intel: id (uuid, primary key, default gen_random_uuid()), intel_type (text), title (text), summary (text), source_url (text), relevance_score (numeric), fed_to_agent (text), created_at (timestamptz, default now())
 
 crawl_leads: id (uuid, primary key, default gen_random_uuid()), name (text), url (text), source (text), extracted_data (jsonb), status (text, default 'new'), created_at (timestamptz, default now())
 
@@ -170,7 +170,7 @@ const LazyCrawlPage = () => {
           { q: "What is Firecrawl?", a: "Firecrawl is a web scraping API that extracts clean, structured content from any website. Lazy Crawl uses it to monitor competitors and extract intelligence automatically." },
           { q: "Do I need a Firecrawl API key?", a: "Yes. Get one at firecrawl.dev. The free tier includes 500 credits which is enough for initial setup and testing." },
           { q: "How often does it crawl?", a: "By default every 30 minutes for active targets. You can configure frequency per target — some sites weekly, others daily." },
-          { q: "Does it work without the other Lazy agents?", a: "Yes. It stores intelligence independently. But it becomes much more powerful when Lazy Blogger, Lazy SEO, and Lazy GEO are also installed — intel flows directly into your content pipeline." },
+          { q: "Does it work without the other Lazy agent", a: "Yes. It stores intelligence independently. But it becomes much more powerful when Lazy Blogger, Lazy SEO, and Lazy GEO are also installed — intel flows directly into your content pipeline." },
           { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every agent update is versioned and documented with upgrade instructions." },
           { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
         ]} />
