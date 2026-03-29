@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { Loader2, Pause, Play, LayoutDashboard, Settings, Download } from "lucide-react";
+import { Loader2, Pause, Play, LayoutDashboard, Settings, Download, ExternalLink, GitBranch, Upload } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useAgentDetection } from "./hooks/useAgentDetection";
