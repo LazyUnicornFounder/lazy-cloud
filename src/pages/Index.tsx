@@ -584,8 +584,8 @@ const Index = () => {
       {/* Product Grid */}
       <section id="agent" className="relative z-10 scroll-mt-20">
         <div className="grid grid-cols-2 md:grid-cols-4">
-          {/* Lazy Run */}
-          <Link to="/lazy-run" className="block">
+          {/* Lazy Launch */}
+          <Link to="/lazy-launch" className="block">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -593,6 +593,31 @@ const Index = () => {
               transition={{ duration: 0.6 }}
               className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:brightness-[1.15] cursor-pointer p-4"
               style={{ backgroundColor: "#0a0a08" }}
+            >
+              {sketches["Launch"]}
+              <div className="text-center">
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+                  Lazy
+                </p>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
+                  Launch
+                </p>
+              </div>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "#f0ead6", opacity: 0.4 }}>
+                Launch your Lovable website
+              </p>
+            </motion.div>
+          </Link>
+
+          {/* Lazy Run */}
+          <Link to="/lazy-run" className="block">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.08 }}
+              className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:brightness-[1.15] cursor-pointer p-4"
+              style={{ backgroundColor: "#111110" }}
             >
               {sketches["Run"]}
               <div className="text-center">
@@ -605,31 +630,6 @@ const Index = () => {
               </div>
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "#f0ead6", opacity: 0.4 }}>
                 Autonomous everything
-              </p>
-            </motion.div>
-          </Link>
-
-          {/* Lazy Admin */}
-          <Link to="/lazy-admin" className="block">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.08 }}
-              className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:brightness-[1.15] cursor-pointer p-4"
-              style={{ backgroundColor: "#111110" }}
-            >
-              {sketches["Admin"]}
-              <div className="text-center">
-                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-                  Lazy
-                </p>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-                  Admin
-                </p>
-              </div>
-              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "#f0ead6", opacity: 0.4 }}>
-                Autonomous ops control
               </p>
             </motion.div>
           </Link>
