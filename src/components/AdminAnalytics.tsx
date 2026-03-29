@@ -258,25 +258,21 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
     return { total, today, countries, cities, browsers, operatingSystems, pages, referrers, markers, dailyVisits };
   }, [visitors]);
 
-  /* ── Per-product stats ── */
+  /* ── Per-agent stats (unified) ── */
   const productStats = useMemo(() => {
-    return PRODUCTS.map((product) => {
-      // Page visits from visitor data
-      const pageVisits = visitors.filter((v) => v.page === product.path).length;
-
-      // Event-based metrics — match various naming patterns
-      const productKey = product.key.replace("lazy-", "");
-      const prefixedKey = product.key.replace("-", "_");
+    return ALL_AGENTS.map((agent) => {
+      const pageVisits = visitors.filter((v) => v.page === agent.path).length;
+      const prefixedKey = agent.key.replace("-", "_");
 
       const pageViewEvents = events.filter((e) => {
         if (e.event_name === `${prefixedKey}_page_view`) return true;
-        if (e.event_name === "page_view" && (e.event_data as any)?.page === product.path) return true;
+        if (e.event_name === "page_view" && (e.event_data as any)?.page === agent.path) return true;
         return false;
       }).length;
 
       const promptCopies = events.filter((e) => {
         if (e.event_name === `${prefixedKey}_prompt_copy`) return true;
-        if (e.event_name === "copy_prompt" && (e.event_data as any)?.product === product.key) return true;
+        if (e.event_name === "copy_prompt" && (e.event_data as any)?.product === agent.key) return true;
         return false;
       }).length;
 
@@ -293,7 +289,7 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
         dailyMap[d.toISOString().split("T")[0]] = { views: 0, copies: 0 };
       }
       visitors.forEach((v) => {
-        if (v.page === product.path) {
+        if (v.page === agent.path) {
           const day = new Date(v.created_at).toISOString().split("T")[0];
           if (dailyMap[day]) dailyMap[day].views++;
         }
@@ -302,7 +298,7 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
         const day = new Date(e.created_at).toISOString().split("T")[0];
         if (dailyMap[day]) {
           if (e.event_name === `${prefixedKey}_prompt_copy` ||
-              (e.event_name === "copy_prompt" && (e.event_data as any)?.product === product.key)) {
+              (e.event_name === "copy_prompt" && (e.event_data as any)?.product === agent.key)) {
             dailyMap[day].copies++;
           }
         }
@@ -314,36 +310,12 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
       }));
 
       return {
-        ...product,
+        ...agent,
         pageVisits: totalViews,
         promptCopies,
         conversionRate,
         dailyTrend,
       };
-    }).sort((a, b) => b.promptCopies - a.promptCopies);
-  }, [visitors, events]);
-
-  /* ── Agent stats ── */
-  const agentStats = useMemo(() => {
-    return AGENTS.map((agent) => {
-      const pageVisits = visitors.filter((v) => v.page === agent.path).length;
-      const agentKey = agent.key.replace("-", "_");
-
-      const pageViewEvents = events.filter((e) => {
-        if (e.event_name === `${agentKey}_page_view`) return true;
-        if (e.event_name === "page_view" && (e.event_data as any)?.page === agent.path) return true;
-        return false;
-      }).length;
-
-      const promptCopies = events.filter((e) => {
-        if (e.event_name === `${agentKey}_prompt_copy`) return true;
-        if (e.event_name === "copy_prompt" && (e.event_data as any)?.product === agent.key) return true;
-        return false;
-      }).length;
-
-      const totalViews = Math.max(pageVisits, pageViewEvents);
-
-      return { ...agent, pageVisits: totalViews, promptCopies };
     }).sort((a, b) => b.promptCopies - a.promptCopies);
   }, [visitors, events]);
 
