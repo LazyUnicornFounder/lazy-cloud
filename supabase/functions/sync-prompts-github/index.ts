@@ -50,7 +50,6 @@ const PRODUCT_LABELS: Record<string, string> = {
 
 const CATEGORY_MAP: Record<string, string> = {
   "lazy-run": "🚀 Unicorn",
-  "lazy-admin": "⚙️ Ops",
   "lazy-blogger": "✍️ Content",
   "lazy-seo": "✍️ Content",
   "lazy-geo": "✍️ Content",
@@ -72,17 +71,18 @@ const CATEGORY_MAP: Record<string, string> = {
   "lazy-design": "🛠️ Dev",
   "lazy-auth": "🛠️ Dev",
   "lazy-granola": "🛠️ Dev",
+  "lazy-admin": "⚙️ Ops",
   "lazy-alert": "⚙️ Ops",
   "lazy-telegram": "⚙️ Ops",
   "lazy-supabase": "⚙️ Ops",
   "lazy-security": "⚙️ Ops",
-  "lazy-watch": "🤖 Agents",
-  "lazy-fix": "🤖 Agents",
-  "lazy-build": "🤖 Agents",
-  "lazy-intel": "🤖 Agents",
-  "lazy-repurpose": "🤖 Agents",
-  "lazy-trend": "🤖 Agents",
-  "lazy-churn": "🤖 Agents",
+  "lazy-watch": "⚙️ Ops",
+  "lazy-fix": "⚙️ Ops",
+  "lazy-build": "⚙️ Ops",
+  "lazy-intel": "⚙️ Ops",
+  "lazy-repurpose": "⚙️ Ops",
+  "lazy-trend": "⚙️ Ops",
+  "lazy-churn": "⚙️ Ops",
 };
 
 // Canonical order matching the platform
@@ -197,16 +197,16 @@ function buildReadme(prompts: PromptPayload[]) {
     "## 🚀 Quick Start",
     "",
     "1. Open [lovable.dev](https://lovable.dev) and create a new project",
-    "2. Pick an engine below and copy its prompt",
+    "2. Pick an agent below and copy its prompt",
     "3. Paste the prompt into your Lovable chat",
-    "4. Follow any setup steps the prompt asks for (most engines are zero-config)",
+    "4. Follow any setup steps the prompt asks for (most agents are zero-config)",
     "",
     "### ⚙️ Configuration",
     "",
-    "Most engines work immediately with no setup. Some require external API keys or credentials:",
+    "Most agents work immediately with no setup. Some require external API keys or credentials:",
     "",
-    "| Engine | Requires | Where to get it |",
-    "| ------ | -------- | --------------- |",
+    "| Agent | Requires | Where to get it |",
+    "| ----- | -------- | --------------- |",
     "| Lazy Voice | ElevenLabs API key | [elevenlabs.io](https://elevenlabs.io) |",
     "| Lazy Stream | Twitch Client ID & Secret | [dev.twitch.tv](https://dev.twitch.tv) |",
     "| Lazy Pay | Stripe / Polar keys | [stripe.com](https://stripe.com) or [polar.sh](https://polar.sh) |",
@@ -221,13 +221,11 @@ function buildReadme(prompts: PromptPayload[]) {
     "",
     "> **Tip:** The prompt itself will walk you through setup — just paste it and follow the instructions.",
     "",
-    "## 📦 Engines",
+    "## 📦 Agents",
     "",
-    "| Engine | Category | Prompt |",
-    "| ------ | -------- | ------ |",
+    "| Agent | Category | Prompt |",
+    "| ----- | -------- | ------ |",
   ];
-
-  const AGENT_KEYS = new Set(["lazy-watch", "lazy-fix", "lazy-build", "lazy-intel", "lazy-repurpose", "lazy-trend", "lazy-churn"]);
 
   // Sort by canonical order
   const sorted = [...prompts].sort((a, b) => {
@@ -236,43 +234,11 @@ function buildReadme(prompts: PromptPayload[]) {
     return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
   });
 
-  const engines = sorted.filter(p => !AGENT_KEYS.has(p.product));
-  const agents = sorted.filter(p => AGENT_KEYS.has(p.product));
-
-  for (const p of engines) {
+  for (const p of sorted) {
     const label = PRODUCT_LABELS[p.product] || p.product;
     const cat = CATEGORY_MAP[p.product] || "Other";
     const file = `prompts/${p.product}.md`;
     lines.push(`| ${label} | ${cat} | [View prompt](${file}) |`);
-  }
-
-  if (agents.length > 0) {
-    lines.push(
-      "",
-      "## 🤖 Agents",
-      "",
-      "Autonomous agents that monitor, fix, and improve your engine stack.",
-      "",
-      "| Agent | What it does | Prompt |",
-      "| ----- | ------------ | ------ |",
-    );
-
-    const AGENT_DESCRIPTIONS: Record<string, string> = {
-      "lazy-watch": "Monitors errors across all engines every hour",
-      "lazy-fix": "Auto-fixes broken prompts and creates GitHub PRs",
-      "lazy-build": "Generates new engine prompts from a brief",
-      "lazy-intel": "Weekly strategy reports and keyword fuelling",
-      "lazy-repurpose": "Recycles top content into new formats",
-      "lazy-trend": "Scans for trending topics every 6 hours",
-      "lazy-churn": "Detects at-risk users and triggers retention flows",
-    };
-
-    for (const p of agents) {
-      const label = PRODUCT_LABELS[p.product] || p.product;
-      const desc = AGENT_DESCRIPTIONS[p.product] || "Autonomous agent";
-      const file = `prompts/${p.product}.md`;
-      lines.push(`| ${label} | ${desc} | [View prompt](${file}) |`);
-    }
   }
 
   lines.push(
