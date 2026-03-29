@@ -603,7 +603,6 @@ export default function LazyLaunchPage() {
                 {copied ? "Copied!" : "Copy & Launch"}
               </button>
             )}
-          </div>
         </div>
         </div>
       </main>
