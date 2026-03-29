@@ -25,6 +25,7 @@ const categories: Category[] = [
     agents: [
       { emoji: "📋", name: "Lazy Waitlist", tagline: "Autonomous pre-launch waitlist", href: "/lazy-waitlist" },
       { emoji: "▶️", name: "Lazy Run", tagline: "Autonomous everything", href: "/lazy-run" },
+      { emoji: "⚙️", name: "Lazy Admin", tagline: "Autonomous ops control", href: "/lazy-admin" },
     ],
   },
   {
@@ -71,7 +72,7 @@ const categories: Category[] = [
   {
     label: "Ops",
     agents: [
-      { emoji: "⚙️", name: "Lazy Admin", tagline: "Autonomous ops control", href: "/lazy-admin" },
+      { emoji: "🚨", name: "Lazy Alert", tagline: "Autonomous Slack alerts", href: "/lazy-alert" },
       { emoji: "🚨", name: "Lazy Alert", tagline: "Autonomous Slack alerts", href: "/lazy-alert" },
       { emoji: "✈️", name: "Lazy Telegram", tagline: "Autonomous Telegram updates", href: "/lazy-telegram" },
       { emoji: "🗄️", name: "Lazy Supabase", tagline: "Autonomous database reports", href: "/lazy-supabase" },

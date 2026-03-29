@@ -84,7 +84,7 @@ export default function LazyAdminPage() {
                 Lazy Admin
               </h1>
               <div className="flex items-center gap-3 mt-4 mb-4">
-                <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Ops</span>
+                <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Unicorn</span>
               </div>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 Lazy Admin is the unified control panel for your entire Lazy Stack. Paste one prompt. It detects every agent you have installed, builds a dashboard around them, and shows you everything your autonomous business did overnight — in one place, in under a minute.

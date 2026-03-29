@@ -70,6 +70,20 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
           "It benchmarks your stack against similar businesses and optimises. Coming soon.",
         ],
       },
+      {
+        name: "Lazy Admin",
+        description: "Unified dashboard for every agent in your stack",
+        currentLevel: 3,
+        link: "/lazy-admin",
+        levels: [
+          "You check each agent in its own dashboard. Tab hell.",
+          "Bookmarks help. You still context-switch constantly.",
+          "Weekly check-in across dashboards. Things fall through cracks.",
+          "One dashboard. Every agent. Status, errors, and actions in sixty seconds.",
+          "It surfaces only what needs attention. Coming soon.",
+          "It learns your review patterns and pre-prioritises. Coming soon.",
+        ],
+      },
     ],
   },
   {
@@ -389,20 +403,6 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
   {
     label: "Lazy Ops",
     agent: [
-      {
-        name: "Lazy Admin",
-        description: "Unified dashboard for every agent in your stack",
-        currentLevel: 3,
-        link: "/lazy-admin",
-        levels: [
-          "You check each agent in its own dashboard. Tab hell.",
-          "Bookmarks help. You still context-switch constantly.",
-          "Weekly check-in across dashboards. Things fall through cracks.",
-          "One dashboard. Every agent. Status, errors, and actions in sixty seconds.",
-          "It surfaces only what needs attention. Coming soon.",
-          "It learns your review patterns and pre-prioritises. Coming soon.",
-        ],
-      },
       {
         name: "Lazy Alert",
         description: "Every agent event reported to Slack in real time",
