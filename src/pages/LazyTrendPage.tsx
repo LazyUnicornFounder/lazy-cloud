@@ -202,7 +202,6 @@ export default function LazyTrendPage() {
           </motion.div>
         </section>
 
-        <AutopilotHeadline product="lazy-trend" />
       </main>
     </div>
   );

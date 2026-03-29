@@ -202,7 +202,6 @@ export default function LazyChurnPage() {
           </motion.div>
         </section>
 
-        <AutopilotHeadline product="lazy-churn" />
       </main>
     </div>
   );
