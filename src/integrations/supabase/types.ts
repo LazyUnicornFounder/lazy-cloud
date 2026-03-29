@@ -1211,7 +1211,81 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      stream_settings_public: {
+        Row: {
+          business_name: string | null
+          content_niche: string | null
+          created_at: string | null
+          id: string | null
+          is_running: boolean | null
+          recap_template_guidance: string | null
+          setup_complete: boolean | null
+          site_url: string | null
+          twitch_user_id: string | null
+          twitch_username: string | null
+        }
+        Insert: {
+          business_name?: string | null
+          content_niche?: string | null
+          created_at?: string | null
+          id?: string | null
+          is_running?: boolean | null
+          recap_template_guidance?: string | null
+          setup_complete?: boolean | null
+          site_url?: string | null
+          twitch_user_id?: string | null
+          twitch_username?: string | null
+        }
+        Update: {
+          business_name?: string | null
+          content_niche?: string | null
+          created_at?: string | null
+          id?: string | null
+          is_running?: boolean | null
+          recap_template_guidance?: string | null
+          setup_complete?: boolean | null
+          site_url?: string | null
+          twitch_user_id?: string | null
+          twitch_username?: string | null
+        }
+        Relationships: []
+      }
+      voice_settings_public: {
+        Row: {
+          created_at: string | null
+          id: string | null
+          is_running: boolean | null
+          podcast_author: string | null
+          podcast_description: string | null
+          podcast_title: string | null
+          setup_complete: boolean | null
+          site_url: string | null
+          voice_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string | null
+          is_running?: boolean | null
+          podcast_author?: string | null
+          podcast_description?: string | null
+          podcast_title?: string | null
+          setup_complete?: boolean | null
+          site_url?: string | null
+          voice_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string | null
+          is_running?: boolean | null
+          podcast_author?: string | null
+          podcast_description?: string | null
+          podcast_title?: string | null
+          setup_complete?: boolean | null
+          site_url?: string | null
+          voice_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
