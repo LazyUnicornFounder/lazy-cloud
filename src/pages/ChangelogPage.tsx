@@ -77,9 +77,47 @@ export default function ChangelogPage() {
         .select("*")
         .eq("published", true)
         .order("release_date", { ascending: false });
+      const ENGINE_NAME_MAP: Record<string, string> = {
+        "lazy-launch": "Lazy Launch",
+        "lazy-waitlist": "Lazy Waitlist",
+        "lazy-run": "Lazy Run",
+        "lazy-blogger": "Lazy Blogger",
+        "lazy-seo": "Lazy SEO",
+        "lazy-geo": "Lazy GEO",
+        "lazy-crawl": "Lazy Crawl",
+        "lazy-perplexity": "Lazy Perplexity",
+        "lazy-contentful": "Lazy Contentful",
+        "lazy-store": "Lazy Store",
+        "lazy-drop": "Lazy Drop",
+        "lazy-print": "Lazy Print",
+        "lazy-pay": "Lazy Pay",
+        "lazy-sms": "Lazy SMS",
+        "lazy-mail": "Lazy Mail",
+        "lazy-voice": "Lazy Voice",
+        "lazy-stream": "Lazy Stream",
+        "lazy-youtube": "Lazy YouTube",
+        "lazy-github": "Lazy GitHub",
+        "lazy-gitlab": "Lazy GitLab",
+        "lazy-linear": "Lazy Linear",
+        "lazy-design": "Lazy Design",
+        "lazy-auth": "Lazy Auth",
+        "lazy-granola": "Lazy Granola",
+        "lazy-admin": "Lazy Admin",
+        "lazy-alert": "Lazy Alert",
+        "lazy-telegram": "Lazy Telegram",
+        "lazy-supabase": "Lazy Supabase",
+        "lazy-security": "Lazy Security",
+        "lazy-watch": "Lazy Watch",
+        "lazy-fix": "Lazy Fix",
+        "lazy-build": "Lazy Build",
+        "lazy-intel": "Lazy Intel",
+        "lazy-repurpose": "Lazy Repurpose",
+        "lazy-trend": "Lazy Trend",
+        "lazy-churn": "Lazy Churn",
+      };
       return ((data || []) as any[]).map((r: any) => ({
         ...r,
-        agent_name: r.engine_name ?? r.agent_name,
+        agent_name: ENGINE_NAME_MAP[r.engine_name] || r.engine_name || r.agent_name,
       })) as Release[];
     },
   });
