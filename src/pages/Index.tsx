@@ -88,13 +88,13 @@ function RotatingHeadline() {
   }, [current, ready]);
 
   return (
-    <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.35rem)", color: "hsl(var(--foreground))", opacity: 0.5 }} className="mt-5 flex flex-wrap items-center justify-center gap-x-1">
+    <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.3rem)", color: "#f0ead6", opacity: 0.5 }} className="flex flex-wrap items-center gap-x-1">
       {/* Hidden measurer */}
       <span
         ref={hiddenRef}
         aria-hidden="true"
         className="whitespace-nowrap invisible fixed pointer-events-none"
-        style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.35rem)", top: -9999, left: -9999 }}
+        style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.3rem)", top: -9999, left: -9999 }}
       />
       Lovable<span className="ml-1 mr-0">❤️</span>
       <motion.span
@@ -111,7 +111,7 @@ function RotatingHeadline() {
             exit={{ y: -14, opacity: 0 }}
             transition={{ duration: 0.25 }}
             className="absolute inset-0 flex items-center justify-center gap-1 whitespace-nowrap"
-            style={{ color: "hsl(var(--primary))" }}
+            style={{ color: "#c8a961" }}
           >
             {current.word}<span>{current.emoji}</span>
           </motion.span>
