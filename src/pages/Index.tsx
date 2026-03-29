@@ -687,8 +687,8 @@ const Index = () => {
           </Link>
 
           {products.map((product, i) => {
-            const bgEven = "#0a0a08";
-            const bgOdd = "#111110";
+            const bgEven = "hsl(var(--background))";
+            const bgOdd = "hsl(var(--card))";
             const cellIndex = i + 2;
             const row = Math.floor(cellIndex / 4);
             const col = cellIndex % 4;
