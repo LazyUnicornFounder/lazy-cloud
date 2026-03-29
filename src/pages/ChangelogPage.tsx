@@ -24,7 +24,7 @@ interface Release {
 }
 
 const AGENT_CATEGORIES: Record<string, string[]> = {
-  "Lazy Unicorn": ["Lazy Launch", "Lazy Run"],
+  "Lazy Unicorn": ["Lazy Launch", "Lazy Waitlist", "Lazy Run"],
   "Lazy Content": ["Lazy Blogger", "Lazy SEO", "Lazy GEO", "Lazy Crawl", "Lazy Perplexity", "Lazy Contentful"],
   "Lazy Commerce": ["Lazy Store", "Lazy Drop", "Lazy Print", "Lazy Pay", "Lazy SMS", "Lazy Mail"],
   "Lazy Media": ["Lazy Voice", "Lazy Stream", "Lazy YouTube"],

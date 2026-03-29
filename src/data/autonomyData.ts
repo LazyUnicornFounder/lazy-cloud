@@ -57,6 +57,20 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
         ],
       },
       {
+        name: "Lazy Waitlist",
+        description: "Autonomous pre-launch waitlist with viral referral loops, position tracking, and automated email sequences",
+        currentLevel: 4,
+        link: "/lazy-waitlist",
+        levels: [
+          "You manually collect emails in a spreadsheet. No automation.",
+          "You use a third-party tool. Still need to configure emails manually.",
+          "You set up a form with auto-replies. Basic but functional.",
+          "Waitlist runs itself — referral engine, position tracking, welcome emails, follow-ups.",
+          "AI writes personalised welcome emails and optimises referral incentives based on conversion data.",
+          "Self-improving — adjusts copy, timing, and incentives to maximise viral coefficient. Coming soon.",
+        ],
+      },
+      {
         name: "Lazy Run",
         description: "Installs all twenty-five agent in one prompt",
         currentLevel: 4,

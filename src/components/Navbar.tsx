@@ -39,6 +39,7 @@ const agentCategories: Category[] = [
     label: "Lazy Unicorn",
     items: [
       { label: "Lazy Launch", href: "/lazy-launch", tagline: "Launch your Lovable website", iconKey: "Launch" },
+      { label: "Lazy Waitlist", href: "/lazy-waitlist", tagline: "Autonomous pre-launch capture", iconKey: "Waitlist" },
       { label: "Lazy Run", href: "/lazy-run", tagline: "Autonomous everything", iconKey: "Run" },
     ],
   },
