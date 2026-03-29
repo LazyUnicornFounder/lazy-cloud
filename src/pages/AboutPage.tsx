@@ -38,6 +38,12 @@ export default function AboutPage() {
           className="relative z-10 max-w-3xl mx-auto text-center"
         >
           <p
+            className="font-body text-sm md:text-base tracking-wide mb-3"
+            style={{ color: "rgba(240,234,214,0.45)" }}
+          >
+            The autonomous layer for Lovable
+          </p>
+          <p
             className="font-display text-[13px] tracking-[0.3em] uppercase font-bold mb-8"
             style={{ color: "rgba(240,234,214,0.3)" }}
           >
