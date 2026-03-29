@@ -583,7 +583,7 @@ export default function UseCasesPage() {
       {showNonAgents && (
         <section className="px-6 md:px-12 max-w-5xl mx-auto pb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {agentItems.map((item, i) => (
+            {nonAgentItems.map((item, i) => (
               <IntegrationCard key={item.name} item={item} index={i} />
             ))}
           </div>
