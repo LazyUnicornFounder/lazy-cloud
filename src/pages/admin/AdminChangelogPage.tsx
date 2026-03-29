@@ -8,7 +8,7 @@ const db = supabase as any;
 
 interface Release {
   id: string;
-  engine_name: string;
+  agent_name: string;
   version: string;
   release_date: string;
   change_type: string;
@@ -21,7 +21,7 @@ interface Release {
 }
 
 const EMPTY: Partial<Release> = {
-  engine_name: "", version: "", release_date: new Date().toISOString().split("T")[0],
+  agent_name: "", version: "", release_date: new Date().toISOString().split("T")[0],
   change_type: "minor", summary: "", changes: "", upgrade_complexity: "drop-in",
   upgrade_instructions: "", download_url: "", published: true,
 };
@@ -50,7 +50,7 @@ export default function AdminChangelogPage() {
   });
 
   const handleSave = async () => {
-    if (!editing?.engine_name || !editing?.version || !editing?.summary) {
+    if (!editing?.agent_name || !editing?.version || !editing?.summary) {
       toast.error("Fill in required fields");
       return;
     }
@@ -94,8 +94,8 @@ export default function AdminChangelogPage() {
         <div className="border border-[#f0ead6]/10 p-4 mb-6 space-y-3">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <div>
-              <label className="font-body text-[13px] tracking-[0.12em] uppercase text-[#f0ead6]/72 block mb-1">Engine name</label>
-              <input value={editing.engine_name || ""} onChange={e => setEditing({ ...editing, engine_name: e.target.value })} className="w-full bg-transparent border border-[#f0ead6]/10 text-[#f0ead6] px-2 py-1.5 font-body text-xs focus:outline-none" />
+              <label className="font-body text-[13px] tracking-[0.12em] uppercase text-[#f0ead6]/72 block mb-1">Agent name</label>
+              <input value={editing.agent_name || ""} onChange={e => setEditing({ ...editing, agent_name: e.target.value })} className="w-full bg-transparent border border-[#f0ead6]/10 text-[#f0ead6] px-2 py-1.5 font-body text-xs focus:outline-none" />
             </div>
             <div>
               <label className="font-body text-[13px] tracking-[0.12em] uppercase text-[#f0ead6]/72 block mb-1">Version</label>
@@ -165,7 +165,7 @@ export default function AdminChangelogPage() {
           <tbody>
             {releases.map(r => (
               <tr key={r.id} className="border-b border-[#f0ead6]/15 last:border-0">
-                <td className="px-3 py-2 font-body text-[14px] text-[#f0ead6]/92">{r.engine_name}</td>
+                <td className="px-3 py-2 font-body text-[14px] text-[#f0ead6]/92">{r.agent_name}</td>
                 <td className="px-3 py-2"><code className="text-[13px] bg-[#f0ead6]/5 px-1 py-0.5 text-[#f0ead6]/88">{r.version}</code></td>
                 <td className="px-3 py-2 font-body text-[14px] text-[#f0ead6]/82">{r.release_date}</td>
                 <td className="px-3 py-2"><span className={`text-[13px] px-1.5 py-0.5 uppercase tracking-wider ${changeTypeBadge(r.change_type)}`}>{r.change_type}</span></td>

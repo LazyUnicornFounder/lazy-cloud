@@ -140,11 +140,11 @@ export default function LazyAuthPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Auth — Autonomous Authentication Engine for Lovable"
+        title="Lazy Auth — Autonomous Authentication Agent for Lovable"
         description="One prompt installs Google Sign-In, email login, protected routes, role-based access, and user management into your Lovable project."
         url="/lazy-auth"
         faq={faqs.map(f => ({ question: f.q, answer: f.a }))}
-        softwareApp={{ name: "Lazy Auth", description: "Autonomous authentication engine for Lovable — installs Google Sign-In, email login, protected routes, and role-based access.", category: "SecurityApplication" }}
+        softwareApp={{ name: "Lazy Auth", description: "Autonomous authentication agent for Lovable — installs Google Sign-In, email login, protected routes, and role-based access.", category: "SecurityApplication" }}
         howToSteps={[
           { name: "Copy the prompt", text: "Copy the Lazy Auth prompt from this page." },
           { name: "Paste into Lovable", text: "Paste it into your existing Lovable project." },
@@ -289,7 +289,7 @@ export default function LazyAuthPage() {
       {/* Footer */}
       <footer className="py-10 px-6 border-t border-border text-center">
         <p className="font-display text-[14px] tracking-[0.15em] uppercase text-foreground/60">
-          Lazy Unicorn — Autonomous growth engines for Lovable
+          Lazy Unicorn — Autonomous growth agents for Lovable
         </p>
       </footer>
     </div>

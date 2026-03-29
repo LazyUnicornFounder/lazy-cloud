@@ -42,7 +42,7 @@ export default function AdminVoicePage() {
     setToggling(true);
     await db.from("voice_settings").update({ is_running: !settings.is_running }).eq("id", settings.id);
     queryClient.invalidateQueries({ queryKey: ["admin-voice-settings"] });
-    queryClient.invalidateQueries({ queryKey: ["admin-engine-status"] });
+    queryClient.invalidateQueries({ queryKey: ["admin-agent-status"] });
     setToggling(false);
   };
 

@@ -256,7 +256,7 @@ const AdminSeo = () => {
             </div>
             <div className="border border-border rounded-xl bg-card p-3 text-center">
               <p className="font-display text-2xl font-bold text-foreground">{settings?.is_running ? "🟢 Running" : "⏸️ Paused"}</p>
-              <p className="font-body text-xs text-muted-foreground">Engine Status</p>
+              <p className="font-body text-xs text-muted-foreground">Agent Status</p>
             </div>
           </div>
 

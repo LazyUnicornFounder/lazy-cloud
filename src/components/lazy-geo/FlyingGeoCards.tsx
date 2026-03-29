@@ -7,7 +7,7 @@ const geoQueries = [
   "best autonomous company builder",
   "ai tools for content marketing",
   "how to rank in chatgpt answers",
-  "generative engine optimisation guide",
+  "generative agent optimisation guide",
   "ai citation optimisation strategy",
   "best ai directory for startups",
   "how to get mentioned by perplexity",

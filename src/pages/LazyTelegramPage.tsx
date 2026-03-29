@@ -15,25 +15,25 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const SETUP_PROMPT = `[Lazy Telegram Prompt — v0.0.5 — LazyUnicorn.ai]
 
-Add a complete autonomous Telegram integration called Lazy Telegram to this project. It mirrors Lazy Alert but for Telegram — sending real-time event notifications, a daily briefing, and accepting bot commands to control your engines directly from Telegram. Your autonomous business in your pocket, delivered through Telegram.
+Add a complete autonomous Telegram integration called Lazy Telegram to this project. It mirrors Lazy Alert but for Telegram — sending real-time event notifications, a daily briefing, and accepting bot commands to control your agents directly from Telegram. Your autonomous business in your pocket, delivered through Telegram.
 
 ---
 
 MARKETING PAGE PROMPT — paste into LazyUnicorn project:
 
-Add a new page at /lazy-telegram. It is a marketing and landing page for a product called Lazy Telegram — a Telegram bot integration that connects every Lazy engine to your Telegram account so your autonomous business reports to you in real time.
+Add a new page at /lazy-telegram. It is a marketing and landing page for a product called Lazy Telegram — a Telegram bot integration that connects every Lazy agent to your Telegram account so your autonomous business reports to you in real time.
 
 Hero section
-Headline: 'Your autonomous business. In your Telegram.' Subheading: 'Lazy Telegram connects every Lazy engine to a Telegram bot. Payments, posts, citations, customer replies, errors, and live events — all delivered as Telegram messages the moment they happen. One prompt. Your business in your pocket.' Primary button: Copy the Lovable Prompt. Secondary button: See What Gets Sent. Badge: Powered by Telegram.
+Headline: 'Your autonomous business. In your Telegram.' Subheading: 'Lazy Telegram connects every Lazy agent to a Telegram bot. Payments, posts, citations, customer replies, errors, and live events — all delivered as Telegram messages the moment they happen. One prompt. Your business in your pocket.' Primary button: Copy the Lovable Prompt. Secondary button: See What Gets Sent. Badge: Powered by Telegram.
 
 How it works section
 Four steps: 1. Copy the setup prompt. 2. Paste into your Lovable project. 3. Create a Telegram bot via BotFather and add your bot token. 4. Every significant event sends you a Telegram message automatically.
 
 What gets sent section
-Eight event cards identical in structure to Lazy Alert but for Telegram. Include mock Telegram message previews styled as the Telegram chat interface with a blue LazyUnicorn avatar. Events: payments received, SMS customer replies, brand citations, posts published, products listed, streams going live, releases published, engine errors.
+Eight event cards identical in structure to Lazy Alert but for Telegram. Include mock Telegram message previews styled as the Telegram chat interface with a blue LazyUnicorn avatar. Events: payments received, SMS customer replies, brand citations, posts published, products listed, streams going live, releases published, agent errors.
 
 Bot commands section
-Headline: Control everything from Telegram. Show commands in a code block: /status — all engines running or paused. /publish blog — trigger one blog post. /publish seo — trigger one SEO post. /publish geo — trigger one GEO post. /pause [engine] — pause an engine. /resume [engine] — resume an engine. /errors — last 10 errors. /report — send daily briefing now. /help — all commands.
+Headline: Control everything from Telegram. Show commands in a code block: /status — all agents running or paused. /publish blog — trigger one blog post. /publish seo — trigger one SEO post. /publish geo — trigger one GEO post. /pause [agent] — pause an agent. /resume [agent] — resume an agent. /errors — last 10 errors. /report — send daily briefing now. /help — all commands.
 
 Pricing section
 Free — self-hosted, bring your own Telegram bot (free). Pro at $9/month — coming soon, hosted version, group chat support, multiple recipient routing.
@@ -47,7 +47,7 @@ Navigation: Add Lazy Telegram to the LazyUnicorn navigation.
 
 SETUP PROMPT — paste into user's Lovable project:
 
-Add a complete Telegram bot integration called Lazy Telegram to this project. It sends real-time Telegram notifications for every significant event across every installed Lazy engine, delivers a daily morning briefing, and accepts bot commands for controlling engines from Telegram.
+Add a complete Telegram bot integration called Lazy Telegram to this project. It sends real-time Telegram notifications for every significant event across every installed Lazy agent, delivers a daily morning briefing, and accepts bot commands for controlling agent from Telegram.
 
 1. Database
 Create these Supabase tables with RLS enabled:
@@ -56,7 +56,7 @@ telegram_settings: id (uuid, primary key, default gen_random_uuid()), chat_id (t
 prompt_version (text, nullable), created_at (timestamptz, default now()).
 Note: Store TELEGRAM_BOT_TOKEN as a Supabase secret. Never in the database.
 
-telegram_log: id (uuid, primary key, default gen_random_uuid()), engine (text), event_type (text), message (text), telegram_response (text), sent_at (timestamptz, default now()), success (boolean, default true).
+telegram_log: id (uuid, primary key, default gen_random_uuid()), agent (text), event_type (text), message (text), telegram_response (text), sent_at (timestamptz, default now()), success (boolean, default true).
 
 telegram_errors: id (uuid, primary key, default gen_random_uuid()), function_name (text), error_message (text), created_at (timestamptz, default now()).
 
@@ -79,7 +79,7 @@ On submit:
 
 3. Core send function
 Create a Supabase edge function called telegram-send handling POST requests.
-Accept: message (text), engine (text), event_type (text).
+Accept: message (text), agent (text), event_type (text).
 Read telegram_settings. If is_running is false exit.
 Format message using Telegram MarkdownV2:
 - Bold header with relevant emoji and event type
@@ -92,13 +92,13 @@ Log errors to telegram_errors with function_name telegram-send.
 4. Event monitor edge function
 Create a Supabase edge function called telegram-monitor. Cron: every 5 minutes — */5 * * * *
 
-Identical logic to Lazy Alert's alert-monitor but calling telegram-send instead of alert-send. Monitor: pay_transactions for payments, sms_messages for replies, seo_posts and geo_posts for keyword/citation events, store_products for new products, stream_sessions for live streams, code_content and gitlab_content for releases, all error tables for engine errors. Also monitor security_vulnerabilities for new critical or high severity findings where alerted is false and first_found_at is greater than last_checked — send alert with 🚨 emoji and mark as alerted true. Use last_checked watermark approach. Update last_checked after each run.
+Identical logic to Lazy Alert's alert-monitor but calling telegram-send instead of alert-send. Monitor: pay_transactions for payments, sms_messages for replies, seo_posts and geo_posts for keyword/citation events, store_products for new products, stream_sessions for live streams, code_content and gitlab_content for releases, all error tables for agent errors. Also monitor security_vulnerabilities for new critical or high severity findings where alerted is false and first_found_at is greater than last_checked — send alert with 🚨 emoji and mark as alerted true. Use last_checked watermark approach. Update last_checked after each run.
 Log errors to telegram_errors with function_name telegram-monitor.
 
 5. Daily briefing edge function
 Create a Supabase edge function called telegram-briefing. Cron: 0 8 * * * (adjust based on setting).
 
-Collect same metrics as Lazy Alert's briefing. Call the built-in Lovable AI to write a 3 to 5 bullet briefing. Format as a clean Telegram message with bold headers. Call telegram-send with engine Lazy Run and event_type daily-briefing.
+Collect same metrics as Lazy Alert's briefing. Call the built-in Lovable AI to write a 3 to 5 bullet briefing. Format as a clean Telegram message with bold headers. Call telegram-send with agent Lazy Run and event_type daily-briefing.
 Log errors to telegram_errors with function_name telegram-briefing.
 
 6. Bot command edge function
@@ -109,13 +109,13 @@ This receives Telegram webhook updates. Read TELEGRAM_BOT_TOKEN from secrets. Pa
 Register the webhook by calling: https://api.telegram.org/bot[TELEGRAM_BOT_TOKEN]/setWebhook?url=[site_url]/api/telegram-webhook
 
 Handle these commands:
-/status — query all engine settings tables, return status of each engine with emoji indicators.
+/status — query all agent settings tables, return status of each agent with emoji indicators.
 /publish blog — call blog-publish. Reply: Publishing one blog post now.
 /publish seo — call seo-publish. Reply: Publishing one SEO post now.
 /publish geo — call geo-publish. Reply: Publishing one GEO post now.
-/pause [engine] — update is_running to false in matching engine settings table. Reply: [engine] paused.
-/resume [engine] — update is_running to true. Reply: [engine] resumed.
-/errors — query all engine error tables for last 5 errors each. Format and reply.
+/pause [agent] — update is_running to false in matching agent settings table. Reply: [agent] paused.
+/resume [agent] — update is_running to true. Reply: [agent] resumed.
+/errors — query all agent error tables for last 5 errors each. Format and reply.
 /pentest — trigger security-scan immediately if security_settings table exists and is_running is true. Reply: Pentest queued. Results will appear in your dashboard within the next hour. If not installed reply: Lazy Security is not installed.
 /security — if security_settings exists query security_scans for latest completed scan score and security_vulnerabilities for open critical and high counts. Reply with score, open critical, open high, and next pentest date. If not installed reply: Lazy Security is not installed.
 /report — trigger telegram-briefing immediately. Reply: Sending your briefing now.
@@ -127,9 +127,9 @@ Respond to Telegram using the answerMessage API. Log errors to telegram_errors w
 
 7. Admin
 
-Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/telegram as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/telegram as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
 
-If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-telegram-setup.
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-telegram-setup.
 
 8. Navigation
 Do not add any Lazy Telegram pages to public navigation. All pages are admin-only.
@@ -197,7 +197,7 @@ const LazyTelegramPage = () => {
                 <ServiceBadge />
               </div>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-                Lazy Telegram connects every Lazy engine to a Telegram bot. Payments, posts, citations, customer replies, errors, and live events — all delivered as Telegram messages the moment they happen. One prompt. Your business in your pocket.
+                Lazy Telegram connects every Lazy agent to a Telegram bot. Payments, posts, citations, customer replies, errors, and live events — all delivered as Telegram messages the moment they happen. One prompt. Your business in your pocket.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
                 <CopyPromptButton text={promptText} onCopy={handlePromptCopy} />
@@ -232,12 +232,12 @@ const LazyTelegramPage = () => {
             {[
               { icon: DollarSign, title: "Payment Notifications", desc: "Instant Telegram message for every payment with amount, customer, and product." },
               { icon: MessageCircle, title: "SMS Reply Forwarding", desc: "Customer text replies appear in your Telegram chat immediately." },
-              { icon: Brain, title: "Brand Citation Alerts", desc: "Know the moment an AI engine cites your brand." },
+              { icon: Brain, title: "Brand Citation Alerts", desc: "Know the moment an AI agent cites your brand." },
               { icon: FileText, title: "Post Published Alerts", desc: "Every new blog, SEO, or GEO post triggers a notification." },
               { icon: Package, title: "Product Discovery Alerts", desc: "New products listed by Lazy Store appear in Telegram instantly." },
               { icon: Radio, title: "Stream Live Alerts", desc: "Get notified the moment a monitored stream goes live." },
               { icon: Rocket, title: "Release Published Alerts", desc: "New changelogs and release notes trigger instant notifications." },
-              { icon: AlertTriangle, title: "Engine Error Alerts", desc: "Error spikes across any engine are flagged immediately." },
+              { icon: AlertTriangle, title: "Agent Error Alerts", desc: "Error spikes across any agent are flagged immediately." },
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.06 }} className="border-b sm:odd:border-r last:border-b-0 border-border bg-card p-6">
                 <item.icon size={18} className="text-foreground/65 mb-3" />
@@ -256,7 +256,7 @@ const LazyTelegramPage = () => {
           { q: "Is it different from Lazy Alert?", a: "Lazy Alert sends to Slack. Lazy Telegram sends to Telegram. Both install with one prompt and can run simultaneously." },
           { q: "Can I send to a Telegram group?", a: "Yes. Add your bot to a group and use the group chat ID. Multi-group routing is coming in Pro." },
           { q: "Do the bot commands work?", a: "Yes. Commands like /status, /publish, /pause, and /errors work in any chat where your bot is present." },
-          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every agent update is versioned and documented with upgrade instructions." },
           { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
         ]} />
 

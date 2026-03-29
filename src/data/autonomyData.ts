@@ -35,38 +35,38 @@ export interface EngineData {
 
 export interface EngineCategory {
   label: string;
-  engines: EngineData[];
+  agent: EngineData[];
 }
 
 export const ENGINE_CATEGORIES: EngineCategory[] = [
   {
     label: "Lazy Unicorn",
-    engines: [
+    agent: [
       {
         name: "Lazy Run",
-        description: "Installs all twenty-five engines in one prompt",
+        description: "Installs all twenty-five agent in one prompt",
 
         currentLevel: 4,
         link: "/lazy-run",
         levels: [
           "You install each tool manually. Days per integration.",
-          "Copy-paste guides speed things up. Still hours per engine.",
-          "You batch-install a few engines at a time.",
-          "One prompt. Twenty-three engines. Everything wired in minutes.",
-          "It detects what you're missing and suggests engines automatically. Coming soon.",
+          "Copy-paste guides speed things up. Still hours per agent.",
+          "You batch-install a few agent at a time.",
+          "One prompt. Twenty-three agents. Everything wired in minutes.",
+          "It detects what you're missing and suggests agent automatically. Coming soon.",
           "It benchmarks your stack against similar businesses and optimises. Coming soon.",
         ],
       },
       {
         name: "Lazy Admin",
-        description: "Unified dashboard for every engine in your stack",
+        description: "Unified dashboard for every agent in your stack",
         currentLevel: 3,
         link: "/lazy-admin",
         levels: [
-          "You check each engine in its own dashboard. Tab hell.",
+          "You check each agent in its own dashboard. Tab hell.",
           "Bookmarks help. You still context-switch constantly.",
           "Weekly check-in across dashboards. Things fall through cracks.",
-          "One dashboard. Every engine. Status, errors, and actions in sixty seconds.",
+          "One dashboard. Every agent. Status, errors, and actions in sixty seconds.",
           "It surfaces only what needs attention. Coming soon.",
           "It learns your review patterns and pre-prioritises. Coming soon.",
         ],
@@ -75,7 +75,7 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
   },
   {
     label: "Lazy Content",
-    engines: [
+    agent: [
       {
         name: "Lazy Blogger",
         description: "Writes and publishes blog posts autonomously",
@@ -106,35 +106,35 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
       },
       {
         name: "Lazy GEO",
-        description: "Gets your brand cited by AI engines",
+        description: "Gets your brand cited by AI agent",
         currentLevel: 4,
         link: "/lazy-geo",
         levels: [
-          "You guess what AI engines say about you.",
+          "You guess what AI agent say about you.",
           "AI helps write citation-ready content. You still publish.",
           "You batch-create GEO content on a schedule.",
           "New AI queries discovered. Content commissioned automatically.",
           "Your brand appears in ChatGPT and Perplexity answers. You wrote nothing.",
-          "It adjusts content format per AI engine. Coming soon.",
+          "It adjusts content format per AI agent. Coming soon.",
         ],
       },
       {
         name: "Lazy Crawl",
-        description: "Monitors competitors and feeds intelligence to your engines",
+        description: "Monitors competitors and feeds intelligence to your agents",
         currentLevel: 3,
         link: "/lazy-crawl",
         levels: [
           "You visit competitor sites manually. Monthly if lucky.",
           "You use research tools when you remember to.",
           "Google Alerts and RSS feeds. Passive but shallow.",
-          "Competitor changes detected. Intelligence fed to your engines automatically.",
+          "Competitor changes detected. Intelligence fed to your agents automatically.",
           "It publishes content from what it discovers. Coming soon.",
           "It learns which intelligence drives traffic. Coming soon.",
         ],
       },
       {
         name: "Lazy Perplexity",
-        description: "Queries Perplexity for trends and feeds your content engines",
+        description: "Queries Perplexity for trends and feeds your content agents",
         currentLevel: 3,
         link: "/lazy-perplexity",
         levels: [
@@ -164,7 +164,7 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
   },
   {
     label: "Lazy Commerce",
-    engines: [
+    agent: [
       {
         name: "Lazy Store",
         description: "Discovers products, writes listings, and optimises conversions",
@@ -225,7 +225,7 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
   },
   {
     label: "Lazy Media",
-    engines: [
+    agent: [
       {
         name: "Lazy Voice",
         description: "Narrates every post into a podcast episode automatically",
@@ -272,7 +272,7 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
   },
   {
     label: "Lazy Dev",
-    engines: [
+    agent: [
       {
         name: "Lazy GitHub",
         description: "Turns GitHub commits into changelogs and developer content",
@@ -353,7 +353,7 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "AI summarises meetings. You still copy-paste and publish.",
           "You batch-process last week's meetings on Friday. Always behind.",
           "Meeting ends. Blog post, Slack summary, and Linear issues publish automatically.",
-          "It extracts customer intelligence and feeds it into your content engines. Coming soon.",
+          "It extracts customer intelligence and feeds it into your content agents. Coming soon.",
           "It learns which meeting insights drive the most engagement. Coming soon.",
         ],
       },
@@ -361,10 +361,10 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
   },
   {
     label: "Lazy Ops",
-    engines: [
+    agent: [
       {
         name: "Lazy Alert",
-        description: "Every engine event reported to Slack in real time",
+        description: "Every agent event reported to Slack in real time",
         currentLevel: 3,
         link: "/lazy-alert",
         levels: [
@@ -378,14 +378,14 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
       },
       {
         name: "Lazy Telegram",
-        description: "Real-time engine reporting via Telegram bot",
+        description: "Real-time agent reporting via Telegram bot",
         currentLevel: 3,
         link: "/lazy-telegram",
         levels: [
           "You check everything manually.",
           "Email notifications you mostly ignore.",
           "A few automations. Inconsistent.",
-          "Every event hits your Telegram. Bot commands let you control engines without leaving the chat.",
+          "Every event hits your Telegram. Bot commands let you control agent without leaving the chat.",
           "It surfaces only what needs your attention. Coming soon.",
           "It alerts you before problems compound. Coming soon.",
         ],
@@ -422,10 +422,10 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
   },
   {
     label: "Lazy Agents",
-    engines: [
+    agent: [
       {
         name: "Lazy Watch",
-        description: "Monitors every engine error table hourly and opens GitHub issues",
+        description: "Monitors every agent error table hourly and opens GitHub issues",
         currentLevel: 3,
         link: "/lazy-watch",
         levels: [
@@ -433,7 +433,7 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
           "Email alerts when things break. You still triage and diagnose.",
           "Scheduled error checks. You still open issues manually.",
           "Every hour, errors are scanned, diagnosed, and GitHub issues opened automatically.",
-          "It correlates errors across engines to find systemic issues. Coming soon.",
+          "It correlates errors across agent to find systemic issues. Coming soon.",
           "It predicts failures before they happen based on patterns. Coming soon.",
         ],
       },
@@ -453,16 +453,16 @@ export const ENGINE_CATEGORIES: EngineCategory[] = [
       },
       {
         name: "Lazy Build",
-        description: "Writes complete engine prompts from a one-paragraph brief",
+        description: "Writes complete agent prompts from a one-paragraph brief",
         currentLevel: 4,
         link: "/lazy-build",
         levels: [
-          "You write every engine prompt from scratch. Days per engine.",
+          "You write every agent prompt from scratch. Days per agent.",
           "Templates speed things up. You still customise everything.",
-          "You maintain a prompt library. Still hours per new engine.",
-          "Describe what you need in a paragraph. A complete engine prompt is generated.",
+          "You maintain a prompt library. Still hours per new agent.",
+          "Describe what you need in a paragraph. A complete agent prompt is generated.",
           "It generates database schemas, edge functions, and UI in one go.",
-          "It learns from your existing engines to match your conventions. Coming soon.",
+          "It learns from your existing agent to match your conventions. Coming soon.",
         ],
       },
       {

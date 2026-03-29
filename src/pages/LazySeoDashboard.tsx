@@ -72,7 +72,7 @@ const LazySeoD = () => {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold">Lazy SEO Dashboard</h1>
-            <p className="text-muted-foreground text-sm">Autonomous SEO engine status</p>
+            <p className="text-muted-foreground text-sm">Autonomous SEO agent status</p>
           </div>
           <Link to="/lazy-seo-setup">
             <Button variant="outline" size="sm"><Settings className="w-4 h-4 mr-1" /> Edit Settings</Button>
@@ -90,7 +90,7 @@ const LazySeoD = () => {
           </div>
           <div className="bg-card border border-border rounded-xl p-5 space-y-1 flex items-center justify-between">
             <div>
-              <div className="text-muted-foreground text-sm mb-1">Engine Status</div>
+              <div className="text-muted-foreground text-sm mb-1">Agent Status</div>
               <Badge variant={settings?.is_running ? "default" : "secondary"}>
                 {settings?.is_running ? "Running" : "Paused"}
               </Badge>

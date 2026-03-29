@@ -18,7 +18,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const FALLBACK_PROMPT = `[Lazy Store Prompt — v0.0.4 — LazyUnicorn.ai]
 
-Add an autonomous e-commerce engine called Lazy Store to this project. It automatically discovers products, writes listings, monitors pricing, runs promotions, optimises conversion, and publishes SEO content — with no manual input required after setup. Payments are handled by Stripe checkout. All management pages are admin-only.
+Add an autonomous e-commerce agent called Lazy Store to this project. It automatically discovers products, writes listings, monitors pricing, runs promotions, optimises conversion, and publishes SEO content — with no manual input required after setup. Payments are handled by Stripe checkout. All management pages are admin-only.
 
 ---
 
@@ -224,9 +224,9 @@ Show payment success message and link to /store.
 
 ## 6. Admin
 
-Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/store as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This engine only needs its setup page, database tables, edge functions, and public pages.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/store as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agent only needs its setup page, database tables, edge functions, and public pages.
 
-If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-store-setup.
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-store-setup.
 
 ## 7. Navigation
 
@@ -351,10 +351,10 @@ const LazyStorePage = () => {
   const features = [
     { icon: Search, title: "Product Discovery", desc: "Finds trending products in your niche daily and adds them to your store automatically." },
     { icon: FileText, title: "Listing Writer", desc: "Writes SEO-optimised product titles, descriptions, and pages for every new product." },
-    { icon: DollarSign, title: "Pricing Engine", desc: "Monitors competitor prices and adjusts yours automatically to stay competitive." },
-    { icon: Megaphone, title: "Promotion Engine", desc: "Identifies slow-moving products and creates discount offers and homepage banners automatically." },
+    { icon: DollarSign, title: "Pricing Agent", desc: "Monitors competitor prices and adjusts yours automatically to stay competitive." },
+    { icon: Megaphone, title: "Promotion Agent", desc: "Identifies slow-moving products and creates discount offers and homepage banners automatically." },
     { icon: TrendingUp, title: "Conversion Optimiser", desc: "Monitors which product pages convert, rewrites underperforming ones, and improves the store week over week." },
-    { icon: BookOpen, title: "SEO Content Engine", desc: "Publishes buying guides and product comparisons targeting the keywords shoppers search before buying." },
+    { icon: BookOpen, title: "SEO Content Agent", desc: "Publishes buying guides and product comparisons targeting the keywords shoppers search before buying." },
   ];
 
   const models = [
@@ -364,19 +364,19 @@ const LazyStorePage = () => {
   ];
 
   const faqs = [
-    { q: "Do I need products to start?", a: "No. The product discovery engine finds them for you based on your niche. You can also add your own." },
+    { q: "Do I need products to start?", a: "No. The product discovery agent finds them for you based on your niche. You can also add your own." },
     { q: "Does it actually fulfil orders?", a: "Not yet. Lazy Store manages the store front, listings, pricing, and content. Order fulfilment connects to your existing supplier or digital delivery setup." },
     { q: "Will the listings sound generic?", a: "You set the brand voice, niche, and tone in the five-question setup. The AI writes every listing in your brand voice." },
     { q: "What if a product page is not converting?", a: "The conversion optimiser detects underperforming pages weekly and rewrites them automatically. You do not need to identify or fix them manually." },
     { q: "Can I add my own products?", a: "Yes. Manually added products get the same AI-written listings, pricing monitoring, and conversion optimisation as auto-discovered ones." },
-    { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+    { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every agent update is versioned and documented with upgrade instructions." },
     { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
   ];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Store — Autonomous E-Commerce Engine for Lovable"
+        title="Lazy Store — Autonomous E-Commerce Agent for Lovable"
         description="One prompt installs a self-running store into your Lovable project. Product discovery, AI listings, pricing, promotions, and conversion optimisation — automatically, forever."
         url="/lazy-store"
       />
@@ -486,7 +486,7 @@ const LazyStorePage = () => {
         {/* ── Three Models ── */}
         <section className="max-w-4xl mx-auto px-6 mb-24">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-10">
-            Pick your model. The engine runs the same.
+            Pick your model. The agent runs the same.
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {models.map((item, i) => (

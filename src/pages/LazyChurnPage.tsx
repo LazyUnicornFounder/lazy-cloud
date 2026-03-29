@@ -64,7 +64,7 @@ export default function LazyChurnPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Churn — Autonomous Churn Prevention Agent for Lovable"
-        description="Monitor every subscriber daily. Identify who is drifting toward cancellation. Send personalised re-engagement before they cancel. One recovered customer pays for the engine forever."
+        description="Monitor every subscriber daily. Identify who is drifting toward cancellation. Send personalised re-engagement before they cancel. One recovered customer pays for the agent forever."
         url="/lazy-churn"
         keywords="churn prevention, autonomous retention, subscriber monitoring, SaaS churn, Lovable agent"
       />
@@ -84,7 +84,7 @@ export default function LazyChurnPage() {
                 The cheapest customer is<br />the one you keep.
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-                Lazy Churn monitors every subscriber daily. When someone goes quiet — stops logging in, drops their usage, approaches renewal without engaging — it sends a personalised SMS and email before they ever reach the cancel button. Written by Claude. Sent automatically. One recovered customer pays for the engine forever.
+                Lazy Churn monitors every subscriber daily. When someone goes quiet — stops logging in, drops their usage, approaches renewal without engaging — it sends a personalised SMS and email before they ever reach the cancel button. Written by Claude. Sent automatically. One recovered customer pays for the agent forever.
               </p>
               <div className="flex items-center gap-3 mt-4 mb-8">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Agents 💰</span>
@@ -152,7 +152,7 @@ export default function LazyChurnPage() {
               <p className="font-display text-xs tracking-[0.15em] uppercase text-foreground/40 font-bold mb-2">📧 Email</p>
               <p className="font-body text-xs text-foreground/40 mb-1">Subject: Quick question about your stack</p>
               <p className="font-body text-sm text-foreground/70 leading-relaxed italic">
-                "Hey Sarah, I noticed you haven't logged into Lazy Unicorn in a few weeks. Your Blogger engine is still running but your SEO keyword queue has 23 keywords waiting to be published — that's organic traffic sitting idle. Worth a quick check? If anything isn't working the way you expected I'd love to help. — Saad"
+                "Hey Sarah, I noticed you haven't logged into Lazy Unicorn in a few weeks. Your Blogger agent is still running but your SEO keyword queue has 23 keywords waiting to be published — that's organic traffic sitting idle. Worth a quick check? If anything isn't working the way you expected I'd love to help. — Saad"
               </p>
             </motion.div>
           </div>
@@ -185,7 +185,7 @@ export default function LazyChurnPage() {
 
         <section className="max-w-2xl mx-auto px-6 text-center mb-16">
           <p className="font-body text-sm text-foreground/40">
-            Requires Stripe (Lazy Pay), Twilio (Lazy SMS), and Resend (Lazy Mail). All secrets already set if those engines are installed.
+            Requires Stripe (Lazy Pay), Twilio (Lazy SMS), and Resend (Lazy Mail). All secrets already set if those agents are installed.
           </p>
         </section>
 

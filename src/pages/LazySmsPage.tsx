@@ -14,7 +14,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const LAZY_SMS_PROMPT = `[Lazy SMS Prompt — v0.0.4 — LazyUnicorn.ai]
 
-Add a complete self-improving Twilio SMS engine called Lazy SMS to this project. It installs payment confirmations, subscription alerts, abandoned checkout recovery texts, welcome sequences, two-way messaging, opt-out management, delivery tracking, and autonomous message optimisation — with no manual Twilio integration required after setup.
+Add a complete self-improving Twilio SMS agent called Lazy SMS to this project. It installs payment confirmations, subscription alerts, abandoned checkout recovery texts, welcome sequences, two-way messaging, opt-out management, delivery tracking, and autonomous message optimisation — with no manual Twilio integration required after setup.
 
 ---
 
@@ -186,9 +186,9 @@ Log errors to sms_errors with function_name sms-optimise.
 
 ## 6. Admin
 
-Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/sms as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This engine only needs its setup page, database tables, edge functions, and public pages.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/sms as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agent only needs its setup page, database tables, edge functions, and public pages.
 
-If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-sms-setup.
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-sms-setup.
 
 ## 7. Navigation
 
@@ -258,7 +258,7 @@ const faqs = [
   { q: "Does it work without Lazy Pay?", a: "Yes. Lazy SMS works standalone. You can trigger messages from any event in your Supabase database. But combined with Lazy Pay it covers the full customer payment journey automatically." },
   { q: "How does the self-improvement work?", a: "Lazy SMS tracks response rates per message weekly. When a message falls below a response rate threshold it uses AI to rewrite it and replaces it in the sequence." },
   { q: "What countries does it support?", a: "Twilio supports SMS in 180+ countries. Phone number availability and pricing varies by country." },
-  { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+  { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every agent update is versioned and documented with upgrade instructions." },
   { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
 ];
 
@@ -276,7 +276,7 @@ export default function LazySmsPage() {
   return (
     <>
       <SEO
-        title="Lazy SMS — Self-Improving Twilio SMS Engine for Lovable"
+        title="Lazy SMS — Self-Improving Twilio SMS Agent for Lovable"
         description="One prompt installs Twilio SMS confirmations, drip sequences, abandoned checkout recovery, and two-way messaging into any Lovable project."
       />
       <Navbar />

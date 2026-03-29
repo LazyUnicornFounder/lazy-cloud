@@ -14,7 +14,7 @@ const fade = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transiti
 
 type Category = "All" | "Lazy Content" | "Lazy Commerce" | "Lazy Media" | "Lazy Dev" | "Lazy Ops" | "Lazy Agents";
 
-type SectionType = "engines" | "agents" | "all";
+type SectionType = "agent" | "agents" | "all";
 
 const filters: Category[] = ["All", "Lazy Content", "Lazy Commerce", "Lazy Media", "Lazy Dev", "Lazy Ops", "Lazy Agents"];
 
@@ -23,8 +23,8 @@ interface Integration {
   category: Category;
   description: string;
   unlocks: string[];
-  engine: string;
-  engineHref: string;
+  agent: string;
+  agentHref: string;
   icon: React.ReactNode;
   note?: string;
 }
@@ -43,8 +43,8 @@ const integrations: Integration[] = [
       "Build a live industry intelligence feed that updates automatically.",
       "Feed real current data into your blog posts instead of AI guesswork.",
     ],
-    engine: "Lazy Crawl",
-    engineHref: "/lazy-crawl",
+    agent: "Lazy Crawl",
+    agentHref: "/lazy-crawl",
     icon: <Globe size={20} />,
   },
   {
@@ -55,11 +55,11 @@ const integrations: Integration[] = [
       "Research your niche daily with live web data and feed findings into your blog queue.",
       "Generate citation-rich blog posts grounded in what is actually happening on the web today.",
       "Discover the real questions people are asking AI assistants about your industry.",
-      "Test whether your brand is being cited by AI engines when people ask relevant questions.",
+      "Test whether your brand is being cited by AI agent when people ask relevant questions.",
       "Improve underperforming posts by updating them with current research automatically.",
     ],
-    engine: "Lazy Perplexity",
-    engineHref: "/lazy-perplexity",
+    agent: "Lazy Perplexity",
+    agentHref: "/lazy-perplexity",
     icon: <Search size={20} />,
   },
   {
@@ -73,8 +73,8 @@ const integrations: Integration[] = [
       "Handle real-time sync via webhooks when content is published or unpublished.",
       "Distribute your autonomous content to every channel at once.",
     ],
-    engine: "Lazy Contentful",
-    engineHref: "/lazy-contentful",
+    agent: "Lazy Contentful",
+    agentHref: "/lazy-contentful",
     icon: <FileText size={20} />,
   },
   // Lazy Commerce
@@ -89,8 +89,8 @@ const integrations: Integration[] = [
       "Recover abandoned checkouts with personalised emails 24 hours later.",
       "Give customers a self-service portal to manage their subscriptions without contacting you.",
     ],
-    engine: "Lazy Pay",
-    engineHref: "/lazy-pay",
+    agent: "Lazy Pay",
+    agentHref: "/lazy-pay",
     icon: <CreditCard size={20} />,
   },
   {
@@ -105,8 +105,8 @@ const integrations: Integration[] = [
       "Manage opt-outs automatically to stay compliant.",
       "Run message sequences that rewrite themselves when response rates drop.",
     ],
-    engine: "Lazy SMS",
-    engineHref: "/lazy-sms",
+    agent: "Lazy SMS",
+    agentHref: "/lazy-sms",
     icon: <MessageSquare size={20} />,
   },
   {
@@ -120,8 +120,8 @@ const integrations: Integration[] = [
       "Self-improve subject lines using AI when open rates drop below 20%.",
       "Manage subscriber lists and unsubscribes without third-party email marketing tools.",
     ],
-    engine: "Lazy Mail",
-    engineHref: "/lazy-mail",
+    agent: "Lazy Mail",
+    agentHref: "/lazy-mail",
     icon: <Send size={20} />,
   },
   // Lazy Media
@@ -136,8 +136,8 @@ const integrations: Integration[] = [
       "Generate an RSS feed submitted to Apple Podcasts and Spotify automatically.",
       "Clone your own voice once and have it narrate content you never recorded.",
     ],
-    engine: "Lazy Voice",
-    engineHref: "/lazy-voice",
+    agent: "Lazy Voice",
+    agentHref: "/lazy-voice",
     icon: <Mic size={20} />,
   },
   {
@@ -151,8 +151,8 @@ const integrations: Integration[] = [
       "Show a live banner on your site automatically when you go live.",
       "Build a growing archive of indexed stream content without writing anything manually.",
     ],
-    engine: "Lazy Stream",
-    engineHref: "/lazy-stream",
+    agent: "Lazy Stream",
+    agentHref: "/lazy-stream",
     icon: <Tv size={20} />,
   },
   {
@@ -162,12 +162,12 @@ const integrations: Integration[] = [
     unlocks: [
       "Publish a full transcript from every video as a searchable article on your site.",
       "Generate a long-form SEO article from every video's content targeting your niche keywords.",
-      "Create GEO-optimised content so AI engines cite your videos in their answers.",
+      "Create GEO-optimised content so AI agent cite your videos in their answers.",
       "Auto-generate chapter markers and update your YouTube video description.",
       "Extract comment intelligence — questions become SEO keyword targets automatically.",
     ],
-    engine: "Lazy YouTube",
-    engineHref: "/lazy-youtube",
+    agent: "Lazy YouTube",
+    agentHref: "/lazy-youtube",
     icon: <Tv size={20} />,
     note: "Uses YouTube Data API + Supadata — both free to start",
   },
@@ -183,8 +183,8 @@ const integrations: Integration[] = [
       "Maintain a public roadmap that updates from your GitHub issues and milestones.",
       "Build a growing developer blog from the work you are already doing.",
     ],
-    engine: "Lazy GitHub",
-    engineHref: "/lazy-github",
+    agent: "Lazy GitHub",
+    agentHref: "/lazy-github",
     icon: <Code size={20} />,
   },
   {
@@ -198,8 +198,8 @@ const integrations: Integration[] = [
       "Maintain a public roadmap that updates from your GitLab issues.",
       "Summarise every merge request in plain English for non-technical stakeholders.",
     ],
-    engine: "Lazy GitLab",
-    engineHref: "/lazy-gitlab",
+    agent: "Lazy GitLab",
+    agentHref: "/lazy-gitlab",
     icon: <GitBranch size={20} />,
   },
   {
@@ -213,8 +213,8 @@ const integrations: Integration[] = [
       "Maintain a public roadmap that reflects your Linear milestones in real time.",
       "Produce weekly velocity reports without writing them manually.",
     ],
-    engine: "Lazy Linear",
-    engineHref: "/lazy-linear",
+    agent: "Lazy Linear",
+    agentHref: "/lazy-linear",
     icon: <CheckCircle2 size={20} />,
   },
   {
@@ -228,8 +228,8 @@ const integrations: Integration[] = [
       "Schedule weekly or monthly design reviews that upgrade one section at a time.",
       "Fall back to AI-generated Tailwind + Framer Motion components when no library match exists.",
     ],
-    engine: "Lazy Design",
-    engineHref: "/lazy-design",
+    agent: "Lazy Design",
+    agentHref: "/lazy-design",
     icon: <Palette size={20} />,
     note: "Uses the 21st.dev component library — no API key required",
   },
@@ -244,8 +244,8 @@ const integrations: Integration[] = [
       "Build a user management dashboard that shows signups, last seen, and role.",
       "Export your entire user list as a CSV with one click.",
     ],
-    engine: "Lazy Auth",
-    engineHref: "/lazy-auth",
+    agent: "Lazy Auth",
+    agentHref: "/lazy-auth",
     icon: <Shield size={20} />,
     note: "Uses Lovable Cloud for OAuth — no Google Cloud setup needed",
   },
@@ -260,8 +260,8 @@ const integrations: Integration[] = [
       "Extract customer signals — problems, feature requests, competitors — into a private intelligence feed.",
       "Generate product update posts from planning sessions and product reviews.",
     ],
-    engine: "Lazy Granola",
-    engineHref: "/lazy-granola",
+    agent: "Lazy Granola",
+    agentHref: "/lazy-granola",
     icon: <FileText size={20} />,
     note: "Uses the Granola MCP server — free to start",
   },
@@ -272,13 +272,13 @@ const integrations: Integration[] = [
     description: "Send alerts, read channels, and post updates from your Lovable site to any Slack workspace.",
     unlocks: [
       "Get an instant Slack message every time a payment comes in.",
-      "Receive alerts when any engine encounters an error.",
+      "Receive alerts when any agent encounters an error.",
       "Get a morning briefing in Slack showing everything your autonomous site did overnight.",
-      "Control your engines with slash commands without opening a dashboard.",
+      "Control your agents with slash commands without opening a dashboard.",
       "Route different events to different Slack channels — payments to one channel, errors to another.",
     ],
-    engine: "Lazy Alert",
-    engineHref: "/lazy-alert",
+    agent: "Lazy Alert",
+    agentHref: "/lazy-alert",
     icon: <Hash size={20} />,
   },
   {
@@ -286,14 +286,14 @@ const integrations: Integration[] = [
     category: "Lazy Ops",
     description: "Send messages and receive commands through bots — connecting your Lovable site to Telegram.",
     unlocks: [
-      "Get real-time Telegram messages for every significant engine event.",
-      "Control your engines with bot commands from your phone.",
+      "Get real-time Telegram messages for every significant agent event.",
+      "Control your agents with bot commands from your phone.",
       "Receive a daily morning briefing in Telegram.",
       "Get instant alerts for critical security vulnerabilities.",
       "Use /lazy publish, /lazy pause, /lazy status from any device without opening a browser.",
     ],
-    engine: "Lazy Telegram",
-    engineHref: "/lazy-telegram",
+    agent: "Lazy Telegram",
+    agentHref: "/lazy-telegram",
     icon: <Send size={20} />,
   },
   {
@@ -307,8 +307,8 @@ const integrations: Integration[] = [
       "Monitor storage usage and get alerts before hitting limits.",
       "Generate weekly growth reports showing signup trends and database health automatically.",
     ],
-    engine: "Lazy Supabase",
-    engineHref: "/lazy-supabase",
+    agent: "Lazy Supabase",
+    agentHref: "/lazy-supabase",
     icon: <Database size={20} />,
   },
   {
@@ -323,8 +323,8 @@ const integrations: Integration[] = [
       "Detect regressions when previously fixed vulnerabilities reappear.",
       "Show a public security posture page that builds enterprise trust.",
     ],
-    engine: "Lazy Security",
-    engineHref: "/lazy-security",
+    agent: "Lazy Security",
+    agentHref: "/lazy-security",
     icon: <Shield size={20} />,
     note: "Powered by Aikido — available via Lazy Security",
   },
@@ -341,8 +341,8 @@ const integrations: Integration[] = [
       "Pause out-of-stock products automatically and re-activate when stock returns.",
       "Get weekly optimisation reports identifying worst performers.",
     ],
-    engine: "Lazy Drop",
-    engineHref: "/lazy-drop",
+    agent: "Lazy Drop",
+    agentHref: "/lazy-drop",
     icon: <Globe size={20} />,
     note: "Requires an AutoDS account — plans from $26.90/month",
   },
@@ -359,8 +359,8 @@ const integrations: Integration[] = [
       "Launch seasonal collections automatically based on trending topics in your niche.",
       "Show a public merch store page on your site with one prompt.",
     ],
-    engine: "Lazy Print",
-    engineHref: "/lazy-print",
+    agent: "Lazy Print",
+    agentHref: "/lazy-print",
     icon: <CreditCard size={20} />,
     note: "Requires a Printful account — free to start, pay per order",
   },
@@ -370,13 +370,13 @@ const integrations: Integration[] = [
     category: "Lazy Agents",
     description: "Lazy Agents use your GitHub repo to open issues for errors and PRs for prompt improvements — all autonomously.",
     unlocks: [
-      "Lazy Watch opens a GitHub issue every time an engine error is detected.",
+      "Lazy Watch opens a GitHub issue every time an agent error is detected.",
       "Lazy Fix opens a pull request with targeted prompt improvements weekly.",
-      "Lazy Build commits a complete new engine prompt from a one-paragraph brief.",
+      "Lazy Build commits a complete new agent prompt from a one-paragraph brief.",
       "All agent activity is tracked and auditable via your repo.",
     ],
-    engine: "Lazy Agents",
-    engineHref: "/lazy-agents",
+    agent: "Lazy Agents",
+    agentHref: "/lazy-agents",
     icon: <Code size={20} />,
     note: "Requires GITHUB_TOKEN with repo scope",
   },
@@ -388,10 +388,10 @@ const integrations: Integration[] = [
       "Lazy Watch diagnoses root causes from error logs using Claude.",
       "Lazy Fix analyses performance trends and writes precise prompt edits.",
       "Lazy Intel generates weekly content strategy briefs from all your data.",
-      "Lazy Build drafts complete engine prompts with database schemas and edge functions.",
+      "Lazy Build drafts complete agent prompts with database schemas and edge functions.",
     ],
-    engine: "Lazy Agents",
-    engineHref: "/lazy-agents",
+    agent: "Lazy Agents",
+    agentHref: "/lazy-agents",
     icon: <Zap size={20} />,
     note: "Uses Anthropic API — requires ANTHROPIC_API_KEY",
   },
@@ -406,8 +406,8 @@ const integrations: Integration[] = [
       "Draft 60-90 second video scripts ready for TikTok, Reels, or Shorts.",
       "Queue everything for review or connect APIs for direct posting.",
     ],
-    engine: "Lazy Repurpose",
-    engineHref: "/lazy-repurpose",
+    agent: "Lazy Repurpose",
+    agentHref: "/lazy-repurpose",
     icon: <FileText size={20} />,
     note: "No API keys required — optional Twitter/LinkedIn APIs for auto-posting",
   },
@@ -422,8 +422,8 @@ const integrations: Integration[] = [
       "Get instant Slack alerts when high-urgency trends are detected.",
       "Publish on trends within hours — not days after everyone else.",
     ],
-    engine: "Lazy Trend",
-    engineHref: "/lazy-trend",
+    agent: "Lazy Trend",
+    agentHref: "/lazy-trend",
     icon: <Search size={20} />,
     note: "Uses Firecrawl + Perplexity — already set if Lazy Crawl/Perplexity installed",
   },
@@ -438,8 +438,8 @@ const integrations: Integration[] = [
       "Get daily Slack digests showing MRR at risk and recovery stats.",
       "Reduce churn by acting before customers reach the cancel button.",
     ],
-    engine: "Lazy Churn",
-    engineHref: "/lazy-churn",
+    agent: "Lazy Churn",
+    agentHref: "/lazy-churn",
     icon: <CreditCard size={20} />,
     note: "Uses Stripe + Twilio + Resend — already set if Pay/SMS/Mail installed",
   },
@@ -479,11 +479,11 @@ function IntegrationCard({ item, index }: { item: Integration; index: number }) 
       {item.note && <p className="font-body text-[14px] text-foreground/65 italic">{item.note}</p>}
       <div className="mt-auto pt-3 border-t border-border">
         <Link
-          to={item.engineHref}
+          to={item.agentHref}
           className="inline-flex items-center gap-2 font-body text-sm tracking-[0.1em] uppercase font-semibold text-foreground/65 hover:text-foreground transition-colors"
         >
           <span className="text-[14px] text-foreground/60">Lazy agent →</span>
-          {item.engine}
+          {item.agent}
         </Link>
       </div>
     </motion.div>
@@ -495,10 +495,10 @@ export default function UseCasesPage() {
 
   const filtered = active === "All" ? integrations : integrations.filter((i) => i.category === active);
 
-  const engineItems = filtered.filter((i) => i.category !== "Lazy Agents");
+  const agentItems = filtered.filter((i) => i.category !== "Lazy Agents");
   const agentItems = filtered.filter((i) => i.category === "Lazy Agents");
 
-  const showEngines = engineItems.length > 0;
+  const showEngines = agentItems.length > 0;
   const showAgents = agentItems.length > 0;
 
   return (
@@ -579,11 +579,11 @@ export default function UseCasesPage() {
         </section>
       )}
 
-      {/* Engine Cards */}
+      {/* Agent Cards */}
       {showEngines && (
         <section className="px-6 md:px-12 max-w-5xl mx-auto pb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {engineItems.map((item, i) => (
+            {agentItems.map((item, i) => (
               <IntegrationCard key={item.name} item={item} index={i} />
             ))}
           </div>

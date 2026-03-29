@@ -86,7 +86,7 @@ export default function LazyVoiceDashboard() {
 
   return (
     <>
-      <SEO title="Lazy Voice Dashboard" description="Manage your autonomous audio narration engine." />
+      <SEO title="Lazy Voice Dashboard" description="Manage your autonomous audio narration agent." />
       <Navbar />
       <main className="min-h-screen bg-background text-foreground pt-32 md:pt-44 pb-20 px-6">
         <div className="max-w-4xl mx-auto">
@@ -95,7 +95,7 @@ export default function LazyVoiceDashboard() {
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-muted/40 text-muted-foreground text-xs font-body tracking-wide mb-3">
                 <Volume2 size={14} /> Lazy Voice Dashboard
               </div>
-              <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tight">Audio Narration Engine</h1>
+              <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tight">Audio Narration Agent</h1>
             </div>
             <Link to="/lazy-voice-setup" className="font-body text-xs text-muted-foreground underline hover:text-primary transition-colors">
               Edit Settings

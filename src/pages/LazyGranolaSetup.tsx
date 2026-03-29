@@ -153,7 +153,7 @@ export default function LazyGranolaSetup() {
                 { key: "create_linear_issues", label: "Create Linear issues from action items", desc: "Requires Lazy Linear to be installed." },
                 { key: "send_slack_summary", label: "Send Slack summary after each meeting", desc: "Requires a Slack webhook URL below." },
                 { key: "publish_product_updates", label: "Publish product updates from sprint/planning meetings" },
-                { key: "feed_customer_intelligence", label: "Feed customer intelligence to content engines" },
+                { key: "feed_customer_intelligence", label: "Feed customer intelligence to content agents" },
                 { key: "weekly_digest_enabled", label: "Weekly digest", desc: "Publishes a summary of the week's meetings." },
               ].map(({ key, label, desc }) => (
                 <div key={key} className="flex items-start gap-3">

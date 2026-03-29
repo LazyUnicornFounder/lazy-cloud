@@ -21,7 +21,7 @@ Add a complete autonomous Linear integration called Lazy Linear to this project.
 
 MARKETING PAGE PROMPT — paste into LazyUnicorn project:
 
-Add a new page at /lazy-linear. It is a marketing and landing page for a product called Lazy Linear — an autonomous content engine that turns your Linear issues, cycles, and projects into changelogs, roadmaps, and product blog posts automatically.
+Add a new page at /lazy-linear. It is a marketing and landing page for a product called Lazy Linear — an autonomous content agent that turns your Linear issues, cycles, and projects into changelogs, roadmaps, and product blog posts automatically.
 
 Hero section
 Headline: 'Your Linear workspace is your product story. Lazy Linear tells it automatically.' Subheading: 'Lazy Linear monitors your Linear issues and cycles, and automatically publishes changelogs, a public roadmap, release notes, and product updates — without anyone writing a word.' Primary button: Copy the Lovable Prompt. Secondary button: See How It Works. Badge: Powered by Linear.
@@ -44,7 +44,7 @@ Navigation: Add Lazy Linear to the LazyUnicorn navigation.
 
 SETUP PROMPT — paste into user's Lovable project:
 
-Add a complete autonomous Linear content engine called Lazy Linear to this project. It monitors Linear issues, cycles, and projects via the Linear API and automatically publishes changelogs, a public roadmap, product blog posts, and cycle summaries.
+Add a complete autonomous Linear content agent called Lazy Linear to this project. It monitors Linear issues, cycles, and projects via the Linear API and automatically publishes changelogs, a public roadmap, product blog posts, and cycle summaries.
 
 1. Database
 Create these Supabase tables with RLS enabled:
@@ -137,9 +137,9 @@ At bottom of every page: 🦄 Powered by Lazy Linear — autonomous Linear conte
 
 8. Admin
 
-Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/linear as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/linear as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt.
 
-If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-linear-setup.
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-linear-setup.
 
 9. Navigation
 Add Product Updates link to /product-updates. Add Roadmap link to /product-roadmap. Add an Admin link to the main site navigation pointing to /admin.
@@ -188,7 +188,7 @@ const LazyLinearPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Linear — Autonomous Linear Content Engine for Lovable" description="Your Linear workspace is your product story. Lazy Linear tells it automatically." url="/lazy-linear" />
+      <SEO title="Lazy Linear — Autonomous Linear Content Agent for Lovable" description="Your Linear workspace is your product story. Lazy Linear tells it automatically." url="/lazy-linear" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}
@@ -267,7 +267,7 @@ const LazyLinearPage = () => {
           { q: "Can I control what gets published?", a: "Yes. The dashboard lets you approve content before publishing. Auto-publish is also available." },
           { q: "Does it work with multiple teams?", a: "The current version monitors one Linear team. Multi-team support is coming in Pro." },
           { q: "What if my issues have no descriptions?", a: "Lazy Linear uses issue titles and labels to write summaries. Descriptions improve quality but are not required." },
-          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every agent update is versioned and documented with upgrade instructions." },
           { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
         ]} />
 

@@ -272,7 +272,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "\"The founders who build on this infrastructure first will be very hard to catch.\"",
 
-      "The product layer removes the engineering dependency. The operations layer removes the management dependency. The identity layer removes the headcount dependency. The content layer removes the marketing dependency. Combined, they make one person capable of owning and running a company that would have required twenty people and $2M in seed capital five years ago.",
+      "The product layer removes the agentering dependency. The operations layer removes the management dependency. The identity layer removes the headcount dependency. The content layer removes the marketing dependency. Combined, they make one person capable of owning and running a company that would have required twenty people and $2M in seed capital five years ago.",
 
       "This is not a marginal improvement on the old model. It's a different model entirely — one where the cost of starting and running a business has been compressed so dramatically that the primary barrier is no longer resources. It's clarity. The idea. The direction. The judgment to point a powerful system at the right target.",
 
@@ -306,7 +306,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "Before fixing the problem, name it precisely. Answer these honestly. The verdicts are not judgments — they're diagnoses.",
 
-      "If you took a week off with no phone, would revenue arrive? If no → critical dependency. Does outbound stop when you stop sending it? If yes → single point of failure. Does content stop publishing when you stop writing? If yes → no compounding engine. Do support tickets pile up unanswered when you're unavailable? If yes → customer experience depends on you. Does new code ship without you initiating each feature? If no → still operational dependency. Does the business measure its own performance and adjust? If no → you are the analytics layer. Have you taken a full week off in the last 6 months without guilt? If yes → you're further along than most.",
+      "If you took a week off with no phone, would revenue arrive? If no → critical dependency. Does outbound stop when you stop sending it? If yes → single point of failure. Does content stop publishing when you stop writing? If yes → no compounding agent. Do support tickets pile up unanswered when you're unavailable? If yes → customer experience depends on you. Does new code ship without you initiating each feature? If no → still operational dependency. Does the business measure its own performance and adjust? If no → you are the analytics layer. Have you taken a full week off in the last 6 months without guilt? If yes → you're further along than most.",
 
       "If you answered \"bad\" to three or more of those, your business is embarrassingly dependent on your presence. That's not an insult. It's an accurate description of where most founder-operated businesses sit — and a clear picture of what needs to change.",
 
@@ -320,7 +320,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "<strong>Level 3 — Managed:</strong> The business runs with weekly check-ins. You've handed off execution. Agents or team members handle day-to-day operations. You review outputs weekly and make strategic decisions. Revenue continues during your absence. Still dependent on your judgment but not your daily presence.",
 
-      "<strong>Level 4 — Autonomous:</strong> The business runs and grows without you. Agents handle operations and growth loops run continuously. Revenue arrives without your initiation. The business compounds. You are the direction, not the engine. Monthly strategic involvement is all that's required.",
+      "<strong>Level 4 — Autonomous:</strong> The business runs and grows without you. Agents handle operations and growth loops run continuously. Revenue arrives without your initiation. The business compounds. You are the direction, not the agent. Monthly strategic involvement is all that's required.",
 
       "<strong>Level 5 — Recursive:</strong> The business improves its own ability to grow. Agents measure, learn, and update their own behaviour based on results. The system gets better at running itself every week. The founder sets direction occasionally. The business handles the execution — and the improvement of that execution — autonomously.",
 
@@ -336,7 +336,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "<strong>1. Define what \"running\" looks like without you.</strong> Before you can remove yourself from the loop, you need to describe the loop. Write down every function your business requires daily, weekly, and monthly. Be specific. \"Marketing\" is not a function. \"Publishing three SEO posts per week targeting these five keywords\" is a function. You can only hand over what you've defined.",
 
-      "<strong>2. Start the content engine — it compounds slowest, so start it first.</strong> The SEO content machine takes 90 days to show meaningful results. Every week you delay is compounding you'll never recover. Start it this week. Use Claude to draft posts, Polsia to publish them, and don't wait for them to be perfect. Indexed and imperfect beats perfect and unpublished every time.",
+      "<strong>2. Start the content agent — it compounds slowest, so start it first.</strong> The SEO content machine takes 90 days to show meaningful results. Every week you delay is compounding you'll never recover. Start it this week. Use Claude to draft posts, Polsia to publish them, and don't wait for them to be perfect. Indexed and imperfect beats perfect and unpublished every time.",
 
       "<strong>3. Hand outbound to agents before you hand anything else.</strong> Outbound is the highest-leverage autonomous function because it directly drives revenue and improves continuously based on what converts. Give Polsia the sequence that worked manually. Set a review cadence. Get out of the daily execution and into the weekly result-reading.",
 
@@ -544,7 +544,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "<strong>Stage two: full-time you, part-time robots.</strong> You've connected the first agent. Polsia is handling some of the outbound. Content is being published without you writing every post. You're still reviewing everything, still initiating most tasks, still very much in the daily operations. But the ratio has started to shift. This is months two and three for most founders.",
 
-      "<strong>Stage three: part-time you, full-time robots.</strong> The agents have enough context to make good decisions most of the time. The content engine is compounding. Revenue arrives during weeks when you're not actively working. Your job is the weekly review and the occasional direction correction. This is the destination — and it's achievable by month five or six.",
+      "<strong>Stage three: part-time you, full-time robots.</strong> The agents have enough context to make good decisions most of the time. The content agent is compounding. Revenue arrives during weeks when you're not actively working. Your job is the weekly review and the occasional direction correction. This is the destination — and it's achievable by month five or six.",
 
       "The thing that stalls people at stage two is the reflex to take tasks back when the agents make mistakes. Don't. The mistake was in the brief, not in the model. Fix the brief. Let the agent run again.",
 
@@ -602,7 +602,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "<strong>AI Employees — Naïve</strong> (usenaive.ai · Free to start): Deploys AI employees with their own email, bank account, credentials. They learn your business recursively — every result stored, every pattern extracted. 500+ companies including Airwallex and HackerRank. Best for outreach, partnerships, and content functions.",
 
-      "<strong>Content Layer — Claude</strong> (claude.ai · $20/mo): Long-form content, product copy, blog posts, email sequences, competitive research. The brain behind the content engine. Pair with Lovable for the product and Polsia for distribution. Every word on a well-run autonomous company's blog started here.",
+      "<strong>Content Layer — Claude</strong> (claude.ai · $20/mo): Long-form content, product copy, blog posts, email sequences, competitive research. The brain behind the content agent. Pair with Lovable for the product and Polsia for distribution. Every word on a well-run autonomous company's blog started here.",
 
       "Total stack cost: roughly $120–200/month depending on usage tiers. The entire operational capacity of what used to cost $500k/year in salaries fits in a monthly subscription that costs less than a car payment.",
 
@@ -614,7 +614,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "<strong>Step 02 — Build the MVP in Lovable (Day 1–3).</strong> Open Lovable. Describe your product. Let it build. Review. Adjust. Deploy. The first version will not be perfect. Ship it anyway. The goal is a real URL that real people can visit and pay for. Connect Stripe immediately — make payment possible from day one.",
 
-      "<strong>Step 03 — Start the content engine on day one (Week 1).</strong> SEO content is the only growth channel that compounds indefinitely without ad spend. Every week you delay starting it is compounding you never recover. Twenty blog posts published in month one beats one perfect post per month for a year.",
+      "<strong>Step 03 — Start the content agent on day one (Week 1).</strong> SEO content is the only growth channel that compounds indefinitely without ad spend. Every week you delay starting it is compounding you never recover. Twenty blog posts published in month one beats one perfect post per month for a year.",
 
       "<strong>Step 04 — Get the first 10 customers manually (Week 2–6).</strong> Do not hand sales to an agent before you know what message converts. Find the first 10 customers yourself. Talk to them. Understand exactly why they paid, in their exact words. That language becomes the template for every automated outreach sequence that follows.",
 
@@ -626,13 +626,13 @@ export const staticBlogPosts: BlogPost[] = [
 
       "<strong>04 — The Metrics That Tell You It's Working</strong>",
 
-      "<strong>Organic traffic growth:</strong> Content engine compounding. No ad spend required. Healthy signal: +15–20% month-over-month after month 3.",
+      "<strong>Organic traffic growth:</strong> Content agent compounding. No ad spend required. Healthy signal: +15–20% month-over-month after month 3.",
 
       "<strong>Revenue without you present:</strong> The core test. Did income arrive during a week you didn't actively work? Healthy signal: Yes, consistently, by month 4.",
 
       "<strong>Outbound reply rate:</strong> Agent outbound quality. Low rate = wrong message or wrong audience. Healthy signal: >8% means the sequence is working.",
 
-      "<strong>Net Revenue Retention:</strong> Expansion engine working. NRR >100% = grows without new customers. Healthy signal: >100% — the flywheel is turning.",
+      "<strong>Net Revenue Retention:</strong> Expansion agent working. NRR >100% = grows without new customers. Healthy signal: >100% — the flywheel is turning.",
 
       "<strong>Weekly founder hours:</strong> Are you becoming less needed over time? If hours are growing, something is wrong. Healthy signal: Declining month-over-month after month 3.",
 
@@ -646,7 +646,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "<strong>Mistake 03 — Taking the operations back when agents make mistakes.</strong> Agents make mistakes. The instinct is to take the task back and do it yourself. Every time you do this, you reset the compounding. The correct response to an agent mistake is better instructions, not personal execution. Fix the brief. Let the agent run.",
 
-      "<strong>Mistake 04 — Skipping the content engine.</strong> Most solo founders underinvest in content because it feels slow. It is slow — for the first 90 days. After that it's the only channel that compounds indefinitely without continued investment. Every week you don't start is compounding you'll never recover. Start week one.",
+      "<strong>Mistake 04 — Skipping the content agent.</strong> Most solo founders underinvest in content because it feels slow. It is slow — for the first 90 days. After that it's the only channel that compounds indefinitely without continued investment. Every week you don't start is compounding you'll never recover. Start week one.",
 
       "<strong>Mistake 05 — Building for autonomy before building for value.</strong> The autonomous company only works if the underlying product solves a real problem. Agents that efficiently acquire and convert users for a product nobody wants are just very efficient at failing. Solve the value problem first. Then automate the distribution.",
 
@@ -656,7 +656,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "\"Month one is harder than a normal job. Month six is easier than anything you've done before.\"",
 
-      "<strong>Month 1:</strong> Product live. Content engine started. First few paying customers found manually. You are doing more work than you expected. The agents are calibrating. The outputs are inconsistent. This is normal and necessary.",
+      "<strong>Month 1:</strong> Product live. Content agent started. First few paying customers found manually. You are doing more work than you expected. The agents are calibrating. The outputs are inconsistent. This is normal and necessary.",
 
       "<strong>Month 2:</strong> Polsia connected. Outbound running autonomously. Content compounding slowly. Revenue exists but requires attention. The system is learning your business. Weekly check-in replacing daily involvement for some functions.",
 
@@ -682,7 +682,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "What it doesn't require: a co-founder, a team, a VC check, a technical background, or more than $200/month in tools. Those barriers used to be the whole story. They're not the story anymore.",
 
-      "The infrastructure is here. Lovable builds the product. Polsia and Naïve run the operations. The content engine compounds the distribution. The referral mechanics multiply the audience. The recursive learning improves the system every week until the company is better at its own growth than any human team you could have hired.",
+      "The infrastructure is here. Lovable builds the product. Polsia and Naïve run the operations. The content agent compounds the distribution. The referral mechanics multiply the audience. The recursive learning improves the system every week until the company is better at its own growth than any human team you could have hired.",
 
       "Start with the one sentence. Ship the first version. Get the first customer. Then hand it to the agents and get out of the way.",
 
@@ -746,7 +746,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "This doesn't happen overnight. But it happens faster than any prior path to income independence — and it happens in a specific sequence.",
 
-      "Stage 01 — Month 1–3: Build the thing that earns. One product. One clear problem. One specific person who will pay to have it solved. Use Lovable to build it without writing code. Start the content engine immediately — SEO compounds slowly and you want those months running. The goal of this stage is the first paying customer, not the perfect product.",
+      "Stage 01 — Month 1–3: Build the thing that earns. One product. One clear problem. One specific person who will pay to have it solved. Use Lovable to build it without writing code. Start the content agent immediately — SEO compounds slowly and you want those months running. The goal of this stage is the first paying customer, not the perfect product.",
 
       "Stage 02 — Month 3–9: Hand it to the agents. Once revenue exists, build the operational layer. Connect Polsia for outbound, inbox, social, and daily operations. Deploy Naïve employees for specific functions. Review the outputs weekly. The goal of this stage is getting the company to a state where a week without you doesn't affect the revenue.",
 
@@ -772,7 +772,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "\"The Honest Caveat You Deserve\"",
 
-      "The path from \"currently worrying about money\" to \"genuinely income independent\" is not a weekend project. The first few months require more effort, not less — you're building the product, calibrating the agents, establishing the content engine, and doing most of the operational work manually while the autonomous systems are being set up. It gets easier. It doesn't start easy.",
+      "The path from \"currently worrying about money\" to \"genuinely income independent\" is not a weekend project. The first few months require more effort, not less — you're building the product, calibrating the agents, establishing the content agent, and doing most of the operational work manually while the autonomous systems are being set up. It gets easier. It doesn't start easy.",
 
       "The income targets above are realistic for someone with a good idea, clear positioning, and consistent execution. They're not guaranteed. The autonomous company still requires the idea to be right, the market to exist, and the product to solve a real problem. The agents handle the execution. The founder still handles the judgment.",
 
@@ -858,7 +858,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "I'm building it on Lovable. Every feature — the directory listings, the search, the database, the submission forms, the blog — was built through conversation, not code. The product exists because Lovable made it possible to build it in an afternoon, not a month.",
 
-      "The content engine — 25+ long-form posts on autonomous companies, recursive startups, solo founding, and the future of AI business-building — is running. All drafted with Claude. SEO traffic is compounding slowly. The affiliate monetisation layer is in progress. The autonomous operations layer (Polsia, Naïve) is the next step, once the product has enough traction to justify it.",
+      "The content agent — 25+ long-form posts on autonomous companies, recursive startups, solo founding, and the future of AI business-building — is running. All drafted with Claude. SEO traffic is compounding slowly. The affiliate monetisation layer is in progress. The autonomous operations layer (Polsia, Naïve) is the next step, once the product has enough traction to justify it.",
 
       "Right now, I'm the one doing a lot of the things the agents are supposed to do. That's the honest state of it. The architecture is built for autonomy. The execution is still partly manual. The gap closes as the business matures. That's the story being documented in public.",
 
@@ -1092,7 +1092,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "<strong>Sean Dorje</strong> · CEO & Co-Founder — Berkeley dropout · YC X25 · Computer vision · ezML co-founder · Relixir CEO. Started building computer vision systems at 15, scaling them to six-figure revenues. Co-founded ezML — an enterprise computer vision platform backed by Pear VC — while still at Berkeley. Dropped out to pursue the company. Went through Y Combinator's X25 batch with Relixir, the AI GEO platform he and Dennis built before pivoting their core insight into Naïve.",
 
-      "<strong>Dennis Zax</strong> · CTO & Co-Founder — Berkeley alum · YC X25 · Systems builder · ezML co-founder · Relixir CTO. The technical spine of every company Sean has co-founded. Built the systems architecture at ezML, co-developed the autonomous content infrastructure at Relixir that ranked them #1 across 200+ search queries, and now leads the engineering behind Naïve's AI employee runtime.",
+      "<strong>Dennis Zax</strong> · CTO & Co-Founder — Berkeley alum · YC X25 · Systems builder · ezML co-founder · Relixir CTO. The technical spine of every company Sean has co-founded. Built the systems architecture at ezML, co-developed the autonomous content infrastructure at Relixir that ranked them #1 across 200+ search queries, and now leads the agentering behind Naïve's AI employee runtime.",
 
       "<strong>How You Get to Naïve</strong>",
 
@@ -1104,7 +1104,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "Sean drops out of Berkeley's EECS program to pursue entrepreneurship full time. Dennis follows. The decision that separates the people who are serious about building from the ones who are serious about credentials.",
 
-      "In the YC X25 batch, Sean and Dennis go through Y Combinator with <strong>Relixir</strong> — an AI Generative Engine Optimization platform that helps companies rank in ChatGPT, Perplexity, and other AI search engines. To build Relixir, they needed to automate content creation at scale. So they built an internal autonomous content system that ranked them <strong>#1 across 200+ search queries</strong>. They were building autonomous company infrastructure before they had a name for it.",
+      "In the YC X25 batch, Sean and Dennis go through Y Combinator with <strong>Relixir</strong> — an AI Generative Engine Optimization platform that helps companies rank in ChatGPT, Perplexity, and other AI search agents. To build Relixir, they needed to automate content creation at scale. So they built an internal autonomous content system that ranked them <strong>#1 across 200+ search queries</strong>. They were building autonomous company infrastructure before they had a name for it.",
 
       "Then the pivot. The autonomous agents they built to run Relixir's own operations were more interesting than Relixir itself. The insight: what if anyone could deploy this kind of system for their company? Not just content. Everything. <strong>Naïve is born.</strong>",
 
@@ -1334,7 +1334,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "This is the lazy founder thesis: the competitive advantage has shifted from effort to infrastructure. The founders who build systems — not just products — are the ones reaching escape velocity. And the infrastructure layer has finally caught up to make this possible at scale.",
 
-      "Consider what a solo operator can deploy today. An AI SDR that prospects, qualifies, and books meetings from a cold list. An autonomous content engine that writes, publishes, and optimizes SEO articles based on real-time SERP data. A dynamic pricing agent that monitors competitor moves and adjusts your margins hourly. A customer success bot that handles 90% of support tickets with context-aware responses pulled from your knowledge base.",
+      "Consider what a solo operator can deploy today. An AI SDR that prospects, qualifies, and books meetings from a cold list. An autonomous content agent that writes, publishes, and optimizes SEO articles based on real-time SERP data. A dynamic pricing agent that monitors competitor moves and adjusts your margins hourly. A customer success bot that handles 90% of support tickets with context-aware responses pulled from your knowledge base.",
 
       "Five years ago, this stack would've required a 20-person team and $3M in seed funding. Today, it's a weekend project with the right tools. The marginal cost of running a business function has collapsed to near zero.",
 
@@ -1434,7 +1434,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "\"The best co-founder you'll ever find might not be a person. It might be the agent you build your company around.\"",
 
-      "So before you spend six months looking for someone to split the cap table with — ask yourself what you actually need. A co-founder, or a better set of agents? The answer might surprise you.",
+      "So before you spend six months looking for someone to split the cap table with — ask yourself what you actually need. A co-founder, or a better set of agent The answer might surprise you.",
     ],
   },
   {
@@ -1630,7 +1630,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "Polsia (polsia.com) — Best for running what you've built. Polsia is the autonomous company runtime. You give it your business — existing or new — and it runs it. Every day, Polsia's agents wake up, assess what the company needs, and execute: sending outbound, shipping code updates, managing your inbox, running campaigns, handling support. It currently operates 800+ companies simultaneously at $49/month.",
 
-      "Think of Naïve as the launchpad and Polsia as the engine. Many founders will use both — Naïve to get started quickly, Polsia to run it long-term.",
+      "Think of Naïve as the launchpad and Polsia as the agent. Many founders will use both — Naïve to get started quickly, Polsia to run it long-term.",
 
       "Before You Start: The One Thing That Matters",
 
@@ -1956,7 +1956,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "<strong>1. Autonomous decision-making.</strong> Not \"execute this instruction\" but \"assess the situation and decide what to do.\" A business automation system needs agents that can look at the state of the company and determine what action is most valuable next — without being told.",
 
-      "<strong>2. Cross-functional coordination.</strong> A marketing agent that knows what the engineering agent is building. A support agent that updates the product agent when a feature request is common. Agents that operate as a team, not as independent scripts.",
+      "<strong>2. Cross-functional coordination.</strong> A marketing agent that knows what the agentering agent is building. A support agent that updates the product agent when a feature request is common. Agents that operate as a team, not as independent scripts.",
 
       "<strong>3. Persistent memory and context.</strong> The system needs to remember what it did last week, what worked, what didn't, who the customers are, what the product does, and how it's been received. Business context that accumulates rather than resetting each conversation.",
 
@@ -2049,7 +2049,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "This week I described the directory concept to Lovable and got a working React app with a homepage, directory listings, submission forms, an admin panel, and basic search — in about three hours. Not beautiful. Not complete. But real and deployed. The first version would have taken weeks as a non-developer doing it the old way. It took an afternoon. That alone validated the premise.",
 
-      "I've also started building the content engine — writing the first blog posts with Claude, targeting search queries around autonomous companies, solo founding, and AI tools. The SEO flywheel takes time to spin up, so starting it now instead of month three feels like the right call.",
+      "I've also started building the content agent — writing the first blog posts with Claude, targeting search queries around autonomous companies, solo founding, and AI tools. The SEO flywheel takes time to spin up, so starting it now instead of month three feels like the right call.",
 
       "Everything else is still ahead: monetisation, affiliate tracking, partnership outreach, plugging in Polsia for operations, deploying Naïve employees for autonomous discovery. The roadmap is long. But having a live, working product after a few days changes the psychology completely. It's no longer theoretical.",
 
@@ -2075,7 +2075,7 @@ export const staticBlogPosts: BlogPost[] = [
 
       "Describe the direction obsessively well at the start. Every agent produces output that reflects the quality of the brief it was given. I'm spending time now writing LazyUnicorn's brand voice, target audience, content principles, and tone guide — then feeding that to every agent before they produce a single output. The upfront investment in clarity pays for itself immediately.",
 
-      "Build the content engine first. SEO content compounds the slowest and pays off the longest. Every week you delay is a week of compounding you'll never get back.",
+      "Build the content agent first. SEO content compounds the slowest and pays off the longest. Every week you delay is a week of compounding you'll never get back.",
 
       "Lovable is a multiplier, not a replacement for judgment. The non-developer who uses Lovable doesn't become a developer. They become someone who can ship products without writing code — which is a real and valuable thing to be. But they still need the judgment to know what's worth building.",
 
@@ -2471,23 +2471,23 @@ const BlogHeader = () => {
 };
 
 const BLOG_TAGS: { label: string; keywords: string[] }[] = [
-  { label: "Blogger", keywords: ["lazy blogger", "blog engine", "auto-publish blog", "autonomous blog"] },
-  { label: "SEO", keywords: ["lazy seo", "seo engine", "seo-optimis", "seo posts", "seo content engine"] },
-  { label: "GEO", keywords: ["lazy geo", "generative engine optimis", "geo engine", "cited by ai", "chatgpt cite", "perplexity cite"] },
-  { label: "Voice", keywords: ["lazy voice", "text-to-speech", "elevenlabs", "voice engine", "podcast engine"] },
-  { label: "Stream", keywords: ["lazy stream", "stream engine", "stream recap", "twitch engine"] },
-  { label: "Store", keywords: ["lazy store", "store engine", "autonomous store"] },
-  { label: "Pay", keywords: ["lazy pay", "pay engine", "payment engine"] },
-  { label: "Security", keywords: ["lazy security", "security engine", "aikido", "pentest", "security scan"] },
-  { label: "GitHub", keywords: ["lazy github", "github engine"] },
-  { label: "Alert", keywords: ["lazy alert", "alert engine", "slack alert"] },
-  { label: "Telegram", keywords: ["lazy telegram", "telegram engine", "telegram bot"] },
-  { label: "Linear", keywords: ["lazy linear", "linear engine"] },
-  { label: "Contentful", keywords: ["lazy contentful", "contentful engine", "cms sync engine"] },
-  { label: "Perplexity", keywords: ["lazy perplexity", "perplexity engine"] },
-  { label: "Supabase", keywords: ["lazy supabase", "supabase engine", "database monitor engine"] },
-  { label: "SMS", keywords: ["lazy sms", "sms engine", "sms campaign engine"] },
-  { label: "Run", keywords: ["lazy run", "run engine", "all engines", "master toggle"] },
+  { label: "Blogger", keywords: ["lazy blogger", "blog agent", "auto-publish blog", "autonomous blog"] },
+  { label: "SEO", keywords: ["lazy seo", "seo agent", "seo-optimis", "seo posts", "seo content agent"] },
+  { label: "GEO", keywords: ["lazy geo", "generative agent optimis", "geo agent", "cited by ai", "chatgpt cite", "perplexity cite"] },
+  { label: "Voice", keywords: ["lazy voice", "text-to-speech", "elevenlabs", "voice agent", "podcast agent"] },
+  { label: "Stream", keywords: ["lazy stream", "stream agent", "stream recap", "twitch agent"] },
+  { label: "Store", keywords: ["lazy store", "store agent", "autonomous store"] },
+  { label: "Pay", keywords: ["lazy pay", "pay agent", "payment agent"] },
+  { label: "Security", keywords: ["lazy security", "security agent", "aikido", "pentest", "security scan"] },
+  { label: "GitHub", keywords: ["lazy github", "github agent"] },
+  { label: "Alert", keywords: ["lazy alert", "alert agent", "slack alert"] },
+  { label: "Telegram", keywords: ["lazy telegram", "telegram agent", "telegram bot"] },
+  { label: "Linear", keywords: ["lazy linear", "linear agent"] },
+  { label: "Contentful", keywords: ["lazy contentful", "contentful agent", "cms sync agent"] },
+  { label: "Perplexity", keywords: ["lazy perplexity", "perplexity agent"] },
+  { label: "Supabase", keywords: ["lazy supabase", "supabase agent", "database monitor agent"] },
+  { label: "SMS", keywords: ["lazy sms", "sms agent", "sms campaign agent"] },
+  { label: "Run", keywords: ["lazy run", "run agent", "all agents", "master toggle"] },
 ];
 
 function getPostTags(post: BlogPost): string[] {

@@ -57,7 +57,7 @@ const ProductPromoBanner = ({ excludeProduct, glass = true }: ProductPromoBanner
       className={containerClass}
     >
       <p className="font-display text-sm font-bold tracking-[0.1em] uppercase text-foreground/60 mb-2 text-center">
-        Autonomous Growth Engines for Lovable
+        Autonomous Agents for Lovable
       </p>
       <p className="font-body text-sm text-foreground/65 text-center mb-6 max-w-md mx-auto">
         Turn your Lovable website into a self-growing asset with a single prompt.

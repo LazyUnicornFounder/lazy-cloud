@@ -14,7 +14,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const LAZY_GRANOLA_FALLBACK = `[Lazy Granola Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Add an autonomous meeting-to-content engine called Lazy Granola to this project...`;
+Add an autonomous meeting-to-content agent called Lazy Granola to this project...`;
 
 /* ── Reusable copy button ── */
 function CopyPromptButton({
@@ -105,7 +105,7 @@ export default function LazyGranolaPage() {
   return (
     <>
       <SEO
-        title="Lazy Granola — Autonomous Meeting-to-Content Engine"
+        title="Lazy Granola — Autonomous Meeting-to-Content Agent"
         description="Connect Granola to the Lazy Stack. Every meeting becomes blog posts, Linear issues, Slack summaries, and customer intelligence — automatically."
         url="https://lazyunicorn.ai/lazy-granola"
       />
@@ -384,7 +384,7 @@ export default function LazyGranolaPage() {
             </motion.div>
 
             <p className="font-body text-foreground/50 text-[14px] leading-relaxed max-w-3xl mx-auto">
-              Lazy Granola does not replace any other Lazy engine. It feeds them. If you have Lazy Blogger installed meeting posts appear on your blog automatically. If you have Lazy Linear installed action items appear in your board automatically. Install what you have. Lazy Granola connects to whatever is there.
+              Lazy Granola does not replace any other Lazy agent. It feeds them. If you have Lazy Blogger installed meeting posts appear on your blog automatically. If you have Lazy Linear installed action items appear in your board automatically. Install what you have. Lazy Granola connects to whatever is there.
             </p>
           </div>
         </section>

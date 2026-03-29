@@ -69,7 +69,7 @@ export default function AdminSeoPage() {
     setToggling(true);
     await db.from("seo_settings").update({ is_running: !settings.is_running }).eq("id", settings.id);
     queryClient.invalidateQueries({ queryKey: ["admin-seo-settings"] });
-    queryClient.invalidateQueries({ queryKey: ["admin-engine-status"] });
+    queryClient.invalidateQueries({ queryKey: ["admin-agent-status"] });
     setToggling(false);
   };
 

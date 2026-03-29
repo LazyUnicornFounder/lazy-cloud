@@ -4,7 +4,7 @@ import { MessageCircle, X, Send, Volume2, VolumeX, Mic } from "lucide-react";
 
 type Message = { role: "user" | "assistant"; content: string };
 
-const GREETING = "Hey! I'm the Lazy Unicorn assistant. Ask me anything about the Lazy Stack — twenty autonomous engines that make your Lovable site run itself. What do you want to automate?";
+const GREETING = "Hey! I'm the Lazy Unicorn assistant. Ask me anything about the Lazy Stack — twenty autonomous agents that make your Lovable site run itself. What do you want to automate?";
 
 export default function VoiceAgentWidget() {
   const [isOpen, setIsOpen] = useState(false);

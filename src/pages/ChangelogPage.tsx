@@ -10,7 +10,7 @@ const db = supabase as any;
 
 interface Release {
   id: string;
-  engine_name: string;
+  agent_name: string;
   version: string;
   release_date: string;
   change_type: string;
@@ -81,13 +81,13 @@ export default function ChangelogPage() {
     },
   });
 
-  const engineNames = useMemo(() => [...new Set(releases.map(r => r.engine_name))].sort(), [releases]);
+  const agentNames = useMemo(() => [...new Set(releases.map(r => r.agent_name))].sort(), [releases]);
 
   const filtered = useMemo(() => {
     return releases.filter(r => {
       if (categoryFilter !== "All Agents") {
-        const engines = ENGINE_CATEGORIES[categoryFilter] || [];
-        if (!engines.includes(r.engine_name)) return false;
+        const agent = ENGINE_CATEGORIES[categoryFilter] || [];
+        if (!agents.includes(r.agent_name)) return false;
       }
       if (typeFilter !== "All" && r.change_type !== typeFilter.toLowerCase()) return false;
       return true;
@@ -100,7 +100,7 @@ export default function ChangelogPage() {
       if (!groups[r.release_date]) groups[r.release_date] = [];
       groups[r.release_date].push(r);
     });
-    Object.values(groups).forEach(g => g.sort((a, b) => a.engine_name.localeCompare(b.engine_name)));
+    Object.values(groups).forEach(g => g.sort((a, b) => a.agent_name.localeCompare(b.agent_name)));
     return Object.entries(groups).sort(([a], [b]) => b.localeCompare(a));
   }, [filtered]);
 
@@ -112,13 +112,13 @@ export default function ChangelogPage() {
 
   const handleCheck = () => {
     if (!checkerEngine || !checkerVersion) return;
-    const engineReleases = releases.filter(r => r.engine_name === checkerEngine);
-    const currentRelease = engineReleases.find(r => r.version === checkerVersion);
+    const agentReleases = releases.filter(r => r.agent_name === checkerEngine);
+    const currentRelease = agentReleases.find(r => r.version === checkerVersion);
     if (!currentRelease) {
-      setCheckerResult({ upToDate: false, updates: engineReleases });
+      setCheckerResult({ upToDate: false, updates: agentReleases });
       return;
     }
-    const newer = engineReleases.filter(r => r.release_date > currentRelease.release_date || (r.release_date === currentRelease.release_date && r.version > currentRelease.version));
+    const newer = agentReleases.filter(r => r.release_date > currentRelease.release_date || (r.release_date === currentRelease.release_date && r.version > currentRelease.version));
     setCheckerResult({ upToDate: newer.length === 0, updates: newer });
   };
 
@@ -159,7 +159,7 @@ export default function ChangelogPage() {
                   className="w-full bg-background border border-border text-foreground px-3 py-2 font-body text-sm focus:outline-none focus:border-foreground/30"
                 >
                   <option value="">Select agent</option>
-                  {engineNames.map(n => <option key={n} value={n}>{n}</option>)}
+                  {agentNames.map(n => <option key={n} value={n}>{n}</option>)}
                 </select>
               </div>
               <div className="flex-1">
@@ -245,7 +245,7 @@ export default function ChangelogPage() {
                 {items.map(r => (
                   <div key={r.id} className="border border-border p-4">
                     <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <span className="font-display text-sm font-bold">{r.engine_name}</span>
+                      <span className="font-display text-sm font-bold">{r.agent_name}</span>
                       <code className="text-[13px] bg-foreground/5 px-1.5 py-0.5 text-foreground/60">{r.version}</code>
                       <span className={`text-[14px] px-1.5 py-0.5 uppercase tracking-wider ${changeTypeBadge(r.change_type)}`}>{r.change_type}</span>
                       <span className={`text-[14px] px-1.5 py-0.5 uppercase tracking-wider ${complexityBadge(r.upgrade_complexity)}`}>{r.upgrade_complexity}</span>

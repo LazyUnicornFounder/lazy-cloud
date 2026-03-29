@@ -13,7 +13,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const FALLBACK_PROMPT = `[Lazy Print Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Add a complete autonomous print-on-demand engine called Lazy Print to this project. It connects your Lovable site to Printful — giving you access to 475+ customisable products printed and shipped from fulfillment centers globally.`;
+Add a complete autonomous print-on-demand agent called Lazy Print to this project. It connects your Lovable site to Printful — giving you access to 475+ customisable products printed and shipped from fulfillment centers globally.`;
 
 const faqs = [
   { q: "Do I need to buy inventory upfront?", a: "No. Products are only made when a customer places an order. You never hold stock." },
@@ -64,7 +64,7 @@ export default function LazyPrintPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Print — Autonomous Print-on-Demand Engine for Lovable"
+        title="Lazy Print — Autonomous Print-on-Demand Agent for Lovable"
         description="Upload your design. Sell merch. Ship nothing. Connect Printful to your Lovable site and sell custom products globally."
         url="/lazy-print"
         keywords="print on demand Lovable, Printful integration, autonomous merch store, custom merchandise automation"

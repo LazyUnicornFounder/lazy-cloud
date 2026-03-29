@@ -13,7 +13,7 @@ const XLogo = () => (
   </svg>
 );
 
-/* ── Engine icons ── */
+/* ── Agent icons ── */
 const icons = {
   blogger: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="30" y="20" width="50" height="70" rx="3"/><line x1="40" y1="38" x2="70" y2="38"/><line x1="40" y1="48" x2="65" y2="48"/><line x1="40" y1="58" x2="70" y2="58"/><line x1="40" y1="68" x2="55" y2="68"/><path d="M82 90 L90 20 L94 22 L86 92 Z"/></svg>,
   seo: <svg width="20" height="20" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="50" cy="55" r="22"/><line x1="66" y1="71" x2="85" y2="90"/><rect x="25" y="70" width="8" height="20" rx="1"/><rect x="38" y="60" width="8" height="30" rx="1"/><rect x="51" y="50" width="8" height="40" rx="1"/></svg>,

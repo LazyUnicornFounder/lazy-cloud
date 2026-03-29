@@ -14,7 +14,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const SETUP_PROMPT = `[Lazy Crawl Prompt — v0.0.5 — LazyUnicorn.ai]
 
-Add a complete autonomous web intelligence engine called Lazy Crawl to this project. It uses the Firecrawl API to monitor competitor websites, extract trending topics, discover keyword opportunities, find leads from public directories, and feed real current data into your content engines — all automatically.
+Add a complete autonomous web intelligence agent called Lazy Crawl to this project. It uses the Firecrawl API to monitor competitor websites, extract trending topics, discover keyword opportunities, find leads from public directories, and feed real current data into your content agents — all automatically.
 
 ---
 
@@ -27,7 +27,7 @@ crawl_targets: id (uuid, primary key, default gen_random_uuid()), url (text), cr
 
 crawl_results: id (uuid, primary key, default gen_random_uuid()), target_id (uuid, references crawl_targets), url (text), content (text), extracted_data (jsonb), crawled_at (timestamptz, default now())
 
-crawl_intel: id (uuid, primary key, default gen_random_uuid()), intel_type (text), title (text), summary (text), source_url (text), relevance_score (numeric), fed_to_engine (text), created_at (timestamptz, default now())
+crawl_intel: id (uuid, primary key, default gen_random_uuid()), intel_type (text), title (text), summary (text), source_url (text), relevance_score (numeric), fed_to_agent (text), created_at (timestamptz, default now())
 
 crawl_leads: id (uuid, primary key, default gen_random_uuid()), name (text), url (text), source (text), extracted_data (jsonb), status (text, default 'new'), created_at (timestamptz, default now())
 
@@ -50,7 +50,7 @@ const steps = [
   "Copy the setup prompt from this page.",
   "Paste it into your existing Lovable project.",
   "Add your Firecrawl API key.",
-  "Competitor intelligence flows into your content engines automatically.",
+  "Competitor intelligence flows into your content agents automatically.",
 ];
 
 function CopyPromptButton({ className = "", onCopy, text }: { className?: string; onCopy: () => void; text: string }) {
@@ -89,7 +89,7 @@ const LazyCrawlPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Crawl — Autonomous Web Intelligence Engine for Lovable" description="Monitor competitors, extract trends, discover leads, and feed real web data into your content engines — all powered by Firecrawl." url="/lazy-crawl" />
+      <SEO title="Lazy Crawl — Autonomous Web Intelligence Agent for Lovable" description="Monitor competitors, extract trends, discover leads, and feed real web data into your content agents — all powered by Firecrawl." url="/lazy-crawl" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}
@@ -109,7 +109,7 @@ const LazyCrawlPage = () => {
                 <ServiceBadge />
               </div>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-                Lazy Crawl uses the Firecrawl API to monitor competitor websites, extract trending topics, discover keyword opportunities, and feed real current data into your content engines — automatically, forever.
+                Lazy Crawl uses the Firecrawl API to monitor competitor websites, extract trending topics, discover keyword opportunities, and feed real current data into your content agents — automatically, forever.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
                 <CopyPromptButton text={promptText} onCopy={handlePromptCopy} />
@@ -126,7 +126,7 @@ const LazyCrawlPage = () => {
 
         {/* How it works */}
         <section id="how-it-works" className="max-w-2xl mx-auto px-6 mb-20 pt-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">Real intelligence. Flowing into your content engines.</motion.h2>
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">Real intelligence. Flowing into your content agents.</motion.h2>
           <div className="space-y-4">
             {steps.map((step, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className="flex items-start gap-4">
@@ -149,7 +149,7 @@ const LazyCrawlPage = () => {
               { icon: Eye, title: "Live Intelligence Feed", desc: "Build a continuously updating industry intelligence feed from real web data." },
               { icon: Database, title: "Real Data for Content", desc: "Feed real current data into your blog posts instead of AI guesswork." },
               { icon: BarChart3, title: "Change Detection", desc: "Get alerted when competitor pricing, features, or messaging changes." },
-              { icon: Zap, title: "Engine Integration", desc: "Extracted intel flows automatically into Lazy Blogger, Lazy SEO, and Lazy GEO." },
+              { icon: Zap, title: "Agent Integration", desc: "Extracted intel flows automatically into Lazy Blogger, Lazy SEO, and Lazy GEO." },
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.06 }} className="border-b sm:odd:border-r last:border-b-0 border-border bg-card p-6">
                 <item.icon size={18} className="text-foreground/65 mb-3" />
@@ -170,8 +170,8 @@ const LazyCrawlPage = () => {
           { q: "What is Firecrawl?", a: "Firecrawl is a web scraping API that extracts clean, structured content from any website. Lazy Crawl uses it to monitor competitors and extract intelligence automatically." },
           { q: "Do I need a Firecrawl API key?", a: "Yes. Get one at firecrawl.dev. The free tier includes 500 credits which is enough for initial setup and testing." },
           { q: "How often does it crawl?", a: "By default every 30 minutes for active targets. You can configure frequency per target — some sites weekly, others daily." },
-          { q: "Does it work without the other Lazy engines?", a: "Yes. It stores intelligence independently. But it becomes much more powerful when Lazy Blogger, Lazy SEO, and Lazy GEO are also installed — intel flows directly into your content pipeline." },
-          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+          { q: "Does it work without the other Lazy agent", a: "Yes. It stores intelligence independently. But it becomes much more powerful when Lazy Blogger, Lazy SEO, and Lazy GEO are also installed — intel flows directly into your content pipeline." },
+          { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every agent update is versioned and documented with upgrade instructions." },
           { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
         ]} />
 
@@ -179,7 +179,7 @@ const LazyCrawlPage = () => {
         <section className="max-w-3xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">Stop guessing. Start knowing.</h2>
-            <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">Competitor monitoring, trend extraction, lead discovery — all feeding real data into your content engines.</p>
+            <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">Competitor monitoring, trend extraction, lead discovery — all feeding real data into your content agents.</p>
             <CopyPromptButton text={promptText} onCopy={handlePromptCopy} />
             <p className="font-body text-sm text-foreground/60 mt-4">Open your Lovable project, paste it into the chat, add your API key. Done.</p>
           </motion.div>

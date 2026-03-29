@@ -15,7 +15,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const LAZY_MAIL_PROMPT = `[Lazy Mail Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Add a complete autonomous email engine called Lazy Mail to this project. It connects Resend to your Lovable site and handles subscriber capture, welcome sequences, automated newsletter broadcasts from your blog content, transactional emails, and self-improving open rates — without you writing or sending a single email manually.
+Add a complete autonomous email agent called Lazy Mail to this project. It connects Resend to your Lovable site and handles subscriber capture, welcome sequences, automated newsletter broadcasts from your blog content, transactional emails, and self-improving open rates — without you writing or sending a single email manually.
 
 Note: Store the Resend API key as Supabase secret RESEND_API_KEY. Never store in the database.
 
@@ -64,9 +64,9 @@ const features = [
   { icon: Users, title: "Subscriber capture", desc: "Embeddable subscribe form on every page. Double opt-in for GDPR compliance." },
   { icon: Send, title: "Welcome sequences", desc: "AI-written welcome emails sent the moment someone confirms. Multi-step sequences with delays." },
   { icon: Mail, title: "Newsletter broadcasts", desc: "Picks your latest blog post, writes a newsletter, and sends it to every subscriber automatically." },
-  { icon: Clock, title: "Scheduled delivery", desc: "Daily, weekly, or biweekly newsletters. Pick the day. The engine handles the rest." },
+  { icon: Clock, title: "Scheduled delivery", desc: "Daily, weekly, or biweekly newsletters. Pick the day. The agent handles the rest." },
   { icon: BarChart3, title: "Self-improving open rates", desc: "Rewrites underperforming subject lines using AI when open rates drop below 20%." },
-  { icon: Zap, title: "Zero manual work", desc: "After setup you never write, schedule, or send another email. The engine does everything." },
+  { icon: Zap, title: "Zero manual work", desc: "After setup you never write, schedule, or send another email. The agent does everything." },
 ];
 
 const faqs = [
@@ -90,10 +90,10 @@ export default function LazyMailPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Mail — Autonomous Email Engine for Lovable"
+        title="Lazy Mail — Autonomous Email Agent for Lovable"
         description="One prompt adds subscriber capture, welcome sequences, and AI-written newsletters to your Lovable project. Powered by Resend."
         url="/lazy-mail"
-        keywords="autonomous email, Resend integration, Lovable email engine, newsletter automation, subscriber management"
+        keywords="autonomous email, Resend integration, Lovable email agent, newsletter automation, subscriber management"
       />
       <Navbar />
 

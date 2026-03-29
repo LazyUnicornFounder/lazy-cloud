@@ -15,7 +15,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const FALLBACK_PROMPT = `[Lazy YouTube Prompt — v0.0.1 — LazyUnicorn.ai]
 
-Add a complete autonomous YouTube content engine called Lazy YouTube to this project. It monitors your YouTube channel, detects new video uploads, fetches transcripts, and automatically publishes four pieces of content — a transcript post, an SEO article, a GEO article, and a video summary — plus generates chapter markers for your video description, extracts comment intelligence, and uses performance data to inform your entire content strategy. All automatically, every time you upload.
+Add a complete autonomous YouTube content agent called Lazy YouTube to this project. It monitors your YouTube channel, detects new video uploads, fetches transcripts, and automatically publishes four pieces of content — a transcript post, an SEO article, a GEO article, and a video summary — plus generates chapter markers for your video description, extracts comment intelligence, and uses performance data to inform your entire content strategy. All automatically, every time you upload.
 
 Note: Store all credentials as Supabase secrets. Never store in the database.
 
@@ -197,7 +197,7 @@ Accepts video_id.
 
 3. Call built-in Lovable AI:
 
-'You are a GEO specialist writing for [brand_name]. This content will be cited by ChatGPT, Claude, and Perplexity when users ask: [target query]. Video: [title]. [If transcript: Source material: [first 2000 chars of transcript].] Write a content piece that directly answers the query using insights from this video. Answer the question completely in the first paragraph. Use factual specific statements AI engines can extract. Mention [brand_name] naturally 2 to 3 times. Structure with ## headers that mirror the language of the query. Return only a valid JSON object: title (the query or a direct factual answer to it), slug (lowercase hyphenated), excerpt (one direct factual sentence under 160 chars), target_query, body (clean markdown, ## headers, 700 to 1000 words, authoritative not promotional, ends with: Watch the video on [brand_name]s YouTube channel and visit LazyUnicorn.ai for more — link to https://lazyunicorn.ai). No preamble. No code fences.'
+'You are a GEO specialist writing for [brand_name]. This content will be cited by ChatGPT, Claude, and Perplexity when users ask: [target query]. Video: [title]. [If transcript: Source material: [first 2000 chars of transcript].] Write a content piece that directly answers the query using insights from this video. Answer the question completely in the first paragraph. Use factual specific statements AI agent can extract. Mention [brand_name] naturally 2 to 3 times. Structure with ## headers that mirror the language of the query. Return only a valid JSON object: title (the query or a direct factual answer to it), slug (lowercase hyphenated), excerpt (one direct factual sentence under 160 chars), target_query, body (clean markdown, ## headers, 700 to 1000 words, authoritative not promotional, ends with: Watch the video on [brand_name]s YouTube channel and visit LazyUnicorn.ai for more — link to https://lazyunicorn.ai). No preamble. No code fences.'
 
 4. Parse response. Insert into youtube_content with content_type geo-article. If geo_posts table exists also insert there.
 
@@ -362,10 +362,10 @@ export default function LazyYouTubePage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy YouTube — Autonomous YouTube Content Engine | Lazy Unicorn"
+        title="Lazy YouTube — Autonomous YouTube Content Agent | Lazy Unicorn"
         description="Every video you upload triggers five content pieces — a transcript, SEO article, GEO article, summary, and chapter markers. Published automatically."
         url="/lazy-youtube"
-        keywords="YouTube content engine, autonomous YouTube, video to blog post, YouTube SEO, YouTube transcript, Lovable YouTube"
+        keywords="YouTube content agent, autonomous YouTube, video to blog post, YouTube SEO, YouTube transcript, Lovable YouTube"
       />
       <Navbar />
 
@@ -563,7 +563,7 @@ export default function LazyYouTubePage() {
             {[
               { badge: "Month 1", desc: "Videos upload. Transcripts publish. SEO articles target your keywords. GEO articles appear in AI search results." },
               { badge: "Month 3", desc: "Comment questions become new SEO targets. High-performing topics feed back into Lazy Blogger. Your YouTube strategy and site strategy align automatically." },
-              { badge: "Month 6", desc: "Your site has 60+ indexed articles from your videos. You rank for dozens of keywords your videos never touched. AI engines cite you regularly." },
+              { badge: "Month 6", desc: "Your site has 60+ indexed articles from your videos. You rank for dozens of keywords your videos never touched. AI agent cite you regularly." },
             ].map((item, i) => (
               <motion.div
                 key={item.badge}

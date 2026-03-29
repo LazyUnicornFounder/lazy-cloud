@@ -126,7 +126,7 @@ export default function UpgradeGuidePage() {
                   <li>Paste the new prompt into the Lovable chat.</li>
                   <li>Lovable will detect what already exists and add only what is missing or different. It will not delete your existing data, posts, or settings.</li>
                   <li>Watch the build. If Lovable asks you a question answer it. If Lovable encounters a conflict it will usually offer to skip or merge — choose merge.</li>
-                  <li>After the build completes go to your site and verify: the public pages still work, the admin still loads, and the engine is still running.</li>
+                  <li>After the build completes go to your site and verify: the public pages still work, the admin still loads, and the agent is still running.</li>
                 </ol>
                 <p>If anything breaks, open the Lovable chat and type: <em>"The [agent name] stopped working after upgrading. Please check for issues and fix them."</em> Lovable will diagnose and repair.</p>
               </Section>
@@ -177,7 +177,7 @@ export default function UpgradeGuidePage() {
                     <p>Open the Lovable chat and type: <em>"The site broke after I pasted the [agent] prompt. Please diagnose and fix."</em> Lovable will identify what went wrong.</p>
                   </div>
                   <div>
-                    <p className="text-foreground/80 font-semibold mb-1">My engine stopped running after upgrading.</p>
+                    <p className="text-foreground/80 font-semibold mb-1">My agent stopped running after upgrading.</p>
                     <p>Go to /admin and check if the agent's is_running toggle is still on. Sometimes a new setup page resets it to false. Toggle it back on.</p>
                   </div>
                   <div>
@@ -214,7 +214,7 @@ export default function UpgradeGuidePage() {
 
               <Section id="getting-help" title="Getting help">
                 <p>If you get stuck during an upgrade open the Lovable chat and describe the issue. Lovable can diagnose most upgrade problems automatically.</p>
-                <p>For complex issues, include: the engine name, the version you upgraded from, the version you upgraded to, and any error messages you see. This helps Lovable resolve the issue faster.</p>
+                <p>For complex issues, include: the agent name, the version you upgraded from, the version you upgraded to, and any error messages you see. This helps Lovable resolve the issue faster.</p>
               </Section>
             </div>
           </div>

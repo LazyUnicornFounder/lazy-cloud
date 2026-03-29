@@ -144,7 +144,7 @@ const products = [
   { cursive: "Lazy", name: "Supabase", link: "/lazy-supabase", tagline: "Autonomous database reports" },
   { cursive: "Lazy", name: "Security", link: "/lazy-security", tagline: "Autonomous pentesting" },
 
-  { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More engines loading" },
+  { cursive: "Lazy", name: "Coming Soon", link: "", tagline: "More agents loading" },
 ];
 
 /* ── Sketch SVG icons ── */
@@ -429,13 +429,13 @@ const Index = () => {
         title={NEW_TITLE}
         url="/"
         description={NEW_DESCRIPTION}
-        keywords="autonomous blog engine, autonomous SEO engine, autonomous GEO engine, Lovable website growth, AI blog writer, AI SEO tool, AI citation engine, self-growing website, autonomous content, Lovable startup, solo founder tools, AI business automation, autonomous marketing, self-building startup"
+        keywords="autonomous blog agent, autonomous SEO agent, autonomous GEO agent, Lovable website growth, AI blog writer, AI SEO tool, AI citation agent, self-growing website, autonomous content, Lovable startup, solo founder tools, AI business automation, autonomous marketing, self-building startup"
         breadcrumbs={[{ name: "Home", url: "/" }]}
         faq={[
-          { question: "What are the Autonomous Growth Engines?", answer: "They are AI-powered engines that autonomously grow your Lovable website by publishing content, optimizing for search, and getting your brand cited by AI assistants." },
+          { question: "What are the Autonomous Agents?", answer: "They are AI-powered agent that autonomously grow your Lovable website by publishing content, optimizing for search, and getting your brand cited by AI assistants." },
           { question: "How does Lazy Blogger work?", answer: "With a single prompt, Lazy Blogger publishes high-quality blog posts every day on your Lovable website — forever, for free." },
           { question: "What does Lazy SEO do?", answer: "Lazy SEO discovers keyword opportunities, creates SEO-optimized content, and improves your search rankings on autopilot." },
-          { question: "What is Lazy GEO?", answer: "Lazy GEO gets your brand cited by AI engines like ChatGPT, Claude, and Perplexity by creating citation-ready content and tracking your visibility." },
+          { question: "What is Lazy GEO?", answer: "Lazy GEO gets your brand cited by AI agent like ChatGPT, Claude, and Perplexity by creating citation-ready content and tracking your visibility." },
         ]}
         speakable={["h1", ".hero-description"]}
       />
@@ -556,7 +556,7 @@ const Index = () => {
       </section>
 
       {/* Product Grid */}
-      <section id="engines" className="relative z-10 scroll-mt-20">
+      <section id="agent" className="relative z-10 scroll-mt-20">
         <div className="grid grid-cols-2 md:grid-cols-4">
           {/* Lazy Run */}
           <Link to="/lazy-run" className="block">
@@ -673,7 +673,7 @@ const Index = () => {
                 <line x1="35" y1="95" x2="85" y2="95" strokeDasharray="4 4" />
               </svg>
             )},
-            { cursive: "Lazy", name: "Build", tagline: "Autonomous engine writer", link: "/lazy-build", sketch: (
+            { cursive: "Lazy", name: "Build", tagline: "Autonomous agent writer", link: "/lazy-build", sketch: (
               <svg width="80" height="80" viewBox="0 0 120 120" fill="none" stroke="#f0ead6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="30" y="35" width="60" height="55" rx="3" />
                 <path d="M45 25 L45 35" /><path d="M75 25 L75 35" />

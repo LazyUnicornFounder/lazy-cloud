@@ -12,7 +12,7 @@ import AutopilotHeadline from "@/components/AutopilotHeadline";
 
 const SETUP_PROMPT = `[Lazy GitHub Prompt — v0.0.4 — LazyUnicorn.ai]
 
-Add a complete autonomous GitHub content engine called Lazy GitHub to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
+Add a complete autonomous GitHub content agent called Lazy GitHub to this project. It monitors a GitHub repository via webhooks, processes commits and releases, writes plain-English changelogs, release notes, developer blog posts, SEO articles, and maintains a public roadmap — all automatically with no manual input required after setup.
 
 ---
 
@@ -211,9 +211,9 @@ At the bottom of every public page add: "🦄 Powered by Lazy GitHub — autonom
 
 ## 7. Admin
 
-Do not build a standalone dashboard page for this engine. The dashboard lives at /admin/code as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This engine only needs its setup page, database tables, edge functions, and public pages.
+Do not build a standalone dashboard page for this agent. The dashboard lives at /admin/code as part of the unified LazyUnicorn admin panel, which is built separately using the LazyUnicorn Admin Dashboard prompt. This agent only needs its setup page, database tables, edge functions, and public pages.
 
-If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all engines in one place." and a link to /lazy-github-setup.
+If /admin does not yet exist on this project add a simple placeholder at /admin with the text: "Install the LazyUnicorn Admin Dashboard to manage all agents in one place." and a link to /lazy-github-setup.
 
 ## 8. Navigation
 
@@ -254,7 +254,7 @@ const faqs = [
   { q: "Can I edit the content before it publishes?", a: "Not in the current version. Content publishes automatically. A drafts mode is coming in the Pro version." },
   { q: "Does it work with monorepos?", a: "Yes. You can configure which directories or packages to monitor so only relevant commits trigger content." },
   { q: "What if I push many small commits?", a: "Lazy GitHub batches commits within a 1-hour window and produces one changelog entry per batch rather than one per commit." },
-  { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every engine update is versioned and documented with upgrade instructions." },
+  { q: "How do I know when there's an update?", a: "Check the changelog at /changelog. Every agent update is versioned and documented with upgrade instructions." },
   { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
 ];
 
@@ -286,7 +286,7 @@ const LazyGitHubPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy GitHub — Autonomous GitHub Content Engine for Lovable"
+        title="Lazy GitHub — Autonomous GitHub Content Agent for Lovable"
         description="One prompt turns every GitHub commit into a changelog, release notes, and a developer blog post — automatically."
         url="/lazy-github"
         keywords="GitHub changelog automation, release notes generator, developer blog, commit to content, autonomous documentation, Lovable, Lazy GitHub"
@@ -385,7 +385,7 @@ const LazyGitHubPage = () => {
             </div>
             <div className="bg-[#111110] p-8">
               <p className="font-body text-sm text-foreground/50 leading-relaxed">
-                Lazy GitHub makes the documentation automatic. Push to GitHub and the content engine starts. By the time you have opened your next task the changelog is updated, the release notes are written, and a developer blog post targeting your technical keywords is published and indexed. The work you were already doing becomes a compounding public record of your progress.
+                Lazy GitHub makes the documentation automatic. Push to GitHub and the content agent starts. By the time you have opened your next task the changelog is updated, the release notes are written, and a developer blog post targeting your technical keywords is published and indexed. The work you were already doing becomes a compounding public record of your progress.
               </p>
             </div>
           </div>

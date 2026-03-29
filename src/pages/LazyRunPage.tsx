@@ -38,7 +38,7 @@ All edge functions must use these exact names. Lazy Run calls them by these name
 | GitLab | gitlab-webhook, gitlab-sync-roadmap, gitlab-write-content, gitlab-optimise |
 | Linear | linear-sync-all, linear-write-content, linear-velocity-report, linear-optimise |
 | Crawl | crawl-run, crawl-extract, crawl-publish |
-| Perplexity | perplexity-research, perplexity-feed-engines, perplexity-test-citations, perplexity-improve-content |
+| Perplexity | perplexity-research, perplexity-feed-agents, perplexity-test-citations, perplexity-improve-content |
 | Alert | alert-send, alert-monitor, alert-briefing, alert-command |
 | Telegram | telegram-send, telegram-monitor, telegram-briefing, telegram-command |
 | Contentful | contentful-pull, contentful-webhook, contentful-push |
@@ -111,7 +111,7 @@ brand_name (text),
 business_description (text),
 target_audience (text),
 support_email (text),
-active_engines (text),
+active_agent (text),
 master_running (boolean, default true),
 setup_complete (boolean, default false),
 prompt_version (text, nullable),
@@ -119,7 +119,7 @@ created_at (timestamptz, default now())
 
 **run_activity**
 id (uuid, primary key, default gen_random_uuid()),
-engine (text),
+agent (text),
 action (text),
 result (text),
 details (text),
@@ -127,14 +127,14 @@ created_at (timestamptz, default now())
 
 **run_performance**
 id (uuid, primary key, default gen_random_uuid()),
-engine (text),
+agent (text),
 metric_name (text),
 metric_value (numeric),
 recorded_at (timestamptz, default now())
 
 **run_errors**
 id (uuid, primary key, default gen_random_uuid()),
-engine (text),
+agent (text),
 function_name (text),
 error_message (text),
 created_at (timestamptz, default now())
@@ -298,7 +298,7 @@ Launch button.
 
 **On submit:**
 1. Store all API keys as Supabase secrets
-2. Save run_settings with active_engines as comma-separated list
+2. Save run_settings with active_agent as comma-separated list
 3. Set setup_complete to true and prompt_version to 'v0.0.5'
 4. Seed all agent-specific settings tables with provided values
 5. Create all required database tables for active agents
@@ -325,7 +325,7 @@ Launch button.
 Cron: every 30 minutes — */30 * * * *
 
 1. Read run_settings. If master_running is false or setup_complete is false exit.
-2. Read active_engines as comma-separated list.
+2. Read active_agent as comma-separated list.
 3. For each active agent check if it is time to run based on configured schedule.
 4. Stagger execution with a 2-minute delay between each agent call.
 5. Call the corresponding function for each agent due to run:
@@ -372,7 +372,7 @@ Ops agents:
 - Trend: trend-scan every 6 hours, trend-queue every 6 hours
 - Churn: churn-scan daily 9am, churn-engage daily 10am
 
-6. Log each execution to run_activity: engine, action, result, details.
+6. Log each execution to run_activity: agent, action, result, details.
 7. Log failures to run_errors.
 
 **run-weekly-report**
@@ -417,7 +417,7 @@ Cron: every Monday at 7am UTC — 0 7 * * 1
 4. If Lazy Alert is installed send to Slack via alert-send.
 5. If Lazy Telegram is installed send via telegram-send.
 6. Send email to support_email with subject: "Your Lazy Run weekly report — [current date]".
-7. Insert into run_activity with engine run, action weekly-report, result success.
+7. Insert into run_activity with agent run, action weekly-report, result success.
 Log errors to run_errors.
 
 **run-health-check**
@@ -435,7 +435,7 @@ Log errors to run_errors.
 ## 4. Install all agent edge functions
 
 Install all edge functions for each active agent using these exact function names:
-blog-publish, seo-discover, seo-publish, geo-discover, geo-publish, geo-test, store-discover, store-listings, store-prices, store-promote, store-optimise, store-content, voice-narrate, voice-rss, pay-checkout, pay-webhook, pay-optimise, pay-recover, pay-portal, sms-send, sms-receive, sms-status, sms-sequences-run, sms-optimise, stream-monitor, stream-process, stream-write-content, stream-optimise, github-webhook, code-sync-roadmap, code-write-content, code-optimise, gitlab-webhook, gitlab-sync-roadmap, gitlab-write-content, gitlab-optimise, linear-sync-all, linear-write-content, linear-velocity-report, linear-optimise, crawl-run, crawl-extract, crawl-publish, perplexity-research, perplexity-feed-engines, perplexity-test-citations, perplexity-improve-content, alert-send, alert-monitor, alert-briefing, alert-command, telegram-send, telegram-monitor, telegram-briefing, telegram-command, contentful-pull, contentful-webhook, contentful-push, supabase-monitor, supabase-publish-milestone, supabase-weekly-report, security-scan, security-poll, security-alert, security-generate-report, security-monitor.
+blog-publish, seo-discover, seo-publish, geo-discover, geo-publish, geo-test, store-discover, store-listings, store-prices, store-promote, store-optimise, store-content, voice-narrate, voice-rss, pay-checkout, pay-webhook, pay-optimise, pay-recover, pay-portal, sms-send, sms-receive, sms-status, sms-sequences-run, sms-optimise, stream-monitor, stream-process, stream-write-content, stream-optimise, github-webhook, code-sync-roadmap, code-write-content, code-optimise, gitlab-webhook, gitlab-sync-roadmap, gitlab-write-content, gitlab-optimise, linear-sync-all, linear-write-content, linear-velocity-report, linear-optimise, crawl-run, crawl-extract, crawl-publish, perplexity-research, perplexity-feed-agents, perplexity-test-citations, perplexity-improve-content, alert-send, alert-monitor, alert-briefing, alert-command, telegram-send, telegram-monitor, telegram-briefing, telegram-command, contentful-pull, contentful-webhook, contentful-push, supabase-monitor, supabase-publish-milestone, supabase-weekly-report, security-scan, security-poll, security-alert, security-generate-report, security-monitor.
 
 Also install: drop-discover, drop-import, drop-prices, drop-stock, drop-fulfil, drop-optimise, print-discover, print-design, print-sync, print-fulfil, print-optimise, auth-setup, auth-sync-providers, auth-monitor, granola-sync, granola-process, granola-write-post, granola-write-update, granola-extract-intel, granola-slack-summary, granola-weekly-digest, youtube-discover, youtube-transcribe, youtube-write-content, youtube-optimise, mail-subscribe, mail-welcome, mail-broadcast, mail-optimise, design-audit, design-upgrade, design-optimise, watch-scan, watch-report, fix-analyse, fix-pr, build-brief, build-generate, intel-analyse, intel-feed, repurpose-scan, repurpose-generate, trend-scan, trend-queue, churn-scan, churn-engage.
 
@@ -451,7 +451,7 @@ Lazy Run's contribution to the admin is its data — run_activity, run_performan
 
 On setup completion redirect to /admin with message: "Lazy Run is active. Your autonomous operations layer is running."
 
-If /admin does not yet exist when Lazy Run is installed, create a temporary page at /admin that shows: the run_settings brand name, the master_running toggle connected to run_settings, a list of active agents from active_engines in run_settings each with their is_running status, the last 20 rows from run_activity, and a message: "Install the LazyUnicorn Admin Dashboard for the full control panel."
+If /admin does not yet exist when Lazy Run is installed, create a temporary page at /admin that shows: the run_settings brand name, the master_running toggle connected to run_settings, a list of active agents from active_agent in run_settings each with their is_running status, the last 20 rows from run_activity, and a message: "Install the LazyUnicorn Admin Dashboard for the full control panel."
 
 ---
 
@@ -517,7 +517,7 @@ const agents = [
 ];
 
 const faqs = [
-  { q: "Do I need all thirty-five agents?", a: "No. The setup screen lets you choose which agents to activate. You can start with two or three and add more later without reinstalling." },
+  { q: "Do I need all thirty-five agent", a: "No. The setup screen lets you choose which agents to activate. You can start with two or three and add more later without reinstalling." },
   { q: "Does it replace the individual Lazy prompts?", a: "Yes. If you install Lazy Run you do not need to paste the individual prompts. Lazy Run includes all of them." },
   { q: "What API keys do I need?", a: "Only the ones for the agents you activate. Content agents like Lazy Blogger, Lazy SEO, and Lazy GEO use Lovable's built-in AI — no API key required. Lazy Pay needs Stripe. Lazy SMS needs Twilio. Lazy Voice needs ElevenLabs. Lazy Stream needs Twitch. Lazy Mail needs Resend. Lazy Design needs nothing — it uses 21st.dev and built-in AI." },
   { q: "Can I still use individual agents if I have them installed?", a: "Yes. Lazy Run is additive. If you already have Lazy Blogger installed it will detect it and manage it alongside the others." },

@@ -28,8 +28,8 @@ const categories: Category[] = [
     products: [
       {
         name: "Lazy Run", tagline: "Autonomous operations layer", link: "/lazy-run",
-        free: ["Setup prompt included", "All 25 engines in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
-        pro: { price: "$99", features: ["Hosted version — zero config", "Auto-scaling engine execution", "Priority AI model access", "Dedicated support", "Custom engine configuration"], comingSoon: true },
+        free: ["Setup prompt included", "All 25 agent in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
+        pro: { price: "$99", features: ["Hosted version — zero config", "Auto-scaling agent execution", "Priority AI model access", "Dedicated support", "Custom agent configuration"], comingSoon: true },
       },
     ],
   },
@@ -37,11 +37,11 @@ const categories: Category[] = [
     key: "content",
     label: "Content",
     products: [
-      { name: "Lazy Blogger", tagline: "Autonomous blog engine", link: "/lazy-blogger", free: ["Setup prompt included", "Unlimited AI-generated posts", "Custom tone, topics & frequency", "Auto-publish on schedule"], pro: { price: "$19", features: ["Hosted version — no setup needed", "Multi-site publishing", "Social media cross-posting", "Advanced analytics dashboard"], comingSoon: true } },
-      { name: "Lazy SEO", tagline: "Autonomous SEO engine", link: "/lazy-seo", free: ["Setup prompt included", "Keyword discovery & tracking", "SEO-optimised article generation", "Auto-publish to your blog"], pro: { price: "$19", features: ["Hosted version", "Backlink monitoring", "Competitor keyword tracking", "Weekly SEO reports"], comingSoon: true } },
-      { name: "Lazy GEO", tagline: "Autonomous GEO engine", link: "/lazy-geo", free: ["Setup prompt included", "AI citation tracking", "Citation-ready content generation", "Brand mention detection"], pro: { price: "$19", features: ["Hosted version", "Real-time citation alerts", "Competitor citation tracking", "Monthly GEO reports"], comingSoon: true } },
+      { name: "Lazy Blogger", tagline: "Autonomous blog agent", link: "/lazy-blogger", free: ["Setup prompt included", "Unlimited AI-generated posts", "Custom tone, topics & frequency", "Auto-publish on schedule"], pro: { price: "$19", features: ["Hosted version — no setup needed", "Multi-site publishing", "Social media cross-posting", "Advanced analytics dashboard"], comingSoon: true } },
+      { name: "Lazy SEO", tagline: "Autonomous SEO agent", link: "/lazy-seo", free: ["Setup prompt included", "Keyword discovery & tracking", "SEO-optimised article generation", "Auto-publish to your blog"], pro: { price: "$19", features: ["Hosted version", "Backlink monitoring", "Competitor keyword tracking", "Weekly SEO reports"], comingSoon: true } },
+      { name: "Lazy GEO", tagline: "Autonomous GEO agent", link: "/lazy-geo", free: ["Setup prompt included", "AI citation tracking", "Citation-ready content generation", "Brand mention detection"], pro: { price: "$19", features: ["Hosted version", "Real-time citation alerts", "Competitor citation tracking", "Monthly GEO reports"], comingSoon: true } },
       { name: "Lazy Crawl", tagline: "Autonomous web intelligence", link: "/lazy-crawl", free: ["Setup prompt included", "Competitor website monitoring", "Trend & keyword extraction", "Lead discovery from directories"], pro: { price: "$19", features: ["Hosted version", "Firecrawl API costs included", "Daily competitor reports", "Advanced change detection"], comingSoon: true } },
-      { name: "Lazy Perplexity", tagline: "Autonomous research engine", link: "/lazy-perplexity", free: ["Setup prompt included", "Real-time niche research", "Citation-rich content generation", "Brand visibility testing"], pro: { price: "$29", features: ["Hosted version", "Daily citation monitoring", "Competitive citation tracking", "Advanced scheduling"], comingSoon: true } },
+      { name: "Lazy Perplexity", tagline: "Autonomous research agent", link: "/lazy-perplexity", free: ["Setup prompt included", "Real-time niche research", "Citation-rich content generation", "Brand visibility testing"], pro: { price: "$29", features: ["Hosted version", "Daily citation monitoring", "Competitive citation tracking", "Advanced scheduling"], comingSoon: true } },
       { name: "Lazy Contentful", tagline: "Autonomous Contentful bridge", link: "/lazy-contentful", free: ["Setup prompt included", "Two-way content sync", "Webhook real-time updates", "Content type mapping"], pro: { price: "$29", features: ["Hosted version", "Multi-space support", "Advanced content type mapping", "Scheduled sync windows"], comingSoon: true } },
     ],
   },
@@ -49,44 +49,44 @@ const categories: Category[] = [
     key: "commerce",
     label: "Commerce",
     products: [
-      { name: "Lazy Store", tagline: "Autonomous Shopify engine", link: "/lazy-store", free: ["Setup prompt included", "Shopify integration", "Product discovery & listing", "Conversion optimisation"], pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced pricing algorithms", "Revenue analytics"], comingSoon: true } },
+      { name: "Lazy Store", tagline: "Autonomous Shopify agent", link: "/lazy-store", free: ["Setup prompt included", "Shopify integration", "Product discovery & listing", "Conversion optimisation"], pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced pricing algorithms", "Revenue analytics"], comingSoon: true } },
       { name: "Lazy Drop", tagline: "Autonomous dropshipping", link: "/lazy-drop", free: ["Setup prompt included", "AutoDS integration", "Product discovery & import", "Automatic fulfilment"], pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Advanced product analytics", "Priority AI model access"], comingSoon: true } },
       { name: "Lazy Print", tagline: "Autonomous print-on-demand", link: "/lazy-print", free: ["Setup prompt included", "Printful integration", "AI-written descriptions", "Order fulfilment"], pro: { price: "$29", features: ["Hosted version", "Multi-store management", "Bulk design upload", "Advanced analytics"], comingSoon: true } },
-      { name: "Lazy Pay", tagline: "Autonomous payments engine", link: "/lazy-pay", free: ["Setup prompt included", "Polar integration", "Checkout & subscriptions", "Payment webhooks"], pro: { price: "$19", features: ["Hosted version", "Multi-gateway support", "Revenue dashboards", "Automated dunning"], comingSoon: true } },
-      { name: "Lazy SMS", tagline: "Autonomous SMS engine", link: "/lazy-sms", free: ["Setup prompt included", "Twilio integration", "Automated SMS campaigns", "Conversion tracking"], pro: { price: "$19", features: ["Hosted version", "Advanced segmentation", "A/B testing", "Compliance automation"], comingSoon: true } },
-      { name: "Lazy Mail", tagline: "Autonomous email engine", link: "/lazy-mail", free: ["Setup prompt included", "Subscriber capture", "AI-written welcome sequences", "Self-improving subject lines"], pro: { price: "$19", features: ["Hosted version — zero config", "Multi-list segmentation", "A/B testing", "Advanced analytics"], comingSoon: true } },
+      { name: "Lazy Pay", tagline: "Autonomous payments agent", link: "/lazy-pay", free: ["Setup prompt included", "Polar integration", "Checkout & subscriptions", "Payment webhooks"], pro: { price: "$19", features: ["Hosted version", "Multi-gateway support", "Revenue dashboards", "Automated dunning"], comingSoon: true } },
+      { name: "Lazy SMS", tagline: "Autonomous SMS agent", link: "/lazy-sms", free: ["Setup prompt included", "Twilio integration", "Automated SMS campaigns", "Conversion tracking"], pro: { price: "$19", features: ["Hosted version", "Advanced segmentation", "A/B testing", "Compliance automation"], comingSoon: true } },
+      { name: "Lazy Mail", tagline: "Autonomous email agent", link: "/lazy-mail", free: ["Setup prompt included", "Subscriber capture", "AI-written welcome sequences", "Self-improving subject lines"], pro: { price: "$19", features: ["Hosted version — zero config", "Multi-list segmentation", "A/B testing", "Advanced analytics"], comingSoon: true } },
     ],
   },
   {
     key: "media",
     label: "Media",
     products: [
-      { name: "Lazy Voice", tagline: "Autonomous audio engine", link: "/lazy-voice", free: ["Setup prompt included", "Blog-to-podcast conversion", "AI voice narration", "RSS feed generation"], pro: { price: "$19", features: ["Hosted version", "Custom voice cloning", "Multi-language narration", "Listener analytics"], comingSoon: true } },
-      { name: "Lazy Stream", tagline: "Autonomous Twitch engine", link: "/lazy-stream", free: ["Setup prompt included", "VOD transcription", "Stream recap generation", "SEO article writing"], pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced analytics"], comingSoon: true } },
-      { name: "Lazy YouTube", tagline: "Autonomous YouTube engine", link: "/lazy-youtube", free: ["Setup prompt included", "Video-to-transcript publishing", "SEO + GEO article generation", "Auto chapter markers"], pro: { price: "$19", features: ["Hosted version", "Comment intelligence extraction", "Multi-channel support", "Advanced analytics"], comingSoon: true } },
+      { name: "Lazy Voice", tagline: "Autonomous audio agent", link: "/lazy-voice", free: ["Setup prompt included", "Blog-to-podcast conversion", "AI voice narration", "RSS feed generation"], pro: { price: "$19", features: ["Hosted version", "Custom voice cloning", "Multi-language narration", "Listener analytics"], comingSoon: true } },
+      { name: "Lazy Stream", tagline: "Autonomous Twitch agent", link: "/lazy-stream", free: ["Setup prompt included", "VOD transcription", "Stream recap generation", "SEO article writing"], pro: { price: "$19", features: ["Hosted version", "Automatic clip editing", "YouTube cross-posting", "Advanced analytics"], comingSoon: true } },
+      { name: "Lazy YouTube", tagline: "Autonomous YouTube agent", link: "/lazy-youtube", free: ["Setup prompt included", "Video-to-transcript publishing", "SEO + GEO article generation", "Auto chapter markers"], pro: { price: "$19", features: ["Hosted version", "Comment intelligence extraction", "Multi-channel support", "Advanced analytics"], comingSoon: true } },
     ],
   },
   {
     key: "dev",
     label: "Dev",
     products: [
-      { name: "Lazy GitHub", tagline: "Autonomous GitHub engine", link: "/lazy-github", free: ["Setup prompt included", "Commit-to-changelog generation", "Release notes automation", "Developer blog publishing"], pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced formatting", "API docs generation"], comingSoon: true } },
-      { name: "Lazy GitLab", tagline: "Autonomous GitLab engine", link: "/lazy-gitlab", free: ["Setup prompt included", "Changelog generation", "Release notes automation", "Developer blog publishing"], pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced formatting", "Custom templates"], comingSoon: true } },
-      { name: "Lazy Linear", tagline: "Autonomous Linear engine", link: "/lazy-linear", free: ["Setup prompt included", "Changelog from cycles", "Public roadmap publishing", "Product blog posts"], pro: { price: "$19", features: ["Hosted version", "Multi-team support", "Advanced formatting", "Custom publishing rules"], comingSoon: true } },
-      { name: "Lazy Design", tagline: "Autonomous design engine", link: "/lazy-design", free: ["Setup prompt included", "Page auditing", "21st.dev component suggestions", "AI fallback prompts"], pro: { price: "$19", features: ["Hosted version — zero config", "Automated weekly upgrades", "Advanced brand matching", "Multi-project support"], comingSoon: true } },
-      { name: "Lazy Auth", tagline: "Autonomous auth engine", link: "/lazy-auth", free: ["Setup prompt included", "Google Sign-In", "Email/password & magic link", "Protected routes & roles"], pro: { price: "$19", features: ["Hosted version — zero config", "Multi-tenant support", "Advanced session analytics", "Custom OAuth providers"], comingSoon: true } },
-      { name: "Lazy Granola", tagline: "Autonomous meeting engine", link: "/lazy-granola", free: ["Setup prompt included", "Granola meeting sync", "Auto blog posts from meetings", "Customer intelligence extraction"], pro: { price: "$19", features: ["Hosted version — zero config", "Multi-workspace support", "Advanced classification", "Custom output templates"], comingSoon: true } },
+      { name: "Lazy GitHub", tagline: "Autonomous GitHub agent", link: "/lazy-github", free: ["Setup prompt included", "Commit-to-changelog generation", "Release notes automation", "Developer blog publishing"], pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced formatting", "API docs generation"], comingSoon: true } },
+      { name: "Lazy GitLab", tagline: "Autonomous GitLab agent", link: "/lazy-gitlab", free: ["Setup prompt included", "Changelog generation", "Release notes automation", "Developer blog publishing"], pro: { price: "$19", features: ["Hosted version", "Multi-repo support", "Advanced formatting", "Custom templates"], comingSoon: true } },
+      { name: "Lazy Linear", tagline: "Autonomous Linear agent", link: "/lazy-linear", free: ["Setup prompt included", "Changelog from cycles", "Public roadmap publishing", "Product blog posts"], pro: { price: "$19", features: ["Hosted version", "Multi-team support", "Advanced formatting", "Custom publishing rules"], comingSoon: true } },
+      { name: "Lazy Design", tagline: "Autonomous design agent", link: "/lazy-design", free: ["Setup prompt included", "Page auditing", "21st.dev component suggestions", "AI fallback prompts"], pro: { price: "$19", features: ["Hosted version — zero config", "Automated weekly upgrades", "Advanced brand matching", "Multi-project support"], comingSoon: true } },
+      { name: "Lazy Auth", tagline: "Autonomous auth agent", link: "/lazy-auth", free: ["Setup prompt included", "Google Sign-In", "Email/password & magic link", "Protected routes & roles"], pro: { price: "$19", features: ["Hosted version — zero config", "Multi-tenant support", "Advanced session analytics", "Custom OAuth providers"], comingSoon: true } },
+      { name: "Lazy Granola", tagline: "Autonomous meeting agent", link: "/lazy-granola", free: ["Setup prompt included", "Granola meeting sync", "Auto blog posts from meetings", "Customer intelligence extraction"], pro: { price: "$19", features: ["Hosted version — zero config", "Multi-workspace support", "Advanced classification", "Custom output templates"], comingSoon: true } },
     ],
   },
   {
     key: "ops",
     label: "Ops",
     products: [
-      { name: "Lazy Admin", tagline: "Unified dashboard for every engine", link: "/lazy-admin", free: ["Setup prompt included", "Auto-detects installed engines", "Master status indicator", "Unified activity feed", "Per-engine deep dives"], pro: { price: "$9", features: ["Hosted version", "Multi-project support", "Team access with roles", "Weekly email digest", "Mobile app"], comingSoon: true } },
+      { name: "Lazy Admin", tagline: "Unified dashboard for every agent", link: "/lazy-admin", free: ["Setup prompt included", "Auto-detects installed agents", "Master status indicator", "Unified activity feed", "Per-agent deep dives"], pro: { price: "$9", features: ["Hosted version", "Multi-project support", "Team access with roles", "Weekly email digest", "Mobile app"], comingSoon: true } },
       { name: "Lazy Alert", tagline: "Real-time Slack alerts", link: "/lazy-alert", free: ["Setup prompt included", "Real-time event alerts", "Daily morning briefing", "Slash commands"], pro: { price: "$9", features: ["Hosted version", "Custom branded bot", "Advanced filtering", "Multi-channel routing"], comingSoon: true } },
       { name: "Lazy Telegram", tagline: "Autonomous Telegram alerts", link: "/lazy-telegram", free: ["Setup prompt included", "Real-time event alerts", "Daily morning briefing", "Bot commands"], pro: { price: "$9", features: ["Hosted version", "Group chat support", "Multiple recipient routing", "Custom bot branding"], comingSoon: true } },
       { name: "Lazy Supabase", tagline: "Autonomous database monitoring", link: "/lazy-supabase", free: ["Setup prompt included", "User milestone detection", "Edge function monitoring", "Weekly growth reports"], pro: { price: "$19", features: ["Hosted version", "Multi-project monitoring", "Advanced analytics", "Custom thresholds"], comingSoon: true } },
-      { name: "Lazy Security", tagline: "Autonomous security engine", link: "/lazy-security", free: ["Setup prompt included", "Automated Aikido pentesting", "Vulnerability monitoring", "Audit-ready reports"], pro: { price: "$19", features: ["Hosted version", "Automated report delivery", "Multi-project dashboard", "Alert integrations"], comingSoon: true } },
+      { name: "Lazy Security", tagline: "Autonomous security agent", link: "/lazy-security", free: ["Setup prompt included", "Automated Aikido pentesting", "Vulnerability monitoring", "Audit-ready reports"], pro: { price: "$19", features: ["Hosted version", "Automated report delivery", "Multi-project dashboard", "Alert integrations"], comingSoon: true } },
     ],
   },
   {
@@ -95,7 +95,7 @@ const categories: Category[] = [
     products: [
       { name: "Lazy Watch", tagline: "Autonomous error monitoring", link: "/lazy-watch", free: ["Setup prompt included", "Hourly error table scanning", "Root cause diagnosis via AI", "Auto GitHub issue creation"], pro: { price: "$19", features: ["Hosted version", "Custom alert thresholds", "Multi-project monitoring", "Slack/Telegram alerts"], comingSoon: true } },
       { name: "Lazy Fix", tagline: "Autonomous prompt improvement", link: "/lazy-fix", free: ["Setup prompt included", "Weekly performance analysis", "Targeted prompt edits", "Auto GitHub PR creation"], pro: { price: "$19", features: ["Hosted version", "Daily improvement cycles", "A/B testing prompts", "Performance dashboards"], comingSoon: true } },
-      { name: "Lazy Build", tagline: "Autonomous engine writer", link: "/lazy-build", free: ["Setup prompt included", "One-paragraph brief to engine", "Database schema generation", "Edge function scaffolding"], pro: { price: "$29", features: ["Hosted version", "Multi-engine generation", "Custom templates", "Priority AI model access"], comingSoon: true } },
+      { name: "Lazy Build", tagline: "Autonomous agent writer", link: "/lazy-build", free: ["Setup prompt included", "One-paragraph brief to agent", "Database schema generation", "Edge function scaffolding"], pro: { price: "$29", features: ["Hosted version", "Multi-agent generation", "Custom templates", "Priority AI model access"], comingSoon: true } },
       { name: "Lazy Intel", tagline: "Autonomous content strategist", link: "/lazy-intel", free: ["Setup prompt included", "Weekly strategy briefs", "SEO keyword generation", "GEO query generation"], pro: { price: "$19", features: ["Hosted version", "Daily intelligence cycles", "Competitor analysis", "Custom data sources"], comingSoon: true } },
       { name: "Lazy Repurpose", tagline: "Autonomous content repurposing", link: "/lazy-repurpose", free: ["Setup prompt included", "Weekly content repurposing", "Twitter threads", "LinkedIn posts", "Newsletter sections", "Video scripts"], pro: { price: "$19", features: ["Hosted version", "Direct Twitter posting", "Direct LinkedIn posting", "Advanced scheduling"], comingSoon: true } },
       { name: "Lazy Trend", tagline: "Autonomous trend detection", link: "/lazy-trend", free: ["Setup prompt included", "6-hourly trend scanning", "Perplexity + Firecrawl sources", "Auto SEO/GEO queueing", "Slack alerts"], pro: { price: "$19", features: ["Hosted version", "Custom trend sources", "Advanced signal scoring", "Multi-niche monitoring"], comingSoon: true } },
@@ -233,7 +233,7 @@ const PricingPage = () => {
         {/* Bottom */}
         <section className="mt-20 px-6 md:px-12 max-w-3xl mx-auto text-center">
           <p className="font-body text-sm text-foreground/50 leading-relaxed">
-            All engines are self-hosted in your own Lovable project. You own the code, the data, and the content. Pro tiers will offer a fully managed hosted experience — no API keys, no setup, just results.
+            All agents are self-hosted in your own Lovable project. You own the code, the data, and the content. Pro tiers will offer a fully managed hosted experience — no API keys, no setup, just results.
           </p>
           <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>
             Made for Lovable

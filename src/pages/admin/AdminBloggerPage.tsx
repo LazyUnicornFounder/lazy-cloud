@@ -247,7 +247,7 @@ export default function AdminBloggerPage() {
           }},
           { key: "created_at", label: "Created", render: (r: any) => new Date(r.created_at).toLocaleDateString() },
         ]}
-        emptyMessage="No drafts in queue. SEO and GEO engines produce drafts for the Blogger to publish."
+        emptyMessage="No drafts in queue. SEO and GEO agent produce drafts for the Blogger to publish."
       />
 
       <ContentTable
