@@ -427,7 +427,7 @@ const Index = () => {
           {/* Lazy Launch */}
           <Link to="/lazy-launch" className="block">
             <div
-              className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
+              className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:bg-[#131310] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
               style={{ backgroundColor: "#0a0a08" }}
             >
               {(() => { const Icon = iconMap["Launch"]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
@@ -448,7 +448,7 @@ const Index = () => {
           {/* Lazy Waitlist */}
           <Link to="/lazy-waitlist" className="block">
             <div
-              className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
+              className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:bg-[#131310] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
               style={{ backgroundColor: "#0a0a08" }}
             >
               {(() => { const Icon = iconMap["Waitlist"]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
@@ -469,7 +469,7 @@ const Index = () => {
           {/* Lazy Run */}
           <Link to="/lazy-run" className="block">
             <div
-              className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
+              className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:bg-[#131310] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
               style={{ backgroundColor: "#0a0a08" }}
             >
               {(() => { const Icon = iconMap["Run"]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
@@ -493,7 +493,7 @@ const Index = () => {
 
             const content = (
               <div
-                className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
+                className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:bg-[#131310] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
                 style={{ backgroundColor: bg }}
               >
                 {(() => { const Icon = iconMap[product.name]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
