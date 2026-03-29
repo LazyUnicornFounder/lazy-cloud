@@ -77,7 +77,10 @@ export default function ChangelogPage() {
         .select("*")
         .eq("published", true)
         .order("release_date", { ascending: false });
-      return (data || []) as Release[];
+      return ((data || []) as any[]).map((r: any) => ({
+        ...r,
+        agent_name: r.engine_name ?? r.agent_name,
+      })) as Release[];
     },
   });
 
