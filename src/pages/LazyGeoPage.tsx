@@ -80,7 +80,7 @@ const LazyGeoPage = () => {
           </div>
         </section>
 
-        <section id="how-it-works" className="max-w-2xl mx-auto px-6 mb-20">
+        <section id="how-it-works" className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">How it works</motion.h2>
           <div className="space-y-4">
             {steps.map((step, i) => (
@@ -92,7 +92,7 @@ const LazyGeoPage = () => {
           </div>
         </section>
 
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">What you get</motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border border-border">
             {[
@@ -110,7 +110,7 @@ const LazyGeoPage = () => {
         </section>
 
         {/* What is GEO? */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-8">
             <h2 className="font-display text-xl font-extrabold tracking-tight mb-4">What is GEO?</h2>
             <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
@@ -133,7 +133,7 @@ const LazyGeoPage = () => {
           { q: "How do I upgrade to a new prompt version?", a: "Visit the upgrade guide at /upgrade-guide. Copy the latest prompt and paste it into your Lovable project. Your existing data and settings are preserved." },
         ]} />
 
-        <section className="max-w-3xl mx-auto px-6">
+        <section className="max-w-4xl mx-auto px-6 md:px-12">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-4">Be the answer, not just a result.</h2>
             <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">AI agent are replacing search. If your brand isn't being cited, you're invisible to the next generation of users.</p>

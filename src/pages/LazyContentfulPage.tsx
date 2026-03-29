@@ -215,7 +215,7 @@ const LazyContentfulPage = () => {
         </section>
 
         {/* How it works */}
-        <section id="how-it-works" className="max-w-2xl mx-auto px-6 mb-20 pt-20">
+        <section id="how-it-works" className="max-w-4xl mx-auto px-6 md:px-12 mb-20 pt-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">Two-way sync. Zero manual publishing.</motion.h2>
           <div className="space-y-4">
             {steps.map((step, i) => (
@@ -228,7 +228,7 @@ const LazyContentfulPage = () => {
         </section>
 
         {/* What it does */}
-        <section className="max-w-4xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">What it does</motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-border">
             {[
@@ -263,7 +263,7 @@ const LazyContentfulPage = () => {
         ]} />
 
         {/* Bottom CTA */}
-        <section className="max-w-3xl mx-auto px-6">
+        <section className="max-w-4xl mx-auto px-6 md:px-12">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-4">Your Contentful CMS. Filling itself.</h2>
             <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">Content flows in both directions — Contentful to Lovable, Lazy agents to Contentful — all on autopilot.</p>

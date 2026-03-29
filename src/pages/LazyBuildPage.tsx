@@ -92,7 +92,7 @@ export default function LazyBuildPage() {
         </section>
 
         {/* Problem */}
-        <section className="max-w-3xl mx-auto px-6 mb-20 mt-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20 mt-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             Every new agent takes hours to write.
           </motion.h2>
@@ -113,7 +113,7 @@ export default function LazyBuildPage() {
         </section>
 
         {/* How it works */}
-        <section id="how-it-works" className="max-w-2xl mx-auto px-6 mb-20">
+        <section id="how-it-works" className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             How it works
           </motion.h2>
@@ -131,7 +131,7 @@ export default function LazyBuildPage() {
         </section>
 
         {/* Example PR */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             What a Lazy Build PR looks like.
           </motion.h2>

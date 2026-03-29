@@ -80,6 +80,9 @@ const agentGroups = [
   },
 ];
 
+const heroHeading = { fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95 as number, letterSpacing: "-0.01em" };
+const sectionHeading = { fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" };
+
 export default function HowItWorksPage() {
   return (
     <>
@@ -89,44 +92,41 @@ export default function HowItWorksPage() {
         url="/how-it-works"
       />
       <Navbar />
-      <main className="min-h-screen bg-background text-foreground">
+      <main className="min-h-screen" style={{ backgroundColor: "#0a0a08", color: "#f0ead6" }}>
         {/* Hero */}
-        <section className="pt-36 pb-16 px-6">
-          <div className="max-w-3xl mx-auto text-center">
+        <section className="px-6 md:px-12 pt-32 pb-24 md:pb-32">
+          <div className="max-w-4xl mx-auto">
             <motion.div {...fade}>
-              <span className="font-body text-[14px] tracking-[0.2em] uppercase text-[#c8a961]/60 mb-6 block">
-                The autonomous layer for <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#c8a961]/90 transition-colors">Lovable</a>
+              <span className="font-body text-[14px] tracking-[0.2em] uppercase mb-6 block" style={{ color: "#c8a961", opacity: 0.6 }}>
+                The autonomous layer for <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80 transition-opacity">Lovable</a>
               </span>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
-                <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="hover:text-[#c8a961] transition-colors">Lovable</a> gave everyone a website. Lazy Unicorn makes it work while you sleep.
+              <h1 style={heroHeading}>
+                <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">Lovable</a> gave everyone a website. Lazy Unicorn makes it work while you sleep.
               </h1>
-              <p className="font-body text-foreground/50 text-lg max-w-2xl mx-auto leading-relaxed mb-6">
+              <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
                 Every agent is a self-contained prompt you paste into your{" "}
-                <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/70 transition-colors">Lovable</a>{" "}
+                <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80 transition-opacity">Lovable</a>{" "}
                 project. Each one installs its own database tables, edge functions, and UI — then runs itself autonomously.
-              </p>
-              <p className="font-body text-foreground/70 text-sm max-w-xl mx-auto leading-relaxed">
-                Integrates with <strong className="text-foreground/50">Stripe</strong>, <strong className="text-foreground/50">Shopify</strong>, <strong className="text-foreground/50">AutoDS</strong>, <strong className="text-foreground/50">Printful</strong>, <strong className="text-foreground/50">Twilio</strong>, <strong className="text-foreground/50">Resend</strong>, <strong className="text-foreground/50">ElevenLabs</strong>, <strong className="text-foreground/50">Twitch</strong>, <strong className="text-foreground/50">YouTube</strong>, <strong className="text-foreground/50">Supadata</strong>, <strong className="text-foreground/50">GitHub</strong>, <strong className="text-foreground/50">GitLab</strong>, <strong className="text-foreground/50">Linear</strong>, <strong className="text-foreground/50">21st.dev</strong>, <strong className="text-foreground/50">Google OAuth</strong>, <strong className="text-foreground/50">Granola</strong>, <strong className="text-foreground/50">Slack</strong>, <strong className="text-foreground/50">Telegram</strong>, <strong className="text-foreground/50">Supabase</strong>, <strong className="text-foreground/50">Aikido</strong>, <strong className="text-foreground/50">Contentful</strong>, <strong className="text-foreground/50">Firecrawl</strong>, and <strong className="text-foreground/50">Perplexity</strong>.
               </p>
             </motion.div>
           </div>
         </section>
 
         {/* Steps */}
-        <section className="py-16 px-6 border-t border-border">
-          <div className="max-w-3xl mx-auto">
+        <section className="px-6 md:px-12 py-16 border-t border-white/10">
+          <div className="max-w-4xl mx-auto">
             <motion.div {...fade}>
-              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-10 text-center">Three steps. Any agent.</h2>
+              <h2 style={sectionHeading} className="font-bold mb-10">Three steps. Any agent.</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {[
                   { step: "1", title: "Copy the prompt", desc: "Every agent page has a Copy Prompt button. One click copies the full installation instructions." },
                   { step: "2", title: "Paste into Lovable", desc: "Open your Lovable project, paste the prompt into the chat. Lovable builds the agent into your project." },
                   { step: "3", title: "Configure and run", desc: "Fill in any API keys the agent needs. Toggle it on. It runs itself from there." },
                 ].map((s) => (
-                  <div key={s.step} className="border border-border p-6">
-                    <span className="font-display text-3xl font-bold text-[#c8a961]/30 mb-3 block">{s.step}</span>
-                    <h3 className="font-display text-sm font-bold tracking-[0.08em] uppercase mb-2">{s.title}</h3>
-                    <p className="font-body text-sm text-foreground/50 leading-relaxed">{s.desc}</p>
+                  <div key={s.step} className="border border-white/10 p-6">
+                    <span className="font-display text-3xl font-bold mb-3 block" style={{ color: "#c8a961", opacity: 0.3 }}>{s.step}</span>
+                    <h3 className="font-display text-sm font-bold tracking-[0.08em] uppercase mb-2" style={{ color: "#f0ead6" }}>{s.title}</h3>
+                    <p className="font-body text-sm leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>{s.desc}</p>
                   </div>
                 ))}
               </div>
@@ -135,16 +135,16 @@ export default function HowItWorksPage() {
         </section>
 
         {/* Agents Section Header */}
-        <section className="py-20 px-6 border-t border-border">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="px-6 md:px-12 py-20 border-t border-white/10">
+          <div className="max-w-4xl mx-auto">
             <motion.div {...fade}>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1]">
+              <h2 style={heroHeading}>
                 35 agents run your Lovable business.
               </h2>
-              <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-[1.1]">
+              <h3 style={{ ...heroHeading, marginTop: "0.1em" }}>
                 One prompt each.
               </h3>
-              <p className="font-body text-foreground/50 text-base max-w-2xl mx-auto leading-relaxed">
+              <p className="mt-6 font-body text-base max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
                 Each agent is a self-contained prompt you paste into your Lovable project. It installs its own tables, edge functions, and UI — then runs itself autonomously.
               </p>
             </motion.div>
@@ -153,26 +153,26 @@ export default function HowItWorksPage() {
 
         {/* Agent Groups */}
         {agentGroups.map((group) => (
-          <section key={group.label} className="py-16 px-6 border-t border-border">
+          <section key={group.label} className="py-16 px-6 md:px-12 border-t border-white/10">
             <div className="max-w-4xl mx-auto">
               <motion.div {...fade}>
-                <p className="font-body text-[14px] tracking-[0.2em] uppercase text-[#c8a961]/60 mb-2">{group.label}</p>
-                <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-2">{group.label}</h2>
-                <p className="font-body text-foreground/65 text-sm mb-8">{group.description}</p>
+                <p className="font-body text-[14px] tracking-[0.2em] uppercase mb-2" style={{ color: "#c8a961", opacity: 0.6 }}>{group.label}</p>
+                <h2 style={sectionHeading} className="font-bold mb-2">{group.label}</h2>
+                <p className="font-body text-sm mb-8" style={{ color: "#f0ead6", opacity: 0.5 }}>{group.description}</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {group.agents.map((agent) => (
                     <Link
                       key={agent.name}
                       to={agent.href}
-                      className="group border border-border p-5 flex items-start justify-between gap-4 hover:border-foreground/20 transition-colors"
+                      className="group border border-white/10 p-5 flex items-start justify-between gap-4 hover:border-white/25 transition-colors"
                     >
                       <div className="min-w-0">
-                        <h3 className="font-display text-sm font-bold tracking-[0.06em] uppercase mb-1 group-hover:text-[#c8a961] transition-colors">
-                          {agent.name}
+                        <h3 className="font-display text-sm font-bold tracking-[0.06em] uppercase mb-1 transition-colors" style={{ color: "#f0ead6" }}>
+                          <span className="group-hover:text-[#c8a961] transition-colors">{agent.name}</span>
                         </h3>
-                        <p className="font-body text-[13px] text-foreground/65 leading-relaxed">{agent.tagline}</p>
+                        <p className="font-body text-[13px] leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>{agent.tagline}</p>
                       </div>
-                      <ArrowRight size={14} className="text-foreground/15 group-hover:text-foreground/50 transition-colors flex-shrink-0 mt-1" />
+                      <ArrowRight size={14} className="flex-shrink-0 mt-1 opacity-15 group-hover:opacity-50 transition-opacity" style={{ color: "#f0ead6" }} />
                     </Link>
                   ))}
                 </div>
@@ -182,29 +182,29 @@ export default function HowItWorksPage() {
         ))}
 
         {/* Resources */}
-        <section className="py-20 px-6 border-t border-border">
-          <div className="max-w-3xl mx-auto">
+        <section className="py-20 px-6 md:px-12 border-t border-white/10">
+          <div className="max-w-4xl mx-auto">
             <motion.div {...fade}>
-              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-8 text-center">Resources</h2>
+              <h2 style={sectionHeading} className="font-bold mb-8">Resources</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Link
                   to="/upgrade-guide"
-                  className="group border border-border p-6 hover:border-foreground/20 transition-colors flex items-start gap-4"
+                  className="group border border-white/10 p-6 hover:border-white/25 transition-colors flex items-start gap-4"
                 >
-                  <BookOpen size={20} className="text-foreground/60 group-hover:text-foreground/50 transition-colors flex-shrink-0 mt-0.5" />
+                  <BookOpen size={20} className="flex-shrink-0 mt-0.5 opacity-50" style={{ color: "#f0ead6" }} />
                   <div>
-                    <h3 className="font-display text-sm font-bold tracking-[0.08em] uppercase mb-1 group-hover:text-[#c8a961] transition-colors">Upgrade Guide</h3>
-                    <p className="font-body text-[13px] text-foreground/65 leading-relaxed">Step-by-step instructions for upgrading every agent to the latest prompt version.</p>
+                    <h3 className="font-display text-sm font-bold tracking-[0.08em] uppercase mb-1 group-hover:text-[#c8a961] transition-colors" style={{ color: "#f0ead6" }}>Upgrade Guide</h3>
+                    <p className="font-body text-[13px] leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>Step-by-step instructions for upgrading every agent to the latest prompt version.</p>
                   </div>
                 </Link>
                 <Link
                   to="/changelog"
-                  className="group border border-border p-6 hover:border-foreground/20 transition-colors flex items-start gap-4"
+                  className="group border border-white/10 p-6 hover:border-white/25 transition-colors flex items-start gap-4"
                 >
-                  <FileText size={20} className="text-foreground/60 group-hover:text-foreground/50 transition-colors flex-shrink-0 mt-0.5" />
+                  <FileText size={20} className="flex-shrink-0 mt-0.5 opacity-50" style={{ color: "#f0ead6" }} />
                   <div>
-                    <h3 className="font-display text-sm font-bold tracking-[0.08em] uppercase mb-1 group-hover:text-[#c8a961] transition-colors">Changelog</h3>
-                    <p className="font-body text-[13px] text-foreground/65 leading-relaxed">Every prompt release, version history, and what changed across all agents.</p>
+                    <h3 className="font-display text-sm font-bold tracking-[0.08em] uppercase mb-1 group-hover:text-[#c8a961] transition-colors" style={{ color: "#f0ead6" }}>Changelog</h3>
+                    <p className="font-body text-[13px] leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>Every prompt release, version history, and what changed across all agents.</p>
                   </div>
                 </Link>
               </div>
@@ -213,13 +213,13 @@ export default function HowItWorksPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-24 px-6 border-t border-border">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-6">Pick an agent. Paste the prompt. Watch it run.</h2>
-            <p className="font-body text-foreground/65 mb-8">Or install everything at once with Lazy Run.</p>
+        <section className="px-6 md:px-12 py-24 border-t border-white/10">
+          <div className="max-w-4xl mx-auto">
+            <h2 style={heroHeading}>Pick an agent. Paste the prompt. Watch it run.</h2>
+            <p className="mt-6 font-body text-base leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>Or install everything at once with Lazy Run.</p>
             <Link
               to="/lazy-run"
-              className="inline-flex items-center justify-center gap-2 bg-foreground text-background font-display text-[13px] tracking-[0.15em] uppercase font-bold px-8 py-3.5 hover:opacity-90 transition-opacity"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-display text-sm tracking-[0.08em] uppercase font-bold px-8 py-4 hover:opacity-90 transition-opacity mt-8"
             >
               Get Lazy Run
             </Link>

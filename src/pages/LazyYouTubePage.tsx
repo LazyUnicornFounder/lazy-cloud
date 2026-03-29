@@ -428,7 +428,7 @@ export default function LazyYouTubePage() {
         </section>
 
         {/* How It Works */}
-        <section id="how-it-works" className="max-w-2xl mx-auto px-6 mb-20">
+        <section id="how-it-works" className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             How it works
           </motion.h2>
@@ -445,7 +445,7 @@ export default function LazyYouTubePage() {
         </section>
 
         {/* What You Get */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             What you get
           </motion.h2>
@@ -473,7 +473,7 @@ export default function LazyYouTubePage() {
         </section>
 
         {/* What gets published */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             One upload. Five autonomous outputs.
           </motion.h2>
@@ -525,7 +525,7 @@ export default function LazyYouTubePage() {
         </section>
 
         {/* Transcript section */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-8">
             <h2 className="font-display text-xl font-extrabold tracking-tight mb-4">Your transcript is a goldmine</h2>
             <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6">
@@ -542,7 +542,7 @@ export default function LazyYouTubePage() {
         </section>
 
         {/* Comment intelligence */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-8">
             <h2 className="font-display text-xl font-extrabold tracking-tight mb-4">Your comments section is your content strategy</h2>
             <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6">
@@ -557,7 +557,7 @@ export default function LazyYouTubePage() {
         </section>
 
         {/* Compounding */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             The longer you run it, the smarter it gets
           </motion.h2>
@@ -584,7 +584,7 @@ export default function LazyYouTubePage() {
         </section>
 
         {/* Better together */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-3">
             Better together
           </motion.h2>
@@ -642,7 +642,7 @@ export default function LazyYouTubePage() {
         ]} />
 
         {/* Bottom CTA */}
-        <section className="max-w-3xl mx-auto px-6">
+        <section className="max-w-4xl mx-auto px-6 md:px-12">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-4">
               You film it once. Lazy YouTube works it forever.
