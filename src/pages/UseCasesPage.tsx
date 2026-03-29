@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   CreditCard, MessageSquare, Mic, Globe, GitBranch, Search,
-  Hash, Send, Tv, Database, FileText, Shield, Code, Zap,
-  ArrowRight, CheckCircle2, Palette, Eye, Wrench, Hammer,
-  BarChart3, RefreshCw, TrendingUp, UserX, Settings,
+  Bell, Send, MonitorPlay, Database, FileText, Shield, Code,
+  ArrowRight, Paintbrush, Eye, Wrench, Hammer,
+  Brain, RefreshCw, TrendingUp, UserCheck, LayoutDashboard, BarChart3,
+  Radar, Compass, Layers, ShoppingCart, Package, Printer, Mail,
+  Youtube, Lock, Calendar,
 } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
@@ -44,7 +46,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Crawl",
     agentHref: "/lazy-crawl",
-    icon: <Globe size={20} />,
+    icon: <Radar size={20} />,
   },
   {
     name: "Perplexity",
@@ -59,7 +61,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Perplexity",
     agentHref: "/lazy-perplexity",
-    icon: <Search size={20} />,
+    icon: <Compass size={20} />,
   },
   {
     name: "Contentful",
@@ -74,7 +76,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Contentful",
     agentHref: "/lazy-contentful",
-    icon: <FileText size={20} />,
+    icon: <Layers size={20} />,
   },
   // Lazy Commerce
   {
@@ -121,7 +123,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Mail",
     agentHref: "/lazy-mail",
-    icon: <Send size={20} />,
+    icon: <Mail size={20} />,
   },
   // Lazy Media
   {
@@ -152,7 +154,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Stream",
     agentHref: "/lazy-stream",
-    icon: <Tv size={20} />,
+    icon: <MonitorPlay size={20} />,
   },
   {
     name: "YouTube",
@@ -167,7 +169,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy YouTube",
     agentHref: "/lazy-youtube",
-    icon: <Tv size={20} />,
+    icon: <Youtube size={20} />,
     note: "Uses YouTube Data API + Supadata — both free to start",
   },
   // Lazy Dev
@@ -214,7 +216,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Linear",
     agentHref: "/lazy-linear",
-    icon: <CheckCircle2 size={20} />,
+    icon: <BarChart3 size={20} />,
   },
   {
     name: "21st.dev",
@@ -229,7 +231,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Design",
     agentHref: "/lazy-design",
-    icon: <Palette size={20} />,
+    icon: <Paintbrush size={20} />,
     note: "Uses the 21st.dev component library — no API key required",
   },
   {
@@ -245,7 +247,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Auth",
     agentHref: "/lazy-auth",
-    icon: <Shield size={20} />,
+    icon: <Lock size={20} />,
     note: "Uses Lovable Cloud for OAuth — no Google Cloud setup needed",
   },
   {
@@ -261,7 +263,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Granola",
     agentHref: "/lazy-granola",
-    icon: <FileText size={20} />,
+    icon: <Calendar size={20} />,
     note: "Uses the Granola MCP server — free to start",
   },
   // Lazy Ops
@@ -278,7 +280,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Alert",
     agentHref: "/lazy-alert",
-    icon: <Hash size={20} />,
+    icon: <Bell size={20} />,
   },
   {
     name: "Telegram",
@@ -342,7 +344,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Drop",
     agentHref: "/lazy-drop",
-    icon: <Globe size={20} />,
+    icon: <Package size={20} />,
     note: "Requires an AutoDS account — plans from $26.90/month",
   },
   // Lazy Commerce — Printful
@@ -360,7 +362,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Print",
     agentHref: "/lazy-print",
-    icon: <CreditCard size={20} />,
+    icon: <Printer size={20} />,
     note: "Requires a Printful account — free to start, pay per order",
   },
   // Ops — Lazy Admin
@@ -376,7 +378,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Admin",
     agentHref: "/lazy-admin",
-    icon: <Settings size={20} />,
+    icon: <LayoutDashboard size={20} />,
   },
   // Ops — Lazy Watch
   {
@@ -439,7 +441,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Intel",
     agentHref: "/lazy-intel",
-    icon: <BarChart3 size={20} />,
+    icon: <Brain size={20} />,
     note: "No API keys required — reads from your existing agent data",
   },
   // Ops — Lazy Repurpose
@@ -490,7 +492,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Churn",
     agentHref: "/lazy-churn",
-    icon: <UserX size={20} />,
+    icon: <UserCheck size={20} />,
     note: "Requires Stripe — works with Lazy SMS and Lazy Mail for outreach",
   },
   // Ops — GitHub + Anthropic (shared infra)
@@ -521,7 +523,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Agents",
     agentHref: "/lazy-agents",
-    icon: <Zap size={20} />,
+    icon: <Code size={20} />,
     note: "Uses Anthropic API — requires ANTHROPIC_API_KEY",
   },
 ];
@@ -551,7 +553,7 @@ function IntegrationCard({ item, index }: { item: Integration; index: number }) 
         <ul className="space-y-2">
           {item.unlocks.map((u, j) => (
             <li key={j} className="flex items-start gap-2">
-              <Zap size={12} className="text-accent mt-0.5 shrink-0" />
+              <ArrowRight size={12} className="text-accent mt-0.5 shrink-0" />
               <span className="font-body text-sm text-foreground/65 leading-relaxed">{u}</span>
             </li>
           ))}
