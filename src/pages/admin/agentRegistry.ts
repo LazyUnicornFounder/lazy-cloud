@@ -368,6 +368,8 @@ export const AGENTS: AgentConfig[] = [
       { label: "Process Last Stream", fn: "stream-process" },
       { label: "Optimise", fn: "stream-optimise" },
     ],
+    requiredSecrets: ["TWITCH_CLIENT_ID", "TWITCH_CLIENT_SECRET"],
+    setupRoute: "/lazy-stream-setup",
     statsQueries: [
       { label: "Streams", table: "stream_sessions", type: "count" },
       { label: "Content", table: "stream_content", type: "count" },
