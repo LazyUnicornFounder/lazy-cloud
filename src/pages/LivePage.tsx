@@ -47,7 +47,7 @@ const LivePage = () => {
               href={twitchUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-8 font-body text-[13px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold bg-red-500 text-white hover:bg-red-600 transition-colors"
+              className="inline-flex items-center gap-2 mt-8 font-body text-[13px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold bg-red-500 text-[#f0ead6] hover:bg-red-600 transition-colors"
             >
               Watch Live <ExternalLink size={14} />
             </a>
