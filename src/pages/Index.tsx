@@ -88,28 +88,28 @@ function RotatingHeadline() {
   }, [current, ready]);
 
   return (
-    <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.85rem, 2.8vw, 2.2rem)", color: "hsl(var(--foreground))", opacity: 0.7 }} className="mb-2 mt-12 flex flex-wrap items-center justify-center gap-x-1">
+    <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.35rem)", color: "hsl(var(--foreground))", opacity: 0.5 }} className="mt-5 flex flex-wrap items-center justify-center gap-x-1">
       {/* Hidden measurer */}
       <span
         ref={hiddenRef}
         aria-hidden="true"
         className="whitespace-nowrap invisible fixed pointer-events-none"
-        style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.9rem, 2.8vw, 2.2rem)", top: -9999, left: -9999 }}
+        style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.35rem)", top: -9999, left: -9999 }}
       />
       Lovable<span className="ml-1 mr-0">❤️</span>
       <motion.span
         className="inline-flex justify-center relative"
         style={{ height: "1.2em", verticalAlign: "text-bottom", overflow: "clip" }}
-        animate={{ width: width + 12 }}
+        animate={{ width: width + 10 }}
         transition={ready ? { type: "spring", stiffness: 250, damping: 25 } : { duration: 0 }}
       >
         <AnimatePresence mode="wait">
           <motion.span
             key={current.word}
-            initial={ready ? { y: 16, opacity: 0 } : false}
+            initial={ready ? { y: 14, opacity: 0 } : false}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -16, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            exit={{ y: -14, opacity: 0 }}
+            transition={{ duration: 0.25 }}
             className="absolute inset-0 flex items-center justify-center gap-1 whitespace-nowrap"
             style={{ color: "hsl(var(--primary))" }}
           >
