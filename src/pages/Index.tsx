@@ -59,12 +59,6 @@ function RotatingHeadline() {
           </motion.span>
         </AnimatePresence>
       </div>
-      <span
-        className="font-body text-[12px] tracking-[0.2em] uppercase font-semibold"
-        style={{ color: "hsl(var(--foreground))", opacity: 0.3 }}
-      >
-        and much more
-      </span>
     </div>
   );
 }
