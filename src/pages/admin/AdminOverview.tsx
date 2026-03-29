@@ -5,12 +5,16 @@ import { Loader2, CheckCircle, AlertTriangle, Play } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useAdminContext } from "./AdminLayout";
-import { AGENTS, CATEGORY_META } from "./agentRegistry";
+import { AGENTS, CATEGORY_META, type AgentCategory } from "./agentRegistry";
+
+type FilterPill = "all" | "errors" | "content" | "commerce" | "ops";
 
 export default function AdminOverview() {
   const { installed, statuses, refetchStatuses } = useAdminContext();
   const installedAgents = AGENTS.filter((a) => installed.has(a.key));
+  const [filter, setFilter] = useState<FilterPill>("all");
 
+  /* ── Stats ── */
   const { data: stats, isLoading: statsLoading } = useQuery({
     queryKey: ["admin-overview-stats"],
     queryFn: async () => {
@@ -38,6 +42,52 @@ export default function AdminOverview() {
     refetchInterval: 60_000,
   });
 
+  /* ── Activity feed — synthetic from content + error tables ── */
+  const { data: activity = [] } = useQuery({
+    queryKey: ["admin-overview-activity"],
+    queryFn: async () => {
+      const since = new Date(); since.setHours(since.getHours() - 48);
+      const sinceIso = since.toISOString();
+      const items: { agent: string; category: AgentCategory; type: "content" | "error" | "action"; message: string; time: string }[] = [];
+
+      // Content activity
+      const contentTables = [
+        { table: "blog_posts", agent: "Blogger", cat: "content" as AgentCategory, msgKey: "title" },
+        { table: "seo_posts", agent: "SEO", cat: "content" as AgentCategory, msgKey: "title" },
+        { table: "geo_posts", agent: "GEO", cat: "content" as AgentCategory, msgKey: "title" },
+        { table: "stream_content", agent: "Stream", cat: "media" as AgentCategory, msgKey: "title" },
+        { table: "voice_episodes", agent: "Voice", cat: "media" as AgentCategory, msgKey: "post_title" },
+        { table: "granola_outputs", agent: "Granola", cat: "dev" as AgentCategory, msgKey: "title" },
+      ];
+      await Promise.all(contentTables.map(async ({ table, agent, cat, msgKey }) => {
+        try {
+          const { data } = await (supabase as any).from(table).select(`${msgKey}, created_at`).gte("created_at", sinceIso).order("created_at", { ascending: false }).limit(10);
+          if (data) data.forEach((r: any) => items.push({ agent, category: cat, type: "content", message: `Published: ${r[msgKey]}`, time: r.created_at }));
+        } catch {}
+      }));
+
+      // Errors
+      const errorTables = [
+        { table: "blog_errors", agent: "Blogger", cat: "content" as AgentCategory },
+        { table: "seo_errors", agent: "SEO", cat: "content" as AgentCategory },
+        { table: "geo_errors", agent: "GEO", cat: "content" as AgentCategory },
+        { table: "voice_errors", agent: "Voice", cat: "media" as AgentCategory },
+        { table: "stream_errors", agent: "Stream", cat: "media" as AgentCategory },
+        { table: "granola_errors", agent: "Granola", cat: "dev" as AgentCategory },
+      ];
+      await Promise.all(errorTables.map(async ({ table, agent, cat }) => {
+        try {
+          const { data } = await (supabase as any).from(table).select("error_message, created_at").gte("created_at", sinceIso).order("created_at", { ascending: false }).limit(10);
+          if (data) data.forEach((r: any) => items.push({ agent, category: cat, type: "error", message: r.error_message, time: r.created_at }));
+        } catch {}
+      }));
+
+      return items.sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()).slice(0, 50);
+    },
+    refetchInterval: 60_000,
+  });
+
+  /* ── Errors (24h) ── */
   const { data: errors = [] } = useQuery({
     queryKey: ["admin-overview-errors"],
     queryFn: async () => {
@@ -47,6 +97,7 @@ export default function AdminOverview() {
         { table: "blog_errors", agent: "Blogger" }, { table: "seo_errors", agent: "SEO" },
         { table: "geo_errors", agent: "GEO" }, { table: "voice_errors", agent: "Voice" },
         { table: "stream_errors", agent: "Stream" }, { table: "granola_errors", agent: "Granola" },
+        { table: "waitlist_errors", agent: "Waitlist" },
       ];
       const results: { agent: string; message: string; time: string }[] = [];
       await Promise.all(tables.map(async ({ table, agent }) => {
@@ -64,10 +115,13 @@ export default function AdminOverview() {
   const runAction = async (fn: string, label: string) => {
     setRunningAction(fn);
     try {
-      const { error } = await supabase.functions.invoke(fn);
+      const { data, error } = await supabase.functions.invoke(fn);
       if (error) throw error;
+      if (data?.error) throw new Error(data.error);
       toast.success(`${label} completed`);
-    } catch { toast.error(`${label} failed`); }
+    } catch (err: any) {
+      toast.error(`${label} failed — ${err?.message || "Unknown error"}`);
+    }
     setRunningAction(null);
   };
 
@@ -79,9 +133,28 @@ export default function AdminOverview() {
     return `${Math.floor(d / 86400)}d ago`;
   };
 
+  const filteredActivity = activity.filter((item) => {
+    if (filter === "all") return true;
+    if (filter === "errors") return item.type === "error";
+    if (filter === "content") return item.category === "content";
+    if (filter === "commerce") return item.category === "commerce";
+    if (filter === "ops") return item.category === "ops" || item.category === "dev";
+    return true;
+  });
+
+  const pills: { key: FilterPill; label: string }[] = [
+    { key: "all", label: "All" },
+    { key: "errors", label: "Errors" },
+    { key: "content", label: "Content" },
+    { key: "commerce", label: "Commerce" },
+    { key: "ops", label: "Ops" },
+  ];
+
   return (
     <div>
       <h1 className="font-display text-xl font-bold tracking-tight mb-6">Mission Control</h1>
+
+      {/* Stats row */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
         {[
           { label: "Posts today", value: stats?.postsToday ?? "—" },
@@ -97,6 +170,7 @@ export default function AdminOverview() {
         ))}
       </div>
 
+      {/* Agent grid */}
       <h2 className="font-display text-sm font-bold tracking-[0.1em] uppercase text-[#f0ead6]/60 mb-3">Agents</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
         {installedAgents.map((agent) => {
@@ -130,26 +204,78 @@ export default function AdminOverview() {
         })}
       </div>
 
-      <h2 className="font-display text-sm font-bold tracking-[0.1em] uppercase text-[#f0ead6]/60 mb-3">Errors (24h)</h2>
-      {errors.length === 0 ? (
-        <div className="border border-emerald-500/20 bg-emerald-500/5 p-4 flex items-center gap-2">
-          <CheckCircle size={14} className="text-emerald-500" />
-          <span className="font-body text-[13px] text-emerald-400">No errors in the last 24 hours</span>
-        </div>
-      ) : (
-        <div className="border border-[#f0ead6]/8 divide-y divide-[#f0ead6]/5 max-h-80 overflow-y-auto">
-          {errors.map((err, i) => (
-            <div key={i} className="px-4 py-2 flex items-start gap-3">
-              <AlertTriangle size={12} className="text-red-400 shrink-0 mt-0.5" />
-              <div className="min-w-0 flex-1">
-                <span className="font-body text-[11px] font-bold text-red-400 uppercase tracking-wider">{err.agent}</span>
-                <p className="font-body text-[12px] text-[#f0ead6]/70 truncate">{err.message}</p>
-              </div>
-              <span className="font-body text-[10px] text-[#f0ead6]/40 shrink-0">{timeAgo(err.time)}</span>
+      {/* Two columns: Activity Feed + Error Log */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Activity feed */}
+        <div>
+          <div className="flex items-center gap-3 mb-3 flex-wrap">
+            <h2 className="font-display text-sm font-bold tracking-[0.1em] uppercase text-[#f0ead6]/60">Activity</h2>
+            <div className="flex gap-1.5">
+              {pills.map((p) => (
+                <button
+                  key={p.key}
+                  onClick={() => setFilter(p.key)}
+                  className={`font-body text-[10px] tracking-[0.1em] uppercase px-2.5 py-1 border transition-colors ${
+                    filter === p.key
+                      ? "border-[#c8a961]/40 text-[#c8a961] bg-[#c8a961]/8"
+                      : "border-[#f0ead6]/8 text-[#f0ead6]/50 hover:text-[#f0ead6]/80"
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
             </div>
-          ))}
+          </div>
+          {filteredActivity.length === 0 ? (
+            <div className="border border-[#f0ead6]/8 p-6 text-center">
+              <p className="font-body text-[12px] text-[#f0ead6]/40">No recent activity</p>
+            </div>
+          ) : (
+            <div className="border border-[#f0ead6]/8 divide-y divide-[#f0ead6]/5 max-h-96 overflow-y-auto">
+              {filteredActivity.map((item, i) => (
+                <div key={i} className="px-4 py-2 flex items-start gap-3">
+                  {item.type === "error" ? (
+                    <AlertTriangle size={12} className="text-red-400 shrink-0 mt-0.5" />
+                  ) : (
+                    <CheckCircle size={12} className="text-emerald-500 shrink-0 mt-0.5" />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <span className={`font-body text-[10px] font-bold uppercase tracking-wider ${item.type === "error" ? "text-red-400" : "text-emerald-400"}`}>
+                      {item.agent}
+                    </span>
+                    <p className="font-body text-[12px] text-[#f0ead6]/70 truncate">{item.message}</p>
+                  </div>
+                  <span className="font-body text-[10px] text-[#f0ead6]/40 shrink-0">{timeAgo(item.time)}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-      )}
+
+        {/* Error log */}
+        <div>
+          <h2 className="font-display text-sm font-bold tracking-[0.1em] uppercase text-[#f0ead6]/60 mb-3">Errors (24h)</h2>
+          {errors.length === 0 ? (
+            <div className="border border-emerald-500/20 bg-emerald-500/5 p-4 flex items-center gap-2">
+              <CheckCircle size={14} className="text-emerald-500" />
+              <span className="font-body text-[13px] text-emerald-400">No errors in the last 24 hours</span>
+            </div>
+          ) : (
+            <div className="border border-[#f0ead6]/8 divide-y divide-[#f0ead6]/5 max-h-96 overflow-y-auto">
+              {errors.map((err, i) => (
+                <div key={i} className="px-4 py-2 flex items-start gap-3">
+                  <AlertTriangle size={12} className="text-red-400 shrink-0 mt-0.5" />
+                  <div className="min-w-0 flex-1">
+                    <span className="font-body text-[11px] font-bold text-red-400 uppercase tracking-wider">{err.agent}</span>
+                    <p className="font-body text-[12px] text-[#f0ead6]/70 truncate">{err.message}</p>
+                  </div>
+                  <span className="font-body text-[10px] text-[#f0ead6]/40 shrink-0">{timeAgo(err.time)}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

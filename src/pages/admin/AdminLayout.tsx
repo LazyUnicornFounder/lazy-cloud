@@ -95,7 +95,7 @@ export default function AdminLayout() {
     <AdminContext.Provider value={{ installed, statuses, refetchStatuses }}>
       <div className="min-h-screen bg-[#0a0a08] text-[#f0ead6] flex">
         {/* Desktop Sidebar */}
-        <aside className={`fixed inset-y-0 left-0 z-50 w-52 bg-[#0a0a08] border-r border-[#f0ead6]/8 flex-col overflow-y-auto hidden md:flex`}>
+        <aside className="fixed inset-y-0 left-0 z-50 w-52 bg-[#0a0a08] border-r border-[#f0ead6]/8 flex-col overflow-y-auto hidden md:flex">
           <div className="px-5 pt-6 pb-4 border-b border-[#f0ead6]/8">
             <Link to="/" className="font-display text-[13px] font-semibold tracking-[0.15em] uppercase text-[#f0ead6] hover:text-[#f0ead6]/95 transition-colors leading-tight flex flex-col">
               <span>Lazy</span><span>Unicorn</span>
@@ -171,7 +171,6 @@ export default function AdminLayout() {
               >
                 <Cloud size={12} /> Cloud Signups
               </Link>
-              <p className="px-5 font-body text-[10px] tracking-[0.2em] uppercase text-[#f0ead6]/40 mb-1">System</p>
               <Link
                 to="/admin/changelog"
                 className={`flex items-center gap-2 px-5 py-1.5 font-body text-[13px] tracking-[0.06em] transition-colors ${isActive("/admin/changelog") ? "text-[#c8a961] bg-[#c8a961]/8 border-l-2 border-[#c8a961]" : "text-[#f0ead6]/70 hover:text-[#f0ead6]/95 border-l-2 border-transparent"}`}
