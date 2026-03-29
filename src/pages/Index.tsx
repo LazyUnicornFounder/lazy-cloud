@@ -88,7 +88,7 @@ function RotatingHeadline() {
   }, [current, ready]);
 
   return (
-    <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.3rem)", color: "#f0ead6", opacity: 0.5 }} className="flex flex-wrap items-center gap-x-1">
+    <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.3rem)", color: "#f0ead6", opacity: 0.7 }} className="flex flex-wrap items-center gap-x-1">
       {/* Hidden measurer */}
       <span
         ref={hiddenRef}
