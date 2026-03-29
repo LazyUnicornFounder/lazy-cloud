@@ -99,7 +99,7 @@ export default function LazyGranolaSetup() {
     <>
       <SEO title="Setup — Lazy Granola" description="Connect Granola to the Lazy Stack." />
       <Navbar />
-      <main className="min-h-screen pt-28 pb-20 px-6" style={{ backgroundColor: "#0a0a08" }}>
+      <main className="min-h-screen pt-28 pb-20 px-6">
         <div className="max-w-xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <h1

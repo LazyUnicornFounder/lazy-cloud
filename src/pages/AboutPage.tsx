@@ -20,7 +20,7 @@ export default function AboutPage() {
       {/* Hero — full-bleed manifesto */}
       <section
         className="relative min-h-[90vh] flex items-center justify-center px-6 md:px-12"
-        style={{ backgroundColor: "#0a0a08" }}
+       
       >
         {/* Subtle radial glow */}
         <div
@@ -75,7 +75,7 @@ export default function AboutPage() {
       </section>
 
       {/* Manifesto body */}
-      <section className="relative py-24 md:py-32 px-6" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="relative py-24 md:py-32 px-6">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -125,7 +125,7 @@ export default function AboutPage() {
       </div>
 
       {/* Mission */}
-      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="py-24 md:py-32 px-6">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -161,7 +161,7 @@ export default function AboutPage() {
       </div>
 
       {/* The story */}
-      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="py-24 md:py-32 px-6">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -244,7 +244,7 @@ export default function AboutPage() {
       </div>
 
       {/* Founder */}
-      <section className="py-24 md:py-32 px-6" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="py-24 md:py-32 px-6">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -293,7 +293,7 @@ export default function AboutPage() {
       </section>
 
       {/* Back link */}
-      <section className="pb-20 px-6 text-center" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="pb-20 px-6 text-center">
         <Link
           to="/"
           className="font-body text-sm tracking-[0.15em] uppercase transition-colors"

@@ -317,7 +317,7 @@ export default function AutonomyPage() {
       {/* Footer CTA */}
       <section
         className="border-t border-border py-20 px-4"
-        style={{ backgroundColor: "#0a0a08" }}
+       
       >
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <h2

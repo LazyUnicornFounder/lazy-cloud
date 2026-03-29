@@ -50,7 +50,7 @@ const LazySeoPage = () => {
       <SEO title="Lazy SEO — Autonomous SEO Agent for Lovable" description="Set up once and watch your Google rankings climb. Lazy SEO analyses competitors, finds keyword gaps, and publishes SEO-optimised content on autopilot." url="/lazy-seo" />
       <Navbar />
       <main className="relative z-10 pb-32">
-        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
           <div className="max-w-4xl mx-auto">
             <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-6">

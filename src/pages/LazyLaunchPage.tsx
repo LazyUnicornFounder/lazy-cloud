@@ -271,7 +271,7 @@ export default function LazyLaunchPage() {
 
       <main className="min-h-screen bg-background pt-0 pb-20">
         {/* Hero */}
-        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32" style={{ backgroundColor: "#0a0a08" }}>
+        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

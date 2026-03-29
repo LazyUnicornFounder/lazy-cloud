@@ -239,7 +239,7 @@ const Index = () => {
       <Navbar activePage="home" />
 
       {/* Hero */}
-      <header className="relative z-10" style={{ backgroundColor: "#0a0a08" }}>
+      <header className="relative z-10">
         <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32 min-h-screen flex flex-col justify-center">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -338,7 +338,7 @@ const Index = () => {
       </header>
 
       {/* ── Lazy Launch Section ── */}
-      <section className="relative z-10 border-t border-border" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="relative z-10 border-t border-border">
         <div className="px-6 md:px-12 py-20 md:py-28 max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <p className="font-body text-[14px] tracking-[0.2em] uppercase mb-4" style={{ color: "#c8a961", opacity: 0.6 }}>
@@ -363,7 +363,7 @@ const Index = () => {
       </section>
 
       {/* ── Lazy Cloud Section ── */}
-      <section className="relative z-10 border-t border-border" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="relative z-10 border-t border-border">
         <div className="px-6 md:px-12 py-20 md:py-28 max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <p className="font-body text-[14px] tracking-[0.2em] uppercase mb-4" style={{ color: "#c8a961", opacity: 0.6 }}>
@@ -401,7 +401,7 @@ const Index = () => {
       </section>
 
       {/* Agents label */}
-      <section className="relative z-10" style={{ backgroundColor: "#0a0a08" }}>
+      <section className="relative z-10">
         <div className="px-6 md:px-12 pt-20 pb-12 max-w-4xl mx-auto">
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
             35 agents run your<br className="hidden md:inline" /> Lovable business.
@@ -428,7 +428,7 @@ const Index = () => {
           <Link to="/lazy-launch" className="block">
             <div
               className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:bg-[#131310] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
-              style={{ backgroundColor: "#0a0a08" }}
+             
             >
               {(() => { const Icon = iconMap["Launch"]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
               <div className="text-center">
@@ -449,7 +449,7 @@ const Index = () => {
           <Link to="/lazy-waitlist" className="block">
             <div
               className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:bg-[#131310] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
-              style={{ backgroundColor: "#0a0a08" }}
+             
             >
               {(() => { const Icon = iconMap["Waitlist"]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
               <div className="text-center">
@@ -470,7 +470,7 @@ const Index = () => {
           <Link to="/lazy-run" className="block">
             <div
               className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:bg-[#131310] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
-              style={{ backgroundColor: "#0a0a08" }}
+             
             >
               {(() => { const Icon = iconMap["Run"]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
               <div className="text-center">

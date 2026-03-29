@@ -138,7 +138,7 @@ export default function VoiceAgentWidget() {
             className="fixed bottom-6 right-6 z-50 w-[360px] max-h-[520px] bg-card border border-border shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-border" style={{ backgroundColor: "#0a0a08" }}>
+            <div className="flex items-center justify-between px-4 py-3 border-b border-border">
               <div className="flex items-center gap-2">
                 <div className={`w-2 h-2 rounded-full ${isSpeaking ? "bg-green-400 animate-pulse" : "bg-foreground/30"}`} />
                 <span className="font-display text-xs font-bold tracking-[0.1em] uppercase text-foreground/70">
