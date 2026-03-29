@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, FileText, BookOpen } from "lucide-react";
+import { ArrowRight, FileText, BookOpen, Cloud } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 
@@ -107,17 +107,62 @@ export default function HowItWorksPage() {
               <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
                 Every agent is a self-contained prompt you paste into your{" "}
                 <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80 transition-opacity">Lovable</a>{" "}
-                project. Each one installs its own database tables, edge functions, and UI — then runs itself autonomously.
+                project. Each one installs its own database tables, edge functions, and UI — then runs itself autonomously. Or let Lazy Cloud manage everything for you.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Steps */}
+        {/* Two paths */}
         <section className="px-6 md:px-12 py-16 border-t border-white/10">
           <div className="max-w-4xl mx-auto">
             <motion.div {...fade}>
-              <h2 style={sectionHeading} className="font-bold mb-10">Three steps. Any agent.</h2>
+              <h2 style={sectionHeading} className="font-bold mb-10">Two ways to run your stack.</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-white/10">
+                <div className="border-b md:border-b-0 md:border-r border-white/10 p-6 md:p-8">
+                  <h3 className="font-display text-sm font-bold tracking-[0.08em] uppercase mb-2" style={{ color: "#f0ead6" }}>Self-hosted (free)</h3>
+                  <p className="font-body text-sm leading-relaxed mb-4" style={{ color: "#f0ead6", opacity: 0.5 }}>
+                    Copy any agent prompt, paste it into your Lovable project, configure, and run. You manage your own API keys, updates, and monitoring. Always free, always open source.
+                  </p>
+                  <div className="space-y-2">
+                    {["Copy prompt from agent page", "Paste into Lovable project", "Add API keys and configure", "You manage updates manually"].map((step, i) => (
+                      <div key={i} className="flex items-start gap-2">
+                        <span className="font-display text-xs font-bold mt-0.5" style={{ color: "#c8a961", opacity: 0.4 }}>{i + 1}</span>
+                        <p className="font-body text-[13px]" style={{ color: "#f0ead6", opacity: 0.5 }}>{step}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="p-6 md:p-8" style={{ backgroundColor: "rgba(200,169,97,0.03)" }}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Cloud size={16} style={{ color: "#c8a961" }} />
+                    <h3 className="font-display text-sm font-bold tracking-[0.08em] uppercase" style={{ color: "#c8a961" }}>Lazy Cloud (managed)</h3>
+                  </div>
+                  <p className="font-body text-sm leading-relaxed mb-4" style={{ color: "#f0ead6", opacity: 0.5 }}>
+                    Lazy Cloud runs your entire agent stack for you — automatic prompt updates, volume API pricing, 24/7 monitoring, daily backups, and breaking-change fixes. You paste the prompts once. We handle everything after.
+                  </p>
+                  <div className="space-y-2">
+                    {["Automatic prompt updates overnight", "Volume API keys included", "24/7 monitoring with Lazy Watch", "Breaking changes handled for you"].map((step, i) => (
+                      <div key={i} className="flex items-start gap-2">
+                        <span className="font-display text-xs font-bold mt-0.5" style={{ color: "#c8a961", opacity: 0.6 }}>✓</span>
+                        <p className="font-body text-[13px]" style={{ color: "#f0ead6", opacity: 0.5 }}>{step}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <Link to="/lazy-cloud" className="inline-flex items-center gap-2 mt-4 font-body text-[12px] tracking-[0.12em] uppercase font-semibold hover:opacity-80 transition-opacity" style={{ color: "#c8a961" }}>
+                    Learn more about Lazy Cloud <ArrowRight size={12} />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Steps (self-hosted) */}
+        <section className="px-6 md:px-12 py-16 border-t border-white/10">
+          <div className="max-w-4xl mx-auto">
+            <motion.div {...fade}>
+              <h2 style={sectionHeading} className="font-bold mb-10">Self-hosted: three steps, any agent.</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {[
                   { step: "1", title: "Copy the prompt", desc: "Every agent page has a Copy Prompt button. One click copies the full installation instructions." },
@@ -216,14 +261,23 @@ export default function HowItWorksPage() {
         {/* CTA */}
         <section className="px-6 md:px-12 py-24 border-t border-white/10">
           <div className="max-w-4xl mx-auto">
-            <h2 style={heroHeading}>Pick an agent. Paste the prompt. Watch it run.</h2>
-            <p className="mt-6 font-body text-base leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>Or install everything at once with Lazy Run.</p>
+          <h2 style={heroHeading}>Pick an agent. Paste the prompt. Watch it run.</h2>
+          <p className="mt-6 font-body text-base leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>Or install everything at once with Lazy Run. Want it fully managed? Try Lazy Cloud.</p>
+          <div className="flex flex-wrap items-start gap-4 mt-8">
             <Link
               to="/lazy-run"
-              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-display text-sm tracking-[0.08em] uppercase font-bold px-8 py-4 hover:opacity-90 transition-opacity mt-8"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-display text-sm tracking-[0.08em] uppercase font-bold px-8 py-4 hover:opacity-90 transition-opacity"
             >
               Get Lazy Run
             </Link>
+            <Link
+              to="/lazy-cloud"
+              className="inline-flex items-center justify-center gap-2 font-display text-sm tracking-[0.08em] uppercase font-bold px-8 py-4 border border-white/15 hover:border-white/30 transition-colors"
+              style={{ color: "#f0ead6" }}
+            >
+              Explore Lazy Cloud
+            </Link>
+          </div>
           </div>
         </section>
       </main>
