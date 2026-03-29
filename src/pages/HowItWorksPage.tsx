@@ -11,6 +11,7 @@ const agentGroups = [
     label: "Lazy Unicorn",
     description: "Unified runtime for the entire stack.",
     agents: [
+      { name: "Lazy Launch", tagline: "Launch your Lovable website", href: "/lazy-launch" },
       { name: "Lazy Run", tagline: "Autonomous everything", href: "/lazy-run" },
     ],
   },
