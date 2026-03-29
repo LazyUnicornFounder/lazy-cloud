@@ -12,7 +12,6 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { useCurrentPrompt } from "@/hooks/usePrompt";
-import AutopilotHeadline from "@/components/AutopilotHeadline";
 
 const LAZY_ADMIN_PROMPT = `[Lazy Admin Prompt — v0.0.1 — LazyUnicorn.ai]
 
@@ -75,7 +74,7 @@ export default function LazyAdminPage() {
         <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
           <div className="max-w-4xl mx-auto">
             <motion.div {...fade}>
-              <AutopilotHeadline product="lazy-admin" />
+              <span className="bg-primary text-primary-foreground text-[14px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
                 Lazy Admin
               </h1>

@@ -15,7 +15,6 @@ import Navbar from "@/components/Navbar";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import LazyFaqSection from "@/components/LazyFaqSection";
 import { useCurrentPrompt } from "@/hooks/usePrompt";
-import AutopilotHeadline from "@/components/AutopilotHeadline";
 
 const LAZY_RUN_PROMPT = `[Lazy Run Prompt — v0.0.5 — LazyUnicorn.ai]
 
@@ -576,7 +575,7 @@ export default function LazyRunPage() {
               </span>
             </div>
           </motion.div>
-          <AutopilotHeadline product="lazy-run" />
+              <span className="bg-primary text-primary-foreground text-[14px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
           <motion.h1
             variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.1 }}
             className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6"

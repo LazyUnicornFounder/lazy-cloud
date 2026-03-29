@@ -9,7 +9,6 @@ import Navbar from "@/components/Navbar";
 import { frequencyTiers, buildPrompt, type FrequencyTier } from "@/components/lazy-blogger/frequencyData";
 import { useTrackEvent } from "@/hooks/useTrackEvent";
 import { useCurrentPrompt } from "@/hooks/usePrompt";
-import AutopilotHeadline from "@/components/AutopilotHeadline";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
@@ -125,8 +124,7 @@ const LazyBloggerPage = () => {
         <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
           <div className="max-w-4xl mx-auto">
             <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
-              <AutopilotHeadline product="lazy-blogger" />
-
+              <span className="bg-primary text-primary-foreground text-[14px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
                 Lazy Blogger
               </h1>

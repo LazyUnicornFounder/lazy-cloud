@@ -5,7 +5,6 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import LazyPricingSection from "@/components/LazyPricingSection";
 import LazyFaqSection from "@/components/LazyFaqSection";
-import AutopilotHeadline from "@/components/AutopilotHeadline";
 import { useCurrentPrompt } from "@/hooks/usePrompt";
 import { toast } from "sonner";
 
@@ -75,8 +74,7 @@ export default function LazyPrintPage() {
       <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
-            <AutopilotHeadline product="lazy-print" />
-
+              <span className="bg-primary text-primary-foreground text-[14px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
             <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
                 Lazy Print
               </h1>
