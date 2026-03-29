@@ -62,39 +62,75 @@ interface BlogPost {
   published_at: string | null;
 }
 
-/* ── Product definitions for per-product analytics ── */
-const PRODUCTS = [
-  { key: "lazy-blogger", label: "Lazy Blogger", path: "/lazy-blogger", color: "hsl(142, 71%, 45%)" },
-  { key: "lazy-seo", label: "Lazy SEO", path: "/lazy-seo", color: "hsl(217, 91%, 60%)" },
-  { key: "lazy-geo", label: "Lazy GEO", path: "/lazy-geo", color: "hsl(270, 50%, 60%)" },
-  { key: "lazy-crawl", label: "Lazy Crawl", path: "/lazy-crawl", color: "hsl(30, 80%, 55%)" },
-  { key: "lazy-perplexity", label: "Lazy Perplexity", path: "/lazy-perplexity", color: "hsl(190, 70%, 50%)" },
-  { key: "lazy-store", label: "Lazy Store", path: "/lazy-store", color: "hsl(45, 90%, 50%)" },
-  { key: "lazy-pay", label: "Lazy Pay", path: "/lazy-pay", color: "hsl(340, 65%, 55%)" },
-  { key: "lazy-sms", label: "Lazy SMS", path: "/lazy-sms", color: "hsl(160, 60%, 45%)" },
-  { key: "lazy-voice", label: "Lazy Voice", path: "/lazy-voice", color: "hsl(40, 70%, 55%)" },
-  { key: "lazy-stream", label: "Lazy Stream", path: "/lazy-stream", color: "hsl(0, 70%, 55%)" },
-  { key: "lazy-github", label: "Lazy GitHub", path: "/lazy-github", color: "hsl(0, 0%, 60%)" },
-  { key: "lazy-gitlab", label: "Lazy GitLab", path: "/lazy-gitlab", color: "hsl(260, 50%, 55%)" },
-  { key: "lazy-linear", label: "Lazy Linear", path: "/lazy-linear", color: "hsl(250, 60%, 60%)" },
-  { key: "lazy-alert", label: "Lazy Alert", path: "/lazy-alert", color: "hsl(50, 90%, 50%)" },
-  { key: "lazy-telegram", label: "Lazy Telegram", path: "/lazy-telegram", color: "hsl(200, 70%, 50%)" },
-  { key: "lazy-contentful", label: "Lazy Contentful", path: "/lazy-contentful", color: "hsl(120, 40%, 50%)" },
-  { key: "lazy-supabase", label: "Lazy Supabase", path: "/lazy-supabase", color: "hsl(150, 70%, 45%)" },
-  { key: "lazy-security", label: "Lazy Security", path: "/lazy-security", color: "hsl(350, 60%, 50%)" },
-  { key: "lazy-run", label: "Lazy Run", path: "/lazy-run", color: "hsl(280, 60%, 55%)" },
-  { key: "lazy-admin", label: "Lazy Admin", path: "/lazy-admin", color: "hsl(220, 40%, 50%)" },
+/* ── All agents by category (unified taxonomy) ── */
+const AGENT_CATEGORIES: { category: string; agents: { key: string; label: string; path: string; color: string }[] }[] = [
+  {
+    category: "Unicorn",
+    agents: [
+      { key: "lazy-launch", label: "Lazy Launch", path: "/lazy-launch", color: "hsl(280, 60%, 55%)" },
+      { key: "lazy-run", label: "Lazy Run", path: "/lazy-run", color: "hsl(280, 60%, 55%)" },
+    ],
+  },
+  {
+    category: "Content",
+    agents: [
+      { key: "lazy-blogger", label: "Lazy Blogger", path: "/lazy-blogger", color: "hsl(142, 71%, 45%)" },
+      { key: "lazy-seo", label: "Lazy SEO", path: "/lazy-seo", color: "hsl(217, 91%, 60%)" },
+      { key: "lazy-geo", label: "Lazy GEO", path: "/lazy-geo", color: "hsl(270, 50%, 60%)" },
+      { key: "lazy-crawl", label: "Lazy Crawl", path: "/lazy-crawl", color: "hsl(30, 80%, 55%)" },
+      { key: "lazy-perplexity", label: "Lazy Perplexity", path: "/lazy-perplexity", color: "hsl(190, 70%, 50%)" },
+      { key: "lazy-contentful", label: "Lazy Contentful", path: "/lazy-contentful", color: "hsl(120, 40%, 50%)" },
+    ],
+  },
+  {
+    category: "Commerce",
+    agents: [
+      { key: "lazy-store", label: "Lazy Store", path: "/lazy-store", color: "hsl(45, 90%, 50%)" },
+      { key: "lazy-pay", label: "Lazy Pay", path: "/lazy-pay", color: "hsl(340, 65%, 55%)" },
+      { key: "lazy-sms", label: "Lazy SMS", path: "/lazy-sms", color: "hsl(160, 60%, 45%)" },
+      { key: "lazy-mail", label: "Lazy Mail", path: "/lazy-mail", color: "hsl(200, 50%, 50%)" },
+      { key: "lazy-drop", label: "Lazy Drop", path: "/lazy-drop", color: "hsl(20, 70%, 50%)" },
+      { key: "lazy-print", label: "Lazy Print", path: "/lazy-print", color: "hsl(50, 60%, 50%)" },
+    ],
+  },
+  {
+    category: "Media",
+    agents: [
+      { key: "lazy-voice", label: "Lazy Voice", path: "/lazy-voice", color: "hsl(40, 70%, 55%)" },
+      { key: "lazy-stream", label: "Lazy Stream", path: "/lazy-stream", color: "hsl(0, 70%, 55%)" },
+      { key: "lazy-youtube", label: "Lazy YouTube", path: "/lazy-youtube", color: "hsl(0, 80%, 50%)" },
+      { key: "lazy-design", label: "Lazy Design", path: "/lazy-design", color: "hsl(310, 50%, 55%)" },
+    ],
+  },
+  {
+    category: "Dev",
+    agents: [
+      { key: "lazy-github", label: "Lazy GitHub", path: "/lazy-github", color: "hsl(0, 0%, 60%)" },
+      { key: "lazy-gitlab", label: "Lazy GitLab", path: "/lazy-gitlab", color: "hsl(260, 50%, 55%)" },
+      { key: "lazy-linear", label: "Lazy Linear", path: "/lazy-linear", color: "hsl(250, 60%, 60%)" },
+      { key: "lazy-supabase", label: "Lazy Supabase", path: "/lazy-supabase", color: "hsl(150, 70%, 45%)" },
+      { key: "lazy-security", label: "Lazy Security", path: "/lazy-security", color: "hsl(350, 60%, 50%)" },
+    ],
+  },
+  {
+    category: "Ops",
+    agents: [
+      { key: "lazy-admin", label: "Lazy Admin", path: "/lazy-admin", color: "hsl(220, 40%, 50%)" },
+      { key: "lazy-alert", label: "Lazy Alert", path: "/lazy-alert", color: "hsl(50, 90%, 50%)" },
+      { key: "lazy-telegram", label: "Lazy Telegram", path: "/lazy-telegram", color: "hsl(200, 70%, 50%)" },
+      { key: "lazy-granola", label: "Lazy Granola", path: "/lazy-granola", color: "hsl(30, 50%, 50%)" },
+      { key: "lazy-watch", label: "Lazy Watch", path: "/lazy-watch", color: "hsl(0, 65%, 50%)" },
+      { key: "lazy-fix", label: "Lazy Fix", path: "/lazy-fix", color: "hsl(120, 50%, 45%)" },
+      { key: "lazy-build", label: "Lazy Build", path: "/lazy-build", color: "hsl(35, 80%, 50%)" },
+      { key: "lazy-intel", label: "Lazy Intel", path: "/lazy-intel", color: "hsl(210, 70%, 55%)" },
+      { key: "lazy-repurpose", label: "Lazy Repurpose", path: "/lazy-repurpose", color: "hsl(170, 60%, 45%)" },
+      { key: "lazy-trend", label: "Lazy Trend", path: "/lazy-trend", color: "hsl(15, 80%, 55%)" },
+      { key: "lazy-churn", label: "Lazy Churn", path: "/lazy-churn", color: "hsl(300, 50%, 50%)" },
+    ],
+  },
 ];
 
-const AGENTS = [
-  { key: "lazy-watch", label: "Lazy Watch", path: "/lazy-watch", color: "hsl(0, 65%, 50%)" },
-  { key: "lazy-fix", label: "Lazy Fix", path: "/lazy-fix", color: "hsl(120, 50%, 45%)" },
-  { key: "lazy-build", label: "Lazy Build", path: "/lazy-build", color: "hsl(35, 80%, 50%)" },
-  { key: "lazy-intel", label: "Lazy Intel", path: "/lazy-intel", color: "hsl(210, 70%, 55%)" },
-  { key: "lazy-repurpose", label: "Lazy Repurpose", path: "/lazy-repurpose", color: "hsl(170, 60%, 45%)" },
-  { key: "lazy-trend", label: "Lazy Trend", path: "/lazy-trend", color: "hsl(15, 80%, 55%)" },
-  { key: "lazy-churn", label: "Lazy Churn", path: "/lazy-churn", color: "hsl(300, 50%, 50%)" },
-];
+const ALL_AGENTS = AGENT_CATEGORIES.flatMap((c) => c.agents.map((a) => ({ ...a, category: c.category })));
 
 const tooltipStyle = {
   backgroundColor: "hsl(var(--card))",
@@ -222,25 +258,21 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
     return { total, today, countries, cities, browsers, operatingSystems, pages, referrers, markers, dailyVisits };
   }, [visitors]);
 
-  /* ── Per-product stats ── */
+  /* ── Per-agent stats (unified) ── */
   const productStats = useMemo(() => {
-    return PRODUCTS.map((product) => {
-      // Page visits from visitor data
-      const pageVisits = visitors.filter((v) => v.page === product.path).length;
-
-      // Event-based metrics — match various naming patterns
-      const productKey = product.key.replace("lazy-", "");
-      const prefixedKey = product.key.replace("-", "_");
+    return ALL_AGENTS.map((agent) => {
+      const pageVisits = visitors.filter((v) => v.page === agent.path).length;
+      const prefixedKey = agent.key.replace("-", "_");
 
       const pageViewEvents = events.filter((e) => {
         if (e.event_name === `${prefixedKey}_page_view`) return true;
-        if (e.event_name === "page_view" && (e.event_data as any)?.page === product.path) return true;
+        if (e.event_name === "page_view" && (e.event_data as any)?.page === agent.path) return true;
         return false;
       }).length;
 
       const promptCopies = events.filter((e) => {
         if (e.event_name === `${prefixedKey}_prompt_copy`) return true;
-        if (e.event_name === "copy_prompt" && (e.event_data as any)?.product === product.key) return true;
+        if (e.event_name === "copy_prompt" && (e.event_data as any)?.product === agent.key) return true;
         return false;
       }).length;
 
@@ -257,7 +289,7 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
         dailyMap[d.toISOString().split("T")[0]] = { views: 0, copies: 0 };
       }
       visitors.forEach((v) => {
-        if (v.page === product.path) {
+        if (v.page === agent.path) {
           const day = new Date(v.created_at).toISOString().split("T")[0];
           if (dailyMap[day]) dailyMap[day].views++;
         }
@@ -266,7 +298,7 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
         const day = new Date(e.created_at).toISOString().split("T")[0];
         if (dailyMap[day]) {
           if (e.event_name === `${prefixedKey}_prompt_copy` ||
-              (e.event_name === "copy_prompt" && (e.event_data as any)?.product === product.key)) {
+              (e.event_name === "copy_prompt" && (e.event_data as any)?.product === agent.key)) {
             dailyMap[day].copies++;
           }
         }
@@ -278,36 +310,12 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
       }));
 
       return {
-        ...product,
+        ...agent,
         pageVisits: totalViews,
         promptCopies,
         conversionRate,
         dailyTrend,
       };
-    }).sort((a, b) => b.promptCopies - a.promptCopies);
-  }, [visitors, events]);
-
-  /* ── Agent stats ── */
-  const agentStats = useMemo(() => {
-    return AGENTS.map((agent) => {
-      const pageVisits = visitors.filter((v) => v.page === agent.path).length;
-      const agentKey = agent.key.replace("-", "_");
-
-      const pageViewEvents = events.filter((e) => {
-        if (e.event_name === `${agentKey}_page_view`) return true;
-        if (e.event_name === "page_view" && (e.event_data as any)?.page === agent.path) return true;
-        return false;
-      }).length;
-
-      const promptCopies = events.filter((e) => {
-        if (e.event_name === `${agentKey}_prompt_copy`) return true;
-        if (e.event_name === "copy_prompt" && (e.event_data as any)?.product === agent.key) return true;
-        return false;
-      }).length;
-
-      const totalViews = Math.max(pageVisits, pageViewEvents);
-
-      return { ...agent, pageVisits: totalViews, promptCopies };
     }).sort((a, b) => b.promptCopies - a.promptCopies);
   }, [visitors, events]);
 
@@ -420,57 +428,39 @@ const AdminAnalytics = ({ password }: AdminAnalyticsProps) => {
             </div>
           </div>
 
-          {/* Top products leaderboard */}
+          {/* Agent Leaderboard by Category */}
           <div className="border border-border rounded-xl bg-card p-4">
-            <h3 className="font-display font-bold text-foreground mb-3">Product Leaderboard</h3>
-            <div className="space-y-2">
-              {productStats.map((p, i) => (
-                <div key={p.key} className="flex items-center gap-3">
-                  <span className="font-display text-xs font-bold text-foreground/20 w-5 text-right">{i + 1}</span>
-                  <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: p.color }} />
-                  <span className="font-body text-sm text-foreground/70 flex-1 min-w-0 truncate">{p.label}</span>
-                  <div className="flex items-center gap-4 flex-shrink-0">
-                    <div className="text-right">
-                      <span className="font-display text-sm font-bold text-foreground">{p.pageVisits}</span>
-                      <span className="font-body text-[13px] text-muted-foreground ml-1">views</span>
+            <h3 className="font-display font-bold text-foreground mb-4">Agent Leaderboard</h3>
+            <div className="space-y-5">
+              {AGENT_CATEGORIES.map((cat) => {
+                const catAgents = productStats.filter((p) => (p as any).category === cat.category);
+                const catSorted = [...catAgents].sort((a, b) => b.promptCopies - a.promptCopies || b.pageVisits - a.pageVisits);
+                return (
+                  <div key={cat.category}>
+                    <p className="font-display text-[11px] uppercase tracking-[0.15em] text-muted-foreground mb-2">{cat.category}</p>
+                    <div className="space-y-1.5">
+                      {catSorted.map((a) => (
+                        <div key={a.key} className="flex items-center gap-3">
+                          <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: a.color }} />
+                          <span className="font-body text-sm text-foreground/70 flex-1 min-w-0 truncate">{a.label}</span>
+                          <div className="flex items-center gap-4 flex-shrink-0">
+                            <div className="text-right">
+                              <span className="font-display text-sm font-bold text-foreground">{a.pageVisits}</span>
+                              <span className="font-body text-[13px] text-muted-foreground ml-1">views</span>
+                            </div>
+                            <div className="text-right">
+                              <span className="font-display text-sm font-bold text-primary">{a.promptCopies}</span>
+                              <span className="font-body text-[13px] text-muted-foreground ml-1">copies</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                    <div className="text-right">
-                      <span className="font-display text-sm font-bold text-primary">{p.promptCopies}</span>
-                      <span className="font-body text-[13px] text-muted-foreground ml-1">copies</span>
-                    </div>
-                    
                   </div>
-                </div>
-              ))}
+                );
+              })}
               {productStats.every((p) => p.pageVisits === 0 && p.promptCopies === 0) && (
-                <p className="font-body text-xs text-muted-foreground">No product data yet</p>
-              )}
-            </div>
-          </div>
-
-          {/* Agents leaderboard */}
-          <div className="border border-border rounded-xl bg-card p-4">
-            <h3 className="font-display font-bold text-foreground mb-3">Agents Leaderboard</h3>
-            <div className="space-y-2">
-              {agentStats.map((a, i) => (
-                <div key={a.key} className="flex items-center gap-3">
-                  <span className="font-display text-xs font-bold text-foreground/20 w-5 text-right">{i + 1}</span>
-                  <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: a.color }} />
-                  <span className="font-body text-sm text-foreground/70 flex-1 min-w-0 truncate">{a.label}</span>
-                  <div className="flex items-center gap-4 flex-shrink-0">
-                    <div className="text-right">
-                      <span className="font-display text-sm font-bold text-foreground">{a.pageVisits}</span>
-                      <span className="font-body text-[13px] text-muted-foreground ml-1">views</span>
-                    </div>
-                    <div className="text-right">
-                      <span className="font-display text-sm font-bold text-primary">{a.promptCopies}</span>
-                      <span className="font-body text-[13px] text-muted-foreground ml-1">copies</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-              {agentStats.every((a) => a.pageVisits === 0 && a.promptCopies === 0) && (
-                <p className="font-body text-xs text-muted-foreground">No agent data yet</p>
+                <p className="font-body text-xs text-muted-foreground">No data yet</p>
               )}
             </div>
           </div>
