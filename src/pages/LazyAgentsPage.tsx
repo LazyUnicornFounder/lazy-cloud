@@ -24,6 +24,7 @@ const categories: Category[] = [
     label: "Unicorn",
     agents: [
       { emoji: "🚀", name: "Lazy Launch", tagline: "Launch your Lovable website", href: "/lazy-launch" },
+      { emoji: "📋", name: "Lazy Waitlist", tagline: "Autonomous pre-launch waitlist", href: "/lazy-waitlist" },
       { emoji: "▶️", name: "Lazy Run", tagline: "Autonomous everything", href: "/lazy-run" },
     ],
   },
