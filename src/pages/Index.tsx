@@ -364,18 +364,18 @@ const Index = () => {
           <Link to="/lazy-launch" className="block">
             <div
               className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
-              style={{ backgroundColor: "hsl(var(--background))" }}
+              style={{ backgroundColor: "#0a0a08" }}
             >
-              {(() => { const Icon = iconMap["Launch"]; return Icon ? <Icon size={24} strokeWidth={1.5} /> : null; })()}
+              {(() => { const Icon = iconMap["Launch"]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
               <div className="text-center">
-                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "hsl(var(--foreground))", lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
                   Lazy
                 </p>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "hsl(var(--foreground))", lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
                   Launch
                 </p>
               </div>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "hsl(var(--foreground))", opacity: 0.65 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "#f0ead6", opacity: 0.5 }}>
                  Launch your Lovable website
               </p>
             </div>
@@ -385,26 +385,26 @@ const Index = () => {
           <Link to="/lazy-run" className="block">
             <div
               className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
-              style={{ backgroundColor: "hsl(var(--card))" }}
+              style={{ backgroundColor: "#0f0f0b" }}
             >
-              {(() => { const Icon = iconMap["Run"]; return Icon ? <Icon size={24} strokeWidth={1.5} /> : null; })()}
+              {(() => { const Icon = iconMap["Run"]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
               <div className="text-center">
-                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "hsl(var(--foreground))", lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
                   Lazy
                 </p>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "hsl(var(--foreground))", lineHeight: 1.1 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
                   Run
                 </p>
               </div>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "hsl(var(--foreground))", opacity: 0.65 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "#f0ead6", opacity: 0.5 }}>
                  Autonomous everything
               </p>
             </div>
           </Link>
 
           {products.map((product, i) => {
-            const bgEven = "hsl(var(--background))";
-            const bgOdd = "hsl(var(--card))";
+            const bgEven = "#0a0a08";
+            const bgOdd = "#0f0f0b";
             const cellIndex = i + 2;
             const row = Math.floor(cellIndex / 4);
             const col = cellIndex % 4;
@@ -416,16 +416,16 @@ const Index = () => {
                 className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
                 style={{ backgroundColor: bg }}
               >
-                {(() => { const Icon = iconMap[product.name]; return Icon ? <Icon size={24} strokeWidth={1.5} /> : null; })()}
+                {(() => { const Icon = iconMap[product.name]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
                 <div className="text-center">
-                  <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "hsl(var(--foreground))", lineHeight: 1.1 }}>
+                  <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
                     {product.cursive}
                   </p>
-                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "hsl(var(--foreground))", lineHeight: 1.1 }}>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.1 }}>
                     {product.name}
                   </p>
                 </div>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "hsl(var(--foreground))", opacity: 0.65 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "#f0ead6", opacity: 0.5 }}>
                   {product.tagline}
                 </p>
               </div>
