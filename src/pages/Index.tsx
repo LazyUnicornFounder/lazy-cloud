@@ -242,7 +242,7 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="min-h-screen flex flex-col items-center justify-center px-6 md:px-8 pt-32 pb-20 text-center"
+          className="min-h-screen flex flex-col items-center justify-center px-6 md:px-8 pt-40 pb-20 text-center"
         >
           {/* Headline */}
           <h1
