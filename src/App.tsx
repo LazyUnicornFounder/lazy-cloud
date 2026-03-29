@@ -70,7 +70,28 @@ import AdminLayout from "./pages/admin/AdminLayout.tsx";
 import AdminOverview from "./pages/admin/AdminOverview.tsx";
 import AdminSettingsPage from "./pages/admin/AdminSettingsPage.tsx";
 import AgentPage from "./pages/admin/AgentPage.tsx";
+import WaitlistPage from "./pages/WaitlistPage.tsx";
+import LazyWaitlistPage from "./pages/LazyWaitlistPage.tsx";
+import LazyCloudPage from "./pages/LazyCloudPage.tsx";
 
+const queryClient = new QueryClient();
+
+const App = () => (
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <PublicLayout>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminOverview />} />
+                <Route path=":agentSlug" element={<AgentPage />} />
+                <Route path="settings" element={<AdminSettingsPage />} />
+              </Route>
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/about" element={<AboutPage />} />
