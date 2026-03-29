@@ -141,7 +141,7 @@ export default function LazyCloudPage() {
                 See What's Included
               </a>
             </div>
-            <LiveCounter />
+            
           </motion.div>
         </div>
       </section>
