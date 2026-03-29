@@ -292,6 +292,10 @@ export default function LazyLaunchPage() {
               <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 Describe your business, pick your style, choose your agents — get a prompt you paste into Lovable. Your entire site launches in one go.
               </p>
+              <p className="mt-4 font-body text-sm text-foreground/40 max-w-xl leading-relaxed">
+                Want managed hosting, auto-updates, and volume API keys instead of self-hosting?{" "}
+                <a href="/lazy-cloud" className="underline text-primary/70 hover:text-primary transition-colors">Explore Lazy Cloud →</a>
+              </p>
             </motion.div>
           </div>
         </section>
