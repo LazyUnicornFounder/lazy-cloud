@@ -37,17 +37,13 @@ function RotatingHeadline() {
   }, []);
 
   return (
-    <div className="flex items-center gap-3 mb-2">
+    <div className="flex items-center gap-2 mb-2">
       <span
         className="font-body text-[12px] tracking-[0.2em] uppercase font-semibold"
         style={{ color: "hsl(var(--foreground))", opacity: 0.45 }}
       >
         Now automating
       </span>
-      <span
-        className="h-px flex-shrink-0"
-        style={{ width: 24, background: "hsl(var(--foreground) / 0.12)" }}
-      />
       <div className="relative h-5 overflow-hidden" style={{ minWidth: 90 }}>
         <AnimatePresence mode="wait">
           <motion.span
@@ -56,7 +52,7 @@ function RotatingHeadline() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -16, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="absolute inset-0 font-body text-[11px] tracking-[0.25em] uppercase font-semibold"
+            className="absolute inset-0 font-body text-[12px] tracking-[0.2em] uppercase font-semibold"
             style={{ color: "hsl(var(--primary))" }}
           >
             {rotatingWords[index]}
