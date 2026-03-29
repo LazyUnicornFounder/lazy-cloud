@@ -242,7 +242,7 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="min-h-[90vh] flex flex-col items-center justify-center px-6 md:px-8 pt-24 pb-20 text-center"
+          className="min-h-[90vh] flex flex-col items-center justify-center px-6 md:px-8 pt-36 pb-20 text-center"
         >
           {/* Headline */}
           <h1
@@ -266,7 +266,7 @@ const Index = () => {
 
           {/* Description */}
           <p
-            className="max-w-lg mt-6"
+            className="max-w-2xl mt-6"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "clamp(0.9rem, 1.2vw, 1.05rem)",
@@ -275,7 +275,7 @@ const Index = () => {
               lineHeight: 1.65,
             }}
           >
-            Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself, so you can build your autonomous business.
+            Each agent is a single prompt you paste into Lovable. It installs its own tables,<br className="hidden md:inline" /> edge functions, and UI — then runs itself, so you can build your autonomous business.
           </p>
 
           {/* CTA */}
