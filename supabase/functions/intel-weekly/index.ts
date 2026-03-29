@@ -14,9 +14,7 @@ Deno.serve(async (req) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     );
 
-    // Gather weekly stats across agents
     const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-
     const metrics: Record<string, number> = {};
     const tables = [
       { name: "blog_posts", label: "Blog posts" },
@@ -38,34 +36,43 @@ Deno.serve(async (req) => {
 
     const metricsSummary = Object.entries(metrics).map(([k, v]) => `${k}: ${v}`).join(", ");
 
-    // Generate intel report using AI
-    const aiRes = await fetch("https://api.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${Deno.env.get("LOVABLE_API_KEY")}`,
-      },
-      body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
-        messages: [
-          {
-            role: "system",
-            content: "You are a competitive intelligence analyst for an AI-powered content platform called LazyUnicorn. Write a concise weekly intelligence report with insights and recommendations based on the production metrics provided.",
-          },
-          { role: "user", content: `Weekly production metrics: ${metricsSummary}` },
-        ],
-      }),
-    });
+    let report = "AI report unavailable";
+    try {
+      const aiRes = await fetch("https://api.lovable.dev/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Deno.env.get("LOVABLE_API_KEY")}`,
+        },
+        body: JSON.stringify({
+          model: "google/gemini-2.5-flash",
+          messages: [
+            {
+              role: "system",
+              content: "You are a competitive intelligence analyst for an AI-powered content platform called LazyUnicorn. Write a concise weekly intelligence report with insights and recommendations based on the production metrics provided.",
+            },
+            { role: "user", content: `Weekly production metrics: ${metricsSummary}` },
+          ],
+        }),
+      });
 
-    const aiData = await aiRes.json();
-    const report = aiData.choices?.[0]?.message?.content ?? "No report generated";
+      const rawText = await aiRes.text();
+      try {
+        const aiData = JSON.parse(rawText);
+        report = aiData.choices?.[0]?.message?.content ?? rawText;
+      } catch {
+        report = rawText;
+      }
+    } catch (aiErr) {
+      report = `AI call failed: ${aiErr.message}`;
+    }
 
     // Store the report
     try {
       await supabase.from("intel_reports").insert({
         report_type: "weekly",
         content: report,
-        metrics: metrics,
+        metrics,
         status: "published",
       });
     } catch { /* table may not exist */ }
