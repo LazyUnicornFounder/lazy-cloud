@@ -5,6 +5,7 @@ import { Volume2, Pause, Play, RefreshCw, Rss, AlertTriangle } from "lucide-reac
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { toast } from "sonner";
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
@@ -38,7 +39,7 @@ export default function LazyVoiceDashboard() {
   const toggleRunning = async () => {
     if (!settings) return;
     const newVal = !settings.is_running;
-    await supabase.from("voice_settings").update({ is_running: newVal }).eq("id", settings.id);
+    await adminWrite({ table: "voice_settings", operation: "update", data: { is_running: newVal }, match: { id: settings.id } });
     setSettings({ ...settings, is_running: newVal });
     toast.success(newVal ? "Lazy Voice resumed." : "Lazy Voice paused.");
   };
