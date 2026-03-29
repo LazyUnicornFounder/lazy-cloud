@@ -8,7 +8,7 @@ import {
   LayoutDashboard, Calendar, ArrowRight, Rocket, Clock,
   Package, Printer, Mail, MonitorPlay, Youtube, GitBranch,
   Paintbrush, Lock, Eye, Wrench, Hammer, Brain, RefreshCw,
-  TrendingUp, UserCheck, Hourglass,
+  TrendingUp, UserCheck, Hourglass, ListEnd,
   type LucideIcon
 } from "lucide-react";
 
@@ -51,6 +51,7 @@ const rotatingWords = [
   { word: "trends", emoji: "🔥" },            // Lazy Trend
   { word: "retention", emoji: "💰" },         // Lazy Churn
   { word: "websites", emoji: "🚀" },           // Lazy Launch
+  { word: "waitlists", emoji: "📋" },          // Lazy Waitlist
 ];
 
 function RotatingHeadline() {
@@ -123,6 +124,10 @@ function RotatingHeadline() {
 }
 
 const products = [
+  // Lazy Unicorn
+  { cursive: "Lazy", name: "Launch", link: "/lazy-launch", tagline: "Autonomous project launcher" },
+  { cursive: "Lazy", name: "Waitlist", link: "/lazy-waitlist", tagline: "Autonomous pre-launch capture" },
+  { cursive: "Lazy", name: "Run", link: "/lazy-run", tagline: "Autonomous everything" },
   // Lazy Content
   { cursive: "Lazy", name: "Blogger", link: "/lazy-blogger", tagline: "Autonomous blog posts" },
   { cursive: "Lazy", name: "SEO", link: "/lazy-seo", tagline: "Autonomous SEO content" },
@@ -168,6 +173,7 @@ const products = [
 /* ── Lucide icon map ── */
 const iconMap: Record<string, LucideIcon> = {
   Launch: Rocket,
+  Waitlist: ListEnd,
   Run: Clock,
   Blogger: FileText,
   SEO: Search,

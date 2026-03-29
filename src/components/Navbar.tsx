@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X as XIcon, Linkedin, ChevronDown, ChevronRight, Github, Rocket, Clock, FileText, Search, Globe, Radar, Compass, Layers, ShoppingCart, Package, Printer, CreditCard, MessageSquare, Mail, Mic, MonitorPlay, Youtube, Code, GitBranch, BarChart3, Paintbrush, Lock, Calendar, LayoutDashboard, Bell, Send, Database, Shield, Eye, Wrench, Hammer, Brain, RefreshCw, TrendingUp, UserCheck, type LucideIcon } from "lucide-react";
+import { Menu, X as XIcon, Linkedin, ChevronDown, ChevronRight, Github, Rocket, Clock, FileText, Search, Globe, Radar, Compass, Layers, ShoppingCart, Package, Printer, CreditCard, MessageSquare, Mail, Mic, MonitorPlay, Youtube, Code, GitBranch, BarChart3, Paintbrush, Lock, Calendar, LayoutDashboard, Bell, Send, Database, Shield, Eye, Wrench, Hammer, Brain, RefreshCw, TrendingUp, UserCheck, ListEnd, type LucideIcon } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -15,7 +15,7 @@ const XLogo = () => (
 
 /* ── Agent icon map (Lucide, consistent with homepage & lazy-run) ── */
 const iconMap: Record<string, LucideIcon> = {
-  Launch: Rocket, Run: Clock, Blogger: FileText, SEO: Search, GEO: Globe,
+  Launch: Rocket, Waitlist: ListEnd, Run: Clock, Blogger: FileText, SEO: Search, GEO: Globe,
   Crawl: Radar, Perplexity: Compass, Contentful: Layers, Store: ShoppingCart,
   Drop: Package, Print: Printer, Pay: CreditCard, SMS: MessageSquare, Mail: Mail,
   Voice: Mic, Stream: MonitorPlay, YouTube: Youtube, GitHub: Code, GitLab: GitBranch,
