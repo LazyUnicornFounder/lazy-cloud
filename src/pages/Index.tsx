@@ -17,7 +17,7 @@ import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
 const NEW_TITLE = "Launch, build and run your Lovable website or app with autonomous agents";
-const NEW_DESCRIPTION = "Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself. Blog posts, SEO, payments, voice, stores, and more.";
+const NEW_DESCRIPTION = "Copy, paste, done. Each agent sets itself up and runs on autopilot — publishing content, handling payments, growing your audience, and more.";
 
 const rotatingWords = [
   { word: "everything", emoji: "🦄" },       // Lazy Run
@@ -265,7 +265,7 @@ const Index = () => {
               </h1>
 
               <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
-                Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself, so you can build your autonomous business.
+                Copy, paste, done. Each agent sets itself up and runs on autopilot — publishing content, handling payments, growing your audience, and more.
               </p>
 
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
