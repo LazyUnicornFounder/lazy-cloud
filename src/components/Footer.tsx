@@ -134,6 +134,7 @@ export default function Footer() {
               {[
                 { name: "How It Works", href: "/how-it-works" },
                 { name: "Use Cases", href: "/use-cases" },
+                { name: "Lazy Cloud", href: "/lazy-cloud" },
                 { name: "Pricing", href: "/pricing" },
                 { name: "Blog", href: "/blog" },
                 { name: "Autonomy", href: "/autonomy" },

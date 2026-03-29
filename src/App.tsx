@@ -74,6 +74,7 @@ import AgentPage from "./pages/admin/AgentPage.tsx";
 import AdminChangelogPage from "./pages/admin/AdminChangelogPage.tsx";
 import WaitlistPage from "./pages/WaitlistPage.tsx";
 import LazyWaitlistPage from "./pages/LazyWaitlistPage.tsx";
+import LazyCloudPage from "./pages/LazyCloudPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -142,6 +143,7 @@ const App = () => (
               <Route path="/lazy-repurpose" element={<LazyRepurposePage />} />
               <Route path="/lazy-trend" element={<LazyTrendPage />} />
               <Route path="/lazy-churn" element={<LazyChurnPage />} />
+              <Route path="/lazy-cloud" element={<LazyCloudPage />} />
               
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/autonomy" element={<AutonomyPage />} />
