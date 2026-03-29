@@ -20,7 +20,7 @@ export default function LazyVoiceDashboard() {
   const fetchData = async () => {
     setLoading(true);
     const [settingsRes, episodesRes, errorsRes] = await Promise.all([
-      supabase.from("voice_settings").select("*").limit(1),
+      adminWrite({ table: "voice_settings", operation: "select" }),
       supabase.from("voice_episodes").select("*").order("published_at", { ascending: false }),
       supabase.from("voice_errors").select("*").order("created_at", { ascending: false }).limit(10),
     ]);

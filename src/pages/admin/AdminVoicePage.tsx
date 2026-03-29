@@ -14,7 +14,7 @@ export default function AdminVoicePage() {
 
   const { data: settings } = useQuery({
     queryKey: ["admin-voice-settings"],
-    queryFn: async () => { const { data } = await db.from("voice_settings").select("*").limit(1).single(); return data; },
+    queryFn: async () => { const { data } = await adminWrite({ table: "voice_settings", operation: "select" }); return data?.[0] ?? null; },
   });
 
   const { data: episodesTotal = 0 } = useQuery({

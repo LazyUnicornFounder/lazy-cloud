@@ -32,7 +32,7 @@ export default function LazyVoiceSetup() {
     setLoading(true);
     try {
       // Check if settings already exist
-      const { data: existing } = await adminWrite({ table: "voice_settings", operation: "select" });
+      const { data: existing } = await adminWrite({ table: "voice_settings", operation: "select" }) as { data: any[] | null };
       if (existing && existing.length > 0) {
         await adminWrite({ table: "voice_settings", operation: "update", data: {
           ...form,
