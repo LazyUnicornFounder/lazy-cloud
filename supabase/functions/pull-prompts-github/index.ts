@@ -10,6 +10,22 @@ const REPO_OWNER = "LazyUnicornFounder";
 const REPO_NAME = "LazyUnicorn";
 const GITHUB_API = "https://api.github.com";
 
+const PRODUCT_LABELS: Record<string, string> = {
+  "lazy-run": "Lazy Run", "lazy-admin": "Lazy Admin", "lazy-blogger": "Lazy Blogger",
+  "lazy-seo": "Lazy SEO", "lazy-geo": "Lazy GEO", "lazy-crawl": "Lazy Crawl",
+  "lazy-perplexity": "Lazy Perplexity", "lazy-contentful": "Lazy Contentful",
+  "lazy-store": "Lazy Store", "lazy-drop": "Lazy Drop", "lazy-print": "Lazy Print",
+  "lazy-pay": "Lazy Pay", "lazy-sms": "Lazy SMS", "lazy-mail": "Lazy Mail",
+  "lazy-voice": "Lazy Voice", "lazy-stream": "Lazy Stream", "lazy-youtube": "Lazy YouTube",
+  "lazy-code": "Lazy GitHub", "lazy-gitlab": "Lazy GitLab", "lazy-linear": "Lazy Linear",
+  "lazy-design": "Lazy Design", "lazy-auth": "Lazy Auth", "lazy-alert": "Lazy Alert",
+  "lazy-telegram": "Lazy Telegram", "lazy-supabase": "Lazy Supabase",
+  "lazy-security": "Lazy Security", "lazy-granola": "Lazy Granola",
+  "lazy-watch": "Lazy Watch", "lazy-fix": "Lazy Fix", "lazy-build": "Lazy Build",
+  "lazy-intel": "Lazy Intel", "lazy-repurpose": "Lazy Repurpose",
+  "lazy-trend": "Lazy Trend", "lazy-churn": "Lazy Churn",
+};
+
 async function githubRequest(path: string, token: string) {
   const res = await fetch(`${GITHUB_API}${path}`, {
     headers: {
@@ -97,6 +113,23 @@ serve(async (req) => {
         version,
         prompt_text: promptText,
         is_current: true,
+      });
+
+      // Auto-create changelog entry
+      const agentName = PRODUCT_LABELS[product] || product;
+      const prevVersion = existing?.version || "0.0.0";
+      const isMajor = version.split(".")[0] !== prevVersion.split(".")[0];
+      const isMinor = version.split(".")[1] !== prevVersion.split(".")[1];
+      const changeType = isMajor ? "major" : isMinor ? "minor" : "fix";
+
+      await sb.from("prompt_releases").insert({
+        engine_name: agentName,
+        version,
+        release_date: new Date().toISOString().split("T")[0],
+        change_type: changeType,
+        summary: `Prompt updated to v${version} (synced from GitHub)`,
+        upgrade_complexity: "drop-in",
+        published: true,
       });
 
       results.push({ product, version, action: "updated" });
