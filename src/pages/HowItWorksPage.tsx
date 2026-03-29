@@ -93,7 +93,7 @@ export default function HowItWorksPage() {
         url="/how-it-works"
       />
       <Navbar />
-      <main className="min-h-screen" style={{ backgroundColor: "#0a0a08", color: "#f0ead6" }}>
+      <main className="min-h-screen" className="bg-background text-foreground">
         {/* Hero */}
         <section className="px-6 md:px-12 pt-32 pb-24 md:pb-32">
           <div className="max-w-4xl mx-auto">
