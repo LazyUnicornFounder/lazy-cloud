@@ -380,7 +380,7 @@ export default function LazyCloudPage() {
       </section>
 
       {/* ── Agency Ramp ── */}
-      <section className="max-w-4xl mx-auto px-6 md:px-12 pb-20 md:pb-28">
+      <section className="max-w-4xl mx-auto px-6 md:px-12 pb-20 md:pb-28 text-center">
         <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-3">
           The agency model works from your first client.
         </motion.h2>
