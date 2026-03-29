@@ -76,11 +76,6 @@ const categories: Category[] = [
       { emoji: "✈️", name: "Lazy Telegram", tagline: "Autonomous Telegram updates", href: "/lazy-telegram" },
       { emoji: "🗄️", name: "Lazy Supabase", tagline: "Autonomous database reports", href: "/lazy-supabase" },
       { emoji: "🛡️", name: "Lazy Security", tagline: "Autonomous pentesting", href: "/lazy-security" },
-    ],
-  },
-  {
-    label: "Agents",
-    agents: [
       { emoji: "👁️", name: "Lazy Watch", tagline: "Autonomous error monitoring", href: "/lazy-watch" },
       { emoji: "🔧", name: "Lazy Fix", tagline: "Autonomous prompt improvement", href: "/lazy-fix" },
       { emoji: "🏗️", name: "Lazy Build", tagline: "Autonomous agent writing", href: "/lazy-build" },
