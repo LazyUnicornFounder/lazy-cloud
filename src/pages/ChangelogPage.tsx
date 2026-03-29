@@ -32,7 +32,7 @@ const ENGINE_CATEGORIES: Record<string, string[]> = {
   "Lazy Agents": ["Lazy Watch", "Lazy Fix", "Lazy Build", "Lazy Intel"],
 };
 
-const CATEGORY_FILTERS = ["All Engines", ...Object.keys(ENGINE_CATEGORIES)];
+const CATEGORY_FILTERS = ["All Agents", ...Object.keys(ENGINE_CATEGORIES)];
 const CHANGE_TYPES = ["All", "Major", "Minor", "Fix", "Security"];
 
 function changeTypeBadge(type: string) {
@@ -59,7 +59,7 @@ function formatDate(d: string) {
 }
 
 export default function ChangelogPage() {
-  const [categoryFilter, setCategoryFilter] = useState("All Engines");
+  const [categoryFilter, setCategoryFilter] = useState("All Agents");
   const [typeFilter, setTypeFilter] = useState("All");
   const [expandedChanges, setExpandedChanges] = useState<Set<string>>(new Set());
   const [expandedUpgrade, setExpandedUpgrade] = useState<Set<string>>(new Set());
@@ -85,7 +85,7 @@ export default function ChangelogPage() {
 
   const filtered = useMemo(() => {
     return releases.filter(r => {
-      if (categoryFilter !== "All Engines") {
+      if (categoryFilter !== "All Agents") {
         const engines = ENGINE_CATEGORIES[categoryFilter] || [];
         if (!engines.includes(r.engine_name)) return false;
       }
@@ -152,13 +152,13 @@ export default function ChangelogPage() {
             <h2 className="font-display text-sm tracking-[0.15em] uppercase font-bold text-foreground/60 mb-4">Are you on the latest version?</h2>
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="flex-1">
-                <label className="font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 mb-1 block">Engine</label>
+                <label className="font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 mb-1 block">Agent</label>
                 <select
                   value={checkerEngine}
                   onChange={e => { setCheckerEngine(e.target.value); setCheckerResult(null); }}
                   className="w-full bg-background border border-border text-foreground px-3 py-2 font-body text-sm focus:outline-none focus:border-foreground/30"
                 >
-                  <option value="">Select engine</option>
+                  <option value="">Select agent</option>
                   {engineNames.map(n => <option key={n} value={n}>{n}</option>)}
                 </select>
               </div>

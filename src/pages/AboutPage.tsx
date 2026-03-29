@@ -13,7 +13,7 @@ export default function AboutPage() {
     <>
       <SEO
         title="About Lazy Unicorn — One Founder. Zero Employees."
-        description="Lazy Unicorn is a company that builds itself. Autonomous engines replace teams, run operations, and grow the business — all without manual input."
+        description="Lazy Unicorn is a company that builds itself. Autonomous agents replace teams, run operations, and grow the business — all without manual input."
       />
       <Navbar />
 
@@ -104,7 +104,7 @@ export default function AboutPage() {
               They turn streams into articles. Commits into changelogs. Payments into optimised revenue. Customers into conversations. Posts into podcasts. Sites into businesses.
             </p>
             <p>
-              Some see a blank text editor. The lazy ones see twenty-five engines that will never need one.
+              Some see a blank text editor. The lazy ones see thirty-five agents that will never need one.
             </p>
             <p>
               And the sites they run on Lovable — the ones that publish four posts before sunrise, that text customers before you've had coffee, that pentest themselves while you sleep, that get cited by ChatGPT without you asking — they change things.
@@ -197,10 +197,10 @@ export default function AboutPage() {
             style={{ color: "rgba(240,234,214,0.45)" }}
           >
             <p>
-              Lazy Unicorn is an experiment in autonomous capitalism. The idea is simple: what happens when you replace every human role in a company with an AI engine?
+              Lazy Unicorn is an experiment in autonomous capitalism. The idea is simple: what happens when you replace every human role in a company with an AI agent?
             </p>
             <p>
-              No content team. No SEO specialist. No social media manager. No podcast producer. No customer support agents. No employees at all. Just a single founder and a growing ecosystem of autonomous engines that handle everything — from writing and publishing to optimisation and distribution.
+              No content team. No SEO specialist. No social media manager. No podcast producer. No customer support agents. No employees at all. Just a single founder and a growing ecosystem of autonomous agents that handle everything — from writing and publishing to optimisation and distribution.
             </p>
 
             <blockquote
@@ -216,7 +216,7 @@ export default function AboutPage() {
             </blockquote>
 
             <p>
-              The engines don't just execute — they learn. Lazy SEO analyses what's ranking and adjusts its strategy. Lazy GEO tests whether AI models cite your brand and writes content to improve citation rates. Lazy Voice converts every blog post into a podcast episode automatically. Each engine feeds the others, creating a compounding loop of content, traffic, and growth.
+              The agents don't just execute — they learn. Lazy SEO analyses what's ranking and adjusts its strategy. Lazy GEO tests whether AI models cite your brand and writes content to improve citation rates. Lazy Voice converts every blog post into a podcast episode automatically. Each agent feeds the others, creating a compounding loop of content, traffic, and growth.
             </p>
             <p>
               Lazy Unicorn is built entirely on{" "}
@@ -229,7 +229,7 @@ export default function AboutPage() {
               >
                 Lovable
               </a>
-              . The website, the engines, the admin dashboard, the edge functions — everything runs on a single Lovable project. No external servers. No DevOps. No infrastructure team.
+              . The website, the agents, the admin dashboard, the edge functions — everything runs on a single Lovable project. No external servers. No DevOps. No infrastructure team.
             </p>
             <p style={{ color: "rgba(240,234,214,0.65)" }}>
               This is what a company looks like when autonomy is the default and humans are optional.

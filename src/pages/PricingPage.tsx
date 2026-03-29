@@ -111,10 +111,10 @@ const PricingPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Pricing — Lazy Unicorn Autonomous Engines"
-        description="Every engine is free to install. Copy the prompt, paste it into your Lovable project, and start growing autonomously."
+        title="Pricing — Lazy Unicorn Autonomous Agents"
+        description="Every agent is free to install. Copy the prompt, paste it into your Lovable project, and start growing autonomously."
         url="/pricing"
-        keywords="Lazy Unicorn pricing, autonomous engines pricing, Lovable tools pricing, free AI tools"
+        keywords="Lazy Unicorn pricing, autonomous agents pricing, Lovable tools pricing, free AI tools"
       />
       <Navbar />
 
@@ -126,10 +126,10 @@ const PricingPage = () => {
               Pricing
             </motion.p>
             <motion.h1 variants={fadeUp} transition={{ duration: 0.8 }} className="mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 3.2rem)", color: "#f0ead6", lineHeight: 1.1 }}>
-              Every engine is free to install.
+              Every agent is free to install.
             </motion.h1>
             <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="mt-4 font-body text-sm text-foreground/50 max-w-xl mx-auto leading-relaxed">
-              Copy the prompt. Paste it into your Lovable project. The engine installs itself. Pro tiers are coming soon for teams who want a hosted, zero-config experience.
+              Copy the prompt. Paste it into your Lovable project. The agent installs itself. Pro tiers are coming soon for teams who want a hosted, zero-config experience.
             </motion.p>
           </motion.div>
         </section>

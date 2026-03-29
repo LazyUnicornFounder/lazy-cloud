@@ -64,14 +64,14 @@ export default function UpgradeGuidePage() {
 
   return (
     <>
-      <SEO title="How to Upgrade Your Lazy Prompts — LazyUnicorn" description="A practical guide to keeping your Lazy engines up to date without breaking your site." />
+      <SEO title="How to Upgrade Your Lazy Prompts — LazyUnicorn" description="A practical guide to keeping your Lazy agents up to date without breaking your site." />
       <Navbar />
       <main className="min-h-screen bg-background text-foreground pt-32 pb-24 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-16">
             <h1 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4">How to upgrade your Lazy prompts</h1>
             <p className="font-body text-foreground/50 text-lg max-w-2xl">
-              A practical guide to keeping your Lazy engines up to date without breaking your site.
+              A practical guide to keeping your Lazy agents up to date without breaking your site.
             </p>
           </div>
 
@@ -98,10 +98,10 @@ export default function UpgradeGuidePage() {
             <div className="flex-1 min-w-0">
               <Section id="why-updated" title="Why prompts get updated">
                 <p>Lazy prompts are updated for four reasons.</p>
-                <p><strong className="text-foreground/80">Major updates</strong> add new engines, new features, or significant changes to how an engine works. A major update to Lazy Pay might add abandoned checkout recovery. A major update to Lazy Run might add three new engines to the selection screen. These updates require re-running the prompt in your Lovable project.</p>
+                <p><strong className="text-foreground/80">Major updates</strong> add new agents, new features, or significant changes to how an agent works. A major update to Lazy Pay might add abandoned checkout recovery. A major update to Lazy Run might add three new agents to the selection screen. These updates require re-running the prompt in your Lovable project.</p>
                 <p><strong className="text-foreground/80">Minor updates</strong> fix small issues, improve AI prompt quality, or add fields to existing database tables. A minor update to Lazy SEO might add a source field to the keywords table. These are usually drop-in — re-run the prompt and Lovable adds what is missing without removing what exists.</p>
                 <p><strong className="text-foreground/80">Fixes</strong> address specific bugs. A fix might correct a function name conflict or a missing field in a table. These are always drop-in.</p>
-                <p><strong className="text-foreground/80">Security updates</strong> address vulnerabilities — typically moving API keys from database tables to Supabase secrets. These require specific steps and should be applied promptly.</p>
+                <p><strong className="text-foreground/80">Security updates</strong> address vulnerabilities — typically moving API keys from database tables to secrets. These require specific steps and should be applied promptly.</p>
                 <p>You can always see what changed between versions on the <a href="/changelog" className="text-[#c8a961] hover:underline">Changelog page</a>.</p>
               </Section>
 
@@ -128,17 +128,17 @@ export default function UpgradeGuidePage() {
                   <li>Watch the build. If Lovable asks you a question answer it. If Lovable encounters a conflict it will usually offer to skip or merge — choose merge.</li>
                   <li>After the build completes go to your site and verify: the public pages still work, the admin still loads, and the engine is still running.</li>
                 </ol>
-                <p>If anything breaks, open the Lovable chat and type: <em>"The [engine name] stopped working after upgrading. Please check for issues and fix them."</em> Lovable will diagnose and repair.</p>
+                <p>If anything breaks, open the Lovable chat and type: <em>"The [agent name] stopped working after upgrading. Please check for issues and fix them."</em> Lovable will diagnose and repair.</p>
               </Section>
 
               <Section id="setup-required" title="Setup-required upgrades — step by step">
                 <p>A setup-required upgrade means new configuration options were added that require your input.</p>
                 <ol className="list-decimal list-inside space-y-2 pl-2">
                   <li>Paste the new prompt into Lovable as described in the drop-in process above.</li>
-                  <li>After the build completes visit the setup page for that engine — /lazy-[engine]-setup.</li>
+                  <li>After the build completes visit the setup page for that agent — /lazy-[agent]-setup.</li>
                   <li>You will see new fields that did not exist before. Fill them in. Your existing settings are pre-filled from the database, so you only need to complete the new fields.</li>
-                  <li>Save the settings. The engine will re-initialise with the updated configuration.</li>
-                  <li>Verify the engine is running from /admin.</li>
+                  <li>Save the settings. The agent will re-initialise with the updated configuration.</li>
+                  <li>Verify the agent is running from /admin.</li>
                 </ol>
                 <p><strong className="text-foreground/80">Example:</strong> Lazy Pay v0.0.3 moved Stripe API keys from the database to Supabase secrets. After pasting the new prompt you need to visit /lazy-pay-setup, re-enter your Stripe keys (they will now be stored securely as secrets), and save.</p>
               </Section>
@@ -157,28 +157,28 @@ export default function UpgradeGuidePage() {
               </Section>
 
               <Section id="upgrading-lazy-run" title="Upgrading Lazy Run specifically">
-                <p>Lazy Run is the most complex to upgrade because it manages all other engines. When Lazy Run gets a major update it usually means new engines were added to the engine selection screen.</p>
-                <p>If you upgrade Lazy Run and new engines appear that you want to install, you have two options.</p>
-                <p><strong className="text-foreground/80">Option A:</strong> Re-run the Lazy Run setup at /lazy-run-setup, go through all five steps again, and add the new engines. Your existing engine settings and data are preserved — the setup only adds what is new.</p>
-                <p><strong className="text-foreground/80">Option B:</strong> Install the new engines individually by pasting their individual prompts into Lovable. Each engine installs independently. Lazy Run will detect them on its next orchestrator run.</p>
-                <p>Option B is simpler for adding one or two new engines. Option A is better if multiple new engines were added in the update.</p>
+                <p>Lazy Run is the most complex to upgrade because it manages all other agents. When Lazy Run gets a major update it usually means new agents were added to the agent selection screen.</p>
+                <p>If you upgrade Lazy Run and new agents appear that you want to install, you have two options.</p>
+                <p><strong className="text-foreground/80">Option A:</strong> Re-run the Lazy Run setup at /lazy-run-setup, go through all five steps again, and add the new agents. Your existing agent settings and data are preserved — the setup only adds what is new.</p>
+                <p><strong className="text-foreground/80">Option B:</strong> Install the new agents individually by pasting their individual prompts into Lovable. Each agent installs independently. Lazy Run will detect them on its next orchestrator run.</p>
+                <p>Option B is simpler for adding one or two new agents. Option A is better if multiple new agents were added in the update.</p>
               </Section>
 
               <Section id="upgrading-admin" title="Upgrading the admin dashboard">
                 <p>The Lazy Admin dashboard at /admin is built by pasting the LazyUnicorn Admin Dashboard prompt. When a new version of the admin prompt is released:</p>
-                <p>Paste the new admin prompt into Lovable. It replaces the existing /admin routes entirely. Your engine data is unaffected — the admin only reads from your existing tables, it does not change them.</p>
-                <p>The new admin will auto-detect all your installed engines as before. You do not need to configure anything after pasting. Check that /admin loads correctly and that your engines appear in the sidebar.</p>
+                <p>Paste the new admin prompt into Lovable. It replaces the existing /admin routes entirely. Your agent data is unaffected — the admin only reads from your existing tables, it does not change them.</p>
+                <p>The new admin will auto-detect all your installed agents as before. You do not need to configure anything after pasting. Check that /admin loads correctly and that your agents appear in the sidebar.</p>
               </Section>
 
               <Section id="common-issues" title="Common issues after upgrading">
                 <div className="space-y-6">
                   <div>
                     <p className="text-foreground/80 font-semibold mb-1">My site looks broken after upgrading.</p>
-                    <p>Open the Lovable chat and type: <em>"The site broke after I pasted the [engine] prompt. Please diagnose and fix."</em> Lovable will identify what went wrong.</p>
+                    <p>Open the Lovable chat and type: <em>"The site broke after I pasted the [agent] prompt. Please diagnose and fix."</em> Lovable will identify what went wrong.</p>
                   </div>
                   <div>
                     <p className="text-foreground/80 font-semibold mb-1">My engine stopped running after upgrading.</p>
-                    <p>Go to /admin and check if the engine's is_running toggle is still on. Sometimes a new setup page resets it to false. Toggle it back on.</p>
+                    <p>Go to /admin and check if the agent's is_running toggle is still on. Sometimes a new setup page resets it to false. Toggle it back on.</p>
                   </div>
                   <div>
                     <p className="text-foreground/80 font-semibold mb-1">A new field I expected does not appear in my admin.</p>
@@ -196,7 +196,7 @@ export default function UpgradeGuidePage() {
               </Section>
 
               <Section id="upgrading-agents" title="Upgrading Lazy Agents">
-                <p>Lazy Agents (Watch, Fix, Build, and Intel) are upgraded the same way as engines — copy the latest prompt and paste it into Lovable. Because agents interact with your GitHub repo and AI models, pay attention to these specifics:</p>
+                <p>Lazy Agents (Watch, Fix, Build, Intel, Repurpose, Trend, and Churn) are upgraded the same way as other agents — copy the latest prompt and paste it into Lovable. Because these agents interact with your GitHub repo and AI models, pay attention to these specifics:</p>
                 <ul className="list-disc pl-5 space-y-2">
                   <li><strong>GITHUB_TOKEN scope</strong> — newer agent versions may require additional GitHub token permissions (e.g. <code>issues:write</code> or <code>pull_requests:write</code>). Check the changelog for scope changes.</li>
                   <li><strong>Agent settings table</strong> — agent upgrades may add new columns to the <code>agent_settings</code> table. Lovable handles migrations automatically, but verify your settings are preserved after upgrading.</li>
