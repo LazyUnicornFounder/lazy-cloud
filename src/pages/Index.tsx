@@ -373,8 +373,8 @@ const Index = () => {
                   Launch
                 </p>
               </div>
-              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "hsl(var(--foreground))", opacity: 0.4 }}>
-                Launch your Lovable website
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "hsl(var(--foreground))", opacity: 0.65 }}>
+                 Launch your Lovable website
               </p>
             </div>
           </Link>
@@ -394,8 +394,8 @@ const Index = () => {
                   Run
                 </p>
               </div>
-              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "hsl(var(--foreground))", opacity: 0.4 }}>
-                Autonomous everything
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "hsl(var(--foreground))", opacity: 0.65 }}>
+                 Autonomous everything
               </p>
             </div>
           </Link>
@@ -423,7 +423,7 @@ const Index = () => {
                     {product.name}
                   </p>
                 </div>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "hsl(var(--foreground))", opacity: 0.4 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.7rem, 1vw, 0.9rem)", color: "hsl(var(--foreground))", opacity: 0.65 }}>
                   {product.tagline}
                 </p>
               </div>
