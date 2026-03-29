@@ -28,10 +28,10 @@ const PricingSection = ({ onSubmitClick }: PricingSectionProps) => {
             className="bg-transparent backdrop-blur-xl-3xl rounded-2xl border border-primary/20 p-7 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(var(--primary-rgb),0.08)] flex flex-col"
           >
             <p className="font-body text-[14px] tracking-[0.2em] uppercase text-muted-foreground mb-1">
-              Free
+              Lazy
             </p>
             <p className="font-display text-4xl font-extrabold text-foreground">
-              $0
+              Free
             </p>
             <p className="font-body text-sm text-muted-foreground mt-1 mb-6">
               Forever free
@@ -55,7 +55,7 @@ const PricingSection = ({ onSubmitClick }: PricingSectionProps) => {
               onClick={onSubmitClick}
               className="mt-6 w-full font-body text-[13px] tracking-[0.15em] uppercase border border-foreground/20 text-foreground/70 hover:text-primary hover:border-primary/40 px-6 py-2.5 rounded-full font-semibold transition-colors"
             >
-              Submit for free
+              Get Started
             </button>
           </motion.div>
 
@@ -89,7 +89,7 @@ const PricingSection = ({ onSubmitClick }: PricingSectionProps) => {
 
             <ul className="space-y-3 flex-1">
               {[
-                "Everything in Free",
+                "Everything in Lazy",
                 "Dedicated product page",
                 "Full description & features list",
                 "Logo & screenshot showcase",

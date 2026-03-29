@@ -176,10 +176,10 @@ const PricingPage = () => {
 
                   {/* Two tiers side by side */}
                   <div className="grid grid-cols-2 divide-x divide-border flex-1">
-                    {/* Free */}
+                    {/* Lazy */}
                     <div className="p-5 flex flex-col">
-                      <p className="font-display text-xl font-bold text-foreground">$0</p>
-                      <p className="font-body text-[11px] text-foreground/40 uppercase tracking-wider mb-3">Free</p>
+                      <p className="font-display text-xl font-bold text-foreground">Free</p>
+                      <p className="font-body text-[11px] text-foreground/40 uppercase tracking-wider mb-3">Lazy</p>
                       <ul className="space-y-1.5 flex-1">
                         {product.free.map((f, i) => (
                           <li key={i} className="font-body text-xs text-foreground/60 flex items-start gap-1.5">

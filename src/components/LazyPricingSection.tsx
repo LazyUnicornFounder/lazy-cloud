@@ -39,7 +39,7 @@ export default function LazyPricingSection({
             className="border border-border p-8 bg-card flex flex-col"
           >
             <h3 className="font-display text-lg font-bold mb-1">Lazy</h3>
-            <p className="font-body text-2xl font-bold mb-4">$0</p>
+            <p className="font-body text-2xl font-bold mb-4">Free</p>
             <ul className="font-body text-sm text-muted-foreground space-y-2 flex-1">
               {lazyFeatures.map((f, i) => (
                 <li key={i}>✓ {f}</li>
