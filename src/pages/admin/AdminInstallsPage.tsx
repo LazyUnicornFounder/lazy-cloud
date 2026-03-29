@@ -1,221 +1,98 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
-import { Download, Globe, Cpu, TrendingUp, ExternalLink, Search } from "lucide-react";
-
-const db = supabase as any;
-
-/* ── Category colour mapping ── */
-const ENGINE_CATEGORIES: Record<string, { category: string; color: string }> = {
-  blogger: { category: "Content", color: "#22c55e" },
-  seo: { category: "Content", color: "#22c55e" },
-  geo: { category: "Content", color: "#22c55e" },
-  crawl: { category: "Content", color: "#22c55e" },
-  perplexity: { category: "Content", color: "#22c55e" },
-  contentful: { category: "Content", color: "#22c55e" },
-  store: { category: "Commerce", color: "#f97316" },
-  drop: { category: "Commerce", color: "#f97316" },
-  print: { category: "Commerce", color: "#f97316" },
-  pay: { category: "Commerce", color: "#f97316" },
-  sms: { category: "Commerce", color: "#f97316" },
-  mail: { category: "Commerce", color: "#f97316" },
-  voice: { category: "Media", color: "#a855f7" },
-  stream: { category: "Media", color: "#a855f7" },
-  youtube: { category: "Media", color: "#a855f7" },
-  github: { category: "Dev", color: "#3b82f6" },
-  gitlab: { category: "Dev", color: "#3b82f6" },
-  linear: { category: "Dev", color: "#3b82f6" },
-  design: { category: "Dev", color: "#3b82f6" },
-  auth: { category: "Dev", color: "#3b82f6" },
-  granola: { category: "Dev", color: "#3b82f6" },
-  admin: { category: "Ops", color: "#ef4444" },
-  alert: { category: "Ops", color: "#ef4444" },
-  telegram: { category: "Ops", color: "#ef4444" },
-  "supabase": { category: "Ops", color: "#ef4444" },
-  security: { category: "Ops", color: "#ef4444" },
-  watch: { category: "Ops", color: "#ef4444" },
-  fix: { category: "Ops", color: "#ef4444" },
-  build: { category: "Ops", color: "#ef4444" },
-  intel: { category: "Ops", color: "#ef4444" },
-  repurpose: { category: "Ops", color: "#ef4444" },
-  trend: { category: "Ops", color: "#ef4444" },
-  churn: { category: "Ops", color: "#ef4444" },
-  launch: { category: "Unicorn", color: "#c8a961" },
-  waitlist: { category: "Unicorn", color: "#c8a961" },
-  run: { category: "Unicorn", color: "#c8a961" },
-};
-
-const getEngineInfo = (engine: string) => {
-  const key = engine.replace(/^lazy-?/i, "").toLowerCase();
-  return ENGINE_CATEGORIES[key] || { category: "Other", color: "#6b7280" };
-};
-
-const timeAgo = (iso: string) => {
-  const diff = Date.now() - new Date(iso).getTime();
-  if (diff < 60000) return "just now";
-  if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
-  if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
-  return `${Math.floor(diff / 86400000)}d ago`;
-};
+import { CATEGORY_META, AGENTS } from "./agentRegistry";
+import { Loader2 } from "lucide-react";
 
 export default function AdminInstallsPage() {
-  const [engineFilter, setEngineFilter] = useState("");
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(0);
+  const PAGE_SIZE = 50;
 
   const { data: installs = [], isLoading } = useQuery({
-    queryKey: ["admin-installs"],
+    queryKey: ["admin-installs", page, search],
     queryFn: async () => {
-      const { data, error } = await db.from("installs").select("*").order("created_at", { ascending: false });
-      if (error) throw error;
-      return data as { id: string; engine: string; version: string; site_url: string; created_at: string }[];
+      let q = supabase.from("installs").select("*").order("created_at", { ascending: false }).range(page * PAGE_SIZE, (page + 1) * PAGE_SIZE - 1);
+      if (search) q = q.or(`engine.ilike.%${search}%,site_url.ilike.%${search}%`);
+      const { data } = await q;
+      return data || [];
     },
   });
 
-  const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString();
+  const { data: chartData = [] } = useQuery({
+    queryKey: ["admin-installs-chart"],
+    queryFn: async () => {
+      const { data } = await supabase.from("installs").select("engine");
+      if (!data) return [];
+      const counts: Record<string, number> = {};
+      data.forEach((r) => { counts[r.engine] = (counts[r.engine] || 0) + 1; });
+      return Object.entries(counts).map(([engine, count]) => ({ engine, count })).sort((a, b) => b.count - a.count);
+    },
+  });
 
-  const stats = useMemo(() => {
-    const uniqueSites = new Set(installs.map((i: any) => i.site_url)).size;
-    const thisWeek = installs.filter((i: any) => i.created_at >= weekAgo).length;
-    const engineCounts: Record<string, number> = {};
-    installs.forEach((i: any) => { engineCounts[i.engine] = (engineCounts[i.engine] || 0) + 1; });
-    const topEngine = Object.entries(engineCounts).sort((a, b) => b[1] - a[1])[0];
-    return { total: installs.length, uniqueSites, thisWeek, topEngine: topEngine?.[0] || "—" };
-  }, [installs, weekAgo]);
+  const { data: stats } = useQuery({
+    queryKey: ["admin-installs-stats"],
+    queryFn: async () => {
+      const { count: total } = await supabase.from("installs").select("id", { count: "exact", head: true });
+      const { data: sites } = await supabase.from("installs").select("site_url");
+      const uniqueSites = new Set(sites?.map((s) => s.site_url)).size;
+      const week = new Date(); week.setDate(week.getDate() - 7);
+      const { count: weekCount } = await supabase.from("installs").select("id", { count: "exact", head: true }).gte("created_at", week.toISOString());
+      return { total: total || 0, uniqueSites, weekCount: weekCount || 0 };
+    },
+  });
 
-  const chartData = useMemo(() => {
-    const counts: Record<string, number> = {};
-    installs.forEach((i: any) => { counts[i.engine] = (counts[i.engine] || 0) + 1; });
-    return Object.entries(counts)
-      .map(([engine, count]) => ({ engine, count, fill: getEngineInfo(engine).color }))
-      .sort((a, b) => b.count - a.count);
-  }, [installs]);
-
-  const distinctEngines = useMemo(() => [...new Set(installs.map((i: any) => i.engine))].sort(), [installs]);
-
-  const filtered = useMemo(() => {
-    let result = installs;
-    if (engineFilter) result = result.filter((i: any) => i.engine === engineFilter);
-    if (search) result = result.filter((i: any) => i.site_url.toLowerCase().includes(search.toLowerCase()));
-    return result;
-  }, [installs, engineFilter, search]);
-
-  const statCards = [
-    { label: "Total Installs", value: stats.total, icon: Download },
-    { label: "Unique Sites", value: stats.uniqueSites, icon: Globe },
-    { label: "Most Popular", value: stats.topEngine, icon: Cpu },
-    { label: "This Week", value: stats.thisWeek, icon: TrendingUp },
-  ];
+  const getEngineColor = (engine: string) => {
+    const agent = AGENTS.find((a) => a.key === engine || a.label.toLowerCase() === engine.toLowerCase());
+    return agent ? CATEGORY_META[agent.category].color : "#6b7280";
+  };
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="font-display text-xl font-bold tracking-tight">Installs</h1>
-        <p className="font-body text-[13px] text-[#f0ead6]/50 mt-1">Track agent installations across all sites.</p>
-      </div>
-
-      {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#f0ead6]/5">
-        {statCards.map((s) => (
-          <div key={s.label} className="bg-[#0a0a08] border border-[#f0ead6]/5 p-5">
-            <div className="flex items-center gap-2 mb-2">
-              <s.icon size={13} className="text-[#f0ead6]/40" />
-              <span className="font-body text-[11px] tracking-[0.15em] uppercase text-[#f0ead6]/50">{s.label}</span>
-            </div>
-            <p className="font-display text-2xl font-bold tracking-tight">{s.value}</p>
+    <div>
+      <h1 className="font-display text-xl font-bold tracking-tight mb-6">Installs</h1>
+      <div className="grid grid-cols-3 gap-3 mb-6">
+        {[{ label: "Total", value: stats?.total ?? "—" }, { label: "Unique Sites", value: stats?.uniqueSites ?? "—" }, { label: "This Week", value: stats?.weekCount ?? "—" }].map((s) => (
+          <div key={s.label} className="border border-[#f0ead6]/8 p-4">
+            <p className="font-body text-[10px] tracking-[0.2em] uppercase text-[#f0ead6]/40">{s.label}</p>
+            <p className="font-display text-2xl font-bold mt-1">{s.value}</p>
           </div>
         ))}
       </div>
-
-      {/* Chart */}
       {chartData.length > 0 && (
-        <div className="border border-[#f0ead6]/8 p-6">
-          <p className="font-body text-[11px] tracking-[0.2em] uppercase text-[#f0ead6]/50 mb-4">Installs per Engine</p>
-          <ResponsiveContainer width="100%" height={280}>
-            <BarChart data={chartData} margin={{ top: 4, right: 0, bottom: 0, left: 0 }}>
-              <XAxis dataKey="engine" tick={{ fill: "#f0ead6", opacity: 0.5, fontSize: 11 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: "#f0ead6", opacity: 0.4, fontSize: 11 }} axisLine={false} tickLine={false} allowDecimals={false} />
-              <Tooltip
-                contentStyle={{ backgroundColor: "#0a0a08", border: "1px solid rgba(240,234,214,0.15)", color: "#f0ead6", fontFamily: "'Space Grotesk', sans-serif", fontSize: 13 }}
-                cursor={{ fill: "rgba(240,234,214,0.03)" }}
-              />
-              <Bar dataKey="count" radius={[0, 0, 0, 0]}>
-                {chartData.map((entry, i) => (
-                  <Cell key={i} fill={entry.fill} />
-                ))}
-              </Bar>
+        <div className="border border-[#f0ead6]/8 p-4 mb-6">
+          <ResponsiveContainer width="100%" height={200}>
+            <BarChart data={chartData} layout="vertical" margin={{ left: 60 }}>
+              <XAxis type="number" tick={{ fill: "#f0ead640", fontSize: 10 }} />
+              <YAxis dataKey="engine" type="category" tick={{ fill: "#f0ead680", fontSize: 11 }} width={60} />
+              <Tooltip contentStyle={{ background: "#0a0a08", border: "1px solid #f0ead620", color: "#f0ead6", fontSize: 12 }} />
+              <Bar dataKey="count" radius={0}>{chartData.map((e, i) => <Cell key={i} fill={getEngineColor(e.engine)} />)}</Bar>
             </BarChart>
           </ResponsiveContainer>
         </div>
       )}
-
-      {/* Filters */}
-      <div className="flex flex-wrap gap-3">
-        <div className="relative flex-1 min-w-[200px]">
-          <Search size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#f0ead6]/30" />
-          <input
-            type="text"
-            placeholder="Search by site URL…"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-transparent border border-[#f0ead6]/10 text-[#f0ead6] pl-9 pr-4 py-2 font-body text-sm focus:outline-none focus:border-[#f0ead6]/30"
-          />
-        </div>
-        <select
-          value={engineFilter}
-          onChange={(e) => setEngineFilter(e.target.value)}
-          className="bg-[#0a0a08] border border-[#f0ead6]/10 text-[#f0ead6] px-4 py-2 font-body text-sm focus:outline-none focus:border-[#f0ead6]/30 appearance-none cursor-pointer"
-        >
-          <option value="">All engines</option>
-          {distinctEngines.map((e: string) => (
-            <option key={e} value={e}>{e}</option>
-          ))}
-        </select>
-      </div>
-
-      {/* Table */}
-      <div className="border border-[#f0ead6]/8 overflow-x-auto">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b border-[#f0ead6]/8">
-              <th className="text-left px-4 py-3 font-body text-[11px] tracking-[0.15em] uppercase text-[#f0ead6]/50">Site URL</th>
-              <th className="text-left px-4 py-3 font-body text-[11px] tracking-[0.15em] uppercase text-[#f0ead6]/50">Engine</th>
-              <th className="text-left px-4 py-3 font-body text-[11px] tracking-[0.15em] uppercase text-[#f0ead6]/50">Version</th>
-              <th className="text-left px-4 py-3 font-body text-[11px] tracking-[0.15em] uppercase text-[#f0ead6]/50">Installed</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[#f0ead6]/5">
-            {isLoading ? (
-              <tr><td colSpan={4} className="px-4 py-8 text-center font-body text-sm text-[#f0ead6]/40">Loading…</td></tr>
-            ) : filtered.length === 0 ? (
-              <tr><td colSpan={4} className="px-4 py-8 text-center font-body text-sm text-[#f0ead6]/40">No installs found.</td></tr>
-            ) : filtered.map((install: any) => {
-              const info = getEngineInfo(install.engine);
-              return (
-                <tr key={install.id} className="hover:bg-[#f0ead6]/3 transition-colors">
-                  <td className="px-4 py-3">
-                    <a href={install.site_url.startsWith("http") ? install.site_url : `https://${install.site_url}`} target="_blank" rel="noopener noreferrer"
-                      className="font-body text-sm text-[#c8a961] hover:text-[#c8a961]/80 inline-flex items-center gap-1.5 transition-colors">
-                      {install.site_url}
-                      <ExternalLink size={11} />
-                    </a>
-                  </td>
-                  <td className="px-4 py-3">
-                    <span className="inline-flex items-center px-2.5 py-0.5 font-body text-[11px] tracking-[0.1em] uppercase font-medium border"
-                      style={{ color: info.color, borderColor: `${info.color}33` }}>
-                      {install.engine}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3 font-body text-sm text-[#f0ead6]/60">{install.version}</td>
-                  <td className="px-4 py-3 font-body text-sm text-[#f0ead6]/50" title={new Date(install.created_at).toLocaleString()}>
-                    {timeAgo(install.created_at)}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+      <input type="text" value={search} onChange={(e) => { setSearch(e.target.value); setPage(0); }} placeholder="Search engine or URL…"
+        className="bg-transparent border border-[#f0ead6]/8 text-[#f0ead6] px-3 py-1.5 font-body text-[11px] focus:outline-none focus:border-[#f0ead6]/20 w-64 mb-3" />
+      {isLoading ? <div className="flex justify-center h-16"><Loader2 size={16} className="animate-spin text-[#f0ead6]/40" /></div> : (
+        <>
+          <div className="border border-[#f0ead6]/8 overflow-x-auto">
+            <table className="w-full text-left">
+              <thead><tr className="border-b border-[#f0ead6]/8">{["Site","Engine","Version","Date"].map(h=><th key={h} className="px-3 py-2 font-body text-[10px] tracking-[0.2em] uppercase text-[#f0ead6]/40 font-normal">{h}</th>)}</tr></thead>
+              <tbody className="divide-y divide-[#f0ead6]/5">{installs.map(row=>(
+                <tr key={row.id} className="hover:bg-[#f0ead6]/3"><td className="px-3 py-2"><a href={row.site_url} target="_blank" rel="noopener noreferrer" className="font-body text-[12px] text-[#c8a961] hover:underline truncate block max-w-xs">{row.site_url}</a></td>
+                <td className="px-3 py-2"><span className="px-1.5 py-0.5 border text-[10px] uppercase tracking-wider font-body" style={{borderColor:getEngineColor(row.engine)+"40",color:getEngineColor(row.engine)}}>{row.engine}</span></td>
+                <td className="px-3 py-2 font-body text-[12px] text-[#f0ead6]/50">{row.version}</td>
+                <td className="px-3 py-2 font-body text-[12px] text-[#f0ead6]/40">{new Date(row.created_at).toLocaleDateString("en-GB",{day:"2-digit",month:"short"})}</td></tr>
+              ))}</tbody>
+            </table>
+          </div>
+          <div className="flex items-center justify-between mt-3">
+            <button onClick={()=>setPage(Math.max(0,page-1))} disabled={page===0} className="font-body text-[11px] uppercase tracking-wider text-[#f0ead6]/50 hover:text-[#f0ead6] disabled:opacity-30">← Previous</button>
+            <span className="font-body text-[10px] text-[#f0ead6]/40">Page {page+1}</span>
+            <button onClick={()=>setPage(page+1)} disabled={installs.length<PAGE_SIZE} className="font-body text-[11px] uppercase tracking-wider text-[#f0ead6]/50 hover:text-[#f0ead6] disabled:opacity-30">Next →</button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

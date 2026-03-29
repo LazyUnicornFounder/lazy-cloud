@@ -1,88 +1,80 @@
 import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+import { Loader2, Save, CheckCircle, XCircle } from "lucide-react";
+import { useAdminContext } from "./AdminLayout";
+import { AGENTS } from "./agentRegistry";
 
 export default function AdminSettingsPage() {
+  const { installed } = useAdminContext();
+  const [saving, setSaving] = useState(false);
+  const [siteForm, setSiteForm] = useState({ site_url: "", brand_name: "", business_description: "", support_email: "" });
+
+  const { data: versions } = useQuery({
+    queryKey: ["admin-versions"],
+    queryFn: async () => {
+      try {
+        const c = new AbortController(); setTimeout(() => c.abort(), 5000);
+        const res = await fetch("https://lazyunicorn.ai/api/versions", { signal: c.signal });
+        return res.ok ? await res.json() : null;
+      } catch { return null; }
+    },
+    staleTime: 300_000,
+  });
+
+  const { data: promptVersions = [] } = useQuery({
+    queryKey: ["admin-prompt-versions"],
+    queryFn: async () => {
+      const { data } = await supabase.from("prompt_versions").select("product, version").eq("is_current", true);
+      return data || [];
+    },
+  });
+
+  const [dismissed, setDismissed] = useState<string[]>(() => { try { return JSON.parse(localStorage.getItem("lazy-version-dismissed") || "[]"); } catch { return []; } });
+  const outdated = versions ? promptVersions.filter(p => { const l = versions[p.product]; return l && l !== p.version && !dismissed.includes(`${p.product}:${l}`); }) : [];
+  const dismissAll = () => { const k = outdated.map(p => `${p.product}:${versions[p.product]}`); const n = [...dismissed, ...k]; setDismissed(n); localStorage.setItem("lazy-version-dismissed", JSON.stringify(n)); };
+
   return (
     <div>
       <h1 className="font-display text-xl font-bold tracking-tight mb-6">Settings</h1>
-
-      {/* Site Settings */}
-      <div className="mb-8">
-        <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/75 mb-3">Site Settings</p>
-        <div className="border border-[#f0ead6]/8 p-5 space-y-4">
-          <p className="font-body text-xs text-[#f0ead6]/82">
-            Site-wide defaults are configured per agent. Visit each agent's settings panel to update.
-          </p>
+      {outdated.length > 0 && (
+        <div className="border border-[#c8a961]/30 bg-[#c8a961]/5 p-4 flex items-center justify-between mb-6">
+          <span className="font-body text-[13px] text-[#c8a961]">Updates available for {outdated.length} agent{outdated.length > 1 ? "s" : ""}</span>
+          <button onClick={dismissAll} className="font-body text-[11px] uppercase tracking-wider text-[#f0ead6]/50 hover:text-[#f0ead6]">Dismiss</button>
         </div>
-      </div>
-
-      {/* API Keys Info */}
-      <div className="mb-8">
-        <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/75 mb-3">API Keys</p>
-        <div className="border border-[#f0ead6]/8 divide-y divide-[#f0ead6]/5">
-          {[
-            { name: "Lovable AI", hint: "Built-in. No key required.", status: "active" },
-            { name: "ElevenLabs", hint: "Configure in Lazy Voice settings.", status: "per-agent" },
-            { name: "Twilio", hint: "Configure in Lazy SMS settings.", status: "per-agent" },
-            { name: "Stripe", hint: "Configure in Lazy Pay settings.", status: "per-agent" },
-            { name: "Twitch", hint: "Configure in Lazy Stream settings.", status: "per-agent" },
-            { name: "GitHub", hint: "Configure in Lazy GitHub settings.", status: "per-agent" },
-            { name: "GitLab", hint: "Configure in Lazy GitLab settings.", status: "per-agent" },
-            { name: "Linear", hint: "Configure in Lazy Linear settings.", status: "per-agent" },
-            { name: "Firecrawl", hint: "Configure in Lazy Crawl settings.", status: "per-agent" },
-            { name: "Perplexity", hint: "Configure in Lazy Perplexity settings.", status: "per-agent" },
-            { name: "Slack", hint: "Configure in Lazy Alert settings.", status: "per-agent" },
-            { name: "Telegram", hint: "Configure in Lazy Telegram settings.", status: "per-agent" },
-            { name: "Contentful", hint: "Configure in Lazy Contentful settings.", status: "per-agent" },
-            { name: "Aikido", hint: "Configure in Lazy Security settings.", status: "per-agent" },
-          ].map((key) => (
-            <div key={key.name} className="flex items-center justify-between px-5 py-3">
-              <div>
-                <p className="font-body text-xs text-[#f0ead6]/95">{key.name}</p>
-                <p className="font-body text-[13px] text-[#f0ead6]/68 mt-0.5">{key.hint}</p>
-              </div>
-              <span className={`font-body text-[13px] tracking-wider uppercase ${key.status === "active" ? "text-emerald-500" : "text-[#f0ead6]/68"}`}>
-                {key.status === "active" ? "Active" : "Per Agent"}
-              </span>
-            </div>
+      )}
+      <div className="border border-[#f0ead6]/8 p-5 mb-6">
+        <h2 className="font-display text-sm font-bold tracking-[0.1em] uppercase text-[#f0ead6]/50 mb-4">Site Settings</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[{key:"site_url",label:"Site URL",ph:"https://yoursite.com"},{key:"brand_name",label:"Brand Name",ph:"Your Brand"},{key:"business_description",label:"Description",ph:"What your business does"},{key:"support_email",label:"Support Email",ph:"support@yoursite.com"}].map(f=>(
+            <div key={f.key}><label className="block font-body text-[10px] tracking-[0.2em] uppercase text-[#f0ead6]/40 mb-1">{f.label}</label>
+            <input type="text" value={(siteForm as any)[f.key]||""} onChange={e=>setSiteForm({...siteForm,[f.key]:e.target.value})} placeholder={f.ph}
+              className="w-full bg-transparent border border-[#f0ead6]/8 text-[#f0ead6] px-3 py-2 font-body text-[12px] focus:outline-none focus:border-[#f0ead6]/20"/></div>
           ))}
         </div>
+        <button disabled={saving} onClick={async()=>{setSaving(true);const agents=AGENTS.filter(a=>installed.has(a.key));for(const a of agents){try{const u:Record<string,string>={};if(siteForm.site_url)u.site_url=siteForm.site_url;if(siteForm.brand_name)u.brand_name=siteForm.brand_name;if(Object.keys(u).length>0)await(supabase as any).from(a.settingsTable).update(u);}catch{}}toast.success("Settings propagated");setSaving(false);}}
+          className="mt-4 inline-flex items-center gap-2 bg-[#f0ead6] text-[#0a0a08] px-4 py-2 font-display text-[11px] tracking-[0.1em] uppercase font-bold hover:opacity-90 disabled:opacity-50">
+          {saving?<Loader2 size={12} className="animate-spin"/>:<Save size={12}/>} Propagate to All Agents
+        </button>
       </div>
-
-      {/* Schedule Overview */}
-      <div>
-        <p className="font-body text-[13px] tracking-[0.15em] uppercase text-[#f0ead6]/75 mb-3">Publishing Schedule</p>
+      {promptVersions.length > 0 && (
         <div className="border border-[#f0ead6]/8 p-5">
-          <div className="space-y-3">
-            {[
-              { agent: "Lazy Blogger", schedule: "Every 15 minutes", color: "bg-emerald-500" },
-              { agent: "Lazy SEO", schedule: "On-demand via Blogger", color: "bg-blue-500" },
-              { agent: "Lazy GEO", schedule: "On-demand via Blogger", color: "bg-purple-500" },
-              { agent: "Lazy Crawl", schedule: "Every 30 minutes", color: "bg-orange-500" },
-              { agent: "Lazy Perplexity", schedule: "Daily 5am research", color: "bg-cyan-500" },
-              { agent: "Lazy Store", schedule: "Daily discovery & listings", color: "bg-amber-500" },
-              { agent: "Lazy Voice", schedule: "Every 30 minutes", color: "bg-[#c8a961]" },
-              { agent: "Lazy Pay", schedule: "Daily recovery, weekly optimise", color: "bg-pink-500" },
-              { agent: "Lazy SMS", schedule: "Hourly sequences", color: "bg-teal-500" },
-              { agent: "Lazy Stream", schedule: "Every 5 minutes (monitor)", color: "bg-red-500" },
-              { agent: "Lazy GitHub", schedule: "Hourly sync", color: "bg-gray-500" },
-              { agent: "Lazy GitLab", schedule: "Hourly sync", color: "bg-indigo-500" },
-              { agent: "Lazy Linear", schedule: "Hourly sync", color: "bg-violet-500" },
-              { agent: "Lazy Alert", schedule: "Every 5 minutes + daily briefing", color: "bg-yellow-500" },
-              { agent: "Lazy Telegram", schedule: "Every 5 minutes + daily briefing", color: "bg-sky-500" },
-              { agent: "Lazy Contentful", schedule: "Hourly pull, 30-min push", color: "bg-lime-500" },
-              { agent: "Lazy Supabase", schedule: "Hourly monitor", color: "bg-emerald-400" },
-              { agent: "Lazy Security", schedule: "Hourly scan check", color: "bg-rose-500" },
-            ].map((item) => (
-              <div key={item.agent} className="flex items-center gap-3">
-                <span className={`w-2 h-2 rounded-full ${item.color} flex-shrink-0`} />
-                <span className="font-body text-xs text-[#f0ead6]/92 w-32">{item.agent}</span>
-                <span className="font-body text-xs text-[#f0ead6]/72">{item.schedule}</span>
-              </div>
-            ))}
+          <h2 className="font-display text-sm font-bold tracking-[0.1em] uppercase text-[#f0ead6]/50 mb-4">Installed Versions</h2>
+          <div className="border border-[#f0ead6]/8 overflow-x-auto">
+            <table className="w-full text-left">
+              <thead><tr className="border-b border-[#f0ead6]/8">{["Agent","Installed","Latest","Status"].map(h=><th key={h} className="px-3 py-2 font-body text-[10px] tracking-[0.2em] uppercase text-[#f0ead6]/40 font-normal">{h}</th>)}</tr></thead>
+              <tbody className="divide-y divide-[#f0ead6]/5">{promptVersions.map(p=>{const l=versions?.[p.product];const ok=!l||l===p.version;return(
+                <tr key={p.product} className="hover:bg-[#f0ead6]/3">
+                  <td className="px-3 py-2 font-body text-[12px] text-[#f0ead6]/80">{p.product}</td>
+                  <td className="px-3 py-2 font-body text-[12px] text-[#f0ead6]/60">{p.version}</td>
+                  <td className="px-3 py-2 font-body text-[12px] text-[#f0ead6]/60">{l||"—"}</td>
+                  <td className="px-3 py-2">{ok?<span className="inline-flex items-center gap-1 text-emerald-500 text-[10px] uppercase tracking-wider"><CheckCircle size={10}/>Current</span>:<span className="inline-flex items-center gap-1 text-[#c8a961] text-[10px] uppercase tracking-wider"><XCircle size={10}/>Update</span>}</td>
+                </tr>);})}</tbody>
+            </table>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
