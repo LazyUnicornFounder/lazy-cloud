@@ -197,7 +197,7 @@ export default function LazyWaitlistPage() {
         </section>
 
         <div className="mt-20">
-          <ProductPromoBanner exclude="lazy-waitlist" />
+          <ProductPromoBanner />
         </div>
       </main>
     </div>
