@@ -1209,12 +1209,283 @@ export type Database = {
         }
         Relationships: []
       }
+      waitlist_errors: {
+        Row: {
+          created_at: string | null
+          error_details: Json | null
+          error_message: string
+          error_type: string
+          function_name: string | null
+          id: string
+          resolved: boolean | null
+          subscriber_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          error_details?: Json | null
+          error_message: string
+          error_type: string
+          function_name?: string | null
+          id?: string
+          resolved?: boolean | null
+          subscriber_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          error_details?: Json | null
+          error_message?: string
+          error_type?: string
+          function_name?: string | null
+          id?: string
+          resolved?: boolean | null
+          subscriber_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "waitlist_errors_subscriber_id_fkey"
+            columns: ["subscriber_id"]
+            isOneToOne: false
+            referencedRelation: "waitlist_subscribers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      waitlist_settings: {
+        Row: {
+          created_at: string | null
+          followup_body: string | null
+          followup_delay_days: number | null
+          followup_enabled: boolean | null
+          followup_subject: string | null
+          id: string
+          is_launched: boolean | null
+          is_running: boolean | null
+          launch_date: string | null
+          launch_email_body: string | null
+          launch_email_subject: string | null
+          page_accent_color: string | null
+          page_background_color: string | null
+          page_cta_text: string | null
+          page_headline: string | null
+          page_show_counter: boolean | null
+          page_show_position: boolean | null
+          page_subheadline: string | null
+          prompt_version: string | null
+          referral_enabled: boolean | null
+          referral_reward_description: string | null
+          referral_reward_threshold: number | null
+          setup_complete: boolean | null
+          share_enabled: boolean | null
+          share_linkedin_text: string | null
+          share_twitter_text: string | null
+          slack_channel: string | null
+          slack_enabled: boolean | null
+          updated_at: string | null
+          waitlist_description: string | null
+          waitlist_name: string | null
+          welcome_email_body: string | null
+          welcome_email_enabled: boolean | null
+          welcome_email_subject: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          followup_body?: string | null
+          followup_delay_days?: number | null
+          followup_enabled?: boolean | null
+          followup_subject?: string | null
+          id?: string
+          is_launched?: boolean | null
+          is_running?: boolean | null
+          launch_date?: string | null
+          launch_email_body?: string | null
+          launch_email_subject?: string | null
+          page_accent_color?: string | null
+          page_background_color?: string | null
+          page_cta_text?: string | null
+          page_headline?: string | null
+          page_show_counter?: boolean | null
+          page_show_position?: boolean | null
+          page_subheadline?: string | null
+          prompt_version?: string | null
+          referral_enabled?: boolean | null
+          referral_reward_description?: string | null
+          referral_reward_threshold?: number | null
+          setup_complete?: boolean | null
+          share_enabled?: boolean | null
+          share_linkedin_text?: string | null
+          share_twitter_text?: string | null
+          slack_channel?: string | null
+          slack_enabled?: boolean | null
+          updated_at?: string | null
+          waitlist_description?: string | null
+          waitlist_name?: string | null
+          welcome_email_body?: string | null
+          welcome_email_enabled?: boolean | null
+          welcome_email_subject?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          followup_body?: string | null
+          followup_delay_days?: number | null
+          followup_enabled?: boolean | null
+          followup_subject?: string | null
+          id?: string
+          is_launched?: boolean | null
+          is_running?: boolean | null
+          launch_date?: string | null
+          launch_email_body?: string | null
+          launch_email_subject?: string | null
+          page_accent_color?: string | null
+          page_background_color?: string | null
+          page_cta_text?: string | null
+          page_headline?: string | null
+          page_show_counter?: boolean | null
+          page_show_position?: boolean | null
+          page_subheadline?: string | null
+          prompt_version?: string | null
+          referral_enabled?: boolean | null
+          referral_reward_description?: string | null
+          referral_reward_threshold?: number | null
+          setup_complete?: boolean | null
+          share_enabled?: boolean | null
+          share_linkedin_text?: string | null
+          share_twitter_text?: string | null
+          slack_channel?: string | null
+          slack_enabled?: boolean | null
+          updated_at?: string | null
+          waitlist_description?: string | null
+          waitlist_name?: string | null
+          welcome_email_body?: string | null
+          welcome_email_enabled?: boolean | null
+          welcome_email_subject?: string | null
+        }
+        Relationships: []
+      }
+      waitlist_stats: {
+        Row: {
+          conversions_count: number | null
+          created_at: string | null
+          date: string | null
+          id: string
+          referrals_count: number | null
+          signups_count: number | null
+          unsubscribes_count: number | null
+        }
+        Insert: {
+          conversions_count?: number | null
+          created_at?: string | null
+          date?: string | null
+          id?: string
+          referrals_count?: number | null
+          signups_count?: number | null
+          unsubscribes_count?: number | null
+        }
+        Update: {
+          conversions_count?: number | null
+          created_at?: string | null
+          date?: string | null
+          id?: string
+          referrals_count?: number | null
+          signups_count?: number | null
+          unsubscribes_count?: number | null
+        }
+        Relationships: []
+      }
+      waitlist_subscribers: {
+        Row: {
+          converted_at: string | null
+          converted_user_id: string | null
+          created_at: string | null
+          email: string
+          followup_email_sent: boolean | null
+          followup_email_sent_at: string | null
+          id: string
+          ip_address: string | null
+          launch_email_sent: boolean | null
+          launch_email_sent_at: string | null
+          name: string | null
+          position: number | null
+          priority_score: number | null
+          referral_code: string
+          referral_count: number | null
+          referred_by: string | null
+          status: string | null
+          updated_at: string | null
+          user_agent: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          welcome_email_sent: boolean | null
+          welcome_email_sent_at: string | null
+        }
+        Insert: {
+          converted_at?: string | null
+          converted_user_id?: string | null
+          created_at?: string | null
+          email: string
+          followup_email_sent?: boolean | null
+          followup_email_sent_at?: string | null
+          id?: string
+          ip_address?: string | null
+          launch_email_sent?: boolean | null
+          launch_email_sent_at?: string | null
+          name?: string | null
+          position?: number | null
+          priority_score?: number | null
+          referral_code?: string
+          referral_count?: number | null
+          referred_by?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          welcome_email_sent?: boolean | null
+          welcome_email_sent_at?: string | null
+        }
+        Update: {
+          converted_at?: string | null
+          converted_user_id?: string | null
+          created_at?: string | null
+          email?: string
+          followup_email_sent?: boolean | null
+          followup_email_sent_at?: string | null
+          id?: string
+          ip_address?: string | null
+          launch_email_sent?: boolean | null
+          launch_email_sent_at?: string | null
+          name?: string | null
+          position?: number | null
+          priority_score?: number | null
+          referral_code?: string
+          referral_count?: number | null
+          referred_by?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          welcome_email_sent?: boolean | null
+          welcome_email_sent_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "waitlist_subscribers_referred_by_fkey"
+            columns: ["referred_by"]
+            isOneToOne: false
+            referencedRelation: "waitlist_subscribers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment_daily_signups: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
