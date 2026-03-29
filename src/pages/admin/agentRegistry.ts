@@ -640,19 +640,6 @@ export const AGENTS: AgentConfig[] = [
     contentTable: "intel_reports",
     errorsTable: "intel_errors",
   },
-  {
-    key: "agents",
-    label: "Agents",
-    subtitle: "Autonomous agents that monitor, fix, and improve your stack via GitHub.",
-    settingsTable: "agent_settings",
-    runField: "is_running",
-    category: "ops",
-    route: "/admin/agents",
-    actions: [],
-    statsQueries: [],
-    contentTable: "agent_runs",
-    errorsTable: "agent_errors",
-  },
 ];
 
 // Agents that always show (no settings table check needed)
