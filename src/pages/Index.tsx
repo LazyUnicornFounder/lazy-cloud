@@ -363,7 +363,7 @@ const Index = () => {
       </section>
 
       {/* ── Lazy Cloud Section ── */}
-      <section className="relative z-10 border-t border-border" style={{ backgroundColor: "#0f0f0b" }}>
+      <section className="relative z-10 border-t border-border" style={{ backgroundColor: "#0a0a08" }}>
         <div className="px-6 md:px-12 py-20 md:py-28 max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <p className="font-body text-[14px] tracking-[0.2em] uppercase mb-4" style={{ color: "#c8a961", opacity: 0.6 }}>
@@ -449,7 +449,7 @@ const Index = () => {
           <Link to="/lazy-waitlist" className="block">
             <div
               className="aspect-square flex flex-col items-center justify-center gap-4 transition-colors duration-300 hover:brightness-[1.15] cursor-pointer p-4"
-              style={{ backgroundColor: "#0f0f0b" }}
+              style={{ backgroundColor: "#0a0a08" }}
             >
               {(() => { const Icon = iconMap["Waitlist"]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
               <div className="text-center">
@@ -488,12 +488,7 @@ const Index = () => {
           </Link>
 
           {products.map((product, i) => {
-            const bgEven = "#0a0a08";
-            const bgOdd = "#0f0f0b";
-            const cellIndex = i + 2;
-            const row = Math.floor(cellIndex / 4);
-            const col = cellIndex % 4;
-            const bg = (row + col) % 2 === 0 ? bgEven : bgOdd;
+            const bg = "#0a0a08";
             const isComingSoon = product.name === "Coming Soon";
 
             const content = (
