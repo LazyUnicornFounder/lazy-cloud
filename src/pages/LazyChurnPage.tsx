@@ -87,7 +87,7 @@ export default function LazyChurnPage() {
                 Lazy Churn monitors every subscriber daily. When someone goes quiet — stops logging in, drops their usage, approaches renewal without engaging — it sends a personalised SMS and email before they ever reach the cancel button. Written by Claude. Sent automatically. One recovered customer pays for the agent forever.
               </p>
               <div className="flex items-center gap-3 mt-4 mb-8">
-                <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Agents 💰</span>
+                <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Ops</span>
               </div>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <CopyPromptButton text={promptText} />

@@ -98,7 +98,7 @@ export default function LazyTrendPage() {
                 Lazy Trend scans Perplexity, Firecrawl, Hacker News, and your competitors every 6 hours. When a topic spikes in your niche it adds an urgent SEO keyword to your queue, drafts a GEO article for immediate publication, and fires a Slack alert. You publish while the trend is rising — not after it peaks.
               </p>
               <div className="flex items-center gap-3 mt-4 mb-8">
-                <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Agents 🔥</span>
+                <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Ops</span>
               </div>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <CopyPromptButton text={promptText} />

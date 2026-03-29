@@ -79,7 +79,7 @@ export default function LazyBuildPage() {
                 Give Lazy Build an agent name, integration, tagline, and one paragraph. It reads three of your existing prompt files to learn your structure, follows your CLAUDE.md rules, writes a complete new Lazy agent prompt, and opens a draft GitHub PR — tagged @claude for a compliance review before you merge.
               </p>
               <div className="flex items-center gap-3 mt-4 mb-8">
-                <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Agents 🏗️</span>
+                <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Ops</span>
               </div>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <CopyPromptButton text={promptText} />
