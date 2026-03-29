@@ -62,39 +62,75 @@ interface BlogPost {
   published_at: string | null;
 }
 
-/* ── Product definitions for per-product analytics ── */
-const PRODUCTS = [
-  { key: "lazy-blogger", label: "Lazy Blogger", path: "/lazy-blogger", color: "hsl(142, 71%, 45%)" },
-  { key: "lazy-seo", label: "Lazy SEO", path: "/lazy-seo", color: "hsl(217, 91%, 60%)" },
-  { key: "lazy-geo", label: "Lazy GEO", path: "/lazy-geo", color: "hsl(270, 50%, 60%)" },
-  { key: "lazy-crawl", label: "Lazy Crawl", path: "/lazy-crawl", color: "hsl(30, 80%, 55%)" },
-  { key: "lazy-perplexity", label: "Lazy Perplexity", path: "/lazy-perplexity", color: "hsl(190, 70%, 50%)" },
-  { key: "lazy-store", label: "Lazy Store", path: "/lazy-store", color: "hsl(45, 90%, 50%)" },
-  { key: "lazy-pay", label: "Lazy Pay", path: "/lazy-pay", color: "hsl(340, 65%, 55%)" },
-  { key: "lazy-sms", label: "Lazy SMS", path: "/lazy-sms", color: "hsl(160, 60%, 45%)" },
-  { key: "lazy-voice", label: "Lazy Voice", path: "/lazy-voice", color: "hsl(40, 70%, 55%)" },
-  { key: "lazy-stream", label: "Lazy Stream", path: "/lazy-stream", color: "hsl(0, 70%, 55%)" },
-  { key: "lazy-github", label: "Lazy GitHub", path: "/lazy-github", color: "hsl(0, 0%, 60%)" },
-  { key: "lazy-gitlab", label: "Lazy GitLab", path: "/lazy-gitlab", color: "hsl(260, 50%, 55%)" },
-  { key: "lazy-linear", label: "Lazy Linear", path: "/lazy-linear", color: "hsl(250, 60%, 60%)" },
-  { key: "lazy-alert", label: "Lazy Alert", path: "/lazy-alert", color: "hsl(50, 90%, 50%)" },
-  { key: "lazy-telegram", label: "Lazy Telegram", path: "/lazy-telegram", color: "hsl(200, 70%, 50%)" },
-  { key: "lazy-contentful", label: "Lazy Contentful", path: "/lazy-contentful", color: "hsl(120, 40%, 50%)" },
-  { key: "lazy-supabase", label: "Lazy Supabase", path: "/lazy-supabase", color: "hsl(150, 70%, 45%)" },
-  { key: "lazy-security", label: "Lazy Security", path: "/lazy-security", color: "hsl(350, 60%, 50%)" },
-  { key: "lazy-run", label: "Lazy Run", path: "/lazy-run", color: "hsl(280, 60%, 55%)" },
-  { key: "lazy-admin", label: "Lazy Admin", path: "/lazy-admin", color: "hsl(220, 40%, 50%)" },
+/* ── All agents by category (unified taxonomy) ── */
+const AGENT_CATEGORIES: { category: string; agents: { key: string; label: string; path: string; color: string }[] }[] = [
+  {
+    category: "Unicorn",
+    agents: [
+      { key: "lazy-launch", label: "Lazy Launch", path: "/lazy-launch", color: "hsl(280, 60%, 55%)" },
+      { key: "lazy-run", label: "Lazy Run", path: "/lazy-run", color: "hsl(280, 60%, 55%)" },
+    ],
+  },
+  {
+    category: "Content",
+    agents: [
+      { key: "lazy-blogger", label: "Lazy Blogger", path: "/lazy-blogger", color: "hsl(142, 71%, 45%)" },
+      { key: "lazy-seo", label: "Lazy SEO", path: "/lazy-seo", color: "hsl(217, 91%, 60%)" },
+      { key: "lazy-geo", label: "Lazy GEO", path: "/lazy-geo", color: "hsl(270, 50%, 60%)" },
+      { key: "lazy-crawl", label: "Lazy Crawl", path: "/lazy-crawl", color: "hsl(30, 80%, 55%)" },
+      { key: "lazy-perplexity", label: "Lazy Perplexity", path: "/lazy-perplexity", color: "hsl(190, 70%, 50%)" },
+      { key: "lazy-contentful", label: "Lazy Contentful", path: "/lazy-contentful", color: "hsl(120, 40%, 50%)" },
+    ],
+  },
+  {
+    category: "Commerce",
+    agents: [
+      { key: "lazy-store", label: "Lazy Store", path: "/lazy-store", color: "hsl(45, 90%, 50%)" },
+      { key: "lazy-pay", label: "Lazy Pay", path: "/lazy-pay", color: "hsl(340, 65%, 55%)" },
+      { key: "lazy-sms", label: "Lazy SMS", path: "/lazy-sms", color: "hsl(160, 60%, 45%)" },
+      { key: "lazy-mail", label: "Lazy Mail", path: "/lazy-mail", color: "hsl(200, 50%, 50%)" },
+      { key: "lazy-drop", label: "Lazy Drop", path: "/lazy-drop", color: "hsl(20, 70%, 50%)" },
+      { key: "lazy-print", label: "Lazy Print", path: "/lazy-print", color: "hsl(50, 60%, 50%)" },
+    ],
+  },
+  {
+    category: "Media",
+    agents: [
+      { key: "lazy-voice", label: "Lazy Voice", path: "/lazy-voice", color: "hsl(40, 70%, 55%)" },
+      { key: "lazy-stream", label: "Lazy Stream", path: "/lazy-stream", color: "hsl(0, 70%, 55%)" },
+      { key: "lazy-youtube", label: "Lazy YouTube", path: "/lazy-youtube", color: "hsl(0, 80%, 50%)" },
+      { key: "lazy-design", label: "Lazy Design", path: "/lazy-design", color: "hsl(310, 50%, 55%)" },
+    ],
+  },
+  {
+    category: "Dev",
+    agents: [
+      { key: "lazy-github", label: "Lazy GitHub", path: "/lazy-github", color: "hsl(0, 0%, 60%)" },
+      { key: "lazy-gitlab", label: "Lazy GitLab", path: "/lazy-gitlab", color: "hsl(260, 50%, 55%)" },
+      { key: "lazy-linear", label: "Lazy Linear", path: "/lazy-linear", color: "hsl(250, 60%, 60%)" },
+      { key: "lazy-supabase", label: "Lazy Supabase", path: "/lazy-supabase", color: "hsl(150, 70%, 45%)" },
+      { key: "lazy-security", label: "Lazy Security", path: "/lazy-security", color: "hsl(350, 60%, 50%)" },
+    ],
+  },
+  {
+    category: "Ops",
+    agents: [
+      { key: "lazy-admin", label: "Lazy Admin", path: "/lazy-admin", color: "hsl(220, 40%, 50%)" },
+      { key: "lazy-alert", label: "Lazy Alert", path: "/lazy-alert", color: "hsl(50, 90%, 50%)" },
+      { key: "lazy-telegram", label: "Lazy Telegram", path: "/lazy-telegram", color: "hsl(200, 70%, 50%)" },
+      { key: "lazy-granola", label: "Lazy Granola", path: "/lazy-granola", color: "hsl(30, 50%, 50%)" },
+      { key: "lazy-watch", label: "Lazy Watch", path: "/lazy-watch", color: "hsl(0, 65%, 50%)" },
+      { key: "lazy-fix", label: "Lazy Fix", path: "/lazy-fix", color: "hsl(120, 50%, 45%)" },
+      { key: "lazy-build", label: "Lazy Build", path: "/lazy-build", color: "hsl(35, 80%, 50%)" },
+      { key: "lazy-intel", label: "Lazy Intel", path: "/lazy-intel", color: "hsl(210, 70%, 55%)" },
+      { key: "lazy-repurpose", label: "Lazy Repurpose", path: "/lazy-repurpose", color: "hsl(170, 60%, 45%)" },
+      { key: "lazy-trend", label: "Lazy Trend", path: "/lazy-trend", color: "hsl(15, 80%, 55%)" },
+      { key: "lazy-churn", label: "Lazy Churn", path: "/lazy-churn", color: "hsl(300, 50%, 50%)" },
+    ],
+  },
 ];
 
-const AGENTS = [
-  { key: "lazy-watch", label: "Lazy Watch", path: "/lazy-watch", color: "hsl(0, 65%, 50%)" },
-  { key: "lazy-fix", label: "Lazy Fix", path: "/lazy-fix", color: "hsl(120, 50%, 45%)" },
-  { key: "lazy-build", label: "Lazy Build", path: "/lazy-build", color: "hsl(35, 80%, 50%)" },
-  { key: "lazy-intel", label: "Lazy Intel", path: "/lazy-intel", color: "hsl(210, 70%, 55%)" },
-  { key: "lazy-repurpose", label: "Lazy Repurpose", path: "/lazy-repurpose", color: "hsl(170, 60%, 45%)" },
-  { key: "lazy-trend", label: "Lazy Trend", path: "/lazy-trend", color: "hsl(15, 80%, 55%)" },
-  { key: "lazy-churn", label: "Lazy Churn", path: "/lazy-churn", color: "hsl(300, 50%, 50%)" },
-];
+const ALL_AGENTS = AGENT_CATEGORIES.flatMap((c) => c.agents.map((a) => ({ ...a, category: c.category })));
 
 const tooltipStyle = {
   backgroundColor: "hsl(var(--card))",
