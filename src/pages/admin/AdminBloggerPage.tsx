@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Loader2, Zap, Pause, Play, Search, Brain } from "lucide-react";
@@ -99,7 +100,7 @@ export default function AdminBloggerPage() {
 
   const updateProductSetting = async (id: string, product: string, field: string, value: number | boolean) => {
     setSavingProduct(product);
-    await db.from("product_publish_settings").update({ [field]: value }).eq("id", id);
+    await adminWrite({ table: "product_publish_settings", operation: "update", data: { [field]: value }, match: { id } });
     queryClient.invalidateQueries({ queryKey: ["admin-product-publish-settings"] });
     setSavingProduct(null);
   };
