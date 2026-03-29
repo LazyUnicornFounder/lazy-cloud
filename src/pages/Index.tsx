@@ -346,7 +346,7 @@ const Index = () => {
       <section className="relative z-10" style={{ backgroundColor: "#0a0a08" }}>
         <div className="px-6 md:px-12 pt-20 pb-12 max-w-4xl mx-auto">
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-            35 agents run your<br className="hidden md:inline" /> Lovable business.
+            36 agents run your<br className="hidden md:inline" /> Lovable business.
           </h2>
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em", marginTop: "0.1em" }}>
             One prompt each.

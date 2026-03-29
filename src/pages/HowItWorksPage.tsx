@@ -140,7 +140,7 @@ export default function HowItWorksPage() {
           <div className="max-w-4xl mx-auto">
             <motion.div {...fade}>
               <h2 style={heroHeading}>
-                35 agents run your Lovable business.
+                36 agents run your Lovable business.
               </h2>
               <h3 style={{ ...heroHeading, marginTop: "0.1em" }}>
                 One prompt each.

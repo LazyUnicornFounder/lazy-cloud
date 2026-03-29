@@ -28,7 +28,7 @@ const categories: Category[] = [
     products: [
       {
         name: "Lazy Launch", tagline: "Autonomous project launcher", link: "/lazy-launch",
-        free: ["Setup wizard included", "Business info & style selection", "Choose from all 35 agents", "Custom section builder", "One-click prompt generation"],
+        free: ["Setup wizard included", "Business info & style selection", "Choose from all 36 agents", "Custom section builder", "One-click prompt generation"],
         pro: { price: "$49", features: ["Hosted version — zero config", "Template library", "Multi-project support", "Priority AI model access", "Custom branding"], comingSoon: true },
       },
       {
