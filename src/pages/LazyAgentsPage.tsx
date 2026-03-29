@@ -23,7 +23,6 @@ const categories: Category[] = [
   {
     label: "Unicorn",
     agents: [
-      { emoji: "🚀", name: "Lazy Launch", tagline: "Launch your Lovable website", href: "/lazy-launch" },
       { emoji: "📋", name: "Lazy Waitlist", tagline: "Autonomous pre-launch waitlist", href: "/lazy-waitlist" },
       { emoji: "▶️", name: "Lazy Run", tagline: "Autonomous everything", href: "/lazy-run" },
     ],
@@ -97,8 +96,8 @@ export default function LazyAgentsPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="All 36 Agents — Autonomous Stack | Lazy Unicorn"
-        description="Browse all 36 autonomous agents across content, commerce, media, dev, and ops — running inside your Lovable project."
+        title="All 35 Agents — Autonomous Stack | Lazy Unicorn"
+        description="Browse all 35 autonomous agents across content, commerce, media, dev, and ops — running inside your Lovable project."
         url="/lazy-agents"
         keywords="autonomous agents, Lovable agents, lazy unicorn agents, autonomous stack"
       />

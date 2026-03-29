@@ -406,17 +406,6 @@ export const AGENT_SETUP_CONFIGS: Record<string, AgentSetupConfig> = {
       { title: "Verify", type: "verify", description: "The agent will start gathering competitive intelligence and surfacing it in the admin feed." },
     ],
   },
-  launch: {
-    key: "launch",
-    label: "Lazy Launch",
-    description: "Autonomous project launcher with setup wizard",
-    category: "Unicorn",
-    steps: [
-      { title: "How it works", type: "info", description: "Lazy Launch is an autonomous project launcher that generates a complete Lovable prompt from a 5-step wizard. It configures your business info, design system, agent selection, and page sections to scaffold a full project in one click." },
-      { title: "Visit Lazy Launch", type: "action", description: "Navigate to the Lazy Launch page and complete the 5-step wizard to generate your project prompt.", link: "/lazy-launch", snippet: "Go to /lazy-launch → Complete wizard → Copy generated prompt → Paste into a new Lovable project" },
-      { title: "Verify", type: "verify", description: "Confirm the generated prompt includes your business details, selected agents, design tokens, and page sections." },
-    ],
-  },
   waitlist: {
     key: "waitlist",
     label: "Lazy Waitlist",

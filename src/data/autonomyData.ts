@@ -43,20 +43,6 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
     label: "Lazy Unicorn",
     agent: [
       {
-        name: "Lazy Launch",
-        description: "Wizard that generates a complete landing page prompt from your business details, palette, and agent selection",
-        currentLevel: 3,
-        link: "/lazy-launch",
-        levels: [
-          "You write landing page code from scratch. Hours of work.",
-          "You use a template. Still takes manual customisation.",
-          "You follow a guide. Copy-paste sections one by one.",
-          "Describe your business, pick colours and agents — get a complete prompt in 60 seconds.",
-          "It analyses your niche and recommends optimal agent combinations. Coming soon.",
-          "It A/B tests landing page variants and self-optimises conversion. Coming soon.",
-        ],
-      },
-      {
         name: "Lazy Waitlist",
         description: "Autonomous pre-launch waitlist with viral referral loops, position tracking, and automated email sequences",
         currentLevel: 4,

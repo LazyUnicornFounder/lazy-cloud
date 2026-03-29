@@ -625,7 +625,7 @@ export default function UseCasesPage() {
         <section className="px-6 md:px-12 max-w-4xl mx-auto pt-8 pb-12">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-              36 agents run your Lovable business.
+              35 agents run your Lovable business.
             </h2>
             <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em", marginTop: "0.1em" }}>
               One prompt each.
