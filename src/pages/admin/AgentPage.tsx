@@ -62,16 +62,20 @@ export default function AgentPage() {
 
   /* ── Not configured ── */
   if (isConfigured === false) {
+    const isSecurity = agent.key === "security";
+    const title = isSecurity ? "Lazy Security is not configured" : `${agent.label} is not configured`;
+    const message = isSecurity ? "Add your Aikido API key to get started." : "Complete setup to activate this agent.";
+    const btnLabel = isSecurity ? "SET UP LAZY SECURITY →" : `Set Up ${agent.label}`;
     return (
       <div className="border border-[#f0ead6]/8 p-8 text-center max-w-md mx-auto mt-12">
         <Settings size={28} className="text-[#f0ead6]/20 mx-auto mb-4" />
-        <h2 className="font-display text-lg font-bold tracking-tight mb-2">{agent.label} is not configured</h2>
-        <p className="font-body text-[13px] text-[#f0ead6]/50 mb-6">Complete setup to activate this agent.</p>
+        <h2 className="font-display text-lg font-bold tracking-tight mb-2">{title}</h2>
+        <p className="font-body text-[13px] text-[#f0ead6]/50 mb-6">{message}</p>
         <Link
           to={setupRoute}
-          className="inline-flex items-center gap-2 bg-[#f0ead6] text-[#0a0a08] px-6 py-2.5 font-body text-[11px] tracking-[0.12em] uppercase font-semibold hover:opacity-90 transition-opacity"
+          className={`inline-flex items-center gap-2 px-6 py-2.5 font-body text-[11px] tracking-[0.12em] uppercase font-semibold hover:opacity-90 transition-opacity ${isSecurity ? "bg-[#c8a961] text-[#0a0a08]" : "bg-[#f0ead6] text-[#0a0a08]"}`}
         >
-          Set Up {agent.label} <ArrowRight size={12} />
+          {btnLabel} {!isSecurity && <ArrowRight size={12} />}
         </Link>
       </div>
     );
