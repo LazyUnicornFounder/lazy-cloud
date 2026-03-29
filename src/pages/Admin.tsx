@@ -65,8 +65,13 @@ const Admin = () => {
   const db = supabase as any;
 
   const fetchBlogSettings = useCallback(async () => {
-    const { data } = await db.from("blog_settings").select("*").order("created_at", { ascending: false }).limit(1).single();
-    if (data) setBlogSettings(data);
+    try {
+      const { data: result } = await adminWrite({ table: "blog_settings", operation: "select" });
+      if (result && result.length > 0) setBlogSettings(result[0]);
+    } catch {
+      const { data } = await db.from("blog_settings").select("*").order("created_at", { ascending: false }).limit(1).single();
+      if (data) setBlogSettings(data);
+    }
   }, []);
 
   useEffect(() => { if (authenticated) fetchBlogSettings(); }, [authenticated, fetchBlogSettings]);
@@ -74,11 +79,14 @@ const Admin = () => {
   const saveBlogSettings = async (updates: Record<string, any>) => {
     if (!blogSettings) return;
     setSavingBlogSettings(true);
-    const { error } = await db.from("blog_settings").update(updates).eq("id", blogSettings.id);
+    try {
+      await adminWrite({ table: "blog_settings", operation: "update", data: updates, match: { id: blogSettings.id } });
+      setBlogSettings({ ...blogSettings, ...updates });
+      toast.success("Blog settings updated");
+    } catch {
+      toast.error("Failed to save");
+    }
     setSavingBlogSettings(false);
-    if (error) { toast.error("Failed to save"); return; }
-    setBlogSettings({ ...blogSettings, ...updates });
-    toast.success("Blog settings updated");
   };
 
   const fetchSubmissions = useCallback(async (pw: string) => {

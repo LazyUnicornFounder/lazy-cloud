@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -26,13 +26,13 @@ const LazySeoSetup = () => {
       return;
     }
     setLoading(true);
-    const { error } = await supabase.from("seo_settings").insert({
+    const { error } = await adminWrite({ table: "seo_settings", operation: "insert", data: {
       site_url: form.site_url,
       business_description: form.business_description,
       target_keywords: form.target_keywords,
       competitors: form.competitors,
       publishing_frequency: form.publishing_frequency,
-    });
+    } }).catch((e: any) => ({ error: e }));
     setLoading(false);
     if (error) {
       toast.error("Failed to save settings: " + error.message);

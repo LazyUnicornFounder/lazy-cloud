@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
-import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 
 const meetingTypeOptions = [
   { value: "all", label: "All meetings" },
@@ -54,7 +54,7 @@ export default function LazyGranolaSetup() {
     setLoading(true);
     try {
       const meetingTypes = form.meeting_types.length === 0 ? "all" : form.meeting_types.join(",");
-      const { error } = await (supabase as any).from("granola_settings").insert({
+      const { error } = await adminWrite({ table: "granola_settings", operation: "insert", data: {
         brand_name: form.brand_name,
         site_url: form.site_url,
         meeting_types_to_process: meetingTypes,
@@ -69,7 +69,7 @@ export default function LazyGranolaSetup() {
         setup_complete: true,
         is_running: true,
         prompt_version: "v0.0.1",
-      });
+      } }).catch((e: any) => ({ data: null, error: e }));
       if (error) throw error;
 
       // Trigger initial sync

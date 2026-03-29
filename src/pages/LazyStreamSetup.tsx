@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
-import { supabase } from "@/integrations/supabase/client";
+import { adminWrite } from "@/lib/adminWrite";
 
 const LazyStreamSetup = () => {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ const LazyStreamSetup = () => {
       if (!twitchUserId) throw new Error("Twitch username not found");
 
       // Save settings
-      const { error } = await (supabase as any).from("stream_settings").upsert({
+      const { error } = await adminWrite({ table: "stream_settings", operation: "upsert", data: {
         id: crypto.randomUUID(),
         twitch_client_id: form.twitch_client_id,
         twitch_client_secret: form.twitch_client_secret,
@@ -67,7 +67,7 @@ const LazyStreamSetup = () => {
         content_niche: form.content_niche,
         setup_complete: true,
         is_running: true,
-      });
+      } }).catch((e: any) => ({ data: null, error: e }));
 
       if (error) throw error;
 
