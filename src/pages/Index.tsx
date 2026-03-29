@@ -38,8 +38,8 @@ function RotatingHeadline() {
   return (
     <div className="flex items-center gap-3 mb-2">
       <span
-        className="font-body text-[11px] tracking-[0.25em] uppercase font-semibold"
-        style={{ color: "hsl(var(--foreground))", opacity: 0.25 }}
+        className="font-body text-[12px] tracking-[0.2em] uppercase font-semibold"
+        style={{ color: "hsl(var(--foreground))", opacity: 0.45 }}
       >
         Now automating
       </span>
