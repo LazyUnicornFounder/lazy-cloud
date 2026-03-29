@@ -163,10 +163,13 @@ function AgentsDropdown() {
       </button>
       {open && (
         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 p-9" style={{ width: 1380 }}>
-          <div className="mb-6 pb-5 border-b border-border/50">
+          <div className="mb-6 pb-5 border-b border-border/50 flex items-center justify-between">
             <a href="/lazy-agents" onClick={close} className="font-body text-[12px] tracking-[0.12em] uppercase text-foreground/40 hover:text-foreground transition-colors font-semibold">
               View all agents →
             </a>
+            <span className="font-body text-[12px] tracking-[0.15em] uppercase text-foreground/30 font-semibold">
+              Made for Lovable ❤️
+            </span>
           </div>
           <div className="flex gap-12">
             <div className="flex-1 min-w-0">
