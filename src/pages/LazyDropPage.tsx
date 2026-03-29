@@ -125,7 +125,7 @@ export default function LazyDropPage() {
       {/* Features */}
       <section className="py-20 px-6 md:px-12 border-t border-border">
         <div className="max-w-4xl mx-auto">
-          <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-display text-2xl md:text-3xl font-bold text-center mb-4" style={{ color: "#f0ead6" }}>
+          <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-display text-2xl md:text-3xl font-bold mb-4" style={{ color: "#f0ead6" }}>
             AutoDS automates your store. Lazy Drop automates AutoDS
           </motion.h2>
           <p className="font-body text-sm text-foreground/50 max-w-2xl mx-auto text-center mb-12 leading-relaxed">
