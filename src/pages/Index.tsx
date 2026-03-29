@@ -260,8 +260,8 @@ const Index = () => {
                 }}
               >
                 Launch, build and run<br className="hidden md:inline" />
-                {" "}your Lovable<span style={{ color: "hsl(var(--accent))" }}>❤️</span>website<br className="hidden md:inline" />
-                {" "}with autonomous agents<span className="ml-1">🤖</span>
+                {" "}your Lovable website<br className="hidden md:inline" />
+                {" "}with autonomous agents
               </h1>
 
               <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
