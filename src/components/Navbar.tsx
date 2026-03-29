@@ -279,7 +279,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <span>Lazy</span>
             <span>Unicorn</span>
           </a>
-          <div className="flex items-center gap-5 mx-auto">
+          <div className="flex items-center gap-8 mx-auto">
             <a href="/how-it-works" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
               How It Works
             </a>
