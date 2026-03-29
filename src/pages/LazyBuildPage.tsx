@@ -163,7 +163,7 @@ export default function LazyBuildPage() {
 
         <LazyPricingSection
           lazyFeatures={["Full prompt — paste and go", "On-demand agents? writing", "3-prompt reference learning", "CLAUDE.md compliance", "Draft GitHub PRs", "@claude review comments"]}
-          proFeatures={["Everything in Lazy", "Batch agents? generation", "Custom SPEC templates", "Auto-merge on pass", "Engine analytics"]}
+          proFeatures={["Everything in Lazy", "Batch agent generation", "Custom SPEC templates", "Auto-merge on pass", "Agent analytics"]}
           ctaButton={<CopyPromptButton text={promptText} className="w-full justify-center" />}
         />
 

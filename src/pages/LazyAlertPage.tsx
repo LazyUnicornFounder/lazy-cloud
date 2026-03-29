@@ -77,7 +77,7 @@ Form fields:
 - Slack Channel (text, default: general) — without the hash symbol.
 - Daily briefing toggle (default on)
 - Daily briefing time (select: 6am / 7am / 8am / 9am)
-- Alert toggles grid: Payments, SMS Replies, Posts Published, Keywords Captured, Brand Citations, Products Listed, Streams Live, Releases Published, Engine Errors, Crawl Intelligence, Perplexity Citations
+- Alert toggles grid: Payments, SMS Replies, Posts Published, Keywords Captured, Brand Citations, Products Listed, Streams Live, Releases Published, Agent Errors, Crawl Intelligence, Perplexity Citations
 
 Submit button: Connect to Slack
 
@@ -272,7 +272,7 @@ const eventCards = [
   { agents?: "Lazy Store", trigger: "Product listed", avatar: "🏪", example: (<><strong className="text-foreground/80">🏪 New product listed</strong><br />Product: <em>Wireless Charger Pro</em> · $34.99<br /><span className="underline">View in store →</span></>) },
   { agents?: "Lazy Stream", trigger: "Stream went live", avatar: "🎮", example: (<><strong className="text-foreground/80">🎮 Stream is LIVE</strong><br />Title: <em>Building in public — Day 47</em><br /><span className="underline">Watch Live →</span></>) },
   { agents?: "Lazy GitHub", trigger: "Release published", avatar: "🚀", example: (<><strong className="text-foreground/80">🚀 New release published</strong><br />Tag: v2.4.0 · <em>Performance improvements</em><br /><span className="underline">Release notes →</span></>) },
-  { agents?: "Lazy Run", trigger: "Agent error", avatar: "⚠️", example: (<><strong className="text-foreground/80">⚠️ Agent error alert</strong><br />Engine: Lazy SEO · 5 errors in the last hour<br />Last error: "Rate limit exceeded on keyword API"</>) },
+  { agents?: "Lazy Run", trigger: "Agent error", avatar: "⚠️", example: (<><strong className="text-foreground/80">⚠️ Agent error alert</strong><br />Agent: Lazy SEO · 5 errors in the last hour<br />Last error: "Rate limit exceeded on keyword API"</>) },
   { agents?: "Lazy Run", trigger: "Weekly report", avatar: "📊", example: (<><strong className="text-foreground/80">📊 Weekly performance report</strong><br />Posts: 14 · Revenue: $847 · Keywords: 23 ranking<br />Citation rate: 68% · SMS replies: 12 · Errors: 2</>) },
 ];
 

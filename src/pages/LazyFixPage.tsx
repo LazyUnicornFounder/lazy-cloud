@@ -39,7 +39,7 @@ const improvements = [
 const faqs = [
   { q: "Will it change things I don't want changed?", a: "Lazy Fix makes targeted single-section edits only. It never restructures a whole file. The diff in the PR shows exactly what changed — you review and merge or reject." },
   { q: "What if it opens a bad PR?", a: "Set the PR status to Rejected in the admin dashboard. Lazy Fix will not make the same improvement again if it is marked rejected." },
-  { q: "How does it know what to improve?", a: "It reads your Supabase tables. Engines that write to blog_posts, seo_posts, geo_posts give it output volume data. Error tables give it failure rate data. The more agents installed, the better the signal." },
+  { q: "How does it know what to improve?", a: "It reads your Supabase tables. Agents that write to blog_posts, seo_posts, geo_posts give it output volume data. Error tables give it failure rate data. The more agents installed, the better the signal." },
 ];
 
 function CopyPromptButton({ className = "", text }: { className?: string; text: string }) {

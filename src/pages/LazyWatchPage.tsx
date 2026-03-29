@@ -153,7 +153,7 @@ export default function LazyWatchPage() {
           </div>
         </section>
 
-        {/* Engine coverage */}
+        {/* Agent coverage */}
         <section className="max-w-3xl mx-auto px-6 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
             Monitors every agent in your stack.

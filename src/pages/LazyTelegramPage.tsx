@@ -237,7 +237,7 @@ const LazyTelegramPage = () => {
               { icon: Package, title: "Product Discovery Alerts", desc: "New products listed by Lazy Store appear in Telegram instantly." },
               { icon: Radio, title: "Stream Live Alerts", desc: "Get notified the moment a monitored stream goes live." },
               { icon: Rocket, title: "Release Published Alerts", desc: "New changelogs and release notes trigger instant notifications." },
-              { icon: AlertTriangle, title: "Engine Error Alerts", desc: "Error spikes across any agents? are flagged immediately." },
+              { icon: AlertTriangle, title: "Agent Error Alerts", desc: "Error spikes across any agents? are flagged immediately." },
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.06 }} className="border-b sm:odd:border-r last:border-b-0 border-border bg-card p-6">
                 <item.icon size={18} className="text-foreground/65 mb-3" />

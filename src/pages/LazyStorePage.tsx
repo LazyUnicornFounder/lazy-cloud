@@ -351,8 +351,8 @@ const LazyStorePage = () => {
   const features = [
     { icon: Search, title: "Product Discovery", desc: "Finds trending products in your niche daily and adds them to your store automatically." },
     { icon: FileText, title: "Listing Writer", desc: "Writes SEO-optimised product titles, descriptions, and pages for every new product." },
-    { icon: DollarSign, title: "Pricing Engine", desc: "Monitors competitor prices and adjusts yours automatically to stay competitive." },
-    { icon: Megaphone, title: "Promotion Engine", desc: "Identifies slow-moving products and creates discount offers and homepage banners automatically." },
+    { icon: DollarSign, title: "Pricing Agent", desc: "Monitors competitor prices and adjusts yours automatically to stay competitive." },
+    { icon: Megaphone, title: "Promotion Agent", desc: "Identifies slow-moving products and creates discount offers and homepage banners automatically." },
     { icon: TrendingUp, title: "Conversion Optimiser", desc: "Monitors which product pages convert, rewrites underperforming ones, and improves the store week over week." },
     { icon: BookOpen, title: "SEO Content Agent", desc: "Publishes buying guides and product comparisons targeting the keywords shoppers search before buying." },
   ];
@@ -376,7 +376,7 @@ const LazyStorePage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Store — Autonomous E-Commerce Engine for Lovable"
+        title="Lazy Store — Autonomous E-Commerce Agent for Lovable"
         description="One prompt installs a self-running store into your Lovable project. Product discovery, AI listings, pricing, promotions, and conversion optimisation — automatically, forever."
         url="/lazy-store"
       />
