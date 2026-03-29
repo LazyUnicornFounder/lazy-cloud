@@ -11,6 +11,8 @@ const columns = [
   {
     label: "Unicorn",
     items: [
+      { name: "Lazy Launch", href: "/lazy-launch" },
+      { name: "Lazy Cloud", href: "/lazy-cloud" },
       { name: "Lazy Waitlist", href: "/lazy-waitlist" },
       { name: "Lazy Run", href: "/lazy-run" },
       { name: "Lazy Admin", href: "/lazy-admin" },
@@ -60,7 +62,6 @@ const columns = [
   {
     label: "Ops",
     items: [
-      { name: "Lazy Alert", href: "/lazy-alert" },
       { name: "Lazy Alert", href: "/lazy-alert" },
       { name: "Lazy Telegram", href: "/lazy-telegram" },
       { name: "Lazy Supabase", href: "/lazy-supabase" },
@@ -134,7 +135,6 @@ export default function Footer() {
               {[
                 { name: "How It Works", href: "/how-it-works" },
                 { name: "Use Cases", href: "/use-cases" },
-                { name: "Lazy Cloud", href: "/lazy-cloud" },
                 { name: "Pricing", href: "/pricing" },
                 { name: "Blog", href: "/blog" },
                 { name: "Autonomy", href: "/autonomy" },
