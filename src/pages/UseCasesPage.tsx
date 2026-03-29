@@ -154,7 +154,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Stream",
     agentHref: "/lazy-stream",
-    icon: <Tv size={20} />,
+    icon: <MonitorPlay size={20} />,
   },
   {
     name: "YouTube",
@@ -169,7 +169,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy YouTube",
     agentHref: "/lazy-youtube",
-    icon: <Tv size={20} />,
+    icon: <MonitorPlay size={20} />,
     note: "Uses YouTube Data API + Supadata — both free to start",
   },
   // Lazy Dev
@@ -216,7 +216,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Linear",
     agentHref: "/lazy-linear",
-    icon: <CheckCircle2 size={20} />,
+    icon: <Brain size={20} />,
   },
   {
     name: "21st.dev",
@@ -231,7 +231,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Design",
     agentHref: "/lazy-design",
-    icon: <Palette size={20} />,
+    icon: <Paintbrush size={20} />,
     note: "Uses the 21st.dev component library — no API key required",
   },
   {
@@ -280,7 +280,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Alert",
     agentHref: "/lazy-alert",
-    icon: <Hash size={20} />,
+    icon: <Bell size={20} />,
   },
   {
     name: "Telegram",
@@ -378,7 +378,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Admin",
     agentHref: "/lazy-admin",
-    icon: <Settings size={20} />,
+    icon: <LayoutDashboard size={20} />,
   },
   // Ops — Lazy Watch
   {
@@ -441,7 +441,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Intel",
     agentHref: "/lazy-intel",
-    icon: <BarChart3 size={20} />,
+    icon: <Brain size={20} />,
     note: "No API keys required — reads from your existing agent data",
   },
   // Ops — Lazy Repurpose
@@ -492,7 +492,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Churn",
     agentHref: "/lazy-churn",
-    icon: <UserX size={20} />,
+    icon: <UserCheck size={20} />,
     note: "Requires Stripe — works with Lazy SMS and Lazy Mail for outreach",
   },
   // Ops — GitHub + Anthropic (shared infra)
@@ -523,7 +523,7 @@ const integrations: Integration[] = [
     ],
     agent: "Lazy Agents",
     agentHref: "/lazy-agents",
-    icon: <Zap size={20} />,
+    icon: <Code size={20} />,
     note: "Uses Anthropic API — requires ANTHROPIC_API_KEY",
   },
 ];
