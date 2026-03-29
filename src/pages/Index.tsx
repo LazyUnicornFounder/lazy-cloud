@@ -488,13 +488,11 @@ const Index = () => {
           </Link>
 
           {products.map((product, i) => {
-            const bg = "#0a0a08";
             const isComingSoon = product.name === "Coming Soon";
 
             const content = (
               <div
-                className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:bg-[#131310] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04]"
-                style={{ backgroundColor: bg }}
+                className="aspect-square flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:bg-[#131310] cursor-pointer p-4 border-b border-r border-[#f0ead6]/[0.04] bg-background"
               >
                 {(() => { const Icon = iconMap[product.name]; return Icon ? <Icon size={24} strokeWidth={1.5} style={{ color: "#f0ead6" }} /> : null; })()}
                 <div className="text-center">
