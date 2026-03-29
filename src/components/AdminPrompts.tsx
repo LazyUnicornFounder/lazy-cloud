@@ -297,7 +297,7 @@ const AdminPrompts = () => {
       const result = data as { success: boolean; updated: number; unchanged: number; error?: string };
       if (!result.success) throw new Error(result.error || "Pull failed");
       if (result.updated > 0) {
-        toast.success(`Synced ${result.updated} prompt(s) from GitHub`);
+        toast.success(`Synced ${result.updated} prompt(s) from GitHub + changelog updated`);
         fetchAll();
       } else {
         toast.info("All prompts already up to date");
