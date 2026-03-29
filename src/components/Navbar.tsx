@@ -42,6 +42,7 @@ const agentCategories: Category[] = [
       { label: "Lazy Cloud", href: "/lazy-cloud", tagline: "Autonomous cloud hosting", iconKey: "Cloud" },
       { label: "Lazy Run", href: "/lazy-run", tagline: "Autonomous everything", iconKey: "Run" },
       { label: "Lazy Admin", href: "/lazy-admin", tagline: "Autonomous ops control", iconKey: "Admin" },
+      { label: "Lazy Waitlist", href: "/lazy-waitlist", tagline: "Autonomous pre-launch capture", iconKey: "Waitlist" },
     ],
   },
   {
@@ -88,7 +89,6 @@ const agentCategories: Category[] = [
   {
     label: "Lazy Ops",
     items: [
-      { label: "Lazy Alert", href: "/lazy-alert", tagline: "Autonomous Slack alerts", iconKey: "Alert" },
       { label: "Lazy Alert", href: "/lazy-alert", tagline: "Autonomous Slack alerts", iconKey: "Alert" },
       { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Autonomous Telegram updates", iconKey: "Telegram" },
       { label: "Lazy Supabase", href: "/lazy-supabase", tagline: "Autonomous database reports", iconKey: "Supabase" },
