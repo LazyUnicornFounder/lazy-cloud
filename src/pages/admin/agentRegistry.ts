@@ -33,6 +33,8 @@ export interface AgentConfig {
   queueFilter?: Record<string, any>;
   queueColumns?: AgentColumn[];
   settingsFields?: SettingsField[];
+  requiredSecrets?: string[];
+  setupRoute?: string;
 }
 
 export interface AgentStatQuery {
