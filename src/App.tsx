@@ -68,20 +68,9 @@ import PublicLayout from "./components/PublicLayout.tsx";
 
 import AdminLayout from "./pages/admin/AdminLayout.tsx";
 import AdminOverview from "./pages/admin/AdminOverview.tsx";
-import AdminBloggerPage from "./pages/admin/AdminBloggerPage.tsx";
-import AdminSeoPage from "./pages/admin/AdminSeoPage.tsx";
-import AdminGeoPage from "./pages/admin/AdminGeoPage.tsx";
-import AdminStreamPage from "./pages/admin/AdminStreamPage.tsx";
-import AdminVoicePage from "./pages/admin/AdminVoicePage.tsx";
 import AdminSettingsPage from "./pages/admin/AdminSettingsPage.tsx";
-import AdminPlaceholderPage from "./pages/admin/AdminPlaceholderPage.tsx";
-import AdminAnalyticsPage from "./pages/admin/AdminAnalyticsPage.tsx";
-import AdminChangelogPage from "./pages/admin/AdminChangelogPage.tsx";
-import AdminPromptsPage from "./pages/admin/AdminPromptsPage.tsx";
-import AdminGranolaPage from "./pages/admin/AdminGranolaPage.tsx";
-import AdminWaitlistPage from "./pages/admin/AdminWaitlistPage.tsx";
-import AdminWaitlistSetup from "./pages/admin/AdminWaitlistSetup.tsx";
 import AdminInstallsPage from "./pages/admin/AdminInstallsPage.tsx";
+import AgentPage from "./pages/admin/AgentPage.tsx";
 import WaitlistPage from "./pages/WaitlistPage.tsx";
 import LazyWaitlistPage from "./pages/LazyWaitlistPage.tsx";
 
