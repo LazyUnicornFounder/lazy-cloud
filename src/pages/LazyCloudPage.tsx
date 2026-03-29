@@ -275,10 +275,9 @@ export default function LazyCloudPage() {
             <motion.div
               key={layer.label}
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.1 }}
-              className={`border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 p-6 text-center ${layer.highlight ? "border-primary/40 bg-primary/5" : "bg-card"}`}
+              className={`border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 p-6 flex flex-col items-center justify-center text-center ${layer.highlight ? "border-primary/40 bg-primary/5" : "bg-card"}`}
               style={layer.highlight ? { borderColor: "hsl(var(--primary) / 0.4)" } : {}}
             >
-              {i > 0 && <ArrowRight size={14} className="text-muted-foreground/30 mx-auto mb-3 hidden sm:block" />}
               <h3 className="font-display text-base font-bold text-foreground">{layer.label}</h3>
               <p className="font-body text-sm text-muted-foreground mt-1">{layer.desc}</p>
             </motion.div>
