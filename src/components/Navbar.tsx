@@ -248,8 +248,7 @@ function SimpleDropdown({
 
 /* ── All mobile categories combined ── */
 const allMobileCategories: Category[] = [
-  ...engineCategories,
-  { label: "Lazy Agents", items: agentItems },
+const allMobileCategories: Category[] = [...agentCategories];
 ];
 
 const Navbar = ({ activePage = "home" }: NavbarProps) => {
