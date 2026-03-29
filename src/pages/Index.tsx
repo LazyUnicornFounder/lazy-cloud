@@ -88,13 +88,13 @@ function RotatingHeadline() {
   }, [current, ready]);
 
   return (
-    <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.35rem)", color: "hsl(var(--foreground))", opacity: 0.5 }} className="mt-5 flex flex-wrap items-center justify-center gap-x-1">
+    <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.3rem)", color: "#f0ead6", opacity: 0.5 }} className="flex flex-wrap items-center gap-x-1">
       {/* Hidden measurer */}
       <span
         ref={hiddenRef}
         aria-hidden="true"
         className="whitespace-nowrap invisible fixed pointer-events-none"
-        style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.35rem)", top: -9999, left: -9999 }}
+        style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.8rem, 2vw, 1.3rem)", top: -9999, left: -9999 }}
       />
       Lovable<span className="ml-1 mr-0">❤️</span>
       <motion.span
@@ -111,7 +111,7 @@ function RotatingHeadline() {
             exit={{ y: -14, opacity: 0 }}
             transition={{ duration: 0.25 }}
             className="absolute inset-0 flex items-center justify-center gap-1 whitespace-nowrap"
-            style={{ color: "hsl(var(--primary))" }}
+            style={{ color: "#c8a961" }}
           >
             {current.word}<span>{current.emoji}</span>
           </motion.span>
@@ -237,116 +237,53 @@ const Index = () => {
       <Navbar activePage="home" />
 
       {/* Hero */}
-      <header className="relative z-10" style={{ backgroundColor: "hsl(var(--background))" }}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="min-h-screen flex flex-col items-center justify-center px-6 md:px-8 pt-48 pb-20 text-center"
-        >
-          {/* Headline */}
-          <h1
-            className="max-w-[900px]"
-            style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: "clamp(2.2rem, 5.5vw, 4.2rem)",
-              color: "hsl(var(--foreground))",
-              lineHeight: 1.08,
-              fontWeight: 800,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Launch, build and run<br className="hidden md:inline" />
-            {" "}your Lovable<span style={{ color: "hsl(var(--accent))" }}>❤️</span>website<br className="hidden md:inline" />
-            {" "}with autonomous agents<span className="ml-1">🤖</span>
-          </h1>
-
-          {/* Rotating subtitle */}
-          <RotatingHeadline />
-
-          {/* Description */}
-          <p
-            className="max-w-2xl mt-6"
-            style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: "clamp(0.85rem, 1.1vw, 0.95rem)",
-              color: "hsl(var(--foreground))",
-              opacity: 0.35,
-              lineHeight: 1.7,
-            }}
-          >
-            Each agent is a single prompt you paste into Lovable. It installs its own tables,<br className="hidden md:inline" /> edge functions, and UI — then runs itself, so you can build your autonomous business.
-          </p>
-
-          {/* CTA */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center gap-3">
-            <Link
-              to="/lazy-launch"
-              className="text-xs tracking-[0.2em] uppercase px-7 py-2.5 font-semibold hover:opacity-80 transition-opacity active:scale-[0.97]"
-              style={{ fontFamily: "'Space Grotesk', sans-serif", backgroundColor: "hsl(var(--primary))", color: "#0a0a08", borderRadius: 0 }}
+      <header className="relative z-10" style={{ backgroundColor: "#0a0a08" }}>
+        <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
             >
-              Launch your Lovable website
-            </Link>
-            <Link
-              to="/lazy-agents"
-              className="text-xs tracking-[0.2em] uppercase px-7 py-2.5 font-semibold hover:opacity-80 transition-opacity active:scale-[0.97] border border-foreground/15"
-              style={{ fontFamily: "'Space Grotesk', sans-serif", color: "hsl(var(--foreground))", borderRadius: 0 }}
-            >
-              Explore Agents
-            </Link>
-          </div>
+              <RotatingHeadline />
 
-          {/* Integrations marquee — pushed to bottom */}
-          <div className="mt-auto pt-16 w-full max-w-3xl overflow-hidden">
-            <p className="text-[10px] tracking-[0.3em] uppercase font-semibold mb-4 text-center" style={{ color: "hsl(var(--foreground))", opacity: 0.2 }}>
-              Integrates with
-            </p>
-            <div className="relative">
-              <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-              <motion.div
-                className="flex gap-10 items-center whitespace-nowrap"
-                animate={{ x: ["0%", "-50%"] }}
-                transition={{ duration: 45, ease: "linear", repeat: Infinity }}
+              <h1
+                className="mt-6"
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+                  color: "#f0ead6",
+                  lineHeight: 0.95,
+                  letterSpacing: "-0.01em",
+                }}
               >
-                {[...Array(2)].map((_, dupeIdx) => (
-                  <div key={dupeIdx} className="flex gap-10 items-center shrink-0">
-                    {[
-                      { name: "Firecrawl", href: "/lazy-crawl" },
-                      { name: "Perplexity", href: "/lazy-perplexity" },
-                      { name: "Contentful", href: "/lazy-contentful" },
-                      { name: "Shopify", href: "/lazy-store" },
-                      { name: "AutoDS", href: "/lazy-drop" },
-                      { name: "Printful", href: "/lazy-print" },
-                      { name: "Stripe", href: "/lazy-pay" },
-                      { name: "Twilio", href: "/lazy-sms" },
-                      { name: "Resend", href: "/lazy-mail" },
-                      { name: "ElevenLabs", href: "/lazy-voice" },
-                      { name: "Twitch", href: "/lazy-stream" },
-                      { name: "YouTube", href: "/lazy-youtube" },
-                      { name: "GitHub", href: "/lazy-github" },
-                      { name: "GitLab", href: "/lazy-gitlab" },
-                      { name: "Linear", href: "/lazy-linear" },
-                      { name: "Slack", href: "/lazy-alert" },
-                      { name: "Telegram", href: "/lazy-telegram" },
-                      { name: "Supabase", href: "/lazy-supabase" },
-                      { name: "Aikido", href: "/lazy-security" },
-                    ].map((item) => (
-                      <Link
-                        key={`${dupeIdx}-${item.name}`}
-                        to={item.href}
-                        className="text-[11px] tracking-[0.15em] uppercase font-medium shrink-0 transition-opacity duration-200 hover:opacity-60"
-                        style={{ color: "hsl(var(--foreground))", opacity: 0.25 }}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                ))}
-              </motion.div>
-            </div>
+                Launch, build and run<br className="hidden md:inline" />
+                {" "}your Lovable<span style={{ color: "hsl(var(--accent))" }}>❤️</span>website<br className="hidden md:inline" />
+                {" "}with autonomous agents<span className="ml-1">🤖</span>
+              </h1>
+
+              <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
+                Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself, so you can build your autonomous business.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
+                <Link
+                  to="/lazy-launch"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity"
+                >
+                  Launch your Lovable website
+                </Link>
+                <Link
+                  to="/lazy-agents"
+                  className="inline-flex items-center gap-2 font-body text-[13px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border hover:text-foreground transition-colors"
+                  style={{ color: "rgba(240,234,214,0.5)" }}
+                >
+                  Explore Agents
+                </Link>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </section>
       </header>
 
       {/* Agents label */}
