@@ -6,8 +6,8 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
-const NEW_TITLE = "Add agents to your Lovable website with one prompt.";
-const NEW_DESCRIPTION = "Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself. Blog posts, SEO, payments, voice, stores, and more, and starts to run your business autonomously.";
+const NEW_TITLE = "Launch, build and run your Lovable website or app with autonomous agents.";
+const NEW_DESCRIPTION = "Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself. Blog posts, SEO, payments, voice, stores, and more.";
 
 const rotatingWords = [
   { word: "everything", emoji: "🦄" },       // Lazy Run
