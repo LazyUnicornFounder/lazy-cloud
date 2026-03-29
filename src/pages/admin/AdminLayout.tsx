@@ -123,7 +123,7 @@ export default function AdminLayout() {
 
             {/* Visitor Analytics */}
             <a
-              href="https://lovable.dev/projects/8f74d28a-09c4-4b3c-97f7-3b60c5834e3d/analytics"
+              href="https://lovable.dev/app/projects/8f74d28a-09c4-4b3c-97f7-3b60c5834e3d/analytics"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2 font-body text-[13px] tracking-[0.06em] text-[#f0ead6]/70 hover:text-[#f0ead6]/95 border-l-2 border-transparent transition-colors"
