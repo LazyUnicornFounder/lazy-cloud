@@ -203,10 +203,6 @@ export default function LazyCloudPage() {
       <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
-            <div className="flex items-center gap-3 mb-6">
-              <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.5 }}>Introducing</p>
-              <span className="bg-primary text-primary-foreground text-[14px] tracking-[0.15em] uppercase font-extrabold px-3 py-1 font-display">BETA</span>
-            </div>
             <h1 className="font-display text-foreground" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
               Your autonomous Lovable site.<br />Fully managed.
             </h1>
