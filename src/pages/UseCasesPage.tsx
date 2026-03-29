@@ -579,7 +579,7 @@ export default function UseCasesPage() {
   const filtered = active === "All" ? integrations : integrations.filter((i) => i.category === active);
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen" style={{ backgroundColor: "#0a0a08", color: "#f0ead6" }}>
       <SEO
         title="Use Cases — What Your Lovable Site Can Do | Lazy Unicorn"
         description="Real use cases for every Lovable integration. See what becomes possible when you connect Stripe, Twilio, ElevenLabs, and more through Lazy agents."
@@ -587,40 +587,32 @@ export default function UseCasesPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="pt-36 pb-16 px-6 md:px-12 max-w-5xl mx-auto text-center">
-        <motion.h1
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="font-display text-3xl md:text-5xl font-bold leading-tight tracking-tight"
-        >
-          What your Lovable site can do when it is connected to everything.
-        </motion.h1>
-        <motion.p
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          transition={{ delay: 0.1 }}
-          className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-3xl mx-auto leading-relaxed"
-        >
-          Every Lazy agent connects your{" "}
-          <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/70 transition-colors">Lovable</a>{" "}
-          site to a real service. Here is what each connection makes possible — based on what Lovable's integrations actually support.
-        </motion.p>
+      <section className="px-6 md:px-12 pt-32 pb-24 md:pb-32 max-w-4xl mx-auto">
+        <motion.div variants={fade} initial="hidden" animate="show">
+          <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+            What your Lovable site can do when it is connected to everything.
+          </h1>
+          <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
+            Every Lazy agent connects your{" "}
+            <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80 transition-opacity">Lovable</a>{" "}
+            site to a real service. Here is what each connection makes possible.
+          </p>
+        </motion.div>
       </section>
 
       {/* Filters */}
-      <section className="px-6 md:px-12 max-w-5xl mx-auto mb-12">
-        <div className="flex flex-wrap gap-2 justify-center">
+      <section className="px-6 md:px-12 max-w-4xl mx-auto mb-12">
+        <div className="flex flex-wrap gap-2">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setActive(f)}
               className={`font-body text-sm tracking-[0.12em] uppercase font-semibold px-4 py-2 border transition-colors ${
                 active === f
-                  ? "bg-accent text-accent-foreground border-accent"
-                  : "border-border text-foreground/65 hover:text-foreground/60 hover:border-foreground/20"
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "border-white/15 hover:border-white/30 transition-colors"
               }`}
+              style={active !== f ? { color: "#f0ead6", opacity: 0.5 } : {}}
             >
               {f}
             </button>
@@ -630,15 +622,15 @@ export default function UseCasesPage() {
 
       {/* Section Header */}
       {filtered.length > 0 && (
-        <section className="px-6 md:px-12 max-w-5xl mx-auto pt-8 pb-12 text-center">
+        <section className="px-6 md:px-12 max-w-4xl mx-auto pt-8 pb-12">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1]">
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
               35 agents run your Lovable business.
             </h2>
-            <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-[1.1]">
+            <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em", marginTop: "0.1em" }}>
               One prompt each.
             </h3>
-            <p className="font-body text-foreground/50 text-base max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-6 font-body text-base max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
               Each agent connects your Lovable site to a real service. Here is what each connection makes possible.
             </p>
           </motion.div>
@@ -647,7 +639,7 @@ export default function UseCasesPage() {
 
       {/* All Cards */}
       {filtered.length > 0 && (
-        <section className="px-6 md:px-12 max-w-5xl mx-auto pb-16">
+        <section className="px-6 md:px-12 max-w-4xl mx-auto pb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filtered.map((item, i) => (
               <IntegrationCard key={item.name} item={item} index={i} />
@@ -658,19 +650,19 @@ export default function UseCasesPage() {
 
       {/* CTA */}
       {filtered.length > 0 && (
-        <section className="border-t border-border bg-card">
-          <div className="max-w-3xl mx-auto px-6 md:px-12 py-24 text-center">
-            <motion.h2 variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="font-display text-2xl md:text-4xl font-bold">
+        <section className="border-t border-white/10">
+          <div className="max-w-4xl mx-auto px-6 md:px-12 py-24">
+            <motion.h2 variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
               All of these. One prompt.
             </motion.h2>
-            <motion.p variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} transition={{ delay: 0.1 }} className="mt-6 font-body text-sm text-foreground/70 leading-relaxed max-w-2xl mx-auto">
-              Lazy Run installs every integration your site needs in a single setup wizard. Select the services you want, add your API keys, and your Lovable site connects to all of them at once. Every integration runs autonomously after setup — no ongoing configuration required.
+            <motion.p variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} transition={{ delay: 0.1 }} className="mt-6 font-body text-base leading-relaxed max-w-xl" style={{ color: "#f0ead6", opacity: 0.5 }}>
+              Lazy Run installs every integration your site needs in a single setup wizard. Select the services you want, add your API keys, and your Lovable site connects to all of them at once.
             </motion.p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-              <Link to="/lazy-run" className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-body text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3 hover:bg-accent/90 transition-colors">
+            <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
+              <Link to="/lazy-run" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity">
                 Install Lazy Run <ArrowRight size={14} />
               </Link>
-              <Link to="/lazy-agents" className="inline-flex items-center gap-2 border border-border font-body text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3 text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-colors">
+              <Link to="/lazy-agents" className="inline-flex items-center gap-2 border border-white/15 font-body text-sm font-semibold tracking-[0.1em] uppercase px-6 py-2.5 hover:border-white/30 transition-colors" style={{ color: "#f0ead6", opacity: 0.5 }}>
                 Browse all agents
               </Link>
             </div>
