@@ -138,6 +138,79 @@ const PricingPage = () => {
           </motion.div>
         </section>
 
+        {/* Lazy Cloud */}
+        <section className="px-6 md:px-12 max-w-5xl mx-auto mb-16">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }}>
+            <div className="border border-primary/20 rounded-xl bg-card overflow-hidden">
+              <div className="px-6 pt-6 pb-4 border-b border-border flex items-center justify-between">
+                <div>
+                  <Link to="/lazy-cloud" className="group">
+                    <h2 className="font-display text-lg font-bold text-foreground group-hover:text-foreground/80 transition-colors">Lazy Cloud</h2>
+                  </Link>
+                  <p className="font-body text-xs text-foreground/50 uppercase tracking-wider mt-0.5">Managed hosting for all your agents</p>
+                </div>
+                <span className="font-body text-[9px] tracking-[0.12em] uppercase px-2 py-0.5 border border-primary/30 text-primary rounded">Platform</span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border">
+                {/* Starter */}
+                <div className="p-6 flex flex-col">
+                  <p className="font-display text-2xl font-bold text-foreground">$49<span className="text-xs font-normal text-foreground/50">/mo</span></p>
+                  <p className="font-body text-[11px] text-foreground/40 uppercase tracking-wider mb-4">Starter</p>
+                  <ul className="space-y-2 flex-1">
+                    {["Up to 3 agents hosted", "Automated updates", "Volume API keys included", "24/7 uptime monitoring", "Daily backups"].map((f, i) => (
+                      <li key={i} className="font-body text-xs text-foreground/60 flex items-start gap-1.5">
+                        <Check size={11} className="text-primary/60 mt-0.5 shrink-0" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="/lazy-cloud" className="mt-5 w-full inline-flex items-center justify-center font-body text-[11px] tracking-[0.12em] uppercase px-4 py-2 font-semibold border border-border text-foreground/40 cursor-not-allowed rounded">
+                    Coming Soon
+                  </Link>
+                </div>
+
+                {/* Growth */}
+                <div className="p-6 flex flex-col relative">
+                  <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-primary/10 text-primary border border-primary/20 rounded-full px-2 py-0.5 font-body text-[9px] tracking-wider uppercase font-semibold">
+                    Popular
+                  </span>
+                  <p className="font-display text-2xl font-bold text-foreground">$149<span className="text-xs font-normal text-foreground/50">/mo</span></p>
+                  <p className="font-body text-[11px] text-foreground/40 uppercase tracking-wider mb-4">Growth</p>
+                  <ul className="space-y-2 flex-1">
+                    {["Up to 10 agents hosted", "Everything in Starter", "Breaking-change fast response", "Priority AI model access", "Slack support channel"].map((f, i) => (
+                      <li key={i} className="font-body text-xs text-foreground/60 flex items-start gap-1.5">
+                        <Check size={11} className="text-primary/60 mt-0.5 shrink-0" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="/lazy-cloud" className="mt-5 w-full inline-flex items-center justify-center font-body text-[11px] tracking-[0.12em] uppercase px-4 py-2 font-semibold border border-border text-foreground/40 cursor-not-allowed rounded">
+                    Coming Soon
+                  </Link>
+                </div>
+
+                {/* Agency */}
+                <div className="p-6 flex flex-col">
+                  <p className="font-display text-2xl font-bold text-foreground">$499<span className="text-xs font-normal text-foreground/50">/mo</span></p>
+                  <p className="font-body text-[11px] text-foreground/40 uppercase tracking-wider mb-4">Agency</p>
+                  <ul className="space-y-2 flex-1">
+                    {["Unlimited agents", "Everything in Growth", "Multi-project management", "White-label support", "Dedicated account manager"].map((f, i) => (
+                      <li key={i} className="font-body text-xs text-foreground/60 flex items-start gap-1.5">
+                        <Check size={11} className="text-primary/60 mt-0.5 shrink-0" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="/lazy-cloud" className="mt-5 w-full inline-flex items-center justify-center font-body text-[11px] tracking-[0.12em] uppercase px-4 py-2 font-semibold border border-border text-foreground/40 cursor-not-allowed rounded">
+                    Coming Soon
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
         {/* Category tabs */}
         <section className="px-6 md:px-12 max-w-5xl mx-auto">
           <div className="flex flex-wrap gap-2 mb-10 justify-center">
