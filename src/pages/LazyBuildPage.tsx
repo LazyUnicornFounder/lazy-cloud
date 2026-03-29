@@ -73,7 +73,7 @@ export default function LazyBuildPage() {
               </div>
               <AutopilotHeadline product="lazy-build" />
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-                Describe it. Claude builds it.
+                Lazy Build
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
                 Give Lazy Build an agent name, integration, tagline, and one paragraph. It reads three of your existing prompt files to learn your structure, follows your CLAUDE.md rules, writes a complete new Lazy agent prompt, and opens a draft GitHub PR — tagged @claude for a compliance review before you merge.

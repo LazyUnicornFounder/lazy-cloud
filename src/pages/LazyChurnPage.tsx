@@ -81,7 +81,7 @@ export default function LazyChurnPage() {
               </div>
               <AutopilotHeadline product="lazy-churn" />
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-                The cheapest customer is<br />the one you keep.
+                Lazy Churn
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
                 Lazy Churn monitors every subscriber daily. When someone goes quiet — stops logging in, drops their usage, approaches renewal without engaging — it sends a personalised SMS and email before they ever reach the cancel button. Written by Claude. Sent automatically. One recovered customer pays for the agent forever.
