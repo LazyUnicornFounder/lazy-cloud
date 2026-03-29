@@ -10,7 +10,7 @@ import {
   RefreshCw, Radar, LayoutDashboard, Compass, Database as DbIcon,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import SEO from "@/components/SEO";
 
 /* ── Color palettes ── */
@@ -606,8 +606,6 @@ export default function LazyLaunchPage() {
         </div>
         </div>
       </main>
-
-      <Footer />
     </>
   );
 }
