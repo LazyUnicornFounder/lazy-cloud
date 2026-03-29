@@ -6,6 +6,9 @@ import {
   MessageSquare, Video, Code, Zap, Activity, Radar, Compass,
   Layers, BarChart3, Database, Bell, Send, Shield,
   LayoutDashboard, Calendar, ArrowRight, Rocket, Clock,
+  Package, Printer, Mail, MonitorPlay, Youtube, GitBranch,
+  Paintbrush, Lock, Eye, Wrench, Hammer, Brain, RefreshCw,
+  TrendingUp, UserCheck, Hourglass,
   type LucideIcon
 } from "lucide-react";
 

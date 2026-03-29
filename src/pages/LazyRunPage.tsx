@@ -5,7 +5,10 @@ import {
   FileText, Search, Globe, ShoppingCart, Mic, CreditCard,
   MessageSquare, Video, Code, ChevronDown, Zap, Activity,
   Clock, ArrowRight, Radar, Compass, Layers, BarChart3,
-  Database, Bell, Send, Shield, LayoutDashboard, Calendar
+  Database, Bell, Send, Shield, LayoutDashboard, Calendar,
+  Package, Printer, Mail, MonitorPlay, Youtube, GitBranch,
+  Paintbrush, Lock, Eye, Wrench, Hammer, Brain, RefreshCw,
+  TrendingUp, UserCheck
 } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
