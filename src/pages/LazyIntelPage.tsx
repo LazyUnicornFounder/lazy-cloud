@@ -74,7 +74,7 @@ export default function LazyIntelPage() {
               </div>
               <AutopilotHeadline product="lazy-intel" />
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-                Your strategy writes itself.
+                Lazy Intel
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
                 Every Monday at 6am Lazy Intel reads your blog performance, YouTube analytics, customer discovery signals, comment intelligence, and competitor data. It generates a weekly content strategy brief, adds 5 new SEO keywords to your queue, and adds 3 new GEO queries — all before you start your week.

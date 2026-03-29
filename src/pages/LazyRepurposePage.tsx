@@ -86,7 +86,7 @@ export default function LazyRepurposePage() {
               </div>
               <AutopilotHeadline product="lazy-repurpose" />
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-                You already wrote it.<br />Now let it work five times harder.
+                Lazy Repurpose
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
                 Every blog post, SEO article, and GEO piece you publish automatically becomes a Twitter thread, a LinkedIn post, a newsletter section, and a short-form video script — generated every Sunday and queued for your approval. One piece of content. Five formats. Zero extra writing.

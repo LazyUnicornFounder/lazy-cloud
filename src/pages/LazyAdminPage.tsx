@@ -82,7 +82,7 @@ export default function LazyAdminPage() {
               <AutopilotHeadline product="lazy-admin" />
 
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
-                <span>One dashboard to manage your entire Lazy stack.</span>
+                <span>Lazy Admin</span>
               </h1>
               <p className="font-body text-foreground/50 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
                 Lazy Admin is the unified control panel for your entire Lazy Stack. Paste one prompt. It detects every agent you have installed, builds a dashboard around them, and shows you everything your autonomous business did overnight — in one place, in under a minute.

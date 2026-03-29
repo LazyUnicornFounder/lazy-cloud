@@ -96,7 +96,7 @@ export default function LazyWatchPage() {
               </div>
               <AutopilotHeadline product="lazy-watch" />
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-                Your stack watches itself.
+                Lazy Watch
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
                 Lazy Watch reads every Lazy agent error table every hour. When errors spike it sends them to Claude for diagnosis, opens a GitHub issue with a specific fix recommendation, tags @claude to investigate, and pings your Slack. You find out about broken agent before your users do.

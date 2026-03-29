@@ -81,7 +81,7 @@ export default function LazyFixPage() {
               </div>
               <AutopilotHeadline product="lazy-fix" />
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-                Your prompts get better while you sleep.
+                Lazy Fix
               </h1>
               <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
                 Every Sunday at 11pm Lazy Fix reads your agent performance data — output volume, error rates, last activity dates. It identifies the two weakest agents, writes targeted improvements to their prompts following your SPEC.md rules, and opens GitHub PRs. Monday morning you have two prompts ready to review and merge.

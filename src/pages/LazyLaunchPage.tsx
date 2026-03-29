@@ -281,7 +281,7 @@ export default function LazyLaunchPage() {
               <span className="font-body text-xs text-foreground/60 tracking-widest uppercase">Lazy Launch</span>
             </div>
             <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-              Build your landing page in 60 seconds
+              Lazy Launch
             </h1>
             <p className="font-body text-sm text-muted-foreground mt-2 max-w-lg mx-auto">
               Describe your business, pick your style, choose your agents — get a prompt you paste into Lovable.
