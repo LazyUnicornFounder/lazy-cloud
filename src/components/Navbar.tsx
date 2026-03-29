@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X as XIcon, Linkedin, ChevronDown, ChevronRight, Github, Rocket, Clock, FileText, Search, Globe, Radar, Compass, Layers, ShoppingCart, Package, Printer, CreditCard, MessageSquare, Mail, Mic, MonitorPlay, Youtube, Code, GitBranch, BarChart3, Paintbrush, Lock, Calendar, LayoutDashboard, Bell, Send, Database, Shield, Eye, Wrench, Hammer, Brain, RefreshCw, TrendingUp, UserCheck, type LucideIcon } from "lucide-react";
+import { Menu, X as XIcon, Linkedin, ChevronDown, ChevronRight, Github, Rocket, Clock, FileText, Search, Globe, Radar, Compass, Layers, ShoppingCart, Package, Printer, CreditCard, MessageSquare, Mail, Mic, MonitorPlay, Youtube, Code, GitBranch, BarChart3, Paintbrush, Lock, Calendar, LayoutDashboard, Bell, Send, Database, Shield, Eye, Wrench, Hammer, Brain, RefreshCw, TrendingUp, UserCheck, ListEnd, type LucideIcon } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 
