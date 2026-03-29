@@ -17,7 +17,7 @@ import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
 const NEW_TITLE = "Launch, build and run your Lovable website with autonomous agents.";
-const NEW_DESCRIPTION = "Copy, paste, done. Each agent sets itself up and runs on autopilot — publishing content, handling payments, growing your audience, and more.";
+const NEW_DESCRIPTION = "Launch your website. Then launch a waitlist. Add a blog that writes itself. Let SEO agents rank your pages while you sleep. Process payments automatically. Send SMS campaigns that improve themselves. Lazy Unicorn turns any Lovable site into a self-running business — one prompt at a time.";
 
 const rotatingWords = [
   { word: "everything", emoji: "🦄" },       // Lazy Run
@@ -265,7 +265,7 @@ const Index = () => {
               </h1>
 
               <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
-                Copy, paste, done. Each agent sets itself up and runs on autopilot — publishing content, handling payments, growing your audience, and more.
+                Launch your website. Then launch a waitlist. Add a blog that writes itself. Let SEO agents rank your pages while you sleep. Process payments automatically. Send SMS campaigns that improve themselves. Lazy Unicorn turns any Lovable site into a self-running business — one prompt at a time.
               </p>
 
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
