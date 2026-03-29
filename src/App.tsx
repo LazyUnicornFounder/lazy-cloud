@@ -79,6 +79,9 @@ import AdminAnalyticsPage from "./pages/admin/AdminAnalyticsPage.tsx";
 import AdminChangelogPage from "./pages/admin/AdminChangelogPage.tsx";
 import AdminPromptsPage from "./pages/admin/AdminPromptsPage.tsx";
 import AdminGranolaPage from "./pages/admin/AdminGranolaPage.tsx";
+import AdminWaitlistPage from "./pages/admin/AdminWaitlistPage.tsx";
+import AdminWaitlistSetup from "./pages/admin/AdminWaitlistSetup.tsx";
+import WaitlistPage from "./pages/WaitlistPage.tsx";
 
 const queryClient = new QueryClient();
 

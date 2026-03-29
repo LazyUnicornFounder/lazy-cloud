@@ -319,7 +319,7 @@ export default function AdminWaitlistPage() {
         </TabsContent>
 
         <TabsContent value="errors">
-          <ErrorLog tableName="waitlist_errors" />
+          <ErrorLog errors={errors.map(e => ({ id: e.id, created_at: e.created_at, error_message: e.error_message, function_name: e.function_name }))} title="Waitlist Errors" />
         </TabsContent>
       </Tabs>
     </div>
