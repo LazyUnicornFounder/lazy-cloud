@@ -6,8 +6,8 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
-const NEW_TITLE = "Add agents to your Lovable website with one prompt.";
-const NEW_DESCRIPTION = "Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself. Blog posts, SEO, payments, voice, stores, and more, and starts to run your business autonomously.";
+const NEW_TITLE = "Launch, build and run your Lovable website or app with autonomous agents.";
+const NEW_DESCRIPTION = "Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself. Blog posts, SEO, payments, voice, stores, and more.";
 
 const rotatingWords = [
   { word: "everything", emoji: "🦄" },       // Lazy Run
@@ -464,10 +464,10 @@ const Index = () => {
           className="min-h-screen flex flex-col items-center justify-center gap-6 px-6 pt-8 pb-16 text-center"
         >
           <RotatingHeadline />
-          <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(3rem, 7vw, 5rem)", color: "#f0ead6", lineHeight: 1.1, fontWeight: 800 }}>
-            Add agents to your Lovable
+          <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 6vw, 4.5rem)", color: "#f0ead6", lineHeight: 1.1, fontWeight: 800 }}>
+            Launch, build and run your Lovable
             <br />
-            website with one prompt.
+            website or app with autonomous agents.
           </h1>
           <p className="max-w-2xl" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.95rem, 1.4vw, 1.15rem)", color: "#f0ead6", opacity: 0.45, lineHeight: 1.6 }}>
             Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself. Blog posts, SEO, payments, voice, stores, and more.
