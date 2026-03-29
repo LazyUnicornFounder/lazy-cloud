@@ -1,0 +1,1 @@
+CREATE POLICY "Anyone can read early_access" ON public.early_access FOR SELECT TO public USING (true);
