@@ -531,6 +531,30 @@ export type Database = {
         }
         Relationships: []
       }
+      installs: {
+        Row: {
+          created_at: string
+          engine: string
+          id: string
+          site_url: string
+          version: string
+        }
+        Insert: {
+          created_at?: string
+          engine: string
+          id?: string
+          site_url: string
+          version: string
+        }
+        Update: {
+          created_at?: string
+          engine?: string
+          id?: string
+          site_url?: string
+          version?: string
+        }
+        Relationships: []
+      }
       product_publish_settings: {
         Row: {
           created_at: string

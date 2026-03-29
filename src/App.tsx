@@ -81,6 +81,7 @@ import AdminPromptsPage from "./pages/admin/AdminPromptsPage.tsx";
 import AdminGranolaPage from "./pages/admin/AdminGranolaPage.tsx";
 import AdminWaitlistPage from "./pages/admin/AdminWaitlistPage.tsx";
 import AdminWaitlistSetup from "./pages/admin/AdminWaitlistSetup.tsx";
+import AdminInstallsPage from "./pages/admin/AdminInstallsPage.tsx";
 import WaitlistPage from "./pages/WaitlistPage.tsx";
 import LazyWaitlistPage from "./pages/LazyWaitlistPage.tsx";
 
@@ -128,6 +129,7 @@ const App = () => (
                 <Route path="prompts" element={<AdminPromptsPage />} />
                 <Route path="changelog" element={<AdminChangelogPage />} />
                 <Route path="settings" element={<AdminSettingsPage />} />
+                <Route path="installs" element={<AdminInstallsPage />} />
               </Route>
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
