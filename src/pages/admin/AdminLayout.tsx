@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, BarChart3, PenTool, Settings, Menu, X,
-  FileText, Bot,
+  FileText, Bot, Users,
 } from "lucide-react";
 
 export default function AdminLayout() {
@@ -37,6 +37,7 @@ export default function AdminLayout() {
     { label: "Analytics", path: "/admin/analytics", icon: BarChart3 },
     { label: "Prompts", path: "/admin/prompts", icon: FileText },
     { label: "Changelog", path: "/admin/changelog", icon: PenTool },
+    { label: "Waitlist", path: "/admin/waitlist", icon: Users },
     { label: "Settings", path: "/admin/settings", icon: Settings },
   ];
 
