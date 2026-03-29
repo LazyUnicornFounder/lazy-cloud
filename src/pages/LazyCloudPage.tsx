@@ -101,7 +101,7 @@ const faqs = [
   { q: "What happens if I cancel?", a: "Your agents, settings, and data are exported to your own Supabase account automatically within 24 hours of cancellation. You return to self-hosted with everything intact. No data loss, no lock-in." },
   { q: "Do I still need a Lovable account?", a: "Yes. Lazy Cloud manages the autonomous agent layer — it requires Lovable and Lovable Cloud for the site itself. Think of Lazy Cloud as the operations layer that sits on top of Lovable." },
   { q: "What API keys are included?", a: "Starter includes Perplexity and Firecrawl. Growth and Agency include all integrations: Perplexity, Firecrawl, ElevenLabs, Resend, Twilio SMS, and Aikido. Stripe uses your own keys for payment compliance reasons." },
-  { q: "What happens when Lovable ships a breaking change?", a: "The Lazy Cloud team monitors Lovable updates continuously. When a breaking change affects agent functionality we update the affected prompts and auto-apply them to all Lazy Cloud sites within 48 hours on Growth and Agency plans." },
+  { q: "What happens when Lovable ships a breaking change?", a: "The Lazy Cloud team monitors Lovable updates continuously. When a breaking change affects agent functionality we update the affected prompts and auto-apply them to all Lazy Cloud sites." },
   { q: "Can I white-label Lazy Cloud for my clients?", a: "Yes on the Agency plan. Your clients see your brand name, your custom domain, and your support contact. LazyUnicorn is not visible to your clients." },
 ];
 
