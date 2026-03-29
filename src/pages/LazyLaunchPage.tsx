@@ -606,8 +606,6 @@ export default function LazyLaunchPage() {
         </div>
         </div>
       </main>
-
-      <Footer />
     </>
   );
 }
