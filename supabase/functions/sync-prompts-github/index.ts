@@ -307,26 +307,10 @@ serve(async (req) => {
     if (product && prompt_text) {
       const label = PRODUCT_LABELS[product] || product;
       const category = CATEGORY_MAP[product] || "Other";
-      const fileContent = [
-        `# ${label}`,
-        "",
-        `> Category: ${category} · Version: ${version}`,
-        "",
-        "## Prompt",
-        "",
-        "````",
-        prompt_text,
-        "````",
-        "",
-        `---`,
-        `*Auto-synced from [Lazy Unicorn](https://lazyunicorn.co)*`,
-        "",
-      ].join("\n");
-
       await upsertFile(
         GITHUB_TOKEN,
         `prompts/${product}.md`,
-        fileContent,
+        prompt_text,
         `Update ${label} prompt to v${version}`
       );
     }
@@ -336,22 +320,7 @@ serve(async (req) => {
       for (const p of all_prompts) {
         const label = PRODUCT_LABELS[p.product] || p.product;
         const category = CATEGORY_MAP[p.product] || "Other";
-        const fileContent = [
-          `# ${label}`,
-          "",
-          `> Category: ${category} · Version: ${p.version}`,
-          "",
-          "## Prompt",
-          "",
-          "````",
-          p.prompt_text,
-          "````",
-          "",
-          `---`,
-          `*Auto-synced from [Lazy Unicorn](https://lazyunicorn.co)*`,
-          "",
-        ].join("\n");
-        await upsertFile(GITHUB_TOKEN, `prompts/${p.product}.md`, fileContent, `Sync ${label} v${p.version}`);
+        await upsertFile(GITHUB_TOKEN, `prompts/${p.product}.md`, p.prompt_text, `Sync ${label} v${p.version}`);
       }
     }
 
