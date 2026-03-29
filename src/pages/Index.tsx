@@ -275,7 +275,7 @@ const Index = () => {
               lineHeight: 1.65,
             }}
           >
-            Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself.
+            Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself, so you can build your autonomous business.
           </p>
 
           {/* CTA */}
