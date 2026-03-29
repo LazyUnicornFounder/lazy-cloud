@@ -217,7 +217,7 @@ Add a small "Powered by Lazy Unicorn" backlink badge in the footer of every publ
 Style it to sit at the bottom of the page footer, centered, with subtle opacity (60%) that increases to 100% on hover.`;
 
 const SlackBadge = () => (
-  <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">
+  <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/50 border border-border px-3 py-1">
     Powered by Slack
   </span>
 );
@@ -254,9 +254,9 @@ function SlackMessage({ avatar, name, time, children }: { avatar: string; name: 
       <div className="flex-1 min-w-0">
         <div className="flex items-baseline gap-2 mb-1">
           <span className="font-display text-sm font-bold text-foreground">{name}</span>
-          <span className="font-body text-[14px] text-foreground/60">{time}</span>
+          <span className="font-body text-[14px] text-foreground/50">{time}</span>
         </div>
-        <div className="font-body text-sm text-foreground/60 leading-relaxed">{children}</div>
+        <div className="font-body text-sm text-foreground/50 leading-relaxed">{children}</div>
       </div>
     </div>
   );
@@ -352,7 +352,7 @@ export default function LazyAlertPage() {
 
 
             <SlackBadge />
-            <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+            <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
               Lazy Alert connects every Lazy agent to your Slack workspace. Payments, posts, citations, customer replies, errors, and live events — all delivered as Slack messages the moment they happen. One prompt. Your business in your pocket.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -379,7 +379,7 @@ export default function LazyAlertPage() {
             {steps.map((step, i) => (
               <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="flex items-start gap-6">
                 <span className="font-display text-3xl font-bold text-foreground/10 shrink-0">{step.num}</span>
-                <p className="font-body text-base text-foreground/60 pt-2">{step.title}</p>
+                <p className="font-body text-base text-foreground/50 pt-2">{step.title}</p>
               </motion.div>
             ))}
           </div>
@@ -398,7 +398,7 @@ export default function LazyAlertPage() {
               <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.04 }}>
                 <div className="mb-2">
                   <p className="font-display text-sm font-bold text-foreground">{card.agent}</p>
-                  <p className="font-body text-sm text-foreground/70">{card.trigger}</p>
+                  <p className="font-body text-sm text-foreground/50">{card.trigger}</p>
                 </div>
                 <SlackMessage avatar={card.avatar} name="Lazy Unicorn" time="just now">
                   {card.example}
@@ -424,13 +424,13 @@ export default function LazyAlertPage() {
             <SlackMessage avatar="🦄" name="Lazy Unicorn" time="8:00 AM">
               <strong className="text-foreground/80">📊 Daily Briefing — Monday 24 Mar</strong>
               <div className="mt-2 space-y-1 text-sm">
-                <p>📝 <strong className="text-foreground/70">Posts published:</strong> 3 (2 SEO, 1 GEO)</p>
-                <p>💰 <strong className="text-foreground/70">Revenue:</strong> $127.00 from 4 payments</p>
-                <p>🔍 <strong className="text-foreground/70">Keywords ranking:</strong> 23 (+2 new)</p>
-                <p>🌐 <strong className="text-foreground/70">Citation rate:</strong> 68% across 12 queries</p>
-                <p>💬 <strong className="text-foreground/70">SMS replies:</strong> 7 (3 positive, 4 neutral)</p>
-                <p>⚠️ <strong className="text-foreground/70">Errors:</strong> 1 (Lazy SEO — rate limit)</p>
-                <p className="pt-1 text-foreground/70 text-sm">All agents running normally.</p>
+                <p>📝 <strong className="text-foreground/50">Posts published:</strong> 3 (2 SEO, 1 GEO)</p>
+                <p>💰 <strong className="text-foreground/50">Revenue:</strong> $127.00 from 4 payments</p>
+                <p>🔍 <strong className="text-foreground/50">Keywords ranking:</strong> 23 (+2 new)</p>
+                <p>🌐 <strong className="text-foreground/50">Citation rate:</strong> 68% across 12 queries</p>
+                <p>💬 <strong className="text-foreground/50">SMS replies:</strong> 7 (3 positive, 4 neutral)</p>
+                <p>⚠️ <strong className="text-foreground/50">Errors:</strong> 1 (Lazy SEO — rate limit)</p>
+                <p className="pt-1 text-foreground/50 text-sm">All agents running normally.</p>
               </div>
             </SlackMessage>
           </motion.div>
@@ -451,8 +451,8 @@ export default function LazyAlertPage() {
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-10 bg-[#1a1a18] border border-border p-6 font-mono text-sm space-y-2">
             {slashCommands.map((cmd) => (
               <div key={cmd} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                <code className="text-foreground/70 shrink-0">{cmd}</code>
-                <span className="text-foreground/70 text-sm">— {slashDescriptions[cmd]}</span>
+                <code className="text-foreground/50 shrink-0">{cmd}</code>
+                <span className="text-foreground/50 text-sm">— {slashDescriptions[cmd]}</span>
               </div>
             ))}
           </motion.div>
@@ -496,7 +496,7 @@ export default function LazyAlertPage() {
             <CopyPromptButton text={promptText} />
           </motion.div>
 
-          <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-4 font-body text-sm text-foreground/65 max-w-md mx-auto">
+          <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-4 font-body text-sm text-foreground/50 max-w-md mx-auto">
             Open your Lovable project, paste it into the chat, add your Slack webhook URL. Your business starts talking to you today.
           </motion.p>
 

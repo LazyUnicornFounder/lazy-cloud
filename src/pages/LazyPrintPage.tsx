@@ -91,8 +91,8 @@ export default function LazyPrintPage() {
               </div>
 
 
-            <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">Powered by Printful</span>
-            <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+            <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/50 border border-border px-3 py-1">Powered by Printful</span>
+            <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
               One prompt connects <a href="https://printful.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/90 transition-colors">Printful</a> to your <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/90 transition-colors">Lovable</a> site. Upload your designs, choose your products, and your store starts selling t-shirts, hoodies, mugs, posters, and more — all printed and shipped directly to your customers. Zero inventory. Pure profit.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -119,7 +119,7 @@ export default function LazyPrintPage() {
             ].map((c, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="border border-border p-6">
                 <span className="text-2xl mb-3 block">{c.emoji}</span>
-                <p className="font-body text-sm text-foreground/65 leading-relaxed">{c.text}</p>
+                <p className="font-body text-sm text-foreground/50 leading-relaxed">{c.text}</p>
               </motion.div>
             ))}
           </div>
@@ -167,9 +167,9 @@ export default function LazyPrintPage() {
               <tbody>
                 {economics.map((r, i) => (
                   <tr key={i} className="border-b border-border/50 last:border-0">
-                    <td className="p-4 font-body text-foreground/70">{r.product}</td>
+                    <td className="p-4 font-body text-foreground/50">{r.product}</td>
                     <td className="p-4 text-right font-body text-foreground/50">{r.base}</td>
-                    <td className="p-4 text-right font-body text-foreground/70">{r.sell}</td>
+                    <td className="p-4 text-right font-body text-foreground/50">{r.sell}</td>
                     <td className="p-4 text-right font-body text-[#c8a961]/80 font-semibold">{r.profit}</td>
                   </tr>
                 ))}
@@ -207,7 +207,7 @@ export default function LazyPrintPage() {
           <h2 className="font-display text-2xl md:text-3xl font-bold mb-4" style={{ color: "#f0ead6" }}>
             Your audience wants merch. Give them merch
           </h2>
-          <p className="font-body text-sm text-foreground/50 mb-8 leading-relaxed">
+          <p className="font-body text-sm mb-8 leading-relaxed">
             Upload your design. Set your price. Walk away. Lazy Print and Printful handle everything else — printing, packing, shipping, tracking. You collect the profit.
           </p>
           <CopyPromptButton text={promptText} />

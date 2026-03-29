@@ -108,12 +108,12 @@ export default function LazyGranolaSetup() {
             >
               Connect Granola
             </h1>
-            <p className="font-body text-foreground/60 text-[15px] leading-relaxed mb-6">
+            <p className="font-body text-foreground/50 text-[15px] leading-relaxed mb-6">
               Every meeting you have is a blog post, a product update, a set of Linear issues, and a customer insight sitting unwritten. Lazy Granola writes all of it automatically — the moment your meeting ends.
             </p>
 
             <div className="border border-primary/30 bg-primary/5 p-4 mb-8">
-              <p className="font-body text-foreground/70 text-[13px] leading-relaxed">
+              <p className="font-body text-foreground/50 text-[13px] leading-relaxed">
                 <strong>Prerequisites:</strong> Before setup you must connect Granola in your Lovable project. Go to Settings → Connectors → Personal connectors → Granola and click Connect. Sign in with your Granola account. Once connected come back here to complete setup.
               </p>
             </div>
@@ -121,24 +121,24 @@ export default function LazyGranolaSetup() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Brand name */}
               <div>
-                <label className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/70 block mb-2">Brand name</label>
+                <label className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/50 block mb-2">Brand name</label>
                 <input type="text" value={form.brand_name} onChange={(e) => setForm((p) => ({ ...p, brand_name: e.target.value }))}
                   className="w-full bg-transparent border border-border text-foreground px-4 py-3 font-body text-sm focus:outline-none focus:border-foreground/30" />
               </div>
 
               {/* Site URL */}
               <div>
-                <label className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/70 block mb-2">Site URL</label>
+                <label className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/50 block mb-2">Site URL</label>
                 <input type="url" value={form.site_url} onChange={(e) => setForm((p) => ({ ...p, site_url: e.target.value }))} placeholder="https://"
                   className="w-full bg-transparent border border-border text-foreground px-4 py-3 font-body text-sm focus:outline-none focus:border-foreground/30" />
               </div>
 
               {/* Meeting types */}
               <div>
-                <label className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/70 block mb-3">Meeting types to process</label>
+                <label className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/50 block mb-3">Meeting types to process</label>
                 <div className="grid grid-cols-2 gap-2">
                   {meetingTypeOptions.map((opt) => (
-                    <label key={opt.value} className="flex items-center gap-2 cursor-pointer font-body text-[13px] text-foreground/70">
+                    <label key={opt.value} className="flex items-center gap-2 cursor-pointer font-body text-[13px] text-foreground/50">
                       <input type="checkbox" checked={form.meeting_types.includes(opt.value)} onChange={() => toggleMeetingType(opt.value)}
                         className="accent-primary" />
                       {opt.label}
@@ -169,7 +169,7 @@ export default function LazyGranolaSetup() {
               {/* Weekly digest day */}
               {form.weekly_digest_enabled && (
                 <div>
-                  <label className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/70 block mb-2">Weekly digest day</label>
+                  <label className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/50 block mb-2">Weekly digest day</label>
                   <select value={form.weekly_digest_day} onChange={(e) => setForm((p) => ({ ...p, weekly_digest_day: e.target.value }))}
                     className="bg-transparent border border-border text-foreground px-4 py-3 font-body text-sm focus:outline-none focus:border-foreground/30">
                     <option value="monday">Monday</option>
@@ -181,7 +181,7 @@ export default function LazyGranolaSetup() {
               {/* Slack webhook */}
               {form.send_slack_summary && (
                 <div>
-                  <label className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/70 block mb-2">Slack webhook URL</label>
+                  <label className="font-display text-[12px] tracking-[0.15em] uppercase font-bold text-foreground/50 block mb-2">Slack webhook URL</label>
                   <input type="url" value={form.slack_webhook_url} onChange={(e) => setForm((p) => ({ ...p, slack_webhook_url: e.target.value }))} placeholder="https://hooks.slack.com/..."
                     className="w-full bg-transparent border border-border text-foreground px-4 py-3 font-body text-sm focus:outline-none focus:border-foreground/30" />
                 </div>

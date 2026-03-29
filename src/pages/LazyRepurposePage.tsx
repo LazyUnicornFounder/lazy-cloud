@@ -91,7 +91,7 @@ export default function LazyRepurposePage() {
               <div className="flex items-center gap-3 mt-4 mb-4">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Ops</span>
               </div>
-              <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 Every blog post, SEO article, and GEO piece you publish automatically becomes a Twitter thread, a LinkedIn post, a newsletter section, and a short-form video script — generated every Sunday and queued for your approval. One piece of content. Five formats. Zero extra writing.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -113,11 +113,11 @@ export default function LazyRepurposePage() {
             {problemCards.map((card, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className={`bg-card p-6 ${i < 2 ? "border-b md:border-b-0 md:border-r border-border" : ""}`}>
                 <p className="text-2xl mb-3">{card.emoji}</p>
-                <p className="font-body text-sm text-foreground/50 leading-relaxed">{card.text}</p>
+                <p className="font-body text-sm leading-relaxed">{card.text}</p>
               </motion.div>
             ))}
           </div>
-          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-6 font-body text-sm text-foreground/60 max-w-xl mx-auto leading-relaxed">
+          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-6 font-body text-sm text-foreground/50 max-w-xl mx-auto leading-relaxed">
             Your content is only working on the channel it was written for. Lazy Repurpose makes it work on all of them.
           </motion.p>
         </section>
@@ -134,14 +134,14 @@ export default function LazyRepurposePage() {
                   <span className="text-lg mr-2">{card.emoji}</span>
                   <span className="font-display text-sm font-bold">{card.title}</span>
                 </div>
-                <p className="font-body text-sm text-foreground/50 leading-relaxed">{card.desc}</p>
+                <p className="font-body text-sm leading-relaxed">{card.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* How it works */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             How it works
           </motion.h2>
@@ -150,7 +150,7 @@ export default function LazyRepurposePage() {
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className={`bg-card p-6 ${i < 2 ? "border-b md:border-b-0 md:border-r border-border" : ""}`}>
                 <p className="text-2xl mb-3">{s.icon}</p>
                 <h3 className="font-display text-sm font-bold tracking-[0.08em] uppercase mb-2">{s.title}</h3>
-                <p className="font-body text-sm text-foreground/50 leading-relaxed">{s.desc}</p>
+                <p className="font-body text-sm leading-relaxed">{s.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -175,7 +175,7 @@ export default function LazyRepurposePage() {
         {/* CTA */}
         <section className="max-w-3xl mx-auto px-6 mt-20">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border-2 border-[#c8a961]/30 bg-card p-10 text-center">
-            <p className="font-body text-sm text-foreground/50 mb-4 leading-relaxed max-w-lg mx-auto">
+            <p className="font-body text-sm mb-4 leading-relaxed max-w-lg mx-auto">
               Your best content is sitting on one channel. It should be on all of them.
             </p>
             <CopyPromptButton text={promptText} />

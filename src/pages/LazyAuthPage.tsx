@@ -174,7 +174,7 @@ export default function LazyAuthPage() {
             <div className="flex items-center gap-3 mt-4 mb-4">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Dev</span>
               </div>
-            <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+            <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
               One prompt installs Google Sign-In, email/password login, magic links, protected routes, role-based access control, and a user management dashboard. Uses Lovable Cloud — no external auth provider setup required.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -190,7 +190,7 @@ export default function LazyAuthPage() {
             {/* Works with */}
             <div className="mt-8 flex flex-wrap gap-2">
               {["Lazy Admin", "Lazy Security"].map((tag) => (
-                <span key={tag} className="font-body text-[13px] tracking-[0.2em] uppercase text-foreground/60 border border-border px-3 py-1">
+                <span key={tag} className="font-body text-[13px] tracking-[0.2em] uppercase text-foreground/50 border border-border px-3 py-1">
                   {tag}
                 </span>
               ))}
@@ -207,7 +207,7 @@ export default function LazyAuthPage() {
             Auth is the thing nobody wants to build twice.
           </motion.h2>
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="font-body text-base md:text-lg text-foreground/70 leading-relaxed">
+            className="font-body text-base md:text-lg text-foreground/50 leading-relaxed">
             Every Lovable project eventually needs login. Google OAuth, email flows, password resets, protected routes, role-based access — it is the same work every time. Lazy Auth does it once, in one prompt. You get a complete authentication system with user management, and you never wire up another OAuth callback again.
           </motion.p>
         </div>
@@ -228,9 +228,9 @@ export default function LazyAuthPage() {
                 transition={{ delay: i * 0.05 }}
                 className="border border-border p-6 bg-card"
               >
-                <f.icon size={20} className="text-foreground/70 mb-3" />
+                <f.icon size={20} className="text-foreground/50 mb-3" />
                 <h3 className="font-display text-sm font-bold mb-1">{f.title}</h3>
-                <p className="font-body text-sm text-foreground/65 leading-relaxed">{f.desc}</p>
+                <p className="font-body text-sm text-foreground/50 leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -255,7 +255,7 @@ export default function LazyAuthPage() {
               >
                 <span className="font-display text-2xl font-bold text-foreground/20 mb-3 block">{s.step}</span>
                 <h3 className="font-display text-sm font-bold mb-2">{s.title}</h3>
-                <p className="font-body text-sm text-foreground/65 leading-relaxed">{s.desc}</p>
+                <p className="font-body text-sm text-foreground/50 leading-relaxed">{s.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -279,7 +279,7 @@ export default function LazyAuthPage() {
             Stop building auth from scratch.
           </motion.h2>
           <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="font-body text-base md:text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed mb-10">
+            className="font-body text-base md:text-lg text-foreground/50 max-w-2xl mx-auto leading-relaxed mb-10">
             One prompt. Google Sign-In. Email login. Protected routes. Role-based access. User management. All wired up and ready to go.
           </motion.p>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.2 }}>
@@ -290,7 +290,7 @@ export default function LazyAuthPage() {
 
       {/* Footer */}
       <footer className="py-10 px-6 border-t border-border text-center">
-        <p className="font-display text-[14px] tracking-[0.15em] uppercase text-foreground/60">
+        <p className="font-display text-[14px] tracking-[0.15em] uppercase text-foreground/50">
           Lazy Unicorn — Autonomous growth agents for Lovable
         </p>
       </footer>

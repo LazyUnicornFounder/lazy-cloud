@@ -266,7 +266,7 @@ function CopyPromptButton({
 /* ── Stripe badge ── */
 function StripeBadge() {
   return (
-    <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">
+    <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/50 border border-border px-3 py-1">
       Powered by Stripe
     </span>
   );
@@ -358,7 +358,7 @@ export default function LazyPayPage() {
 
 
               <StripeBadge />
-              <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 One prompt installs Stripe payments, subscriptions, and a revenue dashboard that improves its own conversion rate — automatically.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -395,7 +395,7 @@ export default function LazyPayPage() {
                   <span className="w-10 h-10 bg-primary/10 text-primary font-display font-bold text-sm flex items-center justify-center">
                     {i + 1}
                   </span>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{step}</p>
+                  <p className="font-body text-sm leading-relaxed">{step}</p>
                 </motion.div>
               ))}
             </div>
@@ -424,7 +424,7 @@ export default function LazyPayPage() {
                     <f.icon size={20} className="text-primary" />
                     <h3 className="font-display text-sm font-bold tracking-tight">{f.title}</h3>
                   </div>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+                  <p className="font-body text-sm leading-relaxed">{f.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -505,7 +505,7 @@ export default function LazyPayPage() {
                 className="border border-border p-6 bg-card"
               >
                 <h3 className="font-display text-sm font-bold mb-3">Before</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                <p className="font-body text-sm leading-relaxed">
                   Hours reading Stripe docs, debugging webhooks, writing checkout logic, manually optimising copy, losing revenue to abandoned checkouts.
                 </p>
               </motion.div>
@@ -515,7 +515,7 @@ export default function LazyPayPage() {
                 className="border border-primary/40 p-6 bg-card"
               >
                 <h3 className="font-display text-sm font-bold mb-3 text-primary">After Lazy Pay</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                <p className="font-body text-sm leading-relaxed">
                   Paste one prompt, add Stripe keys, everything works and improves itself.
                 </p>
               </motion.div>
@@ -525,7 +525,7 @@ export default function LazyPayPage() {
                 className="border border-primary/40 p-6 bg-card"
               >
                 <h3 className="font-display text-sm font-bold mb-3 text-primary">After Lazy Pay + Lazy Store</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                <p className="font-body text-sm leading-relaxed">
                   Your store lists products, takes payments, recovers abandoned carts, and optimises its own conversion without you.
                 </p>
               </motion.div>
@@ -574,7 +574,7 @@ export default function LazyPayPage() {
               className="flex flex-col items-center gap-3"
             >
               <CopyPromptButton text={promptText} onCopy={handleCopy} />
-              <p className="font-body text-sm text-muted-foreground/60 max-w-sm">
+              <p className="font-body text-sm/60 max-w-sm">
                 Open your Lovable project, paste it into the chat, add your Stripe keys. Your site takes payments within minutes and starts improving within the first week.
               </p>
             </motion.div>

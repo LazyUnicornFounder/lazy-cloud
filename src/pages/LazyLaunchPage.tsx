@@ -289,7 +289,7 @@ export default function LazyLaunchPage() {
               <div className="flex items-center gap-3 mt-4 mb-4">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Unicorn</span>
               </div>
-              <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 Describe your business, pick your style, choose your agents — get a prompt you paste into Lovable. Your entire site launches in one go.
               </p>
             </motion.div>
@@ -308,7 +308,7 @@ export default function LazyLaunchPage() {
                   i === step
                     ? "bg-primary text-primary-foreground"
                     : i < step
-                    ? "text-foreground/70 hover:text-foreground"
+                    ? "text-foreground/50 hover:text-foreground"
                     : "text-foreground/25 cursor-default"
                 }`}
               >
@@ -337,7 +337,7 @@ export default function LazyLaunchPage() {
                   </div>
                   <div className="space-y-4">
                     <div>
-                      <label className="font-body text-xs text-foreground/70 block mb-1">Business name *</label>
+                      <label className="font-body text-xs text-foreground/50 block mb-1">Business name *</label>
                       <input
                         value={state.businessName}
                         onChange={e => update({ businessName: e.target.value })}
@@ -346,7 +346,7 @@ export default function LazyLaunchPage() {
                       />
                     </div>
                     <div>
-                      <label className="font-body text-xs text-foreground/70 block mb-1">Tagline</label>
+                      <label className="font-body text-xs text-foreground/50 block mb-1">Tagline</label>
                       <input
                         value={state.tagline}
                         onChange={e => update({ tagline: e.target.value })}
@@ -355,7 +355,7 @@ export default function LazyLaunchPage() {
                       />
                     </div>
                     <div>
-                      <label className="font-body text-xs text-foreground/70 block mb-1">What does your business do?</label>
+                      <label className="font-body text-xs text-foreground/50 block mb-1">What does your business do?</label>
                       <textarea
                         value={state.description}
                         onChange={e => update({ description: e.target.value })}
@@ -365,7 +365,7 @@ export default function LazyLaunchPage() {
                       />
                     </div>
                     <div>
-                      <label className="font-body text-xs text-foreground/70 block mb-1">Target audience</label>
+                      <label className="font-body text-xs text-foreground/50 block mb-1">Target audience</label>
                       <input
                         value={state.audience}
                         onChange={e => update({ audience: e.target.value })}
@@ -407,7 +407,7 @@ export default function LazyLaunchPage() {
                   </div>
 
                   <div className="pt-4 border-t border-border">
-                    <h3 className="font-body text-xs text-foreground/70 mb-3">Typography</h3>
+                    <h3 className="font-body text-xs text-foreground/50 mb-3">Typography</h3>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                       {FONT_OPTIONS.map(f => (
                         <button
@@ -440,13 +440,13 @@ export default function LazyLaunchPage() {
                   <div className="flex gap-2 mb-2">
                     <button
                       onClick={() => setState(prev => ({ ...prev, agents: AGENT_OPTIONS.map(a => a.key) }))}
-                      className="font-body text-[11px] text-foreground/60 hover:text-foreground border border-border px-2 py-1 transition-colors"
+                      className="font-body text-[11px] text-foreground/50 hover:text-foreground border border-border px-2 py-1 transition-colors"
                     >
                       Select all
                     </button>
                     <button
                       onClick={() => setState(prev => ({ ...prev, agents: [] }))}
-                      className="font-body text-[11px] text-foreground/60 hover:text-foreground border border-border px-2 py-1 transition-colors"
+                      className="font-body text-[11px] text-foreground/50 hover:text-foreground border border-border px-2 py-1 transition-colors"
                     >
                       Clear
                     </button>
@@ -466,7 +466,7 @@ export default function LazyLaunchPage() {
                         >
                           <a.icon size={14} className={selected ? "text-foreground" : "text-foreground/35"} />
                           <div className="min-w-0">
-                            <p className={`font-body text-xs ${selected ? "text-foreground" : "text-foreground/60"}`}>
+                            <p className={`font-body text-xs ${selected ? "text-foreground" : "text-foreground/50"}`}>
                               {a.label}
                             </p>
                             <p className="font-body text-[10px] text-muted-foreground truncate">{a.desc}</p>
@@ -490,7 +490,7 @@ export default function LazyLaunchPage() {
                   </div>
 
                   <div>
-                    <h3 className="font-body text-xs text-foreground/70 mb-2">Page sections</h3>
+                    <h3 className="font-body text-xs text-foreground/50 mb-2">Page sections</h3>
                     <div className="grid grid-cols-2 gap-2">
                       {SECTION_OPTIONS.map(s => {
                         const selected = state.sections.includes(s.key);
@@ -512,7 +512,7 @@ export default function LazyLaunchPage() {
                   </div>
 
                   <div>
-                    <label className="font-body text-xs text-foreground/70 block mb-1">
+                    <label className="font-body text-xs text-foreground/50 block mb-1">
                       Additional notes <span className="text-muted-foreground">(optional)</span>
                     </label>
                     <textarea
@@ -582,7 +582,7 @@ export default function LazyLaunchPage() {
             <button
               onClick={() => setStep(s => s - 1)}
               disabled={step === 0}
-              className="flex items-center gap-1.5 font-body text-xs text-foreground/60 hover:text-foreground disabled:opacity-20 disabled:cursor-default transition-colors"
+              className="flex items-center gap-1.5 font-body text-xs text-foreground/50 hover:text-foreground disabled:opacity-20 disabled:cursor-default transition-colors"
             >
               <ChevronLeft size={14} /> Back
             </button>

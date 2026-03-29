@@ -66,7 +66,7 @@ export default function LazyVoiceSetup() {
               <Volume2 size={14} /> Lazy Voice Setup
             </div>
             <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tight">Configure Lazy Voice</h1>
-            <p className="font-body text-sm text-muted-foreground mt-2">Fill in the details below to start narrating every blog post automatically.</p>
+            <p className="font-body text-sm mt-2">Fill in the details below to start narrating every blog post automatically.</p>
           </motion.div>
 
           <motion.form

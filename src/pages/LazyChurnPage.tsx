@@ -86,7 +86,7 @@ export default function LazyChurnPage() {
               <div className="flex items-center gap-3 mt-4 mb-4">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Ops</span>
               </div>
-              <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 Lazy Churn monitors every subscriber daily. When someone goes quiet — stops logging in, drops their usage, approaches renewal without engaging — it sends a personalised SMS and email before they ever reach the cancel button. Written by Claude. Sent automatically. One recovered customer pays for the agent forever.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -108,11 +108,11 @@ export default function LazyChurnPage() {
             {problemCards.map((card, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className={`bg-card p-6 ${i < 2 ? "border-b md:border-b-0 md:border-r border-border" : ""}`}>
                 <p className="text-2xl mb-3">{card.emoji}</p>
-                <p className="font-body text-sm text-foreground/50 leading-relaxed">{card.text}</p>
+                <p className="font-body text-sm leading-relaxed">{card.text}</p>
               </motion.div>
             ))}
           </div>
-          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-6 font-body text-sm text-foreground/60 max-w-xl mx-auto leading-relaxed">
+          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-6 font-body text-sm text-foreground/50 max-w-xl mx-auto leading-relaxed">
             Churn happens in the silence. Lazy Churn listens to that silence and acts before it becomes a cancellation.
           </motion.p>
         </section>
@@ -137,21 +137,21 @@ export default function LazyChurnPage() {
         </section>
 
         {/* What gets sent */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             Personalised. Not templated.
           </motion.h2>
           <div className="space-y-4">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-5">
               <p className="font-display text-xs tracking-[0.15em] uppercase text-foreground/40 font-bold mb-2">📱 SMS</p>
-              <p className="font-body text-sm text-foreground/70 leading-relaxed italic">
+              <p className="font-body text-sm text-foreground/50 leading-relaxed italic">
                 "Hey Sarah — noticed you haven't been in Lazy Unicorn for a while. Your Lazy Blogger is still publishing daily but you're missing the SEO queue that's building up. Worth 5 mins to check? lazyunicorn.ai"
               </p>
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.08 }} className="border border-border bg-card p-5">
               <p className="font-display text-xs tracking-[0.15em] uppercase text-foreground/40 font-bold mb-2">📧 Email</p>
               <p className="font-body text-xs text-foreground/40 mb-1">Subject: Quick question about your stack</p>
-              <p className="font-body text-sm text-foreground/70 leading-relaxed italic">
+              <p className="font-body text-sm text-foreground/50 leading-relaxed italic">
                 "Hey Sarah, I noticed you haven't logged into Lazy Unicorn in a few weeks. Your Blogger agent is still running but your SEO keyword queue has 23 keywords waiting to be published — that's organic traffic sitting idle. Worth a quick check? If anything isn't working the way you expected I'd love to help. — Saad"
               </p>
             </motion.div>
@@ -162,14 +162,14 @@ export default function LazyChurnPage() {
         </section>
 
         {/* The economics */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             The math is obvious.
           </motion.h2>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-8 text-center space-y-3">
-            <p className="font-body text-lg text-foreground/70">Average plan: <span className="font-bold text-foreground">$49/month</span></p>
-            <p className="font-body text-lg text-foreground/70">One recovered customer per month: <span className="font-bold text-[#c8a961]">$588/year</span></p>
-            <p className="font-body text-lg text-foreground/70">Lazy Churn costs: <span className="font-bold text-foreground">$0</span></p>
+            <p className="font-body text-lg text-foreground/50">Average plan: <span className="font-bold text-foreground">$49/month</span></p>
+            <p className="font-body text-lg text-foreground/50">One recovered customer per month: <span className="font-bold text-[#c8a961]">$588/year</span></p>
+            <p className="font-body text-lg text-foreground/50">Lazy Churn costs: <span className="font-bold text-foreground">$0</span></p>
           </motion.div>
           <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-4 font-body text-sm text-foreground/40">
             One customer saved per month pays for every other tool in your stack.
@@ -195,7 +195,7 @@ export default function LazyChurnPage() {
         {/* CTA */}
         <section className="max-w-3xl mx-auto px-6 mt-20">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border-2 border-[#c8a961]/30 bg-card p-10 text-center">
-            <p className="font-body text-sm text-foreground/50 mb-4 leading-relaxed max-w-lg mx-auto">
+            <p className="font-body text-sm mb-4 leading-relaxed max-w-lg mx-auto">
               Your next cancellation is already in your data. Lazy Churn finds it first.
             </p>
             <CopyPromptButton text={promptText} />

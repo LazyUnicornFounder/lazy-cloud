@@ -127,7 +127,7 @@ export default function LazyGranolaPage() {
               <div className="flex items-center gap-3 mt-4 mb-4">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Dev</span>
               </div>
-              <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 Connect your Granola meeting notes to the Lazy Stack. Every meeting becomes blog posts, Linear issues, Slack summaries, and customer intelligence — on autopilot. No API keys needed.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -167,7 +167,7 @@ export default function LazyGranolaPage() {
                   className="border border-border bg-card p-6"
                 >
                   <span className="text-2xl mb-3 block">{card.emoji}</span>
-                  <p className="font-body text-foreground/70 text-[15px] leading-relaxed">{card.text}</p>
+                  <p className="font-body text-foreground/50 text-[15px] leading-relaxed">{card.text}</p>
                 </motion.div>
               ))}
             </div>
@@ -201,10 +201,10 @@ export default function LazyGranolaPage() {
                   className={`border ${o.border} bg-card p-6`}
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <o.icon size={20} className="text-foreground/70" />
+                    <o.icon size={20} className="text-foreground/50" />
                     <h3 className="font-display text-[16px] tracking-[0.1em] uppercase font-bold text-foreground">{o.title}</h3>
                   </div>
-                  <p className="font-body text-foreground/60 text-[14px] leading-relaxed">{o.desc}</p>
+                  <p className="font-body text-foreground/50 text-[14px] leading-relaxed">{o.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -217,10 +217,10 @@ export default function LazyGranolaPage() {
                   className={`border ${o.border} bg-card p-6`}
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <o.icon size={20} className="text-foreground/70" />
+                    <o.icon size={20} className="text-foreground/50" />
                     <h3 className="font-display text-[16px] tracking-[0.1em] uppercase font-bold text-foreground">{o.title}</h3>
                   </div>
-                  <p className="font-body text-foreground/60 text-[14px] leading-relaxed">{o.desc}</p>
+                  <p className="font-body text-foreground/50 text-[14px] leading-relaxed">{o.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -231,10 +231,10 @@ export default function LazyGranolaPage() {
               className="border border-border bg-card p-6"
             >
               <div className="flex items-center gap-3 mb-3">
-                <Calendar size={20} className="text-foreground/70" />
+                <Calendar size={20} className="text-foreground/50" />
                 <h3 className="font-display text-[16px] tracking-[0.1em] uppercase font-bold text-foreground">Weekly digest</h3>
               </div>
-              <p className="font-body text-foreground/60 text-[14px] leading-relaxed">
+              <p className="font-body text-foreground/50 text-[14px] leading-relaxed">
                 Every Monday Lazy Granola pulls the past week's meetings, writes a build-in-public weekly digest, and publishes it. What happened, what was decided, what you learned. The best build-in-public content comes from real work — and all your real work is in Granola.
               </p>
             </motion.div>
@@ -266,7 +266,7 @@ export default function LazyGranolaPage() {
                 >
                   <span className="text-3xl mb-4 block">{step.emoji}</span>
                   <h3 className="font-display text-[14px] tracking-[0.12em] uppercase font-bold text-foreground mb-2">{step.title}</h3>
-                  <p className="font-body text-foreground/60 text-[14px] leading-relaxed">{step.desc}</p>
+                  <p className="font-body text-foreground/50 text-[14px] leading-relaxed">{step.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -318,14 +318,14 @@ export default function LazyGranolaPage() {
 
             <div className="grid md:grid-cols-2 gap-8 mb-10">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-6">
-                <h3 className="font-display text-[13px] tracking-[0.12em] uppercase font-bold text-foreground/60 mb-4">The problem</h3>
-                <p className="font-body text-foreground/60 text-[15px] leading-relaxed">
+                <h3 className="font-display text-[13px] tracking-[0.12em] uppercase font-bold text-foreground/50 mb-4">The problem</h3>
+                <p className="font-body text-foreground/50 text-[15px] leading-relaxed">
                   You spend 45 minutes on a customer discovery call. You learn what problems they face, what tools they use, what they wish existed. You write some notes in Granola. Then you go to your next meeting. The insights sit in Granola forever.
                 </p>
               </motion.div>
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.1 }} className="border border-primary bg-card p-6">
                 <h3 className="font-display text-[13px] tracking-[0.12em] uppercase font-bold text-primary mb-4">What Lazy Granola does</h3>
-                <p className="font-body text-foreground/60 text-[15px] leading-relaxed">
+                <p className="font-body text-foreground/50 text-[15px] leading-relaxed">
                   Lazy Granola reads those notes and extracts every signal — problems mentioned, features requested, competitors named. It feeds them directly into Lazy Blogger as research context so your next blog post is grounded in real customer voice. It also builds a running intelligence feed in your admin so you can see every customer signal across all calls in one place.
                 </p>
               </motion.div>
@@ -342,7 +342,7 @@ export default function LazyGranolaPage() {
                 </span>
                 <span className="font-body text-foreground/40 text-[12px]">Today</span>
               </div>
-              <p className="font-body text-foreground/70 text-[14px] leading-relaxed mb-1">
+              <p className="font-body text-foreground/50 text-[14px] leading-relaxed mb-1">
                 "Their current tool requires too much manual data entry for non-technical team members"
               </p>
               <p className="font-body text-foreground/40 text-[12px]">
@@ -377,7 +377,7 @@ export default function LazyGranolaPage() {
               <ArrowRight size={20} className="text-foreground/30 rotate-90" />
               <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                 {stackConnections.map((s, i) => (
-                  <div key={i} className="border border-border bg-card px-4 py-2 font-body text-[12px] text-foreground/60">
+                  <div key={i} className="border border-border bg-card px-4 py-2 font-body text-[12px] text-foreground/50">
                     <span className="font-bold block text-foreground/80">{s.name}</span>
                     {s.desc}
                   </div>
@@ -407,7 +407,7 @@ export default function LazyGranolaPage() {
               className="border border-primary bg-card p-8 mb-4"
             >
               <h3 className="font-display text-[18px] tracking-[0.12em] uppercase font-bold text-foreground mb-4">Free</h3>
-              <p className="font-body text-foreground/60 text-[14px] mb-2">Included with any Lazy Stack install.</p>
+              <p className="font-body text-foreground/50 text-[14px] mb-2">Included with any Lazy Stack install.</p>
               <p className="font-body text-foreground/50 text-[13px] mb-6">
                 Meeting sync every 30 minutes · Blog posts from meetings · Linear issue creation · Slack summaries · Customer intelligence extraction · Weekly digest
               </p>
@@ -435,7 +435,7 @@ export default function LazyGranolaPage() {
               >
                 Stop letting your best insights die in meeting notes.
               </h2>
-              <p className="font-body text-foreground/60 text-[15px] leading-relaxed mb-8">
+              <p className="font-body text-foreground/50 text-[15px] leading-relaxed mb-8">
                 Every customer call you have is a blog post. Every planning session is a product update. Every action item is a Linear issue. Lazy Granola turns your meetings into momentum — automatically, the moment you hang up.
               </p>
               <CopyPromptButton text={promptText} onCopy={handleCopy} />

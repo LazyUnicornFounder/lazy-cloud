@@ -403,8 +403,8 @@ const LazyStorePage = () => {
               </div>
 
 
-              <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">Powered by Shopify</span>
-              <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+              <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/50 border border-border px-3 py-1">Powered by Shopify</span>
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 One prompt installs a full Shopify store into your <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/90 transition-colors">Lovable</a> project. It finds the products, writes the listings, sets the prices, and improves its own conversion rate — automatically, forever.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -465,7 +465,7 @@ const LazyStorePage = () => {
                   <item.icon size={18} className="text-primary" />
                 </div>
                 <h3 className="font-display text-sm font-bold text-foreground mb-1">{item.title}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                <p className="font-body text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -482,7 +482,7 @@ const LazyStorePage = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="font-body text-sm text-muted-foreground text-center max-w-xl mx-auto mt-8 leading-relaxed"
+            className="font-body text-sm text-center max-w-xl mx-auto mt-8 leading-relaxed"
           >
             Most stores plateau. Lazy Store compounds. Every week it knows more about what converts in your niche and applies that knowledge to everything it publishes next.
           </motion.p>
@@ -508,7 +508,7 @@ const LazyStorePage = () => {
                   <item.icon size={18} className="text-primary" />
                 </div>
                 <h3 className="font-display text-sm font-bold text-foreground mb-1">{item.title}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                <p className="font-body text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -537,16 +537,16 @@ const LazyStorePage = () => {
         <LazyFaqSection faqs={faqs} />
 
         {/* ── Bottom CTA ── */}
-        <section className="max-w-3xl mx-auto px-6">
+        <section className="max-w-4xl mx-auto px-6 md:px-12">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-4">
               The store that builds and runs itself.
             </h2>
-            <p className="font-body text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed mb-8">
+            <p className="font-body text-sm max-w-lg mx-auto leading-relaxed mb-8">
               Every other store requires you to find the products, write the copy, manage the pricing, run the promotions, and optimise the conversions. Lazy Store does all of that automatically. One prompt installs everything into your existing Lovable project.
             </p>
             <CopyPromptButton onCopy={handlePromptCopy} promptText={promptText} />
-            <p className="font-body text-sm text-muted-foreground mt-4 max-w-md mx-auto">
+            <p className="font-body text-sm mt-4 max-w-md mx-auto">
               Then open your Lovable project, paste it into the chat, and answer five questions. Your store starts running today.
             </p>
           </motion.div>

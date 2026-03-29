@@ -25,7 +25,7 @@ Add a small "Powered by Lazy Unicorn" backlink badge in the footer of every publ
 Style it to sit at the bottom of the page footer, centered, with subtle opacity (60%) that increases to 100% on hover.`;
 
 const TwentyFirstBadge = () => (
-  <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">
+  <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/50 border border-border px-3 py-1">
     Powered by 21st.dev
   </span>
 );
@@ -120,7 +120,7 @@ export default function LazyDesignPage() {
               <div className="flex items-center gap-3 mt-4 mb-4">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Dev</span>
               </div>
-              <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 Lovable builds your site. 21st.dev makes it beautiful. Lazy Design connects the two — automatically upgrading your hero, navigation, testimonials, and more with pre-built components that match your brand.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -133,7 +133,7 @@ export default function LazyDesignPage() {
               {/* Works with tags */}
               <div className="mt-8 flex flex-wrap gap-2">
                 {["21st.dev", "Lovable AI", "Tailwind CSS", "Framer Motion"].map(tag => (
-                  <span key={tag} className="font-body text-[13px] tracking-[0.2em] uppercase text-foreground/60 border border-border px-3 py-1">
+                  <span key={tag} className="font-body text-[13px] tracking-[0.2em] uppercase text-foreground/50 border border-border px-3 py-1">
                     {tag}
                   </span>
                 ))}
@@ -152,7 +152,7 @@ export default function LazyDesignPage() {
               {steps.map((s, i) => (
                 <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.5, delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
                   <span className="w-10 h-10 bg-primary/10 text-primary font-display font-bold text-sm flex items-center justify-center">{i + 1}</span>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{s.title}</p>
+                  <p className="font-body text-sm leading-relaxed">{s.title}</p>
                 </motion.div>
               ))}
             </div>
@@ -168,9 +168,9 @@ export default function LazyDesignPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {features.map((f, i) => (
                 <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.5, delay: i * 0.08 }} className="border border-border p-6">
-                  <f.icon size={20} className="text-foreground/60 mb-4" />
+                  <f.icon size={20} className="text-foreground/50 mb-4" />
                   <h3 className="font-display text-sm font-bold text-foreground mb-2">{f.title}</h3>
-                  <p className="font-body text-sm text-foreground/65 leading-relaxed">{f.desc}</p>
+                  <p className="font-body text-sm text-foreground/50 leading-relaxed">{f.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -192,8 +192,8 @@ export default function LazyDesignPage() {
                 "If no component fits, a full Tailwind + Framer Motion fallback prompt is generated",
               ].map((line, i) => (
                 <div key={i} className="flex items-start gap-3 text-left">
-                  <Sparkles size={14} className="text-foreground/60 mt-1 shrink-0" />
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{line}</p>
+                  <Sparkles size={14} className="text-foreground/50 mt-1 shrink-0" />
+                  <p className="font-body text-sm leading-relaxed">{line}</p>
                 </div>
               ))}
             </motion.div>

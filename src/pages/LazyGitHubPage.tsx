@@ -313,10 +313,10 @@ const LazyGitHubPage = () => {
               </div>
 
 
-            <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">
+            <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/50 border border-border px-3 py-1">
                 Powered by GitHub
               </span>
-            <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+            <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
               Lazy GitHub monitors your GitHub repository, reads your commits and releases, and publishes plain-English changelogs, release notes, SEO developer posts, and a public roadmap to your Lovable site — every time you push.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -342,7 +342,7 @@ const LazyGitHubPage = () => {
             {steps.map((step, i) => (
               <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
                 <span className="w-10 h-10 bg-primary/10 text-primary font-display font-bold text-sm flex items-center justify-center">{i + 1}</span>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{step}</p>
+                <p className="font-body text-sm leading-relaxed">{step}</p>
               </motion.div>
             ))}
           </div>
@@ -366,9 +366,9 @@ const LazyGitHubPage = () => {
                 transition={{ duration: 0.5, delay: i * 0.06 }}
                 className="bg-card p-8"
               >
-                <f.icon size={20} className="text-foreground/70 mb-4" />
+                <f.icon size={20} className="text-foreground/50 mb-4" />
                 <h3 className="font-display text-lg font-bold text-foreground mb-2">{f.title}</h3>
-                <p className="font-body text-sm text-foreground/65 leading-relaxed">{f.desc}</p>
+                <p className="font-body text-sm text-foreground/50 leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -384,12 +384,12 @@ const LazyGitHubPage = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
             <div className="bg-[#111110] p-8">
-              <p className="font-body text-sm text-foreground/50 leading-relaxed">
+              <p className="font-body text-sm leading-relaxed">
                 Every commit is work done. Every release is a milestone. Every bug fix is a story worth telling. Developers who document their work publicly build audiences, attract contributors, drive traffic, and establish authority in their technical niche. Most never do it because writing changelogs, release notes, and blog posts on top of shipping code is a second job.
               </p>
             </div>
             <div className="bg-[#111110] p-8">
-              <p className="font-body text-sm text-foreground/50 leading-relaxed">
+              <p className="font-body text-sm leading-relaxed">
                 Lazy GitHub makes the documentation automatic. Push to GitHub and the content agent starts. By the time you have opened your next task the changelog is updated, the release notes are written, and a developer blog post targeting your technical keywords is published and indexed. The work you were already doing becomes a compounding public record of your progress.
               </p>
             </div>
@@ -404,7 +404,7 @@ const LazyGitHubPage = () => {
           <h2 className="mt-2 mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
             A public roadmap that maintains itself.
           </h2>
-          <p className="font-body text-sm text-foreground/50 leading-relaxed">
+          <p className="font-body text-sm leading-relaxed">
             Lazy GitHub reads your GitHub issues and milestones and publishes a public roadmap to your Lovable site automatically. When you open a new issue it appears in the roadmap. When you close one it moves to done. When you create a milestone it becomes a roadmap section. No Notion page to maintain. No Trello board to update. Your GitHub is the source of truth and the roadmap reflects it in real time.
           </p>
         </div>
@@ -431,7 +431,7 @@ const LazyGitHubPage = () => {
           <div className="mt-8">
             <CopyPromptButton text={promptText} />
           </div>
-          <p className="mt-4 font-body text-sm text-foreground/65 max-w-md mx-auto leading-relaxed">
+          <p className="mt-4 font-body text-sm text-foreground/50 max-w-md mx-auto leading-relaxed">
             Open your Lovable project, paste it into the chat, add your GitHub credentials. Your next commit will be published automatically.
           </p>
           <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.65rem", color: "#f0ead6", opacity: 0.4, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "3rem" }}>

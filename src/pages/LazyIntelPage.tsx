@@ -79,7 +79,7 @@ export default function LazyIntelPage() {
               <div className="flex items-center gap-3 mt-4 mb-4">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Ops</span>
               </div>
-              <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 Every Monday at 6am Lazy Intel reads your blog performance, YouTube analytics, customer discovery signals, comment intelligence, and competitor data. It generates a weekly content strategy brief, adds 5 new SEO keywords to your queue, and adds 3 new GEO queries — all before you start your week.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -93,7 +93,7 @@ export default function LazyIntelPage() {
         </section>
 
         {/* Problem */}
-        <section className="max-w-3xl mx-auto px-6 mb-20 mt-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20 mt-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             Your best content ideas are already in your data. You never look.
           </motion.h2>
@@ -104,17 +104,17 @@ export default function LazyIntelPage() {
               "🎯 Your SEO keyword list hasn't changed in a month. Your competitors added 40 new keywords last week. You didn't know.",
             ].map((text, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className="border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-border bg-card p-6">
-                <p className="font-body text-sm text-foreground/50 leading-relaxed">{text}</p>
+                <p className="font-body text-sm leading-relaxed">{text}</p>
               </motion.div>
             ))}
           </div>
-          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-6 font-body text-sm text-foreground/60 font-semibold">
+          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-6 font-body text-sm text-foreground/50 font-semibold">
             Lazy Intel reads everything. Every Monday your queues are already updated with what actually works.
           </motion.p>
         </section>
 
         {/* Data sources */}
-        <section id="data-sources" className="max-w-3xl mx-auto px-6 mb-20">
+        <section id="data-sources" className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             The more agents installed, the smarter it gets.
           </motion.h2>
@@ -122,7 +122,7 @@ export default function LazyIntelPage() {
             {dataSources.map((ds, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.04 }} className="border-b sm:odd:border-r last:border-b-0 sm:[&:nth-last-child(2)]:border-b-0 border-border bg-card p-5">
                 <p className="font-display text-sm font-bold text-foreground mb-1">{ds.source}</p>
-                <p className="font-body text-sm text-foreground/50 mb-1">{ds.reads}</p>
+                <p className="font-body text-sm mb-1">{ds.reads}</p>
                 <p className="font-display text-[10px] tracking-[0.15em] uppercase font-bold text-[#c8a961]">{ds.agent}</p>
               </motion.div>
             ))}
@@ -133,7 +133,7 @@ export default function LazyIntelPage() {
         </section>
 
         {/* Mock brief */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             What gets generated
           </motion.h2>
@@ -142,7 +142,7 @@ export default function LazyIntelPage() {
             <div className="space-y-4">
               <div>
                 <p className="font-display text-xs tracking-[0.1em] uppercase font-bold text-foreground/50 mb-1">🏆 Top topic</p>
-                <p className="font-body text-sm text-foreground/70 font-semibold">Building autonomous Lovable sites</p>
+                <p className="font-body text-sm text-foreground/50 font-semibold">Building autonomous Lovable sites</p>
               </div>
               <div>
                 <p className="font-display text-xs tracking-[0.1em] uppercase font-bold text-foreground/50 mb-1">🎯 Underserved topics</p>
@@ -154,14 +154,14 @@ export default function LazyIntelPage() {
               </div>
               <div>
                 <p className="font-display text-xs tracking-[0.1em] uppercase font-bold text-foreground/50 mb-1">🔑 New SEO keywords (5)</p>
-                <p className="font-body text-sm text-foreground/50">lovable autonomous blog, supabase edge function tutorial, no-code SaaS stack, prompt engineering for Lovable, build-in-public content strategy</p>
+                <p className="font-body text-sm">lovable autonomous blog, supabase edge function tutorial, no-code SaaS stack, prompt engineering for Lovable, build-in-public content strategy</p>
               </div>
               <div>
                 <p className="font-display text-xs tracking-[0.1em] uppercase font-bold text-foreground/50 mb-1">🤖 New GEO queries (3)</p>
-                <p className="font-body text-sm text-foreground/50">How to build an autonomous website with Lovable? What is generative agent optimisation? Best tools for no-code SaaS founders?</p>
+                <p className="font-body text-sm">How to build an autonomous website with Lovable? What is generative agent optimisation? Best tools for no-code SaaS founders?</p>
               </div>
               <div className="pt-4 border-t border-border">
-                <p className="font-body text-sm text-foreground/60 leading-relaxed italic">
+                <p className="font-body text-sm text-foreground/50 leading-relaxed italic">
                   "Build-in-public content outperformed tutorial content 3x last week. Double down on founder story posts and ship two GEO articles on Lovable automation this week."
                 </p>
               </div>
@@ -180,7 +180,7 @@ export default function LazyIntelPage() {
         <section className="text-center px-6 py-16">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <h2 className="font-display text-xl font-bold mb-4">Stop guessing your content strategy.</h2>
-            <p className="font-body text-sm text-foreground/50 mb-6 max-w-md mx-auto">Paste one prompt. Every Monday your content strategy is already written and your queues are updated.</p>
+            <p className="font-body text-sm mb-6 max-w-md mx-auto">Paste one prompt. Every Monday your content strategy is already written and your queues are updated.</p>
             <CopyPromptButton text={promptText} />
           </motion.div>
         </section>

@@ -112,7 +112,7 @@ export default function LazyAgentsPage() {
               <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 3.2rem)", color: "#f0ead6", lineHeight: 1.15, letterSpacing: "-0.02em" }}>
                 Every agent. One stack.
               </h1>
-              <p className="mt-6 font-body text-base md:text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-2xl mx-auto leading-relaxed">
                 {totalAgents} autonomous agents across {categories.length} categories — content, commerce, media, dev, ops, and meta-agents — all running inside your Lovable project.
               </p>
             </motion.div>

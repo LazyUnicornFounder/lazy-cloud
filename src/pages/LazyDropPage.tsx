@@ -83,8 +83,8 @@ export default function LazyDropPage() {
               </div>
 
 
-            <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">Powered by AutoDS</span>
-            <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+            <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/50 border border-border px-3 py-1">Powered by AutoDS</span>
+            <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
               One prompt connects your <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/90 transition-colors">Lovable</a> store to <a href="https://autods.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/90 transition-colors">AutoDS</a> — 800M+ products from 25+ global suppliers. It finds trending products, imports them with AI-written listings, monitors prices every hour, and fulfils every order automatically.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
@@ -112,7 +112,7 @@ export default function LazyDropPage() {
             ].map((c, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="border border-border p-6">
                 <span className="text-2xl mb-3 block">{c.emoji}</span>
-                <p className="font-body text-sm text-foreground/65 leading-relaxed">{c.text}</p>
+                <p className="font-body text-sm text-foreground/50 leading-relaxed">{c.text}</p>
               </motion.div>
             ))}
           </div>
@@ -128,7 +128,7 @@ export default function LazyDropPage() {
           <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-display text-2xl md:text-3xl font-bold mb-4" style={{ color: "#f0ead6" }}>
             AutoDS automates your store. Lazy Drop automates AutoDS
           </motion.h2>
-          <p className="font-body text-sm text-foreground/50 max-w-2xl mx-auto text-center mb-12 leading-relaxed">
+          <p className="font-body text-sm max-w-2xl mx-auto text-center mb-12 leading-relaxed">
             AutoDS is already the most powerful dropshipping automation platform — 800M+ products, hourly price monitoring, automatic order fulfilment, 25+ global suppliers. Lazy Drop connects all of that to your Lovable site with one prompt.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -170,7 +170,7 @@ export default function LazyDropPage() {
           <h2 className="font-display text-2xl md:text-3xl font-bold mb-4" style={{ color: "#f0ead6" }}>
             800 million products. Your store sells them. You do nothing
           </h2>
-          <p className="font-body text-sm text-foreground/50 mb-8 leading-relaxed">
+          <p className="font-body text-sm mb-8 leading-relaxed">
             Lazy Drop is the fastest way to add a fully automated dropshipping operation to any Lovable site. One prompt. Your niche. Your margins. Everything else runs itself.
           </p>
           <CopyPromptButton text={promptText} />

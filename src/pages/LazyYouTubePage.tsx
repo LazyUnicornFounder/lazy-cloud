@@ -385,13 +385,13 @@ export default function LazyYouTubePage() {
               <div className="flex items-center gap-3 mt-4 mb-4">
                 <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Media</span>
               </div>
-              <p className="mt-6 font-body text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+              <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
                 Paste one prompt into your <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground/90 transition-colors">Lovable</a> project. Lazy YouTube detects new uploads, fetches transcripts via Supadata, and publishes five content pieces — a transcript, SEO article, GEO article, summary, and chapter markers — within an hour.
               </p>
 
               {/* Works with */}
               <div className="mt-8 mb-10">
-                <p className="font-body text-[14px] tracking-[0.2em] uppercase font-semibold text-foreground/65 mb-3">
+                <p className="font-body text-[14px] tracking-[0.2em] uppercase font-semibold text-foreground/50 mb-3">
                   Works with
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -406,7 +406,7 @@ export default function LazyYouTubePage() {
                     <Link
                       key={tag.label}
                       to={tag.href}
-                      className="font-body text-[14px] tracking-[0.12em] uppercase font-semibold px-3 py-1.5 border border-border text-foreground/70 hover:text-foreground hover:border-foreground/30 transition-colors"
+                      className="font-body text-[14px] tracking-[0.12em] uppercase font-semibold px-3 py-1.5 border border-border text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-colors"
                     >
                       {tag.label}
                     </Link>
@@ -428,7 +428,7 @@ export default function LazyYouTubePage() {
         </section>
 
         {/* How It Works */}
-        <section id="how-it-works" className="max-w-2xl mx-auto px-6 mb-20">
+        <section id="how-it-works" className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             How it works
           </motion.h2>
@@ -438,14 +438,14 @@ export default function LazyYouTubePage() {
                 <span className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground font-display text-sm font-bold flex items-center justify-center mt-0.5">
                   {i + 1}
                 </span>
-                <p className="font-body text-sm text-foreground/60 leading-relaxed pt-1">{step}</p>
+                <p className="font-body text-sm text-foreground/50 leading-relaxed pt-1">{step}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* What You Get */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             What you get
           </motion.h2>
@@ -464,16 +464,16 @@ export default function LazyYouTubePage() {
                 transition={{ delay: i * 0.08 }}
                 className="border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-border bg-card p-6 text-center"
               >
-                <item.icon size={18} className="text-foreground/65 mx-auto mb-3" />
+                <item.icon size={18} className="text-foreground/50 mx-auto mb-3" />
                 <h3 className="font-display text-sm font-bold text-foreground mb-1">{item.title}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                <p className="font-body text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* What gets published */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             One upload. Five autonomous outputs.
           </motion.h2>
@@ -492,10 +492,10 @@ export default function LazyYouTubePage() {
                 transition={{ delay: i * 0.08 }}
                 className="border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-border bg-card p-6"
               >
-                <p className="font-display text-[14px] tracking-[0.15em] uppercase font-bold text-foreground/65 mb-3">{item.badge}</p>
+                <p className="font-display text-[14px] tracking-[0.15em] uppercase font-bold text-foreground/50 mb-3">{item.badge}</p>
                 <h3 className="font-display text-sm font-bold text-foreground mb-2">{item.title}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                <p className="font-body text-[14px] text-foreground/60 mt-3">Published 45 min ago</p>
+                <p className="font-body text-sm leading-relaxed">{item.desc}</p>
+                <p className="font-body text-[14px] text-foreground/50 mt-3">Published 45 min ago</p>
               </motion.div>
             ))}
           </div>
@@ -513,28 +513,28 @@ export default function LazyYouTubePage() {
                 transition={{ delay: i * 0.08 }}
                 className="border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-border bg-card p-6"
               >
-                <p className="font-display text-[14px] tracking-[0.15em] uppercase font-bold text-foreground/65 mb-3">{item.badge}</p>
+                <p className="font-display text-[14px] tracking-[0.15em] uppercase font-bold text-foreground/50 mb-3">{item.badge}</p>
                 <h3 className="font-display text-sm font-bold text-foreground mb-2">{item.title}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                <p className="font-body text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
-          <p className="text-center mt-6 font-body text-[13px] tracking-[0.1em] uppercase text-foreground/65">
+          <p className="text-center mt-6 font-body text-[13px] tracking-[0.1em] uppercase text-foreground/50">
             5 content pieces per video · Chapters generated automatically · Comments become SEO keywords
           </p>
         </section>
 
         {/* Transcript section */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-8">
             <h2 className="font-display text-xl font-extrabold tracking-tight mb-4">Your transcript is a goldmine</h2>
-            <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6">
+            <p className="font-body text-sm leading-relaxed mb-6">
               Every word you said in every video is sitting in YouTube as auto-generated captions. Nobody can search it. Google cannot index it. Lazy YouTube fetches every transcript via Supadata, cleans it up, structures it with headers and timestamps, and publishes it as a readable article on your site.
             </p>
             <div className="border border-border bg-background p-5 font-mono text-xs text-foreground/50 leading-relaxed">
-              <p className="text-foreground/70 font-bold mb-3">How I Built a SaaS in a Weekend</p>
+              <p className="text-foreground/50 font-bold mb-3">How I Built a SaaS in a Weekend</p>
               <p className="mb-2"><span className="text-foreground/30">[0:00]</span> So the first thing I did was open Lovable and start with a blank project...</p>
-              <p className="font-display text-foreground/60 text-sm font-bold mb-2 mt-4">## Setting Up the Database</p>
+              <p className="font-display text-foreground/50 text-sm font-bold mb-2 mt-4">## Setting Up the Database</p>
               <p className="mb-2"><span className="text-foreground/30">[2:30]</span> I connected Supabase and created three tables — users, products, and orders...</p>
               <p className="mt-4 text-foreground/40">Watch at 4:32 →</p>
             </div>
@@ -542,22 +542,22 @@ export default function LazyYouTubePage() {
         </section>
 
         {/* Comment intelligence */}
-        <section className="max-w-2xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-8">
             <h2 className="font-display text-xl font-extrabold tracking-tight mb-4">Your comments section is your content strategy</h2>
-            <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6">
+            <p className="font-body text-sm leading-relaxed mb-6">
               Every week Lazy YouTube scans the comments on your most-discussed videos. It extracts every question your audience asked, every topic they mentioned that you did not cover, every complaint or request. These become SEO keyword targets, blog post ideas, and GEO query topics — automatically fed into Lazy Blogger and Lazy SEO.
             </p>
             <div className="border border-border bg-background p-5">
               <span className="inline-block text-[10px] tracking-[0.1em] uppercase font-bold px-2 py-0.5 mb-2 bg-primary text-primary-foreground">question-asked</span>
-              <p className="font-body text-sm text-foreground/60 leading-relaxed mb-2">What tool do you use to build the database layer? Several commenters asking about Supabase setup. Added to SEO keyword queue.</p>
+              <p className="font-body text-sm text-foreground/50 leading-relaxed mb-2">What tool do you use to build the database layer? Several commenters asking about Supabase setup. Added to SEO keyword queue.</p>
               <p className="font-body text-xs text-foreground/30">Source: How I built a SaaS in a weekend</p>
             </div>
           </motion.div>
         </section>
 
         {/* Compounding */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             The longer you run it, the smarter it gets
           </motion.h2>
@@ -576,19 +576,19 @@ export default function LazyYouTubePage() {
                 transition={{ delay: i * 0.08 }}
                 className="border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-border bg-card p-6"
               >
-                <p className="font-display text-[14px] tracking-[0.15em] uppercase font-bold text-foreground/65 mb-3">{item.badge}</p>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                <p className="font-display text-[14px] tracking-[0.15em] uppercase font-bold text-foreground/50 mb-3">{item.badge}</p>
+                <p className="font-body text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* Better together */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-3">
             Better together
           </motion.h2>
-          <p className="font-body text-sm text-muted-foreground text-center max-w-xl mx-auto leading-relaxed mb-8">
+          <p className="font-body text-sm text-center max-w-xl mx-auto leading-relaxed mb-8">
             Lazy YouTube works on its own, but it compounds with the rest of the Lazy Stack — turning one video into a dozen touchpoints.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-border">
@@ -616,8 +616,8 @@ export default function LazyYouTubePage() {
                     <span className="text-lg">{item.emoji}</span>
                     <h3 className="font-display text-sm font-bold text-foreground">{item.name}</h3>
                   </div>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                  <span className="inline-block mt-3 font-body text-[14px] tracking-[0.15em] uppercase font-semibold text-foreground/60 group-hover:text-foreground/50 transition-colors">
+                  <p className="font-body text-sm leading-relaxed">{item.desc}</p>
+                  <span className="inline-block mt-3 font-body text-[14px] tracking-[0.15em] uppercase font-semibold text-foreground/50 group-hover:text-foreground/50 transition-colors">
                     Learn more →
                   </span>
                 </Link>
@@ -642,12 +642,12 @@ export default function LazyYouTubePage() {
         ]} />
 
         {/* Bottom CTA */}
-        <section className="max-w-3xl mx-auto px-6">
+        <section className="max-w-4xl mx-auto px-6 md:px-12">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-4">
               You film it once. Lazy YouTube works it forever.
             </h2>
-            <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">
+            <p className="font-body text-sm max-w-md mx-auto leading-relaxed mb-8">
               Every video you upload is five content pieces sitting unwritten. Lazy YouTube writes them for you.
             </p>
             <CopyPromptButton text={promptText} />

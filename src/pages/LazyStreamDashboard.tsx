@@ -154,7 +154,7 @@ const LazyStreamDashboard = () => {
                 <tbody>
                   {sessions.map((s: any) => (
                     <tr key={s.id} className="border-b border-border/50">
-                      <td className="font-body text-sm text-foreground/70 py-2 pr-4">{s.title}</td>
+                      <td className="font-body text-sm text-foreground/50 py-2 pr-4">{s.title}</td>
                       <td className="font-body text-sm text-foreground/40 py-2 pr-4">{s.game_name || "—"}</td>
                       <td className="font-body text-sm text-foreground/40 py-2 pr-4">{new Date(s.started_at || s.created_at).toLocaleDateString()}</td>
                       <td className="font-body text-sm text-foreground/40 py-2 pr-4">{s.duration_minutes ? `${s.duration_minutes}m` : "—"}</td>
@@ -185,7 +185,7 @@ const LazyStreamDashboard = () => {
                 <tbody>
                   {content.map((c: any) => (
                     <tr key={c.id} className="border-b border-border/50">
-                      <td className="font-body text-sm py-2 pr-4"><Link to={`/streams/${c.slug}`} className="text-foreground/70 hover:text-foreground transition-colors">{c.title}</Link></td>
+                      <td className="font-body text-sm py-2 pr-4"><Link to={`/streams/${c.slug}`} className="text-foreground/50 hover:text-foreground transition-colors">{c.title}</Link></td>
                       <td className="font-body text-xs text-foreground/40 py-2 pr-4 uppercase">{c.content_type}</td>
                       <td className="font-body text-sm text-foreground/40 py-2 pr-4">{new Date(c.published_at).toLocaleDateString()}</td>
                       <td className="font-body text-sm text-foreground/40 py-2 pr-4">{c.views}</td>
@@ -211,7 +211,7 @@ const LazyStreamDashboard = () => {
                 <tbody>
                   {clips.map((c: any) => (
                     <tr key={c.id} className="border-b border-border/50">
-                      <td className="font-body text-sm text-foreground/70 py-2 pr-4">{c.title}</td>
+                      <td className="font-body text-sm text-foreground/50 py-2 pr-4">{c.title}</td>
                       <td className="font-body text-sm text-foreground/40 py-2 pr-4">{c.view_count}</td>
                       <td className="font-body text-sm text-foreground/40 py-2 pr-4">{c.duration_seconds ? `${Math.round(c.duration_seconds)}s` : "—"}</td>
                       <td className="py-2"><a href={c.clip_url} target="_blank" rel="noopener noreferrer" className="font-body text-xs text-foreground/40 hover:text-foreground transition-colors uppercase tracking-wider">Watch →</a></td>

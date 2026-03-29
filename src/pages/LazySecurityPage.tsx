@@ -301,7 +301,7 @@ export default function LazySecurityPage() {
               </div>
 
 
-              <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/70 border border-border px-3 py-1">Powered by Aikido</span>
+              <span className="inline-flex items-center gap-1.5 font-body text-[14px] tracking-[0.12em] uppercase text-foreground/50 border border-border px-3 py-1">Powered by Aikido</span>
               <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.45 }}>
                 Your Lovable site ships fast. Lazy Security makes sure it ships safe. One prompt connects Aikido pentesting, vulnerability tracking, security score monitoring, and audit-ready reports to your existing project. Security that never sleeps.
               </p>
@@ -325,12 +325,12 @@ export default function LazySecurityPage() {
           </motion.h2>
           <div className="grid md:grid-cols-2 gap-0 border border-border">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border-b md:border-b-0 md:border-r border-border bg-card p-6">
-              <p className="font-body text-sm text-muted-foreground leading-relaxed">
+              <p className="font-body text-sm leading-relaxed">
                 Lovable lets you build a working product in hours. But working and secure are different properties. AI-generated code introduces vulnerabilities at meaningful rates even when it works exactly as intended. Most founders run one free scan, get a green checkmark, and assume they are covered. They are not.
               </p>
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.08 }} className="bg-card p-6">
-              <p className="font-body text-sm text-muted-foreground leading-relaxed">
+              <p className="font-body text-sm leading-relaxed">
                 Enterprise prospects ask for pentest reports before signing. Investors run security due diligence. SOC 2 and ISO 27001 require documented security testing. A single breach destroys the trust you spent months building. Lazy Security makes continuous security testing a one-prompt install rather than a five-figure engagement.
               </p>
             </motion.div>
@@ -338,7 +338,7 @@ export default function LazySecurityPage() {
         </section>
 
         {/* ── How It Works ── */}
-        <section id="how-it-works" className="max-w-2xl mx-auto px-6 mb-20">
+        <section id="how-it-works" className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             How it works
           </motion.h2>
@@ -348,14 +348,14 @@ export default function LazySecurityPage() {
                 <span className="flex-shrink-0 w-8 h-8 bg-primary text-primary-foreground font-display text-sm font-bold flex items-center justify-center mt-0.5">
                   {i + 1}
                 </span>
-                <p className="font-body text-sm text-foreground/60 leading-relaxed pt-1">{step}</p>
+                <p className="font-body text-sm text-foreground/50 leading-relaxed pt-1">{step}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* ── What It Does ── */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             Security that runs itself
           </motion.h2>
@@ -371,55 +371,55 @@ export default function LazySecurityPage() {
                 className="border-b sm:odd:border-r border-border last:border-b-0 bg-card p-6"
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <f.icon size={16} className="text-foreground/70" />
+                  <f.icon size={16} className="text-foreground/50" />
                   <h3 className="font-display text-sm font-bold text-foreground">{f.title}</h3>
                 </div>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+                <p className="font-body text-sm leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* ── Static vs Dynamic ── */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             Most tools read your code. Aikido attacks your app.
           </motion.h2>
           <div className="grid md:grid-cols-2 gap-0 border border-border">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border-b md:border-b-0 md:border-r border-border bg-card p-6">
-              <h3 className="font-display text-sm font-bold uppercase tracking-widest text-foreground/65 mb-3">Static analysis</h3>
-              <p className="font-body text-sm text-muted-foreground leading-relaxed">
+              <h3 className="font-display text-sm font-bold uppercase tracking-widest text-foreground/50 mb-3">Static analysis</h3>
+              <p className="font-body text-sm leading-relaxed">
                 Reads your source code and identifies known vulnerability patterns — exposed secrets, missing RLS policies, insecure dependencies, common misconfigurations. Valuable. Fast. Catches what you can see in the code.
               </p>
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.08 }} className="bg-card p-6">
-              <h3 className="font-display text-sm font-bold uppercase tracking-widest text-foreground/60 mb-3">Dynamic pentesting (what Lazy Security adds)</h3>
-              <p className="font-body text-sm text-muted-foreground leading-relaxed">
+              <h3 className="font-display text-sm font-bold uppercase tracking-widest text-foreground/50 mb-3">Dynamic pentesting (what Lazy Security adds)</h3>
+              <p className="font-body text-sm leading-relaxed">
                 Attacks your running application with real payloads. Tries to escalate privileges, access data it should not be able to reach, bypass authentication, and break your application logic. Finds what only becomes visible when someone actually tries to break in.
               </p>
             </motion.div>
           </div>
-          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-body text-sm text-muted-foreground leading-relaxed text-center mt-8 max-w-2xl mx-auto">
+          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-body text-sm leading-relaxed text-center mt-8 max-w-2xl mx-auto">
             Lazy Security does both. Static scanning runs continuously. Dynamic pentesting runs on schedule and on demand. Together they close the gap between what could go wrong and what actually breaks.
           </motion.p>
         </section>
 
         {/* ── The Report ── */}
-        <section className="max-w-3xl mx-auto px-6 mb-20">
+        <section className="max-w-4xl mx-auto px-6 md:px-12 mb-20">
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-4">
             The report that closes enterprise deals
           </motion.h2>
-          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-body text-sm text-muted-foreground leading-relaxed text-center max-w-2xl mx-auto mb-10">
+          <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-body text-sm leading-relaxed text-center max-w-2xl mx-auto mb-10">
             Enterprise prospects ask for it. Investors expect it. SOC 2 auditors require it. A formal pentest report from Aikido says your application has been tested against real-world attack scenarios and here is what was found. Lazy Security generates this report automatically — updated after every pentest run, formatted for audit purposes, ready to attach to any vendor questionnaire or compliance submission without you lifting a finger.
           </motion.p>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-8 max-w-md mx-auto space-y-6">
             <div className="text-center space-y-1">
-              <p className="font-display text-[14px] uppercase tracking-widest text-foreground/65">Security Score</p>
+              <p className="font-display text-[14px] uppercase tracking-widest text-foreground/50">Security Score</p>
               <p className="font-display text-5xl font-extrabold text-foreground">87</p>
-              <p className="font-body text-[14px] text-foreground/70">/ 100</p>
+              <p className="font-body text-[14px] text-foreground/50">/ 100</p>
             </div>
             <div className="border-t border-border pt-4 space-y-2">
-              <p className="font-display text-[14px] uppercase tracking-widest text-foreground/65 mb-3">Vulnerability Breakdown</p>
+              <p className="font-display text-[14px] uppercase tracking-widest text-foreground/50 mb-3">Vulnerability Breakdown</p>
               {[
                 { label: "Critical", count: 0, color: "hsl(0 84% 60%)" },
                 { label: "High", count: 1, color: "hsl(25 90% 55%)" },
@@ -432,7 +432,7 @@ export default function LazySecurityPage() {
                     <span className="w-2 h-2" style={{ backgroundColor: v.color }} />
                     <span className="font-body text-muted-foreground">{v.label}</span>
                   </div>
-                  <span className="font-display text-foreground/60">{v.count}</span>
+                  <span className="font-display text-foreground/50">{v.count}</span>
                 </div>
               ))}
             </div>
@@ -456,12 +456,12 @@ export default function LazySecurityPage() {
         <LazyFaqSection faqs={faqs} />
 
         {/* ── Bottom CTA ── */}
-        <section className="max-w-3xl mx-auto px-6">
+        <section className="max-w-4xl mx-auto px-6 md:px-12">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card px-8 py-14 text-center">
             <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-4">
               Ship fast. Stay secure. One prompt does both.
             </h2>
-            <p className="font-body text-sm text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">
+            <p className="font-body text-sm max-w-md mx-auto leading-relaxed mb-8">
               You built it fast. Lazy Security makes sure it stays safe — continuous scanning, automated pentests, instant alerts, and audit-ready reports that close enterprise deals.
             </p>
             <CopyPromptButton text={promptText} />
