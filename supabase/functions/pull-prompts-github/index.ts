@@ -115,6 +115,23 @@ serve(async (req) => {
         is_current: true,
       });
 
+      // Auto-create changelog entry
+      const agentName = PRODUCT_LABELS[product] || product;
+      const prevVersion = existing?.version || "0.0.0";
+      const isMajor = version.split(".")[0] !== prevVersion.split(".")[0];
+      const isMinor = version.split(".")[1] !== prevVersion.split(".")[1];
+      const changeType = isMajor ? "major" : isMinor ? "minor" : "fix";
+
+      await sb.from("prompt_releases").insert({
+        engine_name: agentName,
+        version,
+        release_date: new Date().toISOString().split("T")[0],
+        change_type: changeType,
+        summary: `Prompt updated to v${version} (synced from GitHub)`,
+        upgrade_complexity: "drop-in",
+        published: true,
+      });
+
       results.push({ product, version, action: "updated" });
     }
 
