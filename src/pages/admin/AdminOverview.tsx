@@ -286,7 +286,7 @@ export default function AdminOverview() {
               Lazy {cat.label}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#f0ead6]/5">
-              {cat.agents.map((agent) => {
+              {cat.agent.map((agent) => {
                 const s = statuses[agent.key] || { running: false, errors24h: 0, publishedToday: 0, lastPublished: null };
                 const isManaged = !!agent.settingsTable;
                 const isToggling = runningAction === `toggle-${agent.key}`;

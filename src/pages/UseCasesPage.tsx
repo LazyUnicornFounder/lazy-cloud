@@ -495,10 +495,10 @@ export default function UseCasesPage() {
 
   const filtered = active === "All" ? integrations : integrations.filter((i) => i.category === active);
 
-  const agentItems = filtered.filter((i) => i.category !== "Lazy Agents");
+  const nonAgentItems = filtered.filter((i) => i.category !== "Lazy Agents");
   const agentItems = filtered.filter((i) => i.category === "Lazy Agents");
 
-  const showEngines = agentItems.length > 0;
+  const showNonAgents = nonAgentItems.length > 0;
   const showAgents = agentItems.length > 0;
 
   return (
@@ -563,7 +563,7 @@ export default function UseCasesPage() {
       </section>
 
       {/* Agents Section Header */}
-      {showEngines && (
+      {showNonAgents && (
         <section className="px-6 md:px-12 max-w-5xl mx-auto pt-8 pb-12 text-center">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1]">
@@ -580,10 +580,10 @@ export default function UseCasesPage() {
       )}
 
       {/* Agent Cards */}
-      {showEngines && (
+      {showNonAgents && (
         <section className="px-6 md:px-12 max-w-5xl mx-auto pb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {agentItems.map((item, i) => (
+            {nonAgentItems.map((item, i) => (
               <IntegrationCard key={item.name} item={item} index={i} />
             ))}
           </div>
@@ -591,7 +591,7 @@ export default function UseCasesPage() {
       )}
 
       {/* CTA — All of these. One prompt. */}
-      {showEngines && (
+      {showNonAgents && (
         <section className="border-t border-border bg-card">
           <div className="max-w-3xl mx-auto px-6 md:px-12 py-24 text-center">
             <motion.h2 variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="font-display text-2xl md:text-4xl font-bold">

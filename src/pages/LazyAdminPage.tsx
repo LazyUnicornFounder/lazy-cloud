@@ -189,7 +189,7 @@ export default function LazyAdminPage() {
                   <div key={g.label}>
                     <p className="font-body text-[14px] tracking-[0.15em] uppercase text-foreground/70 mb-2">{g.label}</p>
                     <div className="flex flex-wrap justify-center gap-2">
-                      {g.agents.map(e => (
+                      {g.agent.map(e => (
                         <span key={e} className={`font-body text-[13px] tracking-[0.1em] px-3 py-1 border border-border ${g.color}`}>Lazy {e}</span>
                       ))}
                     </div>

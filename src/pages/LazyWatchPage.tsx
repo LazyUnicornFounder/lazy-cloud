@@ -159,7 +159,7 @@ export default function LazyWatchPage() {
             Monitors every agent in your stack.
           </motion.h2>
           <div className="flex flex-wrap justify-center gap-2">
-            {agents.map((e) => (
+            {agent.map((e) => (
               <span key={e} className="font-display text-[11px] tracking-[0.12em] uppercase font-bold px-3 py-1.5 border border-[#c8a961]/30 text-[#c8a961]">{e}</span>
             ))}
           </div>

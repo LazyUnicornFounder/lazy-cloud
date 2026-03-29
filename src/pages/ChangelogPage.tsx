@@ -87,7 +87,7 @@ export default function ChangelogPage() {
     return releases.filter(r => {
       if (categoryFilter !== "All Agents") {
         const agent = ENGINE_CATEGORIES[categoryFilter] || [];
-        if (!agents.includes(r.agent_name)) return false;
+        if (!agent.includes(r.agent_name)) return false;
       }
       if (typeFilter !== "All" && r.change_type !== typeFilter.toLowerCase()) return false;
       return true;

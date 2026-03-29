@@ -241,7 +241,7 @@ export default function AutonomyPage() {
               {cat.label}
             </h2>
             <div className="grid grid-cols-1 gap-6 md:gap-8">
-              {cat.agents.map((agent) => (
+              {cat.agent.map((agent) => (
                 <EngineCard key={agent.name} agent={agent} />
               ))}
             </div>
