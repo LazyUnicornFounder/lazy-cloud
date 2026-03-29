@@ -11,7 +11,6 @@ const columns = [
   {
     label: "Unicorn",
     items: [
-      { name: "Lazy Launch", href: "/lazy-launch" },
       { name: "Lazy Waitlist", href: "/lazy-waitlist" },
       { name: "Lazy Run", href: "/lazy-run" },
     ],
