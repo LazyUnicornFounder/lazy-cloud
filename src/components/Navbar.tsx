@@ -99,11 +99,6 @@ const agentCategories: Category[] = [
       { label: "Lazy Telegram", href: "/lazy-telegram", tagline: "Autonomous Telegram updates", icon: icons.telegram },
       { label: "Lazy Supabase", href: "/lazy-supabase", tagline: "Autonomous database reports", icon: icons.supabase },
       { label: "Lazy Security", href: "/lazy-security", tagline: "Autonomous pentesting", icon: icons.security },
-    ],
-  },
-  {
-    label: "Lazy Autonomous",
-    items: [
       { label: "Lazy Watch", href: "/lazy-watch", tagline: "Autonomous error monitoring", icon: icons.security },
       { label: "Lazy Fix", href: "/lazy-fix", tagline: "Autonomous prompt improvement", icon: icons.code },
       { label: "Lazy Build", href: "/lazy-build", tagline: "Autonomous agent writing", icon: icons.admin },
@@ -182,7 +177,7 @@ function AgentsDropdown() {
               {[agentCategories[3], agentCategories[4]].map(c => renderCategoryBlock(c, close))}
             </div>
             <div className="flex-1 min-w-0">
-              {[agentCategories[5], agentCategories[6]].map(c => renderCategoryBlock(c, close))}
+              {[agentCategories[5]].map(c => renderCategoryBlock(c, close))}
             </div>
           </div>
           <div className="mt-6 pt-5 border-t border-border/50 flex items-center justify-end">
