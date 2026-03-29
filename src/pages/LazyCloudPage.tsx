@@ -162,17 +162,6 @@ export default function LazyCloudPage() {
         </div>
       </section>
 
-      {/* ── Testimonial ── */}
-      <section className="max-w-3xl mx-auto px-6 md:px-12 pb-20">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-8" style={{ borderLeft: "3px solid hsl(var(--primary))" }}>
-          <p className="font-body text-base italic text-foreground/70 leading-relaxed mb-4">
-            "Lazy Cloud saved me 3 hours a week I was spending on API key rotation, prompt updates, and debugging edge function errors. Now I just check the weekly digest."
-          </p>
-          <p className="font-body text-sm text-muted-foreground">— Founder, [redacted] — running 14 agents on Lazy Cloud Growth plan</p>
-          <p className="font-body text-[11px] text-muted-foreground/50 mt-2">Real quote from a Lazy Cloud customer. Name shared on request.</p>
-        </motion.div>
-      </section>
-
       {/* ── What if Lovable changes ── */}
       <section className="max-w-3xl mx-auto px-6 md:px-12 pb-20 md:pb-28">
         <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">
@@ -180,13 +169,10 @@ export default function LazyCloudPage() {
         </motion.h2>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.1 }} className="space-y-4">
           <p className="font-body text-sm text-muted-foreground leading-relaxed">
-            Lovable ships updates regularly. Most are backwards-compatible and your agents keep running without any changes. When Lovable makes a breaking change — to edge function APIs, database schemas, or auth flows — the Lazy Cloud team reviews every affected agent and ships updated prompts within 48 hours. Your stack auto-applies them.
+            Lovable ships updates regularly. Most are backwards-compatible and your agents keep running without any changes. When Lovable makes a breaking change — to edge function APIs, database schemas, or auth flows — the Lazy Cloud team reviews every affected agent and ships updated prompts. Your stack auto-applies them.
           </p>
           <p className="font-body text-sm text-muted-foreground leading-relaxed">
             Self-hosted users have to identify the breaking change, find the affected prompts, update them manually, and re-paste into Lovable. On Lazy Cloud that entire process happens without you. This is the core reason Lazy Cloud exists.
-          </p>
-          <p className="font-body text-[11px] text-muted-foreground/50">
-            We have a 48-hour SLA on breaking Lovable changes for Growth and Agency plans. Starter plan is best-effort, typically same timeframe.
           </p>
         </motion.div>
       </section>
