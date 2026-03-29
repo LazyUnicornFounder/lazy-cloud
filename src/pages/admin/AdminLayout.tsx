@@ -227,3 +227,44 @@ export default function AdminLayout() {
     </AdminContext.Provider>
   );
 }
+
+function PromptActions() {
+  const [syncing, setSyncing] = useState(false);
+  const [pushing, setPushing] = useState(false);
+
+  const sync = async () => {
+    setSyncing(true);
+    try {
+      const { error } = await supabase.functions.invoke("pull-prompts-github");
+      if (error) throw error;
+      toast.success("Prompts synced from GitHub.");
+    } catch { toast.error("Sync from GitHub failed."); }
+    setSyncing(false);
+  };
+
+  const push = async () => {
+    setPushing(true);
+    try {
+      const { error } = await supabase.functions.invoke("sync-prompts-github");
+      if (error) throw error;
+      toast.success("Prompts pushed to GitHub.");
+    } catch { toast.error("Push to GitHub failed."); }
+    setPushing(false);
+  };
+
+  const btnClass = "w-full flex items-center justify-center gap-2 border border-[#f0ead6]/10 py-1.5 font-body text-[10px] tracking-[0.1em] uppercase text-[#f0ead6]/70 hover:text-[#f0ead6] hover:border-[#f0ead6]/30 transition-colors disabled:opacity-40";
+
+  return (
+    <div className="px-5 py-3 border-b border-[#f0ead6]/8 space-y-1.5">
+      <p className="font-body text-[10px] tracking-[0.2em] uppercase text-[#f0ead6]/40 mb-1">Prompts</p>
+      <button onClick={sync} disabled={syncing || pushing} className={btnClass}>
+        {syncing ? <Loader2 size={10} className="animate-spin" /> : <GitBranch size={10} />}
+        Sync from GitHub
+      </button>
+      <button onClick={push} disabled={syncing || pushing} className={btnClass}>
+        {pushing ? <Loader2 size={10} className="animate-spin" /> : <Upload size={10} />}
+        Push to GitHub
+      </button>
+    </div>
+  );
+}
