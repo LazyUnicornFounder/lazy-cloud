@@ -115,10 +115,13 @@ export default function ChangelogPage() {
         "lazy-trend": "Lazy Trend",
         "lazy-churn": "Lazy Churn",
       };
-      return ((data || []) as any[]).map((r: any) => ({
-        ...r,
-        agent_name: ENGINE_NAME_MAP[r.engine_name] || r.engine_name || r.agent_name,
-      })) as Release[];
+      const EXCLUDED = new Set(["Lazy Agents", "lazy-agents"]);
+      return ((data || []) as any[])
+        .map((r: any) => ({
+          ...r,
+          agent_name: ENGINE_NAME_MAP[r.engine_name] || r.engine_name || r.agent_name,
+        }))
+        .filter((r: any) => !EXCLUDED.has(r.agent_name)) as Release[];
     },
   });
 
