@@ -12,11 +12,9 @@ import { Badge } from "@/components/ui/badge";
 
 const fade = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
-type Category = "All" | "Lazy Content" | "Lazy Commerce" | "Lazy Media" | "Lazy Dev" | "Lazy Ops" | "Lazy Agents";
+type Category = "All" | "Lazy Content" | "Lazy Commerce" | "Lazy Media" | "Lazy Dev" | "Lazy Ops";
 
-type SectionType = "agent" | "agents" | "all";
-
-const filters: Category[] = ["All", "Lazy Content", "Lazy Commerce", "Lazy Media", "Lazy Dev", "Lazy Ops", "Lazy Agents"];
+const filters: Category[] = ["All", "Lazy Content", "Lazy Commerce", "Lazy Media", "Lazy Dev", "Lazy Ops"];
 
 interface Integration {
   name: string;
@@ -364,10 +362,10 @@ const integrations: Integration[] = [
     icon: <CreditCard size={20} />,
     note: "Requires a Printful account — free to start, pay per order",
   },
-  // Lazy Agents
+  // Ops Agents
   {
-    name: "GitHub (Agents)",
-    category: "Lazy Agents",
+    name: "GitHub (Ops Agents)",
+    category: "Lazy Ops",
     description: "Lazy Agents use your GitHub repo to open issues for errors and PRs for prompt improvements — all autonomously.",
     unlocks: [
       "Lazy Watch opens a GitHub issue every time an agent error is detected.",
@@ -381,8 +379,8 @@ const integrations: Integration[] = [
     note: "Requires GITHUB_TOKEN with repo scope",
   },
   {
-    name: "Anthropic (Agents)",
-    category: "Lazy Agents",
+    name: "Anthropic (Ops Agents)",
+    category: "Lazy Ops",
     description: "Lazy Agents use Claude to reason about errors, performance data, and content strategy — powering autonomous decisions.",
     unlocks: [
       "Lazy Watch diagnoses root causes from error logs using Claude.",
@@ -396,8 +394,8 @@ const integrations: Integration[] = [
     note: "Uses Anthropic API — requires ANTHROPIC_API_KEY",
   },
   {
-    name: "Content Repurposing (Agents)",
-    category: "Lazy Agents",
+    name: "Content Repurposing",
+    category: "Lazy Content",
     description: "Lazy Repurpose reads your top posts every Sunday and generates four formats — Twitter thread, LinkedIn post, newsletter section, and video script.",
     unlocks: [
       "Turn every blog post into a Twitter thread with a hook that stops the scroll.",
@@ -412,8 +410,8 @@ const integrations: Integration[] = [
     note: "No API keys required — optional Twitter/LinkedIn APIs for auto-posting",
   },
   {
-    name: "Trend Detection (Agents)",
-    category: "Lazy Agents",
+    name: "Trend Detection",
+    category: "Lazy Content",
     description: "Lazy Trend scans Perplexity, Firecrawl, and competitors every 6 hours. When a topic spikes it queues SEO keywords and GEO articles automatically.",
     unlocks: [
       "Detect trending topics in your niche before competitors publish.",
@@ -428,8 +426,8 @@ const integrations: Integration[] = [
     note: "Uses Firecrawl + Perplexity — already set if Lazy Crawl/Perplexity installed",
   },
   {
-    name: "Churn Prevention (Agents)",
-    category: "Lazy Agents",
+    name: "Churn Prevention",
+    category: "Lazy Commerce",
     description: "Lazy Churn monitors Stripe subscribers daily, scores risk based on login activity and renewal proximity, and sends personalised re-engagement automatically.",
     unlocks: [
       "Score every subscriber daily on a 0-100 risk scale.",
@@ -495,12 +493,6 @@ export default function UseCasesPage() {
 
   const filtered = active === "All" ? integrations : integrations.filter((i) => i.category === active);
 
-  const nonAgentItems = filtered.filter((i) => i.category !== "Lazy Agents");
-  const agentItems = filtered.filter((i) => i.category === "Lazy Agents");
-
-  const showNonAgents = nonAgentItems.length > 0;
-  const showAgents = agentItems.length > 0;
-
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SEO
@@ -562,8 +554,8 @@ export default function UseCasesPage() {
         </div>
       </section>
 
-      {/* Agents Section Header */}
-      {showNonAgents && (
+      {/* Section Header */}
+      {filtered.length > 0 && (
         <section className="px-6 md:px-12 max-w-5xl mx-auto pt-8 pb-12 text-center">
           <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1]">
@@ -579,19 +571,19 @@ export default function UseCasesPage() {
         </section>
       )}
 
-      {/* Agent Cards */}
-      {showNonAgents && (
+      {/* All Cards */}
+      {filtered.length > 0 && (
         <section className="px-6 md:px-12 max-w-5xl mx-auto pb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {nonAgentItems.map((item, i) => (
+            {filtered.map((item, i) => (
               <IntegrationCard key={item.name} item={item} index={i} />
             ))}
           </div>
         </section>
       )}
 
-      {/* CTA — All of these. One prompt. */}
-      {showNonAgents && (
+      {/* CTA */}
+      {filtered.length > 0 && (
         <section className="border-t border-border bg-card">
           <div className="max-w-3xl mx-auto px-6 md:px-12 py-24 text-center">
             <motion.h2 variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }} className="font-display text-2xl md:text-4xl font-bold">
@@ -604,35 +596,10 @@ export default function UseCasesPage() {
               <Link to="/lazy-run" className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-body text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3 hover:bg-accent/90 transition-colors">
                 Install Lazy Run <ArrowRight size={14} />
               </Link>
-              <Link to="/" className="inline-flex items-center gap-2 border border-border font-body text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3 text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-colors">
+              <Link to="/lazy-agents" className="inline-flex items-center gap-2 border border-border font-body text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3 text-foreground/50 hover:text-foreground hover:border-foreground/30 transition-colors">
                 Browse all agents
               </Link>
             </div>
-          </div>
-        </section>
-      )}
-
-      {/* Ops Agents Section Header */}
-      {showAgents && (
-        <section className="px-6 md:px-12 max-w-5xl mx-auto pt-8 pb-12 text-center border-t border-border">
-          <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1] mt-12">
-              Lazy Ops agents.
-            </h2>
-            <p className="font-body text-foreground/50 text-base max-w-2xl mx-auto leading-relaxed">
-              Seven autonomous agents that monitor, fix, build, strategise, repurpose, detect trends, and prevent churn across your entire stack.
-            </p>
-          </motion.div>
-        </section>
-      )}
-
-      {/* Agent Cards */}
-      {showAgents && (
-        <section className="px-6 md:px-12 max-w-5xl mx-auto pb-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {agentItems.map((item, i) => (
-              <IntegrationCard key={item.name} item={item} index={i} />
-            ))}
           </div>
         </section>
       )}
