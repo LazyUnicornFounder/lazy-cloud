@@ -131,7 +131,7 @@ const LazyCrawlPage = () => {
 
         {/* How it works */}
         <section id="how-it-works" className="max-w-2xl mx-auto px-6 mb-20 pt-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">Real intelligence. Flowing into your content agents.</motion.h2>
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">Real intelligence. Flowing into your content agents.</motion.h2>
           <div className="space-y-4">
             {steps.map((step, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className="flex items-start gap-4">
@@ -144,7 +144,7 @@ const LazyCrawlPage = () => {
 
         {/* What it does */}
         <section className="max-w-4xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">What it does</motion.h2>
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">What it does</motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-border">
             {[
               { icon: Globe, title: "Competitor Monitoring", desc: "Crawl competitor websites weekly for pricing changes, new features, and content updates." },

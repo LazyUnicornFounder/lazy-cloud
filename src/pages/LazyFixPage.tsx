@@ -102,7 +102,7 @@ export default function LazyFixPage() {
 
         {/* Problem */}
         <section className="max-w-3xl mx-auto px-6 mb-20 mt-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             Your prompts were good when you wrote them.
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border border-border">
@@ -123,7 +123,7 @@ export default function LazyFixPage() {
 
         {/* How it works */}
         <section id="how-it-works" className="max-w-2xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             How it works
           </motion.h2>
           <div className="space-y-4">
@@ -141,7 +141,7 @@ export default function LazyFixPage() {
 
         {/* What it improves */}
         <section className="max-w-3xl mx-auto px-6 mb-20">
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: "#f0ead6", lineHeight: "1", letterSpacing: "-0.01em" }} className="font-bold mb-8">
             Precise edits. Not rewrites.
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-border">
