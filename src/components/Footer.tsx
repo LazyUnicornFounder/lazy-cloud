@@ -64,11 +64,6 @@ const columns = [
       { name: "Lazy Telegram", href: "/lazy-telegram" },
       { name: "Lazy Supabase", href: "/lazy-supabase" },
       { name: "Lazy Security", href: "/lazy-security" },
-    ],
-  },
-  {
-    label: "Agents",
-    items: [
       { name: "Lazy Watch", href: "/lazy-watch" },
       { name: "Lazy Fix", href: "/lazy-fix" },
       { name: "Lazy Build", href: "/lazy-build" },
