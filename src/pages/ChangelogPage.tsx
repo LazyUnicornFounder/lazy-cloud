@@ -24,12 +24,12 @@ interface Release {
 }
 
 const AGENT_CATEGORIES: Record<string, string[]> = {
+  "Lazy Unicorn": ["Lazy Launch", "Lazy Run"],
   "Lazy Content": ["Lazy Blogger", "Lazy SEO", "Lazy GEO", "Lazy Crawl", "Lazy Perplexity", "Lazy Contentful"],
-  "Lazy Commerce": ["Lazy Store", "Lazy Pay", "Lazy SMS", "Lazy Mail"],
-  "Lazy Media": ["Lazy Voice", "Lazy Stream"],
+  "Lazy Commerce": ["Lazy Store", "Lazy Drop", "Lazy Print", "Lazy Pay", "Lazy SMS", "Lazy Mail"],
+  "Lazy Media": ["Lazy Voice", "Lazy Stream", "Lazy YouTube"],
   "Lazy Dev": ["Lazy GitHub", "Lazy GitLab", "Lazy Linear", "Lazy Design", "Lazy Auth", "Lazy Granola"],
-  "Lazy Ops": ["Lazy Alert", "Lazy Telegram", "Lazy Supabase", "Lazy Security"],
-  "Lazy Agents": ["Lazy Watch", "Lazy Fix", "Lazy Build", "Lazy Intel"],
+  "Lazy Ops": ["Lazy Admin", "Lazy Alert", "Lazy Telegram", "Lazy Supabase", "Lazy Security", "Lazy Watch", "Lazy Fix", "Lazy Build", "Lazy Intel", "Lazy Repurpose", "Lazy Trend", "Lazy Churn"],
 };
 
 const CATEGORY_FILTERS = ["All Agents", ...Object.keys(AGENT_CATEGORIES)];
