@@ -195,57 +195,6 @@ function AgentsDropdown() {
     </div>
   );
 }
-  const [open, setOpen] = useState(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const handleEnter = () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); setOpen(true); };
-  const handleLeave = () => { timeoutRef.current = setTimeout(() => setOpen(false), 250); };
-  useEffect(() => () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); }, []);
-  const close = () => setOpen(false);
-
-  return (
-    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <button
-        onClick={() => setOpen(!open)}
-        className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors flex items-center gap-1"
-      >
-        Agents
-        <ChevronDown size={11} className={`transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
-      {open && (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 p-9" style={{ width: 340 }}>
-          <div className="mb-4 pb-4 border-b border-border/50">
-            <a href="/lazy-agents" onClick={close} className="font-body text-[12px] tracking-[0.12em] uppercase text-foreground/40 hover:text-foreground transition-colors font-semibold">
-              View all agents →
-            </a>
-          </div>
-          {agentItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={close}
-              className="group flex items-center gap-4 px-3 py-[18px] -mx-1 hover:bg-secondary/50 transition-colors"
-            >
-              <span className="text-foreground/50 group-hover:text-foreground/70 transition-colors flex-shrink-0">
-                {item.icon}
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="font-body text-[14px] font-black tracking-[0.04em] uppercase text-foreground/60 group-hover:text-foreground transition-colors leading-tight whitespace-nowrap">
-                  {item.label}
-                </p>
-                <p className="font-body text-[13px] font-normal text-foreground/40 group-hover:text-foreground/55 transition-colors leading-tight mt-1 whitespace-nowrap">
-                  {item.tagline}
-                </p>
-              </div>
-            </a>
-          ))}
-          <div className="mt-4 pt-4 border-t border-border/50 flex items-center justify-end">
-            <span className="font-body text-[11px] tracking-[0.08em] text-foreground/25">Made for Lovable ❤️</span>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
 
 /* ── Simple dropdown for Resources ── */
 function SimpleDropdown({
