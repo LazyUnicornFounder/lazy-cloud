@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import {
   CreditCard, MessageSquare, Mic, Globe, GitBranch, Search,
   Hash, Send, Tv, Database, FileText, Shield, Code, Zap,
-  ArrowRight, CheckCircle2, Palette,
+  ArrowRight, CheckCircle2, Palette, Eye, Wrench, Hammer,
+  BarChart3, RefreshCw, TrendingUp, UserX, Settings,
 } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
@@ -362,7 +363,137 @@ const integrations: Integration[] = [
     icon: <CreditCard size={20} />,
     note: "Requires a Printful account — free to start, pay per order",
   },
-  // Ops Agents
+  // Ops — Lazy Admin
+  {
+    name: "Ops Dashboard",
+    category: "Lazy Ops",
+    description: "A unified control panel for every agent in your stack — start, stop, publish, and monitor from one screen.",
+    unlocks: [
+      "Start or pause any agent with a single click.",
+      "See which agents are healthy, erroring, or stalled at a glance.",
+      "Trigger a manual publish for any content agent instantly.",
+      "View a live feed of recent agent activity and errors.",
+    ],
+    agent: "Lazy Admin",
+    agentHref: "/lazy-admin",
+    icon: <Settings size={20} />,
+  },
+  // Ops — Lazy Watch
+  {
+    name: "Error Monitoring",
+    category: "Lazy Ops",
+    description: "Lazy Watch scans every agent's error table hourly, diagnoses root causes with AI, and opens GitHub issues automatically.",
+    unlocks: [
+      "Detect agent failures within an hour — not days later.",
+      "Get AI-powered root cause analysis for every error.",
+      "Open a GitHub issue with reproduction steps automatically.",
+      "Track error frequency trends and see which agents need attention.",
+    ],
+    agent: "Lazy Watch",
+    agentHref: "/lazy-watch",
+    icon: <Eye size={20} />,
+    note: "Requires GITHUB_TOKEN and ANTHROPIC_API_KEY",
+  },
+  // Ops — Lazy Fix
+  {
+    name: "Prompt Improvement",
+    category: "Lazy Ops",
+    description: "Lazy Fix analyses underperforming prompts weekly, writes targeted improvements, and opens pull requests with the changes.",
+    unlocks: [
+      "Automatically identify prompts producing low-quality output.",
+      "Get AI-written prompt patches submitted as GitHub PRs.",
+      "Track which fixes improved output quality over time.",
+      "Never let a bad prompt run for more than a week uncorrected.",
+    ],
+    agent: "Lazy Fix",
+    agentHref: "/lazy-fix",
+    icon: <Wrench size={20} />,
+    note: "Requires GITHUB_TOKEN and ANTHROPIC_API_KEY",
+  },
+  // Ops — Lazy Build
+  {
+    name: "Agent Generation",
+    category: "Lazy Ops",
+    description: "Lazy Build generates complete new agent prompts — with database schemas, edge functions, and UI — from a one-paragraph brief.",
+    unlocks: [
+      "Describe what you want in plain English and get a working agent prompt.",
+      "Generated prompts include full database schemas and scheduling logic.",
+      "New prompts are committed directly to your GitHub repo.",
+      "Expand your autonomous stack without writing a single prompt manually.",
+    ],
+    agent: "Lazy Build",
+    agentHref: "/lazy-build",
+    icon: <Hammer size={20} />,
+    note: "Requires GITHUB_TOKEN and ANTHROPIC_API_KEY",
+  },
+  // Ops — Lazy Intel
+  {
+    name: "Content Strategy",
+    category: "Lazy Ops",
+    description: "Lazy Intel generates weekly strategy reports by analysing your blog, SEO, and GEO performance data — then fuels new keywords automatically.",
+    unlocks: [
+      "Get a weekly content strategy brief delivered to your dashboard.",
+      "Identify content gaps and underperforming keywords automatically.",
+      "Feed high-priority keywords into Lazy SEO and Lazy GEO queues.",
+      "Track which strategy recommendations led to ranking improvements.",
+    ],
+    agent: "Lazy Intel",
+    agentHref: "/lazy-intel",
+    icon: <BarChart3 size={20} />,
+    note: "No API keys required — reads from your existing agent data",
+  },
+  // Ops — Lazy Repurpose
+  {
+    name: "Content Repurposing",
+    category: "Lazy Ops",
+    description: "Lazy Repurpose reads your top posts every Sunday and generates four formats — Twitter thread, LinkedIn post, newsletter section, and video script.",
+    unlocks: [
+      "Turn every blog post into a Twitter thread with a hook that stops the scroll.",
+      "Generate LinkedIn posts under 1300 characters optimised for engagement.",
+      "Create newsletter sections that drive readers back to your full posts.",
+      "Draft 60-90 second video scripts ready for TikTok, Reels, or Shorts.",
+      "Queue everything for review or connect APIs for direct posting.",
+    ],
+    agent: "Lazy Repurpose",
+    agentHref: "/lazy-repurpose",
+    icon: <RefreshCw size={20} />,
+    note: "No API keys required — optional Twitter/LinkedIn APIs for auto-posting",
+  },
+  // Ops — Lazy Trend
+  {
+    name: "Trend Detection",
+    category: "Lazy Ops",
+    description: "Lazy Trend scans Perplexity, Firecrawl, and competitors every 6 hours. When a topic spikes it queues SEO keywords and GEO articles automatically.",
+    unlocks: [
+      "Detect trending topics in your niche before competitors publish.",
+      "Auto-queue urgent SEO keywords when a trend spikes.",
+      "Draft GEO articles on trending topics for immediate AI citation.",
+      "Get instant Slack alerts when high-urgency trends are detected.",
+      "Publish on trends within hours — not days after everyone else.",
+    ],
+    agent: "Lazy Trend",
+    agentHref: "/lazy-trend",
+    icon: <TrendingUp size={20} />,
+    note: "Uses Firecrawl + Perplexity — already set if Lazy Crawl/Perplexity installed",
+  },
+  // Ops — Lazy Churn
+  {
+    name: "Churn Prevention",
+    category: "Lazy Ops",
+    description: "Lazy Churn monitors Stripe subscribers daily, scores risk based on login activity and renewal proximity, and sends personalised re-engagement automatically.",
+    unlocks: [
+      "Score every subscriber daily on a 0-100 risk scale.",
+      "Send personalised SMS and email re-engagement before cancellation.",
+      "Track intervention outcomes — who logged back in after contact.",
+      "Get daily Slack digests showing MRR at risk and recovery stats.",
+      "Reduce churn by acting before customers reach the cancel button.",
+    ],
+    agent: "Lazy Churn",
+    agentHref: "/lazy-churn",
+    icon: <UserX size={20} />,
+    note: "Requires Stripe — works with Lazy SMS and Lazy Mail for outreach",
+  },
+  // Ops — GitHub + Anthropic (shared infra)
   {
     name: "GitHub (Ops Agents)",
     category: "Lazy Ops",
