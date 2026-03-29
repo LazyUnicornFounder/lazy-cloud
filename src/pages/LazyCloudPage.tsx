@@ -205,6 +205,51 @@ export default function LazyCloudPage() {
         </p>
       </section>
 
+      {/* ── Hidden Costs ── */}
+      <section className="border-t border-border py-20 md:py-28 px-6 md:px-12">
+        <div className="max-w-4xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-10">
+            <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-3">
+              Self-hosting is free. Until you add up the real cost.
+            </h2>
+            <p className="font-body text-sm text-muted-foreground leading-relaxed max-w-2xl">
+              The prompt files are open source and always will be.<br />
+              But running them has a cost most founders underestimate.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-border mb-10">
+            {[
+              { emoji: "⏰", title: "Your time", desc: "Re-pasting prompts when new versions ship: 20 minutes per engine per update. With 35+ agents and monthly updates that is 10+ hours a year just on updates. At $100/hour that is $1,000+ in founder time — per year — just to stay current." },
+              { emoji: "💳", title: "API costs at retail pricing", desc: "Individual Perplexity accounts: $20/month. Firecrawl: $19/month. ElevenLabs: $22/month. Resend: $20/month. Aikido: $29/month. Total: $110/month in individual API accounts. Lazy Cloud Growth includes all of these at volume pricing for $149/month — and you get the managed infrastructure on top." },
+              { emoji: "🔥", title: "The cost of downtime", desc: "An edge function fails silently at 3am. Your blog stops publishing. Your SEO stops compounding. Your SMS sequences stop sending. You find out three days later when you check your dashboard. Three days of lost output — compounding backwards. Lazy Watch catches it in minutes." },
+              { emoji: "🔧", title: "Lovable breaking changes", desc: "Lovable ships updates constantly. Occasionally one breaks something in your agent stack. Finding it, diagnosing it, updating the prompt, re-pasting — 1 to 2 hours per incident. Happens 3 to 4 times a year. On Lazy Cloud we handle it, you get a Slack message when it is fixed." },
+            ].map((card, i) => (
+              <motion.div key={card.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.08 }} className="border-b sm:odd:border-r border-border last:border-b-0 sm:[&:nth-last-child(2)]:border-b-0 bg-card p-6 md:p-8">
+                <span className="text-2xl block mb-3">{card.emoji}</span>
+                <h3 className="font-display text-base font-bold text-foreground mb-2">{card.title}</h3>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">{card.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-border bg-card p-6 md:p-8 space-y-2">
+            <div className="space-y-1 font-body text-sm text-muted-foreground">
+              <p>Time cost (updates + incidents): ~12 hours/year at $100/hr = <span className="text-foreground font-semibold">$1,200</span></p>
+              <p>API retail pricing vs volume: $110/month vs included = <span className="text-foreground font-semibold">$1,320/year saved</span></p>
+              <p>Downtime cost (3 days lost output, 3×/year): <span className="text-foreground font-semibold">hard to quantify</span></p>
+            </div>
+            <div className="border-t border-border pt-3 mt-3 space-y-1">
+              <p className="font-body text-sm text-muted-foreground">Total visible cost of self-hosting: <span className="text-foreground font-semibold">$2,500+/year</span></p>
+              <p className="font-body text-sm text-muted-foreground">Lazy Cloud Growth: $149/month = <span className="text-foreground font-semibold">$1,788/year</span></p>
+            </div>
+            <p className="font-display text-base font-bold text-foreground pt-2">
+              Lazy Cloud costs less than self-hosting once you count your time and API bills.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── Pricing ── */}
       <section id="pricing" className="border-t border-border py-20 md:py-28 px-6 md:px-12">
         <div className="max-w-5xl mx-auto">
