@@ -13,6 +13,7 @@ const columns = [
     items: [
       { name: "Lazy Waitlist", href: "/lazy-waitlist" },
       { name: "Lazy Run", href: "/lazy-run" },
+      { name: "Lazy Admin", href: "/lazy-admin" },
     ],
   },
   {
@@ -59,7 +60,7 @@ const columns = [
   {
     label: "Ops",
     items: [
-      { name: "Lazy Admin", href: "/lazy-admin" },
+      { name: "Lazy Alert", href: "/lazy-alert" },
       { name: "Lazy Alert", href: "/lazy-alert" },
       { name: "Lazy Telegram", href: "/lazy-telegram" },
       { name: "Lazy Supabase", href: "/lazy-supabase" },
