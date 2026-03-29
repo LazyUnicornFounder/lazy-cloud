@@ -655,17 +655,17 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Agents label */}
+      {/* Autonomous agents label */}
       <section className="relative z-10" style={{ backgroundColor: "#0a0a08" }}>
         <div className="px-6 pt-20 pb-8 text-center max-w-4xl mx-auto">
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)", color: "#f0ead6", fontWeight: 800, lineHeight: 1 }}>
-            Engines run your Lovable business.
+            Your agents improve themselves.
           </h2>
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)", color: "#f0ead6", fontWeight: 800, lineHeight: 1, marginTop: "0.1em" }}>
-            Agents run your engines.
+            Autonomously.
           </h2>
           <p className="mt-6 mx-auto max-w-2xl" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.9rem, 1.3vw, 1.1rem)", color: "#f0ead6", opacity: 0.45, lineHeight: 1.7 }}>
-            Seven autonomous agents that monitor, fix, build, strategise, repurpose, detect trends, and prevent churn — so every engine keeps improving without you.
+            Seven autonomous agents that monitor, fix, build, strategise, repurpose, detect trends, and prevent churn — so every agent keeps improving without you.
           </p>
           <Link
             to="/lazy-agents"
