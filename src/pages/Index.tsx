@@ -17,7 +17,7 @@ import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
 const NEW_TITLE = "Launch your autonomous business on Lovable.";
-const NEW_DESCRIPTION = "Your site launches. Your waitlist fills. Your blog writes itself. Your stores sell. Your pages rank. Your payments process. All from one prompt — all on autopilot.";
+const NEW_DESCRIPTION = "Your site launches. Your waitlist fills. Your blog writes itself. Your store sells. Your newsletters send. Your pages rank. Your payments process. And so much more. All from one prompt — all on autopilot.";
 
 const rotatingWords = [
   { word: "everything", emoji: "🦄" },       // Lazy Run
@@ -264,7 +264,7 @@ const Index = () => {
               </h1>
 
               <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
-                Your site launches. Your waitlist fills. Your blog writes itself. Your stores sell. Your pages rank. Your payments process. All from one prompt — all on autopilot.
+                Your site launches. Your waitlist fills. Your blog writes itself. Your store sells. Your newsletters send. Your pages rank. Your payments process. And so much more. All from one prompt — all on autopilot.
               </p>
 
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
