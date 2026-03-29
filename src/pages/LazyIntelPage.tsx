@@ -80,7 +80,7 @@ export default function LazyIntelPage() {
                 Every Monday at 6am Lazy Intel reads your blog performance, YouTube analytics, customer discovery signals, comment intelligence, and competitor data. It generates a weekly content strategy brief, adds 5 new SEO keywords to your queue, and adds 3 new GEO queries — all before you start your week.
               </p>
               <div className="flex items-center gap-3 mt-4 mb-8">
-                <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Agents 📊</span>
+                <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Ops</span>
               </div>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <CopyPromptButton text={promptText} />

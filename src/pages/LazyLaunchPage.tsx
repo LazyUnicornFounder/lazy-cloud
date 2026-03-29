@@ -280,6 +280,9 @@ export default function LazyLaunchPage() {
               <Rocket size={12} className="text-foreground/60" />
               <span className="font-body text-xs text-foreground/60 tracking-widest uppercase">Lazy Launch</span>
             </div>
+              <div className="flex items-center gap-3 mt-4 mb-4">
+                <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Unicorn</span>
+              </div>
             <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground">
               Lazy Launch
             </h1>
