@@ -43,9 +43,22 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
     label: "Lazy Unicorn",
     agent: [
       {
+        name: "Lazy Launch",
+        description: "Wizard that generates a complete landing page prompt from your business details, palette, and agent selection",
+        currentLevel: 3,
+        link: "/lazy-launch",
+        levels: [
+          "You write landing page code from scratch. Hours of work.",
+          "You use a template. Still takes manual customisation.",
+          "You follow a guide. Copy-paste sections one by one.",
+          "Describe your business, pick colours and agents — get a complete prompt in 60 seconds.",
+          "It analyses your niche and recommends optimal agent combinations. Coming soon.",
+          "It A/B tests landing page variants and self-optimises conversion. Coming soon.",
+        ],
+      },
+      {
         name: "Lazy Run",
         description: "Installs all twenty-five agent in one prompt",
-
         currentLevel: 4,
         link: "/lazy-run",
         levels: [
@@ -55,20 +68,6 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
           "One prompt. Twenty-three agents. Everything wired in minutes.",
           "It detects what you're missing and suggests agent automatically. Coming soon.",
           "It benchmarks your stack against similar businesses and optimises. Coming soon.",
-        ],
-      },
-      {
-        name: "Lazy Admin",
-        description: "Unified dashboard for every agent in your stack",
-        currentLevel: 3,
-        link: "/lazy-admin",
-        levels: [
-          "You check each agent in its own dashboard. Tab hell.",
-          "Bookmarks help. You still context-switch constantly.",
-          "Weekly check-in across dashboards. Things fall through cracks.",
-          "One dashboard. Every agent. Status, errors, and actions in sixty seconds.",
-          "It surfaces only what needs attention. Coming soon.",
-          "It learns your review patterns and pre-prioritises. Coming soon.",
         ],
       },
     ],
@@ -177,6 +176,34 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
           "New products trigger listings. Price changes trigger repricing.",
           "Trending products discovered. Listings written. Promotions launched. All automatic.",
           "It rewrites what doesn't convert. Adjusts prices. Runs promos on slow stock. Gets better every week.",
+        ],
+      },
+      {
+        name: "Lazy Drop",
+        description: "Autonomous dropshipping via AutoDS",
+        currentLevel: 3,
+        link: "/lazy-drop",
+        levels: [
+          "You source products and manage listings manually.",
+          "AutoDS helps. You still set up everything.",
+          "Scheduled imports. Still manual optimisation.",
+          "Products discovered, listed, and priced automatically.",
+          "It optimises listings based on sales data. Coming soon.",
+          "It predicts winning products before they trend. Coming soon.",
+        ],
+      },
+      {
+        name: "Lazy Print",
+        description: "Autonomous print-on-demand storefronts",
+        currentLevel: 3,
+        link: "/lazy-print",
+        levels: [
+          "You design products and manage fulfilment manually.",
+          "Design tools help. You still list and manage everything.",
+          "Batch uploads on a schedule.",
+          "Designs generated and listed automatically.",
+          "It optimises designs based on sales. Coming soon.",
+          "It predicts trending designs. Coming soon.",
         ],
       },
       {
@@ -363,6 +390,20 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
     label: "Lazy Ops",
     agent: [
       {
+        name: "Lazy Admin",
+        description: "Unified dashboard for every agent in your stack",
+        currentLevel: 3,
+        link: "/lazy-admin",
+        levels: [
+          "You check each agent in its own dashboard. Tab hell.",
+          "Bookmarks help. You still context-switch constantly.",
+          "Weekly check-in across dashboards. Things fall through cracks.",
+          "One dashboard. Every agent. Status, errors, and actions in sixty seconds.",
+          "It surfaces only what needs attention. Coming soon.",
+          "It learns your review patterns and pre-prioritises. Coming soon.",
+        ],
+      },
+      {
         name: "Lazy Alert",
         description: "Every agent event reported to Slack in real time",
         currentLevel: 3,
@@ -418,11 +459,6 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
           "It learns your attack surface and prioritises what matters. Coming soon.",
         ],
       },
-    ],
-  },
-  {
-    label: "Lazy Agents",
-    agent: [
       {
         name: "Lazy Watch",
         description: "Monitors every agent error table hourly and opens GitHub issues",
@@ -519,20 +555,6 @@ export const AGENT_CATEGORIES: AgentCategory[] = [
           "Every subscriber scored daily. At-risk customers get personalised SMS and email automatically.",
           "It tracks which messages recover customers and improves them. Coming soon.",
           "It predicts churn before behaviour signals appear. Coming soon.",
-        ],
-      },
-      {
-        name: "Lazy Launch",
-        description: "Wizard that generates a complete landing page prompt from your business details, palette, and agent selection",
-        currentLevel: 3,
-        link: "/lazy-launch",
-        levels: [
-          "You write landing page code from scratch. Hours of work.",
-          "You use a template. Still takes manual customisation.",
-          "You follow a guide. Copy-paste sections one by one.",
-          "Describe your business, pick colours and agents — get a complete prompt in 60 seconds.",
-          "It analyses your niche and recommends optimal agent combinations. Coming soon.",
-          "It A/B tests landing page variants and self-optimises conversion. Coming soon.",
         ],
       },
     ],
