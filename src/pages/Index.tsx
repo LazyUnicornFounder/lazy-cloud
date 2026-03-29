@@ -6,8 +6,8 @@ import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
-const NEW_TITLE = "Launch your autonomous business on Lovable.";
-const NEW_DESCRIPTION = "The autonomous layer for Lovable. One prompt installs the engine you need — blog posts, SEO, GEO, payments, voice, stores, streams, and more. Everything runs itself.";
+const NEW_TITLE = "Add agents to your Lovable website with one prompt.";
+const NEW_DESCRIPTION = "Paste one prompt into Lovable and get an autonomous agent — blog posts, SEO, GEO, payments, voice, stores, streams, and more. Everything runs itself.";
 
 const rotatingWords = [
   { word: "everything", emoji: "🦄" },       // Lazy Run
@@ -453,12 +453,12 @@ const Index = () => {
         >
           <RotatingHeadline />
           <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(3rem, 7vw, 5rem)", color: "#f0ead6", lineHeight: 1.1, fontWeight: 800 }}>
-            Launch your autonomous
+            Add agents to your Lovable
             <br />
-            business on Lovable.
+            website with one prompt.
           </h1>
           <p className="max-w-2xl" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.95rem, 1.4vw, 1.15rem)", color: "#f0ead6", opacity: 0.45, lineHeight: 1.6 }}>
-            Your Lovable site. Fully agentic. Autonomous engines publish your content, process your payments, and monitor your stack. Agents improve the engines.
+            Each agent is a single prompt you paste into Lovable. It installs its own tables, edge functions, and UI — then runs itself. Blog posts, SEO, payments, voice, stores, and more.
           </p>
           <p className="mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(0.95rem, 1.4vw, 1.15rem)", color: "#f0ead6", opacity: 0.65, lineHeight: 1.6, fontWeight: 600 }}>
             You just build.
