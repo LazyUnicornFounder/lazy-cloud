@@ -38,7 +38,7 @@ const categories: Category[] = [
       },
       {
         name: "Lazy Run", tagline: "Autonomous operations layer", link: "/lazy-run",
-        free: ["Setup prompt included", "All 25 agent in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
+        free: ["Setup prompt included", "All 36 agents in one prompt", "Unified admin dashboard", "Master orchestrator", "Weekly AI performance report"],
         pro: { price: "$99", features: ["Hosted version — zero config", "Auto-scaling agent execution", "Priority AI model access", "Dedicated support", "Custom agent configuration"], comingSoon: true },
       },
     ],
