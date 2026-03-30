@@ -4,6 +4,7 @@ import IdeaCard from "@/components/IdeaCard";
 import { fetchIdeasForDate } from "@/lib/ideas";
 import { Search, RefreshCw, Lightbulb } from "lucide-react";
 import SEO from "@/components/SEO";
+import Navbar from "@/components/Navbar";
 
 const categories = [
   "All", "Architecture", "Art", "Boxing", "Cars", "Coffee", "Construction",
