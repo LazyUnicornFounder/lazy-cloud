@@ -203,7 +203,7 @@ export default function LazyCloudPage() {
       <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
-            <span className="font-display text-[11px] tracking-[0.2em] uppercase font-bold text-foreground/40 mb-4 block">COMING SOON</span>
+            <span className="font-display text-[11px] tracking-[0.2em] uppercase font-bold text-foreground/40 mb-4 block">BETA</span>
             <h1 className="font-display text-foreground" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
               Lazy Cloud
             </h1>
