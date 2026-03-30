@@ -167,6 +167,42 @@ export type Database = {
         }
         Relationships: []
       }
+      daily_ideas: {
+        Row: {
+          created_at: string
+          date: string
+          description: string
+          id: string
+          is_featured: boolean
+          source_event: string
+          source_url: string | null
+          tag: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          description: string
+          id?: string
+          is_featured?: boolean
+          source_event: string
+          source_url?: string | null
+          tag: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          description?: string
+          id?: string
+          is_featured?: boolean
+          source_event?: string
+          source_url?: string | null
+          tag?: string
+          title?: string
+        }
+        Relationships: []
+      }
       early_access: {
         Row: {
           created_at: string
