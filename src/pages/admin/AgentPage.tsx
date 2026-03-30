@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAdminContext } from "./AdminLayout";
 import { getAgentBySlug } from "./agentRegistry";
 import { useQuery } from "@tanstack/react-query";
+import AgentSetupWizard from "./components/AgentSetupWizard";
 
 export default function AgentPage() {
   const { agentSlug } = useParams<{ agentSlug: string }>();
@@ -18,6 +19,7 @@ export default function AgentPage() {
   const [editValue, setEditValue] = useState("");
   const [saving, setSaving] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
+  const [showSetupWizard, setShowSetupWizard] = useState(false);
 
   if (!agent) {
     return (
@@ -30,18 +32,24 @@ export default function AgentPage() {
 
   const st = states[agent.key];
 
-  // Not configured — show setup card
+  // Not configured — show setup card with inline wizard
   if (!st || !st.installed || !st.setupComplete) {
     return (
       <div className="max-w-md mx-auto py-20 text-center">
         <h2 className="text-xl font-bold mb-2">{agent.label} is not configured</h2>
         <p className="text-[#f0ead6]/50 text-[13px] mb-6">Complete setup to activate this agent.</p>
-        <Link to={`/lazy-${agent.slug}-setup`}
+        <button onClick={() => setShowSetupWizard(true)}
           className="inline-block px-6 py-3 bg-[#c9a84c] text-[#0a0a08] text-[12px] font-bold tracking-[0.1em] uppercase hover:opacity-90 transition-opacity">
           SET UP {agent.label.toUpperCase()} →
-        </Link>
+        </button>
         <br />
         <Link to="/admin" className="text-[#f0ead6]/40 text-[11px] mt-4 inline-block hover:text-[#f0ead6]/60">← Back</Link>
+        <AgentSetupWizard
+          agent={agent}
+          open={showSetupWizard}
+          onClose={() => setShowSetupWizard(false)}
+          onComplete={() => refetch()}
+        />
       </div>
     );
   }
