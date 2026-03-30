@@ -1,4 +1,5 @@
 import { useLocation, useNavigate, Outlet } from "react-router-dom";
+import Navbar from "@/components/Navbar";
 
 const NAV = [
   {
@@ -35,6 +36,8 @@ export default function DocsLayout() {
   const currentPath = location.pathname;
 
   return (
+    <>
+    <Navbar activePage="docs" />
     <div className="min-h-screen font-display flex" style={{ background: "var(--background)", color: "#f0ead6", paddingTop: 80 }}>
       {/* Left sidebar */}
       <aside className="fixed top-[80px] left-0 bottom-0 overflow-y-auto" style={{ width: 240, borderRight: "1px solid rgba(240,234,214,0.08)", padding: "24px 0" }}>
@@ -78,6 +81,7 @@ export default function DocsLayout() {
         <DocsRightSidebar />
       </aside>
     </div>
+    </>
   );
 }
 
