@@ -287,9 +287,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a href="/lazy-cloud" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
               Lazy Cloud
             </a>
-            <a href="/lazy-admin" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
-              Lazy Admin
-            </a>
             <AgentsDropdown />
             <a href="/pricing" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
               Pricing
@@ -300,12 +297,10 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a href="/how-it-works" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
               How It Works
             </a>
-            <a href="/use-cases" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
-              Use Cases
-            </a>
             <SimpleDropdown
               label="Resources"
               children={[
+                { label: "Use Cases", href: "/use-cases" },
                 { label: "Blog", href: "/blog" },
                 { label: "Autonomy", href: "/autonomy" },
                 { label: "Changelog", href: "/changelog" },
