@@ -78,7 +78,7 @@ import DocsLayout from "./pages/docs/DocsLayout";
 import DocsIntro from "./pages/docs/DocsIntro";
 import DocsQuickstart from "./pages/docs/DocsQuickstart";
 import DocsHowItWorks from "./pages/docs/DocsHowItWorks";
-import { DocsContentAgents, DocsCommerceAgents, DocsMediaAgents, DocsDevAgents, DocsMonitorAgents, DocsIntelligenceAgents } from "./pages/docs/DocsAgents";
+import { DocsPlatformAgents, DocsContentAgents, DocsCommerceAgents, DocsMediaAgents, DocsDevAgents, DocsOpsAgents } from "./pages/docs/DocsAgents";
 import { DocsAdminOverview, DocsAdminSettings } from "./pages/docs/DocsAdmin";
 
 const queryClient = new QueryClient();
@@ -162,12 +162,12 @@ const App = () => (
                 <Route index element={<DocsIntro />} />
                 <Route path="quickstart" element={<DocsQuickstart />} />
                 <Route path="how-it-works" element={<DocsHowItWorks />} />
+                <Route path="agents/platform" element={<DocsPlatformAgents />} />
                 <Route path="agents/content" element={<DocsContentAgents />} />
                 <Route path="agents/commerce" element={<DocsCommerceAgents />} />
                 <Route path="agents/media" element={<DocsMediaAgents />} />
                 <Route path="agents/dev" element={<DocsDevAgents />} />
-                <Route path="agents/monitor" element={<DocsMonitorAgents />} />
-                <Route path="agents/intelligence" element={<DocsIntelligenceAgents />} />
+                <Route path="agents/ops" element={<DocsOpsAgents />} />
                 <Route path="admin/overview" element={<DocsAdminOverview />} />
                 <Route path="admin/settings" element={<DocsAdminSettings />} />
               </Route>

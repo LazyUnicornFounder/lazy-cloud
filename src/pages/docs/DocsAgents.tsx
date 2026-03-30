@@ -28,6 +28,22 @@ function AgentCardGrid({ agents }: { agents: AgentCard[] }) {
   );
 }
 
+export function DocsPlatformAgents() {
+  return (
+    <div>
+      <h1 className="text-[28px] font-bold mb-2" style={{ color: "#f0ead6" }}>Platform</h1>
+      <p className="mb-8" style={{ fontSize: 14, color: "rgba(240,234,214,0.45)" }}>5 agents that power the core platform.</p>
+      <AgentCardGrid agents={[
+        { name: "Lazy Launch", description: "Setup wizard that installs your entire stack from a single prompt. Configures all agents, tables, and schedules in one go." },
+        { name: "Lazy Cloud", description: "Managed hosting and deployment. Handles builds, previews, and production deploys automatically." },
+        { name: "Lazy Run", description: "Cron scheduler that triggers all agent jobs on their configured schedule. The heartbeat of the stack." },
+        { name: "Lazy Admin", description: "Unified dashboard to monitor, control, and configure every agent from one place." },
+        { name: "Lazy Waitlist", description: "Pre-launch waitlist with referral tracking, welcome emails, and a public signup page." },
+      ]} />
+    </div>
+  );
+}
+
 export function DocsContentAgents() {
   return (
     <div>
@@ -96,28 +112,17 @@ export function DocsDevAgents() {
   );
 }
 
-export function DocsMonitorAgents() {
+export function DocsOpsAgents() {
   return (
     <div>
-      <h1 className="text-[28px] font-bold mb-2" style={{ color: "#f0ead6" }}>Monitor Agents</h1>
-      <p className="mb-8" style={{ fontSize: 14, color: "rgba(240,234,214,0.45)" }}>5 agents that keep your stack healthy.</p>
+      <h1 className="text-[28px] font-bold mb-2" style={{ color: "#f0ead6" }}>Ops Agents</h1>
+      <p className="mb-8" style={{ fontSize: 14, color: "rgba(240,234,214,0.45)" }}>9 agents that monitor, fix, and improve your stack automatically.</p>
       <AgentCardGrid agents={[
         { name: "Lazy Alert", description: "Sends Slack alerts when something goes wrong. Configurable per-event toggles." },
         { name: "Lazy Telegram", description: "Sends daily briefings and real-time alerts to a Telegram bot." },
         { name: "Lazy Supabase", description: "Monitors your database — tracks signups, milestones, and sends weekly reports." },
         { name: "Lazy Security", description: "Runs automated security scans with Aikido. Tracks your score and open vulnerabilities.", apiKeys: "Aikido API key" },
         { name: "Lazy Watch", description: "Monitors all agents for errors and opens GitHub issues automatically when something fails.", apiKeys: "GitHub token" },
-      ]} />
-    </div>
-  );
-}
-
-export function DocsIntelligenceAgents() {
-  return (
-    <div>
-      <h1 className="text-[28px] font-bold mb-2" style={{ color: "#f0ead6" }}>Intelligence Agents</h1>
-      <p className="mb-8" style={{ fontSize: 14, color: "rgba(240,234,214,0.45)" }}>4 agents that improve your stack automatically.</p>
-      <AgentCardGrid agents={[
         { name: "Lazy Fix", description: "Finds recurring bugs in your GitHub issues and opens pull requests with fixes.", apiKeys: "GitHub token" },
         { name: "Lazy Build", description: "Generates new agent prompts based on gaps in your stack.", apiKeys: "GitHub token" },
         { name: "Lazy Intel", description: "Generates weekly performance reports across all agents and seeds insights into your content agents." },

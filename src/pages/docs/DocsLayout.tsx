@@ -13,12 +13,12 @@ const NAV = [
   {
     header: "AGENTS",
     items: [
+      { label: "Platform", path: "/docs/agents/platform" },
       { label: "Content", path: "/docs/agents/content" },
       { label: "Commerce", path: "/docs/agents/commerce" },
       { label: "Media", path: "/docs/agents/media" },
       { label: "Dev", path: "/docs/agents/dev" },
-      { label: "Monitor", path: "/docs/agents/monitor" },
-      { label: "Intelligence", path: "/docs/agents/intelligence" },
+      { label: "Ops", path: "/docs/agents/ops" },
     ],
   },
   {
@@ -93,12 +93,12 @@ function DocsRightSidebar() {
     "/docs": ["What is LazyUnicorn?"],
     "/docs/quickstart": ["Step 1 — Open Lovable", "Step 2 — Pick an agent", "Step 3 — Get the prompt", "Step 4 — Paste into Lovable", "Step 5 — Complete setup", "Step 6 — It's running"],
     "/docs/how-it-works": ["Every agent is a mega-prompt", "Agents detect each other", "Updates"],
+    "/docs/agents/platform": ["Lazy Launch", "Lazy Cloud", "Lazy Run", "Lazy Admin", "Lazy Waitlist"],
     "/docs/agents/content": ["Lazy Blogger", "Lazy SEO", "Lazy GEO", "Lazy Crawl", "Lazy Perplexity", "Lazy Repurpose", "Lazy Trend"],
     "/docs/agents/commerce": ["Lazy Store", "Lazy Drop", "Lazy Print", "Lazy Pay", "Lazy Mail", "Lazy SMS", "Lazy Churn"],
     "/docs/agents/media": ["Lazy Voice", "Lazy Stream", "Lazy YouTube"],
     "/docs/agents/dev": ["Lazy Code", "Lazy GitLab", "Lazy Linear", "Lazy Contentful", "Lazy Design", "Lazy Auth", "Lazy Granola"],
-    "/docs/agents/monitor": ["Lazy Alert", "Lazy Telegram", "Lazy Supabase", "Lazy Security", "Lazy Watch"],
-    "/docs/agents/intelligence": ["Lazy Fix", "Lazy Build", "Lazy Intel", "Lazy Agents"],
+    "/docs/agents/ops": ["Lazy Alert", "Lazy Telegram", "Lazy Supabase", "Lazy Security", "Lazy Watch", "Lazy Fix", "Lazy Build", "Lazy Intel", "Lazy Repurpose", "Lazy Trend", "Lazy Churn", "Lazy Agents"],
     "/docs/admin/overview": ["Three-column layout", "Agent detail page"],
     "/docs/admin/settings": ["Site settings", "API keys", "Weekly schedule", "Version status"],
   };
