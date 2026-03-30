@@ -217,7 +217,7 @@ const Index = () => {
                   Launch your Lovable website
                 </Link>
                 <Link
-                  to="/use-cases"
+                  to="/agents"
                   className="inline-flex items-center gap-2 font-body text-[13px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border hover:text-foreground transition-colors"
                   style={{ color: "rgba(240,234,214,0.5)" }}
                 >
