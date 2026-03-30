@@ -11,6 +11,7 @@ const columns = [
   {
     label: "Platform",
     items: [
+      { name: "Lazy Idea", href: "/lazy-idea" },
       { name: "Lazy Launch", href: "/lazy-launch" },
       { name: "Lazy Cloud", href: "/lazy-cloud" },
       { name: "Lazy Run", href: "/lazy-run" },
