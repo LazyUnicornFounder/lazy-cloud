@@ -1,12 +1,250 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Loader2, Pencil, Check, X, ChevronDown, ChevronRight, CheckCircle, AlertTriangle } from "lucide-react";
+import {
+  Loader2, Pencil, Check, X, ChevronDown, ChevronRight,
+  CheckCircle, AlertTriangle, ArrowRight, Circle, Sparkles,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { adminWrite } from "@/lib/adminWrite";
 import { toast } from "sonner";
 import { useAdminContext } from "./AdminLayout";
-import { getAgentBySlug } from "./agentRegistry";
+import { getAgentBySlug, type AgentConfig } from "./agentRegistry";
+
+/* ── Setup wizard (inline) ─────────────────────────────── */
+
+function SetupWizard({ agent, onComplete }: { agent: AgentConfig; onComplete: () => void }) {
+  const [step, setStep] = useState(0);
+  const [formValues, setFormValues] = useState<Record<string, string>>({});
+  const [saving, setSaving] = useState(false);
+
+  // Build steps dynamically from agent config
+  const steps: { key: string; label: string; description: string; type: "secret" | "setting"; placeholder?: string }[] = [];
+
+  // Step 1: Required secrets first
+  if (agent.requiredSecrets) {
+    for (const secret of agent.requiredSecrets) {
+      steps.push({
+        key: secret.name,
+        label: secret.name.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+        description: `Required API key or credential. Find this in your ${secret.name.split("_")[0]} account settings.`,
+        type: "secret",
+        placeholder: `Enter ${secret.name}…`,
+      });
+    }
+  }
+
+  // Step 2: Settings fields
+  if (agent.settingsFields) {
+    for (const field of agent.settingsFields) {
+      if (field === agent.runField) continue; // skip the toggle field
+      steps.push({
+        key: field,
+        label: field.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+        description: `Configure ${field.replace(/_/g, " ")} for ${agent.label}.`,
+        type: "setting",
+        placeholder: `Enter ${field.replace(/_/g, " ")}…`,
+      });
+    }
+  }
+
+  // If agent has no steps, just offer a one-click activate
+  if (steps.length === 0) {
+    return (
+      <div className="py-16 text-center">
+        <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center" style={{ background: "var(--admin-accent-muted)" }}>
+          <Sparkles size={20} style={{ color: "var(--admin-accent)" }} />
+        </div>
+        <h2 className="text-xl font-semibold mb-2" style={{ color: "var(--admin-text)" }}>Activate {agent.label}</h2>
+        <p className="text-sm mb-6 max-w-md mx-auto" style={{ color: "var(--admin-text-tertiary)" }}>
+          {agent.subtitle}. No additional configuration needed — just activate and go.
+        </p>
+        <button
+          onClick={async () => {
+            setSaving(true);
+            try {
+              await adminWrite({
+                table: agent.settingsTable,
+                operation: "upsert",
+                data: { [agent.runField]: true, setup_complete: true },
+              });
+              toast.success(`${agent.label} activated`);
+              onComplete();
+            } catch (err: any) {
+              toast.error(err.message || "Failed to activate");
+            }
+            setSaving(false);
+          }}
+          disabled={saving}
+          className="px-5 py-2.5 rounded-lg text-sm font-medium transition-all hover:brightness-110 inline-flex items-center gap-2"
+          style={{ background: "var(--admin-accent)", color: "#fff" }}
+        >
+          {saving ? <Loader2 size={14} className="animate-spin" /> : <Sparkles size={14} />}
+          Activate {agent.label}
+        </button>
+      </div>
+    );
+  }
+
+  const currentStep = steps[step];
+  const isLastStep = step === steps.length - 1;
+  const canProceed = !!formValues[currentStep?.key]?.trim();
+
+  const handleNext = async () => {
+    if (!currentStep) return;
+
+    // Save the current value
+    setSaving(true);
+    try {
+      if (currentStep.type === "secret" && currentStep.key) {
+        // Secrets go to the settings table field if there's a matching settingsField
+        const matchingSecret = agent.requiredSecrets?.find((s) => s.name === currentStep.key);
+        if (matchingSecret?.settingsField) {
+          await adminWrite({
+            table: agent.settingsTable,
+            operation: "upsert",
+            data: { [matchingSecret.settingsField]: formValues[currentStep.key] },
+          });
+        }
+      } else if (currentStep.type === "setting") {
+        await adminWrite({
+          table: agent.settingsTable,
+          operation: "upsert",
+          data: { [currentStep.key]: formValues[currentStep.key] },
+        });
+      }
+
+      if (isLastStep) {
+        // Final step: mark as complete and running
+        await adminWrite({
+          table: agent.settingsTable,
+          operation: "upsert",
+          data: { [agent.runField]: true, setup_complete: true },
+        });
+        toast.success(`${agent.label} setup complete`);
+        onComplete();
+      } else {
+        setStep((s) => s + 1);
+      }
+    } catch (err: any) {
+      toast.error(err.message || "Failed to save");
+    }
+    setSaving(false);
+  };
+
+  return (
+    <div className="max-w-xl mx-auto py-8">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center" style={{ background: "var(--admin-accent-muted)" }}>
+          <Sparkles size={20} style={{ color: "var(--admin-accent)" }} />
+        </div>
+        <h2 className="text-xl font-semibold mb-1" style={{ color: "var(--admin-text)" }}>Set up {agent.label}</h2>
+        <p className="text-sm" style={{ color: "var(--admin-text-tertiary)" }}>{agent.subtitle}</p>
+      </div>
+
+      {/* Step indicator */}
+      <div className="flex items-center justify-center gap-1 mb-8">
+        {steps.map((s, i) => (
+          <div key={s.key} className="flex items-center gap-1">
+            <div
+              className="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-medium transition-all"
+              style={{
+                background: i < step ? "var(--admin-success)" : i === step ? "var(--admin-accent)" : "var(--admin-bg-hover)",
+                color: i <= step ? "#fff" : "var(--admin-text-tertiary)",
+              }}
+            >
+              {i < step ? <Check size={12} /> : i + 1}
+            </div>
+            {i < steps.length - 1 && (
+              <div className="w-8 h-px" style={{ background: i < step ? "var(--admin-success)" : "var(--admin-border-strong)" }} />
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Current step */}
+      {currentStep && (
+        <div className="p-6 rounded-xl" style={{ background: "var(--admin-bg-elevated)", border: "1px solid var(--admin-border)" }}>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[10px] font-medium uppercase tracking-wider px-1.5 py-0.5 rounded"
+              style={{
+                background: currentStep.type === "secret" ? "var(--admin-warning-muted)" : "var(--admin-accent-muted)",
+                color: currentStep.type === "secret" ? "var(--admin-warning)" : "var(--admin-accent)",
+              }}>
+              {currentStep.type === "secret" ? "API Key" : "Setting"}
+            </span>
+            <span className="text-xs" style={{ color: "var(--admin-text-tertiary)" }}>
+              Step {step + 1} of {steps.length}
+            </span>
+          </div>
+
+          <h3 className="text-base font-medium mt-3 mb-1" style={{ color: "var(--admin-text)" }}>{currentStep.label}</h3>
+          <p className="text-xs mb-4" style={{ color: "var(--admin-text-tertiary)" }}>{currentStep.description}</p>
+
+          <input
+            type={currentStep.type === "secret" ? "password" : "text"}
+            value={formValues[currentStep.key] || ""}
+            onChange={(e) => setFormValues((v) => ({ ...v, [currentStep.key]: e.target.value }))}
+            placeholder={currentStep.placeholder}
+            className="w-full px-3 py-2.5 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-shadow mb-4"
+            style={{ background: "var(--admin-bg)", border: "1px solid var(--admin-border-strong)", color: "var(--admin-text)" }}
+            autoFocus
+          />
+
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => step > 0 && setStep((s) => s - 1)}
+              disabled={step === 0}
+              className="px-3 py-1.5 rounded-md text-xs font-medium transition-colors"
+              style={{
+                color: step === 0 ? "var(--admin-text-tertiary)" : "var(--admin-text-secondary)",
+                opacity: step === 0 ? 0.4 : 1,
+              }}
+            >
+              ← Back
+            </button>
+            <button
+              onClick={handleNext}
+              disabled={!canProceed || saving}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:brightness-110"
+              style={{
+                background: canProceed ? "var(--admin-accent)" : "var(--admin-bg-hover)",
+                color: canProceed ? "#fff" : "var(--admin-text-tertiary)",
+              }}
+            >
+              {saving && <Loader2 size={12} className="animate-spin" />}
+              {isLastStep ? "Activate" : "Next"}
+              {!isLastStep && <ArrowRight size={12} />}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* All steps overview */}
+      <div className="mt-6">
+        <p className="text-[10px] font-medium uppercase tracking-wider mb-2" style={{ color: "var(--admin-text-tertiary)" }}>All steps</p>
+        {steps.map((s, i) => (
+          <div key={s.key} className="flex items-center gap-2 py-1.5">
+            {i < step ? (
+              <CheckCircle size={13} style={{ color: "var(--admin-success)" }} />
+            ) : i === step ? (
+              <Circle size={13} style={{ color: "var(--admin-accent)" }} />
+            ) : (
+              <Circle size={13} style={{ color: "var(--admin-text-tertiary)", opacity: 0.3 }} />
+            )}
+            <span className="text-xs" style={{ color: i <= step ? "var(--admin-text-secondary)" : "var(--admin-text-tertiary)" }}>{s.label}</span>
+            {i < step && formValues[s.key] && (
+              <span className="text-[10px] ml-auto" style={{ color: "var(--admin-success)" }}>✓ saved</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── Main AgentPage ────────────────────────────────────── */
 
 export default function AgentPage() {
   const { agentSlug } = useParams<{ agentSlug: string }>();
@@ -25,48 +263,9 @@ export default function AgentPage() {
 
   const state = states[agent.key];
 
-  const SETUP_ROUTES: Record<string, string> = {
-    seo: "/lazy-seo-setup",
-    voice: "/lazy-voice-setup",
-    stream: "/lazy-stream-setup",
-    granola: "/lazy-granola-setup",
-  };
-
+  // Show setup wizard for unconfigured agents
   if (!state?.installed || !state?.setupComplete) {
-    const setupRoute = SETUP_ROUTES[agent.slug];
-    return (
-      <div className="py-16 text-center">
-        <h2 className="text-xl font-semibold mb-2" style={{ color: "var(--admin-text)" }}>{agent.label} is not configured</h2>
-        <p className="text-sm mb-4" style={{ color: "var(--admin-text-tertiary)" }}>{agent.subtitle}</p>
-
-        {agent.requiredSecrets && agent.requiredSecrets.length > 0 && (
-          <div className="inline-block text-left mb-6 p-4 rounded-lg" style={{ background: "var(--admin-bg-elevated)", border: "1px solid var(--admin-border)" }}>
-            <p className="text-xs font-medium uppercase tracking-wider mb-2" style={{ color: "var(--admin-text-tertiary)" }}>Required to activate</p>
-            {agent.requiredSecrets.map((s) => (
-              <div key={s.name} className="flex items-center gap-2 mb-1">
-                <AlertTriangle size={12} style={{ color: "var(--admin-warning)" }} />
-                <span className="text-xs font-mono" style={{ color: "var(--admin-text-secondary)" }}>{s.name}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <div className="flex gap-3 justify-center">
-          {setupRoute && (
-            <button onClick={() => navigate(setupRoute)}
-              className="px-4 py-2 rounded-lg text-sm font-medium transition-all hover:brightness-110"
-              style={{ background: "var(--admin-accent)", color: "#fff" }}>
-              Set up {agent.label} →
-            </button>
-          )}
-          {!setupRoute && (
-            <p className="text-xs" style={{ color: "var(--admin-text-tertiary)" }}>
-              This agent's settings table (<code className="font-mono">{agent.settingsTable}</code>) hasn't been created yet. Run the agent's setup or create the table manually.
-            </p>
-          )}
-        </div>
-      </div>
-    );
+    return <SetupWizard agent={agent} onComplete={refetch} />;
   }
 
   const toggleRunning = async () => {
@@ -278,56 +477,6 @@ export default function AgentPage() {
       {agent.stats.length === 0 && (!errors || errors.length === 0) && (
         <div className="py-10 text-center text-sm" style={{ color: "var(--admin-text-tertiary)" }}>
           No data yet — click an action above to run your first check.
-        </div>
-      )}
-    </div>
-  );
-}
-
-export function AgentRightSidebar({ slug }: { slug: string }) {
-  const { states } = useAdminContext();
-  const agent = getAgentBySlug(slug);
-  const [actionLoading, setActionLoading] = useState<string | null>(null);
-
-  if (!agent) return null;
-  const state = states[agent.key];
-
-  const runAction = async (fn: string, label: string) => {
-    if (!fn) return;
-    setActionLoading(fn);
-    try {
-      const { error } = await supabase.functions.invoke(fn);
-      if (error) throw error;
-      toast.success(`${label} completed`);
-    } catch (err: any) { toast.error(err.message || "Action failed"); } finally { setActionLoading(null); }
-  };
-
-  return (
-    <div>
-      <h3 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: "var(--admin-text-tertiary)" }}>Actions</h3>
-      {agent.actions.map((action) => (
-        <button key={action.fn || action.label}
-          onClick={() => runAction(action.fn, action.label)}
-          disabled={!!actionLoading}
-          className="w-full mb-2 py-2.5 rounded-lg text-sm font-medium transition-all hover:brightness-110 flex items-center justify-center gap-2"
-          style={action.primary ? { background: "var(--admin-accent)", color: "#fff" } : { border: "1px solid var(--admin-border-strong)", color: "var(--admin-text-secondary)" }}>
-          {actionLoading === action.fn && <Loader2 size={12} className="animate-spin" />}
-          {action.label}
-        </button>
-      ))}
-
-      {agent.requiredSecrets && agent.requiredSecrets.length > 0 && (
-        <div className="mt-6">
-          <h4 className="text-xs font-medium uppercase tracking-wider mb-3" style={{ color: "var(--admin-text-tertiary)" }}>Requirements</h4>
-          {agent.requiredSecrets.map((secret) => {
-            const hasValue = secret.settingsField && state?.settings?.[secret.settingsField];
-            return (
-              <div key={secret.name} className="flex items-center gap-2 mb-2">
-                {hasValue ? <CheckCircle size={12} style={{ color: "var(--admin-success)" }} /> : <AlertTriangle size={12} style={{ color: "var(--admin-error)" }} />}
-                <span className="text-xs font-mono" style={{ color: hasValue ? "var(--admin-text-secondary)" : "var(--admin-error)" }}>{secret.name}</span>
-              </div>
-            );
-          })}
         </div>
       )}
     </div>
