@@ -138,6 +138,7 @@ const App = () => (
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/agents" element={<AgentsPage />} />
                 <Route path="/lazy-blogger" element={<LazyBloggerPage />} />
                 <Route path="/checkout/success" element={<CheckoutSuccess />} />
                 <Route path="/lazy-seo" element={<LazySeoPage />} />
