@@ -351,26 +351,6 @@ export const AGENT_SETUP_FIELDS: Record<string, SetupField[]> = {
     { key: "intel_topics", label: "Intelligence Topics", type: "textarea", placeholder: "competitor launches, market trends, funding news…",
       instructions: { steps: ["What should the intel agent track?", "One topic per line or comma-separated", "Reports are generated weekly and can seed other agents"] } },
     competitorsField,
-  ],
-  repurpose: [
-    siteUrlField("The site where original content lives"),
-    brandNameField,
-    { key: "output_formats", label: "Output Formats", type: "text", placeholder: "twitter thread, linkedin post, newsletter",
-      instructions: { steps: ["List the formats you want content repurposed into", "Separate with commas", "Supported: twitter thread, linkedin post, newsletter, summary, email"] } },
-  ],
-  trend: [
-    siteUrlField("Your site for context"),
-    brandNameField,
-    contentNicheField,
-    { key: "trend_sources", label: "Trend Sources", type: "text", placeholder: "hackernews, reddit, twitter",
-      instructions: { steps: ["Which platforms should the agent monitor for trends", "Comma-separated list", "Discovered trends are seeded to SEO and GEO agents automatically"] } },
-  ],
-  churn: [
-    siteUrlField("Your app or SaaS URL"),
-    brandNameField,
-    { key: "churn_signals", label: "Churn Signals", type: "textarea", placeholder: "no login 7 days, subscription cancel page visit…",
-      instructions: { steps: ["Describe behaviours that indicate a user might churn", "One signal per line", "The agent monitors these and triggers retention actions"] } },
-  ],
   agents: [
     githubTokenField,
     githubRepoField,
