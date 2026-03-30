@@ -221,7 +221,7 @@ const Index = () => {
                   className="inline-flex items-center gap-2 font-body text-[13px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border hover:text-foreground transition-colors"
                   style={{ color: "rgba(240,234,214,0.5)" }}
                 >
-                  Explore Agents
+                  Explore Lazy Agents
                 </Link>
               </div>
             </motion.div>
@@ -346,7 +346,7 @@ const Index = () => {
       <section className="relative z-10">
         <div className="px-6 md:px-12 pt-20 pb-12 max-w-4xl mx-auto">
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-            34 agents run your<br className="hidden md:inline" /> Lovable business.
+            34 Lazy Agents run your<br className="hidden md:inline" /> Lovable business.
           </h2>
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em", marginTop: "0.1em" }}>
             One prompt each.
@@ -358,7 +358,7 @@ const Index = () => {
             to="/how-it-works"
             className="inline-flex items-center gap-2 mt-8 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity"
           >
-            Explore Agents
+            Explore Lazy Agents
           </Link>
         </div>
       </section>

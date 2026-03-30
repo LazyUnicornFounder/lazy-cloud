@@ -150,14 +150,14 @@ function AgentsDropdown() {
         onClick={() => setOpen(!open)}
         className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors flex items-center gap-1"
       >
-        Agents
+        Lazy Agents
         <ChevronDown size={11} className={`transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-card border border-border z-50 p-6" style={{ width: 1380 }}>
           <div className="mb-3 pb-3 border-b border-border/50 flex items-center justify-between">
             <a href="/agents" onClick={close} className="font-body text-[12px] tracking-[0.12em] uppercase text-foreground/40 hover:text-foreground transition-colors font-semibold">
-              View all agents →
+              View all Lazy Agents →
             </a>
             <span className="font-body text-[12px] tracking-[0.15em] uppercase text-foreground/30 font-semibold">
               Made for Lovable ❤️

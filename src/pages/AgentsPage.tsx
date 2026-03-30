@@ -76,7 +76,7 @@ export default function AgentsPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SEO
-        title="All Agents — Lazy Unicorn"
+        title="Lazy Agents — Lazy Unicorn"
         description="Browse all 34 Lazy agents that run your Lovable business autonomously. Content, commerce, media, dev, and ops — one prompt each."
       />
       <Navbar />
@@ -84,10 +84,10 @@ export default function AgentsPage() {
       <section className="px-6 md:px-12 pt-32 pb-16 max-w-5xl mx-auto">
         <motion.div variants={fade} initial="hidden" animate="show">
           <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-            Every agent.
+            Lazy Agents.
           </h1>
           <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
-            34 autonomous agents that run your entire Lovable business. One prompt each.
+            34 Lazy Agents that run your entire Lovable business. One prompt each.
           </p>
         </motion.div>
       </section>
