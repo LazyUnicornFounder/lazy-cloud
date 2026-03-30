@@ -211,7 +211,7 @@ export default function LazyCloudPage() {
             <div className="flex items-center gap-3 mt-4 mb-4">
               <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-primary/30 text-primary">Lazy Platform</span>
             </div>
-            <p className="mt-6 font-body text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed">
+            <p className="mt-6 font-body text-base md:text-lg text-foreground/50 max-w-xl leading-relaxed">
               Lazy Cloud is your autonomous Lovable site, fully managed. It runs your entire agent stack for you — monitoring every engine, applying updates automatically, managing your API keys at volume pricing, and fixing problems before you notice them. You paste the prompts once. We handle everything after.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
