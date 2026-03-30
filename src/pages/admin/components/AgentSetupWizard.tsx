@@ -351,6 +351,7 @@ export const AGENT_SETUP_FIELDS: Record<string, SetupField[]> = {
     { key: "intel_topics", label: "Intelligence Topics", type: "textarea", placeholder: "competitor launches, market trends, funding news…",
       instructions: { steps: ["What should the intel agent track?", "One topic per line or comma-separated", "Reports are generated weekly and can seed other agents"] } },
     competitorsField,
+  ],
   agents: [
     githubTokenField,
     githubRepoField,
