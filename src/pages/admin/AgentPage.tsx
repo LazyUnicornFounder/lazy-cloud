@@ -338,5 +338,3 @@ export function AgentRightSidebar({ slug }: { slug: string }) {
   );
 }
 
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
