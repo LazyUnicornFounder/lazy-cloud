@@ -17,7 +17,7 @@ import Navbar from "@/components/Navbar";
 import { useTrackVisit } from "@/hooks/useTrackVisit";
 
 const NEW_TITLE = "Launch your autonomous business on Lovable.";
-const NEW_DESCRIPTION = "Your site launches. Your waitlist fills. Your blog writes. Your store sells. Your newsletters send. Your pages rank. Your payments process. And so much more. All from one prompt — all on autopilot.";
+const NEW_DESCRIPTION = "Turn today's news into your next startup idea with Lazy Idea. Launch your website with Lazy Launch, and run it autonomously with Lazy Agents.";
 
 const rotatingWords = [
   "websites", "apps", "stores", "blogs", "podcasts", "streams",
