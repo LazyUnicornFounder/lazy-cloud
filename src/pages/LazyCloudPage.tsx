@@ -203,11 +203,15 @@ export default function LazyCloudPage() {
       <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
+            <span className="font-display text-[11px] tracking-[0.2em] uppercase font-bold text-foreground/40 mb-4 block">COMING SOON</span>
             <h1 className="font-display text-foreground" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-              Your autonomous Lovable site.<br />Fully managed.
+              Lazy Cloud
             </h1>
+            <div className="flex items-center gap-3 mt-4 mb-4">
+              <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-primary/30 text-primary">Lazy Platform</span>
+            </div>
             <p className="mt-6 font-body text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed">
-              Lazy Cloud runs your entire agent stack for you — monitoring every engine, applying updates automatically, managing your API keys at volume pricing, and fixing problems before you notice them. You paste the prompts once. We handle everything after.
+              Lazy Cloud is your autonomous Lovable site, fully managed. It runs your entire agent stack for you — monitoring every engine, applying updates automatically, managing your API keys at volume pricing, and fixing problems before you notice them. You paste the prompts once. We handle everything after.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
               <a href="#pricing" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity">
