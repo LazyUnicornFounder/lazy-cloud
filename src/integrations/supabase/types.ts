@@ -1537,6 +1537,27 @@ export type Database = {
           },
         ]
       }
+      watch_settings: {
+        Row: {
+          created_at: string
+          id: string
+          is_running: boolean
+          setup_complete: boolean
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_running?: boolean
+          setup_complete?: boolean
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_running?: boolean
+          setup_complete?: boolean
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
