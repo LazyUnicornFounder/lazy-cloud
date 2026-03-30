@@ -87,7 +87,7 @@ export default function AgentsPage() {
             Lazy Agents.
           </h1>
           <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
-            34 autonomous agents that run your entire Lovable business. One prompt each.
+            34 Lazy Agents that run your entire Lovable business. One prompt each.
           </p>
         </motion.div>
       </section>
