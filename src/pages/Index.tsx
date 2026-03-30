@@ -205,7 +205,7 @@ const Index = () => {
               </h1>
 
               <p className="mt-6 font-body text-base md:text-lg max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
-                Your site launches. Your waitlist fills. Your blog writes. Your store sells. Your newsletters send. Your pages rank. Your payments process. And so much more. All from one prompt — all on autopilot.
+                Turn today's news into your next startup idea with Lazy Idea. Launch your website with Lazy Launch, and run it autonomously with Lazy Agents.
               </p>
 
 
