@@ -13,6 +13,7 @@ import Index from "./pages/Index.tsx";
 
 // Lazy-load all other pages
 const AboutPage = lazy(() => import("./pages/AboutPage.tsx"));
+const AgentsPage = lazy(() => import("./pages/AgentsPage.tsx"));
 const Blog = lazy(() => import("./pages/Blog.tsx"));
 const BlogPost = lazy(() => import("./pages/BlogPost.tsx"));
 const CheckoutSuccess = lazy(() => import("./pages/CheckoutSuccess.tsx"));
