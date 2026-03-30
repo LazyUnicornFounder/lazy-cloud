@@ -100,6 +100,7 @@ const App = () => (
                 <Route index element={<AdminOverview />} />
                 <Route path=":agentSlug" element={<AgentPage />} />
                 <Route path="settings" element={<AdminSettingsPage />} />
+                <Route path="cloud-signups" element={<AdminCloudSignups />} />
               </Route>
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
