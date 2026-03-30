@@ -73,8 +73,14 @@ const LazyCloudPage = lazy(() => import("./pages/LazyCloudPage.tsx"));
 
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
 const AdminOverview = lazy(() => import("./pages/admin/AdminOverview"));
+const AdminContentPage = lazy(() => import("./pages/admin/AdminContentPage"));
+const AdminQueuePage = lazy(() => import("./pages/admin/AdminQueuePage"));
+const AdminAgentsPage = lazy(() => import("./pages/admin/AdminAgentsPage"));
+const AdminInstallsPage = lazy(() => import("./pages/admin/AdminInstallsPage"));
+const AdminErrorsPage = lazy(() => import("./pages/admin/AdminErrorsPage"));
+const AdminPerformancePage = lazy(() => import("./pages/admin/AdminPerformancePage"));
+const AdminVersionsPage = lazy(() => import("./pages/admin/AdminVersionsPage"));
 const AdminSettingsPage = lazy(() => import("./pages/admin/AdminSettingsPage"));
-const AdminCloudSignups = lazy(() => import("./pages/admin/AdminCloudSignups"));
 const AgentPage = lazy(() => import("./pages/admin/AgentPage"));
 
 const DocsLayout = lazy(() => import("./pages/docs/DocsLayout"));
@@ -118,9 +124,15 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/admin" element={<AdminLayout />}>
                   <Route index element={<AdminOverview />} />
-                  <Route path=":agentSlug" element={<AgentPage />} />
+                  <Route path="content" element={<AdminContentPage />} />
+                  <Route path="queue" element={<AdminQueuePage />} />
+                  <Route path="agents" element={<AdminAgentsPage />} />
+                  <Route path="installs" element={<AdminInstallsPage />} />
+                  <Route path="errors" element={<AdminErrorsPage />} />
+                  <Route path="performance" element={<AdminPerformancePage />} />
+                  <Route path="versions" element={<AdminVersionsPage />} />
                   <Route path="settings" element={<AdminSettingsPage />} />
-                  <Route path="cloud-signups" element={<AdminCloudSignups />} />
+                  <Route path=":agentSlug" element={<AgentPage />} />
                 </Route>
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
