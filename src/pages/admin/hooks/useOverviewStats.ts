@@ -35,19 +35,41 @@ export function useOverviewStats() {
       const errorCounts = await Promise.all(errorTables.map((t) => safeCount(t, undefined, todayIso)));
       const errorsToday = errorCounts.reduce((a, b) => a + b, 0);
 
-      // Copies today
-      const copiesToday = await (async () => {
-        try {
-          const { data } = await adminWrite({
-            table: "prompt_versions", operation: "select", match: {},
-          });
-          return 0;
-        } catch { return 0; }
-      })();
+      // Per-agent copy counts from analytics_events
+      const copiesByAgent: Record<string, number> = {};
+      try {
+        const pw = typeof sessionStorage !== "undefined" ? sessionStorage.getItem("admin_pw") || "" : "";
+        const { data: copyData } = await adminWrite({
+          table: "analytics_events",
+          operation: "select",
+          match: { event_name: "prompt_copied" },
+        });
+        if (Array.isArray(copyData)) {
+          for (const row of copyData) {
+            const product = (row.event_data as any)?.product || (row.page as string) || "unknown";
+            const key = product.replace(/^\/lazy-/, "").replace(/^lazy-/, "").replace(/\/$/, "");
+            copiesByAgent[key] = (copiesByAgent[key] || 0) + 1;
+          }
+        }
+      } catch {}
+
+      // Per-agent install counts from installs table
+      const installsByAgent: Record<string, number> = {};
+      try {
+        const { data: installData } = await supabase.from("installs").select("engine");
+        if (Array.isArray(installData)) {
+          for (const row of installData) {
+            const key = (row.engine || "unknown").replace(/^lazy-/, "");
+            installsByAgent[key] = (installsByAgent[key] || 0) + 1;
+          }
+        }
+      } catch {}
 
       return {
         postsToday: blogToday + seoToday + geoToday,
         errorsToday,
+        copiesByAgent,
+        installsByAgent,
       };
     },
     refetchInterval: 30000,

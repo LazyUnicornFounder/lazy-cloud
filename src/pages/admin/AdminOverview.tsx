@@ -107,8 +107,12 @@ export default function AdminOverview() {
         </div>
         <div style={{ flex: 1, fontSize: 12, color: "rgba(240,234,214,0.4)" }}>{agent.category}</div>
         <div style={{ flex: 1.8, fontSize: 13 }}>{activity()}</div>
-        <div style={{ flex: 1, fontSize: 12, color: "rgba(240,234,214,0.4)" }}>—</div>
-        <div style={{ flex: 1, fontSize: 12, color: "rgba(240,234,214,0.4)" }}>—</div>
+        <div style={{ flex: 0.7, fontSize: 12, textAlign: "center", color: (stats?.copiesByAgent?.[agent.key] || 0) > 0 ? "#c9a84c" : "rgba(240,234,214,0.4)" }}>
+          {stats?.copiesByAgent?.[agent.key] || 0}
+        </div>
+        <div style={{ flex: 0.7, fontSize: 12, textAlign: "center", color: (stats?.installsByAgent?.[agent.key] || 0) > 0 ? "#4ade80" : "rgba(240,234,214,0.4)" }}>
+          {stats?.installsByAgent?.[agent.key] || 0}
+        </div>
         <div style={{ flex: 1.4, fontSize: 12, color: "rgba(240,234,214,0.4)" }}>
           {state?.promptVersion ? `v${state.promptVersion}` : "—"}
         </div>
@@ -125,8 +129,8 @@ export default function AdminOverview() {
         <div style={{ flex: 1.2 }}>Status</div>
         <div style={{ flex: 1 }}>Category</div>
         <div style={{ flex: 1.8 }}>Activity</div>
-        <div style={{ flex: 1 }}>Last Run</div>
-        <div style={{ flex: 1 }}>Next Run</div>
+        <div style={{ flex: 0.7, textAlign: "center" }}>Copied</div>
+        <div style={{ flex: 0.7, textAlign: "center" }}>Installed</div>
         <div style={{ flex: 1.4 }}>Version</div>
       </div>
 
@@ -194,6 +198,18 @@ export function OverviewRightSidebar() {
         <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(240,234,214,0.4)" }}>Errors Today</div>
         <div style={{ fontSize: 18, fontWeight: 700, color: (stats?.errorsToday || 0) > 0 ? "#f87171" : "#f0ead6" }}>
           {stats?.errorsToday ?? 0}
+        </div>
+      </div>
+      <div className="mb-5">
+        <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(240,234,214,0.4)" }}>Total Copies</div>
+        <div style={{ fontSize: 18, fontWeight: 700, color: "#c9a84c" }}>
+          {stats?.copiesByAgent ? Object.values(stats.copiesByAgent).reduce((a, b) => a + b, 0) : "—"}
+        </div>
+      </div>
+      <div className="mb-5">
+        <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(240,234,214,0.4)" }}>Total Installs</div>
+        <div style={{ fontSize: 18, fontWeight: 700, color: "#4ade80" }}>
+          {stats?.installsByAgent ? Object.values(stats.installsByAgent).reduce((a, b) => a + b, 0) : "—"}
         </div>
       </div>
     </div>
