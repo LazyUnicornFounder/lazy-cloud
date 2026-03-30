@@ -279,12 +279,37 @@ const Index = () => {
         </section>
       </header>
 
-      {/* ── Lazy Launch Section ── */}
+      {/* ── Step 1: Lazy Idea ── */}
       <section className="relative z-10 border-t border-border">
         <div className="px-6 md:px-12 py-20 md:py-28 max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <p className="font-body text-[14px] tracking-[0.2em] uppercase mb-4" style={{ color: "#c8a961", opacity: 0.6 }}>
               Step 1
+            </p>
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
+              Find your next<br className="hidden md:inline" /> startup idea.
+            </h2>
+            <p className="mt-6 max-w-xl font-body text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
+              Lazy Idea turns today's breaking news into fresh startup ideas — generated daily, organized by category. Browse, search, and discover the idea worth building.
+            </p>
+            <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
+              <Link
+                to="/lazy-idea"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity"
+              >
+                Try Lazy Idea
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Step 2: Lazy Launch ── */}
+      <section className="relative z-10 border-t border-border">
+        <div className="px-6 md:px-12 py-20 md:py-28 max-w-4xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+            <p className="font-body text-[14px] tracking-[0.2em] uppercase mb-4" style={{ color: "#c8a961", opacity: 0.6 }}>
+              Step 2
             </p>
             <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
               Launch your Lovable site<br className="hidden md:inline" /> with one prompt.
@@ -304,62 +329,31 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── Lazy Cloud Section ── */}
+      {/* ── Step 3: Lazy Agents ── */}
       <section className="relative z-10 border-t border-border">
         <div className="px-6 md:px-12 py-20 md:py-28 max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <p className="font-body text-[14px] tracking-[0.2em] uppercase mb-4" style={{ color: "#c8a961", opacity: 0.6 }}>
-              Step 2
+              Step 3
             </p>
             <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-              Let Lazy Cloud run<br className="hidden md:inline" /> everything after.
+              34 Lazy Agents run your<br className="hidden md:inline" /> Lovable business.
+            </h2>
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em", marginTop: "0.1em" }}>
+              One prompt each.
             </h2>
             <p className="mt-6 max-w-xl font-body text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
-              Lazy Cloud manages your entire agent stack — automatic prompt updates, volume API pricing, 24/7 monitoring, daily backups, and breaking-change fixes. You paste the prompts once. We handle everything after.
+              Each agent is a self-contained prompt you paste into your Lovable project. It installs its own tables, edge functions, and UI — then runs itself autonomously.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/10 mt-10">
-              {[
-                { emoji: "🔄", label: "Auto updates" },
-                { emoji: "🔑", label: "Volume API keys" },
-                { emoji: "👁️", label: "24/7 monitoring" },
-                { emoji: "💾", label: "Daily backups" },
-              ].map((item) => (
-                <div key={item.label} className="border-b md:border-b-0 md:border-r last:border-r-0 last:border-b-0 border-white/10 p-4 text-center">
-                  <span className="text-xl block mb-1">{item.emoji}</span>
-                  <p className="font-body text-[11px] tracking-[0.12em] uppercase" style={{ color: "#f0ead6", opacity: 0.5 }}>{item.label}</p>
-                </div>
-              ))}
-            </div>
             <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
               <Link
-                to="/lazy-cloud"
+                to="/agents"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity"
               >
-                Explore Lazy Cloud
+                Explore Lazy Agents
               </Link>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Agents label */}
-      <section className="relative z-10">
-        <div className="px-6 md:px-12 pt-20 pb-12 max-w-4xl mx-auto">
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em" }}>
-            34 Lazy Agents run your<br className="hidden md:inline" /> Lovable business.
-          </h2>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f0ead6", lineHeight: 0.95, letterSpacing: "-0.01em", marginTop: "0.1em" }}>
-            One prompt each.
-          </h2>
-          <p className="mt-6 max-w-xl font-body text-base md:text-lg leading-relaxed" style={{ color: "#f0ead6", opacity: 0.5 }}>
-            Each agent is a self-contained prompt you paste into your Lovable project. It installs its own tables, edge functions, and UI — then runs itself autonomously.
-          </p>
-          <Link
-            to="/how-it-works"
-            className="inline-flex items-center gap-2 mt-8 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity"
-          >
-            Explore Lazy Agents
-          </Link>
         </div>
       </section>
 
