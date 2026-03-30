@@ -91,6 +91,7 @@ const LazyIdeaPage = () => {
           </div>
         </section>
 
+        <section className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Categories */}
           <div className="relative z-10 flex gap-2 overflow-x-auto justify-center mb-3 flex-wrap">
             {categories.map((cat) => (
