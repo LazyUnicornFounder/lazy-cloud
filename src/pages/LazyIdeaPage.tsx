@@ -45,12 +45,23 @@ const LazyIdeaPage = () => {
 
   const filteredIdeas = useMemo(() => {
     const allIdeas = Object.values(allByCategory).flat();
+    const hasSearch = searchQuery.trim().length > 0;
 
     let ideas = activeCategory !== "All"
       ? (allByCategory[activeCategory] || [])
-      : (searchQuery.trim() ? allIdeas : featured);
+      : (hasSearch ? allIdeas : featured);
 
-    if (searchQuery.trim()) {
+    // In "All" view without search, show a single card per category tag.
+    if (activeCategory === "All" && !hasSearch) {
+      const seenTags = new Set<string>();
+      ideas = ideas.filter((idea) => {
+        if (seenTags.has(idea.tag)) return false;
+        seenTags.add(idea.tag);
+        return true;
+      });
+    }
+
+    if (hasSearch) {
       const q = searchQuery.toLowerCase();
       ideas = ideas.filter(
         (idea) =>
