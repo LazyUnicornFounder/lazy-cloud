@@ -13,6 +13,7 @@ import Index from "./pages/Index.tsx";
 
 // Lazy-load all other pages
 const AboutPage = lazy(() => import("./pages/AboutPage.tsx"));
+const AgentsPage = lazy(() => import("./pages/AgentsPage.tsx"));
 const Blog = lazy(() => import("./pages/Blog.tsx"));
 const BlogPost = lazy(() => import("./pages/BlogPost.tsx"));
 const CheckoutSuccess = lazy(() => import("./pages/CheckoutSuccess.tsx"));
@@ -137,6 +138,7 @@ const App = () => (
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/agents" element={<AgentsPage />} />
                 <Route path="/lazy-blogger" element={<LazyBloggerPage />} />
                 <Route path="/checkout/success" element={<CheckoutSuccess />} />
                 <Route path="/lazy-seo" element={<LazySeoPage />} />
