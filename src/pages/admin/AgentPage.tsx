@@ -19,7 +19,7 @@ function SetupWizard({ agent, onComplete }: { agent: AgentConfig; onComplete: ()
   const [saving, setSaving] = useState(false);
 
   // Build steps dynamically from agent config
-  const steps: { key: string; label: string; description: string; type: "secret" | "setting"; placeholder?: string }[] = [];
+  const steps: { key: string; label: string; description: string; type: "secret" | "setting"; placeholder?: string; optional?: boolean }[] = [];
 
   // Step 1: Required secrets first
   if (agent.requiredSecrets) {
