@@ -53,7 +53,8 @@ export default function DocsLayout() {
                     height: 34, padding: "0 20px", fontSize: 14, cursor: "pointer",
                     color: active ? "#f0ead6" : "rgba(240,234,214,0.6)",
                     fontWeight: active ? 600 : 400,
-                    background: active ? "rgba(240,234,214,0.06)" : "transparent",
+                    background: active ? "rgba(234,88,12,0.1)" : "transparent",
+                    borderLeft: active ? "2px solid #ea580c" : "2px solid transparent",
                     margin: "0 8px", width: "calc(100% - 16px)", borderRadius: 4,
                   }}
                   onMouseEnter={(e) => { if (!active) (e.currentTarget.style.background = "rgba(240,234,214,0.03)"); }}

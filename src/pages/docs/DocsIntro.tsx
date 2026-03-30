@@ -19,20 +19,20 @@ export default function DocsIntro() {
       <div className="grid grid-cols-2 gap-4">
         <button onClick={() => navigate("/docs/quickstart")}
           className="group p-5 rounded-lg text-left transition-colors"
-          style={{ border: "1px solid rgba(240,234,214,0.1)", background: "rgba(240,234,214,0.02)" }}
-          onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(240,234,214,0.2)")}
-          onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(240,234,214,0.1)")}>
-          <div className="text-[15px] font-bold mb-1 flex items-center gap-2" style={{ color: "#f0ead6" }}>
+          style={{ border: "1px solid rgba(234,88,12,0.2)", background: "rgba(234,88,12,0.04)" }}
+          onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(234,88,12,0.4)")}
+          onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(234,88,12,0.2)")}>
+          <div className="text-[15px] font-bold mb-1 flex items-center gap-2" style={{ color: "#ea580c" }}>
             Install your first agent <ArrowRight size={14} />
           </div>
           <div style={{ fontSize: 13, color: "rgba(240,234,214,0.45)" }}>Get up and running in 2 minutes</div>
         </button>
         <button onClick={() => navigate("/docs/agents/content")}
           className="group p-5 rounded-lg text-left transition-colors"
-          style={{ border: "1px solid rgba(240,234,214,0.1)", background: "rgba(240,234,214,0.02)" }}
-          onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(240,234,214,0.2)")}
-          onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(240,234,214,0.1)")}>
-          <div className="text-[15px] font-bold mb-1 flex items-center gap-2" style={{ color: "#f0ead6" }}>
+          style={{ border: "1px solid rgba(234,88,12,0.2)", background: "rgba(234,88,12,0.04)" }}
+          onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(234,88,12,0.4)")}
+          onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(234,88,12,0.2)")}>
+          <div className="text-[15px] font-bold mb-1 flex items-center gap-2" style={{ color: "#ea580c" }}>
             Browse all agents <ArrowRight size={14} />
           </div>
           <div style={{ fontSize: 13, color: "rgba(240,234,214,0.45)" }}>See the full agent catalogue</div>
