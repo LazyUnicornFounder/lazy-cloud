@@ -572,7 +572,7 @@ export default function LazyRunPage() {
           <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ duration: 0.5 }}>
             <div className="flex items-center gap-3 mb-6">
               <span className="inline-block font-display text-[14px] font-bold tracking-[0.2em] uppercase px-3 py-1 border border-foreground/20 text-foreground/50">
-                INCLUDES ALL 35 AGENTS
+                INCLUDES ALL 34 AGENTS
               </span>
             </div>
           </motion.div>
@@ -581,7 +581,7 @@ export default function LazyRunPage() {
             variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.1 }}
             className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6"
           >
-            <span>All 35 agents. One prompt.</span>
+            <span>All 34 agents. One prompt.</span>
           </motion.h1>
           <div className="flex items-center gap-3 mt-4 mb-4">
             <span className="font-display text-[11px] tracking-[0.15em] uppercase font-bold px-3 py-1 border border-[#c8a961]/30 text-[#c8a961]">Lazy Unicorn</span>
