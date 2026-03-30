@@ -294,9 +294,6 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
             <a href="/pricing" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
               Pricing
             </a>
-            <a href="/how-it-works" className="font-body text-[13px] tracking-[0.1em] uppercase font-bold text-foreground/70 hover:text-foreground transition-colors">
-              How It Works
-            </a>
             <SimpleDropdown
               label="Resources"
               children={[
