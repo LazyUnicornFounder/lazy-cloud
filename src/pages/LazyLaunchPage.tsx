@@ -297,6 +297,14 @@ export default function LazyLaunchPage() {
 
         <div className="max-w-3xl mx-auto px-4 mt-12">
 
+          {/* How it works hint */}
+          <div className="flex items-center justify-center gap-2 mb-10 px-4 py-3 rounded-lg border border-primary/10 bg-primary/5 max-w-lg mx-auto">
+            <span className="text-primary/70 text-sm">✦</span>
+            <p className="font-body text-sm text-foreground/50 text-center">
+              Customise below — at the end you'll get a <span className="text-foreground/70 font-medium">ready-to-copy prompt</span> to paste straight into Lovable.
+            </p>
+          </div>
+
           {/* Step indicator */}
           <div className="flex items-center justify-center gap-1 mb-8">
             {STEPS.map((s, i) => (
