@@ -82,7 +82,7 @@ const CheckoutSuccess = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground px-6 py-20">
+    <main className="min-h-screen bg-background text-foreground px-6 py-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -170,7 +170,7 @@ const CheckoutSuccess = () => {
           </div>
         )}
       </motion.div>
-    </div>
+    </main>
   );
 };
 

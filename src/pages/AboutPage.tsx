@@ -17,6 +17,7 @@ export default function AboutPage() {
       />
       <Navbar />
 
+      <main>
       {/* Hero — full-bleed manifesto */}
       <section
         className="relative min-h-[90vh] flex items-center justify-center px-6 md:px-12"
@@ -337,6 +338,7 @@ export default function AboutPage() {
           ← Back to home
         </Link>
       </section>
+      </main>
     </>
   );
 }
