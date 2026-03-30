@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface NavbarProps {
-  activePage?: "home" | "blog" | "guide" | "autonomy";
+  activePage?: "home" | "blog" | "guide" | "autonomy" | "docs";
 }
 
 const XLogo = () => (
