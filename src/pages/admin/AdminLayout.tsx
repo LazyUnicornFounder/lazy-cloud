@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useAgentDetection, type AgentState } from "./hooks/useAgentDetection";
 import { AGENTS, CATEGORIES, CATEGORY_AGENTS, type AgentCategory } from "./agentRegistry";
+import { AdminRightSidebar } from "./components/AdminRightSidebar";
 
 interface AdminCtx {
   states: Record<string, AgentState>;
@@ -201,7 +202,7 @@ export default function AdminLayout() {
 
           {/* Right sidebar */}
           <aside className="fixed top-[52px] right-0 bottom-0 overflow-y-auto" style={{ width: 220, borderLeft: "1px solid rgba(240,234,214,0.08)", padding: "24px 20px" }}>
-            <Outlet context="right-sidebar" />
+            <AdminRightSidebar />
           </aside>
         </div>
       </div>
