@@ -340,6 +340,9 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
 
           {open && (
             <div className="mt-0 w-full bg-background border border-t-0 border-border px-5 py-4 flex flex-col gap-3 max-h-[80vh] overflow-y-auto">
+              <a href="/docs" onClick={() => setOpen(false)} className="font-body text-[13px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground transition-colors font-semibold py-1">
+                Docs
+              </a>
               <a href="/how-it-works" onClick={() => setOpen(false)} className="font-body text-[13px] tracking-[0.12em] uppercase text-foreground/50 hover:text-foreground transition-colors font-semibold py-1">
                 How It Works
               </a>
