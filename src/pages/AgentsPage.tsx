@@ -76,7 +76,7 @@ export default function AgentsPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SEO
-        title="All Agents — Lazy Unicorn"
+        title="Lazy Agents — Lazy Unicorn"
         description="Browse all 34 Lazy agents that run your Lovable business autonomously. Content, commerce, media, dev, and ops — one prompt each."
       />
       <Navbar />

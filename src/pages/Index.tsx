@@ -358,7 +358,7 @@ const Index = () => {
             to="/how-it-works"
             className="inline-flex items-center gap-2 mt-8 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity"
           >
-            Explore Agents
+            Explore Lazy Agents
           </Link>
         </div>
       </section>
