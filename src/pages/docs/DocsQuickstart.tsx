@@ -45,7 +45,7 @@ function Step({ id, n, title, children }: { id: string; n: number; title: string
   return (
     <div id={id} className="mb-8">
       <h2 className="text-[18px] font-bold mb-3 flex items-center gap-3" style={{ color: "#f0ead6" }}>
-        <span className="flex items-center justify-center w-7 h-7 rounded-full text-[12px] font-bold" style={{ background: "rgba(240,234,214,0.08)", color: "rgba(240,234,214,0.6)" }}>{n}</span>
+        <span className="flex items-center justify-center w-7 h-7 rounded-full text-[12px] font-bold" style={{ background: "rgba(234,88,12,0.15)", color: "#ea580c" }}>{n}</span>
         {title}
       </h2>
       <p className="leading-relaxed pl-10" style={{ fontSize: 15, color: "rgba(240,234,214,0.7)" }}>{children}</p>
