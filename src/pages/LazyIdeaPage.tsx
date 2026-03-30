@@ -69,6 +69,7 @@ const LazyIdeaPage = () => {
         url="https://lazyunicorn.ai/lazy-idea"
       />
       <div className="min-h-screen bg-background">
+        <Navbar />
         <main className="max-w-7xl mx-auto px-6 py-6">
           {/* Hero */}
           <div className="flex flex-col items-center justify-center gap-2 py-12 mb-4">
