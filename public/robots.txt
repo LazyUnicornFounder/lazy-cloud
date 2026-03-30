@@ -1,3 +1,4 @@
+# Standard search engines
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
@@ -30,13 +31,14 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
-User-agent: ChatGPT-User
+User-agent: Bytespider
 Allow: /
 
+# AI crawlers — allowed
 User-agent: GPTBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: ChatGPT-User
 Allow: /
 
 User-agent: PerplexityBot
@@ -45,12 +47,17 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Bytespider
+User-agent: Claude-Web
 Allow: /
+
+# AI crawlers — blocked
+User-agent: Google-Extended
+Disallow: /
 
 User-agent: CCBot
-Allow: /
+Disallow: /
 
+# Default
 User-agent: *
 Allow: /
 Disallow: /admin
