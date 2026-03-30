@@ -12,7 +12,6 @@ export interface SetupField {
   placeholder?: string;
   required?: boolean;
   options?: { value: string; label: string }[];
-  /** Step-by-step instructions shown beside the field */
   instructions?: { steps: string[]; link?: { url: string; label: string } };
 }
 
@@ -208,7 +207,6 @@ export default function AgentSetupWizard({ agent, open, onClose, onComplete }: P
 
   const set = (key: string, val: string) => setForm((p) => ({ ...p, [key]: val }));
 
-  // Find the instructions for the currently focused field
   const activeInstructions = fields.find((f) => f.key === activeField)?.instructions;
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -245,22 +243,20 @@ export default function AgentSetupWizard({ agent, open, onClose, onComplete }: P
   return (
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
       <DialogContent
-        className={`border-[#f0ead6]/10 bg-[#0a0a08] text-[#f0ead6] ${hasAnyInstructions ? "max-w-3xl" : "max-w-lg"}`}
-        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+        className={`border-border bg-background text-foreground ${hasAnyInstructions ? "max-w-3xl" : "max-w-lg"}`}
       >
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold tracking-[0.05em] uppercase text-[#f0ead6]">
+          <DialogTitle className="text-xl font-bold tracking-[0.05em] uppercase text-foreground">
             Set up {agent.label}
           </DialogTitle>
-          <p className="text-[13px] text-[#f0ead6]/50 mt-1">{agent.subtitle}</p>
+          <p className="text-[13px] text-foreground/50 mt-1">{agent.subtitle}</p>
         </DialogHeader>
 
         <div className={`mt-2 ${hasAnyInstructions ? "grid grid-cols-[1fr_260px] gap-6" : ""}`}>
-          {/* Left — form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             {fields.map((field) => (
               <div key={field.key}>
-                <label className="text-[11px] font-bold tracking-[0.15em] uppercase text-[#f0ead6]/50 block mb-1.5">
+                <label className="text-[11px] font-bold tracking-[0.15em] uppercase text-muted-foreground block mb-1.5">
                   {field.label}{field.required && " *"}
                 </label>
 
@@ -269,10 +265,10 @@ export default function AgentSetupWizard({ agent, open, onClose, onComplete }: P
                     value={form[field.key] || ""}
                     onChange={(e) => set(field.key, e.target.value)}
                     onFocus={() => setActiveField(field.key)}
-                    className="w-full bg-transparent border border-[#f0ead6]/15 text-[#f0ead6] text-[13px] px-3 py-2.5 focus:outline-none focus:border-[#c9a84c]/50 transition-colors"
+                    className="w-full bg-transparent border border-border text-foreground text-[13px] px-3 py-2.5 focus:outline-none focus:border-primary/50 transition-colors"
                   >
                     {field.options.map((o) => (
-                      <option key={o.value} value={o.value} className="bg-[#0a0a08]">{o.label}</option>
+                      <option key={o.value} value={o.value} className="bg-background">{o.label}</option>
                     ))}
                   </select>
                 ) : field.type === "textarea" ? (
@@ -282,7 +278,7 @@ export default function AgentSetupWizard({ agent, open, onClose, onComplete }: P
                     onFocus={() => setActiveField(field.key)}
                     placeholder={field.placeholder}
                     rows={3}
-                    className="w-full bg-transparent border border-[#f0ead6]/15 text-[#f0ead6] text-[13px] px-3 py-2.5 placeholder:text-[#f0ead6]/25 focus:outline-none focus:border-[#c9a84c]/50 transition-colors resize-none"
+                    className="w-full bg-transparent border border-border text-foreground text-[13px] px-3 py-2.5 placeholder:text-foreground/25 focus:outline-none focus:border-primary/50 transition-colors resize-none"
                   />
                 ) : (
                   <input
@@ -291,7 +287,7 @@ export default function AgentSetupWizard({ agent, open, onClose, onComplete }: P
                     onChange={(e) => set(field.key, e.target.value)}
                     onFocus={() => setActiveField(field.key)}
                     placeholder={field.placeholder}
-                    className="w-full bg-transparent border border-[#f0ead6]/15 text-[#f0ead6] text-[13px] px-3 py-2.5 placeholder:text-[#f0ead6]/25 focus:outline-none focus:border-[#c9a84c]/50 transition-colors"
+                    className="w-full bg-transparent border border-border text-foreground text-[13px] px-3 py-2.5 placeholder:text-foreground/25 focus:outline-none focus:border-primary/50 transition-colors"
                   />
                 )}
               </div>
@@ -301,7 +297,7 @@ export default function AgentSetupWizard({ agent, open, onClose, onComplete }: P
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 py-3 bg-[#c9a84c] text-[#0a0a08] text-[12px] font-bold tracking-[0.1em] uppercase hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="flex-1 py-3 bg-primary text-primary-foreground text-[12px] font-bold tracking-[0.1em] uppercase hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -314,25 +310,24 @@ export default function AgentSetupWizard({ agent, open, onClose, onComplete }: P
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-3 border border-[#f0ead6]/15 text-[#f0ead6]/50 text-[12px] font-bold tracking-[0.1em] uppercase hover:text-[#f0ead6] transition-colors"
+                className="px-4 py-3 border border-border text-foreground/50 text-[12px] font-bold tracking-[0.1em] uppercase hover:text-foreground transition-colors"
               >
                 Cancel
               </button>
             </div>
           </form>
 
-          {/* Right — contextual instructions */}
           {hasAnyInstructions && (
-            <div className="border-l border-[#f0ead6]/8 pl-5 pt-1">
+            <div className="border-l border-border pl-5 pt-1">
               {activeInstructions ? (
                 <div>
-                  <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#c9a84c] mb-3">
+                  <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-3">
                     How to get this
                   </p>
                   <ol className="space-y-2">
                     {activeInstructions.steps.map((step, i) => (
-                      <li key={i} className="flex gap-2 text-[12px] text-[#f0ead6]/60 leading-relaxed">
-                        <span className="text-[#c9a84c]/60 font-bold shrink-0">{i + 1}.</span>
+                      <li key={i} className="flex gap-2 text-[12px] text-foreground/60 leading-relaxed">
+                        <span className="text-primary/60 font-bold shrink-0">{i + 1}.</span>
                         <span>{step}</span>
                       </li>
                     ))}
@@ -342,7 +337,7 @@ export default function AgentSetupWizard({ agent, open, onClose, onComplete }: P
                       href={activeInstructions.link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 mt-4 px-3 py-2 text-[11px] font-bold tracking-[0.05em] text-[#c9a84c] border border-[#c9a84c]/30 hover:bg-[#c9a84c]/10 transition-colors"
+                      className="inline-flex items-center gap-1.5 mt-4 px-3 py-2 text-[11px] font-bold tracking-[0.05em] text-primary border border-primary/30 hover:bg-primary/10 transition-colors"
                     >
                       <ExternalLink size={11} />
                       {activeInstructions.link.label}
@@ -350,7 +345,7 @@ export default function AgentSetupWizard({ agent, open, onClose, onComplete }: P
                   )}
                 </div>
               ) : (
-                <p className="text-[12px] text-[#f0ead6]/20 italic">
+                <p className="text-[12px] text-muted-foreground italic">
                   Click a field for setup instructions
                 </p>
               )}
