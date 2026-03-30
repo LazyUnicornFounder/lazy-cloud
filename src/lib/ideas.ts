@@ -23,20 +23,37 @@ function getAmmanDate(): string {
   return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Amman" });
 }
 
+function addDays(dateStr: string, days: number): string {
+  const d = new Date(dateStr + "T12:00:00");
+  d.setDate(d.getDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+
 export async function fetchIdeasForDate(date?: string): Promise<{
   featured: IdeaEntry[];
   all: Record<string, IdeaEntry[]>;
 }> {
   const targetDate = date || getAmmanDate();
 
-  const { data, error } = await breakingMuseClient
+  let { data, error } = await breakingMuseClient
     .from("daily_ideas")
     .select("*")
     .eq("date", targetDate)
     .order("is_featured", { ascending: false })
     .order("tag");
 
-  console.log("[BreakingMuse] date:", targetDate, "data:", data, "error:", error);
+  // Fallback to yesterday if today returns empty
+  if (!error && (!data || data.length === 0)) {
+    const yesterday = addDays(targetDate, -1);
+    const fallback = await breakingMuseClient
+      .from("daily_ideas")
+      .select("*")
+      .eq("date", yesterday)
+      .order("is_featured", { ascending: false })
+      .order("tag");
+    data = fallback.data;
+    error = fallback.error;
+  }
 
   if (error) {
     console.error("Error fetching ideas:", error);
