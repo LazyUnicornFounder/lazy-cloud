@@ -93,7 +93,7 @@ const SeoBlogPost = () => {
           <ProductPromoBanner excludeProduct="seo" glass={false} />
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
