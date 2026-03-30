@@ -386,14 +386,6 @@ export const AGENTS: AgentConfig[] = [
     ],
     stats: [],
   },
-  {
-    key: "agents", slug: "agents", label: "Agents", category: "Intelligence",
-    settingsTable: "agent_settings", runField: "is_running", errorsTable: "agent_errors",
-    subtitle: "Meta-agent orchestrator",
-    actions: [{ label: "RUN ALL NOW", fn: "agents-run-all", primary: true }],
-    stats: [],
-    requiredSecrets: [{ name: "GITHUB_TOKEN" }, { name: "GITHUB_REPO" }],
-  },
 ];
 
 export function getAgentBySlug(slug: string): AgentConfig | undefined {

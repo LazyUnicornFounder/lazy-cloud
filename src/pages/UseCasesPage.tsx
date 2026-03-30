@@ -514,7 +514,7 @@ const integrations: Integration[] = [
   {
     name: "Anthropic (Ops Agents)",
     category: "Lazy Ops",
-    description: "Lazy Agents use Claude to reason about errors, performance data, and content strategy — powering autonomous decisions.",
+    description: "Ops agents use Claude to reason about errors, performance data, and content strategy — powering autonomous decisions.",
     unlocks: [
       "Lazy Watch diagnoses root causes from error logs using Claude.",
       "Lazy Fix analyses performance trends and writes precise prompt edits.",

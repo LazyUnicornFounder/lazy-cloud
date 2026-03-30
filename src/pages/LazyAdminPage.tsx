@@ -39,7 +39,7 @@ const agentGroups = [
   { label: "Commerce", color: "text-emerald-400", agent: ["Store", "Drop", "Print", "Pay", "Mail", "SMS", "Churn"] },
   { label: "Media", color: "text-blue-400", agent: ["Voice", "Stream", "YouTube"] },
   { label: "Dev", color: "text-purple-400", agent: ["Code", "GitLab", "Linear", "Contentful", "Design", "Auth", "Granola"] },
-  { label: "Ops", color: "text-foreground/50", agent: ["Alert", "Telegram", "Supabase", "Security", "Watch", "Fix", "Build", "Intel", "Agents"] },
+  { label: "Ops", color: "text-foreground/50", agent: ["Alert", "Telegram", "Supabase", "Security", "Watch", "Fix", "Build", "Intel"] },
 ];
 
 const faqs = [
