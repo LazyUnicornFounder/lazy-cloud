@@ -564,6 +564,7 @@ export default function LazyRunPage() {
         url="/lazy-run"
       />
       <Navbar />
+      <main>
 
       {/* Hero */}
       <section className="pt-32 md:pt-44 pb-20 md:pb-28 px-6">
@@ -725,6 +726,7 @@ export default function LazyRunPage() {
           Lazy Unicorn — Autonomous agents for Lovable
         </p>
       </footer>
+      </main>
     </div>
   );
 }

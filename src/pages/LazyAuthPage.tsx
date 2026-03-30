@@ -151,6 +151,7 @@ export default function LazyAuthPage() {
         howToName="How to install Lazy Auth"
       />
       <Navbar />
+      <main>
 
       {/* Hero */}
       <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
@@ -285,6 +286,7 @@ export default function LazyAuthPage() {
           Lazy Unicorn — Autonomous growth agents for Lovable
         </p>
       </footer>
+      </main>
     </div>
   );
 }

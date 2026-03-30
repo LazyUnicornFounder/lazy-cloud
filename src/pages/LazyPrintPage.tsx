@@ -69,6 +69,7 @@ export default function LazyPrintPage() {
         keywords="print on demand Lovable, Printful integration, autonomous merch store, custom merchandise automation"
       />
       <Navbar />
+      <main>
 
       {/* Hero */}
       <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
@@ -210,6 +211,7 @@ export default function LazyPrintPage() {
           </p>
         </div>
       </section>
+      </main>
     </div>
   );
 }

@@ -198,6 +198,7 @@ export default function LazyCloudPage() {
         url="/lazy-cloud"
       />
       <Navbar />
+      <main>
 
       {/* ── Hero ── */}
       <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
@@ -455,6 +456,7 @@ export default function LazyCloudPage() {
           <p className="font-body text-[11px] text-muted-foreground/50 mt-4">No setup fee. No agent limit. Your data is always yours.</p>
         </motion.div>
       </section>
+      </main>
     </div>
   );
 }

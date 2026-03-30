@@ -16,6 +16,7 @@ const BlogPost = () => {
     return (
       <div className="min-h-screen bg-background text-foreground">
         <Navbar activePage="blog" />
+      <main>
         <div className="pt-32 px-4 sm:px-8 md:px-12 pb-20">
           <div className="max-w-2xl border border-border bg-card px-8 py-10 animate-pulse space-y-4">
             <div className="h-4 w-24 bg-muted rounded" />
@@ -140,6 +141,7 @@ const BlogPost = () => {
       <footer className="px-8 md:px-12 py-8 border-t border-border">
         <span className="font-body text-[13px] tracking-[0.2em] uppercase text-foreground/55">Lazy Unicorn © 2026</span>
       </footer>
+      </main>
     </div>
   );
 };

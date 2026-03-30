@@ -291,6 +291,7 @@ const LazyGitHubPage = () => {
         keywords="GitHub changelog automation, release notes generator, developer blog, commit to content, autonomous documentation, Lovable, Lazy GitHub"
       />
       <Navbar />
+      <main>
 
       {/* Hero */}
       <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
@@ -433,6 +434,7 @@ const LazyGitHubPage = () => {
           </p>
         </div>
       </section>
+      </main>
     </div>
   );
 };
