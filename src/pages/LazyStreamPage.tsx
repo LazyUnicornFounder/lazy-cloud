@@ -202,7 +202,7 @@ const LazyStreamPage = () => {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Stream — Autonomous Stream Content"
-        description="One prompt turns every Twitch stream into a recap article, SEO post, GEO citation page, and highlights reel — automatically."
+        description="Turn every Twitch stream into a recap, SEO post, citation page, and highlights reel automatically. One prompt installs the full content pipeline."
         url="/lazy-stream"
         keywords="Twitch content automation, stream to blog, VOD transcription, Twitch SEO, autonomous content, Lovable, Lazy Stream"
       />

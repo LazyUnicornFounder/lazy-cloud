@@ -89,7 +89,7 @@ export default function LazyDesignPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Design — Autonomous UI Upgrades"
-        description="One prompt upgrades your Lovable site with pre-built 21st.dev components — hero, navigation, testimonials, and more — matched to your brand automatically."
+        description="Upgrade your Lovable site with pre-built components matched to your brand. Hero sections, navigation, testimonials, and more — installed in one prompt."
         url="/lazy-design"
         keywords="autonomous design, 21st.dev integration, Lovable design agent, UI component upgrades, design automation"
         faq={faqs.map(f => ({ question: f.q, answer: f.a }))}

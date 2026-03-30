@@ -114,7 +114,7 @@ const LazyBloggerPage = () => {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Blogger — Autonomous Blog Posts"
-        description="One prompt installs an autonomous blog publishing agent inside your Lovable project. Up to 32 SEO posts a day, zero effort."
+        description="Install an autonomous blog agent in your Lovable project with one prompt. Publishes up to 32 SEO-optimised posts per day with zero manual effort."
         url="/lazy-blogger"
       />
       <Navbar />

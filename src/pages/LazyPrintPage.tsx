@@ -64,7 +64,7 @@ export default function LazyPrintPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Print — Autonomous Print-on-Demand"
-        description="Upload your design. Sell merch. Ship nothing. Connect Printful to your Lovable site and sell custom products globally."
+        description="Upload your design, sell custom merch, and ship nothing yourself. Connect Printful to your Lovable site and sell products worldwide on autopilot."
         url="/lazy-print"
         keywords="print on demand Lovable, Printful integration, autonomous merch store, custom merchandise automation"
       />

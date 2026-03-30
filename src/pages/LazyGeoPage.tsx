@@ -45,7 +45,7 @@ const LazyGeoPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy GEO — Autonomous AI Citations" description="Get your brand cited by ChatGPT, Claude, and Perplexity. Lazy GEO discovers AI queries, publishes citable content, and monitors your brand mentions — on autopilot." url="/lazy-geo" />
+      <SEO title="Lazy GEO — Autonomous AI Citations" description="Get cited by ChatGPT, Claude, and Perplexity. Lazy GEO discovers AI queries, publishes citable content, and tracks brand mentions." url="/lazy-geo" />
       <Navbar />
       <main className="relative z-10 pb-32">
         <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">

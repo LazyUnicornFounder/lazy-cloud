@@ -116,7 +116,7 @@ const PricingPage = () => {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Pricing — Autonomous Agent Plans"
-        description="Every agent is free to install. Copy the prompt, paste it into your Lovable project, and start growing autonomously."
+        description="Every Lazy agent is free to install. Copy the prompt, paste it into your Lovable project, and start growing your business autonomously today."
         url="/pricing"
         keywords="Lazy Unicorn pricing, autonomous agents pricing, Lovable tools pricing, free AI tools"
       />

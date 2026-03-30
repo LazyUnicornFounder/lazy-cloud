@@ -95,7 +95,7 @@ const LazyStreamDashboard = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Dashboard — Lazy Stream" description="Manage your autonomous Twitch content agent." url="/lazy-stream-dashboard" />
+      <SEO title="Dashboard — Lazy Stream" description="View and manage all content generated from your Twitch streams. Monitor recaps, SEO posts, citation pages, and highlights from one dashboard." url="/lazy-stream-dashboard" />
       <Navbar />
 
       <main className="pt-32 pb-20 px-6 md:px-12 max-w-5xl mx-auto">

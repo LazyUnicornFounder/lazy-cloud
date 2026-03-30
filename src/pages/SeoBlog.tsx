@@ -25,7 +25,7 @@ const SeoBlog = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="SEO Blog — Autonomous SEO Articles" description="SEO-optimised articles written autonomously by Lazy SEO." />
+      <SEO title="SEO Blog — Autonomous SEO Articles" description="SEO-optimised articles published autonomously by Lazy SEO. Each post targets a keyword gap and is designed to climb Google search rankings." />
       <div className="max-w-3xl mx-auto px-4 py-12 space-y-8">
         <div className="space-y-2">
           <h1 className="text-3xl font-bold tracking-tight">SEO Blog</h1>

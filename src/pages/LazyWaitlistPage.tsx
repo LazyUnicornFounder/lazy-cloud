@@ -68,7 +68,7 @@ export default function LazyWaitlistPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Waitlist — Pre-Launch Capture"
-        description="Capture emails with viral referral mechanics, automated welcome sequences, Slack notifications, and one-click launch day conversion. One prompt installs the entire engine."
+        description="Capture emails with viral referrals, automated welcomes, and Slack alerts. One prompt installs the full pre-launch waitlist engine in Lovable."
         url="/lazy-waitlist"
         keywords="waitlist, pre-launch, email capture, viral referral, Lovable agent, waitlist page"
       />

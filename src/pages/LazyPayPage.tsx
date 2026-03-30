@@ -331,7 +331,7 @@ export default function LazyPayPage() {
     <>
       <SEO
         title="Lazy Pay — Autonomous Stripe Payments"
-        description="One prompt installs Stripe payments, subscriptions, conversion optimisation, and abandoned checkout recovery into any Lovable project."
+        description="Install Stripe payments, subscriptions, and abandoned checkout recovery into any Lovable project. One prompt sets up the full payment stack."
       />
       <Navbar />
 

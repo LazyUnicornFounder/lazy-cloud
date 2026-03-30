@@ -57,7 +57,7 @@ export default function LazyVoiceSetup() {
 
   return (
     <>
-      <SEO title="Lazy Voice Setup" description="Configure Lazy Voice — autonomous audio narration for your Lovable blog." />
+      <SEO title="Lazy Voice Setup" description="Connect ElevenLabs and configure Lazy Voice. Choose your voice, set your podcast details, and start converting blog posts to audio episodes." />
       <Navbar />
       <main className="min-h-screen bg-background text-foreground pt-32 md:pt-44 pb-20 px-6">
         <div className="max-w-lg mx-auto">

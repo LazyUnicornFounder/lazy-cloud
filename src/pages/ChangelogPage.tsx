@@ -175,7 +175,7 @@ export default function ChangelogPage() {
 
   return (
     <>
-      <SEO title="Prompt Changelog" description="Every version of every Lazy prompt. What changed, when it changed, and how to upgrade." />
+      <SEO title="Prompt Changelog" description="Track every prompt update across all Lazy agents. See what changed, when it shipped, upgrade complexity, and step-by-step migration instructions." />
       <Navbar />
       <main className="min-h-screen bg-background text-foreground pt-32 pb-24 px-6">
         <div className="max-w-4xl mx-auto">

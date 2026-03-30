@@ -68,7 +68,7 @@ export default function LazyRepurposePage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Repurpose — Content Repurposing"
-        description="Every blog post becomes a Twitter thread, LinkedIn post, newsletter section, and video script — automatically every Sunday. One piece of content. Five formats. Zero extra writing."
+        description="Every blog post becomes a Twitter thread, LinkedIn post, newsletter, and video script — automatically. One piece of content, five formats."
         url="/lazy-repurpose"
         keywords="content repurposing, autonomous social media, Twitter thread generator, LinkedIn post generator, Lovable agent"
       />

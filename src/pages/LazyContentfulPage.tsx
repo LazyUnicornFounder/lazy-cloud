@@ -173,7 +173,7 @@ const LazyContentfulPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Contentful — Autonomous CMS Sync" description="Contentful is your CMS. Lazy Contentful fills it automatically with two-way content sync." url="/lazy-contentful" />
+      <SEO title="Lazy Contentful — Autonomous CMS Sync" description="Sync content between your Lovable site and Contentful CMS automatically. Lazy Contentful handles two-way publishing so your CMS stays current." url="/lazy-contentful" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}

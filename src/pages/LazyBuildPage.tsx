@@ -59,7 +59,7 @@ export default function LazyBuildPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Build — Autonomous Agent Writer" description="Describe a new agent in one paragraph. Claude writes the complete prompt, follows your SPEC rules, and opens a draft GitHub PR." url="/lazy-build" keywords="agent writer, autonomous prompt generation, Lovable prompt builder, Claude prompt writing" />
+      <SEO title="Lazy Build — Autonomous Agent Writer" description="Describe a new agent in one paragraph. Lazy Build writes the full prompt following your SPEC rules and opens a draft GitHub PR automatically." url="/lazy-build" keywords="agent writer, autonomous prompt generation, Lovable prompt builder, Claude prompt writing" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}

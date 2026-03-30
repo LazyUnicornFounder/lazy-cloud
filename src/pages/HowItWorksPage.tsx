@@ -89,7 +89,7 @@ export default function HowItWorksPage() {
     <>
       <SEO
         title="How It Works"
-        description="Every Lazy agent explained. See how autonomous content, commerce, code, messaging, and security agents work together to run your business."
+        description="See how autonomous content, commerce, dev, and security agents work together. Every Lazy agent explained with step-by-step installation guides."
         url="/how-it-works"
       />
       <Navbar />

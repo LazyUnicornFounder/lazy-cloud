@@ -17,7 +17,7 @@ const StreamHighlightsPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Stream Highlights — Lazy Stream" description="The best clips and highlights from every stream." url="/streams/highlights" />
+      <SEO title="Stream Highlights — Lazy Stream" description="Watch the best clips and highlights from Lazy Unicorn Twitch streams. See autonomous agents in action — building, publishing, and optimising live." url="/streams/highlights" />
       <Navbar />
 
       <main className="pt-32 pb-20 px-6 md:px-12 max-w-4xl mx-auto">

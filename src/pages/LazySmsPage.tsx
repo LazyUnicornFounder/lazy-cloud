@@ -276,7 +276,7 @@ export default function LazySmsPage() {
     <>
       <SEO
         title="Lazy SMS — Autonomous Text Campaigns"
-        description="One prompt installs Twilio SMS confirmations, drip sequences, abandoned checkout recovery, and two-way messaging into any Lovable project."
+        description="Add Twilio SMS confirmations, drip sequences, and abandoned checkout recovery to any Lovable project. One prompt installs the full SMS stack."
       />
       <Navbar />
 

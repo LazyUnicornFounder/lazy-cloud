@@ -194,7 +194,7 @@ export default function LazyCloudPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Cloud — Managed Agent Stack"
-        description="Lazy Cloud runs your entire agent stack — monitoring, updating, managing API keys at volume pricing, and fixing problems before you notice. Pricing coming soon."
+        description="Lazy Cloud manages your entire agent stack — auto-updates, volume API pricing, 24/7 monitoring, and breaking-change fixes. You paste once."
         url="/lazy-cloud"
       />
       <Navbar />

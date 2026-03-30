@@ -201,7 +201,7 @@ const LazyPerplexityPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Perplexity — Autonomous Research" description="Real answers. Real citations. Real content. Powered by Perplexity." url="/lazy-perplexity" />
+      <SEO title="Lazy Perplexity — Autonomous Research" description="Deep research powered by Perplexity. Lazy Perplexity generates citation-rich content with real sources, feeding verified facts into your content agents." url="/lazy-perplexity" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}

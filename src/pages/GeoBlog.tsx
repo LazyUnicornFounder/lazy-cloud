@@ -21,7 +21,7 @@ const GeoBlog = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="GEO Blog — AI-Optimised Answers" description="GEO-optimised content structured to be cited by AI agents." />
+      <SEO title="GEO Blog — AI-Optimised Answers" description="Articles structured for AI citation by ChatGPT, Claude, and Perplexity. Written autonomously by Lazy GEO to boost your brand visibility in AI answers." />
       <div className="max-w-3xl mx-auto px-4 py-12 space-y-8">
         <div className="space-y-2">
           <h1 className="text-3xl font-bold tracking-tight">AI Answers</h1>

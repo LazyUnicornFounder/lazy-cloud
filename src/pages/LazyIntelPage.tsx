@@ -60,7 +60,7 @@ export default function LazyIntelPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Intel — Autonomous Content Strategy" description="Every Monday Lazy Intel reads all your agent data and generates a weekly content strategy — adding SEO keywords and GEO queries to your queues automatically." url="/lazy-intel" keywords="content strategy, autonomous intelligence, weekly strategy brief, SEO keywords automation, GEO queries" />
+      <SEO title="Lazy Intel — Autonomous Content Strategy" description="Every Monday Lazy Intel reads your agent data and generates a weekly content strategy — adding SEO keywords and GEO queries automatically." url="/lazy-intel" keywords="content strategy, autonomous intelligence, weekly strategy brief, SEO keywords automation, GEO queries" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}

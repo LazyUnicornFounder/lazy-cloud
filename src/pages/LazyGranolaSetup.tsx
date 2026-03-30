@@ -97,7 +97,7 @@ export default function LazyGranolaSetup() {
 
   return (
     <>
-      <SEO title="Setup — Lazy Granola" description="Connect Granola to the Lazy Stack." />
+      <SEO title="Setup — Lazy Granola" description="Connect Granola to the Lazy Stack. Every meeting becomes blog posts, Linear issues, Slack summaries, and customer intelligence — fully automated." />
       <Navbar />
       <main className="min-h-screen pt-28 pb-20 px-6">
         <div className="max-w-xl mx-auto">

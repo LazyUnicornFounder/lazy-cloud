@@ -36,7 +36,7 @@ const StreamsPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Stream Recaps — Lazy Stream" description="Browse all stream recaps, SEO articles, and highlights." url="/streams" />
+      <SEO title="Stream Recaps — Lazy Stream" description="Browse stream recaps, SEO articles, and highlight reels from every Lazy Unicorn Twitch session. All content generated autonomously by Lazy Stream." url="/streams" />
       <Navbar />
 
       <main className="pt-32 pb-20 px-6 md:px-12 max-w-4xl mx-auto">

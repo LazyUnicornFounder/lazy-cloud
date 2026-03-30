@@ -30,7 +30,7 @@ const Blog = () => {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Blog — AI Agents & Autonomous Business"
-        description="Essays and insights on autonomous companies, AI agents, and the future of work."
+        description="Essays on autonomous capitalism, AI-powered business agents, and the future of work. Written by the founder of a company that builds itself."
         url="/blog"
         keywords="autonomous business blog, AI agents for business, autonomous company, solo founder blog"
         breadcrumbs={[

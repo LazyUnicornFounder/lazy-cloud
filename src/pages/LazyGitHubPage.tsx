@@ -286,7 +286,7 @@ const LazyGitHubPage = () => {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy GitHub — Autonomous Changelogs"
-        description="One prompt turns every GitHub commit into a changelog, release notes, and a developer blog post — automatically."
+        description="Turn every GitHub commit into a changelog entry, release notes, and a developer blog post automatically. One prompt installs the full pipeline."
         url="/lazy-github"
         keywords="GitHub changelog automation, release notes generator, developer blog, commit to content, autonomous documentation, Lovable, Lazy GitHub"
       />

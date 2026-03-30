@@ -187,7 +187,7 @@ const LazyLinearPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Linear — Autonomous Issue Content" description="Your Linear workspace is your product story. Lazy Linear tells it automatically." url="/lazy-linear" />
+      <SEO title="Lazy Linear — Autonomous Issue Content" description="Your Linear workspace tells your product story. Lazy Linear turns issues and cycles into changelogs, blog posts, and release notes automatically." url="/lazy-linear" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}

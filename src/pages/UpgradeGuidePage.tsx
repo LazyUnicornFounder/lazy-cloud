@@ -64,7 +64,7 @@ export default function UpgradeGuidePage() {
 
   return (
     <>
-      <SEO title="How to Upgrade Your Prompts" description="A practical guide to keeping your Lazy agents up to date without breaking your site." />
+      <SEO title="How to Upgrade Your Prompts" description="A practical guide to upgrading your Lazy prompts without breaking your site. Covers drop-in, setup-required, and breaking change upgrades." />
       <Navbar />
       <main className="min-h-screen bg-background text-foreground pt-32 pb-24 px-6">
         <div className="max-w-5xl mx-auto">

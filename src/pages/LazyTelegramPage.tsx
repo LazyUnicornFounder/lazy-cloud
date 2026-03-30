@@ -176,7 +176,7 @@ const LazyTelegramPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Telegram — Autonomous Alerts" description="Your autonomous business in your Telegram. Real-time alerts, daily briefings, and bot commands." url="/lazy-telegram" />
+      <SEO title="Lazy Telegram — Autonomous Alerts" description="Get real-time business alerts, daily briefings, and bot commands in Telegram. Lazy Telegram keeps you updated on every agent event instantly." url="/lazy-telegram" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}

@@ -186,7 +186,7 @@ const LazySupabasePage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Supabase — Autonomous DB Reports" description="Your Supabase database is full of stories. Lazy Supabase tells them automatically." url="/lazy-supabase" />
+      <SEO title="Lazy Supabase — Autonomous DB Reports" description="Your database is full of stories. Lazy Supabase turns table data into automated reports, growth dashboards, and published insights automatically." url="/lazy-supabase" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}

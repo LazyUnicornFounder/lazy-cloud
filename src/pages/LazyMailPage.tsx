@@ -89,7 +89,7 @@ export default function LazyMailPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Mail — Autonomous Email Flows"
-        description="One prompt adds subscriber capture, welcome sequences, and AI-written newsletters to your Lovable project. Powered by Resend."
+        description="Add subscriber capture, welcome sequences, and AI-written newsletters to your Lovable project with one prompt. Powered by Resend email API."
         url="/lazy-mail"
         keywords="autonomous email, Resend integration, Lovable email agent, newsletter automation, subscriber management"
       />
