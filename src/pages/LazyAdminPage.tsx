@@ -34,15 +34,16 @@ const features = [
 ];
 
 const agentGroups = [
-  { label: "Lazy Content", color: "text-[#c8a961]", agent: ["Blogger", "SEO", "GEO", "Crawl", "Perplexity", "Contentful"] },
-  { label: "Lazy Commerce", color: "text-emerald-400", agent: ["Store", "Drop", "Print", "Pay", "SMS", "Mail"] },
-  { label: "Lazy Media", color: "text-blue-400", agent: ["Voice", "Stream"] },
-  { label: "Lazy Dev", color: "text-purple-400", agent: ["GitHub", "GitLab", "Linear", "Design", "Auth"] },
-  { label: "Lazy Ops", color: "text-foreground/50", agent: ["Alert", "Telegram", "Supabase", "Security"] },
+  { label: "Platform", color: "text-[#c8a961]", agent: ["Launch", "Cloud", "Run", "Admin", "Waitlist"] },
+  { label: "Content", color: "text-[#c8a961]", agent: ["Blogger", "SEO", "GEO", "Crawl", "Perplexity", "Repurpose", "Trend"] },
+  { label: "Commerce", color: "text-emerald-400", agent: ["Store", "Drop", "Print", "Pay", "Mail", "SMS", "Churn"] },
+  { label: "Media", color: "text-blue-400", agent: ["Voice", "Stream", "YouTube"] },
+  { label: "Dev", color: "text-purple-400", agent: ["Code", "GitLab", "Linear", "Contentful", "Design", "Auth", "Granola"] },
+  { label: "Ops", color: "text-foreground/50", agent: ["Alert", "Telegram", "Supabase", "Security", "Watch", "Fix", "Build", "Intel", "Agents"] },
 ];
 
 const faqs = [
-  { q: "Do I need all the Lazy agents installed first?", a: "No. Lazy Admin works with any combination. Install one agent and Lazy Admin shows one panel. Install all twenty-five and it shows everything. It detects what is there." },
+  { q: "Do I need all the Lazy agents installed first?", a: "No. Lazy Admin works with any combination. Install one agent and Lazy Admin shows one panel. Install all thirty-five and it shows everything. It detects what is there." },
   { q: "Does it replace the individual setup pages?", a: "No. Each agent still has its own /lazy-[agent]-setup page for configuration. Lazy Admin is for monitoring and control, not initial setup." },
   { q: "Can I trigger agent runs from the dashboard?", a: "Yes. Every agent panel has a Run Now button that calls that agent's primary function immediately without leaving the dashboard." },
   { q: "Does it work if I do not use Lazy Run?", a: "Yes. Lazy Admin works independently of Lazy Run. Lazy Run provides the run_activity and run_performance tables that power some charts, but the dashboard detects and works without them." },
@@ -106,9 +107,9 @@ export default function LazyAdminPage() {
         <section className="py-20 px-6 border-t border-border">
           <div className="max-w-2xl mx-auto">
             <motion.div {...fade}>
-              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">Twenty-five agents. Twenty-five dashboards. Nobody has time for that.</h2>
+              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">Thirty-five agents. Thirty-five dashboards. Nobody has time for that.</h2>
               <p className="font-body text-foreground/50 leading-relaxed">
-                Every Lazy agent ships with its own setup page. That is intentional — each agent installs independently into your project. But checking twenty-five separate dashboards every morning is not autonomous. It is the opposite of lazy. Lazy Admin solves that by pulling everything into one place. One URL. One sidebar. One morning check.
+                Every Lazy agent ships with its own setup page. That is intentional — each agent installs independently into your project. But checking thirty-five separate dashboards every morning is not autonomous. It is the opposite of lazy. Lazy Admin solves that by pulling everything into one place. One URL. One sidebar. One morning check.
               </p>
             </motion.div>
           </div>
@@ -219,7 +220,7 @@ export default function LazyAdminPage() {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-6">Every agent. One dashboard. One minute a day.</h2>
             <p className="font-body text-foreground/50 mb-10 max-w-lg mx-auto">
-              You built an autonomous business. Lazy Admin makes sure you can check on it without spending your morning opening twenty tabs.
+              You built an autonomous business. Lazy Admin makes sure you can check on it without spending your morning opening thirty-five tabs.
             </p>
             <button
               onClick={handleCopy}
