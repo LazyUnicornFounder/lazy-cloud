@@ -217,11 +217,11 @@ const Index = () => {
                   Launch your Lovable website
                 </Link>
                 <Link
-                  to="/lazy-agents"
+                  to="/how-it-works"
                   className="inline-flex items-center gap-2 font-body text-[13px] tracking-[0.15em] uppercase px-6 py-2.5 font-semibold border border-border hover:text-foreground transition-colors"
                   style={{ color: "rgba(240,234,214,0.5)" }}
                 >
-                  Explore Agents
+                  How It Works
                 </Link>
               </div>
             </motion.div>
@@ -355,7 +355,7 @@ const Index = () => {
             Each agent is a self-contained prompt you paste into your Lovable project. It installs its own tables, edge functions, and UI — then runs itself autonomously.
           </p>
           <Link
-            to="/lazy-agents"
+            to="/how-it-works"
             className="inline-flex items-center gap-2 mt-8 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity"
           >
             Explore Agents

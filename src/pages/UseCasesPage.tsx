@@ -506,23 +506,23 @@ const integrations: Integration[] = [
       "Lazy Build commits a complete new agent prompt from a one-paragraph brief.",
       "All agent activity is tracked and auditable via your repo.",
     ],
-    agent: "Lazy Agents",
-    agentHref: "/lazy-agents",
+    agent: "Lazy Ops",
+    agentHref: "/how-it-works",
     icon: <Code size={20} />,
     note: "Requires GITHUB_TOKEN with repo scope",
   },
   {
     name: "Anthropic (Ops Agents)",
     category: "Lazy Ops",
-    description: "Lazy Agents use Claude to reason about errors, performance data, and content strategy — powering autonomous decisions.",
+    description: "Ops agents use Claude to reason about errors, performance data, and content strategy — powering autonomous decisions.",
     unlocks: [
       "Lazy Watch diagnoses root causes from error logs using Claude.",
       "Lazy Fix analyses performance trends and writes precise prompt edits.",
       "Lazy Intel generates weekly content strategy briefs from all your data.",
       "Lazy Build drafts complete agent prompts with database schemas and edge functions.",
     ],
-    agent: "Lazy Agents",
-    agentHref: "/lazy-agents",
+    agent: "Lazy Ops",
+    agentHref: "/how-it-works",
     icon: <Code size={20} />,
     note: "Uses Anthropic API — requires ANTHROPIC_API_KEY",
   },
@@ -662,7 +662,7 @@ export default function UseCasesPage() {
               <Link to="/lazy-run" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 hover:opacity-90 transition-opacity">
                 Install Lazy Run <ArrowRight size={14} />
               </Link>
-              <Link to="/lazy-agents" className="inline-flex items-center gap-2 border border-white/15 font-body text-sm font-semibold tracking-[0.1em] uppercase px-6 py-2.5 hover:border-white/30 transition-colors" style={{ color: "#f0ead6", opacity: 0.5 }}>
+              <Link to="/how-it-works" className="inline-flex items-center gap-2 border border-white/15 font-body text-sm font-semibold tracking-[0.1em] uppercase px-6 py-2.5 hover:border-white/30 transition-colors" style={{ color: "#f0ead6", opacity: 0.5 }}>
                 Browse all agents
               </Link>
             </div>
