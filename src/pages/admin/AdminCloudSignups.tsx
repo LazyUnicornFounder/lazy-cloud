@@ -7,10 +7,7 @@ export default function AdminCloudSignups() {
   const { data: signups, isLoading } = useQuery({
     queryKey: ["admin-cloud-signups"],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("early_access")
-        .select("*")
-        .order("created_at", { ascending: false });
+      const { data, error } = await supabase.from("early_access").select("*").order("created_at", { ascending: false });
       if (error) throw error;
       return data ?? [];
     },
@@ -26,70 +23,44 @@ export default function AdminCloudSignups() {
     byPlan[plan].push(s);
   }
 
-  const planColors: Record<string, string> = {
-    starter: "#4ade80",
-    growth: "#c9a84c",
-    agency: "#a78bfa",
-  };
+  const planColors: Record<string, string> = { starter: "var(--admin-success)", growth: "var(--admin-accent)", agency: "#8b5cf6" };
 
   return (
     <div>
-      <h1 className="text-[22px] font-bold mb-1" style={{ color: "#f0ead6" }}>
-        <Cloud size={20} className="inline mr-2 mb-0.5" />
-        Lazy Cloud Signups
+      <h1 className="text-2xl font-semibold tracking-tight mb-1" style={{ color: "var(--admin-text)" }}>
+        <Cloud size={18} className="inline mr-2 mb-0.5" />Cloud Signups
       </h1>
-      <p className="mb-6" style={{ fontSize: 13, color: "rgba(240,234,214,0.4)" }}>
-        People who signed up for Lazy Cloud from the marketing page.
-      </p>
+      <p className="text-sm mb-6" style={{ color: "var(--admin-text-tertiary)" }}>People who signed up from the marketing page.</p>
 
-      {/* Stats row */}
-      <div className="flex gap-4 mb-8">
+      <div className="flex gap-3 mb-8 flex-wrap">
         {[
-          { label: "Total Cloud", value: cloudSignups.length, icon: Users },
-          { label: "All Early Access", value: allSignups.length, icon: TrendingUp },
-          ...Object.entries(byPlan).map(([plan, list]) => ({
-            label: plan.charAt(0).toUpperCase() + plan.slice(1),
-            value: list.length,
-            icon: Cloud,
-            color: planColors[plan],
-          })),
+          { label: "Total Cloud", value: cloudSignups.length },
+          { label: "All Early Access", value: allSignups.length },
+          ...Object.entries(byPlan).map(([plan, list]) => ({ label: plan.charAt(0).toUpperCase() + plan.slice(1), value: list.length, color: planColors[plan] })),
         ].map((stat, i) => (
-          <div key={i} className="px-4 py-3 rounded-lg" style={{ background: "rgba(240,234,214,0.04)", border: "1px solid rgba(240,234,214,0.08)", minWidth: 120 }}>
-            <div className="text-[10px] uppercase tracking-widest mb-1" style={{ color: "rgba(240,234,214,0.4)" }}>{stat.label}</div>
-            <div className="text-[22px] font-bold" style={{ color: ("color" in stat && stat.color) || "#f0ead6" }}>{stat.value}</div>
+          <div key={i} className="px-4 py-3 rounded-lg min-w-[120px]" style={{ background: "var(--admin-bg-elevated)", border: "1px solid var(--admin-border)" }}>
+            <div className="text-xs mb-1" style={{ color: "var(--admin-text-tertiary)" }}>{stat.label}</div>
+            <div className="text-xl font-semibold tabular-nums" style={{ color: ("color" in stat && stat.color) || "var(--admin-text)" }}>{stat.value}</div>
           </div>
         ))}
       </div>
 
-      {/* Table */}
-      <div className="rounded-lg overflow-hidden" style={{ border: "1px solid rgba(240,234,214,0.08)" }}>
-        <div className="flex py-2.5 px-4" style={{ borderBottom: "1px solid rgba(240,234,214,0.1)", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(240,234,214,0.3)" }}>
-          <div style={{ flex: 2 }}>Email</div>
-          <div style={{ flex: 1 }}>Plan</div>
-          <div style={{ flex: 1 }}>Date</div>
+      <div className="rounded-lg overflow-hidden" style={{ border: "1px solid var(--admin-border)" }}>
+        <div className="grid grid-cols-[1fr_120px_120px] py-2.5 px-4 text-[11px] font-medium uppercase tracking-wider" style={{ borderBottom: "1px solid var(--admin-border-strong)", color: "var(--admin-text-tertiary)" }}>
+          <div>Email</div><div>Plan</div><div>Date</div>
         </div>
-
         {isLoading ? (
-          <div className="p-6 text-center" style={{ color: "rgba(240,234,214,0.4)", fontSize: 13 }}>Loading…</div>
+          <div className="p-8 text-center text-sm" style={{ color: "var(--admin-text-tertiary)" }}>Loading…</div>
         ) : cloudSignups.length === 0 ? (
-          <div className="p-6 text-center" style={{ color: "rgba(240,234,214,0.35)", fontSize: 13 }}>
-            No cloud signups yet. They'll appear here when people sign up from <span style={{ color: "#c9a84c" }}>/lazy-cloud</span>.
-          </div>
+          <div className="p-8 text-center text-sm" style={{ color: "var(--admin-text-tertiary)" }}>No cloud signups yet.</div>
         ) : (
           cloudSignups.map((s) => {
             const plan = s.source?.replace("lazy-cloud-", "") ?? "unknown";
             return (
-              <div key={s.id} className="flex items-center py-2.5 px-4" style={{ borderBottom: "1px solid rgba(240,234,214,0.04)", fontSize: 13 }}>
-                <div style={{ flex: 2, color: "#f0ead6" }}>{s.email}</div>
-                <div style={{ flex: 1 }}>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase"
-                    style={{ background: `${planColors[plan] ?? "#f0ead6"}20`, color: planColors[plan] ?? "rgba(240,234,214,0.5)" }}>
-                    {plan}
-                  </span>
-                </div>
-                <div style={{ flex: 1, color: "rgba(240,234,214,0.4)" }}>
-                  {format(new Date(s.created_at), "MMM d, yyyy")}
-                </div>
+              <div key={s.id} className="grid grid-cols-[1fr_120px_120px] items-center py-2.5 px-4 text-sm" style={{ borderBottom: "1px solid var(--admin-border)" }}>
+                <div style={{ color: "var(--admin-text)" }}>{s.email}</div>
+                <div><span className="text-[10px] font-medium px-1.5 py-0.5 rounded" style={{ background: `${planColors[plan] ?? "var(--admin-text)"}15`, color: planColors[plan] ?? "var(--admin-text-secondary)" }}>{plan}</span></div>
+                <div style={{ color: "var(--admin-text-tertiary)" }}>{format(new Date(s.created_at), "MMM d, yyyy")}</div>
               </div>
             );
           })

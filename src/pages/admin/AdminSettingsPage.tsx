@@ -20,12 +20,7 @@ export default function AdminSettingsPage() {
         if (siteUrl) data.site_url = siteUrl;
         if (brandName) data.brand_name = brandName;
         if (Object.keys(data).length > 0) {
-          await adminWrite({
-            table: a.settingsTable,
-            operation: "update",
-            data,
-            match: { id: states[a.key]?.settings?.id },
-          });
+          await adminWrite({ table: a.settingsTable, operation: "update", data, match: { id: states[a.key]?.settings?.id } });
         }
       } catch {}
     }
@@ -40,61 +35,49 @@ export default function AdminSettingsPage() {
   const handlePauseAll = async () => {
     for (const a of installed) {
       try {
-        await adminWrite({
-          table: a.settingsTable,
-          operation: "update",
-          data: { [a.runField]: false },
-          match: { id: states[a.key]?.settings?.id },
-        });
+        await adminWrite({ table: a.settingsTable, operation: "update", data: { [a.runField]: false }, match: { id: states[a.key]?.settings?.id } });
       } catch {}
     }
     toast.success("All engines paused");
     refetch();
   };
 
+  const inputStyle = { background: "var(--admin-bg-elevated)", border: "1px solid var(--admin-border-strong)", color: "var(--admin-text)" };
+
   return (
     <div>
-      <h1 className="text-[28px] font-bold mb-8" style={{ color: "#f0ead6" }}>Settings</h1>
+      <h1 className="text-2xl font-semibold tracking-tight mb-1" style={{ color: "var(--admin-text)" }}>Settings</h1>
+      <p className="text-sm mb-8" style={{ color: "var(--admin-text-tertiary)" }}>Global configuration for all engines.</p>
 
-      {/* Site settings */}
       <div className="mb-10">
-        <h3 className="mb-4" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(240,234,214,0.3)" }}>
-          SITE SETTINGS
-        </h3>
+        <h3 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: "var(--admin-text-tertiary)" }}>Site settings</h3>
         <div className="mb-4">
-          <label style={{ fontSize: 12, color: "rgba(240,234,214,0.5)", display: "block", marginBottom: 6 }}>Site URL</label>
-          <input value={siteUrl} onChange={(e) => setSiteUrl(e.target.value)}
-            placeholder="https://yourdomain.com"
-            className="w-full max-w-md px-3 py-2 rounded-md text-[13px] font-display"
-            style={{ background: "rgba(240,234,214,0.05)", border: "1px solid rgba(240,234,214,0.1)", color: "#f0ead6" }} />
+          <label className="text-sm block mb-1.5" style={{ color: "var(--admin-text-secondary)" }}>Site URL</label>
+          <input value={siteUrl} onChange={(e) => setSiteUrl(e.target.value)} placeholder="https://yourdomain.com"
+            className="w-full max-w-md px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-500/40" style={inputStyle} />
         </div>
         <div className="mb-6">
-          <label style={{ fontSize: 12, color: "rgba(240,234,214,0.5)", display: "block", marginBottom: 6 }}>Brand Name</label>
-          <input value={brandName} onChange={(e) => setBrandName(e.target.value)}
-            placeholder="Your Brand"
-            className="w-full max-w-md px-3 py-2 rounded-md text-[13px] font-display"
-            style={{ background: "rgba(240,234,214,0.05)", border: "1px solid rgba(240,234,214,0.1)", color: "#f0ead6" }} />
+          <label className="text-sm block mb-1.5" style={{ color: "var(--admin-text-secondary)" }}>Brand name</label>
+          <input value={brandName} onChange={(e) => setBrandName(e.target.value)} placeholder="Your Brand"
+            className="w-full max-w-md px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-500/40" style={inputStyle} />
         </div>
         <button onClick={handlePropagate} disabled={propagating}
-          className="px-5 py-2.5 rounded-md text-[12px] font-bold uppercase tracking-[0.08em] transition-opacity hover:opacity-90 flex items-center gap-2"
-          style={{ background: "#c9a84c", color: "#0a0a08" }}>
+          className="px-4 py-2 rounded-lg text-sm font-medium transition-all hover:brightness-110 flex items-center gap-2"
+          style={{ background: "var(--admin-accent)", color: "#fff" }}>
           {propagating && <Loader2 size={14} className="animate-spin" />}
-          PROPAGATE TO ALL ENGINES
+          Propagate to all engines
         </button>
       </div>
 
-      {/* Danger zone */}
-      <div className="mt-10 p-5 rounded-lg" style={{ border: "1px solid rgba(248,113,113,0.2)", background: "rgba(248,113,113,0.03)" }}>
-        <h3 className="mb-4" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#f87171" }}>
-          DANGER ZONE
-        </h3>
+      <div className="p-5 rounded-lg" style={{ border: "1px solid rgba(239,68,68,0.2)", background: "var(--admin-error-muted)" }}>
+        <h3 className="text-xs font-medium uppercase tracking-wider mb-3" style={{ color: "var(--admin-error)" }}>Danger zone</h3>
         <button onClick={handlePauseAll}
-          className="px-4 py-2 rounded-md text-[12px] font-bold uppercase tracking-[0.08em] transition-opacity hover:opacity-90"
-          style={{ background: "rgba(248,113,113,0.15)", color: "#f87171", border: "1px solid rgba(248,113,113,0.2)" }}>
-          PAUSE ALL ENGINES
+          className="px-4 py-2 rounded-lg text-sm font-medium transition-all hover:brightness-110"
+          style={{ background: "rgba(239,68,68,0.15)", color: "var(--admin-error)", border: "1px solid rgba(239,68,68,0.2)" }}>
+          Pause all engines
         </button>
-        <p className="mt-2" style={{ fontSize: 12, color: "rgba(240,234,214,0.4)" }}>
-          This will set is_running to false on every installed engine's settings table.
+        <p className="mt-2 text-xs" style={{ color: "var(--admin-text-tertiary)" }}>
+          This will set is_running to false on every installed engine.
         </p>
       </div>
     </div>
