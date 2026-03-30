@@ -255,7 +255,7 @@ export default function LazyVoicePage() {
   return (
     <>
       <SEO
-        title="Lazy Voice — Autonomous Audio Narration for Every Blog Post"
+        title="Lazy Voice — Autonomous Audio Narration"
         description="One prompt turns every blog post your Lovable site publishes into a narrated audio version automatically. Powered by ElevenLabs."
       />
       <Navbar />

@@ -67,7 +67,7 @@ export default function LazyAdminPage() {
 
   return (
     <>
-      <SEO title="Lazy Admin — One Dashboard for Every Agent" description="The unified control panel for your entire Lazy Stack. Paste one prompt. It detects every agent you have installed and shows everything in 60 seconds." />
+      <SEO title="Lazy Admin — Autonomous Ops Dashboard" description="The unified control panel for your entire Lazy Stack. Paste one prompt. It detects every agent you have installed and shows everything in 60 seconds." />
       <Navbar />
       <main className="min-h-screen bg-background text-foreground">
         {/* Hero */}

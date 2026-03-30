@@ -138,7 +138,7 @@ export default function LazyAuthPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Auth — Autonomous Authentication Agent for Lovable"
+        title="Lazy Auth — Autonomous Login Flows"
         description="One prompt installs Google Sign-In, email login, protected routes, role-based access, and user management into your Lovable project."
         url="/lazy-auth"
         faq={faqs.map(f => ({ question: f.q, answer: f.a }))}

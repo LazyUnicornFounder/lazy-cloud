@@ -88,7 +88,7 @@ const LazyCrawlPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Crawl — Autonomous Web Intelligence Agent for Lovable" description="Monitor competitors, extract trends, discover leads, and feed real web data into your content agents — all powered by Firecrawl." url="/lazy-crawl" />
+      <SEO title="Lazy Crawl — Autonomous Web Research" description="Monitor competitors, extract trends, discover leads, and feed real web data into your content agents — all powered by Firecrawl." url="/lazy-crawl" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}

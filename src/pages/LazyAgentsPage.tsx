@@ -98,7 +98,7 @@ export default function LazyAgentsPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="All 35 Agents — Autonomous Stack | Lazy Unicorn"
+        title="All 35 Autonomous Agents"
         description="Browse all 35 autonomous agents across content, commerce, media, dev, and ops — running inside your Lovable project."
         url="/lazy-agents"
         keywords="autonomous agents, Lovable agents, lazy unicorn agents, autonomous stack"

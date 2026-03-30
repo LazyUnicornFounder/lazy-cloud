@@ -67,7 +67,7 @@ export default function LazyFixPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Fix — Autonomous Prompt Improvement | Lazy Unicorn" description="Every Sunday Lazy Fix reads your agent performance, identifies underperformers, and opens GitHub PRs with targeted prompt improvements." url="/lazy-fix" keywords="prompt improvement, autonomous fixing, Lovable prompt optimization, self-improving prompts" />
+      <SEO title="Lazy Fix — Autonomous Prompt Improvement" description="Every Sunday Lazy Fix reads your agent performance, identifies underperformers, and opens GitHub PRs with targeted prompt improvements." url="/lazy-fix" keywords="prompt improvement, autonomous fixing, Lovable prompt optimization, self-improving prompts" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}

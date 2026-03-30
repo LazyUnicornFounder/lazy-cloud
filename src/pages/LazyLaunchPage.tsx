@@ -263,7 +263,7 @@ export default function LazyLaunchPage() {
   return (
     <>
       <SEO
-        title="Lazy Launch — Build Your Landing Page in 60 Seconds"
+        title="Lazy Launch — Landing Page in 60 Seconds"
         description="Describe your business, pick your style, select agents, and get a ready-to-paste prompt for Lovable."
       />
       <Navbar />
