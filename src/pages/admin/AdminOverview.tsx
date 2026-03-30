@@ -23,7 +23,7 @@ export default function AdminOverview() {
   const [activeCategory, setActiveCategory] = useState<FilterCategory>("All");
   const [runningAction, setRunningAction] = useState<string | null>(null);
   const [showAllNotSetUp, setShowAllNotSetUp] = useState(false);
-
+  const [setupAgent, setSetupAgent] = useState<AgentConfig | null>(null);
   const installedKeys = new Set(Object.entries(states).filter(([, s]) => s.installed).map(([k]) => k));
   const { data: stats } = useOverviewStats(installedKeys.size > 0);
   const { data: errors = {} } = useAgentErrors(installedKeys);
@@ -115,18 +115,18 @@ export default function AdminOverview() {
     }
     if (row.status === "needs-setup") {
       return (
-        <Link to={`/lazy-${row.agent.slug}-setup`}
+        <button onClick={() => setSetupAgent(row.agent)}
           className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#c9a84c] text-[#0a0a08] hover:opacity-90 transition-opacity">
           SET UP
-        </Link>
+        </button>
       );
     }
     if (row.status === "not-installed") {
       return (
-        <Link to={`/lazy-${row.agent.slug}`}
+        <button onClick={() => setSetupAgent(row.agent)}
           className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#c9a84c] text-[#0a0a08] hover:opacity-90 transition-opacity">
           SET UP
-        </Link>
+        </button>
       );
     }
     return (
