@@ -251,7 +251,7 @@ export default function AboutPage() {
               </p>
               <p className="font-body text-sm" style={{ color: "rgba(240,234,214,0.5)" }}>
                 → Explore{" "}
-                <Link to="/lazy-agents" className="underline hover:opacity-80 transition-opacity" style={{ color: "rgba(200,169,97,0.7)" }}>
+                <Link to="/how-it-works" className="underline hover:opacity-80 transition-opacity" style={{ color: "rgba(200,169,97,0.7)" }}>
                   all 35 autonomous agents
                 </Link>
               </p>

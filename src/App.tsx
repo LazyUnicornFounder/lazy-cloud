@@ -55,7 +55,7 @@ const LazyGranolaPage = lazy(() => import("./pages/LazyGranolaPage.tsx"));
 const LazyGranolaSetup = lazy(() => import("./pages/LazyGranolaSetup.tsx"));
 const LazyLaunchPage = lazy(() => import("./pages/LazyLaunchPage.tsx"));
 const LazyYouTubePage = lazy(() => import("./pages/LazyYouTubePage.tsx"));
-const LazyAgentsPage = lazy(() => import("./pages/LazyAgentsPage.tsx"));
+
 const LazyWatchPage = lazy(() => import("./pages/LazyWatchPage.tsx"));
 const LazyFixPage = lazy(() => import("./pages/LazyFixPage.tsx"));
 const LazyBuildPage = lazy(() => import("./pages/LazyBuildPage.tsx"));
@@ -157,7 +157,7 @@ const App = () => (
                 <Route path="/lazy-granola-setup" element={<LazyGranolaSetup />} />
                 <Route path="/lazy-youtube" element={<LazyYouTubePage />} />
                 <Route path="/lazy-launch" element={<LazyLaunchPage />} />
-                <Route path="/lazy-agents" element={<LazyAgentsPage />} />
+                
                 <Route path="/waitlist" element={<WaitlistPage />} />
                 <Route path="/lazy-waitlist" element={<LazyWaitlistPage />} />
                 <Route path="/lazy-watch" element={<LazyWatchPage />} />

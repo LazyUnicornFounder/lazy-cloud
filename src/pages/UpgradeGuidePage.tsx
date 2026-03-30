@@ -11,7 +11,7 @@ const sections = [
   { id: "breaking", title: "Breaking upgrades" },
   { id: "upgrading-lazy-run", title: "Upgrading Lazy Run" },
   { id: "upgrading-admin", title: "Upgrading the admin dashboard" },
-  { id: "upgrading-agents", title: "Upgrading Lazy Agents" },
+  { id: "upgrading-agents", title: "Upgrading Ops agents" },
   { id: "common-issues", title: "Common issues after upgrading" },
   { id: "staying-up-to-date", title: "Staying up to date" },
   { id: "getting-help", title: "Getting help" },
@@ -195,8 +195,8 @@ export default function UpgradeGuidePage() {
                 </div>
               </Section>
 
-              <Section id="upgrading-agents" title="Upgrading Lazy Agents">
-                <p>Lazy Agents (Watch, Fix, Build, Intel, Repurpose, Trend, and Churn) are upgraded the same way as other agents — copy the latest prompt and paste it into Lovable. Because these agents interact with your GitHub repo and AI models, pay attention to these specifics:</p>
+              <Section id="upgrading-agents" title="Upgrading Ops agents">
+                <p>Ops agents (Watch, Fix, Build, Intel, Repurpose, Trend, and Churn) are upgraded the same way as other agents — copy the latest prompt and paste it into Lovable. Because these agents interact with your GitHub repo and AI models, pay attention to these specifics:</p>
                 <ul className="list-disc pl-5 space-y-2">
                   <li><strong>GITHUB_TOKEN scope</strong> — newer agent versions may require additional GitHub token permissions (e.g. <code>issues:write</code> or <code>pull_requests:write</code>). Check the changelog for scope changes.</li>
                   <li><strong>Agent settings table</strong> — agent upgrades may add new columns to the <code>agent_settings</code> table. Lovable handles migrations automatically, but verify your settings are preserved after upgrading.</li>

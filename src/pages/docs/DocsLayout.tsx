@@ -111,7 +111,7 @@ function DocsRightSidebar() {
     "/docs/agents/commerce": ["Lazy Store", "Lazy Drop", "Lazy Print", "Lazy Pay", "Lazy Mail", "Lazy SMS", "Lazy Churn"],
     "/docs/agents/media": ["Lazy Voice", "Lazy Stream", "Lazy YouTube"],
     "/docs/agents/dev": ["Lazy Code", "Lazy GitLab", "Lazy Linear", "Lazy Contentful", "Lazy Design", "Lazy Auth", "Lazy Granola"],
-    "/docs/agents/ops": ["Lazy Alert", "Lazy Telegram", "Lazy Supabase", "Lazy Security", "Lazy Watch", "Lazy Fix", "Lazy Build", "Lazy Intel", "Lazy Repurpose", "Lazy Trend", "Lazy Churn", "Lazy Agents"],
+    "/docs/agents/ops": ["Lazy Alert", "Lazy Telegram", "Lazy Supabase", "Lazy Security", "Lazy Watch", "Lazy Fix", "Lazy Build", "Lazy Intel", "Lazy Repurpose", "Lazy Trend", "Lazy Churn"],
     "/docs/admin/overview": ["Three-column layout", "Agent detail page"],
     "/docs/admin/settings": ["Site settings", "API keys", "Weekly schedule", "Version status"],
   };
