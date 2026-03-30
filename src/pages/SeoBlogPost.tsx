@@ -26,8 +26,8 @@ const SeoBlogPost = () => {
     fetchPost();
   }, [slug]);
 
-  if (loading) return <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground">Loading…</div>;
-  if (!post) return <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground">Post not found.</div>;
+  if (loading) return <main className="min-h-screen bg-background flex items-center justify-center text-muted-foreground">Loading…</div>;
+  if (!post) return <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground">Post not found.</main>;
 
   // Simple markdown to HTML converter for body
   const renderMarkdown = (md: string) => {

@@ -21,8 +21,8 @@ const GeoBlogPost = () => {
     fetchPost();
   }, [slug]);
 
-  if (loading) return <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground">Loading…</div>;
-  if (!post) return <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground">Post not found.</div>;
+  if (loading) return <main className="min-h-screen bg-background flex items-center justify-center text-muted-foreground">Loading…</div>;
+  if (!post) return <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground">Post not found.</main>;
 
   const renderMarkdown = (md: string) => {
     return md

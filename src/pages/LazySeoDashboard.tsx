@@ -65,7 +65,7 @@ const LazySeoD = () => {
     return <Minus className="w-4 h-4 text-muted-foreground" />;
   };
 
-  if (loading) return <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground">Loading…</div>;
+  if (loading) return <main className="min-h-screen bg-background flex items-center justify-center text-muted-foreground">Loading…</div>;
 
   return (
     <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
