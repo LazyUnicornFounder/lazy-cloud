@@ -1,0 +1,109 @@
+import { useState } from "react";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
+import { adminWrite } from "@/lib/adminWrite";
+import { useAdminContext } from "./AdminLayout";
+import { AGENTS } from "./agentRegistry";
+
+export default function AdminSettingsPage() {
+  const { states, refetch } = useAdminContext();
+  const [siteUrl, setSiteUrl] = useState("");
+  const [brandName, setBrandName] = useState("");
+  const [propagating, setPropagating] = useState(false);
+
+  const handlePropagate = async () => {
+    setPropagating(true);
+    const installed = AGENTS.filter((a) => states[a.key]?.installed && states[a.key]?.setupComplete);
+    for (const a of installed) {
+      try {
+        const data: Record<string, any> = {};
+        if (siteUrl) data.site_url = siteUrl;
+        if (brandName) data.brand_name = brandName;
+        if (Object.keys(data).length > 0) {
+          await adminWrite({
+            table: a.settingsTable,
+            operation: "update",
+            data,
+            match: { id: states[a.key]?.settings?.id },
+          });
+        }
+      } catch {}
+    }
+    toast.success("Settings propagated to all agents");
+    setPropagating(false);
+    refetch();
+  };
+
+  return (
+    <div>
+      <h1 className="text-[28px] font-bold mb-8" style={{ color: "#f0ead6" }}>Settings</h1>
+
+      {/* Site settings */}
+      <div className="mb-10">
+        <h3 className="mb-4" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(240,234,214,0.3)" }}>
+          SITE SETTINGS
+        </h3>
+
+        <div className="mb-4">
+          <label style={{ fontSize: 12, color: "rgba(240,234,214,0.5)", display: "block", marginBottom: 6 }}>Site URL</label>
+          <input value={siteUrl} onChange={(e) => setSiteUrl(e.target.value)}
+            placeholder="https://yourdomain.com"
+            className="w-full max-w-md px-3 py-2 rounded-md text-[13px] font-display"
+            style={{ background: "rgba(240,234,214,0.05)", border: "1px solid rgba(240,234,214,0.1)", color: "#f0ead6" }}
+          />
+        </div>
+
+        <div className="mb-6">
+          <label style={{ fontSize: 12, color: "rgba(240,234,214,0.5)", display: "block", marginBottom: 6 }}>Brand Name</label>
+          <input value={brandName} onChange={(e) => setBrandName(e.target.value)}
+            placeholder="Your Brand"
+            className="w-full max-w-md px-3 py-2 rounded-md text-[13px] font-display"
+            style={{ background: "rgba(240,234,214,0.05)", border: "1px solid rgba(240,234,214,0.1)", color: "#f0ead6" }}
+          />
+        </div>
+
+        <button onClick={handlePropagate} disabled={propagating}
+          className="px-5 py-2.5 rounded-md text-[12px] font-bold uppercase tracking-[0.08em] transition-opacity hover:opacity-90 flex items-center gap-2"
+          style={{ background: "#c9a84c", color: "#0a0a08" }}>
+          {propagating && <Loader2 size={14} className="animate-spin" />}
+          PROPAGATE TO ALL AGENTS
+        </button>
+      </div>
+
+      {/* Version status */}
+      <div className="mb-10">
+        <h3 className="mb-4" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(240,234,214,0.3)" }}>
+          VERSION STATUS
+        </h3>
+        <div className="flex items-center py-2" style={{ borderBottom: "1px solid rgba(240,234,214,0.08)", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(240,234,214,0.3)" }}>
+          <div style={{ flex: 2 }}>Agent</div>
+          <div style={{ flex: 1 }}>Installed</div>
+          <div style={{ flex: 1 }}>Status</div>
+        </div>
+        {AGENTS.filter((a) => states[a.key]?.installed && states[a.key]?.setupComplete).map((a) => (
+          <div key={a.key} className="flex items-center py-2.5" style={{ borderBottom: "1px solid rgba(240,234,214,0.04)", fontSize: 13 }}>
+            <div style={{ flex: 2, color: "#f0ead6", fontWeight: 600 }}>{a.label}</div>
+            <div style={{ flex: 1, color: "rgba(240,234,214,0.5)" }}>{states[a.key]?.promptVersion ? `v${states[a.key].promptVersion}` : "—"}</div>
+            <div style={{ flex: 1 }}>
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase"
+                style={{ background: "rgba(74,222,128,0.1)", color: "#4ade80" }}>
+                UP TO DATE
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function SettingsRightSidebar() {
+  return (
+    <div>
+      <h3 className="mb-4" style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(240,234,214,0.3)" }}>
+        SETTINGS
+      </h3>
+      <p style={{ fontSize: 13, color: "rgba(240,234,214,0.4)" }}>Global configuration for all agents</p>
+    </div>
+  );
+}
