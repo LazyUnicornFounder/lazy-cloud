@@ -25,16 +25,46 @@ export default function AgentPage() {
 
   const state = states[agent.key];
 
+  const SETUP_ROUTES: Record<string, string> = {
+    seo: "/lazy-seo-setup",
+    voice: "/lazy-voice-setup",
+    stream: "/lazy-stream-setup",
+    granola: "/lazy-granola-setup",
+  };
+
   if (!state?.installed || !state?.setupComplete) {
+    const setupRoute = SETUP_ROUTES[agent.slug];
     return (
       <div className="py-16 text-center">
         <h2 className="text-xl font-semibold mb-2" style={{ color: "var(--admin-text)" }}>{agent.label} is not configured</h2>
-        <p className="text-sm mb-6" style={{ color: "var(--admin-text-tertiary)" }}>Complete setup to activate this agent.</p>
-        <button onClick={() => navigate(`/lazy-${agent.slug}-setup`)}
-          className="px-4 py-2 rounded-lg text-sm font-medium transition-all hover:brightness-110"
-          style={{ background: "var(--admin-accent)", color: "#fff" }}>
-          Set up {agent.label} →
-        </button>
+        <p className="text-sm mb-4" style={{ color: "var(--admin-text-tertiary)" }}>{agent.subtitle}</p>
+
+        {agent.requiredSecrets && agent.requiredSecrets.length > 0 && (
+          <div className="inline-block text-left mb-6 p-4 rounded-lg" style={{ background: "var(--admin-bg-elevated)", border: "1px solid var(--admin-border)" }}>
+            <p className="text-xs font-medium uppercase tracking-wider mb-2" style={{ color: "var(--admin-text-tertiary)" }}>Required to activate</p>
+            {agent.requiredSecrets.map((s) => (
+              <div key={s.name} className="flex items-center gap-2 mb-1">
+                <AlertTriangle size={12} style={{ color: "var(--admin-warning)" }} />
+                <span className="text-xs font-mono" style={{ color: "var(--admin-text-secondary)" }}>{s.name}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="flex gap-3 justify-center">
+          {setupRoute && (
+            <button onClick={() => navigate(setupRoute)}
+              className="px-4 py-2 rounded-lg text-sm font-medium transition-all hover:brightness-110"
+              style={{ background: "var(--admin-accent)", color: "#fff" }}>
+              Set up {agent.label} →
+            </button>
+          )}
+          {!setupRoute && (
+            <p className="text-xs" style={{ color: "var(--admin-text-tertiary)" }}>
+              This agent's settings table (<code className="font-mono">{agent.settingsTable}</code>) hasn't been created yet. Run the agent's setup or create the table manually.
+            </p>
+          )}
+        </div>
       </div>
     );
   }
