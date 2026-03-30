@@ -375,7 +375,7 @@ const LazyStorePage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Store — Autonomous E-Commerce Agent for Lovable"
+        title="Lazy Store — Autonomous E-Commerce"
         description="One prompt installs a self-running store into your Lovable project. Product discovery, AI listings, pricing, promotions, and conversion optimisation — automatically, forever."
         url="/lazy-store"
       />

@@ -273,7 +273,7 @@ export default function LazySecurityPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Security — Autonomous Security Monitoring for Lovable"
+        title="Lazy Security — Autonomous Pentesting"
         description="Autonomous security monitoring for Lovable. One prompt connects Aikido pentesting, vulnerability tracking, and audit-ready reports to your existing project."
         url="/lazy-security"
       />

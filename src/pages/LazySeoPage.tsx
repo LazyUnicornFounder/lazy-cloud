@@ -46,7 +46,7 @@ const LazySeoPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy SEO — Autonomous SEO Agent for Lovable" description="Set up once and watch your Google rankings climb. Lazy SEO analyses competitors, finds keyword gaps, and publishes SEO-optimised content on autopilot." url="/lazy-seo" />
+      <SEO title="Lazy SEO — Autonomous Search Rankings" description="Set up once and watch your Google rankings climb. Lazy SEO analyses competitors, finds keyword gaps, and publishes SEO-optimised content on autopilot." url="/lazy-seo" />
       <Navbar />
       <main className="relative z-10 pb-32">
         <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">

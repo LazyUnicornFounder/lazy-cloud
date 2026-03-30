@@ -323,7 +323,7 @@ export default function LazyAlertPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Alert — Real-Time Slack Alerts for Every Agent"
+        title="Lazy Alert — Autonomous Slack Alerts"
         description="One prompt connects your autonomous business to Slack. Payments, posts, citations, errors, and live events — delivered as Slack messages the moment they happen."
         url="/lazy-alert"
         keywords="Slack alerts, autonomous business notifications, Lovable Slack integration, real-time alerts, Lazy Alert"

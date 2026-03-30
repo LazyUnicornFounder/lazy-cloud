@@ -55,7 +55,7 @@ export default function LazyDropPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Drop — Autonomous Dropshipping Agent for Lovable"
+        title="Lazy Drop — Autonomous Dropshipping"
         description="800 million products. Zero manual work. Connect AutoDS to your Lovable store and automate product discovery, pricing, and fulfilment."
         url="/lazy-drop"
         keywords="autonomous dropshipping, AutoDS Lovable, dropshipping automation, AI dropshipping store"

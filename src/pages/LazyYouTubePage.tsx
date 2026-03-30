@@ -361,7 +361,7 @@ export default function LazyYouTubePage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy YouTube — Autonomous YouTube Content Agent | Lazy Unicorn"
+        title="Lazy YouTube — Autonomous Video Content"
         description="Every video you upload triggers five content pieces — a transcript, SEO article, GEO article, summary, and chapter markers. Published automatically."
         url="/lazy-youtube"
         keywords="YouTube content agent, autonomous YouTube, video to blog post, YouTube SEO, YouTube transcript, Lovable YouTube"

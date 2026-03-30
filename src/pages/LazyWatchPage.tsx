@@ -82,7 +82,7 @@ export default function LazyWatchPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy Watch — Autonomous Error Monitor | Lazy Unicorn" description="Monitors every Lazy agent error table hourly, diagnoses issues with Claude, and opens GitHub issues automatically." url="/lazy-watch" keywords="error monitoring, autonomous monitoring, Lovable error detection, GitHub issues automation" />
+      <SEO title="Lazy Watch — Autonomous Error Monitoring" description="Monitors every Lazy agent error table hourly, diagnoses issues with Claude, and opens GitHub issues automatically." url="/lazy-watch" keywords="error monitoring, autonomous monitoring, Lovable error detection, GitHub issues automation" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}

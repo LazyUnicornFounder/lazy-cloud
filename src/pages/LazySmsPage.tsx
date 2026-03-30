@@ -275,7 +275,7 @@ export default function LazySmsPage() {
   return (
     <>
       <SEO
-        title="Lazy SMS — Self-Improving Twilio SMS Agent for Lovable"
+        title="Lazy SMS — Autonomous Text Campaigns"
         description="One prompt installs Twilio SMS confirmations, drip sequences, abandoned checkout recovery, and two-way messaging into any Lovable project."
       />
       <Navbar />

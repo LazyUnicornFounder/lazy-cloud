@@ -88,7 +88,7 @@ export default function HowItWorksPage() {
   return (
     <>
       <SEO
-        title="How It Works — Lazy Unicorn"
+        title="How It Works"
         description="Every Lazy agent explained. See how autonomous content, commerce, code, messaging, and security agents work together to run your business."
         url="/how-it-works"
       />

@@ -180,7 +180,7 @@ const LazyGitLabPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Lazy GitLab — Autonomous GitLab Content Agent for Lovable" description="One prompt turns every GitLab commit into a changelog, release notes, and a developer blog post — automatically." url="/lazy-gitlab" />
+      <SEO title="Lazy GitLab — Autonomous GitLab Docs" description="One prompt turns every GitLab commit into a changelog, release notes, and a developer blog post — automatically." url="/lazy-gitlab" />
       <Navbar />
       <main className="relative z-10 pb-32">
         {/* Hero */}

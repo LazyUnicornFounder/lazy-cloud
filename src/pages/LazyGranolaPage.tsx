@@ -104,7 +104,7 @@ export default function LazyGranolaPage() {
   return (
     <>
       <SEO
-        title="Lazy Granola — Autonomous Meeting-to-Content Agent"
+        title="Lazy Granola — Meeting-to-Content Agent"
         description="Connect Granola to the Lazy Stack. Every meeting becomes blog posts, Linear issues, Slack summaries, and customer intelligence — automatically."
         url="https://lazyunicorn.ai/lazy-granola"
       />

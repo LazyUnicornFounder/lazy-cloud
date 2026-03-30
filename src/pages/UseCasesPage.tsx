@@ -581,7 +581,7 @@ export default function UseCasesPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Use Cases — What Your Lovable Site Can Do | Lazy Unicorn"
+        title="Use Cases for Lovable Sites"
         description="Real use cases for every Lovable integration. See what becomes possible when you connect Stripe, Twilio, ElevenLabs, and more through Lazy agents."
       />
       <Navbar />

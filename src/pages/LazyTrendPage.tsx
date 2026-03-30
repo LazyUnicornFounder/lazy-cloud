@@ -73,7 +73,7 @@ export default function LazyTrendPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Trend — Autonomous Trend Detection Agent for Lovable"
+        title="Lazy Trend — Autonomous Trend Detection"
         description="Be first on every trending topic in your niche. Lazy Trend scans Perplexity, Firecrawl, Hacker News, and your competitors every 6 hours and queues content instantly."
         url="/lazy-trend"
         keywords="trend detection, autonomous trending topics, content velocity, Lovable agent, real-time trend monitoring"

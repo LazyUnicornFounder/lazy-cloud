@@ -559,7 +559,7 @@ export default function LazyRunPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Lazy Run — The Autonomous Runtime for Lovable"
+        title="Lazy Run — Autonomous Runtime"
         description="One prompt installs the complete autonomous operations layer into your Lovable project. Thirty-five agents. One dashboard. Everything runs itself."
         url="/lazy-run"
       />

@@ -12,7 +12,7 @@ export default function AboutPage() {
   return (
     <>
       <SEO
-        title="About Lazy Unicorn — One Founder. Zero Employees."
+        title="About — One Founder, Zero Employees"
         description="Lazy Unicorn is a company that builds itself. Autonomous agents replace teams, run operations, and grow the business — all without manual input."
       />
       <Navbar />

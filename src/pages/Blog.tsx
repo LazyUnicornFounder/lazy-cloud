@@ -29,7 +29,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Blog — Autonomous Capitalism, AI Agents & the Future of Work"
+        title="Blog — AI Agents & Autonomous Business"
         description="Essays and insights on autonomous companies, AI agents, and the future of work."
         url="/blog"
         keywords="autonomous business blog, AI agents for business, autonomous company, solo founder blog"
