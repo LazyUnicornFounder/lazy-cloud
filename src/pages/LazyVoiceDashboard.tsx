@@ -75,7 +75,7 @@ export default function LazyVoiceDashboard() {
       <>
         <Navbar />
         <main className="min-h-screen bg-background text-foreground pt-32 px-6 text-center">
-          <h1 className="font-display text-2xl font-bold mb-4">Lazy Voice Not Configured</h1>
+          <h2 className="font-display text-2xl font-bold mb-4">Lazy Voice Not Configured</h2>
           <p className="font-body text-muted-foreground mb-6">Complete the setup to start generating audio.</p>
           <Link to="/lazy-voice-setup" className="bg-primary text-primary-foreground font-display font-bold text-sm tracking-[0.08em] uppercase px-8 py-4 rounded-full hover:opacity-90 transition-opacity">
             Go to Setup

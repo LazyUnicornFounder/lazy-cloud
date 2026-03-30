@@ -55,9 +55,9 @@ const LivePage = () => {
         ) : (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
             <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: "1.5rem", color: "#f0ead6", opacity: 0.4 }}>Offline</p>
-            <h1 className="mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
+            <h2 className="mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#f0ead6", lineHeight: 1.2 }}>
               Not streaming right now.
-            </h1>
+            </h2>
             {latestSession && (
               <p className="font-body text-sm text-foreground/55 mt-4">
                 Last stream: {new Date(latestSession.started_at || latestSession.created_at).toLocaleDateString()}

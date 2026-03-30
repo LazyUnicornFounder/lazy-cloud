@@ -227,7 +227,7 @@ export default function WaitlistPage() {
             <>
               <div className="space-y-3">
                 <CheckCircle2 className="h-16 w-16 mx-auto" style={{ color: accent }} />
-                <h1 className="text-4xl font-black text-foreground">You're In! 🎉</h1>
+                <h2 className="text-4xl font-black text-foreground">You're In! 🎉</h2>
                 {settings.page_show_position && position && (
                   <p className="text-lg text-muted-foreground">
                     You're <span className="font-bold text-foreground">#{position}</span> on the waitlist
