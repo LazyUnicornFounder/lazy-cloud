@@ -43,7 +43,7 @@ const LazySeoSetup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
+    <main className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
       <div className="w-full max-w-xl space-y-8">
         <div className="text-center space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
@@ -116,7 +116,7 @@ const LazySeoSetup = () => {
           </Button>
         </form>
       </div>
-    </div>
+    </main>
   );
 };
 

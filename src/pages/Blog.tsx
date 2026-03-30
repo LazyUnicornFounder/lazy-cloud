@@ -41,9 +41,9 @@ const Blog = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }} />
       <Navbar activePage="blog" />
 
-      <div className="pt-32">
+      <main className="pt-32">
         <BlogSection />
-      </div>
+      </main>
 
       <footer className="px-8 md:px-12 py-8 border-t border-border">
         <span className="font-body text-[13px] tracking-[0.2em] uppercase text-foreground/55">

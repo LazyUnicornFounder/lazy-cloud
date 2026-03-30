@@ -81,8 +81,9 @@ const BlogPost = () => {
       })}} />
 
       <Navbar activePage="blog" />
+      <main>
 
-      <div className="pt-32 px-4 sm:px-8 md:px-12 pb-20">
+      <article className="pt-32 px-4 sm:px-8 md:px-12 pb-20">
         <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -135,7 +136,8 @@ const BlogPost = () => {
             </div>
           </motion.div>
         </div>
-      </div>
+      </article>
+      </main>
 
       <footer className="px-8 md:px-12 py-8 border-t border-border">
         <span className="font-body text-[13px] tracking-[0.2em] uppercase text-foreground/55">Lazy Unicorn © 2026</span>

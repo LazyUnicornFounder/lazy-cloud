@@ -43,7 +43,7 @@ const SeoBlogPost = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <SEO title={`${post.title} | LazyUnicorn.ai`} description={post.excerpt || post.title} />
       <div className="max-w-3xl mx-auto px-4 py-12 space-y-6">
         <Link to="/seo-blog" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">

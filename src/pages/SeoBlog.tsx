@@ -24,7 +24,7 @@ const SeoBlog = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <SEO title="SEO Blog — Autonomous SEO Articles" description="SEO-optimised articles published autonomously by Lazy SEO. Every post targets a specific keyword gap and is designed to climb Google search rankings." />
       <div className="max-w-3xl mx-auto px-4 py-12 space-y-8">
         <div className="space-y-2">
@@ -58,7 +58,7 @@ const SeoBlog = () => {
           <ProductPromoBanner excludeProduct="seo" glass={false} />
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

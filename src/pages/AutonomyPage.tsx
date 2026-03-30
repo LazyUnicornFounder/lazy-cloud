@@ -226,6 +226,7 @@ export default function AutonomyPage() {
       />
       <Navbar />
 
+      <main>
       {/* Hero */}
       <section
         className="max-w-4xl mx-auto px-4 min-h-screen flex flex-col items-center justify-center text-center"
@@ -344,6 +345,7 @@ export default function AutonomyPage() {
       </section>
 
       {/* Slider CSS */}
+      </main>
       <style>{`
         .autonomy-slider {
           -webkit-appearance: none;

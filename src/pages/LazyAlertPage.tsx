@@ -329,6 +329,7 @@ export default function LazyAlertPage() {
         keywords="Slack alerts, autonomous business notifications, Lovable Slack integration, real-time alerts, Lazy Alert"
       />
       <Navbar />
+      <main>
 
       {/* ── HERO ── */}
       <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
@@ -499,6 +500,7 @@ export default function LazyAlertPage() {
           </p>
         </div>
       </section>
+      </main>
     </div>
   );
 }

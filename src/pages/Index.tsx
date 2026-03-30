@@ -178,6 +178,7 @@ const Index = () => {
 
       <Navbar activePage="home" />
 
+      <main>
       {/* Hero */}
       <header className="relative z-10">
         <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32 min-h-screen flex flex-col justify-center">
@@ -475,7 +476,7 @@ const Index = () => {
           })}
         </div>
       </section>
-
+      </main>
 
     </div>
   );

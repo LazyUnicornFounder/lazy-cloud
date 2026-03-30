@@ -20,7 +20,7 @@ const GeoBlog = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground">
       <SEO title="GEO Blog — AI-Optimised Answers" description="Articles structured for AI citation by ChatGPT, Claude, and Perplexity. Written autonomously by Lazy GEO to boost your brand visibility in AI answers." />
       <div className="max-w-3xl mx-auto px-4 py-12 space-y-8">
         <div className="space-y-2">
@@ -49,7 +49,7 @@ const GeoBlog = () => {
           <ProductPromoBanner excludeProduct="geo" glass={false} />
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

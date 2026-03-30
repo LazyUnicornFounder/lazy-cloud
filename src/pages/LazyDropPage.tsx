@@ -61,6 +61,7 @@ export default function LazyDropPage() {
         keywords="autonomous dropshipping, AutoDS Lovable, dropshipping automation, AI dropshipping store"
       />
       <Navbar />
+      <main>
 
       {/* Hero */}
       <section className="relative px-6 md:px-12 pt-32 pb-24 md:pb-32">
@@ -173,6 +174,7 @@ export default function LazyDropPage() {
           </p>
         </div>
       </section>
+      </main>
     </div>
   );
 }
