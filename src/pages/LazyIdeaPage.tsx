@@ -1,10 +1,13 @@
 import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import IdeaCard from "@/components/IdeaCard";
 import { fetchIdeasForDate } from "@/lib/ideas";
-import { Search, RefreshCw, Lightbulb } from "lucide-react";
+import { Search, RefreshCw } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
+
+const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 const categories = [
   "All", "Architecture", "Art", "Boxing", "Cars", "Coffee", "Construction",
