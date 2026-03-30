@@ -1,4 +1,9 @@
-import { supabase } from "@/integrations/supabase/client";
+import { createClient } from "@supabase/supabase-js";
+
+const breakingMuseClient = createClient(
+  "https://uslyjnwsptwscxuibdet.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzbHlqbndzcHR3c2N4dWliZGV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4ODk3MzIsImV4cCI6MjA5MDQ2NTczMn0.qKQdE99ApFq7Cs-bLfyB7iUJm4emIuhfmFWHdTXgCBo"
+);
 
 export interface IdeaEntry {
   title: string;
