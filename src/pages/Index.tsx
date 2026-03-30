@@ -207,6 +207,22 @@ const Index = () => {
                 Your site launches. Your waitlist fills. Your blog writes. Your store sells. Your newsletters send. Your pages rank. Your payments process. And so much more. All from one prompt — all on autopilot.
               </p>
 
+              <p className="mt-4 font-body text-sm max-w-xl leading-relaxed" style={{ color: "#f0ead6", opacity: 0.35 }}>
+                Learn{" "}
+                <Link to="/how-it-works" className="underline hover:opacity-80 transition-opacity" style={{ color: "rgba(200,169,97,0.7)" }}>
+                  how autonomous agents work
+                </Link>
+                , explore{" "}
+                <Link to="/use-cases" className="underline hover:opacity-80 transition-opacity" style={{ color: "rgba(200,169,97,0.7)" }}>
+                  real-world use cases
+                </Link>
+                , or see{" "}
+                <Link to="/pricing" className="underline hover:opacity-80 transition-opacity" style={{ color: "rgba(200,169,97,0.7)" }}>
+                  plans and pricing
+                </Link>
+                .
+              </p>
+
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-10">
                 <Link
                   to="/lazy-launch"

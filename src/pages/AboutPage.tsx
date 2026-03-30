@@ -240,6 +240,33 @@ export default function AboutPage() {
             <p style={{ color: "rgba(240,234,214,0.65)" }}>
               This is what a company looks like when autonomy is the default and humans are optional.
             </p>
+
+            <div className="mt-10 pt-8 space-y-3" style={{ borderTop: "1px solid rgba(200,169,97,0.15)" }}>
+              <p className="font-body text-sm" style={{ color: "rgba(240,234,214,0.5)" }}>
+                → See{" "}
+                <Link to="/how-it-works" className="underline hover:opacity-80 transition-opacity" style={{ color: "rgba(200,169,97,0.7)" }}>
+                  how the autonomous layer works
+                </Link>
+              </p>
+              <p className="font-body text-sm" style={{ color: "rgba(240,234,214,0.5)" }}>
+                → Explore{" "}
+                <Link to="/lazy-agents" className="underline hover:opacity-80 transition-opacity" style={{ color: "rgba(200,169,97,0.7)" }}>
+                  all 35 autonomous agents
+                </Link>
+              </p>
+              <p className="font-body text-sm" style={{ color: "rgba(240,234,214,0.5)" }}>
+                → Read the{" "}
+                <Link to="/blog" className="underline hover:opacity-80 transition-opacity" style={{ color: "rgba(200,169,97,0.7)" }}>
+                  blog on autonomous capitalism
+                </Link>
+              </p>
+              <p className="font-body text-sm" style={{ color: "rgba(240,234,214,0.5)" }}>
+                → Check{" "}
+                <Link to="/pricing" className="underline hover:opacity-80 transition-opacity" style={{ color: "rgba(200,169,97,0.7)" }}>
+                  plans and pricing
+                </Link>
+              </p>
+            </div>
           </div>
         </motion.div>
       </section>
