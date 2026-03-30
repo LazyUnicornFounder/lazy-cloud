@@ -74,6 +74,13 @@ import WaitlistPage from "./pages/WaitlistPage.tsx";
 import LazyWaitlistPage from "./pages/LazyWaitlistPage.tsx";
 import LazyCloudPage from "./pages/LazyCloudPage.tsx";
 
+import DocsLayout from "./pages/docs/DocsLayout";
+import DocsIntro from "./pages/docs/DocsIntro";
+import DocsQuickstart from "./pages/docs/DocsQuickstart";
+import DocsHowItWorks from "./pages/docs/DocsHowItWorks";
+import { DocsContentAgents, DocsCommerceAgents, DocsMediaAgents, DocsDevAgents, DocsMonitorAgents, DocsIntelligenceAgents } from "./pages/docs/DocsAgents";
+import { DocsAdminOverview, DocsAdminSettings } from "./pages/docs/DocsAdmin";
+
 const queryClient = new QueryClient();
 
 const App = () => (
