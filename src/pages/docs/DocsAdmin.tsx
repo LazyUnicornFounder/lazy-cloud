@@ -30,9 +30,7 @@ export function DocsAdminOverview() {
         <li>Collapsible error log</li>
       </ul>
 
-      <a href="/admin" className="inline-flex items-center gap-2 text-[14px] font-bold transition-colors hover:opacity-80" style={{ color: "#ea580c" }}>
-        Go to your dashboard <ArrowRight size={14} />
-      </a>
+
     </div>
   );
 }
