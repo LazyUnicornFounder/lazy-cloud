@@ -87,7 +87,7 @@ export default function LazyVoiceDashboard() {
 
   return (
     <>
-      <SEO title="Lazy Voice Dashboard" description="View and manage all podcast episodes generated from your blog posts. Monitor narration status, playback, and publishing from one dashboard." />
+      <SEO title="Lazy Voice Dashboard" description="View and manage all podcast episodes generated from your blog posts. Monitor narration status, playback, and publishing from a single dashboard." />
       <Navbar />
       <main className="min-h-screen bg-background text-foreground pt-32 md:pt-44 pb-20 px-6">
         <div className="max-w-4xl mx-auto">

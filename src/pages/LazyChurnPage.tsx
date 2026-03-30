@@ -63,7 +63,7 @@ export default function LazyChurnPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Churn — Autonomous Churn Prevention"
-        description="Monitor subscribers daily and detect churn signals early. Lazy Churn sends personalised re-engagement messages before customers cancel."
+        description="Monitor subscribers daily and detect churn signals early. Lazy Churn sends personalised re-engagement messages before customers decide to cancel."
         url="/lazy-churn"
         keywords="churn prevention, autonomous retention, subscriber monitoring, SaaS churn, Lovable agent"
       />

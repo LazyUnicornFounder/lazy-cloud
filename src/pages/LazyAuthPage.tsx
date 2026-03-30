@@ -139,7 +139,7 @@ export default function LazyAuthPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SEO
         title="Lazy Auth — Autonomous Login Flows"
-        description="Add Google Sign-In, email login, protected routes, and role-based access to your Lovable project. One prompt installs the full auth system."
+        description="Add Google Sign-In, email login, protected routes, and role-based access to your Lovable project. One prompt installs the complete auth system."
         url="/lazy-auth"
         faq={faqs.map(f => ({ question: f.q, answer: f.a }))}
         softwareApp={{ name: "Lazy Auth", description: "Autonomous authentication agent for Lovable — installs Google Sign-In, email login, protected routes, and role-based access.", category: "SecurityApplication" }}

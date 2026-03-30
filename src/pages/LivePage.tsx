@@ -30,7 +30,7 @@ const LivePage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SEO title="Live — Lazy Stream" description="Check if the Lazy Unicorn Twitch stream is live right now. Watch autonomous agents build, publish, and optimise a business in real time." url="/live" />
+      <SEO title="Live — Lazy Stream" description="Check if the Lazy Unicorn Twitch stream is live right now. Watch autonomous agents building, publishing, and optimising a business in real time." url="/live" />
       <Navbar />
 
       <main className="pt-32 pb-20 px-6 md:px-12 max-w-3xl mx-auto text-center">

@@ -222,7 +222,7 @@ export default function AutonomyPage() {
     <>
       <SEO
         title="Autonomy Levels"
-        description="See how each Lazy agent progresses from manual to fully autonomous. Explore all five autonomy levels and what they mean for your business."
+        description="See how each Lazy agent progresses from manual to fully autonomous. Explore all five autonomy levels and what they mean for your Lovable business."
       />
       <Navbar />
 
