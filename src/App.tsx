@@ -74,6 +74,13 @@ import WaitlistPage from "./pages/WaitlistPage.tsx";
 import LazyWaitlistPage from "./pages/LazyWaitlistPage.tsx";
 import LazyCloudPage from "./pages/LazyCloudPage.tsx";
 
+import DocsLayout from "./pages/docs/DocsLayout";
+import DocsIntro from "./pages/docs/DocsIntro";
+import DocsQuickstart from "./pages/docs/DocsQuickstart";
+import DocsHowItWorks from "./pages/docs/DocsHowItWorks";
+import { DocsContentAgents, DocsCommerceAgents, DocsMediaAgents, DocsDevAgents, DocsMonitorAgents, DocsIntelligenceAgents } from "./pages/docs/DocsAgents";
+import { DocsAdminOverview, DocsAdminSettings } from "./pages/docs/DocsAdmin";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -151,6 +158,19 @@ const App = () => (
               <Route path="/upgrade-guide" element={<UpgradeGuidePage />} />
               <Route path="/how-it-works" element={<HowItWorksPage />} />
               <Route path="/use-cases" element={<UseCasesPage />} />
+              <Route path="/docs" element={<DocsLayout />}>
+                <Route index element={<DocsIntro />} />
+                <Route path="quickstart" element={<DocsQuickstart />} />
+                <Route path="how-it-works" element={<DocsHowItWorks />} />
+                <Route path="agents/content" element={<DocsContentAgents />} />
+                <Route path="agents/commerce" element={<DocsCommerceAgents />} />
+                <Route path="agents/media" element={<DocsMediaAgents />} />
+                <Route path="agents/dev" element={<DocsDevAgents />} />
+                <Route path="agents/monitor" element={<DocsMonitorAgents />} />
+                <Route path="agents/intelligence" element={<DocsIntelligenceAgents />} />
+                <Route path="admin/overview" element={<DocsAdminOverview />} />
+                <Route path="admin/settings" element={<DocsAdminSettings />} />
+              </Route>
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
