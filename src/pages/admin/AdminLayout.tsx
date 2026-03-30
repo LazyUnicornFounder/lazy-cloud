@@ -152,6 +152,22 @@ export default function AdminLayout() {
                 All Agents
               </button>
 
+              {/* Cloud Signups */}
+              <button
+                onClick={() => navigate("/admin/cloud-signups")}
+                className="flex items-center w-full px-4 mx-1 rounded transition-colors"
+                style={{
+                  height: 36, fontSize: 14, gap: 10,
+                  color: currentSlug === "cloud-signups" ? "#f0ead6" : "rgba(240,234,214,0.7)",
+                  fontWeight: currentSlug === "cloud-signups" ? 600 : 400,
+                  background: currentSlug === "cloud-signups" ? "rgba(201,168,76,0.1)" : "transparent",
+                }}
+                onMouseEnter={(e) => { if (currentSlug !== "cloud-signups") e.currentTarget.style.background = "rgba(240,234,214,0.04)"; }}
+                onMouseLeave={(e) => { if (currentSlug !== "cloud-signups") e.currentTarget.style.background = "transparent"; }}
+              >
+                ☁️ Cloud Signups
+              </button>
+
               {CATEGORIES.map((cat) => (
                 <div key={cat}>
                   <button
