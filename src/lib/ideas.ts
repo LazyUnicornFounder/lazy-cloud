@@ -29,7 +29,7 @@ export async function fetchIdeasForDate(date?: string): Promise<{
 }> {
   const targetDate = date || getAmmanDate();
 
-  const { data, error } = await supabase
+  const { data, error } = await breakingMuseClient
     .from("daily_ideas")
     .select("*")
     .eq("date", targetDate)
