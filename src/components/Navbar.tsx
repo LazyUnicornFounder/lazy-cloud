@@ -298,6 +298,7 @@ const Navbar = ({ activePage = "home" }: NavbarProps) => {
               label="Resources"
               children={[
                 { label: "Docs", href: "/docs" },
+                { label: "How It Works", href: "/how-it-works" },
                 { label: "Use Cases", href: "/use-cases" },
                 { label: "Blog", href: "/blog" },
                 { label: "Autonomy", href: "/autonomy" },
