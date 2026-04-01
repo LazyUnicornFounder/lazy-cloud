@@ -73,7 +73,7 @@ const BlogPost = () => {
         "image": ogImageUrl,
         "datePublished": "2026-03-01",
         "dateModified": "2026-03-21",
-        "author": { "@type": "Person", "name": "Saad Sahawneh", "url": "https://x.com/SaadSahawneh" },
+        "author": { "@type": "Person", "name": "Saad Sahawneh", "url": "https://x.com/SoloUnicorn" },
         "publisher": { "@type": "Organization", "name": "Lazy Unicorn", "url": "https://www.lazyunicorn.ai" },
         "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.lazyunicorn.ai/blog/${post.slug}` },
         "wordCount": post.content.join(" ").split(/\s+/).length,

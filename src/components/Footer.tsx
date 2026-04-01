@@ -97,7 +97,7 @@ export default function Footer() {
               <a href="https://github.com/LazyUnicornFounder/LazyUnicorn" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-foreground/50 transition-colors" aria-label="View prompts on GitHub">
                 <Github size={12} />
               </a>
-              <a href="https://x.com/SaadSahawneh" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-foreground/50 transition-colors" aria-label="Follow on X">
+              <a href="https://x.com/SoloUnicorn" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-foreground/50 transition-colors" aria-label="Follow on X">
                 <XLogo />
               </a>
               <a href="https://www.linkedin.com/company/lazy-unicorn/" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-foreground/50 transition-colors" aria-label="Follow on LinkedIn">

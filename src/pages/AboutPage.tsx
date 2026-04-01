@@ -301,7 +301,7 @@ export default function AboutPage() {
           </p>
           <div className="flex items-center justify-center gap-6 mt-6">
             <a
-              href="https://x.com/SaadSahawneh"
+              href="https://x.com/SoloUnicorn"
               target="_blank"
               rel="noopener noreferrer"
               className="font-body text-sm tracking-[0.1em] uppercase transition-colors"
