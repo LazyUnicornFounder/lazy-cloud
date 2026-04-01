@@ -351,6 +351,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Pricing */}
+      <PricingSection />
+
       {/* Product Grid */}
       <section id="agent" className="relative z-10 scroll-mt-20">
         <div className="grid grid-cols-2 md:grid-cols-4 border-t border-border">
