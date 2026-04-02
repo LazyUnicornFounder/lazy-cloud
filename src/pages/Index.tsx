@@ -425,7 +425,7 @@ export default function Index() {
               <p className="text-lg md:text-xl text-foreground leading-relaxed mb-8">
                 Lazy Cloud saved us hours of unproductive searching through files. We can learn faster and do more.
               </p>
-              <div className="text-sm font-medium">Construction Management Associates</div>
+              <a href="https://www.cmajo.com" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline">Construction Management Associates</a>
             </div>
           </Reveal>
         </div>
