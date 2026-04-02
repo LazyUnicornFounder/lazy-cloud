@@ -12,6 +12,8 @@ import Index from "./pages/Index.tsx";
 const SignupPage = lazy(() => import("./pages/SignupPage.tsx"));
 const LoginPage = lazy(() => import("./pages/LoginPage.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage.tsx"));
+const TermsPage = lazy(() => import("./pages/TermsPage.tsx"));
 const DashboardLayout = lazy(() => import("./pages/dashboard/DashboardLayout.tsx"));
 const DashboardOverview = lazy(() => import("./pages/dashboard/DashboardOverview.tsx"));
 const DashboardFiles = lazy(() => import("./pages/dashboard/DashboardFiles.tsx"));
