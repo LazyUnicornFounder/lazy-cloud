@@ -7,7 +7,7 @@ import {
   Search, Upload, Brain, MessageSquare, Globe, FileText,
   Bookmark, Shield, Lock, Building2,
   Scale, Landmark, HardHat, Check, ArrowRight, Sparkles,
-  TrendingUp, FileShield
+  TrendingUp, ShieldCheck
 } from "lucide-react";
 
 /* ── Scroll-triggered wrapper ── */
