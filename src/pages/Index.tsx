@@ -164,9 +164,7 @@ export default function Index() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold font-display tracking-tight leading-[1.08] mb-8"
           >
-            Supercharge your on-prem server
-            <br className="hidden sm:block" />
-            with the{" "}
+            Supercharge your on-prem server with the{" "}
             <span className="relative">
               <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
                 AI cloud.
