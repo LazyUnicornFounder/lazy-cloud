@@ -224,6 +224,50 @@ export type Database = {
         }
         Relationships: []
       }
+      files: {
+        Row: {
+          created_at: string
+          file_name: string
+          file_type: string | null
+          id: string
+          indexed_at: string | null
+          org_id: string
+          size_bytes: number | null
+          status: string
+          storage_path: string | null
+        }
+        Insert: {
+          created_at?: string
+          file_name: string
+          file_type?: string | null
+          id?: string
+          indexed_at?: string | null
+          org_id: string
+          size_bytes?: number | null
+          status?: string
+          storage_path?: string | null
+        }
+        Update: {
+          created_at?: string
+          file_name?: string
+          file_type?: string | null
+          id?: string
+          indexed_at?: string | null
+          org_id?: string
+          size_bytes?: number | null
+          status?: string
+          storage_path?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "files_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       geo_citations: {
         Row: {
           brand_mentioned: boolean
@@ -751,6 +795,39 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          data_size: string | null
+          full_name: string | null
+          id: string
+          industry: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          data_size?: string | null
+          full_name?: string | null
+          id?: string
+          industry?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          data_size?: string | null
+          full_name?: string | null
+          id?: string
+          industry?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       prompt_releases: {
         Row: {
           change_type: string
@@ -822,6 +899,41 @@ export type Database = {
           version?: string
         }
         Relationships: []
+      }
+      search_history: {
+        Row: {
+          created_at: string
+          id: string
+          org_id: string
+          query: string
+          results_count: number | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          org_id: string
+          query: string
+          results_count?: number | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          org_id?: string
+          query?: string
+          results_count?: number | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "search_history_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       seo_errors: {
         Row: {
