@@ -113,26 +113,6 @@ const pricingTiers = [
   },
 ];
 
-const testimonials = [
-  {
-    quote: "We went from spending hours digging through archives to finding exactly what we need in seconds. Game changer.",
-    name: "Ahmad Al-Rashid",
-    title: "Head of Engineering",
-    company: "Gulf Construction Co.",
-  },
-  {
-    quote: "Our team finally has a tool that works with our documents natively. The search quality is unmatched.",
-    name: "Sara Mahmoud",
-    title: "Legal Director",
-    company: "Al-Nour Law Firm",
-  },
-  {
-    quote: "25 years of government records, searchable in one afternoon. I didn't believe it until I saw it.",
-    name: "Khalid Nasser",
-    title: "IT Director",
-    company: "Ministry of Works",
-  },
-];
 
 export default function Index() {
   return (
