@@ -137,13 +137,12 @@ export default function Index() {
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold font-display tracking-tight leading-tight mb-6">
-            25 Years of Documents.
+            Turn 50,000 documents gathering dust on your server into
             <br />
-            <span className="text-primary">One Search.</span>
+            <span className="text-primary">instant knowledge for your team.</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            Turn your company's file archive into an AI-powered search assistant.
-            Ask questions in plain language — get the exact file and page number.
+            Lazy Cloud connects to your file archive, indexes everything with AI, and lets your team search in plain language — getting the exact file, page number, and answer in seconds.
           </p>
 
           {/* Tech stack pills */}
