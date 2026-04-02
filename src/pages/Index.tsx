@@ -31,7 +31,7 @@ const stats = [
   { value: "55,000+", label: "files indexed" },
   { value: "61GB", label: "processed" },
   { value: "1 afternoon", label: "to set up" },
-  { value: "EN + AR", label: "bilingual" },
+  { value: "EN", label: "language" },
 ];
 
 const techStack = [
