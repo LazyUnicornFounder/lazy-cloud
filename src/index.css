@@ -2,54 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .no-scrollbar::-webkit-scrollbar { display: none; }
-  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-}
-
 @layer base {
   :root {
-    --background: 40 20% 3%;
-    --foreground: 40 33% 90%;
-
-    --card: 40 20% 3%;
-    --card-foreground: 40 33% 90%;
-
-    --popover: 40 10% 5%;
-    --popover-foreground: 40 33% 90%;
-
-    --primary: 16 90% 55%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 40 10% 8%;
-    --secondary-foreground: 40 20% 80%;
-
-    --muted: 40 8% 10%;
-    --muted-foreground: 40 15% 55%;
-
-    --accent: 270 75% 55%;
-    --accent-foreground: 40 33% 90%;
-
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 40 33% 90%;
-
-    --border: 40 10% 15%;
-    --input: 40 8% 10%;
-    --ring: 16 90% 55%;
-
-    --radius: 0rem;
-
-    --font-display: 'Space Grotesk', system-ui, sans-serif;
-    --font-body: 'Space Grotesk', system-ui, sans-serif;
-
-    --sidebar-background: 40 20% 3%;
-    --sidebar-foreground: 40 33% 90%;
-    --sidebar-primary: 16 90% 55%;
-    --sidebar-primary-foreground: 40 33% 90%;
-    --sidebar-accent: 40 10% 8%;
-    --sidebar-accent-foreground: 40 33% 90%;
-    --sidebar-border: 40 10% 15%;
-    --sidebar-ring: 16 90% 55%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 221 83% 53%;
   }
 }
 
@@ -57,58 +39,13 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
-    text-rendering: optimizeLegibility;
+    font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
   }
-
-  html {
-    overflow-x: hidden;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
-}
-
-@layer utilities {
-  .text-foreground\/20,
-  .text-foreground\/25,
-  .text-foreground\/30,
-  .text-foreground\/35 {
-    color: hsl(var(--foreground) / 0.68) !important;
-  }
-
-  .text-foreground\/40,
-  .text-foreground\/45 {
-    color: hsl(var(--foreground) / 0.78) !important;
-  }
-
-  .text-foreground\/50,
-  .text-foreground\/55 {
-    color: hsl(var(--foreground) / 0.85) !important;
-  }
-
-  .text-foreground\/60,
-  .text-foreground\/65,
-  .text-foreground\/70 {
-    color: hsl(var(--foreground) / 0.92) !important;
-  }
-
-  .text-muted-foreground {
-    color: hsl(var(--muted-foreground)) !important;
-  }
-
-  .text-muted-foreground\/60,
-  .text-muted-foreground\/70,
-  .text-muted-foreground\/80 {
-    color: hsl(var(--muted-foreground) / 0.9) !important;
-  }
-}
-
-/* Move Lovable badge to bottom-left */
-a[href*="lovable.dev"][style],
-a[href*="lovable.app"][style] {
-  left: 16px !important;
-  right: auto !important;
 }
