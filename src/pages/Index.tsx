@@ -188,7 +188,7 @@ export default function Index() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-2 mb-12"
+            className="flex flex-wrap justify-center gap-4 mb-12"
           >
             {techStack.map((t, i) => (
               <motion.div
@@ -196,7 +196,7 @@ export default function Index() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: 0.45 + i * 0.06 }}
-                className="text-xs border border-border/60 bg-secondary/40 backdrop-blur-sm rounded-full px-3.5 py-1.5 text-muted-foreground hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+                className="text-base border border-border/60 bg-secondary/40 backdrop-blur-sm rounded-full px-8 py-3.5 text-muted-foreground hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
               >
                 <span className="font-medium text-foreground">{t.name}</span>
                 <span className="mx-1.5 text-border">·</span>
