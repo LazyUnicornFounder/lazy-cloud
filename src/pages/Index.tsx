@@ -407,6 +407,22 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Testimonial */}
+      <section className="py-28 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-secondary/50 to-secondary/30" />
+        <div className="max-w-3xl mx-auto relative z-10">
+          <Reveal>
+            <div className="text-center">
+              <div className="text-4xl mb-8 text-primary/40">"</div>
+              <p className="text-lg md:text-xl text-foreground leading-relaxed mb-8">
+                Lazy Cloud saved us hours of unproductive searching through files. We can learn faster and do more.
+              </p>
+              <div className="text-sm font-medium">Construction Management Associates</div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-28 px-6 relative">
         <div className="absolute inset-0">
