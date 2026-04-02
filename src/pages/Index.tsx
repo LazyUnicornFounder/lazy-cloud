@@ -65,8 +65,8 @@ const useCases = [
   { icon: Scale, title: "Legal", desc: "Search 25 years of court decisions and contracts simultaneously" },
   { icon: Building2, title: "Corporate", desc: "Every policy, procedure, and memo — instantly searchable" },
   { icon: Landmark, title: "Government", desc: "Decades of records, one search bar" },
-  { icon: Landmark, title: "Finance", desc: "Compliance docs, audit trails, and reports — all searchable instantly" },
-  { icon: Shield, title: "Insurance", desc: "Claims, policies, and underwriting files at your fingertips" },
+  { icon: TrendingUp, title: "Finance", desc: "Compliance docs, audit trails, and reports — all searchable instantly" },
+  { icon: FileShield, title: "Insurance", desc: "Claims, policies, and underwriting files at your fingertips" },
 ];
 
 const features = [
