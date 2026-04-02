@@ -113,26 +113,6 @@ const pricingTiers = [
   },
 ];
 
-const testimonials = [
-  {
-    quote: "We went from spending hours digging through archives to finding exactly what we need in seconds. Game changer.",
-    name: "Ahmad Al-Rashid",
-    title: "Head of Engineering",
-    company: "Gulf Construction Co.",
-  },
-  {
-    quote: "Our team finally has a tool that works with our documents natively. The search quality is unmatched.",
-    name: "Sara Mahmoud",
-    title: "Legal Director",
-    company: "Al-Nour Law Firm",
-  },
-  {
-    quote: "25 years of government records, searchable in one afternoon. I didn't believe it until I saw it.",
-    name: "Khalid Nasser",
-    title: "IT Director",
-    company: "Ministry of Works",
-  },
-];
 
 export default function Index() {
   return (
@@ -419,36 +399,6 @@ export default function Index() {
                         {tier.cta}
                       </Button>
                     </Link>
-                  </CardContent>
-                </Card>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-28 px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-secondary/50 to-secondary/30" />
-        <div className="max-w-4xl mx-auto relative z-10">
-          <Reveal>
-            <h2 className="text-3xl md:text-5xl font-bold font-display text-center mb-20">What our customers say</h2>
-          </Reveal>
-          <div className="grid md:grid-cols-3 gap-5">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.name} delay={i * 0.1}>
-                <Card className="bg-card/30 backdrop-blur-sm border-border/50 hover:border-primary/15 transition-all duration-500">
-                  <CardContent className="p-6">
-                    <p className="text-sm text-muted-foreground mb-8 leading-relaxed">"{t.quote}"</p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center text-primary font-semibold text-xs">
-                        {t.name.split(" ").map(n => n[0]).join("")}
-                      </div>
-                      <div>
-                        <div className="font-medium text-sm">{t.name}</div>
-                        <div className="text-xs text-muted-foreground">{t.title}, {t.company}</div>
-                      </div>
-                    </div>
                   </CardContent>
                 </Card>
               </Reveal>
