@@ -191,6 +191,7 @@ export default function Index() {
                 {item}
               </a>
             ))}
+            <Link to="/about" className="hover:text-foreground transition-colors duration-300">About</Link>
           </div>
           <div className="flex items-center gap-3">
             <a href="https://x.com/SoloUnicorn" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors duration-300">
