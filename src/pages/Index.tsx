@@ -176,7 +176,7 @@ export default function Index() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
+            className="text-base md:text-lg text-muted-foreground max-w-xl mb-10 leading-relaxed"
           >
             Lazy Cloud indexes your entire file archive with AI and lets your team search in plain language — exact file, page number, answer in seconds.
           </motion.p>
