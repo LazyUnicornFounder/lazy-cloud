@@ -154,8 +154,18 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* About */}
+        <div className="mt-16 pt-6 border-t border-border text-center">
+          <p className="font-body text-sm text-foreground/50">
+            Lazy Unicorn is part of{" "}
+            <a href="https://lazyfactoryventures.com" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-foreground transition-colors underline underline-offset-2">
+              Lazy Factory Ventures
+            </a>
+          </p>
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-16 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="mt-6 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-body text-[14px] text-foreground/15 tracking-wider">
             © {new Date().getFullYear()} Lazy Unicorn. All rights reserved.
           </p>
