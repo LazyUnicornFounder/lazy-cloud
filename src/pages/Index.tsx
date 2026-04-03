@@ -255,11 +255,30 @@ export default function Index() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: 0.45 + i * 0.06 }}
-                className="text-base border border-border/60 bg-secondary/40 backdrop-blur-sm rounded-full px-8 py-3.5 text-muted-foreground hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+                className="relative group rounded-full"
               >
-                <span className="font-medium text-foreground">{t.name}</span>
-                <span className="mx-1.5 text-border">·</span>
-                {t.role}
+                {/* Firefly orbit */}
+                <div
+                  className="absolute inset-0 rounded-full pointer-events-none"
+                  style={{ overflow: "visible" }}
+                >
+                  <div
+                    className="absolute w-2 h-2 rounded-full blur-[3px]"
+                    style={{
+                      background: "hsl(var(--primary))",
+                      boxShadow: "0 0 8px 2px hsl(var(--primary) / 0.6), 0 0 20px 4px hsl(var(--primary) / 0.3)",
+                      animation: `firefly-orbit ${3 + i * 0.4}s linear infinite`,
+                      offsetPath: `rect(0% 100% 100% 0% round 9999px)`,
+                      offsetDistance: "0%",
+                      animationDelay: `${-i * 0.7}s`,
+                    }}
+                  />
+                </div>
+                <div className="relative text-base border border-border/60 bg-secondary/40 backdrop-blur-sm rounded-full px-8 py-3.5 text-muted-foreground hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
+                  <span className="font-medium text-foreground">{t.name}</span>
+                  <span className="mx-1.5 text-border">·</span>
+                  {t.role}
+                </div>
               </motion.div>
             ))}
           </motion.div>
