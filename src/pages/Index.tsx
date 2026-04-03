@@ -95,7 +95,7 @@ const pricingTiers = [
     tier: "starter",
     price: "$499",
     period: " one-time",
-    features: ["Up to 50 GB", "50,000 files", "5 users", "Email support"],
+    features: ["Your own dashboard to chat with your docs", "Up to 50 GB", "50,000 files", "5 users", "Email support"],
     cta: "Buy Now",
     highlighted: false,
   },
