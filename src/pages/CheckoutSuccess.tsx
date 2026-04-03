@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Check, Loader2 } from "lucide-react";
+import { Check, Loader2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function CheckoutSuccess() {
   const [params] = useSearchParams();
+  const navigate = useNavigate();
   const checkoutId = params.get("checkout_id");
   const tier = params.get("tier");
   const [status, setStatus] = useState<"loading" | "succeeded" | "failed">("loading");
@@ -29,6 +30,10 @@ export default function CheckoutSuccess() {
       });
   }, [checkoutId]);
 
+  const handleContinue = () => {
+    navigate(`/signup?tier=${tier || "starter"}&checkout_id=${checkoutId}`);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-6">
       <div className="max-w-md w-full text-center">
@@ -46,22 +51,25 @@ export default function CheckoutSuccess() {
             </div>
             <h1 className="text-2xl font-bold font-display mb-2">Payment successful!</h1>
             <p className="text-muted-foreground text-sm mb-8">
-              Thank you for purchasing Lazy Cloud {tier ? tier.charAt(0).toUpperCase() + tier.slice(1) : ""}. We'll be in touch shortly with your onboarding details.
+              Create your account to access the {tier ? tier.charAt(0).toUpperCase() + tier.slice(1) : ""} dashboard.
             </p>
-            <Link to="/">
-              <Button>Back to homepage</Button>
-            </Link>
+            <Button onClick={handleContinue} className="w-full">
+              Create your account
+            </Button>
           </>
         )}
         {status === "failed" && (
           <>
+            <div className="h-16 w-16 rounded-full bg-destructive/10 flex items-center justify-center mx-auto mb-6">
+              <AlertCircle className="h-8 w-8 text-destructive" />
+            </div>
             <h1 className="text-2xl font-bold font-display mb-2">Something went wrong</h1>
             <p className="text-muted-foreground text-sm mb-8">
               We couldn't verify your payment. Please contact support if you were charged.
             </p>
-            <Link to="/">
-              <Button variant="outline">Back to homepage</Button>
-            </Link>
+            <Button variant="outline" onClick={() => navigate("/")}>
+              Back to homepage
+            </Button>
           </>
         )}
       </div>
