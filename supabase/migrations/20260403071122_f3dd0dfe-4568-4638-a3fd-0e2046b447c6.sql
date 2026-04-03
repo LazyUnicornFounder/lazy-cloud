@@ -1,0 +1,1 @@
+UPDATE public.profiles SET paid_tier = 'admin' WHERE user_id = '917f8d3b-1564-4b22-926c-7200e7718230';
