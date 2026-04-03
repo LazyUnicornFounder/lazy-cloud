@@ -21,6 +21,7 @@ export default function DashboardLayout() {
   const location = useLocation();
   const [accessChecked, setAccessChecked] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
+  const [paidTier, setPaidTier] = useState<string | null>(null);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -41,6 +42,7 @@ export default function DashboardLayout() {
         .update({ paid_tier: pendingTier, polar_checkout_id: pendingCheckoutId })
         .eq("user_id", user.id)
         .then(() => {
+          setPaidTier(pendingTier);
           setHasAccess(true);
           setAccessChecked(true);
         });
@@ -54,6 +56,7 @@ export default function DashboardLayout() {
       .eq("user_id", user.id)
       .single()
       .then(({ data }) => {
+        setPaidTier(data?.paid_tier || null);
         setHasAccess(!!data?.paid_tier);
         setAccessChecked(true);
       });
@@ -88,6 +91,25 @@ export default function DashboardLayout() {
               Sign out
             </Button>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (hasAccess && paidTier !== "admin") {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background px-6">
+        <div className="max-w-md text-center">
+          <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+            <UserCheck className="h-8 w-8 text-primary" />
+          </div>
+          <h1 className="text-2xl font-bold font-display mb-2">You're all set!</h1>
+          <p className="text-muted-foreground text-sm mb-8">
+            We'll contact you shortly to start the onboarding process. Keep an eye on your inbox.
+          </p>
+          <Button variant="ghost" onClick={signOut}>
+            Sign out
+          </Button>
         </div>
       </div>
     );
