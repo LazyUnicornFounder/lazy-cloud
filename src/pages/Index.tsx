@@ -146,7 +146,7 @@ export default function Index() {
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/8 rounded-full blur-[160px] pointer-events-none" />
         <div className="absolute top-40 left-1/4 w-[300px] h-[300px] bg-accent/6 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="max-w-4xl mx-auto text-left relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
