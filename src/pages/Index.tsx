@@ -174,7 +174,7 @@ export default function Index() {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/60 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="font-display text-lg font-bold tracking-tight">Lazy Cloud</span>
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="font-display text-lg font-bold tracking-tight cursor-pointer hover:text-primary transition-colors duration-300">Lazy Cloud</a>
           <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
             {["How it works", "Use cases", "Pricing", "Security"].map((item) => (
               <a
