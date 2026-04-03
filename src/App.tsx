@@ -50,6 +50,8 @@ const App = () => (
               <Route path="/dashboard" element={<DashboardLayout />}>
                 <Route index element={<DashboardOverview />} />
                 <Route path="files" element={<DashboardFiles />} />
+                <Route path="clients" element={<DashboardClients />} />
+                <Route path="clients/:clientId" element={<DashboardClientDetail />} />
                 <Route path="team" element={<DashboardTeam />} />
                 <Route path="settings" element={<DashboardSettings />} />
               </Route>
