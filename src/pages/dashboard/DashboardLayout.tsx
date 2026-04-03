@@ -81,7 +81,7 @@ export default function DashboardLayout() {
             Purchase a plan to access your dashboard.
           </p>
           <div className="flex gap-3 justify-center">
-            <Button variant="outline" onClick={() => navigate("/#pricing")}>
+            <Button variant="outline" onClick={() => { window.location.href = "/#pricing"; }}>
               View plans
             </Button>
             <Button variant="ghost" onClick={signOut}>
