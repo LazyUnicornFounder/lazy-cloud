@@ -56,6 +56,7 @@ export default function DashboardLayout() {
       .eq("user_id", user.id)
       .single()
       .then(({ data }) => {
+        setPaidTier(data?.paid_tier || null);
         setHasAccess(!!data?.paid_tier);
         setAccessChecked(true);
       });
