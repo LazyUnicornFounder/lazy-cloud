@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
-  LayoutDashboard, Files, Users, Settings, Search, LogOut
+  LayoutDashboard, Files, Users, Settings, Search, LogOut, Lock
 } from "lucide-react";
 
 const navItems = [
@@ -17,12 +18,47 @@ export default function DashboardLayout() {
   const { user, loading, signOut } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const [accessChecked, setAccessChecked] = useState(false);
+  const [hasAccess, setHasAccess] = useState(false);
 
   useEffect(() => {
-    if (!loading && !user) navigate("/login");
+    if (!loading && !user) {
+      navigate("/login");
+      return;
+    }
+
+    if (!user) return;
+
+    // Check for pending tier from Google OAuth redirect
+    const pendingTier = sessionStorage.getItem("pending_tier");
+    const pendingCheckoutId = sessionStorage.getItem("pending_checkout_id");
+    if (pendingTier && pendingCheckoutId) {
+      sessionStorage.removeItem("pending_tier");
+      sessionStorage.removeItem("pending_checkout_id");
+      supabase
+        .from("profiles")
+        .update({ paid_tier: pendingTier, polar_checkout_id: pendingCheckoutId })
+        .eq("user_id", user.id)
+        .then(() => {
+          setHasAccess(true);
+          setAccessChecked(true);
+        });
+      return;
+    }
+
+    // Check if user has a paid tier
+    supabase
+      .from("profiles")
+      .select("paid_tier")
+      .eq("user_id", user.id)
+      .single()
+      .then(({ data }) => {
+        setHasAccess(!!data?.paid_tier);
+        setAccessChecked(true);
+      });
   }, [user, loading, navigate]);
 
-  if (loading) {
+  if (loading || !accessChecked) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
@@ -31,6 +67,30 @@ export default function DashboardLayout() {
   }
 
   if (!user) return null;
+
+  if (!hasAccess) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background px-6">
+        <div className="max-w-md text-center">
+          <div className="h-16 w-16 rounded-full bg-muted flex items-center justify-center mx-auto mb-6">
+            <Lock className="h-8 w-8 text-muted-foreground" />
+          </div>
+          <h1 className="text-2xl font-bold font-display mb-2">No active plan</h1>
+          <p className="text-muted-foreground text-sm mb-8">
+            Purchase a plan to access your dashboard.
+          </p>
+          <div className="flex gap-3 justify-center">
+            <Button variant="outline" onClick={() => navigate("/#pricing")}>
+              View plans
+            </Button>
+            <Button variant="ghost" onClick={signOut}>
+              Sign out
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background flex">
