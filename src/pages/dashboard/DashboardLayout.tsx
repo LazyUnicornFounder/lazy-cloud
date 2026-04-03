@@ -93,6 +93,25 @@ export default function DashboardLayout() {
     );
   }
 
+  if (hasAccess && paidTier !== "admin") {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background px-6">
+        <div className="max-w-md text-center">
+          <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+            <UserCheck className="h-8 w-8 text-primary" />
+          </div>
+          <h1 className="text-2xl font-bold font-display mb-2">You're all set!</h1>
+          <p className="text-muted-foreground text-sm mb-8">
+            We'll contact you shortly to start the onboarding process. Keep an eye on your inbox.
+          </p>
+          <Button variant="ghost" onClick={signOut}>
+            Sign out
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background flex">
       {/* Sidebar */}
