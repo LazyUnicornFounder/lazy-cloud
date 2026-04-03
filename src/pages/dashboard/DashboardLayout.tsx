@@ -42,6 +42,7 @@ export default function DashboardLayout() {
         .update({ paid_tier: pendingTier, polar_checkout_id: pendingCheckoutId })
         .eq("user_id", user.id)
         .then(() => {
+          setPaidTier(pendingTier);
           setHasAccess(true);
           setAccessChecked(true);
         });
