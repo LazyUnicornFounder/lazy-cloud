@@ -9,14 +9,14 @@ export default function TermsPage() {
         </div>
       </nav>
 
-      <article className="max-w-3xl mx-auto px-6 py-16 prose prose-invert prose-sm">
+      <article className="max-w-3xl mx-auto px-6 py-16 prose prose-invert prose-sm [&>h2]:mt-10">
         <h1 className="text-3xl font-bold font-display mb-2">Terms of Service</h1>
         <p className="text-muted-foreground mb-10">Last updated: April 3, 2026</p>
 
-        <p>These terms govern your use of DocBrain, operated by Lazy Cloud ("we", "us", "our"). By using DocBrain, you agree to these terms.</p>
+        <p>These terms govern your use of Lazy Cloud, operated by Lazy Cloud ("we", "us", "our"). By using Lazy Cloud, you agree to these terms.</p>
 
         <h2>1. The Service</h2>
-        <p>DocBrain is a document indexing and search platform. We process your uploaded documents to create searchable indexes and provide AI-powered search and chat functionality.</p>
+        <p>Lazy Cloud is a document indexing and search platform. We process your uploaded documents to create searchable indexes and provide AI-powered search and chat functionality.</p>
 
         <h2>2. Your Account</h2>
         <ul>
@@ -41,7 +41,7 @@ export default function TermsPage() {
           <li>Upload documents containing illegal content</li>
           <li>Attempt to access other users' data or documents</li>
           <li>Reverse engineer, decompile, or disassemble the platform</li>
-          <li>Use the service to compete directly with DocBrain</li>
+          <li>Use the service to compete directly with Lazy Cloud</li>
           <li>Exceed your plan's storage or usage limits</li>
           <li>Share account credentials with unauthorized parties</li>
           <li>Use the platform for any unlawful purpose</li>
@@ -98,7 +98,7 @@ export default function TermsPage() {
 
         <h2>11. Intellectual Property</h2>
         <ul>
-          <li>DocBrain and its technology are owned by Lazy Cloud</li>
+          <li>Lazy Cloud and its technology are owned by Lazy Cloud</li>
           <li>You retain all rights to your documents and data</li>
           <li>Feedback and suggestions you provide may be used to improve the platform without obligation</li>
         </ul>

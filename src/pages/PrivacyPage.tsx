@@ -9,11 +9,11 @@ export default function PrivacyPage() {
         </div>
       </nav>
 
-      <article className="max-w-3xl mx-auto px-6 py-16 prose prose-invert prose-sm">
+      <article className="max-w-3xl mx-auto px-6 py-16 prose prose-invert prose-sm [&>h2]:mt-10">
         <h1 className="text-3xl font-bold font-display mb-2">Privacy Policy</h1>
         <p className="text-muted-foreground mb-10">Last updated: April 3, 2026</p>
 
-        <p>Lazy Cloud ("we", "us", "our") operates the DocBrain platform. This policy explains how we collect, use, and protect your information.</p>
+        <p>Lazy Cloud ("we", "us", "our") operates the Lazy Cloud platform. This policy explains how we collect, use, and protect your information.</p>
 
         <h2>1. Information We Collect</h2>
         <p><strong>Account information:</strong> name, email address, company name, industry, and password when you sign up.</p>
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
 
         <h2>2. How We Use Your Information</h2>
         <ul>
-          <li>To provide and maintain the DocBrain service</li>
+          <li>To provide and maintain the Lazy Cloud service</li>
           <li>To index and make your documents searchable</li>
           <li>To communicate with you about your account and service updates</li>
           <li>To improve the platform based on usage patterns</li>
@@ -58,7 +58,7 @@ export default function PrivacyPage() {
         </ul>
 
         <h2>6. Third-Party Services</h2>
-        <p>DocBrain uses the following third-party services to operate:</p>
+        <p>Lazy Cloud uses the following third-party services to operate:</p>
         <ul>
           <li>Supabase (database and authentication)</li>
           <li>AWS S3 (file storage)</li>
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
         <p>We use essential cookies for authentication and session management. We do not use tracking or advertising cookies.</p>
 
         <h2>10. Children</h2>
-        <p>DocBrain is not intended for use by anyone under 18 years of age.</p>
+        <p>Lazy Cloud is not intended for use by anyone under 18 years of age.</p>
 
         <h2>11. Changes to This Policy</h2>
         <p>We may update this policy from time to time. We will notify you of material changes by email or through the platform.</p>
