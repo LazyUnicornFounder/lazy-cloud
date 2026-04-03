@@ -167,6 +167,36 @@ export type Database = {
         }
         Relationships: []
       }
+      client_messages: {
+        Row: {
+          body: string
+          client_user_id: string
+          created_at: string
+          id: string
+          recipient_email: string
+          status: string
+          subject: string
+        }
+        Insert: {
+          body: string
+          client_user_id: string
+          created_at?: string
+          id?: string
+          recipient_email: string
+          status?: string
+          subject: string
+        }
+        Update: {
+          body?: string
+          client_user_id?: string
+          created_at?: string
+          id?: string
+          recipient_email?: string
+          status?: string
+          subject?: string
+        }
+        Relationships: []
+      }
       daily_ideas: {
         Row: {
           created_at: string

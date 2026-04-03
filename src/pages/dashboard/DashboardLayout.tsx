@@ -4,12 +4,13 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
-  LayoutDashboard, Files, Users, Settings, Search, LogOut, Lock
+  LayoutDashboard, Files, Users, Settings, Search, LogOut, Lock, UserCheck
 } from "lucide-react";
 
 const navItems = [
   { label: "Overview", icon: LayoutDashboard, path: "/dashboard" },
   { label: "Files", icon: Files, path: "/dashboard/files" },
+  { label: "Clients", icon: UserCheck, path: "/dashboard/clients" },
   { label: "Team", icon: Users, path: "/dashboard/team" },
   { label: "Settings", icon: Settings, path: "/dashboard/settings" },
 ];
