@@ -25,6 +25,7 @@ const AdminLayout = lazy(() => import("./pages/admin/AdminLayout.tsx"));
 const AdminOverview = lazy(() => import("./pages/admin/AdminOverview.tsx"));
 const AdminSignups = lazy(() => import("./pages/AdminSignups.tsx"));
 const CheckoutSuccess = lazy(() => import("./pages/CheckoutSuccess.tsx"));
+const AboutPage = lazy(() => import("./pages/AboutPage.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -62,6 +63,7 @@ const App = () => (
                 <Route path="signups" element={<AdminSignups />} />
               </Route>
               <Route path="/checkout/success" element={<CheckoutSuccess />} />
+              <Route path="/about" element={<AboutPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

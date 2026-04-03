@@ -577,6 +577,7 @@ export default function Index() {
             ))}
             <Link to="/privacy" className="hover:text-foreground transition-colors duration-300">Privacy</Link>
             <Link to="/terms" className="hover:text-foreground transition-colors duration-300">Terms</Link>
+            <Link to="/about" className="hover:text-foreground transition-colors duration-300">About</Link>
           </div>
           <div className="text-xs text-muted-foreground">© {new Date().getFullYear()} Lazy Cloud</div>
         </div>
