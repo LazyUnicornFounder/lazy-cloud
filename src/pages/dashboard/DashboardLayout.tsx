@@ -21,6 +21,7 @@ export default function DashboardLayout() {
   const location = useLocation();
   const [accessChecked, setAccessChecked] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
+  const [paidTier, setPaidTier] = useState<string | null>(null);
 
   useEffect(() => {
     if (!loading && !user) {
