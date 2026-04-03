@@ -208,7 +208,7 @@ export default function Index() {
         />
         <div className="absolute inset-0 bg-background/70 pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto text-left relative z-10 flex-1 flex flex-col justify-center pt-20">
+        <div className="max-w-6xl mx-auto text-left relative z-10 flex-1 flex flex-col justify-center pt-20 px-6">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
