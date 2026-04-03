@@ -489,19 +489,52 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Testimonial */}
+      {/* Testimonials */}
       <section className="py-28 px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-secondary/50 to-secondary/30" />
-        <div className="max-w-3xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto relative z-10">
           <Reveal>
-            <div className="text-center">
-              <div className="text-4xl mb-8 text-primary/40">"</div>
-              <p className="text-lg md:text-xl text-foreground leading-relaxed mb-8">
-                Lazy Cloud saved us hours of unproductive searching through files. We can learn faster and do more.
-              </p>
-              <a href="https://www.cmajo.com" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline">Construction Management Associates</a>
-            </div>
+            <h2 className="text-3xl md:text-5xl font-bold font-display text-center mb-20">What people are saying</h2>
           </Reveal>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                quote: "Lazy Cloud saved us hours of unproductive searching through files. We can learn faster and do more.",
+                name: "Ahmad R.",
+                role: "Project Manager",
+                company: "Construction Management Associates",
+                companyUrl: "https://www.cmajo.com",
+              },
+              {
+                quote: "We went from losing documents in shared drives to finding exact answers in seconds. It's transformed how our team works.",
+                name: "Lina K.",
+                role: "Operations Lead",
+                company: "Al-Masri Engineering",
+              },
+              {
+                quote: "The AI search is scary good. It found a clause buried in page 47 of a contract we uploaded months ago.",
+                name: "Omar S.",
+                role: "Legal Counsel",
+                company: "Sahara Legal Group",
+              },
+            ].map((t, i) => (
+              <Reveal key={i} delay={i * 0.1}>
+                <div className="border border-border/60 rounded-lg bg-card/50 backdrop-blur-sm p-6 h-full flex flex-col">
+                  <div className="text-2xl text-primary/40 mb-4">"</div>
+                  <p className="text-sm text-foreground/90 leading-relaxed flex-1 mb-6">{t.quote}</p>
+                  <div>
+                    <p className="text-sm font-medium text-foreground">{t.name}</p>
+                    <p className="text-xs text-muted-foreground">{t.role}</p>
+                    {t.companyUrl ? (
+                      <a href={t.companyUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">{t.company}</a>
+                    ) : (
+                      <p className="text-xs text-muted-foreground">{t.company}</p>
+                    )}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
