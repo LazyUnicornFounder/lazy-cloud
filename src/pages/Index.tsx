@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
+import heroBg from "@/assets/hero-bg.png";
 import {
   Search, Upload, Brain, MessageSquare, Globe, FileText,
   Bookmark, Shield, Lock, Building2,
@@ -194,10 +195,13 @@ export default function Index() {
       </nav>
 
       {/* Hero */}
-      <section className="relative pt-36 pb-24 px-6">
-        {/* Ambient glow */}
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/8 rounded-full blur-[160px] pointer-events-none" />
-        <div className="absolute top-40 left-1/4 w-[300px] h-[300px] bg-accent/6 rounded-full blur-[120px] pointer-events-none" />
+      <section className="relative pt-36 pb-24 px-6 overflow-hidden">
+        {/* Hero background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
+          style={{ backgroundImage: `url(${heroBg})` }}
+        />
+        <div className="absolute inset-0 bg-background/70 pointer-events-none" />
 
         <div className="max-w-4xl mx-auto text-left relative z-10">
           <motion.div
