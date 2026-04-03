@@ -803,6 +803,8 @@ export type Database = {
           full_name: string | null
           id: string
           industry: string | null
+          paid_tier: string | null
+          polar_checkout_id: string | null
           updated_at: string
           user_id: string
         }
@@ -813,6 +815,8 @@ export type Database = {
           full_name?: string | null
           id?: string
           industry?: string | null
+          paid_tier?: string | null
+          polar_checkout_id?: string | null
           updated_at?: string
           user_id: string
         }
@@ -823,6 +827,8 @@ export type Database = {
           full_name?: string | null
           id?: string
           industry?: string | null
+          paid_tier?: string | null
+          polar_checkout_id?: string | null
           updated_at?: string
           user_id?: string
         }
