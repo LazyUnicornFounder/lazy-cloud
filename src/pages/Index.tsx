@@ -49,7 +49,7 @@ const steps = [
   {
     icon: Upload,
     title: "Upload your files",
-    desc: "Connect existing storage or upload directly. Supports PDF, Word, Excel, CAD, images, and more.",
+    desc: "Connect existing storage or upload directly. Supports PDF, Word, Excel, and more.",
   },
   {
     icon: Brain,
