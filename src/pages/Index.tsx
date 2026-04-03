@@ -104,7 +104,7 @@ const pricingTiers = [
     tier: "professional",
     price: "$999",
     period: " one-time",
-    features: ["Up to 500 GB", "500,000 files", "25 users", "Priority support", "Custom branding"],
+    features: ["Your own dashboard to chat with your docs", "Up to 500 GB", "500,000 files", "25 users", "Priority support", "Custom branding"],
     cta: "Buy Now",
     highlighted: true,
   },
