@@ -475,18 +475,29 @@ export default function Index() {
                         </li>
                       ))}
                     </ul>
-                    <Link to={tier.name === "Enterprise" ? "#contact" : "/signup"}>
-                      <Button
-                        className={`w-full ${
-                          tier.highlighted
-                            ? "shadow-[0_0_20px_-5px_hsl(var(--primary)/0.3)]"
-                            : ""
-                        }`}
-                        variant={tier.highlighted ? "default" : "outline"}
-                      >
-                        {tier.cta}
-                      </Button>
-                    </Link>
+                    <Button
+                      className={`w-full ${
+                        tier.highlighted
+                          ? "shadow-[0_0_20px_-5px_hsl(var(--primary)/0.3)]"
+                          : ""
+                      }`}
+                      variant={tier.highlighted ? "default" : "outline"}
+                      disabled={tier.tier === "enterprise"}
+                      onClick={async () => {
+                        if (tier.tier === "enterprise") return;
+                        try {
+                          const { data, error } = await supabase.functions.invoke("polar-checkout", {
+                            body: { action: "create_checkout", tier: tier.tier },
+                          });
+                          if (error || !data?.url) throw new Error("Checkout failed");
+                          window.location.href = data.url;
+                        } catch {
+                          alert("Could not start checkout. Please try again.");
+                        }
+                      }}
+                    >
+                      {tier.cta}
+                    </Button>
                   </CardContent>
                 </Card>
               </Reveal>
