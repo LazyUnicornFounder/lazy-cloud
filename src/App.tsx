@@ -58,6 +58,7 @@ const App = () => (
                 <Route path="settings" element={<DashboardSettings />} />
               </Route>
               <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminOverview />} />
                 <Route path="signups" element={<AdminSignups />} />
               </Route>
               <Route path="/checkout/success" element={<CheckoutSuccess />} />
