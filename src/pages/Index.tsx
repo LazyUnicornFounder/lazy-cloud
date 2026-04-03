@@ -499,44 +499,16 @@ export default function Index() {
           <Reveal>
             <h2 className="text-3xl md:text-5xl font-bold font-display text-center mb-20">What people are saying</h2>
           </Reveal>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                quote: "Lazy Cloud saved us hours of unproductive searching through files. We can learn faster and do more.",
-                name: "Ahmad R.",
-                role: "Project Manager",
-                company: "Construction Management Associates",
-                companyUrl: "https://www.cmajo.com",
-              },
-              {
-                quote: "We went from losing documents in shared drives to finding exact answers in seconds. It's transformed how our team works.",
-                name: "Lina K.",
-                role: "Operations Lead",
-                company: "Al-Masri Engineering",
-              },
-              {
-                quote: "The AI search is scary good. It found a clause buried in page 47 of a contract we uploaded months ago.",
-                name: "Omar S.",
-                role: "Legal Counsel",
-                company: "Sahara Legal Group",
-              },
-            ].map((t, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div className="border border-border/60 rounded-lg bg-card/50 backdrop-blur-sm p-6 h-full flex flex-col">
+          <div className="max-w-lg mx-auto">
+              <Reveal>
+                <div className="border border-border/60 rounded-lg bg-card/50 backdrop-blur-sm p-6 flex flex-col">
                   <div className="text-2xl text-primary/40 mb-4">"</div>
-                  <p className="text-sm text-foreground/90 leading-relaxed flex-1 mb-6">{t.quote}</p>
+                  <p className="text-sm text-foreground/90 leading-relaxed mb-6">Lazy Cloud saved us hours of unproductive searching through files. We can learn faster and do more.</p>
                   <div>
-                    <p className="text-sm font-medium text-foreground">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.role}</p>
-                    {t.companyUrl ? (
-                      <a href={t.companyUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">{t.company}</a>
-                    ) : (
-                      <p className="text-xs text-muted-foreground">{t.company}</p>
-                    )}
+                    <a href="https://www.cmajo.com" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Construction Management Associates</a>
                   </div>
                 </div>
               </Reveal>
-            ))}
           </div>
         </div>
       </section>
