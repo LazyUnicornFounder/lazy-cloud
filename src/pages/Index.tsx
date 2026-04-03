@@ -105,7 +105,7 @@ const pricingTiers = [
   },
   {
     name: "Enterprise",
-    price: "Custom",
+    price: "Coming Soon",
     period: "",
     features: ["Unlimited everything", "On-premise option", "Dedicated support", "SLA"],
     cta: "Contact Us",
