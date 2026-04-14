@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
 import heroBg from "@/assets/hero-bg.png";
 import {
+import OpenSourceBanner from "@/components/OpenSourceBanner";
   Search, Upload, Brain, MessageSquare, Globe, FileText,
   Bookmark, Shield, Lock, Building2,
   Scale, Landmark, HardHat, Check, ArrowRight, Sparkles,
@@ -583,6 +584,7 @@ export default function Index() {
           <div className="text-xs text-muted-foreground">© {new Date().getFullYear()} Lazy Cloud</div>
         </div>
       </footer>
+          <OpenSourceBanner />
     </div>
   );
 }
