@@ -8,6 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 
 import Index from "./pages/Index.tsx";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const SignupPage = lazy(() => import("./pages/SignupPage.tsx"));
 const LoginPage = lazy(() => import("./pages/LoginPage.tsx"));
@@ -37,6 +38,7 @@ const PageFallback = () => (
 
 const App = () => (
   <HelmetProvider>
+    <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
@@ -70,6 +72,7 @@ const App = () => (
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
+    </ErrorBoundary>
   </HelmetProvider>
 );
 

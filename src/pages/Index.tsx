@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import heroBg from "@/assets/hero-bg.png";
 import OpenSourceBanner from "@/components/OpenSourceBanner";
 import {
+import PortfolioFooter from "@/components/PortfolioFooter";
   Search, Upload, Brain, MessageSquare, Globe, FileText,
   Bookmark, Shield, Lock, Building2,
   Scale, Landmark, HardHat, Check, ArrowRight, Sparkles,
@@ -585,6 +586,7 @@ export default function Index() {
         </div>
       </footer>
           <OpenSourceBanner />
+          <PortfolioFooter />
     </div>
   );
 }
